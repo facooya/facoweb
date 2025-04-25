@@ -1,0 +1,273 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Main page
+ */
+/*=== All Setting ===*/
+html{
+  width:100%;
+  height:100%;
+  background-color:#FFFFFF;/*- White -*/
+}
+*{
+  padding:0;
+  margin:0;
+  /*- Mobile Mode Click Color Change None -*/
+  -webkit-tap-highlight-color:#00000000;
+}
+li{
+  list-style:none;
+}
+a{
+  text-decoration:none;
+  font-weight:bold;
+  color:#000000;/*- Black -*/
+}
+/*==============================*/
+/*@@@ Desktop & Mobile @@@*/
+/**** Top Bar ****/
+#top_bar{
+  /*--- Size ---*/
+  width:100%;
+  height:3.875rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  display:flex;
+  position:fixed;
+  background:#000000;
+  /*------------------------------*/
+  border-bottom:solid 0.125rem #FFFFFF;
+}
+#name{
+  /*--- Size ---*/
+  width:100%;
+  padding-top:1rem;
+  padding-bottom:1rem;
+  line-height:2rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  display:inline-block;
+  position:relative;
+  background:#000000;
+  /*------------------------------*/
+  /*--- Text ---*/
+  text-align:center;
+  font-size:2rem;
+  color:#FFFFFF;
+  /*------------------------------*/
+}
+#name_link{
+  cursor:pointer;
+  color:#FFFFFF;
+}
+/*=== Right Menu Graphic ===*/
+#right_menu{
+  /*--- Size ---*/
+  width:3rem;
+  height:2rem;
+  margin-top:1rem;
+  margin-right:1rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  display:flex;
+  position:relative;
+  float:right;
+  /*------------------------------*/
+  cursor:pointer;
+}
+.right_menu_line{
+  /*--- Size ---*/
+  width:100%;
+  height:0.25rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  display:block;
+  position:absolute;
+  background:#FFFFFF;
+  /*------------------------------*/
+  border-radius:2rem;
+}
+/*==============================*/
+/*=== Left Menu Graphic ===*/
+#left_menu{
+  /*--- Size ---*/
+  width:3rem;
+  height:2rem;
+  margin-top:1rem;
+  margin-left:1rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  display:flex;
+  position:relative;
+  float:left;
+  /*------------------------------*/
+  cursor:pointer;
+}
+.left_menu_line{
+  /*--- Size ---*/
+  width:100%;
+  height:0.25rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  display:block;
+  position:absolute;
+  background:#FFFFFF;
+  /*------------------------------*/
+  border-radius:2rem;
+}
+/*==============================*/
+/********************************/
+/*=== Right Menu ===*/
+#menu{
+  /*--- Size ---*/
+  width:20rem;
+  top:4rem;
+  bottom:0rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  position:fixed;
+  overflow-y:scroll;
+  background:#000000;
+  /*------------------------------*/
+  right:-20rem;
+  transition:right 300ms;
+  text-align:center;
+}
+.menu_box{
+  /*--- Size ---*/
+  height:5rem;
+  line-height:5rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  display:block;
+  overflow:hidden;
+  border-bottom:solid 0.125rem #FFFFFF;
+  /*------------------------------*/
+}
+.menu_title,.sub_menu_title{
+  /*--- Display ---*/
+  display:block;
+  /*------------------------------*/
+  color:#FFFFFF;
+}
+.menu_title{
+  font-size:1.5rem;
+  border-color:#00FF00;
+}
+.sub_menu_title{
+  border-top:dashed 0.125rem #AAAAAA;
+}
+/*==============================*/
+/*=== Left Menu ===*/
+#detail_menu{
+  /*--- Size ---*/
+  width:20rem;
+  top:4rem;
+  bottom:0rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  position:fixed;
+  overflow-y:scroll;
+  background:#000000;
+  left:-20rem;
+  /*------------------------------*/
+  text-align:center;
+  transition:left 300ms;
+}
+.detail_menu_box{
+  height:5rem;
+  line-height:5rem;
+  display:block;
+  overflow:hidden;
+  border-bottom:solid 0.125rem #FFFFFF;
+}
+.detail_menu_title,.detail_sub_menu_title{
+  display:block;
+  color:#FFFFFF;
+}
+.detail_menu_title{
+  font-size:1.5rem;
+  border-color:#00FF00;
+}
+.detail_sub_menu_title{
+  border-top:dashed 0.125rem #AAAAAA;
+}
+/*==============================*/
+/*=== Section ===*/
+#section{
+  padding:1rem;
+  padding-top:5rem;
+}
+#section_title{
+  /*--- Size ---*/
+  width:100%;
+  padding-bottom:1rem;
+  /*------------------------------*/
+  /*--- Text ---*/
+  font-size:3rem;
+  font-weight:bold;
+  text-align:center;
+  /*------------------------------*/
+  border-bottom:solid 0.5rem #000000;
+}
+/*==============================*/
+/*=== Section Menu ===*/
+#section_menu{
+  width:100%;
+  /*--- Display ---*/
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0rem 1rem;
+  /*------------------------------*/
+}
+.section_list_title{
+  line-height:5rem;
+  /*--- Text ---*/
+  font-size:1.5rem;
+  font-weight:bold;
+  text-align:center;
+  color:#555555;
+  /*------------------------------*/
+  cursor:pointer;
+  border-bottom: solid 0.25rem #AAAAAA;
+}
+#section_list_area{
+  padding-top:2rem;
+}
+.section_list{
+  /*--- Size ---*/
+  width:100%;
+  line-height:2rem;
+  padding-top:0.5rem;
+  /*------------------------------*/
+}
+.section_list_box{
+  padding-left:0.5rem;
+  padding-top:0.5rem;
+  display:block;
+  font-size:1.5rem;
+  border-bottom:solid 0.125rem #333333;
+}
+.section_list_box>div{
+  padding-left:1rem;
+  /*--- Text ---*/
+  font-size:1rem;
+  font-weight:normal;
+  color:#555555;
+  /*------------------------------*/
+}
+/*==============================*/
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+@media all and (min-width:1000px){
+
+}
+@media all and (max-width:999px){
+  #section_title{
+    font-size:2rem;
+  }
+  .section_list_title{
+    font-size:1rem;
+  }
+}

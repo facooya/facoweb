@@ -1,0 +1,79 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Code style
+ */
+.code_title, .code_name{
+  padding:0.5rem 1rem;
+  display:inline-block;
+  margin-top:0.5rem;
+  background:#000000;
+  color:#FFFFFF;
+}
+.code{
+  padding:0rem 1rem;
+  margin-bottom:0.5rem;
+  line-height:1.5rem;
+  background:#222222;
+  color:#FFFFFF;
+}
+.code_text{
+  overflow-x:auto;
+  font-size:1rem;
+  white-space:pre;
+  color:#DDDDDD;
+}
+.import{
+  color:#CCCCCC;
+}
+.text{
+  color:#50CF00;
+}
+.comment{
+  color:#008000;
+}
+.variable{
+  color:#FF8000;
+}
+.function{
+  color:#0090FF;
+}
+.function_yello{
+  color:#FFFF00;
+}
+.function_yellow{
+  color:#FFFF00;
+}
+.function_purple{
+  color:#FF80FF;
+}
+.number{
+  color:#6897BB;
+}
+.xml_tag{
+  color:#FFFF80;
+}
+.skip{
+  color:#888888;
+  background-color:#444444;
+}
+.orange{
+  color:#CC7832;
+}
+.pear{
+  color:#FFE68D;
+}
+.yellow{
+  color:#CCC539;
+}
+.purple{
+  color:#B896CA;
+}
+.blue{
+  color:#0090FF;
+}
+.bold{
+  font-weight:bold;
+}
