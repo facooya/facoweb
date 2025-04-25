@@ -3,29 +3,46 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Information
+ * Information (doc-page)
  */
-/*@@@@@ Frame @@@@@*/ /*!!!!! Check 194 !!!!!*/
+/*@@@@@ Frame @@@@@*/
 /**** Variable ****/
 /*--- Find Class ---*/
 var menu_box_array=document.getElementsByClassName("menu_box");
 var detail_menu_box_array=document.getElementsByClassName("detail_menu_box");
 var right_menu_line=document.getElementsByClassName("right_menu_line"); /*- Graphic -*/
 var left_menu_line=document.getElementsByClassName("left_menu_line"); /*- Graphic -*/
+
+//!!!
+var scroll_menu_line=document.getElementsByClassName("scroll_menu_line"); /*- Graphic -*/
+
 /*------------------------------*/
 /*--- Find Id ---*/
 var menu=document.getElementById("menu");
 var detail_menu=document.getElementById("detail_menu");
+
+//!!!
+var scroll_menu_section=document.getElementById("scroll_menu_section");
+
 var section=document.getElementById("section");
-//var top_bar_name=document.getElementById("name");
+
+
+/* var top_bar_name=document.getElementById("name"); */
 var right_menu=document.getElementById("right_menu"); /*- Graphic -*/
 var left_menu=document.getElementById("left_menu"); /*- Graphic -*/
+
+//!!!
+var scroll_menu=document.getElementById("scroll_menu"); /*- Graphic -*/
+
 var footer_bottom=document.getElementById("footer_bottom");
 /*------------------------------*/
 /*--- Switch ---*/
 var size_load_check=0; /*- Desktop=1 , Mobile=0 */
 var right_menu_click_check=0; /*- Click ? Enables=1 , Disabled=0 -*/
 var left_menu_click_check=0; /*- Click ? Enables=1 , Disabled=0 -*/
+
+//!!!
+var scroll_menu_click_check=0; /*- Click ? Enables=1 , Disabled=0 -*/
 /*------------------------------*/
 /********************************/
 /**** Function ****/
@@ -44,7 +61,7 @@ function side_drop_down(event){ /*- Menu || Detail Menu Click Event -*/
 }
 /*------------------------------*/
 /*--- Side Menu Responsive Footer ----*/
-function footer_load(){
+function footer_load(){ //!!! Remove
   if(size_load_check==1){
     if(right_menu_click_check==0){
       footer_bottom.style.marginRight="0rem";
@@ -55,7 +72,7 @@ function footer_load(){
       footer_bottom.style.width="calc(100% - 40rem)";
       footer_bottom.style.marginLeft="20rem";
       footer_bottom.style.marginRight="20rem";
-    }else if(right_menu_click_check==1){
+    }else if(right_menu_click_check==1 || /* !!! */scroll_menu_click_check==1){
       footer_bottom.style.width="calc(100% - 20rem)";
       footer_bottom.style.marginRight="20rem";
     }else if(left_menu_click_check==1){
@@ -83,12 +100,31 @@ function side_menu_initialization(){
   left_menu_line[1].style.transform="translateY(-50%)";
   left_menu_line[2].style.bottom="0";
   /*------------------------------*/
+  //!!!
+  if(scroll_menu_section && size_load_check==1){
+    scroll_menu_line[0].style.top="1rem";
+    scroll_menu_line[1].style.bottom="1rem";
+    scroll_menu_line[0].style.transformOrigin="0% 50%";
+    scroll_menu_line[1].style.transformOrigin="0% 50%";
+    scroll_menu_line[0].style.top="1rem";
+    scroll_menu_line[0].style.transform="translateY(-20%) rotate(-45deg)";
+    scroll_menu_line[1].style.bottom="1rem";
+    scroll_menu_line[1].style.transform="translateY(20%) rotate(45deg)";
+    scroll_menu_line[0].style.transition="0ms"
+    scroll_menu_line[1].style.transition="0ms"
+  }
+
   if(right_menu_click_check==1){ /*= Right Menu Open ? =*/
     right_menu_click();
   }
   if(left_menu_click_check==1){ /*= Left Menu Open ? =*/
     left_menu_click();
   }
+  //!!!
+  if(scroll_menu_click_check==1 && size_load_check==1){
+    scroll_menu_click();
+  }
+
   for(let i=0;i<menu_box_array.length;i++){
     menu_box_array[i].style.background="#000000";
     menu_box_array[i].style.height="5rem";
@@ -102,8 +138,12 @@ function side_menu_initialization(){
 /*=== Right Menu Click ===*/
 function right_menu_click(){
   if(size_load_check==1){
-    if(right_menu_click_check==1){
+    if(right_menu_click_check==1 && /* !!! */scroll_menu_click_check==0){
       section.style.paddingRight="1rem";
+    }else if(right_menu_click_check==0 && scroll_menu_click_check==1){
+      right_menu_click_check=1;
+      scroll_menu_click();
+      right_menu_click_check=0;
     }else{
       section.style.paddingRight="21rem";
     }
@@ -163,7 +203,7 @@ function right_menu_click(){
     right_menu_line[i].style.transition="300ms";
   }
   /*------------------------------*/
-  footer_load();
+  //footer_load();
 }
 /*==============================*/
 /*=== Left Menu Click ===*/
@@ -243,14 +283,63 @@ function left_menu_click(){
     left_menu_line[i].style.transition="300ms";
   }
   /*------------------------------*/
-  footer_load();
+  //footer_load();
 }
+//!!!
+function scroll_menu_click(){
+  if(scroll_menu_section && size_load_check==1){
+    if(scroll_menu_click_check==1 && right_menu_click_check==0){ /*- isOpen ? Enables=1 , Disabled=0 -*/
+      section.style.paddingRight="1rem"; /*- Padding Default -*/
+    }else if(scroll_menu_click_check==0 && right_menu_click_check==1){
+      scroll_menu_click_check=1;
+      right_menu_click();
+      scroll_menu_click_check=0;
+    }else{
+      section.style.paddingRight="21rem"; /*- Padding Default + Right Menu Size -*/
+    }
+
+    if(scroll_menu_click_check==0){ /*= Scroll Menu Open =*/
+      /*--- Graphic ---*/
+      scroll_menu_line[0].style.transition="300ms"
+      scroll_menu_line[1].style.transition="300ms"
+      scroll_menu_line[0].style.transformOrigin="100% 50%";
+      scroll_menu_line[1].style.transformOrigin="100% 50%";
+      scroll_menu_line[0].style.top="1rem";
+      scroll_menu_line[0].style.transform="translateY(-20%) rotate(45deg)";
+      scroll_menu_line[1].style.bottom="1rem";
+      scroll_menu_line[1].style.transform="translateY(20%) rotate(-45deg)";
+      /*------------------------------*/
+      scroll_menu_click_check=1; /*- Click ? Enables=1 , Disabled=0 -*/
+      scroll_menu_section.style.right="0rem";
+      //scroll_menu_section.style.transition="300ms"
+      /*------------------------------*/
+    }else{ /*= Scroll Menu Close =*/
+      /*--- Graphic ---*/
+      scroll_menu_line[0].style.transition="300ms"
+      scroll_menu_line[1].style.transition="300ms"
+      scroll_menu_line[0].style.transformOrigin="0% 50%";
+      scroll_menu_line[1].style.transformOrigin="0% 50%";
+      scroll_menu_line[0].style.top="1rem";
+      scroll_menu_line[0].style.transform="translateY(-20%) rotate(-45deg)";
+      scroll_menu_line[1].style.bottom="1rem";
+      scroll_menu_line[1].style.transform="translateY(20%) rotate(45deg)";
+      /*------------------------------*/
+      scroll_menu_click_check=0; /*- Click ? Enables=1 , Disabled=0 -*/
+      scroll_menu_section.style.right="-20rem";
+      //scroll_menu_section.style.transition="300ms"
+    }
+    //footer_load();
+  }
+}
+
 /*==============================*/
 /*!!! Side Menu Control !!!*/
 function side_menu_add(){
   side_menu_initialization();
   right_menu.addEventListener("click",right_menu_click);
   left_menu.addEventListener("click",left_menu_click);
+  //!!!
+  scroll_menu.addEventListener("click",scroll_menu_click);
   for(let i=0;i<menu_box_array.length;i++){
     menu_box_array[i].addEventListener("click",side_drop_down);
   }
@@ -291,6 +380,11 @@ function desktop(){
   menu.style.transition="right 0ms";
   detail_menu.style.transition="left 0ms";
   /*------------------------------*/
+  /* !!!!! Footer */
+  menu.style.marginBottom="3.5rem";
+  detail_menu.style.marginBottom="3.5rem";
+  scroll_menu_section.style.marginBottom="3.5rem";
+  scroll_menu.style.display="block"
 }
 function mobile(){
   /*--- Menu Size & Animation Fix---*/
@@ -300,6 +394,11 @@ function mobile(){
   detail_menu.style.left="-100%";
   menu.style.transition="right 0ms";
   detail_menu.style.transition="left 0ms";
+  /* !!!!! Footer */
+  menu.style.marginBottom="0rem";
+  detail_menu.style.marginBottom="0rem";
+  scroll_menu.style.display="none"
+  //scroll_menu_section.style.marginBottom="0rem";
   /*------------------------------*/
 }
 /*------------------------------*/

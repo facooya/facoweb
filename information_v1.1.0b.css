@@ -3,7 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Information
+ * Information (doc-page)
  */
 /*=== All Setting ===*/
 html{
@@ -31,7 +31,7 @@ a{
 /*==============================*/
 /*@@@ Desktop & Mobile @@@*/
 /**** Top Bar ****/
-#top_bar{
+#top_bar{ /* Top Bar Height : 4rem */
   /*--- Size ---*/
   width:100%;
   height:3.875rem;
@@ -93,6 +93,52 @@ a{
   border-radius:2rem;
 }
 /*==============================*/
+/*!!! Test !!!*/
+#scroll_menu{
+  /*--- Size ---*/
+  width:2rem;
+  height:2rem;
+  margin-right:1.5rem;
+  margin-top:1rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  display:flex;
+  position:relative;
+  cursor:pointer;
+  /*------------------------------*/
+}
+.scroll_menu_line{
+  /*--- Size ---*/
+  width:100%;
+  height:0.25rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  display:block;
+  position:absolute;
+  background:#FFFFFF;
+  border-radius:2rem;
+  /*------------------------------*/
+  transition:300ms;
+}
+/*- !!!!!!!! Go to JS!!!! -*/
+/*.scroll_menu_line:first-child{
+  top:1rem;
+  transform:translateY(-20%) rotate(45deg);
+}
+.scroll_menu_line:last-child{
+  bottom:1rem;
+  transform:translateY(20%) rotate(-45deg);
+}
+#scroll_menu:hover .scroll_menu_line:first-child{
+  transform-origin:left;
+  transform:translateY(-20%) rotate(-45deg);
+}
+#scroll_menu:hover .scroll_menu_line:last-child{
+  transform-origin:left;
+  transform:translateY(20%) rotate(45deg);
+}*/
+/*!!! !!!!!!!!!!! !!!*/
+
 /*=== Left Menu Graphic ===*/
 #left_menu{
   /*--- Size ---*/
@@ -198,11 +244,53 @@ a{
   border-top:dashed 0.125rem #AAAAAA;
 }
 /*==============================*/
+/* !!!!! TEST !!!!! */
+/*=== Scroll Menu ===*/
+#scroll_menu_section{
+  /*--- Size ---*/
+  width:20rem;
+  top:4rem;
+  bottom:0rem;
+  /*------------------------------*/
+  /*--- Display ---*/
+  position:fixed;
+  overflow-y:scroll;
+  background:#000000;
+  right:-20rem;
+  /*------------------------------*/
+  text-align:center;
+  transition:right 300ms;
+}
+#scroll_menu_title{
+  display:block;
+  background:#000000;
+  color:#909090;
+  font-size:1.5rem;
+  line-height:4rem;
+  font-weight:bold;
+}
+.scroll_link{
+  display:block;
+  font-size:1rem;
+  background:#909090;
+  border-left:solid 0.25rem #00FFFF;
+  transition:300ms;
+  line-height:3rem;
+  font-weight:normal;
+}
+.scroll_link:hover{
+  border-left:solid 1rem #00FFFF;
+  font-weight:bold;
+}
+/*==============================*/
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 /*=== Section ===*/
 #section{
   padding:1rem;
   padding-top:5rem;
   padding-bottom:6rem;
+  /* !!! */
+  transition:300ms;
 }
 #section_title{
   /*--- Size ---*/
@@ -240,7 +328,7 @@ a{
   /*--- Size ---*/
   width:100%;
   bottom:0;
-  line-height:2.5rem;
+  line-height:1.385rem;
   /*------------------------------*/
   /*--- Display ---*/
   display:grid;
@@ -248,16 +336,23 @@ a{
   position:fixed;
   /*------------------------------*/
   text-align:center;
+  /* !!! */
+  transition:300ms;
+  border-top:solid 0.125rem #FFFFFF;
 }
 #previous_line,#prev_line{
   float:left;
-  font-size:2.5rem;
+  font-size:1rem;
   color:#FFFFFF;
 }
 #next_line{
   float:right;
-  font-size:2.5rem;
+  font-size:1rem;
   color:#FFFFFF;
+}
+#prev:hover, #next:hover, #main:hover{
+  font-weight:bold;
+  background:#303030;
 }
 #prev,#previous,#next,#home,#main{
   padding-top:1rem;
@@ -266,6 +361,8 @@ a{
   padding-right:1rem;
   color:#FFFFFF;
   background:#000000;
+  font-weight:normal;
+  transition:150ms;
 }
 #home::before{
   content:'= ';

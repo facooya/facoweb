@@ -7,7 +7,7 @@
  */
 /*=== Variable ===*/
 /*--- Main Menu ---*/ /*!!!!! Add Title !!!!-*/
-var detail_menu_title_array=["[V1.0.0] Section List 1","[V1.0.0] Section List 2","[V1.0.0] Section List 3"];
+var detail_menu_title_array=["[V1.1.0B] Section List 1","[V1.1.0B] Section List 2","[V1.1.0B] Section List 3"];
 /*------------------------------*/
 /*--- Sub Menu ---*/ /*!!!!! Add Sub Title !!!!-*/
 var section_list_1_sub_menu_array=["[Section List 1] Title 1","[Section List 1] Title 2"];
@@ -16,9 +16,9 @@ var section_list_3_sub_menu_array=["[Section List 3] Title 1"];
 
 var list_menu_parents_array=[section_list_1_sub_menu_array,section_list_2_sub_menu_array,section_list_3_sub_menu_array]; /* !!!!! Check !!!!!!*/
 
-var section_list_1_sub_menu_link_array=["./information_v1.0.0.html","./information_v1.0.0.html"];
-var section_list_2_sub_menu_link_array=["./information_v1.0.0.html"];
-var section_list_3_sub_menu_link_array=["./information_v1.0.0.html"];
+var section_list_1_sub_menu_link_array=["./information_v1.1.0b.html","./information_v1.1.0b.html"];
+var section_list_2_sub_menu_link_array=["./information_v1.1.0b.html"];
+var section_list_3_sub_menu_link_array=["./information_v1.1.0b.html"];
 
 var list_menu_link_parents_array=[section_list_1_sub_menu_link_array,section_list_2_sub_menu_link_array,section_list_3_sub_menu_link_array];
   /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
