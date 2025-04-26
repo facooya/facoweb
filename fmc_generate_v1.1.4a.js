@@ -36,7 +36,7 @@ var facooya_menu_li_tag=[[],[],[],[],[]];
 var facooya_menu_item_name_link=[[],[],[],[],[]];
 //!!! var facooya_menu_item;
 /* ------------------------------ */
-var facooya_menu_section=document.getElementById("facooya_menu_section");
+var facooya_menu_compose=document.getElementById("facooya_menu_compose");
 /* ============================== */
 /* === Code === */
 for(let i=0;i<facooya_menu_container_name_list.length;i++){
@@ -48,7 +48,7 @@ for(let i=0;i<facooya_menu_container_name_list.length;i++){
   facooya_menu_container_name[i].innerHTML=facooya_menu_container_name_list[i];
   /* ------------------------------ */
   /* --- Append Child --- */
-  facooya_menu_section.appendChild(facooya_menu_container[i]);
+  facooya_menu_compose.appendChild(facooya_menu_container[i]);
   facooya_menu_container[i].appendChild(facooya_menu_container_name[i]);
   /* ------------------------------ */
 }
@@ -70,7 +70,7 @@ for(let i=0;i<facooya_menu_item_name_list.length;i++){
 /* ============================== */
 /* === Html Code Reference === */
 /* +++ FM == Facooya Menu +++
-<nav id="facooya_menu_section">
+<nav id="facooya_menu_compose">
   --- JS Generate ---
   <ul class="facooya_menu_container">
     <div class="facooya_menu_container_name">FM Container Name 1</div>

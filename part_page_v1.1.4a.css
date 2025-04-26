@@ -24,95 +24,80 @@ a{
   text-decoration:none;
   font-weight:bold;
   color:#000000;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
 }
 /* ============================== */
 /*@@@ Desktop & Mobile @@@*/
-/**** Top Bar ****/
-#top_bar{ /* Top Bar Height : 4rem */
-  /*--- Size ---*/
+/* === Top Bar === */
+#top_bar_compose{
+  /* --- Size -+ height=4rem:(3.875+0.125)rem + */
   width:100%;
   height:3.875rem;
-  /*------------------------------*/
-  /*--- Display ---*/
-  display:flex;
+  /* --- Display - */
+  display:grid;
+  grid-template-columns:4rem 1fr 4rem;
+  grid-column-gap:1rem;
   position:fixed;
   background:#000000;
-  /*------------------------------*/
-  border-bottom:solid 0.125rem #FFFFFF;
+  border-bottom:solid 0.125rem #00FF00;
 }
-/*=== Menu Graphic ===*//*!!!*/
-#tbg_related_menu_graphic, #tbg_facooya_menu_graphic{
-  /*--- Size ---*/
-  width:3rem;
-  height:2rem;
-  margin-top:1rem;
-  /*------------------------------*/
-  /*--- Display ---*/
-  display:flex;
+/* --- Menu Graphic --- */
+/* --- Graphic Container - */
+#tbc_rmt_bg, #tbc_fmt_bg{
+  /* --- Size -+ 25%=1rem + */
+  width:75%;
+  height:50%;
+  margin-top:25%;
+  /* --- Display - */
   position:relative;
-  /*------------------------------*/
   cursor:pointer;
 }
-/* --- Related menu graphic --- */
-#tbg_related_menu_graphic{
-  float:left;
-  margin-left:1rem;
+#tbc_rmt_bg{
+  margin-left:25%;
 }
-#tbg_facooya_menu_graphic{
-  float:right;
-  margin-right:1rem;
+#tbc_fmt_bg{
+  margin-right:25%;
 }
-/*------------------------------*/
-.tbg_related_menu_line_graphic, .tbg_facooya_menu_line_graphic{
-  /*--- Size ---*/
+/* --- Graphic Line - */
+.tbc_rmt_sg, .tbc_fmt_sg{
+  /* --- Size -+ width:3rem, height=0.25rem + */
   width:100%;
-  height:0.25rem;
-  /*------------------------------*/
-  /*--- Display ---*/
-  display:block;
+  height:12.5%;
+  /* --- Display - */
   position:absolute;
   background:#FFFFFF;
-  /*------------------------------*/
-  border-radius:2rem;
+  border-radius:0.125rem;
 }
-/*==============================*/
-#tbg_facooya{
-  /*--- Size ---*/
+/* ------------------------------ */
+#tbc_facooya{
+  /* --- Size - */
   width:100%;
-  padding-top:1rem;
-  padding-bottom:1rem;
-  line-height:2rem;
-  /*------------------------------*/
-  /*--- Display ---*/
-  display:inline-block;
-  position:relative;
+  line-height:3.875rem;
+  /* --- Display - */
   background:#000000;
-  /*------------------------------*/
-  /*--- Text ---*/
+  /* --- Text - */
   text-align:center;
   font-size:2rem;
   color:#FFFFFF;
-  /*------------------------------*/
 }
-#tbg_facooya_link{
+#tbc_facooya_link{
   cursor:pointer;
   color:#FFFFFF;
 }
-/*==============================*/
-/* === Related, Facooya Menu Style === */
-#related_menu_section, #facooya_menu_section{
-  /*--- Size ---*/
+/* --- Menu Style --- */
+#related_menu_compose, #facooya_menu_compose{
+  /* --- Size - */
   width:20rem;
   top:4rem;
   bottom:0rem;
-  /*------------------------------*/
-  /*--- Display ---*/
+  /* --- Display - */
   position:fixed;
   overflow-y:scroll;
   background:#000000;
-  /*------------------------------*/
   text-align:center;
 }
+/*rmc_container, rmc_container_name, rmc_item*/
 .related_menu_container, .facooya_menu_container{
   height:5rem;
   line-height:5rem;
@@ -134,9 +119,8 @@ a{
   -webkit-user-select:none;
   -webkit-user-drag:none;
 }
-/*==============================*/
-
-
+/* ------------------------------ */
+/* ============================== */
 /*=== part_frame ===*/
 #part_frame{
   padding:1rem;
@@ -179,6 +163,7 @@ a{
 #chapter_frame{
   padding-top:2rem;
 }
+/*document -> chapter*/
 .document_container{
   /*--- Size ---*/
   width:100%;

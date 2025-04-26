@@ -12,22 +12,22 @@
 var related_menu_container=document.getElementsByClassName("related_menu_container");
 var facooya_menu_container=document.getElementsByClassName("facooya_menu_container");
 /* --- Graphic - */
-var tbg_related_menu_line_graphic=document.getElementsByClassName("tbg_related_menu_line_graphic");
-var tbg_facooya_menu_line_graphic=document.getElementsByClassName("tbg_facooya_menu_line_graphic");
+var tbc_rmt_sg=document.getElementsByClassName("tbc_rmt_sg");
+var tbc_fmt_sg=document.getElementsByClassName("tbc_fmt_sg");
 /*------------------------------*/
 /*--- Find Id ---*/
 var part_frame=document.getElementById("part_frame");
 /* --- Menu - */
-var related_menu_section=document.getElementById("related_menu_section");
-var facooya_menu_section=document.getElementById("facooya_menu_section");
+var related_menu_compose=document.getElementById("related_menu_compose");
+var facooya_menu_compose=document.getElementById("facooya_menu_compose");
 /* --- Graphic - */
-var tbg_related_menu_graphic=document.getElementById("tbg_related_menu_graphic");
-var tbg_facooya_menu_graphic=document.getElementById("tbg_facooya_menu_graphic");
+var tbc_rmt_bg=document.getElementById("tbc_rmt_bg");
+var tbc_fmt_bg=document.getElementById("tbc_fmt_bg");
 /*------------------------------*/
 /*--- Switch ---*/
- /* --- Desktop=1, Mobile=0 - */
+/* --- Desktop=1, Mobile=0 - */
 var isDesktop=0;
- /* --- Open ? True=1, False=0 - */
+/* --- Open ? True=1, False=0 - */
 var isRelatedMenuOpen=0;
 var isFacooyaMenuOpen=0;
 /*------------------------------*/
@@ -37,11 +37,11 @@ var isFacooyaMenuOpen=0;
 function related_menu_switch(){
   if(!isRelatedMenuOpen){ /* - Related Menu Open - */
     /* --- Graphic --- */
-    tbg_related_menu_line_graphic[0].style.top="50%";
-    tbg_related_menu_line_graphic[0].style.transform="translateY(-50%) rotate(-45deg)";
-    tbg_related_menu_line_graphic[1].style.opacity="0";
-    tbg_related_menu_line_graphic[2].style.bottom="50%";
-    tbg_related_menu_line_graphic[2].style.transform="translateY(50%) rotate(45deg)";
+    tbc_rmt_sg[0].style.top="43.75%";
+    tbc_rmt_sg[0].style.transform="rotate(-45deg)";
+    tbc_rmt_sg[1].style.opacity="0";
+    tbc_rmt_sg[2].style.top="43.75%";
+    tbc_rmt_sg[2].style.transform="rotate(45deg)";
     /* ------------------------------ */
     /* --- Section --- */
     if(isDesktop){ /* - Desktop Mode - */
@@ -51,23 +51,23 @@ function related_menu_switch(){
         facooya_menu_switch();
       }
     }
-    related_menu_section.style.left="0";
+    related_menu_compose.style.left="0";
     /* ------------------------------ */
     isRelatedMenuOpen=1;
   }else{ /* - Related Menu Close - */
     /* --- Graphic --- */
-    tbg_related_menu_line_graphic[0].style.top="0";
-    tbg_related_menu_line_graphic[0].style.transform="rotate(0deg)";
-    tbg_related_menu_line_graphic[1].style.opacity="1";
-    tbg_related_menu_line_graphic[2].style.bottom="0";
-    tbg_related_menu_line_graphic[2].style.transform="rotate(0deg)";
+    tbc_rmt_sg[0].style.top="0%";
+    tbc_rmt_sg[0].style.transform="rotate(0deg)";
+    tbc_rmt_sg[1].style.opacity="1";
+    tbc_rmt_sg[2].style.top="87.5%";
+    tbc_rmt_sg[2].style.transform="rotate(0deg)";
     /* ------------------------------ */
     /* --- Section --- */
     if(isDesktop){ /* - Desktop Mode - */
-      related_menu_section.style.left="-20rem";
+      related_menu_compose.style.left="-20rem";
       part_frame.style.paddingLeft="1rem";
     }else{ /* - Mobile Mode - */
-      related_menu_section.style.left="-100%";
+      related_menu_compose.style.left="-100%";
     }
     /* ------------------------------ */
     /* --- Related Menu Close ? Related Menu Container Close --- */
@@ -80,20 +80,20 @@ function related_menu_switch(){
   }
   /* --- Transition --- */
   for(let i=0;i<3;i++){
-    tbg_related_menu_line_graphic[i].style.transition="300ms";
+    tbc_rmt_sg[i].style.transition="300ms";
   }
-  related_menu_section.style.transition="300ms";
+  related_menu_compose.style.transition="300ms";
   /* ------------------------------ */
 }
 /* === Facooya Menu Switch = */
 function facooya_menu_switch(){
   if(!isFacooyaMenuOpen){ /* - Facooya Menu Open - */
     /* --- Graphic --- */
-    tbg_facooya_menu_line_graphic[0].style.top="50%";
-    tbg_facooya_menu_line_graphic[0].style.transform="translateY(-50%) rotate(45deg)";
-    tbg_facooya_menu_line_graphic[1].style.opacity="0";
-    tbg_facooya_menu_line_graphic[2].style.bottom="50%";
-    tbg_facooya_menu_line_graphic[2].style.transform="translateY(50%) rotate(-45deg)";
+    tbc_fmt_sg[0].style.top="43.75%";
+    tbc_fmt_sg[0].style.transform="rotate(45deg)";
+    tbc_fmt_sg[1].style.opacity="0";
+    tbc_fmt_sg[2].style.top="43.75%";
+    tbc_fmt_sg[2].style.transform="rotate(-45deg)";
     /* ------------------------------ */
     /* --- Section --- */
     if(isDesktop){ /* - Desktop Mode - */
@@ -103,23 +103,23 @@ function facooya_menu_switch(){
         related_menu_switch();
       }
     }
-    facooya_menu_section.style.right="0";
+    facooya_menu_compose.style.right="0";
     /* ------------------------------ */
     isFacooyaMenuOpen=1;
   }else{ /* - Facooya Menu Close - */
     /* --- Graphic --- */
-    tbg_facooya_menu_line_graphic[0].style.top="0";
-    tbg_facooya_menu_line_graphic[0].style.transform="rotate(0deg)";
-    tbg_facooya_menu_line_graphic[1].style.opacity="1";
-    tbg_facooya_menu_line_graphic[2].style.bottom="0";
-    tbg_facooya_menu_line_graphic[2].style.transform="rotate(0deg)";
+    tbc_fmt_sg[0].style.top="0%";
+    tbc_fmt_sg[0].style.transform="rotate(0deg)";
+    tbc_fmt_sg[1].style.opacity="1";
+    tbc_fmt_sg[2].style.top="87.5%";
+    tbc_fmt_sg[2].style.transform="rotate(0deg)";
     /* ------------------------------ */
     /* --- Section --- */
     if(isDesktop){ /* - Desktop Mode - */
-      facooya_menu_section.style.right="-20rem";
+      facooya_menu_compose.style.right="-20rem";
       part_frame.style.paddingRight="1rem";
     }else{ /* - Mobile Mode - */
-      facooya_menu_section.style.right="-100%";
+      facooya_menu_compose.style.right="-100%";
     }
     /* ------------------------------ */
     /* --- Facooya Menu Container Close ? Facooya Menu Container Close --- */
@@ -132,9 +132,9 @@ function facooya_menu_switch(){
   }
   /* --- Transition  --- */
   for(let i=0;i<3;i++){
-    tbg_facooya_menu_line_graphic[i].style.transition="300ms";
+    tbc_fmt_sg[i].style.transition="300ms";
   }
-  facooya_menu_section.style.transition="300ms";
+  facooya_menu_compose.style.transition="300ms";
   /* ------------------------------ */
 }
 /* ============================== */
@@ -165,8 +165,8 @@ function resize(){ /* - Resize - */
 /* ------------------------------ */
 /* === Load = */
 function side_menu_add_event(){ /* - Load - */
-  tbg_related_menu_graphic.addEventListener("click",related_menu_switch);
-  tbg_facooya_menu_graphic.addEventListener("click",facooya_menu_switch);
+  tbc_rmt_bg.addEventListener("click",related_menu_switch);
+  tbc_fmt_bg.addEventListener("click",facooya_menu_switch);
   for(let i=0;i<related_menu_container.length;i++){
     related_menu_container[i].addEventListener("click",side_item_drop_down);
   }
@@ -174,7 +174,7 @@ function side_menu_add_event(){ /* - Load - */
     facooya_menu_container[i].addEventListener("click",side_item_drop_down);
   }
 }
-function side_item_drop_down(event){ /* - Load - */
+function side_item_drop_down(event){ /* - Switch - */
   if(event.currentTarget.clientHeight==80){ /* - Related || Facooya Menu Container Open, 80px == 5rem : Current Container Height - */
     console.log(event.currentTarget.clientHeight)
     let li_tag_count=event.currentTarget.querySelectorAll("li");
@@ -189,15 +189,13 @@ function side_item_drop_down(event){ /* - Load - */
 /* === Load, Resize = */
 function side_menu_initialization(){ /* - Load, Resize - */
   /* --- Graphic Menu Close --- */
-  tbg_related_menu_line_graphic[0].style.top="0";
-  tbg_related_menu_line_graphic[1].style.top="50%";
-  tbg_related_menu_line_graphic[1].style.transform="translateY(-50%)";
-  tbg_related_menu_line_graphic[2].style.bottom="0";
+  tbc_rmt_sg[0].style.top="0%";
+  tbc_rmt_sg[1].style.top="43.75%"
+  tbc_rmt_sg[2].style.top="87.5%";
   /* --- */
-  tbg_facooya_menu_line_graphic[0].style.top="0";
-  tbg_facooya_menu_line_graphic[1].style.top="50%";
-  tbg_facooya_menu_line_graphic[1].style.transform="translateY(-50%)";
-  tbg_facooya_menu_line_graphic[2].style.bottom="0";
+  tbc_fmt_sg[0].style.top="0%";
+  tbc_fmt_sg[1].style.top="43.75%";
+  tbc_fmt_sg[2].style.top="87.5%";
   /* ------------------------------ */
   /* --- isMenuOpen ? Close --- */
   if(isFacooyaMenuOpen){
@@ -210,24 +208,24 @@ function side_menu_initialization(){ /* - Load, Resize - */
 }
 function desktop(){ /* - Load, Resize - */
   /* --- Menu Setting Initialization --- */
-  related_menu_section.style.width="20rem";
-  related_menu_section.style.left="-20rem";
-  related_menu_section.style.transition="0ms";
+  related_menu_compose.style.width="20rem";
+  related_menu_compose.style.left="-20rem";
+  related_menu_compose.style.transition="0ms";
   /* --- */
-  facooya_menu_section.style.width="20rem";
-  facooya_menu_section.style.right="-20rem";
-  facooya_menu_section.style.transition="0ms";
+  facooya_menu_compose.style.width="20rem";
+  facooya_menu_compose.style.right="-20rem";
+  facooya_menu_compose.style.transition="0ms";
   /* ------------------------------ */
 }
 function mobile(){ /* - Load, Resize - */
   /* --- Menu Setting Initialization --- */
-  related_menu_section.style.width="100%";
-  related_menu_section.style.left="-100%";
-  related_menu_section.style.transition="0ms";
+  related_menu_compose.style.width="100%";
+  related_menu_compose.style.left="-100%";
+  related_menu_compose.style.transition="0ms";
   /* --- */
-  facooya_menu_section.style.width="100%";
-  facooya_menu_section.style.right="-100%";
-  facooya_menu_section.style.transition="0ms";
+  facooya_menu_compose.style.width="100%";
+  facooya_menu_compose.style.right="-100%";
+  facooya_menu_compose.style.transition="0ms";
   /* ------------------------------ */
 }
 /* ============================== */
