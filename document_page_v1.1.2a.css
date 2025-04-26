@@ -3,7 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Information (doc-page)
+ * Document page (doc-page)
  */
 /*=== All Setting ===*/
 html{
@@ -132,7 +132,8 @@ a{
   border-color:#00FF00;
   color:#FFFFFF;
 }
-.related_menu_item_name_link, .facooya_menu_item_name_link{
+/* !!! */
+.related_menu_item, .facooya_menu_item_name_link{
   display:block;
   color:#FFFFFF;
   border-top:dashed 0.125rem #AAAAAA;
@@ -140,7 +141,7 @@ a{
   -webkit-user-drag:none;
 }
 /*==============================*/
-/*!!!*/
+
 /*!!! Test !!!*/
 #scroll_menu{
   /*--- Size ---*/
@@ -187,41 +188,6 @@ a{
 }*/
 /*!!! !!!!!!!!!!! !!!*/
 /********************************/
-/*!!!*/
-/*#related_menu_section{
-  left:-20rem;
-  transition:left 300ms;
-}
-#facooya_menu_section{
-  right:-20rem;
-  transition:right 300ms;
-}*/
-.menu_box{
-  /*--- Size ---*/
-  height:5rem;
-  line-height:5rem;
-  /*------------------------------*/
-  /*--- Display ---*/
-  display:block;
-  overflow:hidden;
-  border-bottom:solid 0.125rem #FFFFFF;
-  /*------------------------------*/
-}
-.menu_title,.sub_menu_title{
-  /*--- Display ---*/
-  display:block;
-  /*------------------------------*/
-  color:#FFFFFF;
-}
-.menu_title{
-  font-size:1.5rem;
-  border-color:#00FF00;
-}
-.sub_menu_title{
-  border-top:dashed 0.125rem #AAAAAA;
-}
-/*==============================*/
-
 
 /* !!!!! TEST !!!!! */
 /*=== Scroll Menu ===*/
@@ -264,14 +230,14 @@ a{
 /*==============================*/
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 /*=== Section ===*/
-#section{
+#document_frame{
   padding:1rem;
   padding-top:5rem;
   padding-bottom:6rem;
   /* !!! */
   transition:300ms;
 }
-#section_title{
+#document_title{
   /*--- Size ---*/
   width:100%;
   padding-bottom:1rem;
@@ -283,11 +249,12 @@ a{
   /*------------------------------*/
   border-bottom:solid 0.5rem #000000;
 }
-/*--- Contents ---*/
-#contents{
+/*--- code_frame ---*/
+#code_frame{
   padding-top:1rem;
 }
 /*------------------------------*/
+
 /*==============================*/
 /*=== Reference Link ===*/
 .reference_link_title{
@@ -302,8 +269,9 @@ a{
   text-decoration:underline;
 }
 /*==============================*/
-/*=== Footer ===*/
-#footer_bottom{
+
+/*=== Bottom Bar ===*/
+#bottom_bar{
   /*--- Size ---*/
   width:100%;
   bottom:0;
@@ -315,25 +283,19 @@ a{
   position:fixed;
   /*------------------------------*/
   text-align:center;
-  /* !!! */
-  transition:300ms;
   border-top:solid 0.125rem #FFFFFF;
 }
-#previous_line,#prev_line{
-  float:left;
+#prev_line, #next_line{
   font-size:1rem;
   color:#FFFFFF;
+}
+#prev_line{
+  float:left;
 }
 #next_line{
   float:right;
-  font-size:1rem;
-  color:#FFFFFF;
 }
-#prev:hover, #next:hover, #main:hover{
-  font-weight:bold;
-  background:#303030;
-}
-#prev,#previous,#next,#home,#main{
+#prev, #part, #next{
   padding-top:1rem;
   padding-bottom:1rem;
   padding-left:1rem;
@@ -341,20 +303,15 @@ a{
   color:#FFFFFF;
   background:#000000;
   font-weight:normal;
-  transition:150ms;
+  transition:300ms;
 }
-#home::before{
-  content:'= ';
+/*!!! PC*/
+#prev:hover, #next:hover, #part:hover{
+  font-weight:bold;
+  background:#303030;
 }
-#home::after{
-  content:' =';
-}
-#main::before{
-  content:'= ';
-}
-#main::after{
-  content:' =';
-}
+/*==============================*/
+
 .result{
   width:15rem;
 }

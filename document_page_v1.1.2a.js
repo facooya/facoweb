@@ -3,7 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Information (doc-page)
+ * Document page (doc-page)
  */
 /*@@@@@ Frame @@@@@*/
 /**** Variable ****/
@@ -26,7 +26,7 @@ var related_menu_section=document.getElementById("related_menu_section");
 //!!!
 var scroll_menu_section=document.getElementById("scroll_menu_section");
 
-var section=document.getElementById("section");
+var document_frame=document.getElementById("document_frame");
 
 
 /* var top_bar_name=document.getElementById("name"); */
@@ -36,7 +36,7 @@ var tbg_related_menu_graphic=document.getElementById("tbg_related_menu_graphic")
 //!!!
 var scroll_menu=document.getElementById("scroll_menu"); /*- Graphic -*/
 
-var footer_bottom=document.getElementById("footer_bottom");
+var bottom_bar=document.getElementById("bottom_bar");
 /*------------------------------*/
 /*--- Switch ---*/
 var size_load_check=0; /*- Desktop=1 , Mobile=0 */
@@ -66,24 +66,24 @@ function side_drop_down(event){ /*- Menu || Detail Menu Click Event -*/
 function footer_load(){ //!!! Remove
   if(size_load_check==1){
     if(right_menu_click_check==0){
-      footer_bottom.style.marginRight="0rem";
+      bottom_bar.style.marginRight="0rem";
     }else if(left_menu_click_check==0){
-      footer_bottom.style.marginLeft="0rem";
+      bottom_bar.style.marginLeft="0rem";
     }
     if(right_menu_click_check==1 && left_menu_click_check==1){
-      footer_bottom.style.width="calc(100% - 40rem)";
-      footer_bottom.style.marginLeft="20rem";
-      footer_bottom.style.marginRight="20rem";
+      bottom_bar.style.width="calc(100% - 40rem)";
+      bottom_bar.style.marginLeft="20rem";
+      bottom_bar.style.marginRight="20rem";
     }else if(right_menu_click_check==1 || /* !!! */scroll_menu_click_check==1){
-      footer_bottom.style.width="calc(100% - 20rem)";
-      footer_bottom.style.marginRight="20rem";
+      bottom_bar.style.width="calc(100% - 20rem)";
+      bottom_bar.style.marginRight="20rem";
     }else if(left_menu_click_check==1){
-      footer_bottom.style.width="calc(100% - 20rem)";
-      footer_bottom.style.marginLeft="20rem";
+      bottom_bar.style.width="calc(100% - 20rem)";
+      bottom_bar.style.marginLeft="20rem";
     }else{
-      footer_bottom.style.width="100%";
-      footer_bottom.style.marginLeft="0rem";
-      footer_bottom.style.marginRight="0rem";
+      bottom_bar.style.width="100%";
+      bottom_bar.style.marginLeft="0rem";
+      bottom_bar.style.marginRight="0rem";
     }
   }
 }
@@ -141,22 +141,22 @@ function side_menu_initialization(){
 function right_menu_click(){
   if(size_load_check==1){
     if(right_menu_click_check==1 && /* !!! */scroll_menu_click_check==0){
-      section.style.paddingRight="1rem";
+      document_frame.style.paddingRight="1rem";
     }else if(right_menu_click_check==0 && scroll_menu_click_check==1){
       right_menu_click_check=1;
       scroll_menu_click();
       right_menu_click_check=0;
     }else{
-      section.style.paddingRight="21rem";
+      document_frame.style.paddingRight="21rem";
     }
   }else{
     if(left_menu_click_check==1){
       left_menu_click();
     }
     if(right_menu_click_check==1){
-      section.style.visibility="inherit";
+      document_frame.style.visibility="inherit";
     }else{
-      section.style.visibility="hidden";
+      document_frame.style.visibility="hidden";
     }
   }
   if(right_menu_click_check==0){ /*= Right Menu Open =*/
@@ -174,7 +174,7 @@ function right_menu_click(){
     }else{
       facooya_menu_section.style.right="0%";
       facooya_menu_section.style.transition="right 300ms";
-      footer_bottom.style.display="none";
+      bottom_bar.style.display="none";
     }
   }else{ /*= Right Menu Close =*/
     /*--- Graphic ---*/
@@ -191,7 +191,7 @@ function right_menu_click(){
     }else{
       facooya_menu_section.style.right="-100%";
       facooya_menu_section.style.transition="right 300ms";
-      footer_bottom.style.display="grid";
+      bottom_bar.style.display="grid";
     }
     /*--- Right Menu Close ? Right Menu Box Close ---*/
     for(let i=0;i<menu_box_array.length;i++){
@@ -213,9 +213,9 @@ function left_menu_click(){
   if(size_load_check==1){ /*- Size Desktop ? Mobile ? -*/
     /*--- Desktop Size IF Left Menu Open ? ---*/
     if(left_menu_click_check==1){
-      section.style.paddingLeft="1rem"; /*- Padding Default -*/
+      document_frame.style.paddingLeft="1rem"; /*- Padding Default -*/
     }else{
-      section.style.paddingLeft="21rem"; /*- Padding Default + Left Menu Size -*/
+      document_frame.style.paddingLeft="21rem"; /*- Padding Default + Left Menu Size -*/
     }
     /*------------------------------*/
   }else{
@@ -224,9 +224,9 @@ function left_menu_click(){
       right_menu_click();
     }
     if(left_menu_click_check==1){
-      section.style.visibility="inherit";
+      document_frame.style.visibility="inherit";
     }else{
-      section.style.visibility="hidden";
+      document_frame.style.visibility="hidden";
     }
     /*------------------------------*/
   }
@@ -246,7 +246,7 @@ function left_menu_click(){
     }else{
       related_menu_section.style.left="0%";
       related_menu_section.style.transition="left 300ms";
-      footer_bottom.style.display="none";
+      bottom_bar.style.display="none";
     }
     /*------------------------------*/
     /*------------------------------*/
@@ -266,7 +266,7 @@ function left_menu_click(){
     }else{
       related_menu_section.style.left="-100%";
       related_menu_section.style.transition="left 300ms";
-      footer_bottom.style.display="grid";
+      bottom_bar.style.display="grid";
     }
     /*------------------------------*/
     /*--- Left Menu Close ? Left Menu Box Close ---*/
@@ -291,13 +291,13 @@ function left_menu_click(){
 function scroll_menu_click(){
   if(scroll_menu_section && size_load_check==1){
     if(scroll_menu_click_check==1 && right_menu_click_check==0){ /*- isOpen ? Enables=1 , Disabled=0 -*/
-      section.style.paddingRight="1rem"; /*- Padding Default -*/
+      document_frame.style.paddingRight="1rem"; /*- Padding Default -*/
     }else if(scroll_menu_click_check==0 && right_menu_click_check==1){
       scroll_menu_click_check=1;
       right_menu_click();
       scroll_menu_click_check=0;
     }else{
-      section.style.paddingRight="21rem"; /*- Padding Default + Right Menu Size -*/
+      document_frame.style.paddingRight="21rem"; /*- Padding Default + Right Menu Size -*/
     }
 
     if(scroll_menu_click_check==0){ /*= Scroll Menu Open =*/

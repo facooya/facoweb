@@ -51,21 +51,6 @@ top_bar.appendChild(tbg_facooya_menu_graphic);
 /*------------------------------*/
 /*==============================*/
 /*=== Html Code Reference ===*/
-/*
-<div id="left_menu">
-  <span class="left_menu_line"></span>
-  <span class="left_menu_line"></span>
-  <span class="left_menu_line"></span>
-</div>
-<div id="name">
-  <a id="name_link" href="/">Facooya</a>
-</div>
-<div id="right_menu">
-  <span class="right_menu_line"></span>
-  <span class="right_menu_line"></span>
-  <span class="right_menu_line"></span>
-</div>
-*/
 /* tbg = Top bar graphic
 <div id="tbg_related_menu_graphic">
   <span class="tbg_related_menu_line_graphic"></span>

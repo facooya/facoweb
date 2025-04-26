@@ -5,7 +5,7 @@ and to organize the progression of development up to the latest versions in a st
 
 ### Note:
 - Links have been adjusted to support opening via `file://` paths in browsers  
-- For more detailed update notes, please refer to the `information_v1.1.1a.html` file.  
+- For more detailed update notes, please refer to the `document_page_v1.1.2a.html` file.  
 
 This version is overly complex for practical use.  
 Please refer to the latest source code instead.
