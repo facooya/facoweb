@@ -1,0 +1,30 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.layout-part {
+  margin: 0rem 1rem 2rem 1rem;
+  gap: 1rem;
+  grid-area: part;
+  background: #FFFFFF;
+  display: grid;
+  grid-template-areas:
+      "part-title"
+      "part-tab-container";
+}
+@media screen and (max-width: 600px) {
+
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+}
+@media screen and (min-width: 1025px) {
+
+}
+/* DESCRIPTION
+ * e.g., ?
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

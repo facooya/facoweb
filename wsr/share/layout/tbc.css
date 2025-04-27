@@ -1,0 +1,153 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.layout-tbc {
+  grid-area: tbc;
+  height: 4rem;
+  background-color: #222222;
+
+  /* !!! */
+  /*display: flex;
+  position: relative;*/
+  /* !!! */
+}
+#tbc-logo-link {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+#tbc-dni-bg, #tbc-sni-bg {
+  width: 3rem;
+  height: 2rem; /* Cascade => .tbc-*-sg { height, top } */
+  margin-top: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+.tbc-dni-sg, .tbc-sni-sg {
+  width: 100%;
+  height: 0.25rem; /* Cascade => { top } */
+  position: absolute;
+  background: #FFFFFF;
+  border-radius: 0.125rem;
+  opacity: 1; /* Cascade => { transition: opacity } */
+  transform: rotate(0deg); /* Cascade => { transition: transform } */
+}
+/* Temporary */
+.tbc-dni-sg {
+  left: 0%;
+  transition: 
+    top 300ms,
+    left 300ms,
+    transform 300ms,
+    opacity 300ms;
+}
+.tbc-sni-sg {
+  right: 0%;
+  transition: 
+    top 300ms,
+    right 300ms,
+    transform 300ms,
+    opacity 300ms;
+}
+/* Cascade => .tbc-*-sg { transition: top } */
+.tbc-dni-sg:nth-child(1), .tbc-sni-sg:nth-child(1) { top: 0rem; }
+.tbc-dni-sg:nth-child(2), .tbc-sni-sg:nth-child(2) { top: 0.875rem; }
+.tbc-dni-sg:nth-child(3), .tbc-sni-sg:nth-child(3) { top: 1.75rem; }
+
+@media screen and (max-width: 600px) {
+  .layout-tbc {
+    display: grid;
+    grid-template-areas:
+      "dni logo sni";
+    grid-template-columns: 4rem 1fr 4rem;
+  }
+  #tbc-dni-container {
+    grid-area: dni;
+  }
+  #tbc-logo {
+    grid-area: logo;
+  }
+  #tbc-sni-container {
+    grid-area: sni;
+    /* Temporary */
+    justify-self: right;
+  }
+  /*#tbc-dni-container {
+    display: block;
+    order: 1;
+  }
+  #tbc-logo {
+    width: 100%;
+    order: 2;
+  }
+  #tbc-sni-container {
+    margin-left: auto;
+    order: 3;
+  }*/
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .layout-tbc::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 0.125rem;
+    background-color: #FFFFFF;
+    z-index: 1;
+  }
+  #tbc-dni-container {
+    display: none;
+  }
+  #tbc-logo {
+    order: 1;
+    width: 100%;
+  }
+  #tbc-sni-container {
+    margin-left: auto;
+    flex: 0 0 4rem;
+    order: 2;
+    padding: 0rem;
+  }
+  /* #dev-nav-cmp { position: absolute; top: 100%; } */
+}
+@media screen and (min-width: 1025px) {
+  .layout-tbc {
+    display: grid;
+    grid-template-areas:
+      "logo dev sni";
+    grid-template-columns: 10rem 1fr 4rem;
+    gap: 0rem 1rem;
+
+    position: relative;
+  }
+  #tbc-dni-container {
+    display: none;
+  }
+  #dev-nav-cmp {
+    grid-area: dev;
+    display: flex;
+    z-index: 1000;
+  }
+  #tbc-sni-container {
+    grid-area: sni;
+    overflow-x: hidden;
+  }
+  #tbc-logo {
+    padding-left: 1rem;
+    grid-area: logo;
+  }
+  #tbc-logo-link {
+    /* flex-center */
+    width: 100%;
+    height: 100%;
+  }
+}
+/* DESCRIPTION
+ * e.g., TBC Layout
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

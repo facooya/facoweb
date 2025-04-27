@@ -1,0 +1,33 @@
+FHWF: Filesystem Hierarchy Web Facooya.
+Version: 1.0
+
+/wsr: Web System Resources.
+/wsr/share: Share.
+/wsr/share/doc: Document. (Copyright, Support)
+
+/var: Variable.
+/var/lib: Library. (Core)
+/var/opt: Optional.
+
+/etc: Et Centera. (Configuration)
+/opt: Optional.
+
+DESCRIPTION
+Modified {
+	FHS -> FHWF
+	/usr -> /wsr
+	/var -> /var
+		/var/lib -> /var/lib
+		/var/opt -> /var/opt
+	/etc -> /etc
+	/opt -> /opt
+}
+Directory names may be similar, but their functions can differ significantly.
+
+COPYRIGHT
+LSB Workgroup, The Linux Foundation
+Reference Document: ./Modified-FHS-3.0
+Source: https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
+
+INFORMATION
+@[Author] {Facooya} (Founder)

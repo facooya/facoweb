@@ -4,33 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ___ Css Link ___!!! Version Check A !!! -->
-    <link href="./plugin/css/lib/page_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./plugin/css/lib/tbc_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./plugin/css/lib/top_menu_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="./../plugin/css/lib/page_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="./../plugin/css/lib/tbc_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="./../plugin/css/lib/top_menu_pcl_v1.1.5a.css" rel="stylesheet">
     <!--  -->
-    <link href="./plugin/css/lib/document_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./plugin/css/lib/code_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./plugin/css/lib/reference_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./plugin/css/lib/bbc_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="./../plugin/css/lib/document_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="./../plugin/css/lib/code_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="./../plugin/css/lib/reference_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="./../plugin/css/lib/bbc_frame_pcl_v1.1.5a.css" rel="stylesheet">
     <!--  -->
-    <link href="./code_style_v1.1.3a.css" rel="stylesheet">
+    <link href="./../code_style_v1.1.3a.css" rel="stylesheet">
     <!-- ______________________________ -->
     <!-- ___ Facooya.com/* Web Title ___!!! Check List A !!! -->
-    <title>Document V1.1.5A</title>
+    <title>Document V1.1.6A</title>
     <!-- ______________________________ -->
   </head>
   <body>
     <!-- === Compose Frame ===!!! Version Check B !!! -->
     <header id="compose_frame">
       <div id="top_bar_compose">
-        <script defer type="module" src="./plugin/generate/tbc_generate_v1.1.5a.js"></script>
+        <script defer type="module" src="./../plugin/generate/tbc_generate_v1.1.5a.js"></script>
       </div>
       <nav id="related_menu_compose">
         <!-- !Check List B -->
-        <script defer type="module" src="./plugin/generate/rmc_generate_v1.1.5a.js"></script>
+        <script defer type="module" src="./../plugin/generate/rmc_generate_v1.1.5a.js"></script>
       </nav>
       <nav id="facooya_menu_compose">
-        <script defer type="module" src="./plugin/generate/fmc_generate_v1.1.5a.js"></script>
+        <script defer type="module" src="./../plugin/generate/fmc_generate_v1.1.5a.js"></script>
       </nav>
       <!-- ___ Weightless Menu Compose ___ -->
       <!-- + WMC : Weightless Menu Compose, BG : Background Graphic, SG : Shape Graphic + -->
@@ -89,7 +89,7 @@
     <!--==============================-->
     <section id="document_frame">
       <!-- ___ Document Title ___!!! Check List D !!! -->
-      <div id="document_title">[Chapter 1] Version 1.1.5 Alpha</div>
+      <div id="document_title">[Chapter 1] Version 1.1.6 Alpha</div>
       <!--______________________________-->
       <div id="document_container"> <!-- code_frame -->
         <!--=== Code & Result 1 ===!!! Check List E 1 !!! -->
@@ -98,7 +98,7 @@
         <div class="code_title">User.Note</div> <!-- code_name -->
         <div class="code_container">
 <pre class="string">
-Changed the font.
+Update UI part-page[v1.1.6a] (Desktop Mode).
 </pre>
         </div>
         <!--______________________________-->
@@ -117,53 +117,34 @@ Video
         <div class="code_title">Developer.Note</div>
         <div class="code_container">
 <pre class="string">
+dev {
+  FM -> DM dev menu
+  RM -> SM sub menu
+  menu -> nav (navigation)
+
+  DN Hover event !
+  SN Right toggle ! And Triangle Graphic? DN Hambargur ! SN SETTING !
+
+  Version management updated. 
+  Original: e.g., /facooya/version/v1.1.6a/...
+  Updated: e.g., /facooya/v1/v1.1/v1.1.6a/...
+
+  Modified FHS (Filesystem Hierarchy Standard) -> FHWF (Filesystem Hierarchy Web Facooya)
+  FHWF /facooya/[MajorVersion]/[MinorVersion]/[PatchVersion]/...
+}
+
+Struct linux FHWF (Filesystem Hierarchy Web Facooya)
 <span class="blue">Changed</span> {
-  font-famliy: [Default]; -> font-family: Arial, Helvetica, sans-serif;
+  
 }
 <span class="blue">Modifications</span> {
-  Too many updates, skipping for now. (Dec/16/2023).
 
-  variable change
-  file module add
-  facooya style naming convention add
-  generate comment update
-
-  Directory Structure Restructuring:
-  |-- [Directory] v1.1.5a
-  |  |-- document_page_v1.1.5a.html
-  |  |-- part_page_v1.1.5a.html
-  |  |-- [Directory] plugin
-  |  |  |-- [Dircetory] generate
-  |  |  |  |-- tbc_generate_v1.1.5a.js
-  |  |  |  |-- rmc_generate_v1.1.5a.js
-  |  |  |  |-- fmc_generate_v1.1.5a.js
-  |  |  |  |-- generate_module_v1.1.5a.js
-  |  |  |-- [Dircetory] css
-  |  |  |  |-- [Dircetory] lib
-  |  |  |  |  |-- page_frame_pcl_v1.1.5a.css
-  |  |  |  |  |-- tbc_pcl_v1.1.5a.css
-  |  |  |  |  |-- top_menu_pcl_v1.1.5a.css
-  |  |  |  |  |-- part_frame_pcl_v1.1.5a.css
-  |  |  |  |  |-- chapter_frame_pcl_v1.1.5a.css
-  |  |  |  |  |-- code_frame_pcl_v1.1.5a.css
-  |  |  |  |  |-- document_frame_pcl_v1.1.5a.css
-  |  |  |  |  |-- reference_frame_pcl_v1.1.5a.css
-  |  |  |  |  |-- bbc_frame_pcl_v1.1.5a.css
-  |  |  |-- [Dircetory] src
-  |  |  |  |-- [Dircetory] lib
-  |  |  |  |  |-- page_frame_psl_v1.1.5a.js
-  |  |  |  |  |-- system_frame_psl_v1.1.5a.js
-  |  |  |  |  |-- initialize_module_psl_v1.1.5a.js
-  |  |  |  |  |-- event_module_psl_v1.1.5a.js
-  |  |  |  |  |-- toggle_module_psl_v1.1.5a.js
-  |  |  |  |  |-- part_frame_psl_v1.1.5a.js
-  _______________
 }
 <span class="pear">Apply CSS</span> {
-  *_v1.1.5a.css
+  
 }
 <span class="pear">Apply JS</span> {
-  *_v1.1.5a.js
+  
 }
 </pre>
         </div>
@@ -190,7 +171,7 @@ Video
             <div>V1.1.4A [ part_page_v1.1.4a ]</div></a></li>
           <li><a class="reference_item" href="./part_page_v1.1.5a.html">[Part] Version 1.1.5 Alpha
             <div>V1.1.5A [ part_page_v1.1.5a ]</div></a></li>
-          <li><a class="reference_item" href="#v1.1.6a_part-page">[Part] Version 1.1.6 Alpha
+          <li><a class="reference_item" href="#tmp_part-page">[Part] Version 1.1.6 Alpha
             <div>V1.1.6A [ part-page ]</div></a></li>
         </ul>
       </div>
@@ -199,16 +180,23 @@ Video
     <footer id="footer_compose">
       <!-- ___ Bottom Bar ___!!! Check List G !!! -->
       <div id="bottom_bar_compose">
-        <a id="prev" href="./part_page_v1.1.5a.html?chapter=0"><span id="prev_line">&lt;</span>Part</a>
-        <a id="part" href="./part_page_v1.1.5a.html?chapter=0">= Part =</a>
-        <a id="next" href="./part_page_v1.1.5a.html?chapter=0">Part<span id="next_line">&gt;</span></a>
+        <a id="prev" href="./part-page.html?chapter=0"><span id="prev_line">&lt;</span>Part</a>
+        <a id="part" href="./part-page.html?chapter=0">= Part =</a>
+        <a id="next" href="./part-page.html?chapter=0">Part<span id="next_line">&gt;</span></a>
       </div>
       <!-- ______________________________ -->
       <!-- ___ JS Information Page Link ___!!! Version Check C !!! -->
-      <script defer src="./plugin/src/lib/page_frame_psl_v1.1.5a.js"></script>
-      <script defer type="module" src="./plugin/src/lib/system_frame_psl_v1.1.5a.js"></script>
+      <script defer src="./../plugin/src/lib/page_frame_psl_v1.1.5a.js"></script>
+      <script defer type="module" src="./../plugin/src/lib/system_frame_psl_v1.1.5a.js"></script>
       
       <!-- ______________________________ -->
     </footer>
   </body>
 </html>
+<!-- INFORMATION 
+   - %[File] {part-page.html}
+   - @[Author] {Facooya} (Owner)
+   - @[Version] {1.1.6} (Alpha)
+   - @[Since] {Dec/16/2023} (UTC+0)
+   - @[Update] {Dec/18/2023} (UTC+0) Last update.
+   -->

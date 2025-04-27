@@ -1,0 +1,20 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Chapter
+ */
+.layout-chapter{
+  margin: 0rem 1rem;
+  grid-area: chapter;
+  display: grid;
+  grid-template-areas:
+    "chapter-container";
+}
+/* DESCRIPTION
+ * e.g., ?
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

@@ -1,0 +1,58 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.layout-home-container {
+  display: grid;
+  grid-template-areas:
+    "tbc tbc tbc"
+    "home home home"
+    "bottom bottom bottom";
+}
+.layout-part-container {
+  display: grid;
+  position: relative;
+  grid-template-areas:
+    "tbc tbc tbc"
+    "part part part"
+    "chapter chapter chapter"
+    "bbc bbc bbc";
+}
+.layout-doc-container {
+  display: grid;
+  grid-template-areas:
+    "tbc tbc tbc"
+    "title title title"
+    "doc doc doc"
+    "bottom bottom bottom";
+}
+/* Layout: TBC */
+.layout-tbc {
+  grid-area: tbc;
+  display: grid;
+  height: 4rem;
+  background-color: #222222;
+  position: relative;
+}
+/*  */
+@media screen and (max-width: 600px) {
+
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+}
+@media screen and (min-width: 1025px) {
+  .layout-tbc {
+    grid-template-areas:
+      "logo dev sni";
+    grid-template-columns: 10rem 1fr 4rem;
+    gap: 0rem 1rem;
+  }
+}
+/* DESCRIPTION
+ * e.g., <body id="layout-home">...</body>
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

@@ -9,7 +9,8 @@ Please run it through a local web server and access it via **localhost**.
 ### Note:
 - License comments have been added to all CSS and JS files.  
 - All links have been updated to explicitly include the `.html` extension.
-- For more detailed update notes, please refer to the `document_page_v1.1.5a.html` file.  
+- The document path has been reorganized based on the project structure.
+- For more detailed update notes, please refer to the `tmp/doc-page.html` file.  
 
 This version is overly complex for practical use.  
 Please refer to the latest source code instead.

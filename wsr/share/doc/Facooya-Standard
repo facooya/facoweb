@@ -1,0 +1,27 @@
+Comment Standard
+Use /**/
+E.G.
+// Use "//" for comments that are for testing purposes or will be deleted soon.
+// Testing
+// Deleted soon
+
+/* Single Line */
+/* Normal */
+
+System
+E.G.
+/* ### Start of [System] ### */
+...
+/* ### End of [System] ### */
+
+Information
+E.G.
+/* [TITLE]
+ * &: Link, %: File, @: Else
+ * &[Link] {[Name]} (...)
+ * %[File] {[Path]} (...)
+ * @[Else] {...} (...)
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */
