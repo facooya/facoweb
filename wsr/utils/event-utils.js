@@ -27,14 +27,73 @@ import {
 
 /* ===== onEventDniSni ===== */
 function onEventDniSni() {
-
   const tpcDniY = document.querySelector(".tpc-dni-y");
   const tpcSniY = document.querySelector(".tpc-sni-y");
   tpcDniY.addEventListener("click", enabledDni);
   tpcSniY.addEventListener("click", enabledSni);
 
+  /* !!! v1.1.12a [tmp] [del] (nav-overlap) 
+  const navOverlap = document.querySelector(".nav-overlap");
+  navOverlap.addEventListener("click", enabledSni); */
+  /* !!! v1.1.12a [test] (scroll-overlap) */
+  /* const sncR = document.querySelector(".snc-r");
+  sncR.addEventListener("mouseenter", _scrollTest);
+  sncR.addEventListener("mouseleave", _scrollTest); */
+  const sectionR = document.querySelector(".section-r");
+  const bpcR = document.querySelector(".bpc-r");
+  sectionR.addEventListener("mouseenter", _scrollTest);
+  sectionR.addEventListener("mouseleave", _scrollTest);
+  bpcR.addEventListener("mouseenter", _scrollTest);
+  bpcR.addEventListener("mouseleave", _scrollTest);
+
+  /* !!! v1.1.12a [del] (scroll-overlap)
+  sectionR.addEventListener("touchstart", _touchScroll);
+  sectionR.addEventListener("touchmove", _touchScroll);
+  sectionR.addEventListener("touchend", _touchScroll); */
+  /* const sncR = document.querySelector(".snc-r");
+  sncR.addEventListener("touchstart", _scrollTestSncR);
+  sncR.addEventListener("touchend", _scrollTestSncR);
+  sncR.addEventListener("touchmove", _scrollTestSncR); */
+
   logf(0, "wsr/utils/event-utils.js", "onEventDniSni", "Done");
 }
+function _scrollTest(event) { /* !!! v1.1.12a [test] (scroll-overlap) */
+  const eType = event.type;
+  const coreR = document.querySelector(".core-r");
+  if (eType === "mouseenter") {
+    coreR.style.overflowY = "scroll";
+  } else if (eType === "mouseleave") {
+    coreR.style.overflowY = "hidden";
+  }
+}
+/* function _touchScroll(event) { !!! v1.1.12a [del] (scroll-overlap) 
+  const eType = event.type;
+  const coreR = document.querySelector(".core-r");
+  if (eType === "touchstart") {
+    coreR.style.overflowY = "scroll";
+    coreR.style.touchAction = "none";
+  } else if (eType === "touchend") {
+    coreR.style.overflowY = "hidden";
+    coreR.style.touchAction = "auto";
+  } else if (eType === "touchmove") {
+    event.preventDefault();
+    console.log("!!!");
+  }
+}*/
+/* function _scrollTestSncR(event) {
+  const eType = event.type;
+  const coreR = document.querySelector(".core-r");
+  if (eType === "touchstart") {
+    coreR.style.overflowY = "hidden";
+    event.stopPropagation();
+  } else if (eType === "touchend") {
+    coreR.style.overflowY = "scroll";
+    event.stopPropagation();
+  } else if (eType === "touchmove") {
+    alert("hi");
+    event.stopPropagation();
+  }
+}  */
 /* ===== onEventDnc ===== */
 function onEventDnc(isLoad, dncY) {
   const dncP = document.getElementsByClassName("dnc-p");
@@ -97,18 +156,11 @@ function onEventDnc(isLoad, dncY) {
 
   logf(0, "wsr/utils/event-utils.js", "onEventDnc", activeMode + ".Done");
 }
-/*function _helpTemporary(repeat, size) { !!! v1.1.11 [del]
-  let str = "";
-  for (let i = 0; i < repeat; i++) {
-    str += size + "rem ";
-  }
-  return str;
-}*/
 /* ===== onEventSnc ===== */
 function onEventSnc(isLoad, sncY) {
   const sncZ = document.querySelectorAll(".snc-z");
   const sncE = document.querySelectorAll(".snc-e");
-  /*const sncP = document.querySelectorAll(".snc-p");*/
+
   if (!isLoad) { /* Remove Event */
     for (let i = 0; i < sncY.length; i++) {
       switch (prevMode) {
@@ -133,23 +185,6 @@ function onEventSnc(isLoad, sncY) {
           /* Error */
           break;
       }
-      /*if (prevMode == 1) { !!! v1.1.11a [del]
-        sncZ[i].removeEventListener("click", handleMobileSncZ);
-      } else if (pervMove == 2) {
-        sncZ[i].removeEventListener("click", handleTabletSncZ);
-      } else if (prevMode == 3) {
-        sncZ[i].removeEventListener("mouseenter", handleDesktopSncZ);
-        sncZ[i].removeEventListener("mouseleave", handleDesktopSncZ);
-        sncZ[i].removeEventListener("click", handleDesktopSncZ);
-
-        const sncPetaEB = sncE[i].querySelectorAll(".snc-p");
-        for (let j = 0; j < sncPetaEB.length; j++) {
-          sncP[i].removeEventListener("mouseenter", handleDesktopSncP);
-          sncP[i].removeEventListener("mouseleave", handleDesktopSncP); 
-        }
-      } else {
-        /* Error 
-      }*/
     }
   }
   /* Add Event */
@@ -182,17 +217,6 @@ function onEventSnc(isLoad, sncY) {
   /* Debugging */
   logf(0, "wsr/utils/event-utils.js", "onEventSnc", "Done");
 }
-/*function onEventSnc(sncY) { !!! v1.1.11a [del]
-  const sncE = document.getElementsByClassName("snc-e");
-  for (let i = 0; i < sncE.length; i++) {
-    const classSncP = sncE[i].getElementsByClassName("snc-p");
-    sncE[i].style.gridTemplateRows = _helpTemporary(classSncP.length, 0);
-  }
-  for (let i = 0; i < sncY.length; i++) {
-    sncY[i].addEventListener("click", handleSncY);
-  }
-  logf(0, "wsr/utils/event-utils.js", "onEventSnc", "Done");
-}*/
 /* ===== onEventProgress ===== */
 function onEventProgress() {
   window.addEventListener("scroll", progressHandler);

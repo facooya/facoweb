@@ -34,43 +34,65 @@
     <script src="../wsr/src/web.js" type="module" defer></script>
     <!-- ############################## -->
     <!-- %%% Web Title %%% -->
-    <title>v1.1.11a Part</title>
+    <title>v1.1.12a Part</title>
   </head>
   <!-- !!! root -> r -->
-  <body id="70000000" class="core-layout part-core-layout"> 
+  <body id="70000000" class="core-r part-core-r core-layout part-core-layout"> 
+    <!-- === Core Component === !!! draggable="false" -->
+    <header class="tpc-r tpc-root tpc-layout"></header>
+    <nav class="dnc-r dnc-root"></nav>
+    <nav class="snc-r snc-root">
+      <!-- !!! v1.1.12a [test] -->
+      <div class="snc-temp"></div>
+    </nav>
+
+    <div class="nav-overlap"></div>
     <div id="lpb" class="progress-line"></div>
     <div id="rpb" class="progress-line"></div>
-    <!-- === Top Panel Component === !!! draggable="false" -->
-    <header class="tpc-root tpc-layout"></header>
-    <nav class="dnc-root"></nav>
-    <nav class="snc-root"></nav>
-    <!--
+
+    <!-- !!! v1.1.12a [test]
+      <div class="etc-r">
+        <div class="noc-y"></div> NOC = Navigation Overlap Component
+        <div class="spc-y-ys spc-y"></div> SPC = Scroll Progress Component
+        <div class="spc-y-zs spc-y"></div>
+      </div>
+
       <div class="spc-root"> Scroll Progress Component
         <div class="spc-y-ys spc-y"></div>
         <div class="spc-y-zs spc-y"></div>
       </div>
     -->
     <!-- ============================== -->
-    <section id="section-container" class="section-root section-part-layout">
+    <section class="section-r section-part-r section-part-layout">
       <!-- ===== Part Component ===== -->
-      <section class="part-layout"> <!-- !!! part-root -->
-        <!-- %%% Part Title %%% -->
-        <div class="part-title flex-center">Version 1.1.11 Alpha</div>
-        <!-- %%% Part Tab %%% -->
+      <section class="part-y part-layout"> <!-- !!! part-y -->
+        <!-- %%% Part Title %%% --> <!-- !!! part-z -> part-z-title -->
+        <div class="part-title flex-center">Version 1.1.12 Alpha</div>
+        <!-- %%% Part Tab %%% --> <!-- !!! part-e -> part-p -> part-p-title -->
         <nav class="part-tab-container">
           <div class="part-tab-item flex-center">Tab 1</div>
           <div class="part-tab-item flex-center">Tab 2</div>
           <div class="part-tab-item flex-center">Tab 3</div>
         </nav>
       </section>
+      <!-- !!! v1.1.12 [test] [del]
+        <section class="part-y-ys">
+          <div class="part-z-ys">
+            <div class="part-e-ys-ys">Title</div>
+          </div>
+          <nav class="part-z-zs">
+            <div class="part-e-zs-ys">Item</div>
+          </nav>
+        </section>
+      -->
       <!-- ============================== -->
       <!-- ===== Chapter Component ===== -->
       <section class="chapter-layout"> <!-- !!! chapter-root -->
         <!-- %%% Tab: 0 %%% -->
         <nav class="chapter-container">
           <a class="chapter-item container-link" href="./doc-page.html">
-            <div class="chapter-item-title">[Tab 1] Version 1.1.11 Alpha</div>
-            <div class="chapter-item-info">v1.1.11a [ .../tmp/doc-page ]</div>
+            <div class="chapter-item-title">[Tab 1] Version 1.1.12 Alpha</div>
+            <div class="chapter-item-info">v1.1.12a [ .../tmp/doc-page ]</div>
           </a>
           <a class="chapter-item container-link" href="./doc-page.html">
             <div class="chapter-item-title">[Tab 1] Item 1-2</div>
@@ -143,7 +165,7 @@
       <!-- ============================== -->
     </section>
     <!-- ===== Bottom Panel Component ===== -->
-    <footer class="bpc-root bpc-layout">
+    <footer class="bpc-r bpc-root bpc-layout">
       <!-- ##############################-->
       <!-- DESCRIPTION
          - +[CIT] {Chapter Item Title} (cit)

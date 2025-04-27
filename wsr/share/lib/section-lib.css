@@ -3,13 +3,31 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-.section-root {
-  transition: margin 300ms;
+.section-r {
+  display: grid;
+  /* overflow-y: auto; */
+  transition: margin 300ms ease;
+  /* !!! v1.1.12a [test] (scroll-overlap) */
+  overflow-y: visible;
+  /* touch-action: auto; */
+}
+.nav-overlap {
+  position: fixed;
+  top: 4rem; /* TPC.height = 4rem */
+  left: -20%;
+  z-index: 100; /* FIXME: part.section.z-index < this.z-index */
+  width: 20%;
+  height: calc(100% - 4rem);
+  background-color: #77777777;
+
+  transition:
+    left 300ms ease;
 }
 /* = = = Progress Bar = = = */
 .progress-line {
   position: fixed;
   top: 4rem;
+  z-index: 10;
   /* - - = - - */
   width: 0.25rem;
   /* - - = - - */
@@ -22,13 +40,15 @@
   /* - - = - - */
   border-radius: 0rem 0rem 0.125rem 0.125rem;
   transition: height 300ms linear;
-  z-index:1;
 }
 #lpb { left: 0%; }
 #rpb { right: 0rem; transition: height 300ms linear, right 300ms ease; }
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 /* @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ */
 @media screen and (min-width: 768px) {
+  .nav-overlap {
+    display: none;
+  }
   .progress-line {
     top: 8rem;
     width: 0.5rem;

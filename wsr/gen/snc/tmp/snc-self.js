@@ -16,7 +16,7 @@ class DataSnc {
     "Tab 3"
   ];
   sncPetaTitleYS = [
-    "Version 1.1.11 Alpha",
+    "Version 1.1.12 Alpha",
     "Item 1-2",
     "Item 1-3",
     "Item 1-4",

@@ -14,7 +14,7 @@ function setupEventResize() {
   /* Element */
   const dncRoot = document.querySelector(".dnc-root");
   const sncRoot = document.querySelector(".snc-root");
-  const sectionRoot = document.querySelector(".section-root");
+  const sectionR = document.querySelector(".section-r");
 
   const dncY = document.querySelectorAll(".dnc-y");
   const dncE = document.querySelectorAll(".dnc-e");
@@ -26,7 +26,7 @@ function setupEventResize() {
   /* Init CSS */
   dncRoot.style.cssText = "";
   sncRoot.style.cssText = "";
-  sectionRoot.style.cssText = "";
+  sectionR.style.cssText = "";
   for (let i = 0; i < dncY.length; i++) {
     dncY[i].style.cssText = "";
     dncE[i].style.cssText = "";

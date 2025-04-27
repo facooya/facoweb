@@ -5,9 +5,7 @@
  */
 import {
   transformTpcDniZettaLine,
-  transformDni,
   transformSni,
-  //initialIndexDncE,
   autoInitTabletDncE,
   calcGridTemplateData
 } from "../../wsr/local/event-handler-local.js";
@@ -17,12 +15,23 @@ import {
 function enabledDni() {
   transformTpcDniZettaLine(); /* FIXME: transformDniZettaLine, setTransformDniZettaLine */
   const dncRoot = document.querySelector(".dnc-root");
+
+  /* !!! v1.1.12a [tmp] [pro] (nav-overlap) */
+  const navOverlap = document.querySelector(".nav-overlap");
+
   if (!isEnabledDni) { /* Active [DNI] FIXME: dniY.isActive */
     /* TODO: comment - = * */
     switch (activeMode) {
       case 1: /* DisplayType: Mobile */
-        isEnabledSni && enabledSni(); /* Deactive [SNI] */
+        if (isEnabledSni) { /* Deactive [SNI] */ 
+          enabledSni();
+        }
         dncRoot.style.left = "0%";
+
+        /* !!! v1.1.12a [tmp] [pro] (nav-overlap) */
+        navOverlap.style.left = "80%";
+        navOverlap.addEventListener("click", enabledDni);
+
         break;
       case 2: /* DisplayType: Tablet */
         /* TODO */
@@ -44,6 +53,11 @@ function enabledDni() {
         const dncZ = dncRoot.querySelectorAll(".dnc-z");
         _resetDncY(dncY, dncZ);
         dncRoot.style.left = "-80%";
+
+        /* !!! v1.1.12a [tmp] [pro] (nav-overlap) */
+        navOverlap.style.left = "100%";
+        navOverlap.removeEventListener("click", enabledDni);
+
         break;
       case 2: /* DisplayType: Tablet */
         /* TODO: Tablet */
@@ -63,23 +77,43 @@ function enabledDni() {
 function enabledSni() {
   transformSni();
   const sncRoot = document.querySelector(".snc-root");
-  const sectionRoot = document.querySelector(".section-root");
   const rpb = document.querySelector("#rpb");
-  /* !!! v1.1.11a [tmp] */
   const sncZ = sncRoot.querySelectorAll(".snc-z");
+  /* !!! v1.1.12a [tmp] */
+  const sectionR = document.querySelector(".section-r");
+
+  /* !!! v1.1.12a [tmp] [pro] (nav-overlap) */
+  const navOverlap = document.querySelector(".nav-overlap");
 
   if (!isEnabledSni) { /* Enabling */
     sncRoot.style.right = "0%";
     if (activeMode === 1) { /* Mobile */
-      if (isEnabledDni) {
+      if (isEnabledDni) { /* Deactive [DNI] */ 
         enabledDni();
       }
+      /* !!! v1.1.12a [tmp] */
+      /* const scrollPositionY = sectionR.scrollTop;
+      sectionR.spy = scrollPositionY;
+      sectionR.style.overflowY = "hidden";
+      sectionR.style.top = -scrollPositionY + 4 * 16 + "px";
+      console.log(scrollPositionY); */
+      /* !!! v1.1.12a [test] (scroll-overlap) */
+      const coreR = document.querySelector(".core-r");
+      coreR.style.overflowY = "hidden";
+      coreR.style.position = "fixed";
+      sectionR.style.overflowY = "hidden";
+      sectionR.style.position = "fixed";
+      /* sectionR.style.overflowY = "hidden"; */
+      /* !!! v1.1.12a [tmp] [pro] (nav-overlap) */
+      navOverlap.style.left = "0%";
+      navOverlap.addEventListener("click", enabledSni);
+
     } else if (activeMode === 2) { /* Tablet */
-      sectionRoot.style.margin = "0rem 20rem 0rem 0rem";
+      sectionR.style.margin = "0rem 20rem 0rem 0rem";
       rpb.style.right = "20rem";
 
       /* !!! v1.1.11 [tmp] */
-      let calcTmp = sectionRoot.offsetWidth - 20 * 16;
+      let calcTmp = sectionR.offsetWidth - 20 * 16;
       if (calcTmp < 768) {
         /* To Do
         console.log(calcTmp);
@@ -87,7 +121,7 @@ function enabledSni() {
       }
 
     } else if (activeMode === 3) { /* Desktop */
-      sectionRoot.style.margin = "0rem 20rem 0rem 0rem";
+      sectionR.style.margin = "0rem 20rem 0rem 0rem";
       rpb.style.right = "20rem";
     }
     isEnabledSni = 1;
@@ -96,45 +130,34 @@ function enabledSni() {
       sncRoot.style.right = "-80%";
       
       _resetSncY(sncZ);
-      /*for (let i = 0; i < sncZ.length; i++) { !!! v1.1.11a [del]
-        if (sncZ[i].isActive) {
-          let eData = {
-            currentTarget: sncZ[i]
-          };
-          handleMobileSncZ(eData);
-        }
-      }*/
+      /* !!! v1.1.12a [tmp] */
+      /* sectionR.style.overflowY = "";
+      sectionR.style.top = "";
+      sectionR.scrollTo(0, sectionR.spy); */
+      /* !!! v1.1.12a [test] (scroll-overlap) */
+      const coreR = document.querySelector(".core-r");
+      coreR.style.overflowY = "scroll";
+      coreR.style.position = "static";
+      sectionR.style.overflowY = "scroll";
+      sectionR.style.position = "static";
+      /* sectionR.style.overflowY = "scroll"; */
+
+      /* !!! v1.1.12a [tmp] [pro] (nav-overlap) */
+      navOverlap.style.left = "-20%";
+      navOverlap.removeEventListener("click", enabledSni);
+
     } else if (activeMode == 2) { /* Tablet */
       sncRoot.style.right = "-20rem";
-      sectionRoot.style.margin = "0rem 0rem 0rem 0rem";
+      sectionR.style.margin = "0rem 0rem 0rem 0rem";
       rpb.style.right = "0rem";
 
       _resetSncY(sncZ);
-      /*for (let i = 0; i < sncZ.length; i++) { !!! v1.1.11a [del]
-        if (sncZ[i].isActive) {
-          let eData = {
-            currentTarget: sncZ[i]
-          };
-          handleTabletSncZ(eData);
-        }
-      }*/
     } else if (activeMode == 3) { /* Desktop */
       sncRoot.style.right = "-20rem";
-      sectionRoot.style.margin = "0rem 0rem 0rem 0rem";
+      sectionR.style.margin = "0rem 0rem 0rem 0rem";
       rpb.style.right = "0rem";
       
       _resetSncY(sncZ);
-      /*for (let i = 0; i < sncZ.length; i++) { !!! v1.1.11a [del]
-        if (sncZ[i].isActive) {
-          let eData = {
-            type: "click",
-            currentTarget: sncZ[i]
-          };
-          handleDesktopSncZ(eData);
-          eData.type = "mouseleave";
-          handleDesktopSncZ(eData);
-        }
-      }*/
     } else {
       //Error
     }
@@ -164,18 +187,6 @@ function _resetSncY(sncZ) { /* !!! v1.1.11a [tmp] */
           /* Error */
           break;
       }
-      /* if (activeMode == 1) { !!! v1.1.11a [del]
-        handleMobileSncZ(eData);
-      } else if (activeMode == 2) {
-        handleTabletSncZ(eData);
-      } else if (activeMode == 3) {
-        eData.type = "click";
-        handleDesktopSncZ(eData);
-        eData.type = "mouseleave";
-        handleDesktopSncZ(eData);
-      } else {
-        //Error
-      } */
     }
   }
 }
@@ -198,25 +209,6 @@ function _resetDncY(dncY, dncZ) { /* !!! v1.1.11a [tmp] */
 }
 /* ===== DNC ===== */
 /* ----- Mobile ----- */
-/* function handleMobileDncY(event) { !!! v1.1.11a [del]
-  const eCurrentTarget = event.currentTarget;
-  const dncExaES = eCurrentTarget.querySelector(".dnc-e");
-  const dncPetaTitleES = dncExaES.getElementsByClassName("dnc-p-title");
-
-  if (!eCurrentTarget.isActive) { /* Activate 
-    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaTitleES, 4);
-    for (let i = 0; i < dncPetaTitleES.length; i++) {
-      dncPetaTitleES[i].style.opacity = "1";
-    }
-    eCurrentTarget.isActive = 1;
-  } else { /* Deactivate 
-    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaTitleES, 0);
-    for (let i = 0; i < dncPetaTitleES.length; i++) {
-      dncPetaTitleES[i].style.opacity = "0";
-    }
-    eCurrentTarget.isActive = 0;
-  }
-} */
 function handleMobileDncZ(event) {
   const eCurrentTarget = event.currentTarget;
   const idx = eCurrentTarget.index;
@@ -267,35 +259,6 @@ function handleMobileDncZ(event) {
   }
 }
 /* ----- Tablet ----- */
-/* function handleTabletDncY(event) {
-  const eCurrentTarget = event.currentTarget;
-  const eIndex = eCurrentTarget.index;
-
-  const dncExaES = eCurrentTarget.querySelector(".dnc-e");
-  const dncPetaES = dncExaES.getElementsByClassName("dnc-p-title");
-
-  if (!eCurrentTarget.isActive) { /* Activate 
-    initialIndexDncE(eIndex);
-    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaES, 4);
-    dncExaES.style.width = "18rem";
-    if (eIndex == 0) { /* dnc-y[0] Overflow Shield 
-      dncExaES.style.left = "0%";
-    } else if (eIndex == 4) { /* dnc-y[4] Overflow Shield 
-      dncExaES.style.right = "0%";
-    }
-    for (let i = 0; i < dncPetaES.length; i++) {
-      dncPetaES[i].style.opacity = "1";
-    }
-    eCurrentTarget.isActive = 1;
-  } else { /* Deactivate 
-    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaES, 0);
-    dncExaES.style.width = "10rem";
-    for (let i = 0; i < dncPetaES.length; i++) {
-      dncPetaES[i].style.opacity = "0";
-    }
-    eCurrentTarget.isActive = 0;
-  }
-} */
 function handleTabletDncZ(event) {
   const eCurrentTarget = event.currentTarget;
   const idx = eCurrentTarget.index;
@@ -354,39 +317,6 @@ function handleTabletDncZ(event) {
   }
 }
 /* ----- Desktop ----- */
-/* function handleDesktopDncY(event) { !!! v1.1.11a [del]
-  /* Event 
-  const eType = event.type;
-  const eCurrentTarget = event.currentTarget;
-  /* const eIndex = eCurrentTarget.index; !!!!! 
-  /* Dnc Z 
-  const dncZettaTitleZS = eCurrentTarget.querySelector(".dnc-z-title");
-  const dncZettaBottomLineZS = eCurrentTarget.querySelector(".dnc-z-bottom-line");
-  /* Dnc E, P 
-  const dncExaES = eCurrentTarget.querySelector(".dnc-e");
-  const dncPetaES = eCurrentTarget.getElementsByClassName("dnc-p");
-  const dncPetaTitleES = eCurrentTarget.getElementsByClassName("dnc-p-title");
-
-  if (eType === "mouseenter") {
-    dncZettaTitleZS.style.fontWeight = "700";
-    dncZettaBottomLineZS.style.left = "10%";
-    dncZettaBottomLineZS.style.width = "80%";
-    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaES, 4);
-    dncExaES.style.width = "20rem";
-    for (let i = 0; i < dncPetaTitleES.length; i++) {
-      dncPetaTitleES[i].style.opacity = "1";
-    }
-  } else if (eType === "mouseleave") {
-    dncZettaTitleZS.style.fontWeight = "400";
-    dncZettaBottomLineZS.style.left = "50%";
-    dncZettaBottomLineZS.style.width = "0%";
-    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaES, 0);
-    dncExaES.style.width = "10rem";
-    for (let i = 0; i < dncPetaTitleES.length; i++) {
-      dncPetaTitleES[i].style.opacity = "0";
-    }
-  }
-} */
 function handleDesktopDncY(event) {
   /* Event */
   const eType = event.type;
@@ -522,38 +452,8 @@ function handleMobileSncZ(event) {
       sncPetaRightIconEB[i].style.opacity = "1";
       sncPetaBottomLineEB[i].style.opacity = "1";
 
-      /* !!! v1.1.11a [del]
-      const a = sncPetaTitleEB[i].textContent;
-      let c = a.length;
-      sncPetaBottomLineEB[i].style.left = "calc(50% - " + (a / 3) + "rem)";
-      sncPetaBottomLineEB[i].style.width = a / 1.5 + "rem";
-      for (let j = 0; j < a.length; j++) {
-        const b = a[j];
-        if (b === "." || b === " ") {
-          c += 4;
-        } else {
-          c += 12;
-        }
-      }
-      c *= 8;
-      c += 24;
-      sncPetaBottomLineEB[i].style.left = "calc(50% - " + (c / 2) + "px)";
-      sncPetaBottomLineEB[i].style.width = c + "px";*/
-
-      /* !!! v1.1.11a [pro] */
       _calcBottomLine(sncPetaTitleEB[i], sncPetaBottomLineEB[i], 20);
-      /*const calcValue = sncPetaTitleEB[i].offsetWidth; !!! v1.1.11a [del]
-      const calcLeft = "calc(50% - 0.5rem - " + (calcValue / 2) + "px)";
-      const calcWidth = calcValue + 16 + "px";
-      sncPetaBottomLineEB[i].style.left = calcLeft;
-      sncPetaBottomLineEB[i].style.width = calcWidth;*/
     }
-    /*sncPetaTitleEB.forEach(elem => {
-      elem.style.opacity = "1";
-      const a = elem.textContent.length;
-    });
-    sncPetaRightIconEB.forEach(elem => { elem.style.opacity = "1"; });
-    sncPetaBottomLineEB.forEach(elem => { elem.style.opacity = "1"; });*/
     sncExaEB.style.gridTemplateRows = calcGridTemplateData(sncPetaTitleEB, 4);
 
     eCurrentTarget.isActive = 1;

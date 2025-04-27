@@ -13,12 +13,24 @@
   display: grid;
   grid-auto-rows: min-content; /* snc-z: 4rem + snc-e: auto, !!! template-rows? */
   /* Box Model */
-  overflow-y: auto;
   width: 80%;
   height: calc(100% - 4rem); /* 4rem = TPC.height */
   /* Visual */
   background-color: #222222;
   transition: right 300ms;
+  /* !!! v1.1.12a [test] (scroll) */
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+}
+/* !!! v1.1.12a [test] (scroll) */
+.snc-temp { /* ios snc scroll bug fix */
+  position: absolute;
+  /* z-index: 11; */
+  top: 0rem;
+  width: 100%;
+  height: calc(100% + 1px);
+
+  background: #ed0000;
 }
 @media (min-width: 768px) {
   .snc-root {
