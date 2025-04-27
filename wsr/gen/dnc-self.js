@@ -3,19 +3,18 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* !!! */
 import {
   genTBCNav
-} from "./tbc.js";
+} from "../utils/gen-tbc-utils.js";
 
 /* &&& DATA: Developer Navigation Component &&& */
 class DataDNC {
   _DNC_CONTAINER_NAME_LIST = [
-    "Menu 1",
-    "Menu 2",
-    "Menu 3",
-    "Menu 4",
-    "Menu 5"
+    "Menu_1",
+    "Menu_2",
+    "Menu_3",
+    "Menu_4",
+    "Menu_5"
   ];
   _MENU_1_ITEM_NAME_LIST = [
     "Item 1-1"

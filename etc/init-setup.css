@@ -10,6 +10,18 @@
 html {
   font-family: Arial, Helvetica, sans-serif;
 }
+/*!!!! Scroll*/
+body {
+  overflow: hidden;
+}
+::-webkit-scrollbar {
+  width: 0rem;
+  height: 0.5rem;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+  background-color: #707070;
+}
 /* DESCRIPTION
  */
 /* INFORMATION

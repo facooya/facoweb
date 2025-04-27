@@ -3,9 +3,28 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/*!!! Scroll*/
+.section-part-layout {
+  position: absolute;
+  margin-top: 4rem;
+  width: 100%;
+  height: calc(100% - 4rem);
+  overflow-y: auto;
+}
+.progress-bar {
+  position: fixed;
+  top: 4rem;
+  width: 0.25rem;
+  background: linear-gradient(to bottom, #202020, #90EE90 5%, #87CEEB 70%);
+  transition: height 300ms linear;
+  border-radius: 0rem 0rem 0.125rem 0.125rem;
+}
+#lpb { left: 0%; }
+#rpb { right: 0%; }
+/*!!! End*/
 .part-layout {
   grid-area: part;
-  margin: 4rem 1rem 2rem 1rem;
+  margin: 0rem 1rem 2rem 1rem;
   gap: 1rem;
   background: #FFFFFF;
   display: grid;
@@ -14,20 +33,33 @@
       "part-tab-container";
 }
 .chapter-layout {
-  margin: 0rem 1rem;
+  margin: 0rem 1rem 1rem 1rem;
   grid-area: chapter;
   display: grid;
   grid-template-areas:
     "chapter-container";
 }
+
 @media (min-width: 768px) {
   .part-layout {
     margin: 8rem 1rem 2rem 1rem;
   }
+  .progress-bar {
+    width: 0.5rem;
+    border-radius: 0rem 0rem 0.25rem 0.25rem;
+  }
+  .section-part-layout {
+    margin-top: 8rem;
+    height: calc(100% - 8rem);
+  }
 }
 @media (min-width: 1280px) {
   .part-layout {
-    margin: 4rem 1rem 2rem 1rem;
+    margin: 0rem 1rem 2rem 1rem;
+  }
+  .section-part-layout {
+    margin-top: 4rem;
+    height: calc(100% - 4rem);
   }
 }
 /* DESCRIPTION

@@ -6,7 +6,7 @@
 import {
   onLoad,
   onResize
-} from "../lib/utils/web-utils.js";
+} from "../lib/web-lib.js";
 
 window.addEventListener("load", onLoad);
 window.addEventListener("resize", onResize);

@@ -13,10 +13,10 @@
     <link href="./../plugin/css/lib/reference_frame_pcl_v1.1.5a.css" rel="stylesheet">
     <link href="./../plugin/css/lib/bbc_frame_pcl_v1.1.5a.css" rel="stylesheet">
     <!--  -->
-    <link href="./../code_style_v1.1.3a.css" rel="stylesheet">
+    <link href="../../v1.1.3a/code_style_v1.1.3a.css" rel="stylesheet">
     <!-- ______________________________ -->
     <!-- ___ Facooya.com/* Web Title ___!!! Check List A !!! -->
-    <title>Document V1.1.7A</title>
+    <title>Document V1.1.8A</title>
     <!-- ______________________________ -->
   </head>
   <body id="70000777">
@@ -46,7 +46,7 @@
     <!--==============================-->
     <section id="document_frame">
       <!-- ___ Document Title ___!!! Check List D !!! -->
-      <div id="document_title">[Tab 1] Version 1.1.7 Alpha</div>
+      <div id="document_title">[Tab 1] Version 1.1.8 Alpha</div>
       <!--______________________________-->
       <div id="document_container"> <!-- code_frame -->
         <!--=== Code & Result 1 ===!!! Check List E 1 !!! -->
@@ -55,8 +55,8 @@
         <div class="code_title">User.Note</div> <!-- code_name -->
         <div class="code_container">
 <pre class="string">
-Update UI part-page. (Responsive: Top bar, Tab, ...)
-Update part-page Tab.
+Update UI in part-page.
+Vertical progress bar added.
 </pre>
         </div>
         <!--______________________________-->
@@ -76,13 +76,16 @@ Video
         <div class="code_container">
 <pre class="string">
 dev {
-  HMI(Human Machine Interface) Some updated. (Apply: Top bar)
+  JS, CSS files update.
 
-  Tablet mode added Click event.
-  Updated URL "?tab=0"
+  JS: lib -> utils -> local, e.g., utils.js: import "local.js"; export "utils.js";.
+  JS: Global scope variable -> Local scope variable, e.g., let a; -> function b(){let a;}.
+
+  Vertical scroll bar hide and horizontal scroll bar UI modified. (Desktop: Chrome, Safari)
+  Vertical progress bar added.
 
   Modified FHWF Struct.
-  Delete: /boot, /sys
+  /wsr/lib/gen/ -> /wsr/gen/
 }
 </pre>
         </div>
@@ -109,11 +112,11 @@ Video
             <div>V1.1.4A [ part_page_v1.1.4a ]</div></a></li>
           <li><a class="reference_item" href="#part_page_v1.1.5a">[Part] Version 1.1.5 Alpha
             <div>V1.1.5A [ part_page_v1.1.5a ]</div></a></li>
-          <li><a class="reference_item" href="#part-page_v1.1.6a">[Part] Version 1.1.6 Alpha
+          <li><a class="reference_item" href="#part-page">[Part] Version 1.1.6 Alpha
             <div>V1.1.6A [ part-page ]</div></a></li>
-          <li><a class="reference_item" href="./part-page.html">[Part] Version 1.1.7 Alpha
+          <li><a class="reference_item" href="#part-page">[Part] Version 1.1.7 Alpha
             <div>V1.1.7A [ part-page ]</div></a></li>
-          <li><a class="reference_item" href="#part-page_v1.1.8a">[Part] Version 1.1.8 Alpha
+          <li><a class="reference_item" href="./part-page.html">[Part] Version 1.1.8 Alpha
             <div>V1.1.8A [ part-page ]</div></a></li>
         </ul>
       </div>
@@ -136,3 +139,4 @@ Video
     </footer>
   </body>
 </html>
+

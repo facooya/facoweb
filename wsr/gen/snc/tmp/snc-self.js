@@ -5,7 +5,7 @@
  */
 import {
   genTBCNav
-} from "../../tbc.js";
+} from "../../../utils/gen-tbc-utils.js";
 
 /* &&& DATA: Sub Navigation Component &&& */
 class DataSNC {
@@ -39,23 +39,23 @@ class DataSNC {
     this._CN3_item_name_list
   ];
   _CN1_item_link_list = [
-    "../../../../../tmp/doc-page.html",
-    "../../../../../tmp/doc-page.html",
-    "../../../../../tmp/doc-page.html",
-    "../../../../../tmp/doc-page.html",
-    "../../../../../tmp/doc-page.html",
-    "../../../../../tmp/doc-page.html",
-    "../../../../../tmp/doc-page.html",
-    "../../../../../tmp/doc-page.html",
-    "../../../../../tmp/doc-page.html",
-    "../../../../../tmp/doc-page.html",
-    "../../../../../tmp/doc-page.html"
+    "../../../../tmp/doc-page.html",
+    "../../../../tmp/doc-page.html",
+    "../../../../tmp/doc-page.html",
+    "../../../../tmp/doc-page.html",
+    "../../../../tmp/doc-page.html",
+    "../../../../tmp/doc-page.html",
+    "../../../../tmp/doc-page.html",
+    "../../../../tmp/doc-page.html",
+    "../../../../tmp/doc-page.html",
+    "../../../../tmp/doc-page.html",
+    "../../../../tmp/doc-page.html"
   ];
   _CN2_item_link_list = [
-    "../../../../../tmp/doc-page.html"
+    "../../../../tmp/doc-page.html"
   ];
   _CN3_item_link_list = [
-    "../../../../../tmp/doc-page.html"
+    "../../../../tmp/doc-page.html"
   ];
   _SNC_ITEM_LINK_LIST = [
     this._CN1_item_link_list,

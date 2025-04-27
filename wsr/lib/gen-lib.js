@@ -7,7 +7,7 @@ import {
   genTBCTLI,
   genTBCDNI,
   genTBCSNI
-} from "../gen/tbc.js";
+} from "../utils/gen-tbc-utils.js";
 
 function setupCoreTBC() {
   const _PARENT = document.getElementById("top-bar-cmp");
@@ -16,7 +16,7 @@ function setupCoreTBC() {
   genTBCDNI(_PARENT);
   genTBCSNI(_PARENT);
 
-  logf(0, "wsr/lib/utils/gen-setup-utils.js", "setupCoreTBC", "Done");
+  logf(0, "wsr/utils/gen-lib.js", "setupCoreTBC", "Done");
 }
 
 export {
