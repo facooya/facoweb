@@ -3,31 +3,6 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/*import {
-
-} from "";*/
-function _logf(msg) {
-  logf(0, "wsr/lib/gen/tbc.js", msg, "Done");
-}
-/* function genTBCTLI(
-  logo,
-  parent
-) {
-   Element: tbc-logo 
-  let _logo = document.createElement("div");
-  _logo.setAttribute("id", "tbc-logo");
-   Element: tbc-logo-link 
-  let _logoLink = document.createElement("a");
-  _logoLink.setAttribute("id", "tbc-logo-link");
-  _logoLink.setAttribute("class", "container-link flex-center");
-  _logoLink.setAttribute("href", "/");
-  _logoLink.textContent = logo;
-   Append 
-  _logo.appendChild(_logoLink);
-  parent.appendChild(_logo);
-   Log 
-  _logf("TLI");
-} */
 function genTpcFli(
   logo,
   tpcRoot
@@ -45,29 +20,9 @@ function genTpcFli(
   /* Compile: fliY, tpcRoot */
   fliY.appendChild(fliYottaLogo);
   tpcRoot.appendChild(fliY);
+  /* Debugging */
+  logf(0, "wsr/utils/gen-utils.js", "genTpcFli", "Done");
 }
-/*function genTBCDNI(
-  parent
-) {
-   Element: tbc-dni-container 
-  let _container = document.createElement("div");
-  _container.setAttribute("id", "tbc-dni-container");
-   Element: tbc-dni-bg 
-  let _bg = document.createElement("div");
-  _bg.setAttribute("id", "tbc-dni-bg");
-   Element: tbc-dni-sg, _Append 
-  for (let i = 0; i < 3; i ++) {
-    let _sg = document.createElement("span");
-    _sg.setAttribute("class", "tbc-dni-sg");
-     _Append
-    _bg.appendChild(_sg);
-  }
-   Append 
-  _container.appendChild(_bg);
-  parent.appendChild(_container);
-   Log 
-  _logf("DNI");
-}*/
 function genTpcDni(
   tpcRoot
 ) {
@@ -87,30 +42,9 @@ function genTpcDni(
   /* Compile: dniY, tpcRoot */
   dniY.appendChild(dniZ);
   tpcRoot.appendChild(dniY);
+  /* Debugging */
+  logf(0, "wsr/utils/gen-utils.js", "genTpcDni", "Done"); /* !!! v1.1.11a [pro] */
 }
-function genTBCSNI(
-  parent
-) { /* !!! TEMPORARY !!! */
-  /* Element: tbc-sni-container */
-  let _container = document.createElement("div");
-  _container.setAttribute("id", "tbc-sni-container");
-  /* Element: tbc-sni-bg */
-  let _bg = document.createElement("div");
-  _bg.setAttribute("id", "tbc-sni-bg");
-  /* Element: tbc-sni-sg, _Append */
-  for (let i = 0; i < 3; i ++) {
-    let _sg = document.createElement("span");
-    _sg.setAttribute("class", "tbc-sni-sg");
-    /* _Append */
-    _bg.appendChild(_sg);
-  }
-  /* Append */
-  _container.appendChild(_bg);
-  parent.appendChild(_container);
-  /* Log */
-  _logf("SNI");
-}
-
 function genTpcSni(
   tpcRoot
 ) {
@@ -121,7 +55,7 @@ function genTpcSni(
   selectorValue = "tpc-sni-z";
   const sniZ = _genElem("div", selectorValue);
   /* Element: sni-z-line */
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 9; i++) {
     selectorValue = "tpc-sni-z-line";
     const sniZettaLine = _genElem("span", selectorValue);
     /* Compile: sniZ */
@@ -130,8 +64,9 @@ function genTpcSni(
   /* Compile: sniY, tpcRoot */
   sniY.appendChild(sniZ);
   tpcRoot.appendChild(sniY);
+  /* Debugging */
+  logf(0, "wsr/utils/gen-utils.js", "genTpcSni", "Done"); /* !!! v1.1.11a [pro] */
 }
-
 function genNav(
   label,
   zettaTitleRS,
@@ -150,6 +85,9 @@ function genNav(
     selectorValue = label + "-z-title";
     const zettaTitle = _genElem("div", selectorValue);
     zettaTitle.textContent = zettaTitleRS[i];
+    /* Element: label-z-right-icon !!! v1.1.11a [pro] */
+    selectorValue = label + "-z-right-icon";
+    const zettaRightIcon = _genElem("div", selectorValue);
     /* Element: label-z-bottom-line */
     selectorValue = label + "-z-bottom-line";
     const zettaBottomLine = _genElem("div", selectorValue);
@@ -180,14 +118,16 @@ function genNav(
     }
     /* Compile: zetta, yotta, labelRoot */
     zetta.appendChild(zettaTitle);
+    zetta.appendChild(zettaRightIcon); /* !!! v1.1.11a [pro] */
     zetta.appendChild(zettaBottomLine);
     yotta.appendChild(zetta);
     yotta.appendChild(exa);
     labelRoot.appendChild(yotta);
   }
   /* Debugging */
-  _logf(label);
+  logf(0, "wsr/utils/gen-utils.js", "genNav:" + label, "Done"); /* !!! v1.1.11a [pro] */
 }
+/* !!! _genElemSetClass() v1.1.11a [pro] */
 function _genElem(elemType, setClass) { /* !!!! Migration gen-local.js */
   const elem = document.createElement(elemType);
   elem.setAttribute("class", setClass);

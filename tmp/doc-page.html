@@ -4,33 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ___ Css Link ___!!! Version Check A !!! -->
-    <link href="./../plugin/css/lib/page_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./../plugin/css/lib/tbc_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./../plugin/css/lib/top_menu_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/page_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/tbc_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/top_menu_pcl_v1.1.5a.css" rel="stylesheet">
     <!--  -->
-    <link href="./../plugin/css/lib/document_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./../plugin/css/lib/code_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./../plugin/css/lib/reference_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./../plugin/css/lib/bbc_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/document_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/code_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/reference_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/bbc_frame_pcl_v1.1.5a.css" rel="stylesheet">
     <!--  -->
-    <link href="./../code_style_v1.1.3a.css" rel="stylesheet">
+    <link href="../v1.1.3a/code_style_v1.1.3a.css" rel="stylesheet">
     <!-- ______________________________ -->
     <!-- ___ Facooya.com/* Web Title ___!!! Check List A !!! -->
-    <title>Document V1.1.10A</title>
+    <title>Document V1.1.11A</title>
     <!-- ______________________________ -->
   </head>
   <body id="70000777">
     <!-- === Compose Frame ===!!! Version Check B !!! -->
     <header id="compose_frame">
       <div id="top_bar_compose">
-        <script defer type="module" src="./../plugin/generate/tbc_generate_v1.1.5a.js"></script>
+        <script defer type="module" src="../plugin/generate/tbc_generate_v1.1.5a.js"></script>
       </div>
       <nav id="related_menu_compose">
         <!-- !Check List B -->
-        <script defer type="module" src="./../plugin/generate/rmc_generate_v1.1.5a.js"></script>
+        <script defer type="module" src="../plugin/generate/rmc_generate_v1.1.5a.js"></script>
       </nav>
       <nav id="facooya_menu_compose">
-        <script defer type="module" src="./../plugin/generate/fmc_generate_v1.1.5a.js"></script>
+        <script defer type="module" src="../plugin/generate/fmc_generate_v1.1.5a.js"></script>
       </nav>
       <!-- ___ Scroll Menu Compose ___!!! Check List C !!! -->
       <!--<nav id="scroll_menu_compose">
@@ -46,7 +46,7 @@
     <!--==============================-->
     <section id="document_frame">
       <!-- ___ Document Title ___!!! Check List D !!! -->
-      <div id="document_title">[Tab 1] Version 1.1.10 Alpha</div>
+      <div id="document_title">[Tab 1] Version 1.1.11 Alpha</div>
       <!--______________________________-->
       <div id="document_container"> <!-- code_frame -->
         <!--=== Code & Result 1 ===!!! Check List E 1 !!! -->
@@ -55,7 +55,9 @@
         <div class="code_title">User.Note</div> <!-- code_name -->
         <div class="code_container">
 <pre class="string">
-part-page layout fixed. (Tablet, Mobile)
+"SNC" UI modified. (Display type: All)
+"DNC" UI modified. (Display type: Mobile, Tablet)
+"SNI" UI modified. (Display type: All)
 </pre>
         </div>
         <!--______________________________-->
@@ -74,50 +76,51 @@ Video
         <div class="code_title">Developer.Note</div>
         <div class="code_container">
 <pre class="string">
-Facooya {
-  FHWF -> FWFHS {
-    FHWF: Filesystem Hierarchy Web Facooya. -> FWFHS: Facooya Web Filesystem Hierarchy Standard.
-    Reference: wsr/share/doc/FWFHS
+Updated by v1.1.11a {
+  Updated(DNC, SNC, SNI) {
+    DNC {
+      "DNC" UI modified. (DisplayType: Mobile, Tablet)
+      "DNC" if close, "Exa" auto close. (DisplayType: Mobile)
+    }
+    SNC {
+      "SNC" open, "part-page:section-root" margin synchronize updated. (DisplayType: Desktop)
+      "SNC" UI modified. (DisplayType: All)
+      "SNC" hover event apply. (DisplayType: Desktop)
+      "SNC" if close, "Exa" auto close. (DisplayType: All)
+    }
+    SNI {
+      "SNI" icon updated.
+    }
   }
-  Document management {
-    Path: "wsr/share/doc/"
-    Facooya-Standard -> FS, FDS, FCS
-    FWS -> FWDS
-    FHWF-1.0 -> FWFHS
-
-    Modified-FHS-3.0, FWFHS, FS, FWDS updated.
-
-    FWFHS: Facooya Web Filesystem Hierarchy Standard.
-    FS: Facooya Standard.
-    FCS: Facooya Code Standard. [NULL]
-    FDS: Facooya Development Standard. [NULL]
-    FWDS: Facooya Web Development Standard.
-  }
-}
-
-Updated by v1.1.10a {
-  Apply updated {
-    TPC, DNC, SNC: [FWDS] Apply. (Page: part) [100% Finalized]
-  }
-  Issus updated {
-    "DNC" broken issue by "v1.1.9a" fixed. (Page: part (Display type: Mobile, Tablet))
+  Issue updated {
+    Fix {
+      "SNC", "DNC" resize transition, position issue fix.
+    }
+    Issus {
+      "SNC" open, "DNC" overlap. (DisplayType: Tablet, Desktop)
+    }
   }
   Etc updated {
-    class: fac (facooya-align-class)
-    class: flc (facooya-link-class)
+    "JS" files version synchronize updated. (../../v1.1.11a/js/... => ../js/...)
 
-    event handler functions updated.
+    Debugging function updated.
+    Generate functions updated.
+    Progress line modified.
+
+    Event functions updated.
+    Transition updated.
   }
-  Issus {
-    "SNC" Resize transition(snc-e) & position(snc-root) broken.
-    "DNC" Resize transition(dnc-e) broken. (Display type: Mobile)
+  Note {
+    DNC: Development Navigation Component.
+    SNC: Support Navigation Component.
+    SNI: Support Navigation Interaction.
   }
 }
 
 Routinely update {
   Code migration {
-    Migration from "v1.1.9a" to "v1.1.10a".
-    Synchronize to "v1.1.10a".
+    Migration from "v1.1.10a" to "v1.1.11a".
+    Synchronize to "v1.1.11a".
     Clean up code from previous versions.
     Migration inspection successful, continue updating and code refactoring.
   }
@@ -127,77 +130,80 @@ Routinely update {
     Delete temporary code after confirming unreusability. (Checking the previous versions enables recovery.)
     Commenting the code.
   }
-  Issue fix.
-  File system management.
-
-  Notice: The "code" encompasses comments, functions, source code, ...
+  Note {
+    Etc: Issue fix, File system management.
+    The "Code" encompasses comments, functions, source code, ...
+  }
 }
 
 Scheduled update {
-  Scheduled update for v1.1.11a {
+  Scheduled update for v1.1.12a {
     Routinely update.
-    "SNC" Design update. (Display type: All)
-    "DNC" Design update. (Display type: Mobile, Tablet)
-    Generate functions update.
-    Transition update.
+    "SNC", "DNC" auto close, if "part-page" overlay click. (Display type: Mobile)
   }
   Scheduled update before v1.2.0 {
-    "SNC" Design update. (Display type: Mobile, Tablet)
-    "SNC" Resize transition & position broken fix.
-    "DNC" Design update. (Display type: Mobile, Tablet)
-    "SNC", "DNC" if close, "Exa" auto close.
+    Page(Home, Part, Documnet) {
+      Home {
+        "home-page" upgrade.
+        "home-page" upgrade complete update. (Inspection)
+      }
+      Part {
+        "part-page" "tab-section" hover event. (DisplayType: Dekstop)
+        "part-page" "part-layout", "chapter-layout".
+        "chapter-section" grid 1fr 1fr -> 1fr, columns -> rows
 
-    "part-page" section size adjust, if "SNC" activate (Desktop only)
-    "SNC" auto close(snc-root), if "part-page" overlay click. (Display type: Mobile, Tablet)
-
-    Draggable = "false" (TPC, SNC, DNC)
-    Select = "none" (TPC, SNC, DNC)
-
-    CSS, JS: Static value -> Dynamic value
-
-    SNI icon update.
-    SNC scroll effect update.
-      Overflow-y: bottom defog effect & scroll down arrow, top arrow.
-
-    TPC layout update. (SNC title section)
-
-    FDS, FWS apply update.
-      part-page part-layout, chapter-layout
-
-    Bottom panel update.
-
-    Setting value in Support navigation component.
-    chapter-section grid 1fr 1fr -> 1fr, columns -> rows
-    color. dark. light.
-
-    part-page upgrade complete update. (Inspection)
-
-    doc-page document section auto tag system.
-    doc-page upgrading.
-    doc-page delete bottom bar.
-    doc-page reference component UI update.
-    doc-page quick scroll update.
-    doc-page safari browser video issue fix.
-    doc-page upgrade complete update. (Inspection)
-
-    content files upgrade for "v1.2.0".
-
-    home-page upgrade.
-    home-page upgrade complete update. (Inspection)
-
-    "wsr/share/doc" update for "v1.2.0". Upload FWDS, FS. (Inspection)
-    
-    Facooya.com version "1.2.0" upgrade prepare. (Inspection)
-    Facooya.com version "1.2.0" upgrade complete.
+        "part-page" upgrade complete update. (Inspection)
+      }
+      Documnet {
+        "doc-page" document section auto tag system.
+        "doc-page" upgrading.
+        "doc-page" delete bottom bar.
+        "doc-page" reference component UI update.
+        "doc-page" quick scroll update.
+        "doc-page" safari browser video issue fix.
+        "doc-page" upgrade complete update. (Inspection)
+      }
+    }
+    Component(DNC, SNC, TPC, BPC) {
+      DNC {
+        Reference: Etc.
+      }
+      SNC {
+        "SNC" scroll effect update.
+          Overflow-y: bottom defog effect & scroll down arrow, top arrow.
+        Setting value in "SNC".
+        Reference: Etc.
+      }
+      TPC {
+        "TPC" layout update. ("SNC" title section) (DisplayType: Dekstop)
+        Reference: Etc.
+      }
+      BPC {
+        Bottom panel update.
+      }
+    }
+    Facooya(FWDS, FS) {!!!!!!!!!!!!!!!!!!!!
+      "FWDS", "FS" apply update.
+      "wsr/share/doc" update for "v1.2.0". Upload "FWDS", "FS". (Inspection)
+      facooya.com version "1.2.0" upgrade prepare. (Inspection)
+      facooya.com version "1.2.0" upgrade complete.
+    }
+    Etc {
+      Draggable = "false" (TPC, SNC, DNC)
+      Select = "none" (TPC, SNC, DNC)
+      CSS, JS: Static value -> Dynamic value
+      color. dark. light.
+      content files upgrade for "v1.2.0".
+    }
   }
-  Scheduled update {
+  Scheduled update web {
     DNS Server migration. Scheduled migration: (2024-03)
     SSL, TLS update.
     facooya.com -> Redirect: www.facooya.com
     www.facooya.com -> developer.facooya.com || dev.facooya.com
       "wsr/share/doc" update "URL"
     www.facooya.com: Core.
-    dev.facooya.com || developer.facooya.com: Develop document.
+    dev.facooya.com || developer.facooya.com: Developer document.
   }
 }
 </pre>
@@ -223,7 +229,7 @@ Video
             <div>V1.1.3A [ part_page_v1.1.3a ]</div></a></li>
           <li><a class="reference_item" href="#part_page_v1.1.4a">[Part] Version 1.1.4 Alpha
             <div>V1.1.4A [ part_page_v1.1.4a ]</div></a></li>
-          <li><a class="reference_item" href="#part-page">[Part] Version 1.1.5 Alpha
+          <li><a class="reference_item" href="#part_page_v1.1.5a">[Part] Version 1.1.5 Alpha
             <div>V1.1.5A [ part_page_v1.1.5a ]</div></a></li>
           <li><a class="reference_item" href="#part-page">[Part] Version 1.1.6 Alpha
             <div>V1.1.6A [ part-page ]</div></a></li>
@@ -233,7 +239,7 @@ Video
             <div>V1.1.8A [ part-page ]</div></a></li>
           <li><a class="reference_item" href="#part-page">[Part] Version 1.1.9 Alpha
             <div>V1.1.9A [ part-page ]</div></a></li>
-          <li><a class="reference_item" href="./part-page.html">[Part] Version 1.1.10 Alpha
+          <li><a class="reference_item" href="#part-page">[Part] Version 1.1.10 Alpha
             <div>V1.1.10A [ part-page ]</div></a></li>
         </ul>
       </div>
@@ -248,8 +254,8 @@ Video
       </div>
       <!-- ______________________________ -->
       <!-- ___ JS Information Page Link ___!!! Version Check C !!! -->
-      <script defer src="./../plugin/src/lib/page_frame_psl_v1.1.5a.js"></script>
-      <script defer type="module" src="./../plugin/src/lib/system_frame_psl_v1.1.5a.js"></script>
+      <script defer src="../plugin/src/lib/page_frame_psl_v1.1.5a.js"></script>
+      <script defer type="module" src="../plugin/src/lib/system_frame_psl_v1.1.5a.js"></script>
       <!-- INFORMATION 
          - @[Author] {Facooya} (Founder)
          -->

@@ -14,49 +14,68 @@ function setupEventResize() {
   /* Element */
   const dncRoot = document.querySelector(".dnc-root");
   const sncRoot = document.querySelector(".snc-root");
+  const sectionRoot = document.querySelector(".section-root");
 
-  //const SUB_NAV_CMP = document.getElementById("sub-nav-cmp");
-  //const DNC_SUB_CONTAINER = document.getElementsByClassName("dnc-sub-container");
-  //const SNC_SUB_CONTAINER = document.getElementsByClassName("snc-sub-container");
-  //const DNC_CONTAINER = document.getElementsByClassName("dnc-container");
-  //const SNC_CONTAINER = document.getElementsByClassName("snc-container");
-  const dncY = document.getElementsByClassName("dnc-y");
-  const dncE = document.getElementsByClassName("dnc-e");
-  const sncY = document.getElementsByClassName("snc-y");
-  const sncE = document.getElementsByClassName("snc-e");
-  /* Initial */
+  const dncY = document.querySelectorAll(".dnc-y");
+  const dncE = document.querySelectorAll(".dnc-e");
+  const sncY = document.querySelectorAll(".snc-y");
+  const sncE = document.querySelectorAll(".snc-e");
+  /* Init */
   isEnabledDni = 0;
   isEnabledSni = 0;
-  /* Initial Css */
-  //DEV_NAV_CMP.style.cssText = "";
-  //SUB_NAV_CMP.style.cssText = "";
+  /* Init CSS */
   dncRoot.style.cssText = "";
   sncRoot.style.cssText = "";
-  /*for (let i = 0; i < DNC_CONTAINER.length; i++) {
-    DNC_CONTAINER[i].style.cssText = "";
-    DNC_SUB_CONTAINER[i].style.cssText = "";
-  }
-  for (let i = 0; i < SNC_CONTAINER.length; i++) {
-    SNC_CONTAINER[i].style.cssText = "";
-    SNC_SUB_CONTAINER[i].style.cssText = "";
-  }*/
+  sectionRoot.style.cssText = "";
   for (let i = 0; i < dncY.length; i++) {
     dncY[i].style.cssText = "";
     dncE[i].style.cssText = "";
+
+    const dncZettaZB = dncY[i].querySelector(".dnc-z");
+    const dncZettaTitleZB = dncY[i].querySelector(".dnc-z-title");
+    const dncZettaRightIconZB = dncY[i].querySelector(".dnc-z-right-icon");
+    const dncZettaBottomLineZB = dncY[i].querySelector(".dnc-z-bottom-line");
+    dncZettaZB.style.cssText = "";
+    dncZettaTitleZB.style.cssText = "";
+    dncZettaRightIconZB.style.cssText = "";
+    dncZettaBottomLineZB.style.cssText = "";
+
+    const dncPetaEB = dncE[i].querySelectorAll(".dnc-p");
+    const dncPetaTitleEB = dncE[i].querySelectorAll(".dnc-p-title");
+    const dncPetaRightIconEB = dncE[i].querySelectorAll(".dnc-p-right-icon");
+    const dncPetaBottomLineEB = dncE[i].querySelectorAll(".dnc-p-bottom-line");
+    for (let j = 0; j < dncPetaEB.length; j++) {
+      dncPetaEB[j].style.cssText = "";
+      dncPetaTitleEB[j].style.cssText = "";
+      dncPetaRightIconEB[j].style.cssText = "";
+      dncPetaBottomLineEB[j].style.cssText = "";
+    }
   }
   for (let i = 0; i < sncY.length; i++) {
     sncY[i].style.cssText = "";
     sncE[i].style.cssText = "";
+
+    const sncZettaZB = sncY[i].querySelector(".snc-z");
+    const sncZettaTitleZB = sncY[i].querySelector(".snc-z-title");
+    const sncZettaRightIconZB = sncY[i].querySelector(".snc-z-right-icon");
+    const sncZettaBottomLineZB = sncY[i].querySelector(".snc-z-bottom-line");
+    sncZettaZB.style.cssText = "";
+    sncZettaTitleZB.style.cssText = "";
+    sncZettaRightIconZB.style.cssText = "";
+    sncZettaBottomLineZB.style.cssText = "";
+
+    const sncPetaEB = sncE[i].querySelectorAll(".snc-p");
+    const sncPetaTitleEB = sncE[i].querySelectorAll(".snc-p-title");
+    const sncPetaRightIconEB = sncE[i].querySelectorAll(".snc-p-right-icon");
+    const sncPetaBottomLineEB = sncE[i].querySelectorAll(".snc-p-bottom-line");
+    for (let j = 0; j < sncPetaEB.length; j++) {
+      sncPetaEB[j].style.cssText = "";
+      sncPetaTitleEB[j].style.cssText = "";
+      sncPetaRightIconEB[j].style.cssText = "";
+      sncPetaBottomLineEB[j].style.cssText = "";
+    }
   }
-  /* TBC */
-  /*const _TBC_DNI_SG = document.getElementsByClassName("tbc-dni-sg");
-  const _TBC_SNI_SG = document.getElementsByClassName("tbc-sni-sg");
-  for (let i = 0; i < _TBC_DNI_SG.length; i++) {
-    _TBC_DNI_SG[i].style.cssText = "";
-  }
-  for (let i = 0; i < _TBC_SNI_SG.length; i++) {
-    _TBC_SNI_SG[i].style.cssText = "";
-  }*/
+  /* TPC */
   const tpcDniZettaLine = document.getElementsByClassName("tpc-dni-z-line");
   const tpcSniZettaLine = document.getElementsByClassName("tpc-sni-z-line");
   for (let i = 0; i < tpcDniZettaLine.length; i++) {
@@ -69,6 +88,7 @@ function setupEventResize() {
   /* onEvent: event-utils */
   //onEventDnc(0, DNC_CONTAINER);
   onEventDnc(0, dncY);
+  onEventSnc(0, sncY);
 
   logf(0, "wsr/lib/event-lib.js", "setupEventResize", "Done");
   logf(0, "==========", "==========", "Event Resize Done");
@@ -77,19 +97,13 @@ function setupEventResize() {
 function setupEventLoad() {
   /* Element */
   const dncRoot = document.querySelector(".dnc-root");
-  const dncY = dncRoot.getElementsByClassName("dnc-y");
+  const dncY = dncRoot.querySelectorAll(".dnc-y");
   const sncRoot = document.querySelector(".snc-root");
-  const sncY = sncRoot.getElementsByClassName("snc-y");
+  const sncY = sncRoot.querySelectorAll(".snc-y");
 
-  //const DNC_CONTAINER = document.getElementsByClassName("dnc-container");
-  //const SNC_CONTAINER = document.getElementsByClassName("snc-container");
   /* Initial */
   isEnabledDni = 0;
   isEnabledSni = 0;
-  /*for (let i = 0; i < DNC_CONTAINER.length; i++) {
-    DNC_CONTAINER[i].index = i;
-    DNC_CONTAINER[i].isActive = 0;
-  }*/
   for (let i = 0; i < dncY.length; i++) {
     dncY[i].index = i;
     dncY[i].isActive = 0;
@@ -98,16 +112,10 @@ function setupEventLoad() {
     sncY[i].index = i;
     sncY[i].isActive = 0;
   }
-  /*for (let i = 0; i < SNC_CONTAINER.length; i++) {
-    SNC_CONTAINER[i].index = i;
-    SNC_CONTAINER[i].isActive = 0;
-  }*/
   /* onEvent: event-utils */
   onEventDniSni();
-  //onEventDnc(1, DNC_CONTAINER);
   onEventDnc(1, dncY);
-  //onEventSnc(SNC_CONTAINER);
-  onEventSnc(sncY);
+  onEventSnc(1, sncY);
 
   onEventProgress();
 

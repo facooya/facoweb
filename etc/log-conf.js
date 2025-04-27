@@ -5,10 +5,10 @@
  */
 function logf(status, path, id, result) {
   if (ACTIVE_CONSOLE) {
-    let _str = (status == 0) ? "[OK] " : "[FAIL] ";
-    _str += "{.../" + path + "} ";
-    _str += "(" + id +") ";
-    _str += ": " + result;
+    let _str = (status == 0) ? "[OK]" : "[FAIL]";
+    _str += " " + "{.../" + path + "}" + " ";
+    _str += "(" + id +")" + " ";
+    _str += ":" + " " + result;
     console.log(_str);
   }
 }

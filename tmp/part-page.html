@@ -5,49 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- %%% Link %%%  -->
     <!-- /etc/, /var/, /opt/ -->
-    <link href="./../etc/init-setup.css" rel="stylesheet">
-    <link href="./../var/lib/core-var.css" rel="stylesheet">
-    <link href="./../opt/class-opt.css" rel="stylesheet">
+    <link href="../etc/init-setup.css" rel="stylesheet"> <!-- initial-setup.css -->
+    <link href="../var/lib/core-var.css" rel="stylesheet">
+    <link href="../opt/class-opt.css" rel="stylesheet">
     <!-- /wsr/share/layout/ -->
-    <link href="./../wsr/share/layout/core-layout.css" rel="stylesheet">
-    <link href="./../wsr/share/layout/part-layout.css" rel="stylesheet">
+    <link href="../wsr/share/layout/core-layout.css" rel="stylesheet">
+    <link href="../wsr/share/layout/part-layout.css" rel="stylesheet">
     <!-- /wsr/share/lib/ -->
-    <link href="./../wsr/share/lib/tpc-lib.css" rel="stylesheet">
-    <link href="./../wsr/share/lib/dnc-lib.css" rel="stylesheet">
-    <link href="./../wsr/share/lib/snc-lib.css" rel="stylesheet">
-    <link href="./../wsr/share/lib/section-lib.css" rel="stylesheet">
+    <link href="../wsr/share/lib/tpc-lib.css" rel="stylesheet">
+    <link href="../wsr/share/lib/dnc-lib.css" rel="stylesheet">
+    <link href="../wsr/share/lib/snc-lib.css" rel="stylesheet">
+    <link href="../wsr/share/lib/section-lib.css" rel="stylesheet">
     <!-- /wsr/share/opt/ -->
-    <link href="./../wsr/share/opt/snc-opt.css" rel="stylesheet">
-    <link href="./../wsr/share/opt/part-opt.css" rel="stylesheet">
+    <link href="../wsr/share/opt/snc-opt.css" rel="stylesheet">
+    <link href="../wsr/share/opt/part-opt.css" rel="stylesheet">
+    <!-- /wsr/share/support/ -->
     <!-- ############################## -->
     <!-- %%% Script %%% -->
     <!-- /etc/ -->
-    <script src="./../etc/log-conf.js" defer></script>
-    <script src="./../etc/init-setup.js" type="module" defer></script>
+    <script src="../etc/log-conf.js" defer></script>
+    <script src="../etc/init-setup.js" type="module" defer></script> <!-- initial-setup.js -->
     <!-- /wsr/lib/gen/ -->
-    <script src="./../wsr/gen/dnc-self.js" type="module" defer></script>
-    <script src="./../wsr/gen/snc/tmp/snc-self.js" type="module" defer></script>
+    <script src="../wsr/gen/dnc-self.js" type="module" defer></script>
+    <script src="../wsr/gen/snc/tmp/snc-self.js" type="module" defer></script>
     <!-- /var/ -->
-    <script src="./../var/lib/core-var.js" defer></script>
+    <script src="../var/lib/core-var.js" defer></script>
     <!-- /wsr/src/web.js -->
-    <script src="./../wsr/src/web.js" type="module" defer></script>
+    <script src="../wsr/src/web.js" type="module" defer></script>
     <!-- ############################## -->
     <!-- %%% Web Title %%% -->
-    <title>v1.1.10a Part</title>
+    <title>v1.1.11a Part</title>
   </head>
-  <body id="70000000" class="core-layout part-core-layout">
+  <!-- !!! root -> r -->
+  <body id="70000000" class="core-layout part-core-layout"> 
     <div id="lpb" class="progress-line"></div>
     <div id="rpb" class="progress-line"></div>
     <!-- === Top Panel Component === !!! draggable="false" -->
     <header class="tpc-root tpc-layout"></header>
     <nav class="dnc-root"></nav>
     <nav class="snc-root"></nav>
+    <!--
+      <div class="spc-root"> Scroll Progress Component
+        <div class="spc-y-ys spc-y"></div>
+        <div class="spc-y-zs spc-y"></div>
+      </div>
+    -->
     <!-- ============================== -->
-    <section id="section-container" class="section-part-layout">
+    <section id="section-container" class="section-root section-part-layout">
       <!-- ===== Part Component ===== -->
-      <section class="part-layout">
+      <section class="part-layout"> <!-- !!! part-root -->
         <!-- %%% Part Title %%% -->
-        <div class="part-title flex-center">Version 1.1.10 Alpha</div>
+        <div class="part-title flex-center">Version 1.1.11 Alpha</div>
         <!-- %%% Part Tab %%% -->
         <nav class="part-tab-container">
           <div class="part-tab-item flex-center">Tab 1</div>
@@ -57,12 +65,12 @@
       </section>
       <!-- ============================== -->
       <!-- ===== Chapter Component ===== -->
-      <section class="chapter-layout">
+      <section class="chapter-layout"> <!-- !!! chapter-root -->
         <!-- %%% Tab: 0 %%% -->
         <nav class="chapter-container">
           <a class="chapter-item container-link" href="./doc-page.html">
-            <div class="chapter-item-title">[Tab 1] Version 1.1.10 Alpha</div>
-            <div class="chapter-item-info">v1.1.10a [ .../tmp/doc-page ]</div>
+            <div class="chapter-item-title">[Tab 1] Version 1.1.11 Alpha</div>
+            <div class="chapter-item-info">v1.1.11a [ .../tmp/doc-page ]</div>
           </a>
           <a class="chapter-item container-link" href="./doc-page.html">
             <div class="chapter-item-title">[Tab 1] Item 1-2</div>

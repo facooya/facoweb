@@ -3,239 +3,241 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ****************************** */
+/* ***** DisplayType: Mobile ***** */
 /* = = = = = DNC Root = = = = = */
 .dnc-root {
+  /* Position */
   position: fixed;
-  top: 4.125rem;
-  z-index: 100;
-
+  top: 4rem;
+  left: -80%;
+  z-index: 100; /* FIXME: TPC < z-index && part-section < z-index */
+  /* Grid */
   display: grid;
   grid-auto-rows: min-content;
-
+  /* Box Model */
   overflow-y: auto;
-  height: calc(100% - 4.125rem);
-
-  /* !!! */
+  width: 80%;
+  height: calc(100% - 4rem);
+  /* Visual */
   background-color: #222222;
   transition: left 300ms;
-  width: 80%;
-  left: -80%;
 }
 /* = = = = = DNC Y = = = = = */
 .dnc-y {
+  /* Position */
   position: relative;
-
+  /* Grid */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 4rem auto;
   grid-template-areas:
     "dnc-z"
     "dnc-e";
-
+  /* Layout */
   box-sizing: border-box;
-  border-bottom: 0.125rem solid #FFFFFF;
+  /* Visual */
   cursor: pointer;
+  background-color: #222222;
+  transition: background-color 300ms linear;
 }
 /* = = = = = DNC Z = = = = = */
 .dnc-z {
+  /* Position */
   grid-area: dnc-z;
   position: relative;
-
+  /* Grid */
   display: grid;
   align-items: center;
   justify-content: center;
+  /* !!! v1.1.11a [tmp] [pro] */
+  grid-template-columns: 1fr min-content;
+  grid-template-areas:
+    "dnc-z-title dnc-z-right-icon";
 }
-.dnc-z-title { color: #FFFFFF; }
-.dnc-z-bottom-line { position: absolute; }
+.dnc-z-title {
+  color: #FFFFFF;
+  /* !!! v1.1.11a [tmp] [pro] */
+  grid-area: dnc-z-title;
+  justify-self: center;
+}
+.dnc-z-right-icon {
+  /* !!! v1.1.11a [tmp] [pro] */
+  /* Position */
+  grid-area: dnc-z-right-icon;
+  /* Layout */
+  margin: 0rem 1.5rem 0rem 0rem;
+  border-top: 0.5rem solid #FFFFFF;
+  border-right: 0.4rem solid #00000000;
+  border-left: 0.4rem solid #00000000;
+  /* Visual */
+  transform: rotate(0deg);
+  transition:
+    border 300ms,
+    transform 300ms;
+}
+.dnc-z-bottom-line {
+  /* Position */
+  position: absolute;
+  /* !!! v1.1.11a [tmp] */
+  top: 85%;
+  left: 50%;
+  /* Layout */
+  width: 0%;
+  height: 0.125rem;
+  border-radius: 0.0625rem; /* height / 2 */
+  /* Visual */
+  background-color: #90EE90;
+  transition:
+    left 300ms,
+    width 300ms;
+}
 /* = = = = = DNC E = = = = = */
 .dnc-e {
+  /* Position */
   grid-area: dnc-e;
-
+  /* Layout */
   display: grid;
-  grid-auto-rows: 0rem;
-
+  /* Grid */
+  /* grid-template-rows: [JS] */
+  grid-auto-rows: 0rem; /* Refresh visible shield */
+  /* Visual */
   overflow-y: hidden;
   transition: grid-template-rows 300ms;
 }
 /* = = = = = DNC P = = = = = */
 .dnc-p {
+  /* Position */
+  position: relative;
+  /* Grid */
   display: grid;
   align-items: center;
   justify-content: center;
-
+  grid-template-areas:
+    "dnc-p-title dnc-p-right-icon";
+  /* Layout */
   box-sizing: border-box;
-
+  /* Visual */
+  overflow: hidden;
   color: #FFFFFF;
-
-  border-top: 0.125rem dashed #AAAAAA;
 }
 .dnc-p-title {
+  /* Visual */
   opacity: 0;
   transition: opacity 300ms;
+  /* !!! v1.1.11a [tmp] [pro] */
+  /* Position */
+  grid-area: dnc-p-title;
+  /* Font */
+  white-space: nowrap;
+  font-weight: 400;
+  color: #FFFFFF;
 }
-.dnc-p-right-icon { position: absolute; }
-.dnc-p-bottom-line { position: absolute; }
-
-@media (min-width: 768px) {
+.dnc-p-right-icon {
+  /* !!! v1.1.11a [tmp] [pro] */
+  /* position: absolute; */
+  /* Position */
+  grid-area: dnc-p-right-icon;
+  /* Layout */
+  margin: 0rem 0rem 0rem 0.5rem;
+  border-top: 0.25rem solid #00000000;
+  border-bottom: 0.25rem solid #00000000;
+  border-left: 0.5rem solid #FFFFFF;
+  /* Visual */
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.dnc-p-bottom-line {
+  /* Position */
+  position: absolute;
+  /* !!! v1.1.11a [tmp] [pro] */
+  top: 70%; /* FIXME: var(--dnc-p-bl-top); */
+  /* Layout */
+  height: 0.125rem; /* FIXME: var(--dnc-p-bl-height); */
+  border-radius: 0.0625rem; /* FIXME: calc(var(--dnc-p-bl-height) / 2); */
+  /* Visual */
+  opacity: 0;
+  background-color: #87CEEB; /* FIXME: var(--dnc-p-bl-color); */
+  transition: opacity 300ms ease; /* FIXME: opacity var(--transition-time) ease; */
+}
+/* ****************************** */
+/* ***** DisplayType: Tablet ***** */
+@media (min-width: 768px) { /* DisplayType: Tablet */
   .dnc-root {
-    /* Initial */
+    /* Reset */
     left: auto;
     width: 100%;
     height: auto;
     transition: none;
     overflow-y: visible;
-    /* Positioning */
-    /* top: 4.125rem */
     /* Grid */
     grid-template-columns: repeat(5, 1fr);
     /* Box Model */
     box-sizing: border-box;
     padding: 0rem 1rem;
   }
-  .dnc-y {
-    /* Initial */
-    border-bottom: none;
-    cursor: default;
+  .dnc-z-right-icon {
+    /* Layout */
+    display: none;
   }
   .dnc-e {
+    /* Position */
     position: absolute;
+    /* Layout */
+    width: 10rem;
+    /* Grid */
     justify-self: center;
     grid-template-columns: 1fr;
     /* grid-template-rows: [JS] !!! */
-    width: 10rem;
-    background-color: #222222;
+    /* Visual */
     border-radius: 0rem 0rem 1rem 1rem;
+    background-color: #222222;
     transition:
       grid-template-rows 300ms, 
       width 300ms;
   }
-  .dnc-p {
-    /* Initial */
-    border: none;
-    /* Position */
-    position: relative;
-  }
 }
 @media (min-width: 1280px) {
   .dnc-root {
-    position: fixed;
+    /* Position */
+    /* Reset: top(mobile), left(tablet) */
     top: 0rem;
     left: 12rem; /* logo(12) */
-    right: 4rem; /* sni(4) */
-    z-index: 100; /* !!! Tbc < Temp */
-
-    display: grid;
-    grid-template-columns: repeat(5, minmax(10rem, 15rem)); /* !!! */
-
-    box-sizing: border-box;
-    padding: 0rem 1rem;
-    /* !!! Initial */
+    right: 4rem; /* sni(4) FIXME: snc title add */
+    /* Grid */
+    /* Reset: gtc(tablet) */
+    grid-template-columns: repeat(5, minmax(10rem, 15rem)); /* FIXME: Calc minmx() plz */
+    /* Layout */
+    /* Reset: width(tablet) */
     width: auto;
-    height: auto;
-    transition: none;
-    overflow-y: visible;
   }
   .dnc-y {
-    position: relative;
-
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 4rem auto;
-    grid-template-areas:
-      "dnc-z"
-      "dnc-e";
-
-    /* !!! */
-    border-bottom: none;
-  }
-  .dnc-z {
-    grid-area: dnc-z;
-    position: relative;
-
-    display: grid;
-    align-items: center;
-    justify-content: center;
-  }
-  .dnc-z-title {
-    color: #FFFFFF;
-  }
-  .dnc-z-bottom-line {
-    /* Positioning */
-    position: absolute;
-    top: 85%;
-    left: 50%;
-    /* Box Model */
-    width: 0%;
-    height: 0.125rem;
     /* Visual */
-    background-color: #90EE90;
-    border-radius: 0.0625rem; /* height / 2 */
-    transition:
-      left 300ms,
-      width 300ms;
-  }
-  .dnc-e {
-    /* Positioning */
-    grid-area: dnc-e;
-    position: absolute;
-    /* Grid */
-    display: grid;
-    justify-self: center;
-    grid-template-columns: 1fr;
-    /* refresh visible shield !!!!!!!!!!*/
-    grid-auto-rows: 0rem;
-    grid-template-rows: 0rem 0rem;
-    /* grid-template-rows: [JS] !!!!!!!!!!!*/
-    /* Box Model */
-    overflow-y: hidden;
-    width: 10rem;
-    /* Visual */
-    background-color: #222222;
-    border-radius: 0rem 0rem 1rem 1rem;
-    transition:
-      grid-template-rows 300ms,
-      width 300ms;
+    /* Reset: cursor(mobile) */
+    cursor: default;
   }
   /* dnc-p */
-  .dnc-p {
-    position: relative;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-
-    grid-template-areas:
-      "dnc-p-title dnc-p-right-icon";
-
-    /* !!! */
-    border: none;
-  }
-  .dnc-p-title {
-    grid-area: dnc-p-title;
-    color: #FFFFFF;
-    font-weight: 400;
-    opacity: 0;
-    transition: opacity 300ms;
-  }
   .dnc-p-right-icon { /* ! hover */
-    grid-area: dnc-p-right-icon;
-    margin-left: 0rem;
-    border-top: 0.25rem solid #00000000;
-    border-bottom: 0.25rem solid #00000000;
+    /* Layout */
+    /* Reset: margin(mobile), border(mobile) */
+    margin: 0rem;
+    border-top: 0rem solid #00000000;
+    border-bottom: 0rem solid #00000000;
     border-left: 0rem solid #00000000;
+    /* Reset: transition(mobile) */
     transition:
-      border 300ms,
-      margin 300ms;
-    /* !!! */
-    position: static;
+      margin 300ms linear,
+      border 300ms linear,
+      opacity 300ms linear;
   }
-  .dnc-p-bottom-line { /* ! hover */
-    position: absolute;
-    top: 80%;
-    left: 20%;
+  .dnc-p-bottom-line {
+    /* Position */
+    top: 75%;
+    /* Layout */
     width: 0%;
-    height: 0.125rem;
-    background-color: #87CEEB;
-    border-radius: 0.0625rem; /* height \ 2 */
+    /* Visual */
+    /* Reset: opacity(mobile), transition(mobile) */
+    opacity: 1;
     transition: width 300ms;
   }
 }

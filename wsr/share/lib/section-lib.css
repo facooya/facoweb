@@ -3,6 +3,9 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+.section-root {
+  transition: margin 300ms;
+}
 /* = = = Progress Bar = = = */
 .progress-line {
   position: fixed;
@@ -22,7 +25,7 @@
   z-index:1;
 }
 #lpb { left: 0%; }
-#rpb { right: 0%; }
+#rpb { right: 0rem; transition: height 300ms linear, right 300ms ease; }
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 /* @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ */
 @media screen and (min-width: 768px) {
