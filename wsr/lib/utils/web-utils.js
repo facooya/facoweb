@@ -5,11 +5,12 @@
  */
 import {
   getActiveMode
-} from "./system-access-utils.js";
+} from "./system-utils.js";
 import {
   setupEventDNISNI,
   setupEventDNC,
-  setupEventSNC
+  setupEventSNC,
+  setupResize
 } from "./event-utils.js";
 
 function onLoad() {
@@ -28,6 +29,7 @@ function onLoad() {
 function onResize() {
   activeMode = getActiveMode();
   if (activeMode != prevMode) {
+    setupResize();
     setupEventDNC(0);
     //eventRemoveDNI();
     prevMode = activeMode;

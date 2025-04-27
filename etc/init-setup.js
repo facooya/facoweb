@@ -4,14 +4,14 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  getActivePage
-} from "../wsr/lib/utils/system-access-utils.js";
+  getActivePage,
+  getIdentify
+} from "../wsr/lib/utils/system-utils.js";
 import {
   setupCoreTBC,
-  //setupTBCDNC,
-  //setupTBCSNC
 } from "../wsr/lib/utils/gen-setup-utils.js";
 /*  */
+getIdentify();
 /* Page value */
 const ACTIVE_PAGE = getActivePage();
 /* ### Start of [Debugging] ### */
@@ -22,8 +22,6 @@ if (ACTIVE_PAGE > 0) {
 }
 /* ### End of [Debugging] ### */
 setupCoreTBC();
-//setupTBCDNC();
-//setupTBCSNC();
 /* DESCRIPTION
  * @[Value] {Const} (ACTIVE_PAGE) 1: Home, 2: Part, 3: Doc, -1: Fail, Else: Error
  */

@@ -1,0 +1,82 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* COMPONENT: part-cmp */
+#part-title {
+  /* flex-center */
+  grid-area: part-title;
+  height: 4rem;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  border-bottom: 0.5rem solid #333333;
+}
+#part-tab-container {
+  grid-area: part-tab-container;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1rem;
+}
+.part-tab-item {
+  /* flex-center */
+  height: 4rem;
+  padding: 0rem 2rem;
+
+  border-bottom: 0.25rem solid #999999;
+
+  color: #999999;
+  font-weight: normal;
+
+  cursor: pointer;
+}
+/* COMPONENT: chapter-cmp */
+.chapter-container {
+  grid-area: chapter-container;
+  margin: 0rem 2rem;
+  display: none;
+  grid-template-columns: 1fr;
+}
+.chapter-item {
+  padding: 1rem 0rem;
+  border-bottom: 0.125rem solid #333333;
+}
+.chapter-item-title {
+  padding: 0rem 0rem 0.5rem 0.5rem;
+
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.chapter-item-info {
+  padding: 0rem 0rem 0rem 1.5rem;
+  color: #333333;
+}
+@media (min-width: 768px) {
+  #part-title {
+    margin: 0rem 5rem;
+  }
+  #part-tab-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0rem 2rem;
+  }
+}
+@media (min-width: 1280px) {
+  #part-title {
+    margin: 0rem 10rem;
+  }
+  #part-tab-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .chapter-container {
+    /* grid-template-columns: 1fr 1fr; */
+    gap: 0rem 2rem;
+  }
+}
+/* DESCRIPTION
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

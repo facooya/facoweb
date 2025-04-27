@@ -1,0 +1,90 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.home-core-layout {
+  display: grid;
+  grid-template-areas:
+    "tbc tbc tbc"
+    "home home home"
+    "bbc bbc bbc";
+}
+.part-core-layout {
+  display: grid;
+  grid-template-areas:
+    "tbc tbc tbc"
+    "part part part"
+    "chapter chapter chapter"
+    "bbc bbc bbc";
+}
+.doc-core-layout {
+  display: grid;
+  grid-template-areas:
+    "tbc tbc tbc"
+    "doc doc doc"
+    "bbc bbc bbc";
+}
+/* Layout: TBC */
+.tbc-layout {
+  position: fixed;
+  width: 100%;
+  grid-area: tbc; /* Cascade: core-layout */
+  display: grid;
+  grid-template-columns: 4rem 1fr 4rem;
+  grid-template-rows: 4rem;
+    grid-template-areas:
+      "dni logo sni";
+  gap: 0rem 1rem;
+  background-color: #222222;
+  z-index: 10; /* Cascade: dev-nav-cmp */
+}
+/* Cascade: tbc-layout, dnc */
+#tbc-logo {
+  grid-area: logo;
+}
+#tbc-dni-container {
+  grid-area: dni;
+}
+#tbc-sni-container {
+  grid-area: sni;
+}
+/* Layout: DNC */
+#dev-nav-cmp {
+  grid-area: dnc;
+}
+/* Layout: BBC */
+.bbc-layout {
+  grid-area: bbc;
+}
+/* Cascade: bbc-layout */
+@media screen and (min-width: 768px) {
+  .tbc-layout {
+    grid-template-columns: 1fr 4rem;
+    grid-template-rows: 4rem 4.125rem;
+    grid-template-areas:
+      "logo sni"
+      "dnc dnc";
+  }
+  #tbc-dni-container {
+    display: none;
+  }
+}
+@media (min-width: 1280px) {
+  .tbc-layout {
+    grid-template-columns: 12rem 1fr 4rem;
+    grid-template-rows: 4rem;
+    grid-template-areas:
+      "logo dnc sni";
+  }
+  #tbc-dni-container {
+    display: none;
+  }
+}
+/* DESCRIPTION
+ * e.g., <body class="home-core-layout">...</body>
+ * e.g., <header class="tbc-layout">...</header>
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

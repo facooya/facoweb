@@ -2,15 +2,25 @@ FHWF: Filesystem Hierarchy Web Facooya.
 Version: 1.0
 
 /wsr: Web System Resources.
+
+/wsr/src: Source. (Page script)
+/wsr/lib: Library. (Library js)
+/wsr/utils: Utilities. (Urilities js)
+/wsr/local: Local. (Local js)
+lib -> utils -> local
+
 /wsr/share: Share.
 /wsr/share/doc: Document. (Copyright, Support)
+/wsr/share/lib: Library. (Library css, Required css file)
+/wsr/share/opt: Optional. (Optional css)
+/wsr/share/layout: Layout. (Layout css)
 
 /var: Variable.
-/var/lib: Library. (Core)
-/var/opt: Optional.
+/var/lib: Library. (Required variable)
+/var/opt: Optional. (Optional variable)
 
-/etc: Et Centera. (Configuration)
-/opt: Optional.
+/etc: Et Centera. (Initial setup, Configuration)
+/opt: Optional. (Class optional css, Text style css)
 
 DESCRIPTION
 Modified {

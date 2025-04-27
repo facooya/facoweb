@@ -1,0 +1,70 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+#tbc-logo-link {
+  /* container-link, flex-center */
+  width: 100%;
+  height: 100%;
+
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 2rem;
+
+  cursor: pointer;
+}
+#tbc-dni-container, #tbc-sni-container {
+  overflow-x: hidden;
+}
+#tbc-sni-bg {
+  margin: 0rem 1rem 0rem auto;
+}
+#tbc-dni-bg {
+  margin: 0rem 0rem 0rem 1rem;
+}
+#tbc-dni-bg, #tbc-sni-bg {
+  position: relative;
+  width: 3rem;
+  height: 2rem; /* Cascade => .tbc-*-sg { height, top } */
+  margin-top: 1rem;
+
+  cursor: pointer;
+}
+.tbc-dni-sg, .tbc-sni-sg {
+  position: absolute;
+  width: 100%;
+  height: 0.25rem; /* Cascade => { top } */
+
+  background: #FFFFFF;
+  border-radius: 0.125rem;
+
+  opacity: 1; /* Cascade => { transition: opacity } */
+  transform: rotate(0deg); /* Cascade => { transition: transform } */
+}
+/* Temporary */
+.tbc-dni-sg {
+  left: 0%;
+  transition: 
+    top 300ms,
+    left 300ms,
+    transform 300ms,
+    opacity 300ms;
+}
+.tbc-sni-sg {
+  right: 0%;
+  transition: 
+    top 300ms,
+    right 300ms,
+    transform 300ms,
+    opacity 300ms;
+}
+/* Cascade => .tbc-*-sg { transition: top } */
+.tbc-dni-sg:nth-child(1), .tbc-sni-sg:nth-child(1) { top: 0rem; }
+.tbc-dni-sg:nth-child(2), .tbc-sni-sg:nth-child(2) { top: 0.875rem; }
+.tbc-dni-sg:nth-child(3), .tbc-sni-sg:nth-child(3) { top: 1.75rem; }
+/* DESCRIPTION
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

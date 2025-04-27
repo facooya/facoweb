@@ -19,12 +19,20 @@ DESCRIPTION
 Modified {
 	FHS -> FHWF
 	/usr -> /wsr
+	/usr/lib -> /wsr/lib
+	/usr/local -> /wsr/local
+	/usr/src -> /wsr/src
+
 	/var -> /var
 		/var/lib -> /var/lib
 		/var/opt -> /var/opt
 	/etc -> /etc
 	/opt -> /opt
 }
+Added {
+	/wsr/utils
+}
+
 Directory names may be similar, but their functions can differ significantly.
 Reference FHWF: ./FHWF-1.0
 

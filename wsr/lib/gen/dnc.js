@@ -3,10 +3,12 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* !!! */
 import {
   genTBCNav
 } from "./tbc.js";
 
+/* &&& DATA: Developer Navigation Component &&& */
 class DataDNC {
   _DNC_CONTAINER_NAME_LIST = [
     "Menu 1",
@@ -28,7 +30,8 @@ class DataDNC {
     "Item 3-3"
   ];
   _MENU_4_ITEM_NAME_LIST = [
-    "Item 4-1"
+    "Item 4-1",
+    "Item 4-2"
   ];
   _MENU_5_ITEM_NAME_LIST = [
     "Item 5-1"
@@ -40,13 +43,12 @@ class DataDNC {
     this._MENU_4_ITEM_NAME_LIST,
     this._MENU_5_ITEM_NAME_LIST
   ];
-  //!!!!!! /content/programming/c/part.html, .../c/doc/tutorial/condition.html
   _MENU_1_ITEM_LINK_LIST = [
     "#item-1-1"
   ];
   _MENU_2_ITEM_LINK_LIST = [
     "#item-2-1",
-    "#item-2-2",
+    "#item-2-2"
   ];
   _MENU_3_ITEM_LINK_LIST = [
     "#item-3-1",
@@ -54,7 +56,8 @@ class DataDNC {
     "#item-3-3"
   ];
   _MENU_4_ITEM_LINK_LIST = [
-    "#item-4-1"
+    "#item-4-1",
+    "#item-4-2"
   ];
   _MENU_5_ITEM_LINK_LIST = [
     "#item-5-1"
@@ -67,6 +70,7 @@ class DataDNC {
     this._MENU_5_ITEM_LINK_LIST
   ];
 };
+/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
 
 function setupTBCDNC() {
   const _DD = new DataDNC();

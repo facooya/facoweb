@@ -2,10 +2,8 @@
  * SPDX-License-Identifier: Apache-2.0
  *
  * Copyright 2025 Facooya and Fanone Facooya
- *
- * Chapter
  */
-.layout-chapter{
+.chapter-layout {
   margin: 0rem 1rem;
   grid-area: chapter;
   display: grid;

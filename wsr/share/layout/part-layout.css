@@ -1,0 +1,38 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.part-layout {
+  grid-area: part;
+  margin: 4rem 1rem 2rem 1rem;
+  gap: 1rem;
+  background: #FFFFFF;
+  display: grid;
+  grid-template-areas:
+      "part-title"
+      "part-tab-container";
+}
+.chapter-layout {
+  margin: 0rem 1rem;
+  grid-area: chapter;
+  display: grid;
+  grid-template-areas:
+    "chapter-container";
+}
+@media (min-width: 768px) {
+  .part-layout {
+    margin: 8rem 1rem 2rem 1rem;
+  }
+}
+@media (min-width: 1280px) {
+  .part-layout {
+    margin: 4rem 1rem 2rem 1rem;
+  }
+}
+/* DESCRIPTION
+ * e.g., ?
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

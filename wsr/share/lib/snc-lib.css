@@ -1,0 +1,36 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+#sub-nav-cmp {
+  position: fixed;
+  top: 4rem;
+  bottom: 0rem;
+
+  overflow-y: auto;
+  background-color: #222222;
+  border-top: 0.125rem solid #FFFFFF;
+  
+  transition:
+    width 300ms,
+    right 300ms;
+}
+@media (max-width: 767px) {
+  #sub-nav-cmp {
+    width: 80%;
+    right: -80%;
+  }
+}
+@media (min-width: 768px) {
+  #sub-nav-cmp {
+    width: 25rem;
+    right: -25rem;
+  }
+}
+
+/* DESCRIPTION
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

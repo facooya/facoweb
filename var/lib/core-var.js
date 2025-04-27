@@ -7,8 +7,8 @@
 let activeMode = 0;
 let prevMode = 0;
 /* Value: isEnabled */
-let isOpenDNI = 0; /* isEnabledDNI */
-let isOpenSNI = 0;
+let isEnabledDNI = 0; /* isEnabledDNI */
+let isEnabledSNI = 0;
 /* Element: TBC */
 const TBC_DNI_CONTAINER = document.getElementById("tbc-dni-container");
 const TBC_SNI_CONTAINER = document.getElementById("tbc-sni-container");
@@ -19,6 +19,7 @@ const DNC_SUB_CONTAINER = document.getElementsByClassName("dnc-sub-container");
 /* Element: SNC */
 const SUB_NAV_CMP = document.getElementById("sub-nav-cmp");
 const SNC_CONTAINER = document.getElementsByClassName("snc-container");
+const SNC_SUB_CONTAINER = document.getElementsByClassName("snc-sub-container");
 /* Value: Active (Array) */
 let isActiveItemDNC = new Array(DNC_CONTAINER.length).fill(0);
 //let isActiveItemSNC = new Array(SNC_CONTAINER.length).fill(0);

@@ -7,26 +7,31 @@ import {
   genTBCNav
 } from "../../tbc.js";
 
+/* &&& DATA: Sub Navigation Component &&& */
 class DataSNC {
   _SNC_CONTAINER_NAME_LIST = [
-    "[V1.1.6A] Chapter 1",
-    "[V1.1.6A] Chapter 2",
-    "[V1.1.6A] Chapter 3"
+    "Chapter 1",
+    "Chapter 2",
+    "Chapter 3"
   ];
   _CN1_item_name_list = [
-    "[Chapter 1] Version 1.1.6 Alpha",
-    "[Chapter 1] Item 1-2",
-    "[Chapter 1] Item 1-3",
-    "[Chapter 1] Item 1-4",
-    "[Chapter 1] Item 1-5",
-    "[Chapter 1] Item 1-6",
-    "[Chapter 1] Item 1-7",
+    "Version 1.1.7 Alpha",
+    "Item 1-2",
+    "Item 1-3",
+    "Item 1-4",
+    "Item 1-5",
+    "Item 1-6",
+    "Item 1-7",
+    "Item 1-8",
+    "Item 1-9",
+    "Item 1-10",
+    "Item 1-11",
   ];
   _CN2_item_name_list = [
-    "[Chapter 2] Item 2-1"
+    "Item 2-1"
   ];
   _CN3_item_name_list = [
-    "[Chapter 3] Item 2-1"
+    "Item 2-1"
   ];
   _SNC_ITEM_NAME_LIST = [
     this._CN1_item_name_list,
@@ -34,6 +39,10 @@ class DataSNC {
     this._CN3_item_name_list
   ];
   _CN1_item_link_list = [
+    "../../../../../tmp/doc-page.html",
+    "../../../../../tmp/doc-page.html",
+    "../../../../../tmp/doc-page.html",
+    "../../../../../tmp/doc-page.html",
     "../../../../../tmp/doc-page.html",
     "../../../../../tmp/doc-page.html",
     "../../../../../tmp/doc-page.html",
@@ -54,6 +63,7 @@ class DataSNC {
     this._CN3_item_link_list
   ];
 };
+
 function setupTBCSNC() {
   const _DS = new DataSNC();
   const _PARENT = document.getElementById("sub-nav-cmp");
@@ -68,12 +78,11 @@ function setupTBCSNC() {
 
   logf(0, "wsr/lib/gen/snc/*/*-snc.js", "setupTBCSNC", "Done");
 }
+/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
+
 setupTBCSNC();
-/*export {
-  DataSNC
-};*/
+
 /* DESCRIPTION
- * TEST setupSNC();
  */
 /* INFORMATION
  * @[Author] {Facooya} (Founder)

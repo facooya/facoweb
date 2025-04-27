@@ -1,0 +1,35 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.snc-container {
+  height: 4rem;
+
+  display: block;
+  overflow: hidden;
+  border-bottom: solid 0.125rem #FFFFFF;
+
+  cursor: pointer;
+  transition: height 300ms;
+}
+.snc-container-title {
+  height: 4rem;
+  color: #FFFFFF;
+  font-size: 1.2rem;
+}
+.snc-sub-container {
+  display: flex;
+  flex-direction: column;
+}
+.snc-sub-item {
+  height: 4rem;
+  color: #FFFFFF;
+  border-top: dashed 0.125rem #AAAAAA;
+}
+
+/* DESCRIPTION
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */
