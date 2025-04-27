@@ -5,7 +5,7 @@
  */
 /* import {
   setupProgressBar
-} from "../../../v1.1.9a/wsr/lib/event-lib.js"; */
+} from "../../../v1.1.10a/wsr/lib/event-lib.js"; */
 // onLoad partSetup(); event-utils.js: _activeTab(event);
 function setupPartPage() {
   const PART_TAB_ITEM = document.getElementsByClassName("part-tab-item");

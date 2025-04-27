@@ -6,22 +6,32 @@
 import {
   enabledDni,
   enabledSni,
-  activeItemMobileDnc,
-  activeItemTabletDnc,
-  activeItemDesktopDnc,
-  inactiveItemDesktopDnc,
-  activeItemSnc,
+  //activeItemMobileDnc,
+  //activeItemTabletDnc,
+  //activeItemDesktopDnc,
+  //inactiveItemDesktopDnc,
+  handleTabletDncY,
+  handleDesktopDncY,
+
+  //activeItemSnc,
+  handleSncY,
   progressHandler,
-  activeDesktopDncP,
-  inactiveDesktopDncP
+
+  //activateDesktopDncP,
+  //deactivateDesktopDncP,
+  handleDesktopDncP,
+  
+  handleMobileDncY
+  //activeMobileDncY
 } from "../../wsr/utils/event-handler-utils.js";
 
 /* ===== onEventDniSni ===== */
 function onEventDniSni() {
-  const TBC_DNI_CONTAINER = document.getElementById("tbc-dni-container");
-  const TBC_SNI_CONTAINER = document.getElementById("tbc-sni-container");
-  TBC_DNI_CONTAINER.addEventListener("click", enabledDni);
-  TBC_SNI_CONTAINER.addEventListener("click", enabledSni);
+
+  const tpcDniY = document.querySelector(".tpc-dni-y");
+  const tpcSniY = document.querySelector(".tpc-sni-y");
+  tpcDniY.addEventListener("click", enabledDni);
+  tpcSniY.addEventListener("click", enabledSni);
 
   logf(0, "wsr/utils/event-utils.js", "onEventDniSni", "Done");
 }
@@ -37,37 +47,35 @@ function onEventDnc(isLoad, dncY) {
   if (!isLoad) {
     for (let i = 0; i < dncY.length; i++) {
       if (prevMode == 1) {
-        dncY[i].removeEventListener("click", activeItemMobileDnc);
+        dncY[i].removeEventListener("click", handleMobileDncY);
       } else if (prevMode == 2) {
-        dncY[i].removeEventListener("click", activeItemTabletDnc);
+        dncY[i].removeEventListener("click", handleTabletDncY);
       } else if (prevMode == 3) {
-        dncY[i].removeEventListener("mouseenter", activeItemDesktopDnc);
-        dncY[i].removeEventListener("mouseleave", inactiveItemDesktopDnc);
-      }
-    }
-    // !!!!!!!!!!!!!!!
-    if (prevMode == 3) {
-      for (let i = 0; i < dncP.length; i++) {
-        dncP[i].removeEventListener("mouseenter", activeDesktopDncP);
-        dncP[i].removeEventListener("mouseleave", inactiveDesktopDncP);
+        dncY[i].removeEventListener("mouseenter", handleDesktopDncY);
+        dncY[i].removeEventListener("mouseleave", handleDesktopDncY);
+
+        for (let i = 0; i < dncP.length; i++) {
+          dncP[i].removeEventListener("mouseenter", handleDesktopDncP);
+          dncP[i].removeEventListener("mouseleave", handleDesktopDncP);
+        }
       }
     }
   }
   /* Add Event */
   for (let i = 0; i < dncY.length; i++) {
     if (activeMode == 1) {
-      dncY[i].addEventListener("click", activeItemMobileDnc);
+      dncY[i].addEventListener("click", handleMobileDncY);
     } else if (activeMode == 2) {
-      dncY[i].addEventListener("click", activeItemTabletDnc);
+      dncY[i].addEventListener("click", handleTabletDncY);
     } else if (activeMode == 3) {
-      dncY[i].addEventListener("mouseenter", activeItemDesktopDnc);
-      dncY[i].addEventListener("mouseleave", inactiveItemDesktopDnc);
+      dncY[i].addEventListener("mouseenter", handleDesktopDncY);
+      dncY[i].addEventListener("mouseleave", handleDesktopDncY);
+
+      for (let i = 0; i < dncP.length; i++) {
+        dncP[i].addEventListener("mouseenter", handleDesktopDncP);
+        dncP[i].addEventListener("mouseleave", handleDesktopDncP);
+      }
     }
-  }
-  //!!!!!!!!!!!!!!!!!!!
-  for (let i = 0; i < dncP.length; i++) {
-    dncP[i].addEventListener("mouseenter", activeDesktopDncP);
-    dncP[i].addEventListener("mouseleave", inactiveDesktopDncP);
   }
 
   logf(0, "wsr/utils/event-utils.js", "onEventDnc", activeMode + ".Done");
@@ -80,8 +88,8 @@ function _helpTemporary(repeat, size) {
   }
   return str;
 }
-function onEventDncOld(isLoad, dncContainer) {
-  /* Remove Event */
+/*function onEventDncOld(isLoad, dncContainer) { !!!!! DELETE v1.1.11a 
+   Remove Event 
   if (!isLoad) {
     for (let i = 0; i < dncContainer.length; i++) {
       if (prevMode == 1) {
@@ -94,7 +102,7 @@ function onEventDncOld(isLoad, dncContainer) {
       }
     }
   }
-  /* Add Event */
+   Add Event 
   for (let i = 0; i < dncContainer.length; i++) {
     if (activeMode == 1) {
       dncContainer[i].addEventListener("click", activeItemMobileDnc);
@@ -107,7 +115,7 @@ function onEventDncOld(isLoad, dncContainer) {
   }
 
   logf(0, "wsr/utils/event-utils.js", "onEventDnc", activeMode + ".Done");
-}
+}*/
 /* ===== onEventSnc ===== */
 function onEventSnc(sncY) {
   const sncE = document.getElementsByClassName("snc-e");
@@ -116,18 +124,19 @@ function onEventSnc(sncY) {
     sncE[i].style.gridTemplateRows = _helpTemporary(classSncP.length, 0);
   }
   for (let i = 0; i < sncY.length; i++) {
-    sncY[i].addEventListener("click", activeItemSnc);
+    sncY[i].addEventListener("click", handleSncY);
   }
   logf(0, "wsr/utils/event-utils.js", "onEventSnc", "Done");
 }
-function onEventSncOld(sncContainer) {
+/*
+function onEventSncOld(sncContainer) { !!!!! DELETE v1.1.11a 
   
   for (let i = 0; i < sncContainer.length; i++) {
     sncContainer[i].addEventListener("click", activeItemSnc);
   }
 
   logf(0, "wsr/utils/event-utils.js", "onEventSnc", "Done");
-}
+}*/
 /* ===== onEventProgress ===== */
 function onEventProgress() {
   window.addEventListener("scroll", progressHandler);

@@ -1,0 +1,118 @@
+FWDS {
+  Notice(FS, FCS, FWDS) {
+    FS {
+      FS: Facooya Standard.
+    }
+    FCS {
+      FCS: Facooya Code Standard.
+    }
+    FWDS {
+      FWDS: Facooya Web Development Standard.
+    }
+    Note {
+      The "FWDS" complies with the "FS.Hierarchy, FS.Sequence, FCS.Web", 
+      but exceptions may exist.
+
+      The "Maintenance" ecompasses consistency, management, ...
+    }
+  }
+  Selector(HTML, CSS, JS) {
+    HTML {
+      Recommend {
+        <div class="class-y">This is class</div>
+      }
+      Alternative {
+        <div id="id-y" class="class-y">This is id & class</div>
+      }
+      Note {
+        Use the "class" instead of the "id".
+        But if necessary, use of the "id".
+        Necessary case: e.g., scroll-code, secure-code
+      }
+    }
+    CSS {
+      Mandatory {
+        .class-y { attribute: value; }
+        .class-y .class-z { attribute: value; }
+      }
+      Note {
+        Use the "class" in the "CSS".
+      }
+    }
+    JS {
+      Recommend {
+        querySelector(".class-root");
+        querySelectorAll(".class-y");
+      }
+      Alternative {
+        getElementById("id-root");
+        getElementsByClassName("class-y");
+      }
+      Note {
+        Use the "querySelector" format instead of the "getElement" format.
+
+        Prioritize the maintenance advantage of the "querySelector" format
+        over the performance advantage of the "getElement" format.
+      }
+    }
+  }
+  Element(HTML, CSS) {
+    Mandatory {
+      <div class="elem-after"></div>
+      .elem::after -> .elem-after
+    }
+    Note {
+      Use the "element" instead of the "pseudo-element".
+      Because "JS" cannot access the "pseudo-element".
+      Even if "JS" does not access the "pseudo-element",
+      do not use the "pseudo-element" for the maintenance.
+
+      Prioritize the maintenance advantage of the "element" 
+      over the performance advantage of the "pseudo-element".
+    }
+  }
+  Grid(CSS) {
+    Mandatory {
+      display: flex; -> display: grid;
+    }
+    Recommend {
+      Box model -> Grid model
+      e.g.,
+      width -> grid-template-columns,
+      height -> grid-auto-rows,
+      margin -> gap
+    }
+    Alternative {
+      Grid model -> Box model
+      e.g., 
+      grid-auto-columns -> width,
+      grid-template-rows -> height,
+      gap -> padding
+    }
+    Note {
+      Use the "grid layout" instead of the "flexbox".
+      Use the "grid model" instead of the "box model" 
+      for the maintenance, when feasible.
+      
+      Prioritize the maintenance advantage of the "grid layout" 
+      over the performance advantage of the "flexbox".
+    }
+  }
+  Event(CSS, JS) {
+    Mandatory {
+      :hover -> addEventListener("mouseenter", handle);
+      :hover -> addEventListener("mouseleave", handle);
+    }
+    Note {
+      Use the "eventListener" format instead of the ":hover".
+
+      Prioritize the maintenance advantage of the "eventListener"
+      over the performance advantage of the ":hover".
+      But the ":hover" have significant performance advantage.
+    }
+  }
+} /* END: FWDS */
+
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

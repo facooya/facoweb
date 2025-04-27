@@ -1,0 +1,59 @@
+FCS {
+  Notice(FCS) {
+    FCS {
+      FCS: Facooya Code Standard.
+    }
+  }
+  /* = = = = = */
+  High(C, CPP, CS, Java, Kotlin, Python) {
+    C {
+
+    }
+    CPP {
+
+    }
+    CS {
+
+    }
+    Java {
+
+    }
+    Kotlin {
+
+    }
+    Python {
+      
+    }
+  }
+  /* = = = = = */
+  Low(GAS, Marchine) {
+    GAS {
+
+    }
+    Marchine {
+
+    }
+  }
+  /* = = = = = */
+  Web(HTML, CSS, JS, PHP, SQL) {
+    HTML {
+
+    }
+    CSS {
+
+    }
+    JS {
+
+    }
+    PHP {
+
+    }
+    SQL {
+      
+    }
+  }
+} /* End: FCS */
+/* $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ */
+/* INFORAMTION
+ * @[Author] {Facooya} (Founder)
+ */

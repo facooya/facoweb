@@ -38,23 +38,22 @@
   /* Positioning */
   grid-area: tpc; /* Cascade: *-core-layout */
   position: fixed;
-  z-index: 10; /* Delete !!! */
+  z-index: 10; /* !!! section < z-index */
   /* Grid */
   display: grid;
   grid-template-columns: 4rem 1fr 4rem;
   grid-template-rows: 4rem;
   gap: 0rem 1rem;
   grid-template-areas:
-    "dni logo sni";
+    "dni fli sni";
   /* Box Model */
   width: 100%;
 }
 /* - - - CASCADE: tbc-layout - - - */
-#tbc-logo { grid-area: logo; }
-#tbc-dni-container { grid-area: dni; }
-#tbc-sni-container { grid-area: sni; }
-.dnc-root { grid-area: dnc; }
-/* - - - Area: bbc - - - !!!! bbc-lib.css */
+.tpc-fli-y { grid-area: fli; }
+.tpc-dni-y { grid-area: dni; }
+.tpc-sni-y { grid-area: sni; }
+/* - - - Area: bpc - - - !!!! bpc-lib.css */
 .bpc-layout {
   /* Positioning */
   grid-area: bpc;
@@ -75,11 +74,11 @@
     grid-template-columns: 1fr 4rem;
     grid-template-rows: 4rem 4.125rem;
     grid-template-areas:
-      "logo sni"
+      "fli sni"
       ". .";
   }
 
-  #tbc-dni-container { display: none; }
+  .tpc-dni-y { display: none; }
 }
 @media (min-width: 1280px) {
   .core-layout {
@@ -89,7 +88,7 @@
     grid-template-columns: 12rem 1fr 4rem;
     grid-template-rows: 4rem;
     grid-template-areas:
-      "logo . sni";
+      "fli . sni";
     /* !!! auto Add = sub-nav-title . = dnc-root*/
     /*grid-template-columns: 12rem 1fr 4rem;*/
   }
@@ -98,14 +97,13 @@
 /* @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ */
 /* $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ */
 /* DESCRIPTION
- * &{/wsr/share/lib/tbc-lib.css} (.tbc-layout, #tbc-logo, #tbc-*-container)
- * &{/wsr/share/lib/dnc-lib.css} (#dev-nav-cmp)
+ * &{/wsr/share/lib/tpc-lib.css} (.tpc-layout, .tpc-fli-y, .tpc-*-z)
+ * &{/wsr/share/lib/dnc-lib.css} (.dnc-root)
  *
  * e.g., <body class="home-core-layout">...</body>
- * e.g., <header class="tbc-layout">...</header>
- * e.g., *-core-layout -> tbc-layout, section-*-layout, bbc-layout
- *   tbc-layout -> tbc-logo, dni-container, sni-container, dev-nav-cmp
- *     dev-nav-cmp, sub-nav-cmp -> flex
+ * e.g., <header class="tpc-layout">...</header>
+ * e.g., *-core-layout -> tpc-layout, section-*-layout, bbc-layout
+ *   tpc-layout -> tpc-fli-y, tpc-dni-y, tpc-sni-y
  */
 /* INFORMATION
  * @[Author] {Facooya} (Founder)

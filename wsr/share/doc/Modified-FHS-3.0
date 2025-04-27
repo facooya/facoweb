@@ -1,8 +1,8 @@
 FHS: Filesystem Hierarchy Standard.
-FHWF: Filesystem Hierarchy Web Facooya.
+FWFHS: Facooya Web Filesystem Hierarchy Standard.
 
-FHWF is a modification of FHS.
-FHWF can be used freely without citing sources,
+FWFHS is a modification of FHS.
+FWFHS can be used freely without citing sources,
 but since it is based on FHS,
 please refer to the link below for detailed copyright information.
 Source: https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
@@ -17,24 +17,27 @@ Source: https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
 
 DESCRIPTION
 Modified {
-	FHS -> FHWF
-	/usr -> /wsr
-	/usr/lib -> /wsr/lib
-	/usr/local -> /wsr/local
-	/usr/src -> /wsr/src
-
-	/var -> /var
-		/var/lib -> /var/lib
-		/var/opt -> /var/opt
-	/etc -> /etc
-	/opt -> /opt
-}
-Added {
-	/wsr/utils
+	FHS -> FWFHS
+		/usr/ -> /wsr/
+			/usr/src/ -> /wsr/src/
+			/usr/lib/ -> /wsr/lib/
+			/usr/local/ -> /wsr/local/
+			+/wsr/gen/
+			+/wsr/utils/
+			/usr/share/ -> /wsr/share/
+				/usr/share/doc/ -> /wsr/share/doc/
+				+/wsr/lib/
+				+/wsr/opt/
+				+/wsr/layout/
+		/var/ -> /var/
+			/var/lib/ -> /var/lib/
+			/var/opt/ -> /var/opt/
+		/etc/ -> /etc/
+		/opt/ -> /opt/
 }
 
 Directory names may be similar, but their functions can differ significantly.
-Reference FHWF: ./FHWF-1.0
+Reference: FWFHS, "wsr/share/doc/FWFHS"
 
 COPYRIGHT
 LSB Workgroup, The Linux Foundation

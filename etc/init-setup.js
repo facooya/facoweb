@@ -8,7 +8,7 @@ import {
   getIdentify
 } from "../wsr/lib/sys-lib.js";
 import {
-  setupCoreTBC,
+  setupCoreTpc,
 } from "../wsr/lib/gen-lib.js";
 /*  */
 getIdentify();
@@ -21,7 +21,7 @@ if (ACTIVE_PAGE > 0) {
   logf(-1, "etc/init-setup.js", "ACTIVE_PAGE", ACTIVE_PAGE);
 }
 /* ### End of [Debugging] ### */
-setupCoreTBC();
+setupCoreTpc();
 /* DESCRIPTION
  * @[Value] {Const} (ACTIVE_PAGE) 1: Home, 2: Part, 3: Doc, -1: Fail, Else: Error
  */

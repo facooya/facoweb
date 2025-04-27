@@ -6,13 +6,14 @@
 import {
   transformDni,
   transformSni,
-  autoInactiveTabletDnc
+  initialIndexDncE,
+  calcGridTemplateData
 } from "../../wsr/local/event-handler-local.js";
 
 /* ===== DNI ===== */
-/* ----- Mobile ----- */
+/* ----- Mobile ----- */ /* !!! handleDniY */
 function enabledDni() {
-  transformDni();
+  transformDni(); /* !!!! transformDniZettaLine */
   //const DEV_NAV_CMP = document.getElementById("dev-nav-cmp");
   const dncRoot = document.querySelector(".dnc-root");
   if (!isEnabledDni) { /* Enabling */
@@ -47,67 +48,157 @@ function enabledSni() {
 }
 /* ===== DNC ===== */
 /* ----- Mobile ----- */
-function activeItemMobileDnc(event) {
+function handleMobileDncY(event) {
+  const eCurrentTarget = event.currentTarget;
+  const dncExaES = eCurrentTarget.querySelector(".dnc-e");
+  const dncPetaTitleES = dncExaES.getElementsByClassName("dnc-p-title");
+
+  if (!eCurrentTarget.isActive) { /* Activate */
+    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaTitleES, 4);
+    for (let i = 0; i < dncPetaTitleES.length; i++) {
+      dncPetaTitleES[i].style.opacity = "1";
+    }
+    eCurrentTarget.isActive = 1;
+  } else { /* Deactivate */
+    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaTitleES, 0);
+    for (let i = 0; i < dncPetaTitleES.length; i++) {
+      dncPetaTitleES[i].style.opacity = "0";
+    }
+    eCurrentTarget.isActive = 0;
+  }
+}
+/*function activeMobileDncY(event) { !!!!! DELETE v1.1.11a 
+  const ect = event.currentTarget;
+  const dncE = document.getElementsByClassName("dnc-e");
+  const currentDncP = dncE[ect.index].getElementsByClassName("dnc-p");
+
+  if (!ect.isActive) { /* Activating 
+    dncE[ect.index].style.gridTemplateRows = calcGridTemplateData(currentDncP, 4);
+    ect.isActive = 1;
+  } else { /* Inactivating 
+    dncE[ect.index].style.gridTemplateRows = calcGridTemplateData(currentDncP, 0);
+    ect.isActive = 0;
+  }
+}*/
+/*function activeItemMobileDnc(event) { !!!!! DELETE v1.1.11a 
   const ect = event.currentTarget;
   const DNC_SUB_CONTAINER = document.getElementsByClassName("dnc-sub-container");
 
   const count = DNC_SUB_CONTAINER[ect.index].querySelectorAll(".dnc-sub-item");
 
-  if (!ect.isActive) { /* Activating */
+  if (!ect.isActive) { /* Activating 
     //const dncSubItem = ect.querySelectorAll(".dnc-sub-item");
     //const heightResult = 4.125 * (dncSubItem.length) -0.125;
     //DNC_SUB_CONTAINER[ect.index].style.height = heightResult + "rem";
     DNC_SUB_CONTAINER[ect.index].style.gridTemplateRows = _sncHelpTemporary(count.length, 4);
     ect.isActive = 1;
-  } else { /* Inactivating */
+  } else { /* Inactivating 
     //DNC_SUB_CONTAINER[ect.index].style.height = "0rem";
     DNC_SUB_CONTAINER[ect.index].style.gridTemplateRows = _sncHelpTemporary(count.length, 0);
     ect.isActive = 0;
   }
-}
+}*/
 /* ----- Tablet ----- */
-function activeItemTabletDnc(event) {
+function handleTabletDncY(event) {
+  const eCurrentTarget = event.currentTarget;
+  const eIndex = eCurrentTarget.index;
+
+  const dncExaES = eCurrentTarget.querySelector(".dnc-e");
+  const dncPetaES = dncExaES.getElementsByClassName("dnc-p-title");
+
+  if (!eCurrentTarget.isActive) { /* Activate */
+    initialIndexDncE(eIndex);
+    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaES, 4);
+    dncExaES.style.width = "18rem";
+    if (eIndex == 0) { /* dnc-y[0] Overflow Shield */
+      dncExaES.style.left = "0%";
+    } else if (eIndex == 4) { /* dnc-y[4] Overflow Shield */
+      dncExaES.style.right = "0%";
+    }
+    for (let i = 0; i < dncPetaES.length; i++) {
+      dncPetaES[i].style.opacity = "1";
+    }
+    eCurrentTarget.isActive = 1;
+  } else { /* Deactivate */
+    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaES, 0);
+    dncExaES.style.width = "10rem";
+    for (let i = 0; i < dncPetaES.length; i++) {
+      dncPetaES[i].style.opacity = "0";
+    }
+    eCurrentTarget.isActive = 0;
+  }
+}
+/*
+function activeItemTabletDnc(event) { !!!!! DELETE v1.1.11a 
   const ect = event.currentTarget;
   const DNC_CONTAINER = document.getElementsByClassName("dnc-container");
   const DNC_SUB_CONTAINER = document.getElementsByClassName("dnc-sub-container");
   autoInactiveTabletDnc(ect, DNC_CONTAINER, DNC_SUB_CONTAINER);
 
-  if (!ect.isActive) { /* Activating */
+  if (!ect.isActive) { /* Activating 
     const dncSubItem = ect.querySelectorAll(".dnc-sub-item");
     const heightResult = 4 * dncSubItem.length;
     DNC_SUB_CONTAINER[ect.index].style.width = "18rem";
     DNC_SUB_CONTAINER[ect.index].style.height = heightResult + "rem";
-    /* Overflow Shield */
+    /* Overflow Shield 
     if (ect.index == 0) {
       DNC_SUB_CONTAINER[ect.index].style.left = "0%";
     } else if (ect.index == 4) {
       DNC_SUB_CONTAINER[ect.index].style.right = "0%";
     }
     ect.isActive = 1;
-  } else { /* Inactivating */
+  } else { /* Inactivating 
     DNC_SUB_CONTAINER[ect.index].style.width = "10rem";
     DNC_SUB_CONTAINER[ect.index].style.height = "0rem";
     ect.isActive = 0;
   }
+}*/
+/* ----- Desktop ----- */
+function handleDesktopDncY(event) {
+  /* Event */
+  const eType = event.type;
+  const eCurrentTarget = event.currentTarget;
+  /* const eIndex = eCurrentTarget.index; !!!!! */
+  /* Dnc Z */
+  const dncZettaTitleZS = eCurrentTarget.querySelector(".dnc-z-title");
+  const dncZettaBottomLineZS = eCurrentTarget.querySelector(".dnc-z-bottom-line");
+  /* Dnc E, P */
+  const dncExaES = eCurrentTarget.querySelector(".dnc-e");
+  const dncPetaES = eCurrentTarget.getElementsByClassName("dnc-p");
+  const dncPetaTitleES = eCurrentTarget.getElementsByClassName("dnc-p-title");
+
+  if (eType === "mouseenter") {
+    dncZettaTitleZS.style.fontWeight = "700";
+    dncZettaBottomLineZS.style.left = "10%";
+    dncZettaBottomLineZS.style.width = "80%";
+    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaES, 4);
+    dncExaES.style.width = "20rem";
+    for (let i = 0; i < dncPetaTitleES.length; i++) {
+      dncPetaTitleES[i].style.opacity = "1";
+    }
+  } else if (eType === "mouseleave") {
+    dncZettaTitleZS.style.fontWeight = "400";
+    dncZettaBottomLineZS.style.left = "50%";
+    dncZettaBottomLineZS.style.width = "0%";
+    dncExaES.style.gridTemplateRows = calcGridTemplateData(dncPetaES, 0);
+    dncExaES.style.width = "10rem";
+    for (let i = 0; i < dncPetaTitleES.length; i++) {
+      dncPetaTitleES[i].style.opacity = "0";
+    }
+  }
 }
-/* ----- Desktop ----- !!!! activeDestopDncY(event) */
-function activeItemDesktopDnc(event) {
+/*function activeItemDesktopDnc(event) { !!!!! DELETE v1.1.11a 
   const ect = event.currentTarget; // dnc-y
-  /*const DNC_SUB_CONTAINER = document.getElementsByClassName("dnc-sub-container");
-  const dncSubItem = ect.querySelectorAll(".dnc-sub-item");
-  const heightResult = 4 * dncSubItem.length;
-  DNC_SUB_CONTAINER[ect.index].style.width = "18rem";
-  DNC_SUB_CONTAINER[ect.index].style.height = heightResult + "rem";*/
   const dncE = document.getElementsByClassName("dnc-e");
   const ectDncP = ect.getElementsByClassName("dnc-p");
-  /* dnc-z-title */
+  /* dnc-z-title 
   const currentDncZettaTitle = ect.querySelector(".dnc-z-title");
   currentDncZettaTitle.style.fontWeight = "700";
-  /* dnc-z-bottom-line */
+  /* dnc-z-bottom-line 
   const currentDncZettaBottomLine = ect.querySelector(".dnc-z-bottom-line");
   currentDncZettaBottomLine.style.left = "10%";
   currentDncZettaBottomLine.style.width = "80%";
-  /* dnc-p-title */
+  /* dnc-p-title 
   const ectDncPetaTitle = ect.getElementsByClassName("dnc-p-title");
   for (let i = 0; i < ectDncPetaTitle.length; i++) {
     ectDncPetaTitle[i].style.opacity = "1";
@@ -116,11 +207,8 @@ function activeItemDesktopDnc(event) {
   dncE[ect.index].style.gridTemplateRows = _sncHelpTemporary(ectDncP.length, 4);
   dncE[ect.index].style.width = "20rem"; // 20rem = variable
 }
-function inactiveItemDesktopDnc(event) {
+function inactiveItemDesktopDnc(event) { !!!!! DELETE v1.1.11a 
   const ect = event.currentTarget; // dnc-y
-  /*const DNC_SUB_CONTAINER = document.getElementsByClassName("dnc-sub-container");
-  DNC_SUB_CONTAINER[ect.index].style.width = "10rem";
-  DNC_SUB_CONTAINER[ect.index].style.height = "0rem";*/
   const dncE = document.getElementsByClassName("dnc-e");
   const ectDncP = ect.getElementsByClassName("dnc-p");
 
@@ -135,9 +223,27 @@ function inactiveItemDesktopDnc(event) {
 
   dncE[ect.index].style.gridTemplateRows = _sncHelpTemporary(ectDncP.length, 0);
   dncE[ect.index].style.width = "10rem"; // 10rem = variable
-}
+}*/
+function handleDesktopDncP(event) {
+  const eType = event.type;
+  const eCurrentTarget = event.currentTarget;
+  const dncPetaTitlePS = eCurrentTarget.querySelector(".dnc-p-title");
+  const dncPetaRightIconPS = eCurrentTarget.querySelector(".dnc-p-right-icon");
+  const dncPetaBottomLinePS = eCurrentTarget.querySelector(".dnc-p-bottom-line");
 
-function activeDesktopDncP(event) {
+  if (eType === "mouseenter") {
+    dncPetaTitlePS.style.fontWeight = "700";
+    dncPetaRightIconPS.style.margin = "0rem 0rem 0rem 1rem";
+    dncPetaRightIconPS.style.borderLeft = "0.5rem solid #FFFFFF";
+    dncPetaBottomLinePS.style.width = "60%";
+  } else if (eType === "mouseleave") {
+    dncPetaTitlePS.style.fontWeight = "400";
+    dncPetaRightIconPS.style.margin = "0rem";
+    dncPetaRightIconPS.style.borderLeft = "0rem solid #00000000";
+    dncPetaBottomLinePS.style.width = "0%";
+  }
+}
+/*function activateDesktopDncP(event) { !!!!! DELETE v1.1.11a 
   const ect = event.currentTarget;
   const currentDncPetaTitle = ect.querySelector(".dnc-p-title");
   const currentDncPetaRightIcon = ect.querySelector(".dnc-p-right-icon");
@@ -146,13 +252,11 @@ function activeDesktopDncP(event) {
   currentDncPetaTitle.style.fontWeight = "700";
 
   currentDncPetaRightIcon.style.margin = "0rem 0rem 0rem 1rem";
-  /*currentDncPetaRightIcon.style.borderTop = "0.25rem solid #0000000000";
-  currentDncPetaRightIcon.style.borderBottom = "0.25rem solid #0000000000";*/
   currentDncPetaRightIcon.style.borderLeft = "0.5rem solid #FFFFFF";
 
   currentDncPetaBottomLine.style.width = "60%";
 }
-function inactiveDesktopDncP(event) {
+function deactivateDesktopDncP(event) { !!!!! DELETE v1.1.11a 
   const ect = event.currentTarget;
   const currentDncPetaTitle = ect.querySelector(".dnc-p-title");
   const currentDncPetaRightIcon = ect.querySelector(".dnc-p-right-icon");
@@ -161,14 +265,8 @@ function inactiveDesktopDncP(event) {
   currentDncPetaTitle.style.fontWeight = "";
   currentDncPetaRightIcon.style.cssText = "";
   currentDncPetaBottomLine.style.cssText = "";
-  /*currentDncPetaTitle.style.fontWeight = "400";
-
-  currentDncPetaRightIcon.style.margin = "0rem 0rem 0rem 0rem";
-  currentDncPetaRightIcon.style.borderTop = "0.25rem solid #0000000000";
-  currentDncPetaRightIcon.style.borderBottom = "0.25rem solid #0000000000";
-  currentDncPetaRightIcon.style.borderLeft = "0.5rem solid #FFFFFF";*/
-}
-/*function activeItemDesktopDnc(event) {
+}*/
+/*function activeItemDesktopDnc(event) { !!!!! DELETE v1.1.11a 
   const ect = event.currentTarget;
   const DNC_SUB_CONTAINER = document.getElementsByClassName("dnc-sub-container");
   const dncSubItem = ect.querySelectorAll(".dnc-sub-item");
@@ -176,37 +274,49 @@ function inactiveDesktopDncP(event) {
   DNC_SUB_CONTAINER[ect.index].style.width = "18rem";
   DNC_SUB_CONTAINER[ect.index].style.height = heightResult + "rem";
 }
-function inactiveItemDesktopDnc(event) {
+function inactiveItemDesktopDnc(event) { !!!!! DELETE v1.1.11a 
   const ect = event.currentTarget;
   const DNC_SUB_CONTAINER = document.getElementsByClassName("dnc-sub-container");
   DNC_SUB_CONTAINER[ect.index].style.width = "10rem";
   DNC_SUB_CONTAINER[ect.index].style.height = "0rem";
 }*/
 /* ===== SNC ===== */
-function activeItemSnc(event) { /* !!! Refrash bug: add initial: gridTemplateRows: 0rem 0rem ...;*/
+/*function activeItemSnc(event) {
   const ect = event.currentTarget;
   const sncE = document.getElementsByClassName("snc-e");
 
   const localSncP = sncE[ect.index].getElementsByClassName("snc-p");
 
-  if (!ect.isActive) { /* Activating */
+  if (!ect.isActive) { /* Activating 
     //const sncSubItem = ect.querySelectorAll(".snc-sub-item");
     //const heightResult = 4.125 * (sncSubItem.length) -0.125;
     //SNC_SUB_CONTAINER[ect.index].style.height = heightResult + "rem";
-    sncE[ect.index].style.gridTemplateRows = _sncHelpTemporary(localSncP.length, 4);
+    sncE[ect.index].style.gridTemplateRows = calcGridTemplateData(localSncP, 4);
     ect.isActive = 1;
-  } else { /* Inactivating */
+  } else { /* Inactivating 
     //SNC_SUB_CONTAINER[ect.index].style.height = "0rem";
-    sncE[ect.index].style.gridTemplateRows = _sncHelpTemporary(localSncP.length, 0);
+    sncE[ect.index].style.gridTemplateRows = calcGridTemplateData(localSncP, 0);
     ect.isActive = 0;
   }
-}
-function _sncHelpTemporary(repeat, size) {
-  let str = "";
-  for (let i = 0; i < repeat; i++) {
-    str += size + "rem ";
+}*/
+function handleSncY(event) {
+  const eCurrentTarget = event.currentTarget;
+  const sncExaES = eCurrentTarget.querySelector(".snc-e");
+  const sncPetaTitleES = sncExaES.getElementsByClassName("snc-p-title");
+
+  if (!eCurrentTarget.isActive) { /* Activate */
+  sncExaES.style.gridTemplateRows = calcGridTemplateData(sncPetaTitleES, 4);
+    for (let i = 0; i < sncPetaTitleES.length; i++) {
+      sncPetaTitleES[i].style.opacity = "1";
+    }
+    eCurrentTarget.isActive = 1;
+  } else { /* Deactivate */
+  sncExaES.style.gridTemplateRows = calcGridTemplateData(sncPetaTitleES, 0);
+    for (let i = 0; i < sncPetaTitleES.length; i++) {
+      sncPetaTitleES[i].style.opacity = "0";
+    }
+    eCurrentTarget.isActive = 0;
   }
-  return str;
 }
 /* ===== Progress ===== */
 function progressHandler() {
@@ -225,14 +335,22 @@ function progressHandler() {
 export {
   enabledDni,
   enabledSni,
-  activeItemMobileDnc,
-  activeItemTabletDnc,
-  activeItemDesktopDnc,
-  inactiveItemDesktopDnc,
-  activeItemSnc,
+  //activeItemMobileDnc,
+  //activeItemTabletDnc,
+  //activeItemDesktopDnc,
+  //inactiveItemDesktopDnc,
+  handleTabletDncY,
+
+  handleDesktopDncY,
+  handleDesktopDncP,
+
+  //activeItemSnc,
   progressHandler,
-  activeDesktopDncP,
-  inactiveDesktopDncP
+  //activateDesktopDncP,
+  //deactivateDesktopDncP,
+  //activeMobileDncY
+  handleMobileDncY,
+  handleSncY
 };
 /* DESCRIPTION
  * e.g., progressHandler();

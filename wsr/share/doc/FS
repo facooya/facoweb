@@ -1,0 +1,57 @@
+FS {
+  Notice(FS) {
+    FS {
+      FS: Facooya Standard.
+    }
+  }
+  /* = = = = = */
+  Hierarchy {
+    Mandatory {
+      Root => Yotta => Zetta => Exa => Peta => Tera
+        => Giga => Mega => Kilo => "Priventive";
+    }
+    Alternative {
+      Alternative = "Mandatory" + "Byte"; /* "Byte" <=> "Hierarchy" */
+      RootByte => YottaByte => ZettaByte => ExaByte => PetaByte
+        => TeraByte => GigaByte => MegaByte => KiloByte => "Priventive";
+    }
+    Priventive {
+      Mandatory: ... => Kilo => YottaYotta => YottaZetta => YottaExa => ...
+        => YottaKilo => ZettaYotta => ZettaZetta => ...
+        => KiloKilo => YottaYottaYotta => YottaYottaZetta => ...;
+      Alternative: ... => KiloByte => YottaYottaByte => YottaZettaByte => ...;
+    }
+    Note {
+      Mandatory.Abbreviation: e.g., R(Root), YY(YottaYotta), z(Zetta), e(Exa);
+      Alternative.Abbreviation: e.g., RB(RootByte), zzb(ZettaZettaByte);
+
+      Mandatory.Variable: e.g., objectY, objectYY, objectZB, objectExa,
+        objectExaValue, objectPetaByteValue, objectPetaByteValue;
+    }
+  }
+  /* = = = = = */
+  Sequence {
+    Mandatory {
+      Mandatory = "FS.Hierarchy.Mandatory" + "Sequence";
+      RootSequence => YottaSequence => ZettaSequence => ExaSequence
+        => PetaSequence => TeraSequence => GigaSequence => MegaSequence
+        => KiloSequence => "Priventive";
+    }
+    Priventive {
+      Priventive = "FS.Hierarchy.Priventive:Mandatory" + "Sequence";
+      Mandatory: ... => KiloSequence => YottaYottaSequence => YottaZettaSequence
+         => ... => YottaKiloSequence => ZettaYottaSequence => ...;
+    }
+    Note {
+      Mandatory.Abbreviation: e.g., RS(RootSequence), ys(YottaSequence);
+
+      Mandatory.Variable: e.g., objectRS, objectYottaSequence,
+        objectYottaYS(object + Yotta: "FS.Hierarchy" + YS: "FS.Sequence"),
+        objectYottaVlaueRS, objectVlaueES; 
+    }
+  }
+} /* End: FS */
+/* $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */

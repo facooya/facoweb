@@ -3,5 +3,7 @@
 *.sh
 *.php
 
+Makefile
+
 !.gitignore
 !.gitattributes
