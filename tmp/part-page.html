@@ -15,6 +15,7 @@
     <link href="./../wsr/share/lib/tbc-lib.css" rel="stylesheet">
     <link href="./../wsr/share/lib/dnc-lib.css" rel="stylesheet">
     <link href="./../wsr/share/lib/snc-lib.css" rel="stylesheet">
+    <link href="./../wsr/share/lib/section-lib.css" rel="stylesheet">
     <!-- /wsr/share/opt/ -->
     <link href="./../wsr/share/opt/snc-opt.css" rel="stylesheet">
     <link href="./../wsr/share/opt/part-opt.css" rel="stylesheet">
@@ -32,37 +33,36 @@
     <script src="./../wsr/src/web.js" type="module" defer></script>
     <!-- ############################## -->
     <!-- %%% Web Title %%% -->
-    <title>v1.1.8a Part</title>
+    <title>v1.1.9a Part</title>
   </head>
-  <body id="70000000" class="part-core-layout">
-    <!-- === Top Bar Component === !!!draggable="false" -->
-    <header id="top-bar-cmp" class="tbc-layout">
-      <nav id="dev-nav-cmp"></nav>
-      <nav id="sub-nav-cmp"></nav>
-    </header>
+  <body id="70000000" class="core-layout part-core-layout">
+    <div id="lpb" class="progress-line"></div>
+    <div id="rpb" class="progress-line"></div>
+    <!-- === Top Panel Component === !!! draggable="false" -->
+    <header class="tpc-root tpc-layout"></header>
+    <nav class="dnc-root"></nav>
+    <nav class="snc-root"></nav>
     <!-- ============================== -->
     <section id="section-container" class="section-part-layout">
-      <div id="lpb" class="progress-bar"></div>
-      <div id="rpb" class="progress-bar"></div>
       <!-- ===== Part Component ===== -->
-      <section id="part-cmp" class="part-layout">
+      <section class="part-layout">
         <!-- %%% Part Title %%% -->
-        <div id="part-title" class="flex-center">Version 1.1.8 Alpha</div>
+        <div class="part-title flex-center">Version 1.1.9 Alpha</div>
         <!-- %%% Part Tab %%% -->
-        <nav id="part-tab-container">
-          <div class="part-tab-item flex-center">Tab 0</div>
+        <nav class="part-tab-container">
           <div class="part-tab-item flex-center">Tab 1</div>
           <div class="part-tab-item flex-center">Tab 2</div>
+          <div class="part-tab-item flex-center">Tab 3</div>
         </nav>
       </section>
       <!-- ============================== -->
       <!-- ===== Chapter Component ===== -->
-      <section id="chapter-cmp" class="chapter-layout">
+      <section class="chapter-layout">
         <!-- %%% Tab: 0 %%% -->
         <nav class="chapter-container">
           <a class="chapter-item container-link" href="./doc-page.html">
-            <div class="chapter-item-title">[Tab 1] Version 1.1.8 Alpha</div>
-            <div class="chapter-item-info">v1.1.8a [ .../tmp/doc-page ]</div>
+            <div class="chapter-item-title">[Tab 1] Version 1.1.9 Alpha</div>
+            <div class="chapter-item-info">v1.1.9a [ .../tmp/doc-page ]</div>
           </a>
           <a class="chapter-item container-link" href="./doc-page.html">
             <div class="chapter-item-title">[Tab 1] Item 1-2</div>
@@ -111,6 +111,10 @@
             <div class="chapter-item-title">[Tab 2] Item 2-1</div>
             <div class="chapter-item-info">Item 2-1 [ Link [Tab 1] .../tmp/doc-page ]</div>
           </a>
+          <a class="chapter-item container-link" href="./doc-page.html">
+            <div class="chapter-item-title">[Tab 2] Item 2-2</div>
+            <div class="chapter-item-info">Item 2-2 [ Link [Tab 1] .../tmp/doc-page ]</div>
+          </a>
         </nav>
         <!-- %%% Tab: 2 %%% -->
         <nav class="chapter-container">
@@ -118,13 +122,20 @@
             <div class="chapter-item-title">[Tab 3] Item 3-1</div>
             <div class="chapter-item-info">Item 3-1 [ Link [Tab 1] .../tmp/doc-page ]</div>
           </a>
+          <a class="chapter-item container-link" href="./doc-page.html">
+            <div class="chapter-item-title">[Tab 3] Item 3-2</div>
+            <div class="chapter-item-info">Item 3-2 [ Link [Tab 1] .../tmp/doc-page ]</div>
+          </a>
+          <a class="chapter-item container-link" href="./doc-page.html">
+            <div class="chapter-item-title">[Tab 3] Item 3-3</div>
+            <div class="chapter-item-info">Item 3-3 [ Link [Tab 1] .../tmp/doc-page ]</div>
+          </a>
         </nav>
       </section>
       <!-- ============================== -->
     </section>
-    <!-- ===== Bottom Bar Component ===== -->
-    <footer id="bottom-bar-cmp" class="bbc-layout">
-
+    <!-- ===== Bottom Panel Component ===== -->
+    <footer class="bpc-root bpc-layout">
       <!-- ##############################-->
       <!-- DESCRIPTION
          - +[CIT] {Chapter Item Title} (cit)

@@ -3,48 +3,54 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* - - - Layout - - - */
+.tpc-layout {
+  background-color: #222222;
+}
+/* - - - Logo - - - */
 #tbc-logo-link {
   /* container-link, flex-center */
+  /* Box Model */
   width: 100%;
   height: 100%;
-
+  /* Typographic */
   color: #FFFFFF;
   font-weight: 700;
   font-size: 2rem;
-
+  /* Visual */
   cursor: pointer;
 }
-#tbc-dni-container, #tbc-sni-container {
-  overflow-x: hidden;
-}
-#tbc-sni-bg {
-  margin: 0rem 1rem 0rem auto;
-}
-#tbc-dni-bg {
-  margin: 0rem 0rem 0rem 1rem;
-}
+/* = = = = = BG = = = = = */
 #tbc-dni-bg, #tbc-sni-bg {
+  /* Positioning */
   position: relative;
+  /* Box Model */
   width: 3rem;
   height: 2rem; /* Cascade => .tbc-*-sg { height, top } */
-  margin-top: 1rem;
-
+  margin: 1rem 0rem 0rem 0rem;
+  /* Visual */
   cursor: pointer;
 }
+#tbc-dni-bg { margin: 1rem 0rem 0rem 1rem; }
+#tbc-sni-bg { margin: 1rem 1rem 0rem 0rem; }
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+/* = = = = = SG = = = = = */
 .tbc-dni-sg, .tbc-sni-sg {
+  /* Positioning */
   position: absolute;
+  /* Box Model */
   width: 100%;
   height: 0.25rem; /* Cascade => { top } */
-
+  /* Visual */
   background: #FFFFFF;
   border-radius: 0.125rem;
-
   opacity: 1; /* Cascade => { transition: opacity } */
   transform: rotate(0deg); /* Cascade => { transition: transform } */
 }
-/* Temporary */
 .tbc-dni-sg {
+  /* Positioning */
   left: 0%;
+  /* Visual */
   transition: 
     top 300ms,
     left 300ms,
@@ -52,7 +58,9 @@
     opacity 300ms;
 }
 .tbc-sni-sg {
+  /* Positioning */
   right: 0%;
+  /* Visual */
   transition: 
     top 300ms,
     right 300ms,
@@ -63,7 +71,10 @@
 .tbc-dni-sg:nth-child(1), .tbc-sni-sg:nth-child(1) { top: 0rem; }
 .tbc-dni-sg:nth-child(2), .tbc-sni-sg:nth-child(2) { top: 0.875rem; }
 .tbc-dni-sg:nth-child(3), .tbc-sni-sg:nth-child(3) { top: 1.75rem; }
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+/* $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ */
 /* DESCRIPTION
+ * &{/wsr/share/layout/core-layout.css} (.tbc-layout)
  */
 /* INFORMATION
  * @[Author] {Facooya} (Founder)

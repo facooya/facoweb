@@ -4,33 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ___ Css Link ___!!! Version Check A !!! -->
-    <link href="./../plugin/css/lib/page_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./../plugin/css/lib/tbc_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./../plugin/css/lib/top_menu_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/page_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/tbc_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/top_menu_pcl_v1.1.5a.css" rel="stylesheet">
     <!--  -->
-    <link href="./../plugin/css/lib/document_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./../plugin/css/lib/code_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./../plugin/css/lib/reference_frame_pcl_v1.1.5a.css" rel="stylesheet">
-    <link href="./../plugin/css/lib/bbc_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/document_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/code_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/reference_frame_pcl_v1.1.5a.css" rel="stylesheet">
+    <link href="../plugin/css/lib/bbc_frame_pcl_v1.1.5a.css" rel="stylesheet">
     <!--  -->
-    <link href="../../v1.1.3a/code_style_v1.1.3a.css" rel="stylesheet">
+    <link href="../code_style_v1.1.3a.css" rel="stylesheet">
     <!-- ______________________________ -->
     <!-- ___ Facooya.com/* Web Title ___!!! Check List A !!! -->
-    <title>Document V1.1.8A</title>
+    <title>Document V1.1.9A</title>
     <!-- ______________________________ -->
   </head>
   <body id="70000777">
     <!-- === Compose Frame ===!!! Version Check B !!! -->
     <header id="compose_frame">
       <div id="top_bar_compose">
-        <script defer type="module" src="./../plugin/generate/tbc_generate_v1.1.5a.js"></script>
+        <script defer type="module" src="../plugin/generate/tbc_generate_v1.1.5a.js"></script>
       </div>
       <nav id="related_menu_compose">
         <!-- !Check List B -->
-        <script defer type="module" src="./../plugin/generate/rmc_generate_v1.1.5a.js"></script>
+        <script defer type="module" src="../plugin/generate/rmc_generate_v1.1.5a.js"></script>
       </nav>
       <nav id="facooya_menu_compose">
-        <script defer type="module" src="./../plugin/generate/fmc_generate_v1.1.5a.js"></script>
+        <script defer type="module" src="../plugin/generate/fmc_generate_v1.1.5a.js"></script>
       </nav>
       <!-- ___ Scroll Menu Compose ___!!! Check List C !!! -->
       <!--<nav id="scroll_menu_compose">
@@ -46,7 +46,7 @@
     <!--==============================-->
     <section id="document_frame">
       <!-- ___ Document Title ___!!! Check List D !!! -->
-      <div id="document_title">[Tab 1] Version 1.1.8 Alpha</div>
+      <div id="document_title">[Tab 1] Version 1.1.9 Alpha</div>
       <!--______________________________-->
       <div id="document_container"> <!-- code_frame -->
         <!--=== Code & Result 1 ===!!! Check List E 1 !!! -->
@@ -55,8 +55,7 @@
         <div class="code_title">User.Note</div> <!-- code_name -->
         <div class="code_container">
 <pre class="string">
-Update UI in part-page.
-Vertical progress bar added.
+Update part-page layout. (Desktop only)
 </pre>
         </div>
         <!--______________________________-->
@@ -75,17 +74,204 @@ Video
         <div class="code_title">Developer.Note</div>
         <div class="code_container">
 <pre class="string">
-dev {
-  JS, CSS files update.
+Developer {
+  [FDS] Facooya Development Standard updated {
+    Hierarchy {
+      Hierarchy Original: container -> item -> sub container -> sub item -> (None)
+      Hierarchy Updated: root -> yotta -> zetta -> exa -> peta -> tera -> giga -> mega -> kilo -> byte -> (Preventive)
 
-  JS: lib -> utils -> local, e.g., utils.js: import "local.js"; export "utils.js";.
-  JS: Global scope variable -> Local scope variable, e.g., let a; -> function b(){let a;}.
+      [Default]: y(yotta) -> z(zetta) -> e(exa) -> ... || [Alternate]: yb(yottaByte) -> zb(zettaByte) -> ...
 
-  Vertical scroll bar hide and horizontal scroll bar UI modified. (Desktop: Chrome, Safari)
-  Vertical progress bar added.
+      [HTML]
+      e.g., "Selector"
+        O: elem-root [Default], elem-y [Default], elem-yotta (Warning: elem-yottayotta(X)), elem-yb
+        X: elem-yottabyte, elem-yottaByte, elem-yottayotta
 
-  Modified FHWF Struct.
-  /wsr/lib/gen/ -> /wsr/gen/
+      [JS] 
+      e.g., "Variable"
+        O: elemY [Default] (Warning: Last character only, elemYTitle(X)), elemYottaTitle [Default], yotta [Default] (Warning: Local function only), elemYotta, yElem (Warning: YElem(X))
+        X: y (Single character), yta (Abbreviation), elemYHello (O: elemHelloY)
+      e.g., "Code"
+        const elemY = document.getElementsByClassName("elem-y");
+        const elemYottaTitme = document.getElementsByClassName("elem-y-title");
+
+      Preventive: yotta (y) -> ... -> byte (b) -> yottaYotta (yy) -> yottaZetta (yz) -> ... -> byteKilo (bk) -> byteByte (bb) -> yottaYottaYotta (yyy) -> ...
+    }
+    Sequence extends Hierarchy {
+      Sequence Updated: rootSequence (0 || Custom) -> yottaSequence (1) -> zettaSequence (2) -> ...
+
+      [HTML]
+      e.g., "Selector"
+        O: elem-y-ys (Default), elem-yotta-ys
+        X: elem-yotta-yottaSequence, elem-yotta-yottasequence
+
+      [JS]
+      e.g., "Variable"
+        O: elemYS (Default), elemYottaYS (Default) (Warning: elemYottaYottaSequence(X), elemYYottaSequence(X)), elemYottaSequence
+        X: YSElem, yottaSequenceElem, elemYottaS, elemYSequence, elemSY
+
+      Preventive: FDS.Hierarchy.Preventive, yottaSequence (ys) -> ... -> byteSequence (bs) -> yottaYottaSequence (yys) -> ...
+    }
+  }
+  [FWS] Facooya Web Standard updated {
+    [HTML], [CSS], [JS] Selector {
+      id -> class (Feasible)
+      [HTML]
+      e.g., "Selector"
+        O: class [Default] ([JS] Reference (querySelector)), id [Alternate] ([JS] Reference (getElement))
+
+      [CSS]
+      e.g., "Style"
+        O: .root [Default] (class selector only)
+        X: #root (id selector)
+
+      [JS]
+      e.g., "Code"
+        O: querySelector(".root") [Default], getElementById("root") (root.value)
+        X: getElementsByClassName("root") (root[0].value)
+
+      Overview: Avoid the use of the "id" attribute, instead use "class" attribute.
+    }
+    [HTML], [CSS] PseudoElement {
+      [CSS] Pseudo element -> [HTML] Element
+        e.g., [CSS] .element::after -> [HTML] class="element-after"
+
+      Overview: Avoid the use of pseudo elements, instead add elements.
+    }
+    [CSS] Grid {
+      flex -> grid (Feasible)
+      width -> grid-template-columns, grid-auto-columns (Feasible)
+      hieght -> grid-template-rows, grid-auto-rows (Feasible)
+      margin, padding, ... -> gap (Feasible)
+    }
+    [JS] Element {
+      querySelector, querySelectorAll -> getElementById, getElementsByClassName (Feasible)
+      Expetion: FWS.Selector
+      e.g., "Selector"
+        O: getElementsByClassName [Default], getElementById, querySelector (FWS.Selector)
+        X: querySelectorAll
+
+      Overview: Avoid the use of the "query", instead use "getElement".
+    }
+    [CSS], [JS] Event {
+      [CSS] :hover -> [JS] eventListener("event", handler) (All)
+        e.g., "Code"
+          addEventListener("mouseenter", mouseEnter);
+          addEvnetListener("mouseleave", mouseLeave);
+
+      Overview: Avoid the use of the "[CSS] :hover", instead use "[JS] eventListener".
+      Reference: Performance updated
+    }
+
+    Notice: [FWS] fundamentally complies with [FDS].
+  }
+  Apply updated {
+    [part-page] Top bar component -> [FWS] (Partially completed) {
+      FWS.Grid
+    }
+    [part-page] Developer navigation component -> [FDS], [FWS] (Partially completed) {
+      FDS.Hierarchy, FDS.Sequence
+      FWS.Selector, FWS.PseudoElement, FWS.Grid, FWS.Element, FWS.Event
+      [CSS] DNC Style (Desktop only)
+    }
+    [part-page] Support navigation component -> [FDS], [FWS] (Partially completed) {
+      FDS.Hierarchy, FDS.Sequence
+      FWS.Selector, FWS.PseudoElement, FWS.Grid, FWS.Element, FWS.Event
+      [CSS] SNC Style (Desktop only)
+    }
+  }
+  Performance updated {
+    FWS.Element (Performance improvement)
+    FWS.Event (!Warning!: Performance degradation)
+
+    Performance degradation justification: Facooya.com has decided to focus exclusively on JavaScript for more precise event handling, moving away from CSS-based methods.
+      To facilitate this, we plan to separate the relevant files, enabling more efficient management and maintenance of the event handling code.
+      While the use of JavaScript enhances the flexibility and scalability of event handling, we are aware that it may have a short-term negative impact on website performance.
+      Should the performance degradation become significant, we may consider reverting to CSS-based methods.
+  }
+  Layout updated {
+    Progress line modified.
+    Assign bottom panel in part-page.
+  }
+  Label updated {
+    .part-core-layout -> .core-layout, .part-core-layout (Completed)
+
+    sub navigation component (SNC) -> support navigation component (SNC) (Completed)
+    top bar component (TBC) -> top panel component (TPC) (Partially Completed)
+  }
+
+  Routinely update {
+    Code migration {
+      Migration from "v1.1.8a" to "v1.1.9a".
+      Synchronize to "v1.1.9a".
+      Clean up code from previous versions.
+      Migration inspection successful, continue updating and code refactoring.
+    }
+    Code refactoring {
+      Promote successful code from temporary to official.
+      Demote official code to temporary due to replacement. (Remains in a commented state. Options: Delete || Roll back)
+      Delete temporary code after confirming unreusability. (Checking the previous versions enables recovery.)
+      Commenting the code.
+    }
+    File system management.
+
+    Notice: The "code" encompasses comments, functions, source code, ...
+  }
+
+  Scheduled update for v1.1.10a {
+    Routinely update.
+    part-page broken issue v1.1.9a. (Table, Mobile) part-page issue fix.
+    [CSS] DNC, SNC (Tablet, Mobile)
+
+    Top panel component -> [FDS], [FWS] Apply.
+  }
+  Scheduled update {
+    Resize part-page section: if (SNC opening). (Desktop only)
+    Auto close SNC: if (part-page section overlay click). (Tablet, Mobile)
+
+    Draggable = "false" (TPC, SNC, DNC)
+    Select = "none" (TPC, SNC, DNC)
+
+    [CSS], [JS]: Static value -> Dynamic value
+
+    SNC scroll effect update.
+      Overflow-y: bottom defog effect & scroll down arrow, top arrow.
+
+    TPC layout update. (SNC title section)
+
+    [FDS], [FWS] apply update.
+      part-page part-layout, chapter-layout
+
+    Bottom panel update.
+
+    Setting value in Support navigation component.
+
+    part-page upgrade complete update. (Inspection)
+
+    doc-page upgrade.
+    doc-page reference component UI update.
+    doc-page quick scroll update.
+    doc-page safari browser video issue fix.
+    doc-page upgrade complete update. (Inspection)
+
+    content files upgrade for "v1.2.0".
+
+    home-page upgrade.
+    home-page upgrade complete update. (Inspection)
+
+    "wsr/share/doc" update for "v1.2.0". Upload [FWS], [FDS]. (Inspection)
+    
+    Facooya.com version "1.2.0" upgrade prepare. (Inspection)
+    Facooya.com version "1.2.0" upgrade complete.
+
+    DNS Server migration. Scheduled migration: (2024-03)
+    SSL, TLS update.
+    facooya.com -> Redirect: www.facooya.com
+    www.facooya.com -> developer.facooya.com || dev.facooya.com
+      "wsr/share/doc" update "URL"
+    www.facooya.com: Core.
+    dev.facooya.com || developer.facooya.com: Develop document.
+  }
 }
 </pre>
         </div>
@@ -116,8 +302,12 @@ Video
             <div>V1.1.6A [ part-page ]</div></a></li>
           <li><a class="reference_item" href="#part-page">[Part] Version 1.1.7 Alpha
             <div>V1.1.7A [ part-page ]</div></a></li>
-          <li><a class="reference_item" href="./part-page.html">[Part] Version 1.1.8 Alpha
+          <li><a class="reference_item" href="#part-page">[Part] Version 1.1.8 Alpha
             <div>V1.1.8A [ part-page ]</div></a></li>
+          <li><a class="reference_item" href="./part-page.html">[Part] Version 1.1.9 Alpha
+            <div>V1.1.9A [ part-page ]</div></a></li>
+          <li><a class="reference_item" href="#part-page">[Part] Version 1.1.10 Alpha
+            <div>V1.1.10A [ part-page ]</div></a></li>
         </ul>
       </div>
       <!-- ============================== -->
@@ -131,8 +321,8 @@ Video
       </div>
       <!-- ______________________________ -->
       <!-- ___ JS Information Page Link ___!!! Version Check C !!! -->
-      <script defer src="./../plugin/src/lib/page_frame_psl_v1.1.5a.js"></script>
-      <script defer type="module" src="./../plugin/src/lib/system_frame_psl_v1.1.5a.js"></script>
+      <script defer src="../plugin/src/lib/page_frame_psl_v1.1.5a.js"></script>
+      <script defer type="module" src="../plugin/src/lib/system_frame_psl_v1.1.5a.js"></script>
       <!-- INFORMATION 
          - @[Author] {Facooya} (Founder)
          -->

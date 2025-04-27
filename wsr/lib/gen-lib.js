@@ -7,10 +7,10 @@ import {
   genTBCTLI,
   genTBCDNI,
   genTBCSNI
-} from "../utils/gen-tbc-utils.js";
+} from "../../wsr/utils/gen-utils.js";
 
 function setupCoreTBC() {
-  const _PARENT = document.getElementById("top-bar-cmp");
+  const _PARENT = document.querySelector(".tpc-root");
 
   genTBCTLI("Facooya", _PARENT);
   genTBCDNI(_PARENT);

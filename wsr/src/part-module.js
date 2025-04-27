@@ -5,7 +5,7 @@
  */
 /* import {
   setupProgressBar
-} from "../../../v1.1.8a/wsr/lib/event-lib.js"; */
+} from "../../../v1.1.9a/wsr/lib/event-lib.js"; */
 // onLoad partSetup(); event-utils.js: _activeTab(event);
 function setupPartPage() {
   const PART_TAB_ITEM = document.getElementsByClassName("part-tab-item");
@@ -52,11 +52,11 @@ function _activeTab(event) {
   _verifyProgressBar();
 }
 function _verifyProgressBar() {
-  const SECTION_CONTAINER = document.getElementById("section-container");
+  const _HTML = document.documentElement;
   const LPB = document.getElementById("lpb");
   const RPB = document.getElementById("rpb");
 
-  const height = SECTION_CONTAINER.scrollHeight - SECTION_CONTAINER.clientHeight;
+  const height = _HTML.scrollHeight - _HTML.clientHeight;
   if (height == 0) {
     LPB.style.height = "100%";
     RPB.style.height = "100%";

@@ -5,14 +5,14 @@
  */
 import {
   getActiveMode
-} from "./sys-lib.js";
+} from "../../wsr/lib/sys-lib.js";
 import {
   setupEventResize,
   setupEventLoad
-} from "./event-lib.js";
+} from "../../wsr/lib/event-lib.js";
 import {
   setupPartPage
-} from "../src/part-module.js";
+} from "../../wsr/src/part-module.js";
 
 function onLoad() {
   activeMode = getActiveMode();

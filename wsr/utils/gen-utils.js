@@ -69,6 +69,7 @@ function genTBCSNI(
   /* Log */
   _logf("SNI");
 }
+
 function genTBCNav(
   id,
   containerNameList,
@@ -78,11 +79,11 @@ function genTBCNav(
 ) {
   for (let i = 0; i < containerNameList.length; i++) {
     /* Element: id-container */
-    let _setId = id + "-container" + " flex-center";
+    let _setId = id + "-container" + " flex-center"; // !!!
     let _container = document.createElement("div");
     _container.setAttribute("class", _setId);
     /* Element: id-container-title */
-    _setId = id + "-container-title" + " flex-center";
+    _setId = id + "-container-title" + " flex-center"; // !!!
     let _containerTitle = document.createElement("div");
     _containerTitle.setAttribute("class", _setId);
     _containerTitle.textContent = containerNameList[i];
@@ -91,7 +92,7 @@ function genTBCNav(
     let _subContainer = document.createElement("div");
     _subContainer.setAttribute("class", _setId);
     /* Element: id-sub-item */
-    _setId = id + "-sub-item" + " container-link" + " flex-center";
+    _setId = id + "-sub-item" + " container-link" + " flex-center"; // !!!
     for (let j = 0; j < itemNameList[i].length; j++) {
       let _subItem = document.createElement("a");
       _subItem.setAttribute("class", _setId);
@@ -106,11 +107,75 @@ function genTBCNav(
   }
   _logf(id);
 }
+
+function genNav(
+  label,
+  zettaTitleRS,
+  petaTitleRS,
+  petaHrefRS,
+  labelRoot
+) {
+  /* Element: label-y */
+  for (let i = 0; i < zettaTitleRS.length; i++) {
+    let labelData = label + "-y";
+    const yotta = _genElem("div", labelData);
+    /* Element: label-z */
+    labelData = label + "-z";
+    const zetta = _genElem("div", labelData);
+    /* Element: label-z-title */
+    labelData = label + "-z-title";
+    const zettaTitle = _genElem("div", labelData);
+    zettaTitle.textContent = zettaTitleRS[i];
+    /* Element: label-z-bottom-line */
+    labelData = label + "-z-bottom-line";
+    const zettaBottomLine = _genElem("div", labelData);
+    /* - - - - - */
+    /* Element: label-e */
+    labelData = label + "-e";
+    let exa = _genElem("div", labelData);
+    /* Element: label-p */
+    for (let j = 0; j < petaTitleRS[i].length; j++) {
+      labelData = label + "-p" + " container-link";
+      let peta = _genElem("a", labelData);
+      peta.setAttribute("href", petaHrefRS[i][j]);
+      /* Element: label-p-title */
+      labelData = label + "-p-title";
+      let petaTitle = _genElem("div", labelData);
+      petaTitle.textContent = petaTitleRS[i][j];
+      /* Element: label-p-right-icon */
+      labelData = label + "-p-right-icon";
+      let petaRightIcon = _genElem("div", labelData);
+      /* Element: label-p-bottom-line */
+      labelData = label + "-p-bottom-line";
+      let petaBottomLine = _genElem("div", labelData);
+      /* Compile: peta, exa */
+      peta.appendChild(petaTitle);
+      peta.appendChild(petaRightIcon);
+      peta.appendChild(petaBottomLine);
+      exa.appendChild(peta);
+    }
+    /* Compile: zetta, yotta, labelRoot */
+    zetta.appendChild(zettaTitle);
+    zetta.appendChild(zettaBottomLine);
+    yotta.appendChild(zetta);
+    yotta.appendChild(exa);
+    labelRoot.appendChild(yotta);
+  }
+  /* Debugging */
+  _logf(label);
+}
+function _genElem(elemType, setClass) {
+  const elem = document.createElement(elemType);
+  elem.setAttribute("class", setClass);
+  return elem;
+}
+
 export {
   genTBCTLI,
   genTBCDNI,
   genTBCSNI,
-  genTBCNav
+  genTBCNav,
+  genNav
 };
 /* DESCRIPTION
  * +[TBC] {Top Bar Component}

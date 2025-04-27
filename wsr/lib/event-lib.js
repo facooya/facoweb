@@ -8,12 +8,14 @@ import {
   onEventDnc,
   onEventSnc,
   onEventProgress
-} from "../utils/event-utils.js";
+} from "../../wsr/utils/event-utils.js";
 
-function setupEventResize() {
+function setupEventResize() { /* !!!!!!!! Error !!!!! */
   /* Element */
-  const DEV_NAV_CMP = document.getElementById("dev-nav-cmp");
-  const SUB_NAV_CMP = document.getElementById("sub-nav-cmp");
+  const dncRoot = document.querySelector(".dnc-root");
+  const sncRoot = document.querySelector(".snc-root");
+
+  //const SUB_NAV_CMP = document.getElementById("sub-nav-cmp");
   const DNC_SUB_CONTAINER = document.getElementsByClassName("dnc-sub-container");
   const SNC_SUB_CONTAINER = document.getElementsByClassName("snc-sub-container");
   const DNC_CONTAINER = document.getElementsByClassName("dnc-container");
@@ -22,8 +24,10 @@ function setupEventResize() {
   isEnabledDni = 0;
   isEnabledSni = 0;
   /* Initial Css */
-  DEV_NAV_CMP.style.cssText = "";
-  SUB_NAV_CMP.style.cssText = "";
+  //DEV_NAV_CMP.style.cssText = "";
+  //SUB_NAV_CMP.style.cssText = "";
+  dncRoot.style.cssText = "";
+  sncRoot.style.cssText = "";
   for (let i = 0; i < DNC_CONTAINER.length; i++) {
     DNC_CONTAINER[i].style.cssText = "";
     DNC_SUB_CONTAINER[i].style.cssText = "";
@@ -50,30 +54,45 @@ function setupEventResize() {
 
 function setupEventLoad() {
   /* Element */
-  const DNC_CONTAINER = document.getElementsByClassName("dnc-container");
-  const SNC_CONTAINER = document.getElementsByClassName("snc-container");
+  const dncRoot = document.querySelector(".dnc-root");
+  const dncY = dncRoot.getElementsByClassName("dnc-y");
+  const sncRoot = document.querySelector(".snc-root");
+  const sncY = sncRoot.getElementsByClassName("snc-y");
+
+  //const DNC_CONTAINER = document.getElementsByClassName("dnc-container");
+  //const SNC_CONTAINER = document.getElementsByClassName("snc-container");
   /* Initial */
   isEnabledDni = 0;
   isEnabledSni = 0;
-  for (let i = 0; i < DNC_CONTAINER.length; i++) {
+  /*for (let i = 0; i < DNC_CONTAINER.length; i++) {
     DNC_CONTAINER[i].index = i;
     DNC_CONTAINER[i].isActive = 0;
+  }*/
+  for (let i = 0; i < dncY.length; i++) {
+    dncY[i].index = i;
+    dncY[i].isActive = 0;
   }
-  for (let i = 0; i < SNC_CONTAINER.length; i++) {
+  for (let i = 0; i < sncY.length; i++) {
+    sncY[i].index = i;
+    sncY[i].isActive = 0;
+  }
+  /*for (let i = 0; i < SNC_CONTAINER.length; i++) {
     SNC_CONTAINER[i].index = i;
     SNC_CONTAINER[i].isActive = 0;
-  }
+  }*/
   /* onEvent: event-utils */
   onEventDniSni();
-  onEventDnc(1, DNC_CONTAINER);
-  onEventSnc(SNC_CONTAINER);
+  //onEventDnc(1, DNC_CONTAINER);
+  onEventDnc(1, dncY);
+  //onEventSnc(SNC_CONTAINER);
+  onEventSnc(sncY);
 
   onEventProgress();
 
   logf(0, "wsr/lib/event-lib.js", "setupEventLoad", "Done");
   logf(0, "==========", "==========", "Event Load Done");
 }
-
+/* Export: /wsr/lib/web-lib.js */
 export {
   setupEventResize,
   setupEventLoad

@@ -4,89 +4,97 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  genTBCNav
-} from "../utils/gen-tbc-utils.js";
+  /*genTBCNav,*/
+  genNav
+} from "../../wsr/utils/gen-utils.js";
 
-/* &&& DATA: Developer Navigation Component &&& */
-class DataDNC {
-  _DNC_CONTAINER_NAME_LIST = [
-    "Menu_1",
-    "Menu_2",
-    "Menu_3",
-    "Menu_4",
-    "Menu_5"
+/* &&& DATA: Developer Navigation Component, R: Root &&& */
+class DataDnc {
+  dncZettaTitleRS = [ /* YS ZS ES PS TS */
+    "Menu 1",
+    "Menu 2",
+    "Menu 3",
+    "Menu 4",
+    "Menu 5"
   ];
-  _MENU_1_ITEM_NAME_LIST = [
+  dncPetaTitleYS = [
     "Item 1-1"
   ];
-  _MENU_2_ITEM_NAME_LIST = [
+  dncPetaTitleZS = [
     "Item 2-1",
     "Item 2-2"
   ];
-  _MENU_3_ITEM_NAME_LIST = [
+  dncPetaTitleES = [
     "Item 3-1",
     "Item 3-2",
     "Item 3-3"
   ];
-  _MENU_4_ITEM_NAME_LIST = [
+  dncPetaTitlePS = [
     "Item 4-1",
     "Item 4-2"
   ];
-  _MENU_5_ITEM_NAME_LIST = [
+  dncPetaTitleTS = [
     "Item 5-1"
   ];
-  _DNC_ITEM_NAME_LIST = [
-    this._MENU_1_ITEM_NAME_LIST,
-    this._MENU_2_ITEM_NAME_LIST,
-    this._MENU_3_ITEM_NAME_LIST,
-    this._MENU_4_ITEM_NAME_LIST,
-    this._MENU_5_ITEM_NAME_LIST
+  dncPetaTitleRS = [
+    this.dncPetaTitleYS,
+    this.dncPetaTitleZS,
+    this.dncPetaTitleES,
+    this.dncPetaTitlePS,
+    this.dncPetaTitleTS
   ];
-  _MENU_1_ITEM_LINK_LIST = [
+  dncPetaHrefYS = [
     "#item-1-1"
   ];
-  _MENU_2_ITEM_LINK_LIST = [
+  dncPetaHrefZS = [
     "#item-2-1",
     "#item-2-2"
   ];
-  _MENU_3_ITEM_LINK_LIST = [
+  dncPetaHrefES = [
     "#item-3-1",
     "#item-3-2",
     "#item-3-3"
   ];
-  _MENU_4_ITEM_LINK_LIST = [
+  dncPetaHrefPS = [
     "#item-4-1",
     "#item-4-2"
   ];
-  _MENU_5_ITEM_LINK_LIST = [
+  dncPetaHrefTS = [
     "#item-5-1"
   ];
-  _DNC_ITEM_LINK_LIST = [
-    this._MENU_1_ITEM_LINK_LIST,
-    this._MENU_2_ITEM_LINK_LIST,
-    this._MENU_3_ITEM_LINK_LIST,
-    this._MENU_4_ITEM_LINK_LIST,
-    this._MENU_5_ITEM_LINK_LIST
+  dncPetaHrefRS = [
+    this.dncPetaHrefYS,
+    this.dncPetaHrefZS,
+    this.dncPetaHrefES,
+    this.dncPetaHrefPS,
+    this.dncPetaHrefTS
   ];
 };
 /* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
 
-function setupTBCDNC() {
-  const _DD = new DataDNC();
-  const _PARENT = document.getElementById("dev-nav-cmp");
+function setupDnc() {
+  const dataDnc = new DataDnc();
+  const dncRoot = document.querySelector(".dnc-root");
 
-  genTBCNav(
+  /*genTBCNav(
     "dnc",
     _DD._DNC_CONTAINER_NAME_LIST,
     _DD._DNC_ITEM_NAME_LIST,
     _DD._DNC_ITEM_LINK_LIST,
     _PARENT
+  );*/
+  genNav(
+    "dnc",
+    dataDnc.dncZettaTitleRS,
+    dataDnc.dncPetaTitleRS,
+    dataDnc.dncPetaHrefRS,
+    dncRoot
   );
 
-  logf(0, "wsr/lib/gen/dnc.js", "setupTBCDNC", "Done");
+  logf(0, "wsr/lib/gen/dnc.js", "setupDnc", "Done");
 }
 
-setupTBCDNC();
+setupDnc();
 /* DESCRIPTION
  */
 /* INFORMATION

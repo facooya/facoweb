@@ -6,10 +6,10 @@
 import {
   getActivePage,
   getIdentify
-} from "./../wsr/lib/sys-lib.js";
+} from "../wsr/lib/sys-lib.js";
 import {
   setupCoreTBC,
-} from "./../wsr/lib/gen-lib.js";
+} from "../wsr/lib/gen-lib.js";
 /*  */
 getIdentify();
 /* Page value */
