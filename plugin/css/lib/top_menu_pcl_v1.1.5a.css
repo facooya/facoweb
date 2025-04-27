@@ -1,0 +1,84 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Top menu (mobile)
+ */
+/* !!! class="rmc_container top_menu_container"!!! */
+/* +++ RMC : Related Menu Compose +++ */
+/* +++ FMC : Facooya Menu Compose +++ */
+/* === Top Menu === */
+#related_menu_compose, #facooya_menu_compose{
+  /* --- Size - *//* !!! bottom:3rem:doc Check !!! */
+  /*width:20rem;
+  top:4rem;
+  bottom:0rem;*/
+  /*!!! */
+  /*left:-20rem;*/
+  /* --- Display - */
+  position:fixed;
+  overflow-y:scroll;
+  background:#000000;
+  text-align:center;
+}
+.rmc_container, .fmc_container{
+  /* --- Size - *//* !!! Height:5.125rem, Height Recheck !!! */
+  height:5rem;
+  line-height:5rem;
+  /* --- Display - */
+  display:block;
+  overflow:hidden;
+  border-bottom:solid 0.125rem #FFFFFF;
+  cursor:pointer;
+  /* + Select None + */
+  -webkit-user-select:none;
+}
+.rmc_container_name, .fmc_container_name{
+  font-size:1.5rem;
+  border-color:#00FF00;
+  color:#FFFFFF;
+}
+.rmc_item, .fmc_item{
+  display:block;
+  color:#FFFFFF;
+  border-top:dashed 0.125rem #AAAAAA;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
+}
+/* ============================== */
+/* !!! MOBILE ? !!! */
+/* @@@ Mode @@@ */
+/* @@@ Desktop @ */
+@media all and (min-width:1000px){
+  #related_menu_compose, #facooya_menu_compose{
+    width:20rem;
+    top:4rem;
+    bottom:0rem;
+  }
+  #related_menu_compose{
+    left:0rem;
+    left:-20rem;
+  }
+  #facooya_menu_compose{
+    right:0rem;
+    right:-20rem;
+  }
+}
+/* @@@ Mobile @ */
+@media all and (max-width:999px){
+  #related_menu_compose, #facooya_menu_compose{
+    width:100%;
+    top:4rem;
+    bottom:0rem;
+  }
+  #related_menu_compose{
+    left:0%;
+    left:-100%;
+  }
+  #facooya_menu_compose{
+    right:0%;
+    right:-100%;
+  }
+}
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */

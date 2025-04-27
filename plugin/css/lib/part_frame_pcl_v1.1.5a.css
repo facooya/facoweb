@@ -1,0 +1,42 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Part
+ */
+/* === Part Frame === */
+#part_frame{
+  padding:1rem;
+  padding-top:5rem;
+  transition:300ms;
+}
+#part_title{
+  /* --- Size - */
+  width:100%;
+  padding-bottom:1rem;
+  /* --- Text - */
+  font-size:3rem;
+  font-weight:bold;
+  text-align:center;
+  border-bottom:solid 0.5rem #000000;
+}
+#part_tab_container{
+  width:100%;
+  /* --- Display - */
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0rem 1rem;
+}
+.part_tab_item{
+  line-height:5rem;
+  /* --- Text - */
+  font-size:1.5rem;
+  font-weight:bold;
+  text-align:center;
+  /* --- Display - */
+  color:#555555;
+  cursor:pointer;
+  border-bottom: solid 0.25rem #AAAAAA;
+}
+/*==============================*/

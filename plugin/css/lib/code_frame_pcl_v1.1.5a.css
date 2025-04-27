@@ -1,0 +1,43 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Code
+ */
+/* === Code Frame === */
+/*#code_frame{
+padding-top:1rem;
+}
+.code_title{
+border-bottom:solid 0.25rem #000000;
+padding-left:1rem;
+}*/
+.code_title, .result_title{
+padding:0.5rem 1rem;
+display:inline-block;
+margin-top:0.5rem;
+background:#000000;
+color:#FFFFFF;
+border-radius:1rem 1rem 0rem 0rem;
+}
+.code_container, .result_container{
+padding:0.5rem 1rem;
+line-height:1.5rem;
+background:#222222;
+color:#FFFFFF;
+border-radius:0rem 1rem 1rem 1rem;
+}
+.code_container{
+margin-bottom:0.5rem;
+}
+.result_container{
+margin-bottom:2rem;
+}
+.string{
+overflow-x:auto;
+font-size:1rem;
+color:#DDDDDD;
+font-family:monospace;
+}
+/* ============================== */
