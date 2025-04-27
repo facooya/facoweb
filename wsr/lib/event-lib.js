@@ -12,8 +12,9 @@ import {
 
 function setupEventResize() {
   /* Element */
-  const dncRoot = document.querySelector(".dnc-root");
-  const sncRoot = document.querySelector(".snc-root");
+  const dncR = document.querySelector(".dnc-r");
+  /* const sncR = document.querySelector(".snc-root"); */
+  const sncR = document.querySelector(".snc-r");
   const sectionR = document.querySelector(".section-r");
 
   const dncY = document.querySelectorAll(".dnc-y");
@@ -24,8 +25,8 @@ function setupEventResize() {
   isEnabledDni = 0;
   isEnabledSni = 0;
   /* Init CSS */
-  dncRoot.style.cssText = "";
-  sncRoot.style.cssText = "";
+  dncR.style.cssText = "";
+  sncR.style.cssText = "";
   sectionR.style.cssText = "";
   for (let i = 0; i < dncY.length; i++) {
     dncY[i].style.cssText = "";
@@ -96,10 +97,10 @@ function setupEventResize() {
 
 function setupEventLoad() {
   /* Element */
-  const dncRoot = document.querySelector(".dnc-root");
-  const dncY = dncRoot.querySelectorAll(".dnc-y");
-  const sncRoot = document.querySelector(".snc-root");
-  const sncY = sncRoot.querySelectorAll(".snc-y");
+  const dncR = document.querySelector(".dnc-r");
+  const dncY = dncR.querySelectorAll(".dnc-y");
+  const sncR = document.querySelector(".snc-r");
+  const sncY = sncR.querySelectorAll(".snc-y");
 
   /* Initial */
   isEnabledDni = 0;

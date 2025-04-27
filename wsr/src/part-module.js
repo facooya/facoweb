@@ -53,16 +53,22 @@ function _activeTab(event) {
 }
 function _verifyProgressBar() {
   const _HTML = document.documentElement;
-  const LPB = document.getElementById("lpb");
-  const RPB = document.getElementById("rpb");
+  /* const LPB = document.getElementById("lpb"); !!! v1.1.13a [del] (replaced)
+  const RPB = document.getElementById("rpb"); */
+  const prcYottaScpt = document.querySelector(".prc-r .prc-y-scpt");
+  const prcYottaTipt = document.querySelector(".prc-r .prc-y-tipt");
 
   const height = _HTML.scrollHeight - _HTML.clientHeight;
   if (height == 0) {
-    LPB.style.height = "100%";
-    RPB.style.height = "100%";
+    /* LPB.style.height = "100%"; !!! v1.1.13a [del] (replaced)
+    RPB.style.height = "100%"; */
+    prcYottaScpt.style.height = "100%";
+    prcYottaTipt.style.height = "100%";
   } else {
-    LPB.style.height = "0%";
-    RPB.style.height = "0%";
+    /* LPB.style.height = "0%"; !!! v1.1.13a [del] (replaced)
+    RPB.style.height = "0%"; */
+    prcYottaScpt.style.height = "0%";
+    prcYottaTipt.style.height = "0%";
   }
 }
 

@@ -13,10 +13,10 @@
     <link href="../plugin/css/lib/reference_frame_pcl_v1.1.5a.css" rel="stylesheet">
     <link href="../plugin/css/lib/bbc_frame_pcl_v1.1.5a.css" rel="stylesheet">
     <!--  -->
-    <link href="../v1.1.3a/code_style_v1.1.3a.css" rel="stylesheet">
+    <link href="../code_style_v1.1.3a.css" rel="stylesheet">
     <!-- ______________________________ -->
     <!-- ___ Facooya.com/* Web Title ___!!! Check List A !!! -->
-    <title>Document V1.1.12A</title>
+    <title>Document V1.1.13A</title>
     <!-- ______________________________ -->
   </head>
   <body id="70000777">
@@ -46,7 +46,7 @@
     <!--==============================-->
     <section id="document_frame">
       <!-- ___ Document Title ___!!! Check List D !!! -->
-      <div id="document_title">[Tab 1] Version 1.1.12 Alpha</div>
+      <div id="document_title">[Tab 1] Version 1.1.13 Alpha</div>
       <!--______________________________-->
       <div id="document_container"> <!-- code_frame -->
         <!--=== Code & Result 1 ===!!! Check List E 1 !!! -->
@@ -73,16 +73,59 @@ Video
         <div class="code_title">Developer.Note</div>
         <div class="code_container">
 <pre class="string">
-Updated by v1.1.12a {
-  Reference: Server updated.
-  Updated(DNC, SNC, BPC) {
-    DNC, SNC {
-      Overlap apply. (DisplayType: Mobile)
-        if (overlap.click) { nav.close(); }
+Updated by v1.1.13a {
+  Reference: FWDS
+  Updated {
+    body -> header, main, footer
+
+    Simentic tag updated.
+    Name updated. (Reference: Etc updated)
+    DNI, SNI updated.
+  }
+  Updated(SNC, DNC, TPNC, ETCC) {
+    Simentic tag updated.
+    Name updated. (Reference: Etc updated).
+    SNC, DNC {
+      Hierarchy updated.
+        .*nc-r(nav) -> .*nc-y(ul), .*nc-y-mgpt(div)
+        .*nc-y(ul) -> .*nc-z-bept(li), .*nc-z(li)
+        .*nc-z-bept(li) -> .*nc-z-bept-title(div),
+          .*nc-z-bept-rr(div), .*nc-z-bept-br(div)
+        .*nc-z(li) -> .*nc-e(ul) -> .*nc-p(li) -> .*nc-t(a)
+        .*nc-t(a) -> .*nc-t-title(div),
+          .*nc-t-rr(div), .*nc-t-br(div)
+    }
+    TPNC { /* Top Panel Navigation Class */
+      Hierarchy updated.
+        .tpnc-r(nav) -> .tpnc-y(ul) ->
+          .tpnc-z-fli(li), .tpnc-z-dni(li), .tpnc-z-sni(li);
+        .tpnc-z-fli(li) -> .tpnc-z-fli-link(a);
+        .tpnc-z-dni(li) -> .tpnc-z-dni-ir(span) * 3; /* ir: Interaction Renderer */
+        .tpnc-z-sni(li) -> .tpnc-z-sni-ir(span) * 9;
+    }
+    ECC { /* Et Cetera Class (etc class) */
+      Hierarchy {
+        .ecc-r(div) -> .prc-r(div), .noc-r(div);
+          .prc-r(div) -> .prc-y .prc-y-scpt(div), .prc-y .prc-y-tipt(div);
+          .noc-r(div) -> .noc-y-scpt(div);
+      }
     }
   }
-  Etc updated {
-    FWDS
+  Issue updated {
+    Fixed {
+      IOS "SNC" scroll bug fixed. (DisplayType: Mobile);
+    }
+  }
+  Etc updated(Name) {
+    Name {
+      Component -> Class
+        e.g., SNC: Support Navigation Component -> SNC: Support Navigation Class
+      TPC -> TPNC
+        TPNC: Top Panel Navigation Class.
+      BPC -> BPNC
+        BPNC: Bottom Panel Navigation Class.
+      "part-page" -> "nav-page"
+    }
   }
   Note {
     DNC: Development Navigation Component.
@@ -90,24 +133,49 @@ Updated by v1.1.12a {
     SNI: Support Navigation Interaction.
   }
 }
-Server updated {
-  DNS Server migration. Scheduled migration: (2024-03) -> (2024-02)
-    2024-02-04 (UTC+0): Migration done.
-  SSL, TLS update.
+FWDS {
+  ybys (g1p1-g1p7)   H  Li Na K  Rb Cs Fr
+  ybzs (g18p1-g18p7) He Ne Ar Kr Xe Rn Og
 
-  facooya.com -> Redirect: www.facooya.com
-  www.facooya.com: Core.
+  zbys (g2p2-g2p7)   Be Mg Ca Sr Ba Ra
+  zbzs (g13p2-g13p7) B  Al Ga In Tl Nh
+  zbes (g14p2-g14p7) C  Si Ge Sn Pb Fl
+  zbps (g15p2-g15p7) N  P  As Sb Bi Mc
+  zbts (g16p2-g16p7) O  S  Se Te Po Lv
+  zbgs (g17p2-g17p7) F  Cl Br I  At ts 
 
-  dev.facooya.com || d*.facooya.com: Development site.
-  Rewrite: /path/file -> /path/file.php || /path/file.html
-  Rewrite: /path/null -> 404-page
-  Add: www, test, dev
+  ebys (glap6-g3p6) La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu
+  ebzs (gacp7-g3p7) Ac Th Pa U  Np Pu Am Cm Bk Cf Es Fm Md No Lr
+
+  pbys (g3p4-g12p4) Sc Ti V  Cr Mn Fe Co Ni Cu Zn
+  pbzs (g3p5-g12p5) Y  Zr Nb Mo Tc Ru Rh Pd Ag Cd
+  pbes (g4p6-g12p6) Hf Ta W  Re Os Ir Pt Au Hg
+  pbps (g4p7-g12p7) Rf Db Sg Bh Hs Mt Ds Rg Cn
+
+  "nav-page" Code list
+  ybys: fc
+  ybzs: npfc
+
+  zbys: tpnc, bpnc
+  zbzs: dnc, snc
+  zbes: Null
+  zbps: Null
+  zbts: Null
+  zbgs: Null
+
+  ebys: Null
+  ebzs: Null
+
+  pbys: etcc
+  pbzs: Null
+  pbes: Null
+  pbps: Null
 }
 
 Routinely update {
   Code migration {
-    Migration from "v1.1.11a" to "v1.1.12a".
-    Synchronize to "v1.1.12a".
+    Migration from "v1.1.12a" to "v1.1.13a".
+    Synchronize to "v1.1.13a".
     Clean up code from previous versions.
     Migration inspection successful, continue updating and code refactoring.
   }
@@ -123,9 +191,12 @@ Routinely update {
   }
 }
 Scheduled update {
-  Scheduled update for v1.1.13a {
+  Scheduled update for v1.1.14a {
     Routinely update.
-    Apply scroll-overlap "Fix:PS".
+    Directory "facooya" transfer:
+      dev.facooya.com/facooya/ -> test.facooya.com/laboratory/dev-facooya/
+    "/facooya/" -> "/dev-facooya/"
+    Directory hierarchy update.
   }
   Scheduled update before v1.2.0 {
     Page(Home, Part, Documnet) {
@@ -221,8 +292,10 @@ Video
             <div>V1.1.9A [ part-page ]</div></a></li>
           <li><a class="reference_item" href="#part-page">[Part] Version 1.1.10 Alpha
             <div>V1.1.10A [ part-page ]</div></a></li>
-            <li><a class="reference_item" href="#part-page">[Part] Version 1.1.11 Alpha
-              <div>V1.1.11A [ part-page ]</div></a></li>
+          <li><a class="reference_item" href="#part-page">[Part] Version 1.1.11 Alpha
+            <div>V1.1.11A [ part-page ]</div></a></li>
+          <li><a class="reference_item" href="#part-page">[Part] Version 1.1.12 Alpha
+            <div>V1.1.12A [ part-page ]</div></a></li>
         </ul>
       </div>
       <!-- ============================== -->

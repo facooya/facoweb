@@ -3,26 +3,42 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-.section-r {
+.frame-ybzs {
+  position: relative;
+  top: 4rem;
+
   display: grid;
-  /* overflow-y: auto; */
   transition: margin 300ms ease;
-  /* !!! v1.1.12a [test] (scroll-overlap) */
-  overflow-y: visible;
-  /* touch-action: auto; */
+
+  width: 100%;
+  background-color: #EEEEEE;
+
+  /* !!! v1.1.13a [test] (bpc location) */
+  min-height: calc(100% - 4rem);
 }
-.nav-overlap {
+/* .xxxnav-overlay {
   position: fixed;
-  top: 4rem; /* TPC.height = 4rem */
+  top: 4rem; /* TPC.height = 4rem 
   left: -20%;
-  z-index: 100; /* FIXME: part.section.z-index < this.z-index */
+  z-index: 100; /* FIXME: part.section.z-index < this.z-index 
   width: 20%;
   height: calc(100% - 4rem);
   background-color: #77777777;
 
   transition:
     left 300ms ease;
-}
+  
+  /* !!! v1.1.13a [test] (scroll-overlap) 
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+} */
+/* !!! v1.1.13a [test] (scroll-overlap) */
+/* .nav-overlap-temp {
+  position: relative;
+  z-index: 101;
+  height: calc(100% + 1px);
+  background-color: #00FF0070;
+} */
 /* = = = Progress Bar = = = */
 .progress-line {
   position: fixed;

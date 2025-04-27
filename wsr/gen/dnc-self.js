@@ -5,12 +5,13 @@
  */
 import {
   /*genTBCNav,*/
-  genNav
+  /* genNav, */
+  genNavTest
 } from "../../wsr/utils/gen-utils.js";
 
 /* &&& DATA: Developer Navigation Component, R: Root &&& */
-class DataDnc {
-  dncZettaTitleRS = [ /* YS ZS ES PS TS */
+/* class DataDnc {
+  dncZettaTitleRS = [
     "Menu 1",
     "Menu 2",
     "Menu 3",
@@ -69,27 +70,90 @@ class DataDnc {
     this.dncPetaHrefPS,
     this.dncPetaHrefTS
   ];
+}; */
+/* !!! v1.1.13a [test] */
+/* CodePt: ZBZS */
+class DataDnc {
+  dncZettaBptTitleRS = [
+    "Menu 1",
+    "Menu 2",
+    "Menu 3",
+    "Menu 4",
+    "Menu 5"
+  ];
+  dncTeraTitleYS = [
+    "Item 1-1"
+  ];
+  dncTeraTitleZS = [
+    "Item 2-1",
+    "Item 2-2"
+  ];
+  dncTeraTitleES = [
+    "Item 3-1",
+    "Item 3-2",
+    "Item 3-3"
+  ];
+  dncTeraTitlePS = [
+    "Item 4-1",
+    "Item 4-2"
+  ];
+  dncTeraTitleTS = [
+    "Item 5-1"
+  ];
+  dncTeraTitleRS = [
+    this.dncTeraTitleYS,
+    this.dncTeraTitleZS,
+    this.dncTeraTitleES,
+    this.dncTeraTitlePS,
+    this.dncTeraTitleTS
+  ];
+  dncTeraHrefYS = [
+    "#item-1-1"
+  ];
+  dncTeraHrefZS = [
+    "#item-2-1",
+    "#item-2-2"
+  ];
+  dncTeraHrefES = [
+    "#item-3-1",
+    "#item-3-2",
+    "#item-3-3"
+  ];
+  dncTeraHrefPS = [
+    "#item-4-1",
+    "#item-4-2"
+  ];
+  dncTeraHrefTS = [
+    "#item-5-1"
+  ];
+  dncTeraHrefRS = [
+    this.dncTeraHrefYS,
+    this.dncTeraHrefZS,
+    this.dncTeraHrefES,
+    this.dncTeraHrefPS,
+    this.dncTeraHrefTS
+  ];
 };
 /* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
 
 function setupDnc() {
   const dataDnc = new DataDnc();
-  const dncRoot = document.querySelector(".dnc-root");
+  const dncR = document.querySelector(".dnc-r");
 
-  /*genTBCNav(
+  genNavTest(
     "dnc",
-    _DD._DNC_CONTAINER_NAME_LIST,
-    _DD._DNC_ITEM_NAME_LIST,
-    _DD._DNC_ITEM_LINK_LIST,
-    _PARENT
-  );*/
-  genNav(
+    dataDnc.dncZettaBptTitleRS,
+    dataDnc.dncTeraTitleRS,
+    dataDnc.dncTeraHrefRS,
+    dncR
+  );
+  /* genNav(
     "dnc",
     dataDnc.dncZettaTitleRS,
     dataDnc.dncPetaTitleRS,
     dataDnc.dncPetaHrefRS,
     dncRoot
-  );
+  ); */
 
   logf(0, "wsr/lib/gen/dnc.js", "setupDnc", "Done");
 }

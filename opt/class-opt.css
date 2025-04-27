@@ -30,6 +30,15 @@
   text-decoration: none;
   user-select: none;
 }
+.flc2 { /* facooya-link2-class */
+  user-select: none;
+}
+.flic { /* facooya-list-class */
+  list-style-type: none;
+}
+.abcfc { /* abc-facooya-class */
+  display: none;
+}
 /* DESCRIPTION
  * e.g., <tag class="fac flc ...">...</tag>
  */

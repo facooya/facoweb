@@ -4,8 +4,43 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* - - - Layout - - - */
-.tpc-layout {
+/* .tpc-layout {
   background-color: #222222;
+} */
+.tpc-r {
+  /* Position */
+  position: fixed;
+  z-index: 10;
+  top: 0rem;
+  /* Grid */
+  display: grid;
+  grid-template-columns: 4rem 1fr 4rem;
+  grid-template-rows: 4rem;
+  gap: 0rem 1rem;
+  grid-template-areas:
+    "dni fli sni";
+  /* Box Model */
+  width: 100%;
+  background-color: #222222;
+
+  /* !!! v1.1.13a [test] (scroll-overlap) */
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+}
+/* !!! v1.1.13a [test] (scroll-overlap) */
+.tpc-sbc {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: calc(100% + 1px);
+  background-color: #00FF0070;
+}
+/* - - - CASCADE: tbc-layout - - - */
+.tpc-fli-y { grid-area: fli; }
+.tpc-dni-y { grid-area: dni; }
+.tpc-sni-y { grid-area: sni; }
+.tpc-fli-y, .tpc-dni-y, .tpc-sni-y {
+  position: relative;
 }
 /* - - - Logo - - - */
 .tpc-fli-y-logo {
@@ -28,7 +63,6 @@
 }
 /* = = = = = Zetta = = = = = */
 .tpc-dni-z {
-  /* Positioning */
   position: relative;
   /* Box Model */
   width: 3rem;
@@ -38,14 +72,12 @@
   cursor: pointer;
 }
 .tpc-sni-z { /* !!! v1.1.11a [tmp] */
-  position: relative;
-  top: 0rem;
-
+  /* Grid */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 0.25rem;
-
+  /* Layout */
   width: 2rem;
   height: 2rem;
   margin: 1rem;
@@ -70,7 +102,7 @@
     transform 300ms,
     opacity 300ms;
 }
-.tpc-sni-z-line { /* !!! v1.1.11a [tmp] */
+.tpc-sni-z-line { /* !!! v1.1.11a [tmp] !!! v1.1.13a [tmp] z-shape */
   /* Positioning */
   width: 100%; /* 0.5rem */
   height: 100%;

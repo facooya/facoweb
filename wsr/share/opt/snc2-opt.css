@@ -1,0 +1,124 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* = = = = = SNC-Y = = = = = */
+.snc-y {
+  /* Position */
+  position: relative;
+  /* .snc-y-mgpt < .snc-y */
+  z-index: 2;
+  /* Grid */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4rem auto;
+  grid-template-areas:
+    "snc-z-bept"
+    "snc-z";
+  /* Layout */
+  box-sizing: border-box;
+  /* Visual */
+  background-color: #222222;
+  list-style-type: none;
+  cursor: pointer;
+  transition: background-color 300ms linear;
+}
+/* = = = = = SNC-Z-BEPT = = = = = */
+.snc-z-bpt {
+  grid-area: snc-z-bept;
+  position: relative;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  grid-template-columns: 1fr min-content;
+  grid-template-areas:
+    "snc-z-bept-title snc-z-bept-rr"
+}
+.snc-z-bpt-title {
+  grid-area: snc-z-bept-title;
+  justify-self: center;
+  color: #FFFFFF;
+}
+.snc-z-bpt-rr {
+  grid-area: snc-z-bept-rr;
+  margin: 0rem 1.5rem 0rem 0rem;
+  border-top: 0.5rem solid #FFFFFF;
+  border-right: 0.4rem solid #00000000;
+  border-left: 0.4rem solid #00000000;
+  transform: rotate(0deg);
+  transition:
+    border 300ms ease,
+    transform 300ms ease;
+}
+.snc-z-bpt-br {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  width: 0%;
+  height: 0.125rem;
+  background-color: #90EE90;
+  border-radius: 0.0625rem; /* height / 2 */
+  transition:
+    left 300ms,
+    width 300ms;
+}
+/* = = = = = SNC-Z ~ SNC-P = = = = = */
+.snc-z {
+  grid-area: snc-z;
+  position: relative;
+}
+.snc-e {
+  position: relative;
+  list-style-type: none; /* .lstfc */
+  /* Refresh visible shield */
+  /* grid-template-rows: [JS] */
+  display: grid;
+  grid-auto-rows: 0rem;
+
+  overflow: hidden;
+  transition: grid-template-rows 300ms;
+}
+.snc-p {
+  position: relative;
+}
+/* = = = = = SNC-T = = = = = */
+.snc-t {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  grid-template-areas:
+    "snc-t-title snc-t-rr";
+}
+.snc-t-title {
+  grid-area: snc-t-title;
+  color: #FFFFFF;
+  font-weight: 400;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.snc-t-rr {
+  grid-area: snc-t-rr;
+  margin: 0rem 0rem 0rem 0.5rem;
+  border-top: 0.25rem solid #00000000;
+  border-bottom: 0.25rem solid #00000000;
+  border-left: 0.5rem solid #FFFFFF;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.snc-t-br {
+  position: absolute;
+  top: 70%;
+  height: 0.125rem;
+  background-color: #87CEEB;
+  border-radius: 0.0625rem;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}

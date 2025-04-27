@@ -4,9 +4,7 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* = = = Layout: Part = = = */
-.section-part-layout {
-  /* Positioning */
-  grid-area: part;
+.section-part-r, .part-rbrs {
   /* Grid */
   display: grid;
   grid-template-rows: auto 1fr;

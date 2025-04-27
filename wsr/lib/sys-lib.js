@@ -6,7 +6,7 @@
 function getActivePage() {
   const _pageValue = {
     "home-core-layout": 1,
-    "part-core-layout": 2,
+    "frame-rbrs": 2,
     "doc-core-layout": 3
   };
   for (let key in _pageValue) {

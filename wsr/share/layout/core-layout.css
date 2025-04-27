@@ -58,6 +58,8 @@
     "dni fli sni";
   /* Box Model */
   width: 100%;
+
+  background: #222222;
 }
 /* - - - CASCADE: tbc-layout - - - */
 .tpc-fli-y { grid-area: fli; }

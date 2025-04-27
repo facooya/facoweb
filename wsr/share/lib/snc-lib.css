@@ -3,7 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-.snc-root {
+.snc-r {
   /* Positioning */
   position: fixed;
   top: 4rem; /* TPC.height = 4rem */
@@ -12,28 +12,30 @@
   /* Grid */
   display: grid;
   grid-auto-rows: min-content; /* snc-z: 4rem + snc-e: auto, !!! template-rows? */
-  /* Box Model */
+  /* Layout */
   width: 80%;
   height: calc(100% - 4rem); /* 4rem = TPC.height */
+  overflow-y: scroll;
+  overscroll-behavior: contain;
   /* Visual */
   background-color: #222222;
   transition: right 300ms;
-  /* !!! v1.1.12a [test] (scroll) */
-  overflow-y: scroll;
-  overscroll-behavior: contain;
 }
 /* !!! v1.1.12a [test] (scroll) */
-.snc-temp { /* ios snc scroll bug fix */
+.snc-y-alpt { /* ios snc scroll bug fix */
+  /* Position */
   position: absolute;
-  /* z-index: 11; */
+  /* .snc-y-mgpt < .snc-y */
+  z-index: 1;
   top: 0rem;
+  /* Layout */
   width: 100%;
   height: calc(100% + 1px);
-
-  background: #ed0000;
+  /* Visual */
+  background: #00000000;
 }
 @media (min-width: 768px) {
-  .snc-root {
+  .snc-r {
     /* Position */
     top: 8rem; /* 8rem = TPC.height, FIXME: var(--tpc-height); */
     height: calc(100% - 8rem); /* FIXME: calc(100% - var(--tpc-height)); */
@@ -43,7 +45,7 @@
   }
 }
 @media (min-width: 1280px) {
-  .snc-root {
+  .snc-r {
     /* Position */
     top: 4rem;
     height: calc(100% - 4rem);

@@ -4,24 +4,24 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  /*genTBCTLI,
-  genTBCDNI,
-  genTBCSNI*/
-  genTpcFli,
+  /* genTpcFli,
   genTpcDni,
-  genTpcSni
+  genTpcSni, */
+  genTpnc
 } from "../../wsr/utils/gen-utils.js";
 
 function setupCoreTpc() {
-  const tpcRoot = document.querySelector(".tpc-root");
+  /* !!! v1.1.13a [del] */
+  /* const tpcRoot = document.querySelector(".tpc-root"); */
+  /* const tpcR = document.querySelector(".tpc-r"); */
 
-  /*genTBCTLI("Facooya", tpcRoot);
-  genTBCDNI(tpcRoot);
-  genTBCSNI(tpcRoot);*/
+  /* genTpcFli("Facooya", tpcR);
+  genTpcDni(tpcR);
+  genTpcSni(tpcR); */
 
-  genTpcFli("Facooya", tpcRoot);
-  genTpcDni(tpcRoot);
-  genTpcSni(tpcRoot);
+  const tpncR = document.querySelector(".tpnc-r");
+
+  genTpnc(tpncR);
 
   logf(0, "wsr/utils/gen-lib.js", "setupCoreTpc", "Done");
 }

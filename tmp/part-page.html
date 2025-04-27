@@ -9,15 +9,21 @@
     <link href="../var/lib/core-var.css" rel="stylesheet">
     <link href="../opt/class-opt.css" rel="stylesheet">
     <!-- /wsr/share/layout/ -->
-    <link href="../wsr/share/layout/core-layout.css" rel="stylesheet">
+    <!-- <link href="../wsr/share/layout/core-layout.css" rel="stylesheet"> -->
     <link href="../wsr/share/layout/part-layout.css" rel="stylesheet">
     <!-- /wsr/share/lib/ -->
-    <link href="../wsr/share/lib/tpc-lib.css" rel="stylesheet">
-    <link href="../wsr/share/lib/dnc-lib.css" rel="stylesheet">
+    <!-- <link href="../wsr/share/lib/tpc-lib.css" rel="stylesheet"> -->
+    <link href="../wsr/share/lib/tpnc-lib.css" rel="stylesheet">
+    <!-- <link href="../wsr/share/lib/dnc-lib.css" rel="stylesheet"> -->
+    <link href="../wsr/share/lib/dnc2-lib.css" rel="stylesheet">
     <link href="../wsr/share/lib/snc-lib.css" rel="stylesheet">
     <link href="../wsr/share/lib/section-lib.css" rel="stylesheet">
+    <link href="../wsr/share/lib/bpc-lib.css" rel="stylesheet">
+    <!-- !!! v1.1.13a [test] -->
+    <link href="../wsr/share/lib/ecc.css" rel="stylesheet">
     <!-- /wsr/share/opt/ -->
-    <link href="../wsr/share/opt/snc-opt.css" rel="stylesheet">
+    <!-- <link href="../wsr/share/opt/snc-opt.css" rel="stylesheet"> -->
+    <link href="../wsr/share/opt/snc2-opt.css" rel="stylesheet">
     <link href="../wsr/share/opt/part-opt.css" rel="stylesheet">
     <!-- /wsr/share/support/ -->
     <!-- ############################## -->
@@ -34,40 +40,233 @@
     <script src="../wsr/src/web.js" type="module" defer></script>
     <!-- ############################## -->
     <!-- %%% Web Title %%% -->
-    <title>v1.1.12a Part</title>
+    <title>v1.1.13a Part</title>
   </head>
-  <!-- !!! root -> r -->
-  <body id="70000000" class="core-r part-core-r core-layout part-core-layout"> 
+  <!-- 
+  ybys (g1p1-g1p7)   H  Li Na K  Rb Cs Fr
+  ybzs (g18p1-g18p7) He Ne Ar Kr Xe Rn Og
+
+  zbys (g2p2-g2p7)   Be Mg Ca Sr Ba Ra
+  zbzs (g13p2-g13p7) B  Al Ga In Tl Nh
+  zbes (g14p2-g14p7) C  Si Ge Sn Pb Fl
+  zbps (g15p2-g15p7) N  P  As Sb Bi Mc
+  zbts (g16p2-g16p7) O  S  Se Te Po Lv
+  zbgs (g17p2-g17p7) F  Cl Br I  At ts 
+
+  ebys (glap6-g3p6) La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu
+  ebzs (gacp7-g3p7) Ac Th Pa U  Np Pu Am Cm Bk Cf Es Fm Md No Lr
+
+  pbys (g3p4-g12p4) Sc Ti V  Cr Mn Fe Co Ni Cu Zn
+  pbzs (g3p5-g12p5) Y  Zr Nb Mo Tc Ru Rh Pd Ag Cd
+  pbes (g4p6-g12p6) Hf Ta W  Re Os Ir Pt Au Hg
+  pbps (g4p7-g12p7) Rf Db Sg Bh Hs Mt Ds Rg Cn
+  -->
+  <!-- nav-page code
+  ybys: fc
+  ybzs: npfc
+
+  zbys: tpnc, bpnc
+  zbzs: dnc, snc
+  zbes: Null
+  zbps: Null
+  zbts: Null
+  zbgs: Null
+
+  ebys: Null
+  ebzs: Null
+
+  pbys: etcc
+  pbzs: Null
+  pbes: Null
+  pbps: Null
+  -->
+  <!-- PFC: Page Frame Class -->
+  <!-- fc H Group -->
+  <body id="70000000" class="frame-rbrs pfc-hpt"> <!-- HPT: Hydrogen Periodic Table -->
     <!-- === Core Component === !!! draggable="false" -->
-    <header class="tpc-r tpc-root tpc-layout"></header>
+    <!-- 
+    <nav class="snc-r">
+      <ul class="snc-y">
+        <li class="snc-bept">
+          <div class="snc-bept-title"></div>
+          <div class="snc-bept-rr"></div>
+          <div class="snc-bept-br"></div>
+        </li>
+        <li class="snc-z">
+          <ul class="snc-e">
+            <li class="snc-p">
+              <a class="snc-t f-link" href="#">
+                <div class="snc-t-title">Hello 1</div>
+                <div class="snc-t-rr"></div>
+              </a>
+            </li>
+            <li class="snc-p">
+              <a class="snc-t f-link" href="#">
+                <div class="snc-t-title">Hello 2</div>
+                <div class="snc-t-rr"></div>
+              </a>
+            </li>
+          </ul> snc-e
+        </li>
+      </ul> snc-y
+      <ul class="snc-y">
+        <li></li>
+        <li>
+          <ul>
+            <li></li>
+            <li></li>
+          </ul>
+        </li>
+      </ul> snc-y
+    </nav>
+    etcc 
+    -->
+    <!-- !!! v1.1.13a [test] (updated) -->
+    <header class="frame-ybys pfc-lipt">
+      <!-- <nav class="tpc-r">
+        <div class="tpc-sbc"></div>
+      </nav> -->
+      <!-- 
+      <nav class="tpnc-r">
+        <ul class="tpnc-y">
+          <li class="tpnc-z-fli">
+            <a class="tpnc-z-fli-link">Facooya</a>
+          </li>
+          <li class="tpnc-z-dni">
+            <span class="tpnc-z-dni-ir"></span>
+            <span class="tpnc-z-dni-ir"></span>
+            <span class="tpnc-z-dni-ir"></span>
+          </li>
+          <li class="tpnc-z-sni">
+            <span class="tpnc-z-sni-ir"></span>
+            <span class="tpnc-z-sni-ir"></span>
+            <span class="tpnc-z-sni-ir"></span>
+            <span class="tpnc-z-sni-ir"></span>
+            <span class="tpnc-z-sni-ir"></span>
+            <span class="tpnc-z-sni-ir"></span>
+            <span class="tpnc-z-sni-ir"></span>
+            <span class="tpnc-z-sni-ir"></span>
+            <span class="tpnc-z-sni-ir"></span>
+          </li>
+        </ul>
+        <div class="tpnc-y-bept"></div>
+      </nav>
+      -->
+      <nav class="tpnc-r"></nav>
+      <nav class="dnc-r"></nav>
+      <nav class="snc-r"></nav>
+      <!-- <nav class="snc-r snc-root">  scpt
+        <div class="snc-temp"></div>
+      </nav> -->
+      <!-- <nav class="snc-r">
+        <ul class="snc-y">
+          <li class="snc-z-bept">
+            <div class="snc-z-bept-title">Tab 1</div>
+            <div class="snc-z-bept-rr"></div>
+            <div class="snc-z-bept-br"></div>
+          </li>
+          <li class="snc-z">
+            <ul class="snc-e">
+              <li class="snc-p">
+                <a class="snc-t flc" href="#">
+                  <div class="snc-t-title">Title 1-1</div>
+                  <div class="snc-t-rr"></div>
+                  <div class="snc-t-br"></div>
+                </a>
+              </li>
+              <li class="snc-p">
+                <a class="snc-t flc" href="#">
+                  <div class="snc-t-title">Title 1-2</div>
+                  <div class="snc-t-rr"></div>
+                  <div class="snc-t-br"></div>
+                </a>
+              </li>
+            </ul>  snc-e 
+          </li>
+        </ul>  snc-y 
+        <ul class="snc-y">
+          <li class="snc-z-bept">
+            <div class="snc-z-bept-title">Tab 2</div>
+            <div class="snc-z-bept-rr"></div>
+            <div class="snc-z-bept-br"></div>
+          </li>
+          <li class="snc-z">
+            <ul class="snc-e">
+              <li class="snc-p">
+                <a class="snc-t" href="#">
+                  <div class="snc-t-title">Title 2-1</div>
+                  <div class="snc-t-rr"></div>
+                  <div class="snc-t-br"></div>
+                </a>
+              </li>
+              <li class="snc-p">
+                <a class="snc-t" href="#">
+                  <div class="snc-t-title">Title 2-2</div>
+                  <div class="snc-t-rr"></div>
+                  <div class="snc-t-br"></div>
+                </a>
+              </li>
+            </ul>  snc-e 
+          </li>
+        </ul>  snc-y 
+        <div class="snc-y-mgpt"></div>
+      </nav> -->
+      <div class="ecc-r"> <!-- Etc Class JS -->
+        <!-- <div id="lpb" class="progress-line"></div>  prc-ys spc-y-ys 
+        <div id="rpb" class="progress-line"></div> --> <!-- spc-y-zs -->
+        <div class="prc-r"> <!-- progress renderer class -->
+           <div class="prc-y prc-y-scpt"></div>
+           <div class="prc-y prc-y-tipt"></div>
+        </div>
+        <div class="noc-r"> <!-- navigation overlay class -->
+          <div class="noc-y-scpt"></div>
+        </div>
+        <!-- PRC: Progress Renderer Class
+        <div class="prc-r">
+          <div class="prc-y prc-scpt"></div>
+          <div class="prc-y prc-tipt"></div>
+        </div>
+        <div class="nob-r">
+          <div class="nob-y"></div>
+        </div>
+        -->
+      </div>
+    </header>
+    <!-- !!! v1.1.13a [del] (replaced) -->
+    <!-- <header class="tpc-r">
+      <div class="tpc-temp"></div>
+    </header>
     <nav class="dnc-r dnc-root"></nav>
     <nav class="snc-r snc-root">
-      <!-- !!! v1.1.12a [test] -->
+      !!! v1.1.12a [test] (scroll-overlap)
       <div class="snc-temp"></div>
-    </nav>
-
-    <div class="nav-overlap"></div>
+    </nav> -->
+    <!-- !!! v1.1.13a [del] (replaced) -->
+    <!-- <div class="nav-overlap">
+      <div class="nav-overlap-temp"></div>
+    </div>
     <div id="lpb" class="progress-line"></div>
-    <div id="rpb" class="progress-line"></div>
-
-    <!-- !!! v1.1.12a [test]
-      <div class="etc-r">
-        <div class="noc-y"></div> NOC = Navigation Overlap Component
-        <div class="spc-y-ys spc-y"></div> SPC = Scroll Progress Component
-        <div class="spc-y-zs spc-y"></div>
-      </div>
-
-      <div class="spc-root"> Scroll Progress Component
-        <div class="spc-y-ys spc-y"></div>
-        <div class="spc-y-zs spc-y"></div>
-      </div>
-    -->
+    <div id="rpb" class="progress-line"></div> -->
     <!-- ============================== -->
-    <section class="section-r section-part-r section-part-layout">
+    <main class="frame-ybzs part-rbrs pfc-napt">
+      <!-- header frame-part-ybys, section frame-part-ybzs -->
+      <!-- 
+      <header class="pfhy pmhr">
+        <h3 class="pmhhy-title">Version 1.1.13 Alpha</h3>
+        <nav class="pmhny part-tab-r">
+          <ul class="tab-y">
+            <li class="tab-z">Tab 1</li>
+            <li class="tab-z">Tab 2</li>
+            <li class="tab-z">Tab 3</li>
+          </ul>
+        </nav>
+      </header>
+      -->
+      <!-- cfbooooc-rs -->
       <!-- ===== Part Component ===== -->
-      <section class="part-y part-layout"> <!-- !!! part-y -->
+      <section class="part-y part-layout"> <!-- !!! part-y pfhy -->
         <!-- %%% Part Title %%% --> <!-- !!! part-z -> part-z-title -->
-        <div class="part-title flex-center">Version 1.1.12 Alpha</div>
+        <div class="part-title flex-center">Version 1.1.13 Alpha</div>
         <!-- %%% Part Tab %%% --> <!-- !!! part-e -> part-p -> part-p-title -->
         <nav class="part-tab-container">
           <div class="part-tab-item flex-center">Tab 1</div>
@@ -75,7 +274,7 @@
           <div class="part-tab-item flex-center">Tab 3</div>
         </nav>
       </section>
-      <!-- !!! v1.1.12 [test] [del]
+      <!-- !!! v1.1.12a [test] [del]
         <section class="part-y-ys">
           <div class="part-z-ys">
             <div class="part-e-ys-ys">Title</div>
@@ -86,13 +285,13 @@
         </section>
       -->
       <!-- ============================== -->
-      <!-- ===== Chapter Component ===== -->
-      <section class="chapter-layout"> <!-- !!! chapter-root -->
+      <!-- ===== Chapter Component section part-ybzs ===== -->
+      <section class="chapter-layout"> <!-- !!! chapter-root pfsy -->
         <!-- %%% Tab: 0 %%% -->
-        <nav class="chapter-container">
+        <nav class="chapter-container"> <!-- pfnz -->
           <a class="chapter-item container-link" href="./doc-page.html">
-            <div class="chapter-item-title">[Tab 1] Version 1.1.12 Alpha</div>
-            <div class="chapter-item-info">v1.1.12a [ .../tmp/doc-page ]</div>
+            <div class="chapter-item-title">[Tab 1] Version 1.1.13 Alpha</div>
+            <div class="chapter-item-info">v1.1.13a [ .../tmp/doc-page ]</div>
           </a>
           <a class="chapter-item container-link" href="./doc-page.html">
             <div class="chapter-item-title">[Tab 1] Item 1-2</div>
@@ -163,18 +362,21 @@
         </nav>
       </section>
       <!-- ============================== -->
-    </section>
+    </main>
     <!-- ===== Bottom Panel Component ===== -->
-    <footer class="bpc-r bpc-root bpc-layout">
+    <footer class="bpc-r frame-ybes pfc-kpt">
+      <!-- bpnc
+        <div class="bpc-r"></div>
+       -->
       <!-- ##############################-->
       <!-- DESCRIPTION
-         - +[CIT] {Chapter Item Title} (cit)
-         - +[CII] {Chapter Item Information} (cii)
-         - +[BBC] {Bottom Bar Component} (bbc, layout-bbc)
-         -->
+        - +[CIT] {Chapter Item Title} (cit)
+        - +[CII] {Chapter Item Information} (cii)
+        - +[BBC] {Bottom Bar Component} (bbc, layout-bbc)
+        -->
       <!-- INFORMATION
-         - @[Author] {Facooya} (Founder)
-         -->
+        - @[Author] {Facooya} (Founder)
+        -->
     </footer>
     <!-- ============================== -->
   </body>

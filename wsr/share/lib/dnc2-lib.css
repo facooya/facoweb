@@ -1,0 +1,236 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* = = = = = DNC-R = = = = = */
+.dnc-r {
+  /* Position */
+  position: fixed;
+  top: 4rem; /* FIXME: var(--tpc-height); */
+  left: -80%;
+  z-index: 100; /* FIXME: TPC < z-index && part-section < z-index */
+  /* Grid */
+  display: grid;
+  grid-auto-rows: min-content;
+  /* Layout */
+  width: 80%;
+  height: calc(100% - 4rem);
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  /* Visual */
+  background-color: #222222;
+  transition: left 300ms;
+}
+/* = = = = = DNC-Y, DNC-Y-MGPT = = = = = */
+.dnc-y {
+  /* Position */
+  position: relative;
+  z-index: 2;
+  /* Grid */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4rem auto;
+  grid-template-areas:
+    "dnc-z-bept"
+    "dnc-z";
+  /* Layout */
+  box-sizing: border-box;
+  /* Visual */
+  background-color: #222222;
+  list-style-type: none;
+  cursor: pointer;
+  transition: background-color 300ms linear;
+}
+.dnc-y-alpt {
+  position: absolute;
+  z-index: 1;
+  top: 0rem;
+  width: 100%;
+  height: calc(100% + 1px);
+  background: #00000000;
+}
+/* = = = = = DNC-Z-BEPT = = = = = */
+.dnc-z-bpt {
+  grid-area: dnc-z-bept;
+  position: relative;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  grid-template-columns: 1fr min-content;
+  grid-template-areas:
+    "dnc-z-bept-title dnc-z-bept-rr"
+}
+.dnc-z-bpt-title {
+  grid-area: dnc-z-bept-title;
+  justify-self: center;
+  color: #FFFFFF;
+}
+.dnc-z-bpt-rr {
+  grid-area: dnc-z-bept-rr;
+  margin: 0rem 1.5rem 0rem 0rem;
+  border-top: 0.5rem solid #FFFFFF;
+  border-right: 0.4rem solid #00000000;
+  border-left: 0.4rem solid #00000000;
+  transform: rotate(0deg);
+  transition:
+    border 300ms ease,
+    transform 300ms ease;
+}
+.dnc-z-bpt-br {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  width: 0%;
+  height: 0.125rem;
+  background-color: #90EE90;
+  border-radius: 0.0625rem; /* height / 2 */
+  transition:
+    left 300ms,
+    width 300ms;
+}
+/* = = = = = DNC-Z ~ DNC-P = = = = = */
+.dnc-z {
+  grid-area: dnc-z;
+  position: relative;
+}
+.dnc-e {
+  position: relative;
+  /* Refresh visible shield */
+  /* grid-template-rows: [JS] */
+  display: grid;
+  grid-auto-rows: 0rem;
+
+  overflow: hidden;
+
+  list-style-type: none;
+  transition: grid-template-rows 300ms;
+}
+.dnc-p {
+  position: relative;
+}
+/* = = = = = DNC-T = = = = = */
+.dnc-t {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  grid-template-areas:
+    "dnc-t-title dnc-t-rr";
+}
+.dnc-t-title {
+  grid-area: dnc-t-title;
+  color: #FFFFFF;
+  font-weight: 400;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.dnc-t-rr {
+  grid-area: dnc-t-rr;
+  margin: 0rem 0rem 0rem 0.5rem;
+  border-top: 0.25rem solid #00000000;
+  border-bottom: 0.25rem solid #00000000;
+  border-left: 0.5rem solid #FFFFFF;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.dnc-t-br {
+  position: absolute;
+  top: 70%;
+  height: 0.125rem;
+  background-color: #87CEEB;
+  border-radius: 0.0625rem;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+/* ***** DisplayType: Tablet ***** */
+@media (min-width: 768px) { /* DisplayType: Tablet */
+  .dnc-root {
+    /* Reset */
+    left: auto;
+    width: 100%;
+    height: auto;
+    transition: none;
+    overflow-y: visible;
+    /* Grid */
+    grid-template-columns: repeat(5, 1fr);
+    /* Box Model */
+    box-sizing: border-box;
+    padding: 0rem 1rem;
+  }
+  .dnc-z-right-icon {
+    /* Layout */
+    display: none;
+  }
+  .dnc-e {
+    /* Position */
+    position: absolute;
+    /* Layout */
+    width: 10rem;
+    /* Grid */
+    justify-self: center;
+    grid-template-columns: 1fr;
+    /* grid-template-rows: [JS] !!! */
+    /* Visual */
+    border-radius: 0rem 0rem 1rem 1rem;
+    background-color: #222222;
+    transition:
+      grid-template-rows 300ms, 
+      width 300ms;
+  }
+}
+@media (min-width: 1280px) {
+  .dnc-root {
+    /* Position */
+    /* Reset: top(mobile), left(tablet) */
+    top: 0rem;
+    left: 12rem; /* logo(12) */
+    right: 4rem; /* sni(4) FIXME: snc title add */
+    /* Grid */
+    /* Reset: gtc(tablet) */
+    grid-template-columns: repeat(5, minmax(10rem, 15rem)); /* FIXME: Calc minmx() plz */
+    /* Layout */
+    /* Reset: width(tablet) */
+    width: auto;
+  }
+  .dnc-y {
+    /* Visual */
+    /* Reset: cursor(mobile) */
+    cursor: default;
+  }
+  /* dnc-p */
+  .dnc-p-right-icon { /* ! hover */
+    /* Layout */
+    /* Reset: margin(mobile), border(mobile) */
+    margin: 0rem;
+    border-top: 0rem solid #00000000;
+    border-bottom: 0rem solid #00000000;
+    border-left: 0rem solid #00000000;
+    /* Reset: transition(mobile) */
+    transition:
+      margin 300ms linear,
+      border 300ms linear,
+      opacity 300ms linear;
+  }
+  .dnc-p-bottom-line {
+    /* Position */
+    top: 75%;
+    /* Layout */
+    width: 0%;
+    /* Visual */
+    /* Reset: opacity(mobile), transition(mobile) */
+    opacity: 1;
+    transition: width 300ms;
+  }
+}
+/* DESCRIPTION
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */
