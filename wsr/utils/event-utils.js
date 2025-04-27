@@ -27,20 +27,12 @@ import {
 
 /* ===== onEventDniSni ===== */
 function onEventDniSni() {
-  /* !!! v1.1.13a [del] {tpnc: dni, sni} (replaced)
-  const tpcDniY = document.querySelector(".tpc-dni-y");
-  const tpcSniY = document.querySelector(".tpc-sni-y");
-  tpcDniY.addEventListener("click", enabledDni);
-  tpcSniY.addEventListener("click", enabledSni); */
   /* !!! v1.1.13a [pro] {tpnc: dni, sni} */
   const tpncZettaDni = document.querySelector(".tpnc-z-dni");
   const tpncZettaSni = document.querySelector(".tpnc-z-sni");
   tpncZettaDni.addEventListener("click", onTpncZettaDni);
   tpncZettaSni.addEventListener("click", onTpncZettaSni);
 
-  /* !!! v1.1.12a [tmp] [del] (nav-overlap) 
-  const navOverlap = document.querySelector(".nav-overlap");
-  navOverlap.addEventListener("click", enabledSni); */
   /* !!! v1.1.12a [test] (scroll-overlap) */
   /* const sncR = document.querySelector(".snc-r");
   sncR.addEventListener("mouseenter", _scrollTest);

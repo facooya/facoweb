@@ -29,14 +29,14 @@ function setupPartPage() {
     PART_TAB_ITEM[0].style.fontWeight = "700";
     CHAPTER_CONTAINER[0].style.display = "grid";
   }
-  _verifyProgressBar();
+  _verifyProgressBar(); /* !!!!! Check v1.1.14a !!!!! */
   logf(0, "wsr/src/part.js", "setupPart", "Done");
 }
 function _activeTab(event) {
   const ect = event.currentTarget;
   const PART_TAB_ITEM = document.getElementsByClassName("part-tab-item");
   const CHAPTER_CONTAINER = document.getElementsByClassName("chapter-container");
-  /* inactivating */
+  /* Deactivating */
   for (let i = 0; i < PART_TAB_ITEM.length; i++) {
     PART_TAB_ITEM[i].style.borderColor = "#AAAAAA";
     PART_TAB_ITEM[i].style.color = "#555555";

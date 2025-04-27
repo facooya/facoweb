@@ -6,72 +6,6 @@
 import {
   genNavTest
 } from "../../../../wsr/utils/gen-utils.js";
-
-/* &&& DATA: Support Navigation Component, R: Root &&& */
-/* !!! v1.1.13a [tmp] 
-class DataSnc {
-  sncZettaTitleRS = [
-    "Tab 1",
-    "Tab 2",
-    "Tab 3"
-  ];
-  sncPetaTitleYS = [
-    "Version 1.1.13 Alpha",
-    "Item 1-2",
-    "Item 1-3",
-    "Item 1-4",
-    "Item 1-5",
-    "Item 1-6",
-    "Item 1-7",
-    "Item 1-8",
-    "Item 1-9",
-    "Item 1-10",
-    "Item 1-11",
-  ];
-  sncPetaTitleZS = [
-    "Item 2-1",
-    "Item 2-2"
-  ];
-  sncPetaTitleES = [
-    "Item 3-1",
-    "Item 3-2",
-    "Item 3-3"
-  ];
-  sncPetaTitleRS = [
-    this.sncPetaTitleYS,
-    this.sncPetaTitleZS,
-    this.sncPetaTitleES
-  ];
-  /* !!! Temporary ../.. : e.g., /content/programming/c/tutorial/c-... 
-  sncPetaHrefYS = [
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page"
-  ];
-  sncPetaHrefZS = [
-    "../tmp/doc-page",
-    "../tmp/doc-page"
-  ];
-  sncPetaHrefES = [
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page"
-  ];
-  sncPetaHrefRS = [
-    this.sncPetaHrefYS,
-    this.sncPetaHrefZS,
-    this.sncPetaHrefES
-  ];
-}; */
-/* !!! v1.1.13a [test] [pro] */
 /* CodePt: ZBZS */
 class DataSnc {
   sncZettaBptTitleRS = [
@@ -107,26 +41,26 @@ class DataSnc {
     this.sncTeraTitleES
   ];
   sncTeraHrefYS = [
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page"
+    "./doc-page.html",
+    "./doc-page.html",
+    "./doc-page.html",
+    "./doc-page.html",
+    "./doc-page.html",
+    "./doc-page.html",
+    "./doc-page.html",
+    "./doc-page.html",
+    "./doc-page.html",
+    "./doc-page.html",
+    "./doc-page.html"
   ];
   sncTeraHrefZS = [
-    "../tmp/doc-page",
-    "../tmp/doc-page"
+    "./doc-page.html",
+    "./doc-page.html"
   ];
   sncTeraHrefES = [
-    "../tmp/doc-page",
-    "../tmp/doc-page",
-    "../tmp/doc-page"
+    "./doc-page.html",
+    "./doc-page.html",
+    "./doc-page.html"
   ];
   sncTeraHrefRS = [
     this.sncTeraHrefYS,

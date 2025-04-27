@@ -41,14 +41,14 @@ class RmcData {
     this._CN3_item_name_list
   ];
   _CN1_item_link_list = [
-    "../../tmp/doc-page.html",
-    "../../tmp/doc-page.html"
+    "../../page/doc-page.html",
+    "../../page/doc-page.html"
   ];
   _CN2_item_link_list = [
-    "../../tmp/doc-page.html"
+    "../../page/doc-page.html"
   ];
   _CN3_item_link_list = [
-    "../../tmp/doc-page.html"
+    "../../page/doc-page.html"
   ];
   _RMC_ITEM_LINK_LIST = [
     this._CN1_item_link_list,

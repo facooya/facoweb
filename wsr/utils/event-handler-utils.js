@@ -154,32 +154,6 @@ function onTpncZettaSni() {
     isEnabledSni = 0;
   }
 }
-/*function _resetSncZ(sncZ) { /* !!! v1.1.11a [tmp] [del] 
-  for (let i = 0; i < sncZ.length; i++) {
-    if (sncZ[i].isActive) {
-      let eData = {
-        currentTarget: sncZ[i]
-      };
-      switch (activeMode) {
-        case 1:
-          handleMdtSncZettaBept(eData);
-          break;
-        case 2:
-          handleTabletSncZ(eData);
-          break;
-        case 3:
-          eData.type = "click";
-          handleDesktopSncZ(eData);
-          eData.type = "mouseleave";
-          handleDesktopSncZ(eData);
-          break;
-        default:
-          /* Error 
-          break;
-      }
-    }
-  }
-}*/
 function _resetSncR() {
   const sncZettaBpt = document.querySelectorAll(".snc-r .snc-z-bpt");
   for (let i = 0; i < sncZettaBpt.length; i++) {
@@ -245,56 +219,6 @@ function _resetDncR() {
   }
 } */
 /* ===== DNC ===== */
-/* ----- Mobile ----- */
-/* function handleMobileDncZ(event) { !!! v1.1.13a [del] (replaced)
-  const eCurrentTarget = event.currentTarget;
-  const idx = eCurrentTarget.index;
-
-  const dncZettaTitleZB = eCurrentTarget.querySelector(".dnc-z-title");
-  const dncZettaRightIconZB = eCurrentTarget.querySelector(".dnc-z-right-icon");
-  const dncZettaBottomLineZB = eCurrentTarget.querySelector(".dnc-z-bottom-line");
-
-  const dncY = document.querySelectorAll(".dnc-r .dnc-y");
-  const dncExaEB = dncY[idx].querySelector(".dnc-e");
-
-  const dncPetaTitleEB = dncExaEB.querySelectorAll(".dnc-p-title");
-  const dncPetaRightIconEB = dncExaEB.querySelectorAll(".dnc-p-right-icon");
-  const dncPetaBottomLineEB = dncExaEB.querySelectorAll(".dnc-p-bottom-line");
-
-  if (!dncY[idx].isActive) { /* Activate 
-    dncZettaTitleZB.style.fontWeight = "700";
-    dncZettaRightIconZB.style.transform = "rotate(180deg)";
-    dncZettaBottomLineZB.style.left = "15%";
-    dncZettaBottomLineZB.style.width = "70%";
-
-    dncY[idx].style.backgroundColor = "#333333";
-    for (let i = 0; i < dncPetaTitleEB.length; i++) {
-      dncPetaTitleEB[i].style.opacity = "1";
-      dncPetaRightIconEB[i].style.opacity = "1";
-      dncPetaBottomLineEB[i].style.opacity = "1";
-
-      _calcBottomLine(dncPetaTitleEB[i], dncPetaBottomLineEB[i], 20);
-    }
-    dncExaEB.style.gridTemplateRows = calcGridTemplateData(dncPetaTitleEB, 4);
-
-    dncY[idx].isActive = true;
-  } else { /* Deactivate 
-    dncZettaTitleZB.style.fontWeight = "";
-    dncZettaRightIconZB.style.transform = "";
-    dncZettaBottomLineZB.style.left = "";
-    dncZettaBottomLineZB.style.width = "";
-
-    dncY[idx].style.backgroundColor = "";
-    for (let i = 0; i < dncPetaTitleEB.length; i++) {
-      dncPetaTitleEB[i].style.opacity = "";
-      dncPetaRightIconEB[i].style.opacity = "";
-      dncPetaBottomLineEB[i].style.opacity = "";
-    }
-    dncExaEB.style.gridTemplateRows = calcGridTemplateData(dncPetaTitleEB, 0);
-
-    dncY[idx].isActive = false;
-  }
-} */
 function onMdtDncZettaBpt(event) {
   const eCurrentTarget = event.currentTarget;
   const idx = eCurrentTarget.idx;

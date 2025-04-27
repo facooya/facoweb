@@ -1,0 +1,234 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* ========== NPLC ========== */
+.nplc-r-heptg {
+  /* Tag.main */
+  /* .plc-y-naptg */
+  /* Position */
+  position: relative;
+  top: 4rem;
+  /* Grid */
+  display: grid;
+  grid-template-columns: minmax(300px, 1200px);
+  grid-template-rows: auto 1fr;
+  gap: 2rem 0rem;
+  grid-template-areas:
+    "nplc-y-neptg"
+    "nplc-y-arptg";
+  /* Layout */
+  padding-bottom: 1rem;
+  min-height: calc(100% - 4rem);
+  /* Visual */
+  background-color: #FFFFFF;
+  /* !!!!! v1.1.14a [test] !!!!! */
+  justify-content: center;
+}
+/* ============================== */
+/* ========== NPTLC ========== */
+.nptlc-r-liptp {
+  /* Tag.header */
+  /* .nplc-y-neptg */
+  /* Position */
+  grid-area: nplc-y-neptg;
+  /* Grid */
+  display: grid;
+  grid-template-rows: min-content auto;
+  gap: 1rem 0rem;
+  grid-template-areas:
+    "nptlc-y-beptp"
+    "nptlc-y-tno";
+  /* Layout */
+  margin: 0rem 1rem;
+}
+/* =====----- BEPTP -----===== */
+.nptlc-y-beptp {
+  /* Tag.div */
+  /* ----- Position ----- */
+  grid-area: nptlc-y-beptp;
+  position: relative;
+  box-sizing: border-box;
+  /* !!! v1.1.14a [tmp] */
+  cursor: default;
+  user-select: none;
+}
+.nptlc-z-beptp-title {
+  /* Tag.h1 */
+  /* ----- Layout ----- */
+  padding: 1rem 1rem;
+  /* ----- Typographic ----- */
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nptlc-z-beptp-bgro {
+  /* Tag.div */
+  /* ----- Layout ----- */
+  width: 100%;
+  height: 0.5rem;
+  /* ----- Visual ----- */
+  background-color: #222222;
+  border-radius: calc(0.5rem / 2);
+}
+/* ==========----------========== */
+/* =====----- TNO -----===== */
+.nptlc-y-tno {
+  /* Tag.nav */
+  /* Position */
+  grid-area: nptlc-y-tno;
+}
+.nptlc-z-tno {
+  /* Tag.ul */
+  /* Grid */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: min-content;
+  gap: 1rem 1rem;
+  /* Visual */
+  list-style-type: none;
+}
+.nptlc-e-tno {
+  /* Tag.li */
+  /* Position */
+  position: relative;
+  /* Grid */
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  /* Layout */
+  padding: 1rem;
+  box-sizing: border-box;
+  /* Visual */
+  cursor: pointer;
+  /* !!! v1.1.14a [del] (replaced) */
+  /* Layout */
+  /* box-sizing: border-box; */
+  /* padding: 1rem 0.5rem; */
+  /* Typographic */
+  /* color: #999999;
+  font-weight: normal;
+  text-align: center;
+  display: grid;
+  align-self: center; */
+  /* justify-self: center; */
+  /* Visual */
+  /* cursor: pointer;
+  border: 0.25rem solid #999999;
+  border-radius: 1.5rem; */
+}
+.nptlc-p-tno {
+  /* Tag.a */
+  text-decoration: none;
+}
+.nptlc-t-tno-title {
+  /* Tag.h2 */
+  /* Position */
+  position: relative;
+  z-index: 2;
+  /* Typography */
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.25rem;
+  color: #999999;;
+}
+.nptlc-t-tno-sgro {
+  /* Tag.div */
+  /* ----- Position ----- */
+  position: absolute;
+  top: 0rem;
+  bottom: 0rem;
+  left: 0rem;
+  right: 0rem;
+  z-index: 1;
+  /* ----- Visual ----- */
+  border: 0.25rem solid #999999;
+  border-radius: 1.5rem;
+}
+/* ==========----------========== */
+/* ============================== */
+/* ========== NPCLC ========== */
+.npclc-r-naptp {
+  /* Tag.section */
+  /* .nplc-y-arptg */
+  /* ----- Grid ----- */
+  grid-area: nplc-y-arptg;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "npclc-y";
+  /* ----- Layout ----- */
+  margin: 0rem 1rem;
+}
+/* .npclc-y:first-child {
+   !!!!! v1.1.14a [tmp, del] (Before [JS]) !!!!! 
+  display: grid; 
+} */
+.npclc-y {
+  /* Tag.nav */
+  grid-area: npclc-y;
+  /* [JS] display: grid; */
+  display: none;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  gap: 0.5rem 0.5rem;
+}
+.npclc-z {
+  /* Tag.ul */
+  /* ----- Grid ----- */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  /* ----- Visual ----- */
+  list-style-type: none;
+}
+.npclc-e {
+  /* Tag.li */
+  padding: 1rem 0rem;
+  border: 0.125rem solid #333333;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.npclc-p {
+  /* Tag.a */
+  /* !!!!! v1.1.14a [tmp] (move to option) !!!!! */
+  text-decoration-line: none;
+}
+.npclc-t-title {
+  /* Tag.div */
+  padding: 0rem 0rem 0.5rem 0.5rem;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.npclc-t-overview {
+  /* Tag.div */
+  padding: 0rem 0rem 0rem 1.5rem;
+  color: #333333;
+}
+@media (min-width: 768px) {
+  .nplc-r-heptg {
+    top: 8rem;
+    transition: margin 300ms ease;
+  }
+  .nptlc-z-tno {
+    /* Tag.ul */
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .npclc-z {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1280px) {
+  .nplc-r-heptg {
+    top: 4rem;
+    padding: 0rem 1rem 1rem 1rem;
+  }
+}
+/* ============================== */
+/* DESCRIPTION
+ */
+/* INFORMATION
+ * @[Author] {Facooya} (Founder)
+ */
