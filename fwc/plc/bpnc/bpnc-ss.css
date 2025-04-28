@@ -4,6 +4,9 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 .bpnc-r {
+  --bpnc-background: var(--nc-background);
+}
+.bpnc-r {
   width: 100%;
   height: 20rem;
 

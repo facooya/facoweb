@@ -36,12 +36,15 @@ class DncController {
     DncManager.init();
   }
   static processOnLoad() {
-    DncManager.addEvent();
+    /* DncManager.addEvent(); */
+    DncManager.event(true);
   }
   static processOnResize() {
     DncManager.initOnResize();
-    DncManager.removeEvent();
-    DncManager.addEvent();
+    /* DncManager.removeEvent();
+    DncManager.addEvent(); */
+    DncManager.event(false);
+    DncManager.event(true);
   }
 }
 class DncManager {
@@ -50,25 +53,37 @@ class DncManager {
       dncY,
       dncE
     } = DncGet.getDncGroup();
-    /* const {
-      dncZettaAlptg
-    } = DncGet.getDncAlptgGroup(); */
-    /* const dncZettaAlptg = dncR.querySelectorAll(".dnc-z-alptg"); */
-    /* const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y"); */
-    /* const dncZettaAlptg = dncR.querySelectorAll(".dnc-z-alptg");
-    const dncE = dncR.querySelectorAll(".dnc-e"); */
     for (let i = 0; i < dncE.length; i++) {
       const {
         dncPetaEb
       } = DncGet.getDncEbGroup(i);
-      /* const dncPetaEb = dncE[i].querySelectorAll(".dnc-p"); */
       DncSet.setExa(dncE[i], dncPetaEb, 0);
       dncY[i].isActive = false;
       dncY[i].index = i;
-      /* dncZettaAlptg[i].index = i; */
       for (let j = 0; j < dncPetaEb.length; j++) {
         dncPetaEb[j].index = j;
+      }
+    }
+    /*  */
+    const buffer = 32;
+    let isDefaultSetup = null;
+    if (FwaConfig.currentDisplayType !== 3) {
+      isDefaultSetup = true;
+    } else {
+      isDefaultSetup = false;
+    }
+    for (let i = 0; i < dncY.length; i++) {
+      const {
+        dncGigaTitleEb,
+        dncGigaBgroEb
+      } = DncGet.getDncEbGroup(i);
+      for (let j = 0; j < dncGigaBgroEb.length; j++) {
+        DncSetup.setupGigaBgro(
+          dncGigaBgroEb[j],
+          dncGigaTitleEb[j],
+          buffer
+        );
+        DncSetup.setupGigaBgroWidth(isDefaultSetup, dncGigaBgroEb[j]);
       }
     }
   }
@@ -79,6 +94,31 @@ class DncManager {
     const displayTypeState = FwaConfig.previousDisplayType;
     /* !!!!! v1.1.15a [suggestion] {add} (getDisplayTypeState) !!!!! */
     DncReset.resetDnc(displayTypeState);
+    /* !!!!! v1.1.16a [test] {issue fix} !!!!! */
+    const {
+      dncY,
+      dncE
+    } = DncGet.getDncGroup();
+    /* !!!!! v1.1.16a [suggestion] {move} (in resetDnc) !!!!! */
+    dncE[0].classList.remove("cl-tdt-dnc-z-alptg-handler-nth-1");
+    dncE[4].classList.remove("cl-tdt-dnc-z-alptg-handler-nth-5");
+    /* resetDncGigaBgro(); */
+    let isDefaultSetup = null;
+    if (FwaConfig.currentDisplayType === 3) {
+      isDefaultSetup = false;
+    } else {
+      isDefaultSetup = true;
+    }
+    for (let i = 0; i < dncY.length; i++) {
+      const {
+        dncGigaBgroEb
+      } = DncGet.getDncEbGroup(i);
+      for (let j = 0; j < dncGigaBgroEb.length; j++) {
+        /* dncGigaBgroEb[j].style.left = "";
+        dncGigaBgroEb[j].style.width = ""; */
+        DncSetup.setupGigaBgroWidth(isDefaultSetup, dncGigaBgroEb[j]);
+      }
+    }
   }
   static generate() {
     const {
@@ -149,27 +189,85 @@ class DncManager {
     /* =============== ;Sdo Group; =============== */
     dncR.append(dncFragment);
   }
-  static addEvent() {
-    /* const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y");
-    const dncZ = dncR.querySelectorAll(".dnc-z");
-    const dncZettaAlptg = dncR.querySelectorAll(".dnc-z-alptg");
-    const dncE = dncR.querySelectorAll(".dnc-e"); */
+  static event(isActive) {
     const {
       dncY
     } = DncGet.getDncGroup();
     const {
       dncZettaAlptg
     } = DncGet.getDncAlptgGroup();
-    /* const { dncPeta } = DncGet.getDncPetaIndexGroup(); */
+    /*  */
+    /* let type = ""; */
+    let displayTypeState = null;
+    let eventListenerType = "";
+    if (isActive) {
+      displayTypeState = FwaConfig.currentDisplayType;
+      eventListenerType = "addEventListener";
+    } else {
+      displayTypeState = FwaConfig.previousDisplayType;
+      eventListenerType = "removeEventListener";
+    }
+    /*  */
     for (let i = 0; i < dncY.length; i++) {
       /* Init */
       dncY[i].isActive = false;
       /* ========== FwaConfig.currentDisplayType ========== */
+      switch (displayTypeState) {
+        case 1: {
+          dncZettaAlptg[i][eventListenerType](
+            "click",
+            DncHandler.mdtDncZettaAlptg
+          );
+          break;
+        }
+        case 2: {
+          dncZettaAlptg[i][eventListenerType](
+            "click",
+            DncHandler.tdtDncZettaAlptg
+          );
+          break;
+        }
+        case 3: {
+          dncY[i][eventListenerType](
+            "mouseenter",
+            DncHandler.ddtDncYotta
+          );
+          dncY[i][eventListenerType](
+            "mouseleave",
+            DncHandler.ddtDncYotta
+          );
+          /* Dnc Peta */
+          const {
+            dncPetaEb
+          } = DncGet.getDncEbGroup(i);
+          for (let j = 0; j < dncPetaEb.length; j++) {
+            dncPetaEb[j][eventListenerType](
+              "mouseenter",
+              DncHandler.ddtDncPeta
+            );
+            dncPetaEb[j][eventListenerType](
+              "mouseleave",
+              DncHandler.ddtDncPeta
+            );
+          }
+          break;
+        }
+      }
+      /* ============================== */
+    }
+  }
+  /* static addEvent() {
+    const {
+      dncY
+    } = DncGet.getDncGroup();
+    const {
+      dncZettaAlptg
+    } = DncGet.getDncAlptgGroup();
+    for (let i = 0; i < dncY.length; i++) {
+      dncY[i].isActive = false;
+      /* ========== FwaConfig.currentDisplayType ========== 
       switch (FwaConfig.currentDisplayType) {
         case 1: {
-          /* Mobile Display Type */
-          /* Dnc Zetta Alptg */
           dncZettaAlptg[i].addEventListener(
             "click",
             DncHandler.mdtDncZettaAlptg
@@ -177,8 +275,6 @@ class DncManager {
           break;
         }
         case 2: {
-          /* Tablet Display Type */
-          /* Dnc Zetta Alptg */
           dncZettaAlptg[i].addEventListener(
             "click",
             DncHandler.tdtDncZettaAlptg
@@ -186,8 +282,6 @@ class DncManager {
           break;
         }
         case 3: {
-          /* Desktop Display Type */
-          /* Dnc Zetta */
           dncY[i].addEventListener(
             "mouseenter",
             DncHandler.ddtDncYotta
@@ -196,8 +290,6 @@ class DncManager {
             "mouseleave",
             DncHandler.ddtDncYotta
           );
-          /* Dnc Peta */
-          /* const dncPetaEb = dncE[i].querySelectorAll(".dnc-p"); */
           const {
             dncPetaEb
           } = DncGet.getDncEbGroup(i);
@@ -214,27 +306,21 @@ class DncManager {
           break;
         }
       }
-      /* ============================== */
+      /* ============================== 
     }
   }
   static removeEvent() {
-    /* const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y");
-    const dncZ = dncR.querySelectorAll(".dnc-z");
-    const dncZettaAlptg = dncR.querySelectorAll(".dnc-z-alptg");
-    const dncE = dncR.querySelectorAll(".dnc-e"); */
     const {
       dncY
     } = DncGet.getDncGroup();
     const {
       dncZettaAlptg
     } = DncGet.getDncAlptgGroup();
-    /* const { dncPeta } = DncGet.getDncPetaIndexGroup(); */
     for (let i = 0; i < dncY.length; i++) {
-      /* ========== FwaConfig.previousDisplayType ========== */
+      /* ========== FwaConfig.previousDisplayType ========== 
       switch (FwaConfig.previousDisplayType) {
         case 1: {
-          /* Mobile Display Type */
+          /* Mobile Display Type 
           dncZettaAlptg[i].removeEventListener(
             "click",
             DncHandler.mdtDncZettaAlptg
@@ -242,7 +328,7 @@ class DncManager {
           break;
         }
         case 2: {
-          /* Tablet Display Type */
+          /* Tablet Display Type 
           dncZettaAlptg[i].removeEventListener(
             "click",
             DncHandler.tdtDncZettaAlptg
@@ -250,7 +336,7 @@ class DncManager {
           break;
         }
         case 3: {
-          /* Desktop Display Type */
+          /* Desktop Display Type 
           dncY[i].removeEventListener(
             "mouseenter",
             DncHandler.ddtDncYotta
@@ -259,7 +345,6 @@ class DncManager {
             "mouseleave",
             DncHandler.ddtDncYotta
           );
-          /* const dncPetaEb = dncE[i].querySelectorAll(".dnc-p"); */
           const {
             dncPetaEb
           } = DncGet.getDncEbGroup(i);
@@ -276,17 +361,14 @@ class DncManager {
           break;
         }
       }
-      /* ============================== */
+      /* ============================== 
       dncY[i].isActive = false;
     }
-  }
+  } */
 }
 class DncHandler {
   static mdtDncZettaAlptg(eventData) {
     /* =============== Setup: =============== */
-    /* [ H.MDT_SU ] { dncZettaAlptg.li } ( Event: click ) */
-    /* const eCurrentTarget = event.currentTarget;
-    const eIndex = eCurrentTarget.index; */
     const {
       targetIndex
     } = FwcAccessor.getEventData(eventData, ".dnc-y");
@@ -304,76 +386,98 @@ class DncHandler {
       dncGigaTitleEb,
       dncGigaBgroEb
     } = DncGet.getDncEbGroup(targetIndex);
-    /* const {
-      dncExaAlptgTitleEb,
-      dncExaAlptgRgroEb,
-      dncExaAlptgBgroEb,
-    } = DncGet.getDncAlptgIndexGroup(eIndex); */
-    /* I: Dnc */
-    /* const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y");
-    const dncExaEb = dncY[eIndex].querySelector(".dnc-e"); */
-    /* I: Exa Alptg */
-    /* const dncExaAlptgTitleZb = dncY[eIndex].querySelector(".dnc-e-alptg-title");
-    const dncExaAlptgRgroZb = dncY[eIndex].querySelector(".dnc-e-alptg-rgro");
-    const dncExaAlptgBgroZb = dncY[eIndex].querySelector(".dnc-e-alptg-bgro"); */
-    /* I: Tera, Giga */
-    /* const dncTeraEb = dncExaEb.querySelectorAll(".dnc-t"); */
-    /* const dncGigaTitleEb = dncExaEb.querySelectorAll(".dnc-g-title");
-    const dncGigaBgroEb = dncExaEb.querySelectorAll(".dnc-g-bgro"); */
+    /*  */
+    const gigaBgroBuffer = 20;
+    /*  */
+    let isActive = null;
+    let type = "";
+    let exaSize = null;
+    if (!dncY[targetIndex].isActive) {
+      isActive = true;
+      type = "add";
+      exaSize = 4;
+    } else {
+      isActive = false;
+      type = "remove";
+      exaSize = 0;
+    }
+    /*  */
+    dncY[targetIndex].classList[type]("cl-mdt-dnc-z-alptg-handler");
+    dncExaAlptgTitle[targetIndex].classList[type]("cl-mdt-dnc-z-alptg-handler");
+    dncExaAlptgRgro[targetIndex].classList[type]("cl-mdt-dnc-z-alptg-handler");
+    dncExaAlptgBgro[targetIndex].classList[type]("cl-mdt-dnc-z-alptg-handler");
+    /*  */
+    DncUpdate.updateExa(
+      dncE[targetIndex],
+      dncTeraEb,
+      exaSize
+    );
+    for (let i = 0; i < dncTeraEb.length; i++) {
+      dncTeraEb[i].classList[type]("cl-mdt-dnc-z-alptg-handler");
+      /* DncSet.setGigaBgro(
+        dncGigaBgroEb[i],
+        dncGigaTitleEb[i],
+        gigaBgroBuffer
+      ); */
+    }
+    if (isActive) {
+      for (let i = 0; i < dncTeraEb.length; i++) {
+        /* dncGigaBgroEb[i].style.left = dncGigaBgroEb[i].left;
+        dncGigaBgroEb[i].style.width = dncGigaBgroEb[i].width; */
+      }
+    }
+    /*  */
+    dncY[targetIndex].isActive = isActive;
     /* =============== Setup; =============== */
     /* =============== Script: =============== */
-    if (!dncY[targetIndex].isActive) {
+    /* if (isActive) { */
       /* ==========----- Activation: -----========== */
       /* A: Set Yotta */
-      dncY[targetIndex].style.backgroundColor = "#333333";
+      /* dncY[targetIndex].style.backgroundColor = "#333333"; */
       /* A: Set Exa Alptg */
-      dncExaAlptgTitle[targetIndex].style.fontWeight = "700";
+      /* dncExaAlptgTitle[targetIndex].style.fontWeight = "700";
       dncExaAlptgRgro[targetIndex].style.transform = "rotate(180deg)";
       dncExaAlptgBgro[targetIndex].style.left = "15%";
-      dncExaAlptgBgro[targetIndex].style.width = "70%";
+      dncExaAlptgBgro[targetIndex].style.width = "70%"; */
       /* A: Set Exa */
-      DncSet.setExa(dncE[targetIndex], dncTeraEb, 4);
+      /* DncSet.setExa(dncE[targetIndex], dncTeraEb, 4); */
       /* A: Set Tera */
-      for (let i = 0; i < dncTeraEb.length; i++) {
+      /* for (let i = 0; i < dncTeraEb.length; i++) {
         dncTeraEb[i].style.opacity = "1";
         DncSet.setGigaBgro(
           dncGigaBgroEb[i],
           dncGigaTitleEb[i],
           20
         );
-      }
+      } */
       /* A: Set Flag */
-      dncY[targetIndex].isActive = true;
+      /* dncY[targetIndex].isActive = true; */
       /* ==========----- Activation; -----========== */
-    } else {
+    /* } else { */
       /* ==========----- Deactivation: -----========== */
       /* D: Set Yotta */
-      dncY[targetIndex].style.backgroundColor = "";
+      /* dncY[targetIndex].style.backgroundColor = ""; */
       /* D: Set Zetta Alptg */
-      dncExaAlptgTitle[targetIndex].style.fontWeight = "";
+      /* dncExaAlptgTitle[targetIndex].style.fontWeight = "";
       dncExaAlptgRgro[targetIndex].style.transform = "";
       dncExaAlptgBgro[targetIndex].style.left = "";
-      dncExaAlptgBgro[targetIndex].style.width = "";
+      dncExaAlptgBgro[targetIndex].style.width = ""; */
       /* D: Set Exa */
-      DncSet.setExa(dncE[targetIndex], dncTeraEb, 0);
+      /* DncSet.setExa(dncE[targetIndex], dncTeraEb, 0); */
       /* D: Set Tera */
-      for (let i = 0; i < dncTeraEb.length; i++) {
+      /* for (let i = 0; i < dncTeraEb.length; i++) {
         dncTeraEb[i].style.opacity = "";
         dncGigaBgroEb[i].style.left = "";
         dncGigaBgroEb[i].style.width = "";
-      }
+      } */
       /* D: Set Flag */
-      dncY[targetIndex].isActive = false;
+      /* dncY[targetIndex].isActive = false; */
       /* ==========----- Deactivation; -----========== */
-    }
+    /* } */
     /* =============== Script; =============== */
   }
   static tdtDncZettaAlptg(eventData) {
     /* =============== Setup: =============== */
-    /* [ H.TDT_SU ] { dncZettaAlptg.li } ( Event: click ) */
-    /* const eCurrentTarget = event.currentTarget;
-    const eIndex = eCurrentTarget.index; */
     const {
       targetIndex
     } = FwcAccessor.getEventData(eventData, ".dnc-y");
@@ -381,97 +485,117 @@ class DncHandler {
       dncY,
       dncE
     } = DncGet.getDncGroup();
-    /* [ H.TDT_SU ] { dncR.nav, dncY.ul , dncE.ul } (  ) */
-    /* const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y");
-    const dncExaEb = dncY[eIndex].querySelector(".dnc-e"); */
-    /* T.I: Exa Alptg */
-    /* const dncExaAlptgTitleZb = dncY[eIndex].querySelector(".dnc-e-alptg-title");
-    const dncExaAlptgRgroZb = dncY[eIndex].querySelector(".dnc-e-alptg-rgro");
-    const dncExaAlptgBgroZb = dncY[eIndex].querySelector(".dnc-e-alptg-bgro"); */
     const {
       dncExaAlptgBgro
     } = DncGet.getDncAlptgGroup();
-    /* T.I: Tera, Giga */
-    /* const dncTeraEb = dncExaEb.querySelectorAll(".dnc-t");
-    const dncGigaTitleEb = dncExaEb.querySelectorAll(".dnc-g-title");
-    const dncGigaBgroEb = dncExaEb.querySelectorAll(".dnc-g-bgro"); */
     const {
       dncTeraEb,
       dncGigaTitleEb,
       dncGigaBgroEb
     } = DncGet.getDncEbGroup(targetIndex);
-    /* =============== Setup; =============== */
-    /* =============== Script: =============== */
+    /*  */
+    const gigaBgroBuffer = 32;
+    /*  */
+    let isActive = null;
+    let type = "";
+    let exaSize = null;
     if (!dncY[targetIndex].isActive) {
-      /* ==========----- Activation: -----========== */
-      /* T.A: Reset */
+      isActive = true;
+      type = "add";
+      exaSize = 4;
+    } else {
+      isActive = false;
+      type = "remove";
+      exaSize = 0;
+    }
+    /*  */
+    dncExaAlptgBgro[targetIndex].classList[type]("cl-tdt-dnc-z-alptg-handler");
+    dncE[targetIndex].classList[type]("cl-tdt-dnc-z-alptg-handler");
+    for (let i = 0; i < dncTeraEb.length; i++) {
+      dncTeraEb[i].classList[type]("cl-tdt-dnc-z-alptg-handler");
+      /* DncSet.setGigaBgro(
+        dncGigaBgroEb[i],
+        dncGigaTitleEb[i],
+        gigaBgroBuffer
+      ); */
+    }
+    DncUpdate.updateExa(dncE[targetIndex], dncTeraEb, exaSize);
+    /*  */
+    if (targetIndex === 0) {
+      dncE[targetIndex].classList.add("cl-tdt-dnc-z-alptg-handler-nth-1");
+    } else if (targetIndex === 4) {
+      dncE[targetIndex].classList.add("cl-tdt-dnc-z-alptg-handler-nth-5");
+    }
+    /*  */
+    if (isActive) {
       if (SncAccessor.isActiveSnc) {
         TpncAccessor.tpncZettaSnioHandler();
       }
+      DncReset.resetTdtDnc(targetIndex);
+    }
+    /*  */
+    dncY[targetIndex].isActive = isActive;
+    /* =============== Setup; =============== */
+    /* =============== Script: =============== */
+    /* if (isActive) { */
+      /* ==========----- Activation: -----========== */
+      /* T.A: Reset */
+      /* if (SncAccessor.isActiveSnc) {
+        TpncAccessor.tpncZettaSnioHandler();
+      } */
       /* [ T.S.A: Reset ] {} () */
-      DncReset.resetTdtDncExa(targetIndex);
+      /* DncReset.resetTdtDnc(targetIndex); */
       /* [ T.S.A: Set ] { dncExaAlptg } ( Tag.div ) */
-      dncExaAlptgBgro[targetIndex].style.left = "10%";
-      dncExaAlptgBgro[targetIndex].style.width = "80%";
+      /* dncExaAlptgBgro[targetIndex].style.left = "10%";
+      dncExaAlptgBgro[targetIndex].style.width = "80%"; */
       /* [ T.S.A: Set ] { dncExaEb } ( Tag.ul ) */
-      switch (targetIndex) {
+      /* switch (targetIndex) {
         case 0:
           dncE[targetIndex].style.left = "0%";
           break;
         case 4:
           dncE[targetIndex].style.right = "0%";
           break;
-      }
-      dncE[targetIndex].style.width = "18rem";
-      DncSet.setExa(dncE[targetIndex], dncTeraEb, 4);
+      } */
+      /* dncE[targetIndex].style.width = "18rem"; */
+      /* DncSet.setExa(dncE[targetIndex], dncTeraEb, 4); */
       /* T.S.A: Set Tera */
-      for (let i = 0; i < dncTeraEb.length; i++) {
+      /* for (let i = 0; i < dncTeraEb.length; i++) {
         dncTeraEb[i].style.opacity = "1";
         DncSet.setGigaBgro(
           dncGigaBgroEb[i],
           dncGigaTitleEb[i],
           32
         );
-      }
+      } */
       /* A: Set Flag */
-      dncY[targetIndex].isActive = true;
+      /* dncY[targetIndex].isActive = true; */
       /* ==========----- Activation; -----========== */
-    } else {
+    /* } else { */
       /* ==========----- Deactivation: -----========== */
       /* A: Set Exa Alptg */
-      dncExaAlptgBgro[targetIndex].style.left = "";
-      dncExaAlptgBgro[targetIndex].style.width = "";
+      /* dncExaAlptgBgro[targetIndex].style.left = "";
+      dncExaAlptgBgro[targetIndex].style.width = ""; */
       /* D: Set Exa */
-      dncE[targetIndex].style.width = "";
-      DncSet.setExa(dncE[targetIndex], dncTeraEb, 0);
+      /* dncE[targetIndex].style.width = ""; */
+      /* DncSet.setExa(dncE[targetIndex], dncTeraEb, 0); */
       /* D: Set Tera */
-      for (let i = 0; i < dncTeraEb.length; i++) {
+      /* for (let i = 0; i < dncTeraEb.length; i++) {
         dncTeraEb[i].style.opacity = "";
         dncGigaBgroEb[i].style.left = "";
         dncGigaBgroEb[i].style.width = "";
-      }
+      } */
       /* D: Set Flag */
-      dncY[targetIndex].isActive = false;
+      /* dncY[targetIndex].isActive = false; */
       /* ==========----- Deactivation; -----========== */
-    }
+    /* } */
     /* =============== Script; =============== */
   }
   static ddtDncYotta(eventData) {
-    /* const { eType, eCurrentTarget, eIndex } = getEventElement(); */
-    /* const eType = event.type;
-    const eCurrentTarget = event.currentTarget;
-    const eIndex = eCurrentTarget.index; */
     const {
       eventType,
       eventIndex
     } = FwcAccessor.getEventData(eventData);
-
-    /* const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y");
-    const dncExaEb = dncY[eventIndex].querySelector(".dnc-e");
-    const dncPetaEb = dncExaEb.querySelectorAll(".dnc-p");
-    const dncTeraEb = dncExaEb.querySelectorAll(".dnc-t"); */
     const {
       dncY,
       dncE
@@ -480,25 +604,62 @@ class DncHandler {
       dncPetaEb,
       dncTeraEb
     } = DncGet.getDncEbGroup(eventIndex);
-
-    /* const dncZettaAlptg = dncY[eventIndex].querySelector(".dnc-z-alptg");
-    const dncExaAlptgTitleEb = dncZettaAlptg.querySelector(".dnc-e-alptg-title");
-    const dncExaAlptgBgroEb = dncZettaAlptg.querySelector(".dnc-e-alptg-bgro"); */
     const {
       dncExaAlptgTitle,
       dncExaAlptgBgro
     } = DncGet.getDncAlptgGroup();
-
-    switch (eventType) {
+    /*  */
+    let isActive = null;
+    let type = "";
+    let exaSize = null;
+    if (eventType === "mouseenter") {
+      isActive = true;
+      type = "add";
+      exaSize = 4;
+    } else if (eventType === "mouseleave") {
+      isActive = false;
+      type = "remove";
+      exaSize = 0;
+    }
+    /*  */
+    dncExaAlptgTitle[eventIndex].classList[type]("cl-ddt-dnc-y-handler");
+    dncExaAlptgBgro[eventIndex].classList[type]("cl-ddt-dnc-y-handler");
+    dncE[eventIndex].classList[type]("cl-ddt-dnc-y-handler");
+    for (let i = 0; i < dncPetaEb.length; i++) {
+      dncTeraEb[i].classList[type]("cl-ddt-dnc-y-handler");
+    }
+    DncUpdate.updateExa(dncE[eventIndex], dncPetaEb, exaSize);
+    /*  */
+    if (isActive) {
+      if (eventIndex === 4) {
+        const htmlElement = document.documentElement;
+        const htmlElementRect = htmlElement.getBoundingClientRect();
+        const dncYottaRect = dncY[eventIndex].getBoundingClientRect();
+        const htmlElementRectCalc = htmlElementRect.right - (21 * 16);
+        const dncYottaRectCalc = 
+          (dncYottaRect.right - (dncYottaRect.width / 2)) + (10 * 16);
+        if (htmlElementRectCalc < dncYottaRectCalc && SncAccessor.isActiveSnc) {
+          /* dncE[eventIndex].style.right = "0rem"; */
+          dncE[eventIndex].classList.add("cl-ddt-dnc-y-handler-nth-5");
+        } else {
+          /* dncE[eventIndex].style.right = ""; */
+          dncE[eventIndex].classList.remove("cl-ddt-dnc-y-handler-nth-5");
+        }
+      }
+    }
+    /*  */
+    dncY[eventIndex].isActive = isActive;
+    /*  */
+    /* switch (eventType) {
       case "mouseenter": {
-        dncExaAlptgTitle[eventIndex].style.fontWeight = "700";
+        /* dncExaAlptgTitle[eventIndex].style.fontWeight = "700";
         dncExaAlptgBgro[eventIndex].style.left = "10%";
-        dncExaAlptgBgro[eventIndex].style.width = "80%";
+        dncExaAlptgBgro[eventIndex].style.width = "80%"; 
         DncSet.setExa(dncE[eventIndex], dncPetaEb, 4);
-        dncE[eventIndex].style.width = "18rem";
+        /* dncE[eventIndex].style.width = "18rem";
         for (let i = 0; i < dncPetaEb.length; i++) {
           dncTeraEb[i].style.opacity = "1";
-        }
+        } 
         switch (eventIndex) {
           case 4: {
             const htmlElement = document.documentElement;
@@ -510,9 +671,11 @@ class DncHandler {
               (dncYottaRect.right - (dncYottaRect.width / 2)) + (10 * 16);
 
             if (htmlElementRectCalc < dncYottaRectCalc && SncAccessor.isActiveSnc) {
-              dncE[eventIndex].style.right = "0rem";
+              /* dncE[eventIndex].style.right = "0rem"; 
+              dncE[eventIndex].classList.add("cl-ddt-dnc-y-handler-nth-5");
             } else {
-              dncE[eventIndex].style.right = "";
+              /* dncE[eventIndex].style.right = ""; 
+              dncE[eventIndex].classList.remove("cl-ddt-dnc-y-handler-nth-5");
             }
             break;
           }
@@ -520,48 +683,64 @@ class DncHandler {
         break;
       }
       case "mouseleave": {
-        dncExaAlptgTitle[eventIndex].style.fontWeight = "";
+        /* dncExaAlptgTitle[eventIndex].style.fontWeight = "";
         dncExaAlptgBgro[eventIndex].style.left = "";
-        dncExaAlptgBgro[eventIndex].style.width = "";
+        dncExaAlptgBgro[eventIndex].style.width = ""; 
         DncSet.setExa(dncE[eventIndex], dncPetaEb, 0);
-        dncE[eventIndex].style.width = "";
+        /* dncE[eventIndex].style.width = "";
         for (let i = 0; i < dncPetaEb.length; i++) {
           dncTeraEb[i].style.opacity = "";
-        }
+        } 
         break;
       }
-    }
+    } */
   }
   static ddtDncPeta(eventData) {
-    /* const eType = event.type;
-    const eCurrentTarget = event.currentTarget; */
     const {
       eventType,
       eventIndex,
       targetIndex
     } = FwcAccessor.getEventData(eventData, ".dnc-y");
-    /* const eIndex = eCurrentTarget.index; */
-
-    /* const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg"); */
-    /* const dncY = dncR.querySelectorAll(".dnc-y"); */
-
-    /* const dncGigaTitleGb = eCurrentTarget.querySelector(".dnc-g-title");
-    const dncGigaRgroGb = eCurrentTarget.querySelector(".dnc-g-rgro");
-    const dncGigaBgroGb = eCurrentTarget.querySelector(".dnc-g-bgro"); */
     const {
       dncGigaTitleEb,
       dncGigaRgroEb,
       dncGigaBgroEb
     } = DncGet.getDncEbGroup(targetIndex);
+    /*  */
+    const gigaBgroBuffer = 32;
+    /*  */
+    let isActive = null;
+    let type = "";
+    if (eventType === "mouseenter") {
+      isActive = true;
+      type = "add";
+    } else if (eventType === "mouseleave") {
+      isActive = false;
+      type = "remove";
+    }
+    /*  */
+    dncGigaTitleEb[eventIndex].classList[type]("cl-ddt-dnc-p-handler");
+    dncGigaRgroEb[eventIndex].classList[type]("cl-ddt-dnc-p-handler");
+    DncSetup.setupGigaBgroWidth(isActive, dncGigaBgroEb[eventIndex]);
+    /* if (isActive) {
+      /* DncSet.setGigaBgro(
+        dncGigaBgroEb[eventIndex],
+        dncGigaTitleEb[eventIndex],
+        gigaBgroBuffer
+      ); 
+      dncGigaBgroEb[eventIndex].style.width = dncGigaBgroEb[eventIndex].width;
+    } else {
+      dncGigaBgroEb[eventIndex].style.width = "";
+    } */
     /* getTarget */
-    switch (eventType) {
+    /* switch (eventType) {
       case "mouseenter": {
-        dncGigaTitleEb[eventIndex].style.fontWeight = "700";
+        /* dncGigaTitleEb[eventIndex].style.fontWeight = "700";
         dncGigaRgroEb[eventIndex].style.margin = "0rem 0rem 0rem 1rem";
         dncGigaRgroEb[eventIndex].style.borderTop = "0.25rem solid #00000000";
         dncGigaRgroEb[eventIndex].style.borderBottom = "0.25rem solid #00000000";
         dncGigaRgroEb[eventIndex].style.borderLeft = "0.5rem solid #FFFFFF";
-        dncGigaRgroEb[eventIndex].style.opacity = "1";
+        dncGigaRgroEb[eventIndex].style.opacity = "1"; 
         DncSet.setGigaBgro(
           dncGigaBgroEb[eventIndex],
           dncGigaTitleEb[eventIndex],
@@ -570,126 +749,26 @@ class DncHandler {
         break;
       }
       case "mouseleave": {
-        dncGigaTitleEb[eventIndex].style.fontWeight = "";
+        /* dncGigaTitleEb[eventIndex].style.fontWeight = "";
         dncGigaRgroEb[eventIndex].style.margin = "";
         dncGigaRgroEb[eventIndex].style.borderTop = "";
         dncGigaRgroEb[eventIndex].style.borderBottom = "";
         dncGigaRgroEb[eventIndex].style.borderLeft = "";
-        dncGigaRgroEb[eventIndex].style.opacity = "";
+        dncGigaRgroEb[eventIndex].style.opacity = ""; 
         dncGigaBgroEb[eventIndex].style.width = "";
         break;
       }
-    }
+    } */
   }
 }
-/* !!!!! :v1.1.15a [del] (replaced): !!!!! */
-/* class DncUtility {
-  static setGigaBgro(setElement, referElement, buffer) {
-    const referWidth = referElement.offsetWidth;
-    const setLeft = "calc" +
-      "(" + "50%" + " - " +
-      (referWidth / 2) + "px" + " - " +
-      (buffer / 2) + "px" + ")";
-    const setWidth = referWidth + buffer + "px";
-
-    setElement.style.left = setLeft;
-    setElement.style.width = setWidth;
-  }
-  static setExa(setElement, referElement, size) {
-    let gridTemplateData = "";
-    for (let i = 0; i < referElement.length; i++) {
-      gridTemplateData += size + "rem" + " ";
-    }
-    setElement.style.gridTemplateRows = gridTemplateData;
-  }
-  static resetDnc(displayTypeState) {
-    const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y");
-    const dncZettaAlptg = dncR.querySelectorAll(".dnc-z-alptg");
-    const eventData = {};
-    for (let i = 0; i < dncZettaAlptg.length; i++) {
-      if (dncY[i].isActive) {
-        switch (displayTypeState) {
-          case 1:
-            /* Moblie Display Type 
-            eventData.currentTarget = dncZettaAlptg[i];
-            DncHandler.mdtDncZettaAlptg(eventData);
-            break;
-          case 2:
-            /* Tablet Display Type 
-            eventData.currentTarget = dncZettaAlptg[i];
-            DncHandler.tdtDncZettaAlptg(eventData);
-            break;
-          case 3:
-            /* Desktop Display Type 
-            eventData.currentTarget = dncZettaAlptg[i];
-            eventData.type = "mouseleave";
-            DncHandler.ddtDncYotta(eventData);
-
-            const dncExaEb = dncY[i].querySelector(".dnc-e");
-            const dncPetaEb = dncExaEb.querySelectorAll(".dnc-p");
-            for (let i = 0; i < dncPetaEb.length; i++) {
-              eventData.currentTarget = dncPetaEb[i];
-              eventData.type = "mouseleave";
-              DncHandler.ddtDncPeta(eventData);
-            }
-            break;
-        }
-      }
-    }
-  }
-  static resetTdtDncExa(eIndex) {
-    const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y");
-
-    for (let i = 0; i < dncY.length; i++) {
-      if (dncY[i].isActive && eIndex !== i) {
-        const displayTypeState = FwaConfig.currentDisplayType;
-        DncUtility.resetDnc(displayTypeState);
-        return;
-      }
-    }
-
-  }
-} */
-/* !!!!! ;v1.1.15a [del] (replaced); !!!!! */
 class DncGet {
-  /* static getGenerateElement(elementTag, setClass) {
-    const elementData = document.createElement(elementTag);
-    elementData.setAttribute("class", setClass);
-    return elementData;
-  } */
-  /* static getEventData(eventData) {
-    const eType = eventData.type;
-    const eCurrentTarget = eventData.currentTarget;
-    const eIndex = eCurrentTarget.index;
-    return {
-      eType,
-      eCurrentTarget,
-      eIndex
-    };
-  } */
   static getDncRoot() {
-    /* const dncRoot = {
-      dncR: {
-        id: "dncR",
-        selector: ".plc-y-liptg .dnc-r-bptg"
-      }
-    }; */
     const dncRoot = [
       {
         id: "dncR",
         selector: ".plc-y-liptg .dnc-r-bptg"
       }
     ];
-    /* let {
-      dncR
-    } = DncAccessor.dncCache;
-    if (!dncR) {
-      dncR = document.querySelector(dncRoot.dncR.selector);
-      DncAccessor.dncCache[dncRoot.dncR.id] = dncR;
-    } */
-    /* return { dncR }; */
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
       DncAccessor.dncCache,
       dncRoot
@@ -697,20 +776,6 @@ class DncGet {
     return saveVerifyGroup;
   }
   static getDncGroup() {
-    /* const dncGroup = {
-      dncY: {
-        id: "dncY",
-        selector: ".dnc-y"
-      },
-      dncZ: {
-        id: "dncZ",
-        selector: ".dnc-z"
-      },
-      dncE: {
-        id: "dncE",
-        selector: ".dnc-e"
-      }
-    }; */
     const dncGroup = [
       {
         id: "dncY",
@@ -728,35 +793,9 @@ class DncGet {
         type: "all"
       }
     ];
-    /* let {
-      dncY,
-      dncZ,
-      dncE
-    } = DncAccessor.dncCache; */
     const {
       dncR
     } = this.getDncRoot();
-    /* const { dncR } = DncGet.getDncR(); */
-    /* const dncY = dncR.querySelectorAll(".dnc-y");
-    const dncZ = dncR.querySelectorAll(".dnc-z");
-    const dncE = dncR.querySelectorAll(".dnc-e"); */
-    /* if (!dncY) {
-      dncY = dncR.querySelectorAll(dncGroup.dncY.selector);
-      DncAccessor.dncCache[dncGroup.dncY.id] = dncY;
-    }
-    if (!dncZ) {
-      dncZ = dncR.querySelectorAll(dncGroup.dncZ.selector);
-      DncAccessor.dncCache[dncGroup.dncZ.id] = dncZ;
-    }
-    if (!dncE) {
-      dncE = dncR.querySelectorAll(dncGroup.dncE.selector);
-      DncAccessor.dncCache[dncGroup.dncE.id] = dncE;
-    }
-    return {
-      dncY,
-      dncZ,
-      dncE
-    }; */
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
       DncAccessor.dncCache,
       dncGroup,
@@ -765,12 +804,6 @@ class DncGet {
     return saveVerifyGroup;
   }
   static getDncAlptgGroup() {
-    /* const dncAlptgGroup = {
-      dncZettaAlptg: {
-        id: "dncZettaAlptg",
-        selector: ".dnc-z-alptg"
-      }
-    }; */
     const dncAlptgGroup = [
       {
         id: "dncZettaAlptg",
@@ -793,20 +826,9 @@ class DncGet {
         type: "all"
       }
     ];
-    /* let {
-      dncZettaAlptg
-    } = DncAccessor.dncCache; */
     const {
       dncR
     } = this.getDncRoot();
-    /* const dncZettaAlptg = dncR.querySelectorAll(".dnc-z-alptg"); */
-    /* if (!dncZettaAlptg) {
-      dncZettaAlptg = dncR.querySelectorAll(dncAlptgGroup.dncZettaAlptg.selector);
-      DncAccessor.dncCache[dncAlptgGroup.dncZettaAlptg.id] = dncZettaAlptg;
-    }
-    return {
-      dncZettaAlptg
-    }; */
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
       DncAccessor.dncCache,
       dncAlptgGroup,
@@ -814,43 +836,7 @@ class DncGet {
     );
     return saveVerifyGroup;
   }
-  /* !!!!! v1.1.15a [test] [del] (optimization) !!!!! */
-  /* static getDncPetaIndexGroup() {
-    const {
-      dncE
-    } = this.getDncGroup();
-    let dncPeta = [];
-    for (let i = 0; i < dncE.length; i++) {
-      dncPeta[i] = dncE[i].querySelectorAll(".dnc-p");
-    }
-    return {
-      dncPeta
-    };
-  } */
-
   static getDncEbGroup(gIndex) {
-    /* const dncEbGroup = {
-      dncPetaEb: {
-        id: "dncPetaEb" + gIndex.toString(),
-        selector: ".dnc-p"
-      },
-      dncTeraEb: {
-        id: "dncTeraEb" + gIndex.toString(),
-        selector: ".dnc-t"
-      },
-      dncGigaTitleEb: {
-        id: "dncGigaTitleEb" + gIndex.toString(),
-        selector: ".dnc-g-title"
-      },
-      dncGigaRgroEb: {
-        id: "dncGigaRgroEb" + gIndex.toString(),
-        selector: ".dnc-g-rgro"
-      },
-      dncGigaBgroEb: {
-        id: "dncGigaBgroEb" + gIndex.toString(),
-        selector: ".dnc-g-bgro"
-      }
-    }; */
     const dncEbGroup = [
       {
         id: "dncPetaEb",
@@ -881,102 +867,16 @@ class DncGet {
     const {
       dncE
     } = this.getDncGroup();
-    /* const dncPetaEb = dncExaEb.querySelectorAll(".dnc-p"); */
-    /* const dncTeraEb = dncExaEb.querySelectorAll(".dnc-t"); */
-    /* const dncGigaTitleEb = dncExaEb.querySelectorAll(".dnc-g-title");
-    const dncGigaRgroEb = dncExaEb.querySelectorAll(".dnc-g-rgro");
-    const dncGigaBgroEb = dncExaEb.querySelectorAll(".dnc-g-bgro"); */
-
-    /* let dncPetaEb = DncAccessor.dncCache[dncEbGroup.dncPetaEb.id];
-    if (!dncPetaEb) {
-      dncPetaEb = dncE[gIndex].querySelectorAll(dncEbGroup.dncPetaEb.selector);
-      DncAccessor.dncCache[dncEbGroup.dncPetaEb.id] = dncPetaEb;
-    }
-    let dncTeraEb = DncAccessor.dncCache[dncEbGroup.dncTeraEb.id];
-    if (!dncTeraEb) {
-      dncTeraEb = dncE[gIndex].querySelectorAll(dncEbGroup.dncTeraEb.selector);
-      DncAccessor.dncCache[dncEbGroup.dncTeraEb.id] = dncTeraEb;
-    }
-    let dncGigaTitleEb = DncAccessor.dncCache[dncEbGroup.dncGigaTitleEb.id];
-    if (!dncGigaTitleEb) {
-      dncGigaTitleEb = dncE[gIndex].querySelectorAll(dncEbGroup.dncGigaTitleEb.selector);
-      DncAccessor.dncCache[dncEbGroup.dncGigaTitleEb.id] = dncGigaTitleEb;
-    }
-    let dncGigaRgroEb = DncAccessor.dncCache[dncEbGroup.dncGigaRgroEb.id];
-    if (!dncGigaRgroEb) {
-      dncGigaRgroEb = dncE[gIndex].querySelectorAll(dncEbGroup.dncGigaRgroEb.selector);
-      DncAccessor.dncCache[dncEbGroup.dncGigaRgroEb.id] = dncGigaRgroEb;
-    }
-    let dncGigaBgroEb = DncAccessor.dncCache[dncEbGroup.dncGigaBgroEb.id];
-    if (!dncGigaBgroEb) {
-      dncGigaBgroEb = dncE[gIndex].querySelectorAll(dncEbGroup.dncGigaBgroEb.selector);
-      DncAccessor.dncCache[dncEbGroup.dncGigaBgroEb.id] = dncGigaBgroEb;
-    } */
-    /* if (DncAccessor.dncCache[dncEbGroup.dncPetaEb.id]) {
-      dncPetaEb = DncAccessor.dncCache[dncEbGroup.dncPetaEb.id];
-      console.log("cached");
-      console.log(DncAccessor.dncCache);
-    } else {
-      console.log("hi");
-      dncPetaEb = dncE[gIndex].querySelectorAll(dncEbGroup.dncPetaEb.selector);
-      DncAccessor.dncCache[dncEbGroup.dncPetaEb.id] = dncPetaEb;
-    } */
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
       DncAccessor.dncCache,
       dncEbGroup,
       dncE[gIndex],
       gIndex
     );
-    /* return {
-      dncExaEb,
-      dncPetaEb,
-      dncTeraEb,
-      dncGigaTitleEb,
-      dncGigaRgroEb,
-      dncGigaBgroEb
-    }; */
     return saveVerifyGroup;
   }
-  /* static getDncAlptgIndexGroup(gIndex) {
-    const { dncY } = DncGet.getDncGroup();
-    const dncYottaYb = dncY[gIndex];
-
-    const dncZettaAlptgZb = dncYottaYb.querySelector(".dnc-z-alptg");
-    const dncExaAlptgTitleEb = dncZettaAlptgZb.querySelector(".dnc-e-alptg-title");
-    const dncExaAlptgRgroEb = dncZettaAlptgZb.querySelector(".dnc-e-alptg-rgro");
-    const dncExaAlptgBgroEb = dncZettaAlptgZb.querySelector(".dnc-e-alptg-bgro");
-
-    return {
-      dncZettaAlptgZb,
-      dncExaAlptgTitleEb,
-      dncExaAlptgRgroEb,
-      dncExaAlptgBgroEb
-    };
-  } */
 }
 class DncSet {
-  /* static setGenerateElement(elementData, dText, dHref, dIndex = []) {
-    switch (dIndex.length) {
-      case 1: {
-        if (dText) {
-          elementData.textContent = dText[dIndex[0]];
-        }
-        if (dHref) {
-          elementData.setAttribute("href", dHref[dIndex[0]]);
-        }
-        break;
-      }
-      case 2: {
-        if (dText) {
-          elementData.textContent = dText[dIndex[0]][dIndex[1]];
-        }
-        if (dHref) {
-          elementData.setAttribute("href", dHref[dIndex[0]][dIndex[1]]);
-        }
-        break;
-      }
-    }
-  } */
   static setAppendYsGroup(saveGenerate) {
     saveGenerate["zetta"].append(saveGenerate["exa"]);
     saveGenerate["yotta"].append(
@@ -1000,6 +900,13 @@ class DncSet {
       saveGenerate["exaAlptgBgro"]
     );
   }
+  static setExa(setElement, referElement, size) {
+    let gridTemplateData = "";
+    for (let i = 0; i < referElement.length; i++) {
+      gridTemplateData += size + "rem" + " ";
+    }
+    setElement.style.gridTemplateRows = gridTemplateData;
+  }
   static setGigaBgro(setElement, referElement, buffer) {
     const referWidth = referElement.offsetWidth;
     const setLeft = "calc" +
@@ -1011,7 +918,9 @@ class DncSet {
     setElement.style.left = setLeft;
     setElement.style.width = setWidth;
   }
-  static setExa(setElement, referElement, size) {
+}
+class DncUpdate {
+  static updateExa(setElement, referElement, size) {
     let gridTemplateData = "";
     for (let i = 0; i < referElement.length; i++) {
       gridTemplateData += size + "rem" + " ";
@@ -1020,75 +929,96 @@ class DncSet {
   }
 }
 class DncSetup {
+  static setupGigaBgro(setElement, referElement, buffer) {
+    const referWidth = referElement.offsetWidth;
+    const setLeft = "calc" +
+      "(" + "50%" + " - " +
+      (referWidth / 2) + "px" + " - " +
+      (buffer / 2) + "px" + ")";
+    const setWidth = referWidth + buffer + "px";
 
+    setElement.left = setLeft;
+    setElement.width = setWidth;
+
+    setElement.style.left = setLeft;
+  }
+  static setupGigaBgroWidth(isActive, setElement) {
+    let setWidth = null;
+    if (isActive) {
+      setWidth = setElement.width;
+    } else {
+      setWidth = "";
+    }
+    setElement.style.width = setWidth;
+  }
 }
 class DncReset {
   static resetDnc(displayTypeState) {
-    /* const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y");
-    const dncZettaAlptg = dncR.querySelectorAll(".dnc-z-alptg"); */
+    const {
+      dncY,
+      dncE
+    } = DncGet.getDncGroup();
+    const {
+      dncZettaAlptg
+    } = DncGet.getDncAlptgGroup();
+    /*  */
+    const eventData = {};
+    for (let i = 0; i < dncZettaAlptg.length; i++) {
+      if (dncY[i].isActive) {
+        switch (displayTypeState) {
+          case 1: {
+            eventData.currentTarget = dncZettaAlptg[i];
+            DncHandler.mdtDncZettaAlptg(eventData);
+            break;
+          }
+          case 2: {
+            eventData.currentTarget = dncZettaAlptg[i];
+            DncHandler.tdtDncZettaAlptg(eventData);
+            break;
+          }
+          case 3: {
+            eventData.currentTarget = dncZettaAlptg[i];
+            eventData.type = "mouseleave";
+            DncHandler.ddtDncYotta(eventData);
+            /*  */
+            const {
+              dncPetaEb
+            } = DncGet.getDncEbGroup(i);
+            for (let j = 0; j < dncE[i].length; j++) {
+              eventData.currentTarget = dncPetaEb[j];
+              eventData.type = "mouseleave";
+              DncHandler.ddtDncPeta(eventData);
+            }
+            break;
+          }
+        }
+      }
+    }
+  }
+  static resetTdtDnc(targetIndex) {
     const {
       dncY
     } = DncGet.getDncGroup();
     const {
       dncZettaAlptg
     } = DncGet.getDncAlptgGroup();
-
+    /*  */
     const eventData = {};
-    for (let i = 0; i < dncZettaAlptg.length; i++) {
-      if (dncY[i].isActive) {
-        switch (displayTypeState) {
-          case 1:
-            /* Moblie Display Type */
-            eventData.currentTarget = dncZettaAlptg[i];
-            DncHandler.mdtDncZettaAlptg(eventData);
-            break;
-          case 2:
-            /* Tablet Display Type */
-            eventData.currentTarget = dncZettaAlptg[i];
-            DncHandler.tdtDncZettaAlptg(eventData);
-            break;
-          case 3:
-            /* Desktop Display Type */
-            eventData.currentTarget = dncZettaAlptg[i];
-            eventData.type = "mouseleave";
-            DncHandler.ddtDncYotta(eventData);
-
-            const dncExaEb = dncY[i].querySelector(".dnc-e");
-            const dncPetaEb = dncExaEb.querySelectorAll(".dnc-p");
-            for (let i = 0; i < dncPetaEb.length; i++) {
-              eventData.currentTarget = dncPetaEb[i];
-              eventData.type = "mouseleave";
-              DncHandler.ddtDncPeta(eventData);
-            }
-            break;
-        }
-      }
-    }
-  }
-  static resetTdtDncExa(eIndex) {
-    /* const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y"); */
-    const {
-      dncY
-    } = DncGet.getDncGroup();
-
     for (let i = 0; i < dncY.length; i++) {
-      if (dncY[i].isActive && eIndex !== i) {
-        const displayTypeState = FwaConfig.currentDisplayType;
-        DncReset.resetDnc(displayTypeState);
+      if (dncY[i].isActive && targetIndex !== i) {
+        eventData.currentTarget = dncZettaAlptg[i];
+        DncHandler.tdtDncZettaAlptg(eventData);
         return;
       }
     }
-
   }
 }
 export {
   DncAccessor,
   DncController
 }
-/* DESCRIPTION
+/* NOTE
  */
-/* INFORMATION
- * @[Author] {Facooya} (Founder)
+/* AUTHORSHIP
+ * Founder: Facooya
  */

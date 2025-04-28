@@ -22,10 +22,10 @@ class EccAccessor {
 class EccController {
   static process() {
     EccManager.generate();
-    EccManager.addEvent();
+    EccManager.event();
   }
   static processOnLoad() {
-    EccManager.addEvent();
+    
   }
   static processOnResize() {
 
@@ -33,7 +33,6 @@ class EccController {
 }
 class EccManager {
   static generate() {
-    /* const eccR = document.querySelector(".plc-y-liptg .ecc-r-nptg"); */
     const {
       eccR
     } = EccGet.getEccRoot();
@@ -60,29 +59,8 @@ class EccManager {
     /* =============== ;Noco Group; =============== */
     EccSet.setAppendFragment(eccFragment, tempSaveElement);
     eccR.append(eccFragment);
-    /* !!!!! v1.1.15a [del] (replaced) !!!!! */
-    /* PRCO */
-    /* let selectorData = "ecc-y-prco";
-    const yottaPrco = FwcUtility.getGenerateElement("div", selectorData);
-    selectorData = "ecc-z-prco" + " " + "ecc-z-prco-lgro";
-    const zettaPrcoLgro = FwcUtility.getGenerateElement("div", selectorData);
-    selectorData = "ecc-z-prco" + " " + "ecc-z-prco-rgro";
-    const zettaPrcoRgro = FwcUtility.getGenerateElement("div", selectorData); */
-    /* NOCO */
-    /* selectorData = "ecc-y-noco";
-    const yottaNoco = FwcUtility.getGenerateElement("div", selectorData);
-    selectorData = "ecc-z-noco-sdo";
-    const zettaNocoSdo = FwcUtility.getGenerateElement("div", selectorData);
-    /* Compile: PRCO 
-    yottaPrco.appendChild(zettaPrcoLgro);
-    yottaPrco.appendChild(zettaPrcoRgro);
-    /* Compile: NOCO 
-    yottaNoco.appendChild(zettaNocoSdo);
-    /* Compile: eccR 
-    eccR.appendChild(yottaPrco);
-    eccR.appendChild(yottaNoco); */
   }
-  static addEvent() {
+  static event() {
     window.addEventListener("scroll", EccHandler.zettaPrco);
   }
 }
@@ -94,15 +72,13 @@ class EccHandler {
       eccZettaPrcoLgro,
       eccZettaPrcoRgro
     } = EccGet.getEccPrcoGroup();
-    /* const eccR = document.querySelector(".plc-y-liptg .ecc-r-nptg");
-    const zettaPrcoLgro = eccR.querySelector(".ecc-z-prco-lgro");
-    const zettaPrcoRgro = eccR.querySelector(".ecc-z-prco-rgro"); */
 
     const overflowHeight = htmlElement.scrollHeight - htmlElement.clientHeight;
     const scrollProgress = (htmlElement.scrollTop / overflowHeight) * 100;
+    const setHeight = Math.round(scrollProgress).toString() + "%";
 
-    eccZettaPrcoLgro.style.height = Math.round(scrollProgress) + "%";
-    eccZettaPrcoRgro.style.height = Math.round(scrollProgress) + "%";
+    eccZettaPrcoLgro.style.height = setHeight;
+    eccZettaPrcoRgro.style.height = setHeight;
   }
 }
 class EccGet {
@@ -119,24 +95,7 @@ class EccGet {
     );
     return saveVerifyGroup;
   }
-  /* static getEccGroup() {
-    const eccR = document.querySelector(".plc-y-liptg .ecc-r-nptg");
-    return {
-      eccR
-    };
-  } */
   static getEccPrcoGroup() {
-    /* const { eccR } = EccGet.getEccGroup();
-    const eccYottaPrco = eccR.querySelector(".ecc-y-prco");
-    const eccZettaPrco = eccR.querySelectorAll(".ecc-z-prco");
-    const eccZettaPrcoLgro = eccR.querySelector(".ecc-z-prco-lgro");
-    const eccZettaPrcoRgro = eccR.querySelector(".ecc-z-prco-rgro");
-    return {
-      eccYottaPrco,
-      eccZettaPrco,
-      eccZettaPrcoLgro,
-      eccZettaPrcoRgro
-    }; */
     const eccPrcoGroup = [
       {
         id: "eccYottaPrco",
@@ -167,13 +126,6 @@ class EccGet {
     return saveVerifyGroup;
   }
   static getEccNocoGroup() {
-    /* const { eccR } = EccGet.getEccGroup();
-    const eccYottaNoco = eccR.querySelector(".ecc-y-noco");
-    const eccZettaNocoSdo = eccR.querySelector(".ecc-z-noco-sdo");
-    return {
-      eccYottaNoco,
-      eccZettaNocoSdo
-    }; */
     const eccNocoGroup = [
       {
         id: "eccYottaNoco",
@@ -214,7 +166,7 @@ export {
   EccAccessor,
   EccController
 }
-/* DESCRIPTION
+/* NOTE
  * CO: Component Object
  * PRCO: Progress Rendering CO
  * NOCO: Navigate Overlay CO
@@ -225,6 +177,6 @@ export {
  *   zettaPrco.style.height = scrollProgress(50) + "%";
  * }
  */
-/* INFORMATION
- * @[Author] {Facooya} (Founder)
+/* AUTHORSHIP
+ * Founder: Facooya
  */

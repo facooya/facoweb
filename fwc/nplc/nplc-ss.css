@@ -3,13 +3,23 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+.nplc-r-heptg {
+  --nplc-background: var(--background-primary);
+  --nplc-invert-background: var(--background-invert-primary);
+
+  --nplc-color: #333333;
+
+  --nplc-disabled-color: var(--disabled-color);
+
+  --nplc-transition-fade: 200ms ease;
+}
 /* ========== NPLC ========== */
 .nplc-r-heptg {
   /* Tag.main */
   /* .plc-y-naptg */
   /* Position */
   position: relative;
-  top: 4rem;
+  top: var(--tpnc-height);
   /* Grid */
   display: grid;
   grid-template-columns: minmax(300px, 1200px);
@@ -19,10 +29,10 @@
     "nplc-y-neptg"
     "nplc-y-arptg";
   /* Layout */
-  padding-bottom: 1rem;
-  min-height: calc(100% - 4rem);
+  padding: 0rem 0rem 1rem 0rem;
+  min-height: calc(100% - var(--tpnc-height));
   /* Visual */
-  background-color: #FFFFFF;
+  background-color: var(--nplc-background);
   /* !!!!! v1.1.14a [test] !!!!! */
   justify-content: center;
 }
@@ -69,8 +79,8 @@
   width: 100%;
   height: 0.5rem;
   /* ----- Visual ----- */
-  background-color: #222222;
-  border-radius: calc(0.5rem / 2);
+  background-color: var(--background-invert-primary);
+  border-radius: 0.25rem;
 }
 /* ==========----------========== */
 /* =====----- TNO -----===== */
@@ -116,10 +126,9 @@
   font-weight: bold;
   text-align: center;
   font-size: 1.25rem;
-  color: #999999;
-  /* !!!!! v1.1.15a [test] !!!!! */
+  color: var(--nplc-disabled-color);
   transition:
-    color 200ms ease;
+    color var(--nplc-transition-fade);
 }
 .nptlc-t-tno-sgro {
   /* Tag.div */
@@ -131,11 +140,10 @@
   right: 0rem;
   z-index: 1;
   /* ----- Visual ----- */
-  border: 0.25rem solid #999999;
+  border: 0.25rem solid var(--nplc-disabled-color);
   border-radius: 1.5rem;
-  /* !!!!! v1.1.15a [test] !!!!! */
   transition:
-    border 200ms ease;
+    border var(--nplc-transition-fade);
 }
 /* ==========----------========== */
 /* ============================== */
@@ -152,10 +160,6 @@
   /* ----- Layout ----- */
   margin: 0rem 1rem;
 }
-/* .npclc-y:first-child {
-   !!!!! v1.1.14a [tmp, del] (Before [JS]) !!!!! 
-  display: grid; 
-} */
 .npclc-y {
   /* Tag.nav */
   grid-area: npclc-y;
@@ -177,7 +181,7 @@
 .npclc-e {
   /* Tag.li */
   padding: 1rem 0rem;
-  border: 0.125rem solid #333333;
+  border: 0.125rem solid var(--nplc-color);
   border-radius: 1rem;
   cursor: pointer;
 }
@@ -189,19 +193,20 @@
 .npclc-t-title {
   /* Tag.div */
   padding: 0rem 0rem 0.5rem 0.5rem;
-  color: #000000;
+  color: var(--black);
   font-weight: bold;
   font-size: 1.2rem;
 }
 .npclc-t-overview {
   /* Tag.div */
   padding: 0rem 0rem 0rem 1.5rem;
-  color: #333333;
+  color: var(--nplc-color);
 }
 @media (min-width: 768px) {
   .nplc-r-heptg {
     top: 8rem;
-    transition: margin 300ms ease;
+    transition:
+      margin var(--nc-transition-slide);
   }
   .nptlc-z-tno {
     /* Tag.ul */
@@ -213,13 +218,13 @@
 }
 @media (min-width: 1280px) {
   .nplc-r-heptg {
-    top: 4rem;
+    top: var(--tpnc-height);
     padding: 0rem 1rem 1rem 1rem;
   }
 }
 /* ============================== */
-/* DESCRIPTION
+/* NOTE
  */
-/* INFORMATION
- * @[Author] {Facooya} (Founder)
+/* AUTHORSHIP
+ * Founder: Facooya
  */

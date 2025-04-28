@@ -12,7 +12,7 @@ class SncData {
   ];
   /* ===== gigaTitle ===== */
   static gigaTitleYs = [
-    "Version 1.1.15 Alpha",
+    "Version 1.1.16 Alpha",
     "Item 1-2",
     "Item 1-3",
     "Item 1-4",

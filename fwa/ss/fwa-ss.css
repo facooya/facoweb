@@ -21,12 +21,12 @@ html {
   height: 0.5rem;
   display: none;
 }
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
   border-radius: 0.25rem;
   background-color: #707070;
-}
-/* DESCRIPTION
+} */
+/* NOTE
  */
-/* INFORMATION
- * @[Author] {Facooya} (Founder)
+/* AUTHORSHIP
+ * Founder: Facooya
  */

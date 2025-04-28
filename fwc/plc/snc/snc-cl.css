@@ -1,0 +1,88 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* =============== :Handler: =============== */
+/* ==========----- :cl-mdt-snc-z-siptg-handler: -----========== */
+.snc-y.cl-mdt-snc-z-siptg-handler {
+  background-color: var(--snc-background-color-secondary);
+}
+.snc-e-siptg-title.cl-mdt-snc-z-siptg-handler {
+  font-weight: bold;
+}
+.snc-e-siptg-rgro.cl-mdt-snc-z-siptg-handler {
+  transform: rotate(180deg);
+}
+.snc-e-siptg-bgro.cl-mdt-snc-z-siptg-handler {
+  left: 15%;
+  width: 70%;
+}
+.snc-t.cl-mdt-snc-z-siptg-handler {
+  opacity: 1;
+}
+/* ==========----- ;cl-mdt-snc-z-siptg-handler; -----========== */
+/* ==========----- :cl-tdt-snc-z-siptg-handler: -----========== */
+.snc-y.cl-tdt-snc-z-siptg-handler {
+  background-color: var(--snc-background-color-secondary);
+}
+.snc-e-siptg-title.cl-tdt-snc-z-siptg-handler {
+  font-weight: bold;
+}
+.snc-e-siptg-rgro.cl-tdt-snc-z-siptg-handler {
+  transform: rotate(180deg);
+}
+.snc-e-siptg-bgro.cl-tdt-snc-z-siptg-handler {
+  left: 15%;
+  width: 70%;
+}
+.snc-t.cl-tdt-snc-z-siptg-handler {
+  opacity: 1;
+}
+/* ==========----- ;cl-tdt-snc-z-siptg-handler; -----========== */
+/* ==========----- :cl-ddt-snc-z-siptg-handler: -----========== */
+.snc-e-siptg-title.cl-ddt-snc-z-siptg-handler {
+  font-weight: bold;
+}
+.snc-e-siptg-rgro.cl-ddt-snc-z-siptg-handler {
+  margin: 0rem 2.5rem 0rem 0rem;
+  border-top: 0.5rem solid var(--white);
+  border-right: 0.4rem solid var(--transparent);
+  border-left: 0.4rem solid var(--transparent);
+  transform: rotate(360deg);
+}
+.snc-e-siptg-bgro.cl-ddt-snc-z-siptg-handler {
+  left: 10%;
+  width: 80%;
+}
+.snc-y.cl-ddt-snc-z-siptg-handler-click {
+  background-color: var(--snc-background-color-secondary);
+}
+.snc-e-siptg-rgro.cl-ddt-snc-z-siptg-handler-click {
+  transform: rotate(540deg);
+}
+.snc-t.cl-ddt-snc-z-siptg-handler-click {
+  opacity: 1;
+}
+/* ==========----- ;cl-ddt-snc-z-siptg-handler; -----========== */
+/* ==========----- :cl-ddt-snc-p-handler: -----========== */
+.snc-g-title.cl-ddt-snc-p-handler {
+  font-weight: bold;
+}
+.snc-g-rgro.cl-ddt-snc-p-handler {
+  margin: 0rem 0rem 0rem 1rem;
+  border-top: 0.25rem solid var(--transparent);
+  border-bottom: 0.25rem solid var(--transparent);
+  border-left: 0.5rem solid var(--white);
+  opacity: 1;
+}
+/* ==========----- ;cl-ddt-snc-p-handler; -----========== */
+/* =============== ;Handler; =============== */
+/* =============== :FACOOYA: =============== */
+/* NOTE
+ * CL: Class List
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* =============== ;FACOOYA; =============== */

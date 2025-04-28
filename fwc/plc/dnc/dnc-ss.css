@@ -4,9 +4,22 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 .dnc-r-bptg {
+  --dnc-duration-primary: var(--duration-primary);
+  --dnc-timing-primary: var(--timing-primary);
+  --dnc-timing-secondary: var(--timing-secondary);
+  /*  */
+  --dnc-background: var(--nc-background);
+  --dnc-font-color-primary: #FFFFFF;
+  --dnc-font-color-secondary: #FFFFFF;
+  --dnc-rgro-color: #FFFFFF;
+  --dnc-background-color-secondary: var(--background-color-secondary);
+  --dnc-e-width-primary: 10rem;
+  --dnc-e-width-secondary: 18rem;
+}
+.dnc-r-bptg {
   /* Positioning */
   position: fixed;
-  top: 4rem; /* TPC.height = 4rem */
+  top: var(--tpnc-height); /* TPC.height = 4rem */
   left: -80%;
   z-index: 100; /* FIXME: Part section < Temp */
   /* Grid */
@@ -14,13 +27,13 @@
   grid-auto-rows: min-content; /* dnc-z: 4rem + dnc-e: auto, !!! template-rows? */
   /* Layout */
   width: 80%;
-  height: calc(100% - 4rem); /* 4rem = TPC.height */
+  height: calc(100% - var(--tpnc-height)); /* 4rem = TPC.height */
   overflow-y: scroll;
   overscroll-behavior: contain;
   /* Visual */
-  background-color: #222222;
+  background-color: var(--nc-background);
   transition: 
-    left 300ms ease;
+    left var(--dnc-duration-primary) var(--dnc-timing-primary);
 }
 /* !!! v1.1.12a [test] (scroll) */
 .dnc-y-sdo { /* ios snc scroll bug fix */
@@ -33,7 +46,7 @@
   width: 100%;
   height: calc(100% + 1px);
   /* Visual */
-  background: #00000000;
+  background: var(--transparent);
 }
 /* = = = = = dnc-Y = = = = = */
 .dnc-y {
@@ -51,10 +64,11 @@
   /* Layout */
   box-sizing: border-box;
   /* Visual */
-  background-color: #222222;
+  background-color: var(--nc-background);
   list-style-type: none;
   cursor: pointer;
-  transition: background-color 300ms linear;
+  transition:
+    background-color var(--dnc-duration-primary) var(--dnc-timing-secondary);
 }
 /* = = = = = dnc-Z-BEPT = = = = = */
 .dnc-z-alptg {
@@ -72,18 +86,18 @@
 .dnc-e-alptg-title {
   grid-area: dnc-e-alptg-title;
   justify-self: center;
-  color: #FFFFFF;
+  color: var(--dnc-font-color-primary);
 }
 .dnc-e-alptg-rgro {
   grid-area: dnc-e-alptg-rgro;
   margin: 0rem 1.5rem 0rem 0rem;
-  border-top: 0.5rem solid #FFFFFF;
-  border-right: 0.4rem solid #00000000;
-  border-left: 0.4rem solid #00000000;
+  border-top: 0.5rem solid var(--dnc-rgro-color);
+  border-right: 0.4rem solid var(--transparent);
+  border-left: 0.4rem solid var(--transparent);
   transform: rotate(0deg);
   transition:
-    border 300ms ease,
-    transform 300ms ease;
+    border var(--dnc-duration-primary) var(--dnc-timing-primary),
+    transform var(--dnc-duration-primary) var(--dnc-timing-primary);
 }
 .dnc-e-alptg-bgro {
   position: absolute;
@@ -91,11 +105,11 @@
   left: 50%;
   width: 0%;
   height: 0.125rem;
-  background-color: #90EE90;
+  background-color: var(--facooya-primary);
   border-radius: 0.0625rem; /* height / 2 */
   transition:
-    left 300ms,
-    width 300ms;
+    left var(--dnc-duration-primary) var(--dnc-timing-primary),
+    width var(--dnc-duration-primary) var(--dnc-timing-primary);
 }
 /* = = = = = dnc-Z ~ dnc-P = = = = = */
 .dnc-z {
@@ -112,7 +126,8 @@
   grid-auto-rows: 0rem;
 
   overflow: hidden;
-  transition: grid-template-rows 300ms;
+  transition:
+    grid-template-rows var(--dnc-duration-primary) var(--dnc-timing-primary);
 }
 .dnc-p {
   position: relative;
@@ -132,27 +147,28 @@
   /* Visual */
   opacity: 0;
   text-decoration: none;
-  transition: opacity 300ms ease;
+  transition:
+    opacity var(--dnc-duration-primary) var(--dnc-timing-primary);
 }
 .dnc-g-title {
   grid-area: dnc-g-title;
-  color: #FFFFFF;
-  font-weight: 400;
+  color: var(--dnc-font-color-secondary);
+  font-weight: normal;
   /* transition: opacity 300ms; */
 }
 .dnc-g-rgro {
   grid-area: dnc-g-rgro;
   margin: 0rem 0rem 0rem 0.5rem;
-  border-top: 0.25rem solid #00000000;
-  border-bottom: 0.25rem solid #00000000;
-  border-left: 0.5rem solid #FFFFFF;
+  border-top: 0.25rem solid var(--transparent);
+  border-bottom: 0.25rem solid var(--transparent);
+  border-left: 0.5rem solid var(--dnc-rgro-color);
   /* transition: opacity 300ms ease; */
 }
 .dnc-g-bgro {
   position: absolute;
   top: 70%;
   height: 0.125rem;
-  background-color: #87CEEB;
+  background-color: var(--facooya-secondary);
   border-radius: 0.0625rem;
   /* transition: opacity 300ms ease; */
 }
@@ -184,12 +200,11 @@
     /* grid-template-rows: [JS] !!! */
     /* Visual */
     border-radius: 0rem 0rem 1rem 1rem;
-    background-color: #222222;
+    background-color: var(--dnc-background);
     transition:
-      grid-template-rows 300ms, 
-      width 300ms;
+      grid-template-rows var(--dnc-duration-primary) var(--dnc-timing-primary), 
+      width var(--dnc-duration-primary) var(--dnc-timing-primary);
   }
-  
 }
 @media (min-width: 1280px) {
   .dnc-r-bptg {
@@ -198,7 +213,8 @@
     right: 4rem;
     grid-template-columns: repeat(5, minmax(8rem, 15rem));
     width: calc(100% - 12rem - 4rem);
-    transition: width 300ms ease;
+    transition:
+      width var(--dnc-duration-primary) var(--dnc-timing-primary);
   }
   .dnc-y {
     cursor: default;
@@ -208,15 +224,15 @@
   }
   .dnc-g-rgro {
     margin: 0rem;
-    border-top: 0rem solid #00000000;
-    border-bottom: 0rem solid #00000000;
-    border-left: 0rem solid #00000000;
+    border-top: 0rem solid var(--transparent);
+    border-bottom: 0rem solid var(--transparent);
+    border-left: 0rem solid var(--transparent);
     opacity: 0;
     /* Reset: transition(mobile) */
     transition:
-      margin 300ms ease,
-      border 300ms ease,
-      opacity 300ms linear;
+      margin var(--dnc-duration-primary) var(--dnc-timing-primary),
+      border var(--dnc-duration-primary) var(--dnc-timing-primary),
+      opacity var(--dnc-duration-primary) var(--dnc-timing-secondary);
   }
   .dnc-g-bgro {
     /* Position */
@@ -226,11 +242,14 @@
     /* Visual */
     /* Reset: opacity(mobile), transition(mobile) */
     transition:
-      width 300ms ease;
+      width var(--dnc-duration-primary) var(--dnc-timing-primary);
   }
 }
-/* DESCRIPTION
+/* =============== :FACOOYA: =============== */
+/* NOTE
+ * CL: Class List
  */
-/* INFORMATION
- * @[Author] {Facooya} (Founder)
+/* AUTHORSHIP
+ * Founder: Facooya
  */
+ /* =============== ;FACOOYA; =============== */

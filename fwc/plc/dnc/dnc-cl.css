@@ -1,0 +1,81 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* =============== :Handler: =============== */
+/* ==========----- :cl-mdt-dnc-z-alptg-handler: -----========== */
+.dnc-y.cl-mdt-dnc-z-alptg-handler {
+  background-color: var(--dnc-background-color-secondary);
+}
+.dnc-e-alptg-title.cl-mdt-dnc-z-alptg-handler {
+  font-weight: bold;
+}
+.dnc-e-alptg-rgro.cl-mdt-dnc-z-alptg-handler {
+  transform: rotate(180deg);
+}
+.dnc-e-alptg-bgro.cl-mdt-dnc-z-alptg-handler {
+  left: 15%;
+  width: 70%;
+}
+.dnc-t.cl-mdt-dnc-z-alptg-handler {
+  opacity: 1;
+}
+/* ==========----- ;cl-mdt-dnc-z-alptg-handler; -----========== */
+/* ==========----- :cl-tdt-dnc-z-alptg-handler: -----========== */
+.dnc-e-alptg-bgro.cl-tdt-dnc-z-alptg-handler {
+  left: 10%;
+  width: 80%;
+}
+.dnc-e.cl-tdt-dnc-z-alptg-handler {
+  width: var(--dnc-e-width-secondary);
+}
+.dnc-e.cl-tdt-dnc-z-alptg-handler-nth-1 {
+  left: 0%;
+}
+.dnc-e.cl-tdt-dnc-z-alptg-handler-nth-5 {
+  right: 0%;
+}
+.dnc-t.cl-tdt-dnc-z-alptg-handler {
+  opacity: 1;
+}
+/* ==========----- ;cl-tdt-dnc-z-alptg-handler; -----========== */
+/* ==========----- :cl-ddt-dnc-y-handler: -----========== */
+.dnc-e-alptg-title.cl-ddt-dnc-y-handler {
+  font-weight: bold;
+}
+.dnc-e-alptg-bgro.cl-ddt-dnc-y-handler {
+  left: 10%;
+  width: 80%;
+}
+.dnc-e.cl-ddt-dnc-y-handler {
+  width: var(--dnc-e-width-secondary);
+}
+.dnc-e.cl-ddt-dnc-y-handler-nth-5 {
+  right: 0%;
+}
+.dnc-t.cl-ddt-dnc-y-handler {
+  opacity: 1;
+}
+/* ==========----- ;cl-ddt-dnc-y-handler; -----========== */
+/* ==========----- :cl-ddt-dnc-p-handler: -----========== */
+.dnc-g-title.cl-ddt-dnc-p-handler {
+  font-weight: bold;
+}
+.dnc-g-rgro.cl-ddt-dnc-p-handler {
+  margin: 0rem 0rem 0rem 1rem;
+  border-top: 0.25rem solid var(--transparent);
+  border-bottom: 0.25rem solid var(--transparent);
+  border-left: 0.5rem solid var(--white);
+  opacity: 1;
+}
+/* ==========----- ;cl-ddt-dnc-p-handler; -----========== */
+/* =============== ;Handler; =============== */
+/* =============== :FACOOYA: =============== */
+/* NOTE
+ * CL: Class List
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* =============== ;FACOOYA; =============== */

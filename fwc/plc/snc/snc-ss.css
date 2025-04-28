@@ -4,6 +4,18 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 .snc-r-cptg {
+  --snc-duration-primary: var(--duration-primary);
+  --snc-timing-primary: var(--timing-primary);
+  --snc-timing-secondary: var(--timing-secondary);
+  /*  */
+  --snc-background: var(--nc-background);
+  --snc-font-color-primary: #FFFFFF;
+  --snc-font-color-secondary: #FFFFFF;
+  --snc-rgro-color: #FFFFFF;
+  /*  */
+  --snc-background-color-secondary: var(--background-color-secondary);
+}
+.snc-r-cptg {
   /* Positioning */
   position: fixed;
   top: 4rem; /* TPC.height = 4rem */
@@ -20,8 +32,8 @@
   /* Visual */
   background-color: #222222;
   transition:
-    right 300ms ease,
-    width 300ms ease;
+    right var(--nc-transition-slide),
+    width var(--nc-transition-slide);
 }
 /* !!! v1.1.12a [test] (scroll) */
 .snc-y-sdo { /* ios snc scroll bug fix */
@@ -34,7 +46,7 @@
   width: 100%;
   height: calc(100% + 1px);
   /* Visual */
-  background: #00000000;
+  background: var(--transparent);
 }
 /* = = = = = SNC-Y = = = = = */
 .snc-y {
@@ -52,10 +64,11 @@
   /* Layout */
   box-sizing: border-box;
   /* Visual */
-  background-color: #222222;
+  background-color: var(--snc-background);
   list-style-type: none;
   cursor: pointer;
-  transition: background-color 300ms linear;
+  transition:
+    background-color var(--snc-duration-primary) var(--snc-timing-secondary);
 }
 /* = = = = = SNC-Z-SIPTG = = = = = */
 .snc-z-siptg {
@@ -73,19 +86,19 @@
 .snc-e-siptg-title {
   grid-area: snc-e-siptg-title;
   justify-self: center;
-  color: #FFFFFF;
+  color: var(--snc-font-color-primary);
   white-space: nowrap;
 }
 .snc-e-siptg-rgro {
   grid-area: snc-e-siptg-rgro;
   margin: 0rem 1.5rem 0rem 0rem;
-  border-top: 0.5rem solid #FFFFFF;
-  border-right: 0.4rem solid #00000000;
-  border-left: 0.4rem solid #00000000;
+  border-top: 0.5rem solid var(--snc-rgro-color);
+  border-right: 0.4rem solid var(--transparent);
+  border-left: 0.4rem solid var(--transparent);
   transform: rotate(0deg);
   transition:
-    border 300ms ease,
-    transform 300ms ease;
+    border var(--snc-duration-primary) var(--snc-timing-primary),
+    transform var(--snc-duration-primary) var(--snc-timing-primary);
 }
 .snc-e-siptg-bgro {
   position: absolute;
@@ -93,11 +106,11 @@
   left: 50%;
   width: 0%;
   height: 0.125rem;
-  background-color: #90EE90;
+  background-color: var(--facooya-primary);
   border-radius: 0.0625rem; /* height / 2 */
   transition:
-    left 300ms,
-    width 300ms;
+    left var(--snc-duration-primary) var(--snc-timing-primary),
+    width var(--snc-duration-primary) var(--snc-timing-primary);
 }
 /* = = = = = SNC-Z ~ SNC-P = = = = = */
 .snc-z {
@@ -113,7 +126,8 @@
   grid-auto-rows: 0rem;
 
   overflow: hidden;
-  transition: grid-template-rows 300ms;
+  transition:
+    grid-template-rows var(--snc-duration-primary) var(--snc-timing-primary);
 }
 .snc-p {
   position: relative;
@@ -134,12 +148,13 @@
   /* Visual */
   opacity: 0;
   text-decoration: none;
-  transition: opacity 300ms ease;
+  transition:
+    opacity var(--snc-duration-primary) var(--snc-timing-primary);
 }
 .snc-g-title {
   grid-area: snc-g-title;
-  color: #FFFFFF;
-  font-weight: 400;
+  color: var(--snc-font-color-secondary);
+  font-weight: normal;
   /* !!!!! v1.1.15a [test] [pro] (.class-opt) !!!!! */
   white-space: nowrap;
   overflow: hidden;
@@ -149,23 +164,23 @@
 .snc-g-rgro {
   grid-area: snc-g-rgro;
   margin: 0rem 0rem 0rem 0.5rem;
-  border-top: 0.25rem solid #00000000;
-  border-bottom: 0.25rem solid #00000000;
-  border-left: 0.5rem solid #FFFFFF;
+  border-top: 0.25rem solid var(--transparent);
+  border-bottom: 0.25rem solid var(--transparent);
+  border-left: 0.5rem solid var(--snc-rgro-color);
   /* transition: opacity 300ms ease; */
 }
 .snc-g-bgro {
   position: absolute;
   top: 70%;
   height: 0.125rem;
-  background-color: #87CEEB;
+  background-color: var(--facooya-secondary);
   border-radius: 0.0625rem;
   /* transition: opacity 300ms ease; */
 }
 @media (min-width: 768px) {
   .snc-r-cptg {
     /* Position */
-    top: 8rem; /* 8rem = TPC.height, FIXME: var(--tpc-height); */
+    top: 8rem; /* 8rem = tpnc.height + dnc.height */
     height: calc(100% - 8rem); /* FIXME: calc(100% - var(--tpc-height)); */
     /* Box Model */
     width: 20rem; /* FIXME: var(--snc-r-width); */
@@ -175,39 +190,41 @@
 @media (min-width: 1280px) {
   .snc-r-cptg {
     /* Position */
-    top: 4rem;
-    height: calc(100% - 4rem);
+    top: var(--tpnc-height);
+    height: calc(100% - var(--tpnc-height));
   }
   .snc-e-siptg-rgro {
     /* Reset */
     margin: 0rem;
-    border-top: 0rem solid #00000000;
-    border-right: 0rem solid #00000000;
-    border-left: 0rem solid #00000000;
+    border-top: 0rem solid var(--transparent);
+    border-right: 0rem solid var(--transparent);
+    border-left: 0rem solid var(--transparent);
     transform: rotate(0deg);
     transition:
-      border 300ms ease,
-      margin 300ms ease,
-      transform 300ms ease;
+      border var(--snc-duration-primary) var(--snc-timing-primary),
+      margin var(--snc-duration-primary) var(--snc-timing-primary),
+      transform var(--snc-duration-primary) var(--snc-timing-primary);
   }
   .snc-g-rgro {
     margin: 0rem;
-    border-top: 0rem solid #00000000;
-    border-bottom: 0rem solid #00000000;
-    border-left: 0rem solid #00000000;
+    border-top: 0rem solid var(--transparent);
+    border-bottom: 0rem solid var(--transparent);
+    border-left: 0rem solid var(--transparent);
     transition:
-      margin 300ms ease,
-      border 300ms ease,
-      opacity 300ms ease;
+      margin var(--snc-duration-primary) var(--snc-timing-primary),
+      border var(--snc-duration-primary) var(--snc-timing-primary),
+      opacity var(--snc-duration-primary) var(--snc-timing-primary);
   }
   .snc-g-bgro {
     opacity: 1;
     width: 0%;
-    transition: width 300ms ease;
+    transition:
+      width var(--snc-duration-primary) var(--snc-timing-primary);
   }
 }
-/* DESCRIPTION
+/* NOTE
  */
-/* INFORMATION
- * @[Author] {Facooya} (Founder)
+/* AUTHORSHIP
+ * Founder: Facooya
+ * Authorship list: https://www.facooya.com/about/authorship
  */
