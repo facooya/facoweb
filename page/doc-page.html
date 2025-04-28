@@ -16,7 +16,7 @@
     <link href="../code_style_v1.1.3a.css" rel="stylesheet">
     <!-- ______________________________ -->
     <!-- ___ Facooya.com/* Web Title ___!!! Check List A !!! -->
-    <title>Document V1.1.16A</title>
+    <title>Document V1.1.17A</title>
     <!-- ______________________________ -->
   </head>
   <body id="70000777">
@@ -46,7 +46,7 @@
     <!--==============================-->
     <section id="document_frame">
       <!-- ___ Document Title ___!!! Check List D !!! -->
-      <div id="document_title">[Tab 1] Version 1.1.16 Alpha</div>
+      <div id="document_title">[Tab 1] Version 1.1.17 Alpha</div>
       <!--______________________________-->
       <div id="document_container"> <!-- code_frame -->
         <!--=== Code & Result 1 ===!!! Check List E 1 !!! -->
@@ -73,20 +73,46 @@ Video
         <div class="code_title">Developer.Note</div>
         <div class="code_container">
 <pre class="string">
-Updated by v1.1.16a {
+Updated by v1.1.17a {
   Updated {
-    CSS variable updated.
-    Class list updated.
-  }
-  Issue fixed {
-    tdt -> ddt : dncY[0].position
+    The "DNC" and "SNC" scroll fog effect updated.
+    Naming rules updated {
+      Remove rule: (PriodicTable)
+      Updated: (Type) (DisplayType[Acronym]) (Framework[Acronym])
+        [Components[Acronym]] [Hierarchy] (Objects[Acronym]) (Details)
+      []: Mandatory
+      (): Optional
+
+      Note: [PrimaryComponent] [SecondaryComponent] (...)
+        Primary Component Hierarchy End. Continue Secondary Component Hierarchy.
+      e.g., dnc-r -> dnc-y -> dnc-p, dnc-adnc-r (Inheritance) -> dnc-adnc-y
+      dnc: [PrimaryComponent]
+      adnc: [SecondaryComponent]
+
+      Note: [ComponentName] + C, [ObjectName] + O
+      e.g., [HTML] dnc-y-eo-eto-example-naming
+      dnc: Development Navigation Component [Component]
+      y:  Facooya Hierarchy(Yotta) [Hierarchy]
+      eo: Example Object (Objects)
+      aeo: Another Example Object (Objects)
+      example, naming: (Details)
+
+      Note: (DisplayType) + DT
+      e.g., [JS] clMdtDncYottaEoEtoExampleNaming
+      cl: Class List (Type)
+      Mdt: Mobile Display Type (DisplayType)
+    }
+    Facooya temporary icon updated.
+    The "FO" framework updated.
+    Fwc system updated.
+    The "HDNC", "HSNC" transition updated.
   }
 }
 
 Routinely update {
   Code migration {
-    Migration from "v1.1.15a" to "v1.1.16a".
-    Synchronize to "v1.1.16a".
+    Migration from "v1.1.16a" to "v1.1.17a".
+    Synchronize to "v1.1.17a".
     Clean up code from previous versions.
     Migration inspection successful, continue updating and code refactoring.
   }
@@ -102,9 +128,11 @@ Routinely update {
   }
 }
 Scheduled update {
-  Scheduled update for v1.1.17a {
+  Scheduled update for v1.1.18a {
     Routinely update.
-    "DNC", "SNC" scroll effect update.
+    File cleaning.
+    Bottom line width data cache and resize fix update.
+    Inspection the "HTPNC", "HECC", "MO", "FO".
   }
   Scheduled update before v1.2.0 {
     Page(Home, Nav, Documnet) {
@@ -126,32 +154,18 @@ Scheduled update {
         "doc-page" upgrade complete update. (Inspection)
       }
     }
-    Component(DNC, SNC, TPC, BPC) {
-      DNC {
+    Component(HSNC) {
+      HSNC {
+        "doc-page" quick scroll.
+        "home-page" sub domain.
         Reference: Etc.
-        "DNC" scroll effect update. (DispalyType: Mobile)
-          Overflow-y: bottom defog effect & scroll down arrow, top arrow.
-      }
-      SNC {
-        "SNC" scroll effect update.
-          Overflow-y: top, bottom defog effect.
-        Setting value in "SNC".
-        "Facooya" domain tab update (siteMap).
-        Reference: Etc.
-      }
-      BPNC {
-        Bottom panel navigation component update.
-        sitemap.
-        toc, tou links.
-        sns links.
-        "facooya" copyright.
       }
     }
     
     Etc {
       "text-overflow: ellipsis" Calculation.
-      Draggable = "false" (TPNC, SNC, DNC)
-      Select = "none" (TPNC, SNC, DNC)
+      Draggable = "false"
+      Select = "none"
       Theme: dark. light.
     }
   }
@@ -213,6 +227,8 @@ Video
             <div>V1.1.15A [ nav-page ]</div></a></li>
           <li><a class="reference_item" href="#nav-page">[Nav] Version 1.1.16 Alpha
             <div>V1.1.16A [ nav-page ]</div></a></li>
+          <li><a class="reference_item" href="#nav-page">[Nav] Version 1.1.17 Alpha
+            <div>V1.1.17A [ nav-page ]</div></a></li>
         </ul>
       </div>
       <!-- ============================== -->

@@ -3,167 +3,181 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-class DncData {
-  /* ===== Title ===== */
-  static exaAlptgTitleRs = [
+class HdncData {
+  /* ===== ExaPoText ===== */
+  static hdncExaPoText = [
     "Menu 1",
     "Menu 2",
     "Menu 3",
-    "Menu 4",
-    "Menu 5"
+    "Menu 4"
   ];
-  /* ===== gigaTitle ===== */
-  static gigaTitleYs = [
+  /* ===== GigaText ===== */
+  static hdncGigaTextLanguage = [
     "Item 1-1"
   ];
-  static gigaTitleZs = [
+  static hdncGigaTextApplication = [
     "Item 2-1",
     "Item 2-2"
   ];
-  static gigaTitleEs = [
+  static hdncGigaTextWeb = [
     "Item 3-1",
     "Item 3-2",
     "Item 3-3"
   ];
-  static gigaTitlePs = [
+  static hdncGigaTextEtc = [
     "Item 4-1",
     "Item 4-2"
   ];
-  static gigaTitleTs = [
-    "Item 5-1"
-  ];
-  /* ===== TeraHref ===== */
-  static teraHrefYs = [
+  /* ===== TeraLink ===== */
+  static hdncTeraLinkLanguage = [
     "#item-1-1"
   ];
-  static teraHrefZs = [
+  static hdncTeraLinkApplication = [
     "#item-2-1",
     "#item-2-2"
   ];
-  static teraHrefEs = [
+  static hdncTeraLinkWeb = [
     "#item-3-1",
     "#item-3-2",
     "#item-3-3"
   ];
-  static teraHrefPs = [
+  static hdncTeraLinkEtc = [
     "#item-4-1",
     "#item-4-2"
   ];
-  static teraHrefTs = [
-    "#item-5-1"
-  ];
   /* ===== Compile ===== */
-  static gigaTitleRs = [
-    DncData.gigaTitleYs,
-    DncData.gigaTitleZs,
-    DncData.gigaTitleEs,
-    DncData.gigaTitlePs,
-    DncData.gigaTitleTs
+  static hdncGigaText = [
+    HdncData.hdncGigaTextLanguage,
+    HdncData.hdncGigaTextApplication,
+    HdncData.hdncGigaTextWeb,
+    HdncData.hdncGigaTextEtc
   ];
-  static teraHrefRs = [
-    DncData.teraHrefYs,
-    DncData.teraHrefZs,
-    DncData.teraHrefEs,
-    DncData.teraHrefPs,
-    DncData.teraHrefTs
+  static hdncTeraLink = [
+    HdncData.hdncTeraLinkLanguage,
+    HdncData.hdncTeraLinkApplication,
+    HdncData.hdncTeraLinkWeb,
+    HdncData.hdncTeraLinkEtc
   ];
 }
-class DncElement {
+class HdncElement {
   static elementYsGroup = [
     {
       id: "yotta",
       tag: "ul",
-      selector: "dnc-y"
+      selector: "hdnc-y"
     },
     {
       id: "zetta",
       tag: "li",
-      selector: "dnc-z"
+      selector: "hdnc-z"
     },
     {
       id: "exa",
       tag: "ul",
-      selector: "dnc-e"
+      selector: "hdnc-e"
     }
   ];
   static elementZsGroup = [
     {
       id: "peta",
       tag: "li",
-      selector: "dnc-p"
+      selector: "hdnc-p"
     },
     {
       id: "tera",
       tag: "a",
-      selector: "dnc-t",
-      href: DncData.teraHrefRs
+      selector: "hdnc-t",
+      link: HdncData.hdncTeraLink
     },
     {
-      id: "gigaTitle",
+      id: "gigaText",
       tag: "div",
-      selector: "dnc-g-title",
-      text: DncData.gigaTitleRs
+      selector: "hdnc-g-text",
+      text: HdncData.hdncGigaText
     },
     {
       id: "gigaRgro",
       tag: "div",
-      selector: "dnc-g-rgro"
+      selector: "hdnc-g-rgro"
     },
     {
       id: "gigaBgro",
       tag: "div",
-      selector: "dnc-g-bgro"
+      selector: "hdnc-g-bgro"
     }
   ];
-  static elementAlptgGroup = [
+  static elementPoGroup = [
     {
-      id: "zettaAlptg",
+      id: "zettaPo",
       tag: "li",
-      selector: "dnc-z-alptg"
+      selector: "hdnc-z-po"
     },
     {
-      id: "exaAlptgTitle",
+      id: "exaPoText",
       tag: "div",
-      selector: "dnc-e-alptg-title",
-      text: DncData.exaAlptgTitleRs
+      selector: "hdnc-e-po-text",
+      text: HdncData.hdncExaPoText
     },
     {
-      id: "exaAlptgRgro",
+      id: "exaPoRgro",
       tag: "div",
-      selector: "dnc-e-alptg-rgro"
+      selector: "hdnc-e-po-rgro"
     },
     {
-      id: "exaAlptgBgro",
+      id: "exaPoBgro",
       tag: "div",
-      selector: "dnc-e-alptg-bgro"
+      selector: "hdnc-e-po-bgro"
     }
   ];
-  static elementSdoGroup = [
+  /* static elementSdoGroup = [
     {
       id: "yottaSdo",
       tag: "div",
-      selector: "dnc-y-sdo"
+      selector: "hdnc-y-sdo"
+    }
+  ]; */
+  static elementEcoGroup = [
+    {
+      id: "yottaEco",
+      tag: "div",
+      selector: "hdnc-y-eco"
+    },
+    {
+      id: "zettaEcoSdo",
+      tag: "div",
+      selector: "hdnc-z-eco-sdo"
+    },
+    {
+      id: "zettaEcoSfroTgro",
+      tag: "div",
+      selector: "hdnc-z-eco-sfro hdnc-z-eco-sfro-tgro"
+    },
+    {
+      id: "zettaEcoSfroBgro",
+      tag: "div",
+      selector: "hdnc-z-eco-sfro hdnc-z-eco-sfro-bgro"
     }
   ];
 }
-class DncConfig {
+class HdncConfig {
   /* =============== :Data: =============== */
-  static exaAlptgTitleRs = DncData.exaAlptgTitleRs;
-  static teraHrefRs = DncData.teraHrefRs;
-  static gigaTitleRs = DncData.gigaTitleRs;
+  static hdncExaPoText = HdncData.hdncExaPoText;
+  static hdncTeraLink = HdncData.hdncTeraLink;
+  static hdncGigaText = HdncData.hdncGigaText;
   /* =============== ;Data; =============== */
   /* =============== :Element: =============== */
-  static elementYsGroup = DncElement.elementYsGroup;
-  static elementZsGroup = DncElement.elementZsGroup;
-  static elementAlptgGroup = DncElement.elementAlptgGroup;
-  static elementSdoGroup = DncElement.elementSdoGroup;
+  static elementYsGroup = HdncElement.elementYsGroup;
+  static elementZsGroup = HdncElement.elementZsGroup;
+  static elementPoGroup = HdncElement.elementPoGroup;
+  /* static elementSdoGroup = HdncElement.elementSdoGroup; */
+  static elementEcoGroup = HdncElement.elementEcoGroup;
   /* =============== ;Element; =============== */
 }
 export {
-  DncConfig
+  HdncConfig
 };
 /* DESCRIPTION
- * DncConfig.exaAlptgTitleRs, gigaTitleRs, teraHrefRs
+ * HdncConfig.exaPoTextRs, gigaTextRs, teraLinkRs
  */
 /* INFORMATION
  * @[Author] {Facooya} (Founder)

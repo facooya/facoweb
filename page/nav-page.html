@@ -7,19 +7,25 @@
     <link href="../fwa/ss/fwa-root.css" rel="stylesheet">
     <link href="../fwa/ss/fwa-ss.css" rel="stylesheet">
 
-    <link href="../fwc/plc/tpnc/tpnc-ss.css" rel="stylesheet">
-    <link href="../fwc/plc/dnc/dnc-ss.css" rel="stylesheet">
-    <link href="../fwc/plc/snc/snc-ss.css" rel="stylesheet">
-    <link href="../fwc/plc/ecc/ecc-ss.css" rel="stylesheet">
+    <link href="../fwc/blf/blf-ss.css" rel="stylesheet">
+    <link href="../fwc/ho/htpnc/htpnc-ss.css" rel="stylesheet">
+    <link href="../fwc/ho/hdnc/hdnc-ss.css" rel="stylesheet">
+    <link href="../fwc/ho/hsnc/hsnc-ss.css" rel="stylesheet">
+    <link href="../fwc/ho/hecc/hecc-ss.css" rel="stylesheet">
     <link href="../fwc/plc/bpnc/bpnc-ss.css" rel="stylesheet">
-    <!-- NPLC -->
-    <link href="../fwc/nplc/nplc-ss.css" rel="stylesheet">
+    <!-- NPMO -->
+    <!-- <link href="../fwc/npmo/npmc-ss.css" rel="stylesheet"> -->
+    <link href="../fwc/npmo/npmo-ss.css" rel="stylesheet">
+    <link href="../fwc/npmo/npmhc/npmhc-ss.css" rel="stylesheet">
+    <link href="../fwc/npmo/npmsc/npmsc-ss.css" rel="stylesheet">
     <!-- Class List -->
     <link href="../fwc/class-list.css" rel="stylesheet">
-    <link href="../fwc/plc/tpnc/tpnc-cl.css" rel="stylesheet">
-    <link href="../fwc/plc/dnc/dnc-cl.css" rel="stylesheet">
-    <link href="../fwc/plc/snc/snc-cl.css" rel="stylesheet">
-    <link href="../fwc/nplc/nplc-cl.css" rel="stylesheet">
+    <link href="../fwc/ho/htpnc/htpnc-cl.css" rel="stylesheet">
+    <link href="../fwc/ho/hdnc/hdnc-cl.css" rel="stylesheet">
+    <link href="../fwc/ho/hsnc/hsnc-cl.css" rel="stylesheet">
+    <!-- <link href="../fwc/npmo/npmc-cl.css" rel="stylesheet"> -->
+    <link href="../fwc/npmo/npmhc/npmhc-cl.css" rel="stylesheet">
+    <link href="../fwc/npmo/npmsc/npmsc-cl.css" rel="stylesheet">
     <!-- ############################## -->
     <!-- YS -->
     <script src="../fwa/fwa.js" type="module"></script>
@@ -28,166 +34,253 @@
     <!-- NPLC -->
     <!-- <script src="../fwc/nplc/nplc.js" type="module"></script> -->
     <!-- %%% Web Title %%% -->
-    <title>v1.1.16a Navigation page</title>
+    <title>v1.1.17a Navigation page</title>
   </head>
-  <!-- PLC: Page Layout Component -->
-  <!-- HPTG: Hydrogen Periodic Table Group -->
-  <body class="plc-r-hptg">
+  <!-- 
+    BLF: Body Layout Framework
+    HO, M, F: Header Object, Main, Footer
+    HTPNC: Header Top panel Navigation Component
+    HDNC: Header Development Navigation Component
+    HSNC: Header Support Naviation Component
+    HECC: Header Et Cetera Component
+  -->
+  <body class="blf-r">
     <!-- === Core Component === !!! draggable="false" -->
-    <header class="plc-y-liptg">
-      <nav class="tpnc-r-beptg"></nav>
-      <nav class="dnc-r-bptg"></nav>
-      <nav class="snc-r-cptg"></nav>
-      <div class="ecc-r-nptg"></div>
+    <header class="blf-y-ho">
+      <nav class="htpnc-r"></nav>
+      <nav class="hdnc-r"></nav>
+      <nav class="hsnc-r"></nav>
+      <div class="hecc-r"></div>
     </header>
     <!-- ============================== -->
-    <main class="plc-y-naptg nplc-r-heptg">
-      <!-- NPLC: Navigate Page Layout Component -->
-      <!-- NPTLC: Navigate Page Top Layout Component -->
-      <header class="nplc-y-neptg nptlc-r-liptp">
-        <div class="nptlc-y-beptp">
-          <h1 class="nptlc-z-beptp-title">Version 1.1.16 Alpha Navigate Page</h1>
-          <div class="nptlc-z-beptp-bgro"></div>
+    <main class="blf-y-npmo">
+      <header class="npmhc-r">
+        <div class="npmhc-y-tlo">
+          <h1 class="npmhc-z-tlo-text">Version 1.1.17 Alpha Navigation Page</h1>
+          <div class="npmhc-z-tlo-bgro"></div>
         </div>
-        <nav class="nptlc-y-tno"> <!-- TNO: Tab Navigate Object -->
-          <ul class="nptlc-z-tno">
-            <li class="nptlc-e-tno">
-              <a href="#0" class="nptlc-p-tno">
-                <h2 class="nptlc-t-tno-title">Tab 1 is very long test</h2>
-                <div class="nptlc-t-tno-sgro"></div>
+        <nav class="npmhc-y-tno">
+          <ul class="npmhc-z-tno">
+            <li class="npmhc-e-tno">
+              <a href="#0" class="npmhc-p-tno">
+                <h2 class="npmhc-t-tno-text">Tab 1 is very long test</h2>
+                <div class="npmhc-t-tno-gro"></div>
               </a>
             </li>
-            <li class="nptlc-e-tno">
-              <a href="#1" class="nptlc-p-tno">
-                <h2 class="nptlc-t-tno-title">Tab 2</h2>
-                <div class="nptlc-t-tno-sgro"></div>
+            <li class="npmhc-e-tno">
+              <a href="#1" class="npmhc-p-tno">
+                <h2 class="npmhc-t-tno-text">Tab 2</h2>
+                <div class="npmhc-t-tno-gro"></div>
               </a>
             </li>
-            <li class="nptlc-e-tno">
-              <a href="#2" class="nptlc-p-tno">
-                <h2 class="nptlc-t-tno-title">Tab 3</h2>
-                <div class="nptlc-t-tno-sgro"></div>
+            <li class="npmhc-e-tno">
+              <a href="#2" class="npmhc-p-tno">
+                <h2 class="npmhc-t-tno-text">Tab 3</h2>
+                <div class="npmhc-t-tno-gro"></div>
               </a>
             </li>
           </ul>
         </nav>
       </header>
-      <section class="nplc-y-arptg npclc-r-naptp">
-        <nav class="npclc-y">
-          <ul class="npclc-z">
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Version 1.1.16 Alpha</div>
-                <div class="npclc-t-overview">v1.1.15a [ ./doc-page ]</div>
+      <!--  -->
+      <section class="npmsc-r">
+        <!--  -->
+        <nav class="npmsc-y">
+          <ul class="npmsc-z">
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Version 1.1.17 Alpha</div>
+                <div class="npmsc-t-sub-text">v1.1.17a [ ./doc-page ]</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Item 1-2 Title long long long long long long long long</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Item 1-2 Title long long long long long long long long</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Item 1-3</div>
-                <div class="npclc-t-overview">[ ./doc-page ] Overview long long long long long long long</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Item 1-3</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ] sub-text long long long long long long long</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Item 1-4 Title long long long long long long long long</div>
-                <div class="npclc-t-overview">[ ./doc-page ] Overview long long long long long long long</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Item 1-4 Title long long long long long long long long</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ] sub-text long long long long long long long</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Item 1-5</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Item 1-5</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Item 1-6</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Item 1-6</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Item 1-7</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Item 1-7</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Item 1-8</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Item 1-8</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Item 1-9</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Item 1-9</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Item 1-10</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Item 1-10</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 1] Item 1-11</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <nav class="npclc-y">
-          <ul class="npclc-z">
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 2] Item 2-1</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
-              </a>
-            </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 2] Item 2-2</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 1] Item 1-11</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
               </a>
             </li>
           </ul>
         </nav>
-        <nav class="npclc-y">
-          <ul class="npclc-z">
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 3] Item 3-1</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
+        <!--  -->
+        <nav class="npmsc-y">
+          <ul class="npmsc-z">
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 2] Item 2-1</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
               </a>
             </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 3] Item 3-2</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
-              </a>
-            </li>
-            <li class="npclc-e">
-              <a href="./doc-page.html" class="npclc-p">
-                <div class="npclc-t-title">[Tab 3] Item 3-3</div>
-                <div class="npclc-t-overview">[ ./doc-page ]</div>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 2] Item 2-2</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
               </a>
             </li>
           </ul>
         </nav>
+        <!--  -->
+        <nav class="npmsc-y">
+          <ul class="npmsc-z">
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 3] Item 3-1</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
+              </a>
+            </li>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 3] Item 3-2</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
+              </a>
+            </li>
+            <li class="npmsc-e">
+              <a href="./doc-page.html" class="npmsc-p">
+                <div class="npmsc-t-text">[Tab 3] Item 3-3</div>
+                <div class="npmsc-t-sub-text">[ ./doc-page ]</div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!--  -->
       </section>
       <!-- ============================== -->
     </main>
     <!-- ===== Bottom Panel Component ===== -->
-    <footer class="plc-y-kptg">
-      <div class="bpnc-r"></div>
+    <!-- 
+      SMC: Social Media Component
+      ADC: Affiliate Domain Component
+     -->
+    <footer class="plf-y-pfo blf-y-fo">
+      <nav class="smc-r fsmnc-r">
+        <h3 class="smc-y-title">Social Media</h3>
+        <ul class="smc-y">
+          <li class="smc-z-a">
+            <div class="smc-e-a-logo-icon"></div>
+          </li>
+          <li class="smc-z-b">
+            <div class="smc-e-b-logo-icon"></div>
+          </li>
+          <li class="smc-z-c">
+            <div class="smc-e-c-logo-icon"></div>
+          </li>
+        </ul>
+      </nav>
+      <nav class="adc-r fadnc-r">
+        <h3 class="adc-y-title">Our Sites</h3>
+        <ul>
+          <li>a.facooya.com</li>
+          <li>b.facooya.com</li>
+          <li>c.facooya.com</li>
+        </ul>
+      </nav>
+      <nav class="bpnc-y-about">
+        <h3 class="bpnc-z-about-title">About</h3>
+        <ul>
+          <li>Contact Us</li>
+          <li>Our Team</li>
+          <li>Workshop</li>
+        </ul>
+      </nav>
+      <nav class="dpc-r fdnc-r">
+        <h3 class="dpc-y-title">Ways to Donate</h3>
+        <ul>
+          <li>View Ads to Donate</li>
+          <li>Click Ads to Donate</li>
+          <!-- <li>Donate via PayPal</li>
+          <li>Donate with Google Pay</li> -->
+        </ul>
+      </nav>
+      <nav class="llc-r fbpnc-r">
+        <div class="llc-y-facooya-icon"></div>
+        <ul class="llc-y">
+          <li>Privacy Policy</li>
+          <li>Terms of Use</li>
+          <li>Cookie Settings</li>
+          <li>Legal</li>
+        </ul>
+        <p class="llc-y-copyright">Copyright 2024 Facooya</p>
+      </nav>
       <!-- NOTE
+        - C: Component
+        - O: Object
+        - H: Header
+        - M: Main
+        - F: Footer
+        -
+        - BLF: Body Layout Framework
+        - HO: H O
+        - NPMO: Navigation Page M O
+        - FO: F O
+        -
+        - HTPNC: H Top Panel Navigation C
+        - HDNC: H Development Navigation C
+        - HSNC: H Support Navigation C
+        - HECC: H Et Cetera C
+        -
+        - NPMHC: Navigation Page M H C
+        - NPMSC: Navigation Page M Section C
+        - 
+        - SMC: Social Media C
+        - ADC: Affiliate Domain C
+        - DPC: Donation Panel C
+        - LLC: Legal Link C
+        -
+        - Primary: R, Y, Z, E, P, T, G, M, K
+        - Secondary: H, B, C, N, O, P, S, V, Y, I, W, U
         -->
       <!-- AUTHORSHIP
          - Founder: Facooya
@@ -196,4 +289,3 @@
     <!-- ============================== -->
   </body>
 </html>
-

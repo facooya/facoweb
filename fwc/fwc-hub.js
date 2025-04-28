@@ -9,48 +9,69 @@ import {
   FwcController
 } from "./fwc-class.js";
 import {
-  TpncAccessor,
-  TpncController
-} from "./plc/tpnc/tpnc-class.js";
+  BlfAccessor,
+  BlfController
+} from "./blf/blf-class.js";
 import {
-  DncAccessor,
-  DncController
-} from "./plc/dnc/dnc-class.js";
+  HtpncAccessor,
+  HtpncController
+} from "./ho/htpnc/htpnc-class.js";
 import {
-  SncAccessor,
-  SncController
-} from "./plc/snc/snc-class.js";
+  HdncAccessor,
+  HdncController
+} from "./ho/hdnc/hdnc-class.js";
 import {
-  EccAccessor,
-  EccController
-} from "./plc/ecc/ecc-class.js";
+  HsncAccessor,
+  HsncController
+} from "./ho/hsnc/hsnc-class.js";
 import {
+  HeccAccessor,
+  HeccController
+} from "./ho/hecc/hecc-class.js";
+/* import {
   NplcAccessor,
   NplcController
-} from "./nplc/nplc-class.js";
+} from ".//nplc-class.js"; */
+import {
+  NpmhcAccessor,
+  NpmhcController
+} from "./npmo/npmhc/npmhc-class.js";
+import {
+  NpmscAccessor,
+  NpmscController
+} from "./npmo/npmsc/npmsc-class.js";
 /* ================================================== */
 export {
   /* FWC */
   FwcAccessor,
   FwcController,
-  /* TPNC */
-  TpncAccessor,
-  TpncController,
-  /* DNC */
-  DncAccessor,
-  DncController,
-  /* SNC */
-  SncAccessor,
-  SncController,
-  /* ECC */
-  EccAccessor,
-  EccController,
+  /* BLF */
+  BlfAccessor,
+  BlfController,
+  /* HTPNC */
+  HtpncAccessor,
+  HtpncController,
+  /* HDNC */
+  HdncAccessor,
+  HdncController,
+  /* HSNC */
+  HsncAccessor,
+  HsncController,
+  /* HECC */
+  HeccAccessor,
+  HeccController,
   /* NPLC */
-  NplcAccessor,
-  NplcController
+  /* NplcAccessor,
+  NplcController */
+  /* NPMHC */
+  NpmhcAccessor,
+  NpmhcController,
+  /* NPMSC */
+  NpmscAccessor,
+  NpmscController
 };
 /* ================================================== */
-/* DESCRIPTION
+/* NOTE
  * Manage import export in FWC.
  * class file only.
  * 

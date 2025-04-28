@@ -3,7 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-class TpncData {
+class HtpncData {
   static lioLinkTitle = "Facooya";
   static lioLinkHref = "/";
 
@@ -12,83 +12,95 @@ class TpncData {
   static dnioGroLength = 3;
   static snioGroLength = 9;
 }
-class TpncElement {
+class HtpncElement {
   static elementYsGroup = [
     {
       id: "yotta",
       tag: "ul",
-      selector: "tpnc-y"
+      selector: "htpnc-y"
     },
     {
       id: "zettaLio",
       tag: "li",
-      selector: "tpnc-z-lio"
+      selector: "htpnc-z-lio"
     },
     {
       id: "exaLioLink",
       tag: "a",
-      selector: "tpnc-e-lio-link",
-      text: TpncData.lioLinkTitle,
-      href: TpncData.lioLinkHref
+      selector: "htpnc-e-lio-link",
+      text: HtpncData.lioLinkTitle,
+      href: HtpncData.lioLinkHref
     },
     {
       id: "zettaSnio",
       tag: "li",
-      selector: "tpnc-z-snio"
+      selector: "htpnc-z-snio"
     },
     {
       id: "zettaDnio",
       tag: "li",
-      selector: "tpnc-z-dnio"
+      selector: "htpnc-z-dnio"
     }
   ];
   static elementZsGroup = [
+    /* !!!!! :v1.1.17a [test]: !!!!! */
     {
+      id: "yottaEco",
+      tag: "div",
+      selector: "htpnc-y-eco"
+    },
+    {
+      id: "zettaEcoSdo",
+      tag: "div",
+      selector: "htpnc-z-eco-sdo"
+    },
+    /* {
       id: "yottaSdo",
       tag: "div",
-      selector: "tpnc-y-sdo"
-    },
+      selector: "htpnc-y-sdo"
+    }, */
+    /* !!!!! ;v1.1.17a [test]; !!!!! */
     {
       id: "yottaSnto",
       tag: "div",
-      selector: "tpnc-y-snto"
+      selector: "htpnc-y-snto"
     },
     {
       id: "zettaSntoTitle",
       tag: "div",
-      selector: "tpnc-z-snto-title",
-      text: TpncData.sntoTitle
+      selector: "htpnc-z-snto-title",
+      text: HtpncData.sntoTitle
     }
   ];
   static elementDnioGroGroup = [
     {
       id: "exaDnioGro",
       tag: "span",
-      selector: "tpnc-e-dnio-gro"
+      selector: "htpnc-e-dnio-gro"
     }
   ];
   static elementSnioGroGroup = [
     {
       id: "exaSnioGro",
       tag: "span",
-      selector: "tpnc-e-snio-gro"
+      selector: "htpnc-e-snio-gro"
     }
   ];
 }
-class TpncConfig {
+class HtpncConfig {
   /* =============== :Data: =============== */
-  static dnioGroLength = TpncData.dnioGroLength;
-  static snioGroLength = TpncData.snioGroLength;
+  static dnioGroLength = HtpncData.dnioGroLength;
+  static snioGroLength = HtpncData.snioGroLength;
   /* =============== ;Data; =============== */
   /* =============== :Element: =============== */
-  static elementYsGroup = TpncElement.elementYsGroup;
-  static elementZsGroup = TpncElement.elementZsGroup;
-  static elementDnioGroGroup = TpncElement.elementDnioGroGroup;
-  static elementSnioGroGroup = TpncElement.elementSnioGroGroup;
+  static elementYsGroup = HtpncElement.elementYsGroup;
+  static elementZsGroup = HtpncElement.elementZsGroup;
+  static elementDnioGroGroup = HtpncElement.elementDnioGroGroup;
+  static elementSnioGroGroup = HtpncElement.elementSnioGroGroup;
   /* =============== ;Element; =============== */
 }
 export {
-  TpncConfig
+  HtpncConfig
 };
 /* DESCRIPTION
  */

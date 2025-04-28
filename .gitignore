@@ -2,8 +2,14 @@
 
 *.sh
 *.php
+*.svg
 
 Makefile
 
 !.gitignore
 !.gitattributes
+
+!a.svg
+!b.svg
+!c.svg
+!d.svg

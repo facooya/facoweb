@@ -1,0 +1,75 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.plf-y-pfo {
+  --bpnc-background: var(--nc-background);
+}
+.plf-y-pfo {
+  /* Tag.div */
+  /* width: 100%; */
+  background-color: #222222;
+  padding: 1rem;
+}
+.smc-y-title {
+  color: #FFFFFF;
+  padding: 0rem 0rem 1rem 0rem;
+}
+.smc-y {
+  /* Tag.ul */
+  display: grid;
+  grid-template-columns: repeat(3, 2rem);
+  gap: 1rem;
+  list-style-type: none;
+}
+.smc-e-a-logo-icon {
+  width: 2rem;
+  height: 2rem;
+  mask-image: url("../../../fwa/resource/a.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: #FFFFFF;
+}
+.smc-e-b-logo-icon {
+  width: 2rem;
+  height: 2rem;
+  mask-image: url("../../../fwa/resource/b.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: #FFFFFF;
+}
+.smc-e-c-logo-icon {
+  width: 2rem;
+  height: 2rem;
+  mask-image: url("../../../fwa/resource/c.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: #FFFFFF;
+}
+/*  */
+.llc-y-facooya-icon {
+  width: 5rem;
+  height: 5rem;
+  mask-image: url("../../../fwa/resource/d.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: var(--white);
+}
+.llc-y-copyright {
+  text-align: center;
+  font-size: 0.75rem;
+  background-color: #222222;
+  color: #AAAAAA;
+}
+/*  */
+/* =============== :FACOOYA: =============== */
+/* NOTE
+ * TOC: Terms Of Copyright
+ * TOU: Terms Of Use
+ * LOA: List Of Authors
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* =============== ;FACOOYA; =============== */

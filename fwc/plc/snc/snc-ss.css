@@ -3,30 +3,37 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-.snc-r-cptg {
-  --snc-duration-primary: var(--duration-primary);
-  --snc-timing-primary: var(--timing-primary);
-  --snc-timing-secondary: var(--timing-secondary);
+.hsnc-r {
+  --hsnc-duration-primary: var(--duration-primary);
+  --hsnc-timing-primary: var(--timing-primary);
+  --hsnc-timing-secondary: var(--timing-secondary);
   /*  */
-  --snc-background: var(--nc-background);
-  --snc-font-color-primary: #FFFFFF;
-  --snc-font-color-secondary: #FFFFFF;
-  --snc-rgro-color: #FFFFFF;
+  --hsnc-background: var(--nc-background);
+  --hsnc-font-color-primary: #FFFFFF;
+  --hsnc-font-color-secondary: #FFFFFF;
+  --hsnc-rgro-color: #FFFFFF;
   /*  */
-  --snc-background-color-secondary: var(--background-color-secondary);
+  --hsnc-background-color-secondary: var(--background-color-secondary);
+  /*  */
+  --mdt-hsnc-top: var(--tpnc-height);
+  --tdt-hsnc-top: calc(var(--tpnc-height) + var(--dnc-height));
+  --ddt-hsnc-top: var(--tpnc-height);
+  --mdt-hsnc-width: 80%;
+  --tdt-hsnc-width: 20rem;
+  --ddt-hsnc-width: 20rem;
 }
-.snc-r-cptg {
+.hsnc-r {
   /* Positioning */
   position: fixed;
-  top: 4rem; /* TPC.height = 4rem */
-  right: -80%;
+  top: var(--mdt-hsnc-top); /* TPC.height = 4rem */
+  right: calc(var(--mdt-hsnc-width) * -1);
   z-index: 99; /* FIXME: Part section < Temp */
   /* Grid */
   display: grid;
-  grid-auto-rows: min-content; /* snc-z: 4rem + snc-e: auto, !!! template-rows? */
+  grid-auto-rows: min-content; /* hsnc-z: 4rem + hsnc-e: auto, !!! template-rows? */
   /* Layout */
-  width: 80%;
-  height: calc(100% - 4rem); /* 4rem = TPC.height */
+  width: var(--mdt-hsnc-width);
+  height: calc(100% - var(--mdt-hsnc-top)); /* 4rem = TPC.height */
   overflow-y: scroll;
   overscroll-behavior: contain;
   /* Visual */
@@ -35,44 +42,31 @@
     right var(--nc-transition-slide),
     width var(--nc-transition-slide);
 }
-/* !!! v1.1.12a [test] (scroll) */
-.snc-y-sdo { /* ios snc scroll bug fix */
-  /* Position */
-  position: absolute;
-  /* .snc-y-mgpt < .snc-y */
-  z-index: 1;
-  top: 0rem;
-  /* Layout */
-  width: 100%;
-  height: calc(100% + 1px);
-  /* Visual */
-  background: var(--transparent);
-}
 /* = = = = = SNC-Y = = = = = */
-.snc-y {
+.hsnc-y {
   /* Position */
   position: relative;
-  /* .snc-y-mgpt < .snc-y */
+  /* .hsnc-y-mgpt < .hsnc-y */
   z-index: 2;
   /* Grid */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 4rem auto;
   grid-template-areas:
-    "snc-z-siptg"
-    "snc-z";
+    "hsnc-z-po"
+    "hsnc-z";
   /* Layout */
   box-sizing: border-box;
   /* Visual */
-  background-color: var(--snc-background);
+  background-color: var(--hsnc-background);
   list-style-type: none;
   cursor: pointer;
   transition:
-    background-color var(--snc-duration-primary) var(--snc-timing-secondary);
+    background-color var(--hsnc-duration-primary) var(--hsnc-timing-secondary);
 }
 /* = = = = = SNC-Z-SIPTG = = = = = */
-.snc-z-siptg {
-  grid-area: snc-z-siptg;
+.hsnc-z-po {
+  grid-area: hsnc-z-po;
   position: relative;
 
   display: grid;
@@ -81,26 +75,26 @@
 
   grid-template-columns: 1fr min-content;
   grid-template-areas:
-    "snc-e-siptg-title snc-e-siptg-rgro"
+    "hsnc-e-po-text hsnc-e-po-rgro"
 }
-.snc-e-siptg-title {
-  grid-area: snc-e-siptg-title;
+.hsnc-e-po-text {
+  grid-area: hsnc-e-po-text;
   justify-self: center;
-  color: var(--snc-font-color-primary);
+  color: var(--hsnc-font-color-primary);
   white-space: nowrap;
 }
-.snc-e-siptg-rgro {
-  grid-area: snc-e-siptg-rgro;
+.hsnc-e-po-rgro {
+  grid-area: hsnc-e-po-rgro;
   margin: 0rem 1.5rem 0rem 0rem;
-  border-top: 0.5rem solid var(--snc-rgro-color);
+  border-top: 0.5rem solid var(--hsnc-rgro-color);
   border-right: 0.4rem solid var(--transparent);
   border-left: 0.4rem solid var(--transparent);
   transform: rotate(0deg);
   transition:
-    border var(--snc-duration-primary) var(--snc-timing-primary),
-    transform var(--snc-duration-primary) var(--snc-timing-primary);
+    border var(--hsnc-duration-primary) var(--hsnc-timing-primary),
+    transform var(--hsnc-duration-primary) var(--hsnc-timing-primary);
 }
-.snc-e-siptg-bgro {
+.hsnc-e-po-bgro {
   position: absolute;
   top: 85%;
   left: 50%;
@@ -109,15 +103,15 @@
   background-color: var(--facooya-primary);
   border-radius: 0.0625rem; /* height / 2 */
   transition:
-    left var(--snc-duration-primary) var(--snc-timing-primary),
-    width var(--snc-duration-primary) var(--snc-timing-primary);
+    left var(--hsnc-duration-primary) var(--hsnc-timing-primary),
+    width var(--hsnc-duration-primary) var(--hsnc-timing-primary);
 }
 /* = = = = = SNC-Z ~ SNC-P = = = = = */
-.snc-z {
-  grid-area: snc-z;
+.hsnc-z {
+  grid-area: hsnc-z;
   position: relative;
 }
-.snc-e {
+.hsnc-e {
   position: relative;
   list-style-type: none; /* .lstfc */
   /* Refresh visible shield */
@@ -127,13 +121,13 @@
 
   overflow: hidden;
   transition:
-    grid-template-rows var(--snc-duration-primary) var(--snc-timing-primary);
+    grid-template-rows var(--hsnc-duration-primary) var(--hsnc-timing-primary);
 }
-.snc-p {
+.hsnc-p {
   position: relative;
 }
 /* = = = = = SNC-T = = = = = */
-.snc-t {
+.hsnc-t {
   /* Tag.a */
   /* Position */
   position: relative;
@@ -144,16 +138,16 @@
   align-items: center;
   justify-content: center;
   grid-template-areas:
-    "snc-g-title snc-g-rgro";
+    "hsnc-g-text hsnc-g-rgro";
   /* Visual */
   opacity: 0;
   text-decoration: none;
   transition:
-    opacity var(--snc-duration-primary) var(--snc-timing-primary);
+    opacity var(--hsnc-duration-primary) var(--hsnc-timing-primary);
 }
-.snc-g-title {
-  grid-area: snc-g-title;
-  color: var(--snc-font-color-secondary);
+.hsnc-g-text {
+  grid-area: hsnc-g-text;
+  color: var(--hsnc-font-color-secondary);
   font-weight: normal;
   /* !!!!! v1.1.15a [test] [pro] (.class-opt) !!!!! */
   white-space: nowrap;
@@ -161,15 +155,15 @@
   text-overflow: ellipsis;
   /* transition: opacity 300ms; */
 }
-.snc-g-rgro {
-  grid-area: snc-g-rgro;
+.hsnc-g-rgro {
+  grid-area: hsnc-g-rgro;
   margin: 0rem 0rem 0rem 0.5rem;
   border-top: 0.25rem solid var(--transparent);
   border-bottom: 0.25rem solid var(--transparent);
-  border-left: 0.5rem solid var(--snc-rgro-color);
+  border-left: 0.5rem solid var(--hsnc-rgro-color);
   /* transition: opacity 300ms ease; */
 }
-.snc-g-bgro {
+.hsnc-g-bgro {
   position: absolute;
   top: 70%;
   height: 0.125rem;
@@ -177,23 +171,74 @@
   border-radius: 0.0625rem;
   /* transition: opacity 300ms ease; */
 }
+/* =============== :Hsnc Eco Group: =============== */
+.hsnc-y-eco {
+  position: absolute;
+  top: 0rem;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.hsnc-z-eco-sdo {
+  /* ios hsnc scroll bug fix */
+  /* Position */
+  position: absolute;
+  /* .hsnc-y-mgpt < .hsnc-y */
+  z-index: 2;
+  top: 0rem;
+  /* Layout */
+  width: 100%;
+  height: calc(100% + 1px);
+  /* Visual */
+  background: var(--transparent);
+}
+/* !!!!! :v1.1.17a [test] [pro] (scroll-fog): !!!!! */
+.hsnc-z-eco-sfro {
+  position: fixed;
+  z-index: 1;
+  width: 80%;
+  transition: height 300ms ease;
+}
+.hsnc-z-eco-sfro-tgro {
+  top: 4rem;
+  height: 0rem;
+  background: linear-gradient(
+    var(--hsnc-background),
+    var(--transparent)
+  );
+}
+.hsnc-z-eco-sfro-bgro {
+  bottom: 0rem;
+  height: 0rem;
+  background: linear-gradient(
+    var(--transparent),
+    var(--hsnc-background)
+  );
+}
+/* !!!!! ;v1.1.17a [test] (scroll-fog); !!!!! */
+
+/* =============== ;Hsnc Eco Group; =============== */
 @media (min-width: 768px) {
-  .snc-r-cptg {
+  .hsnc-r {
     /* Position */
     top: 8rem; /* 8rem = tpnc.height + dnc.height */
     height: calc(100% - 8rem); /* FIXME: calc(100% - var(--tpc-height)); */
     /* Box Model */
-    width: 20rem; /* FIXME: var(--snc-r-width); */
-    right: -20rem; /* FIXME: calc(-1 * var(--snc-r-width)); */
+    width: 20rem; /* FIXME: var(--hsnc-r-width); */
+    right: -20rem; /* FIXME: calc(-1 * var(--hsnc-r-width)); */
+  }
+  .hsnc-z-eco-sfro-tgro {
+    top: 8rem;
   }
 }
 @media (min-width: 1280px) {
-  .snc-r-cptg {
+  .hsnc-r {
     /* Position */
     top: var(--tpnc-height);
     height: calc(100% - var(--tpnc-height));
   }
-  .snc-e-siptg-rgro {
+  .hsnc-e-po-rgro {
     /* Reset */
     margin: 0rem;
     border-top: 0rem solid var(--transparent);
@@ -201,30 +246,32 @@
     border-left: 0rem solid var(--transparent);
     transform: rotate(0deg);
     transition:
-      border var(--snc-duration-primary) var(--snc-timing-primary),
-      margin var(--snc-duration-primary) var(--snc-timing-primary),
-      transform var(--snc-duration-primary) var(--snc-timing-primary);
+      border var(--hsnc-duration-primary) var(--hsnc-timing-primary),
+      margin var(--hsnc-duration-primary) var(--hsnc-timing-primary),
+      transform var(--hsnc-duration-primary) var(--hsnc-timing-primary);
   }
-  .snc-g-rgro {
+  .hsnc-g-rgro {
     margin: 0rem;
     border-top: 0rem solid var(--transparent);
     border-bottom: 0rem solid var(--transparent);
     border-left: 0rem solid var(--transparent);
     transition:
-      margin var(--snc-duration-primary) var(--snc-timing-primary),
-      border var(--snc-duration-primary) var(--snc-timing-primary),
-      opacity var(--snc-duration-primary) var(--snc-timing-primary);
+      margin var(--hsnc-duration-primary) var(--hsnc-timing-primary),
+      border var(--hsnc-duration-primary) var(--hsnc-timing-primary),
+      opacity var(--hsnc-duration-primary) var(--hsnc-timing-primary);
   }
-  .snc-g-bgro {
+  .hsnc-g-bgro {
     opacity: 1;
     width: 0%;
     transition:
-      width var(--snc-duration-primary) var(--snc-timing-primary);
+      width var(--hsnc-duration-primary) var(--hsnc-timing-primary);
+  }
+  .hsnc-z-eco-sfro-tgro {
+    top: 4rem;
   }
 }
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
- * Authorship list: https://www.facooya.com/about/authorship
  */

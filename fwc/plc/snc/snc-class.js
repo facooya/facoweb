@@ -7,58 +7,55 @@ import {
   FwaConfig
 } from "../../../fwa/fwa-config.js";
 import {
-  SncConfig
+  HsncConfig
 } from "./snc-config.js";
 import {
   FwcAccessor
 } from "../../fwc-hub.js";
 
-class SncAccessor {
-  static sncCache = {};
-  static isActiveSnc = false;
-  static getSncRoot() {
-    return SncGet.getSncRoot();
+class HsncAccessor {
+  static hsncCache = {};
+  static isActiveHsnc = false;
+  static hsncScrollState = 0;
+  static getHsncRoot() {
+    return HsncGet.getHsncRoot();
   }
-  static getSncGroup() {
-    return SncGet.getSncGroup();
+  static getHsncGroup() {
+    return HsncGet.getHsncGroup();
   }
-  static resetSnc(displayTypeState) {
-    SncReset.resetSnc(displayTypeState);
+  static resetHsnc(displayTypeState) {
+    HsncReset.resetHsnc(displayTypeState);
   }
 }
-class SncController {
+class HsncController {
   static process() {
-    SncManager.generate();
-    SncManager.init();
+    HsncManager.generate();
+    HsncManager.init();
   }
   static processOnLoad() {
-    /* SncManager.addEvent(); */
-    SncManager.event(true);
+    HsncManager.event(true, true);
   }
   static processOnResize() {
-    SncManager.initOnResize();
-    /* SncManager.removeEvent();
-    SncManager.addEvent(); */
-    SncManager.event(false);
-    SncManager.event(true);
+    HsncManager.initOnResize();
+    HsncManager.event(false);
+    HsncManager.event(true);
   }
 }
-class SncManager {
+class HsncManager {
   static init() {
     const {
-      sncY,
-      sncE
-    } = SncGet.getSncGroup();
-    for (let i = 0; i < sncE.length; i++) {
+      hsncY,
+      hsncE
+    } = HsncGet.getHsncGroup();
+    for (let i = 0; i < hsncE.length; i++) {
       const {
-        sncPetaEb
-      } = SncGet.getSncEbGroup(i);
-      SncSet.setExa(sncE[i], sncPetaEb, 0);
-      sncY[i].isActive = false;
-      sncY[i].index = i;
-      /* sncZettaSiptg[i].index = i; */
-      for (let j = 0; j < sncPetaEb.length; j++) {
-        sncPetaEb[j].index = j;
+        hsncPetaEb
+      } = HsncGet.getHsncEbGroup(i);
+      HsncSet.setExa(hsncE[i], hsncPetaEb, 0);
+      hsncY[i].isActive = false;
+      hsncY[i].index = i;
+      for (let j = 0; j < hsncPetaEb.length; j++) {
+        hsncPetaEb[j].index = j;
       }
     }
     /*  */
@@ -69,120 +66,257 @@ class SncManager {
     } else {
       isDefaultUpdate = false;
     }
-    for (let i = 0; i < sncY.length; i++) {
+    for (let i = 0; i < hsncY.length; i++) {
       const {
-        sncGigaTitleEb,
-        sncGigaBgroEb
-      } = SncGet.getSncEbGroup(i);
-      for (let j = 0; j < sncGigaBgroEb.length; j++) {
-        SncSetup.setupGigaBgro(
-          sncGigaBgroEb[j],
-          sncGigaTitleEb[j],
+        hsncGigaTextEb,
+        hsncGigaBgroEb
+      } = HsncGet.getHsncEbGroup(i);
+      for (let j = 0; j < hsncGigaBgroEb.length; j++) {
+        HsncSetup.setupGigaBgro(
+          hsncGigaBgroEb[j],
+          hsncGigaTextEb[j],
           buffer
         );
-        SncUpdate.updateGigaBgroWidth(isDefaultUpdate, sncGigaBgroEb[j]);
+        HsncUpdate.updateGigaBgroWidth(isDefaultUpdate, hsncGigaBgroEb[j]);
       }
     }
   }
   static initOnResize() {
     const {
-      sncY
-    } = SncGet.getSncGroup();
+      hsncY
+    } = HsncGet.getHsncGroup();
+    const {
+      hsncZettaEcoSfroTgro,
+      hsncZettaEcoSfroBgro
+    } = HsncGet.getHsncEcoGroup();
     let isDefaultUpdate = null;
     if (FwaConfig.currentDisplayType !== 3) {
       isDefaultUpdate = true;
     } else {
       isDefaultUpdate = false;
     }
-    for (let i = 0; i < sncY.length; i++) {
+    for (let i = 0; i < hsncY.length; i++) {
       const {
-        sncGigaBgroEb
-      } = SncGet.getSncEbGroup(i);
-      for (let j = 0; j < sncGigaBgroEb.length; j++) {
-        SncUpdate.updateGigaBgroWidth(isDefaultUpdate, sncGigaBgroEb[j]);
+        hsncGigaBgroEb
+      } = HsncGet.getHsncEbGroup(i);
+      for (let j = 0; j < hsncGigaBgroEb.length; j++) {
+        HsncUpdate.updateGigaBgroWidth(isDefaultUpdate, hsncGigaBgroEb[j]);
       }
     }
   }
   static generate() {
     const {
-      sncR
-    } = SncGet.getSncRoot();
-    const sncFragment = document.createDocumentFragment();
+      hsncR
+    } = HsncGet.getHsncRoot();
+    const hsncFragment = document.createDocumentFragment();
     let tempGenerateElement = null;
     let tempSaveElement = {};
-    /* =============== :Ys, Siptg, Zs Group: =============== */
-    for (let ysi = 0; ysi < SncConfig.exaSiptgTitleRs.length; ysi++) {
+    /* =============== :Ys, Po, Zs Group: =============== */
+    for (let ysi = 0; ysi < HsncConfig.hsncExaPoText.length; ysi++) {
       /* ==========----- :Ys Group: -----========== */
-      for (let zsi = 0; zsi < SncConfig.elementYsGroup.length; zsi++) {
+      for (let zsi = 0; zsi < HsncConfig.elementYsGroup.length; zsi++) {
         tempGenerateElement = FwcAccessor.getGenerateElement(
-          SncConfig.elementYsGroup[zsi].tag,
-          SncConfig.elementYsGroup[zsi].selector
+          HsncConfig.elementYsGroup[zsi].tag,
+          HsncConfig.elementYsGroup[zsi].selector
         );
-        tempSaveElement[SncConfig.elementYsGroup[zsi].id] = tempGenerateElement;
+        tempSaveElement[HsncConfig.elementYsGroup[zsi].id] = tempGenerateElement;
       }
       /* ==========----- ;Ys Group; -----========== */
-      /* ==========----- :Siptg Group: -----========== */
-      for (let zsi = 0; zsi < SncConfig.elementSiptgGroup.length; zsi++) {
+      /* ==========----- :Po Group: -----========== */
+      for (let zsi = 0; zsi < HsncConfig.elementPoGroup.length; zsi++) {
         tempGenerateElement = FwcAccessor.getGenerateElement(
-          SncConfig.elementSiptgGroup[zsi].tag,
-          SncConfig.elementSiptgGroup[zsi].selector
+          HsncConfig.elementPoGroup[zsi].tag,
+          HsncConfig.elementPoGroup[zsi].selector
         );
         FwcAccessor.setGenerateElement(
           tempGenerateElement,
-          SncConfig.elementSiptgGroup[zsi].text,
-          SncConfig.elementSiptgGroup[zsi].href,
+          HsncConfig.elementPoGroup[zsi].text,
+          HsncConfig.elementPoGroup[zsi].link,
           [ysi]
         );
-        tempSaveElement[SncConfig.elementSiptgGroup[zsi].id] = tempGenerateElement;
+        tempSaveElement[HsncConfig.elementPoGroup[zsi].id] = tempGenerateElement;
       }
-      /* ==========----- ;Siptg Group; -----========== */
+      /* ==========----- ;Po Group; -----========== */
       /* ==========----- :Zs Group: -----========== */
-      for (let zsi = 0; zsi < SncConfig.gigaTitleRs[ysi].length; zsi++) {
-        for (let esi = 0; esi < SncConfig.elementZsGroup.length; esi++) {
+      for (let zsi = 0; zsi < HsncConfig.hsncGigaText[ysi].length; zsi++) {
+        for (let esi = 0; esi < HsncConfig.elementZsGroup.length; esi++) {
           tempGenerateElement = FwcAccessor.getGenerateElement(
-            SncConfig.elementZsGroup[esi].tag,
-            SncConfig.elementZsGroup[esi].selector
+            HsncConfig.elementZsGroup[esi].tag,
+            HsncConfig.elementZsGroup[esi].selector
           );
           FwcAccessor.setGenerateElement(
             tempGenerateElement,
-            SncConfig.elementZsGroup[esi].text,
-            SncConfig.elementZsGroup[esi].href,
+            HsncConfig.elementZsGroup[esi].text,
+            HsncConfig.elementZsGroup[esi].link,
             [ysi, zsi]
           );
-          tempSaveElement[SncConfig.elementZsGroup[esi].id] = tempGenerateElement;
+          tempSaveElement[HsncConfig.elementZsGroup[esi].id] = tempGenerateElement;
         }
-        SncSet.setAppendZsGroup(tempSaveElement);
+        HsncSet.setAppendZsGroup(tempSaveElement);
       }
       /* ==========----- ;Zs Group; -----========== */
-      SncSet.setAppendSiptgGroup(tempSaveElement);
-      SncSet.setAppendYsGroup(tempSaveElement);
-      sncFragment.append(tempSaveElement["yotta"]);
+      HsncSet.setAppendPoGroup(tempSaveElement);
+      HsncSet.setAppendYsGroup(tempSaveElement);
+      hsncFragment.append(tempSaveElement["yotta"]);
       tempSaveElement = {};
     }
-    /* =============== ;Ys, Siptg, Zs Group; =============== */
+    /* =============== ;Ys, Po, Zs Group; =============== */
     /* =============== :Sdo Group: =============== */
-    for (let ysi = 0; ysi < SncConfig.elementSdoGroup.length; ysi++) {
+    /* for (let ysi = 0; ysi < HsncConfig.elementSdoGroup.length; ysi++) {
       tempGenerateElement = FwcAccessor.getGenerateElement(
-        SncConfig.elementSdoGroup[ysi].tag,
-        SncConfig.elementSdoGroup[ysi].selector
+        HsncConfig.elementSdoGroup[ysi].tag,
+        HsncConfig.elementSdoGroup[ysi].selector
       );
-      tempSaveElement[SncConfig.elementSdoGroup[ysi].id] = tempGenerateElement;
+      tempSaveElement[HsncConfig.elementSdoGroup[ysi].id] = tempGenerateElement;
     }
-    sncFragment.append(tempSaveElement["yottaSdo"]);
+    hsncFragment.append(tempSaveElement["yottaSdo"]); */
+    for (let ysi = 0; ysi < HsncConfig.elementEcoGroup.length; ysi++) {
+      tempGenerateElement = FwcAccessor.getGenerateElement(
+        HsncConfig.elementEcoGroup[ysi].tag,
+        HsncConfig.elementEcoGroup[ysi].selector
+      );
+      tempSaveElement[HsncConfig.elementEcoGroup[ysi].id] = tempGenerateElement;
+    }
+    HsncSet.setAppendEcoGroup(tempSaveElement);
+    hsncFragment.append(tempSaveElement["yottaEco"]);
     /* =============== ;Sdo Group; =============== */
-    sncR.appendChild(sncFragment);
+    hsncR.append(hsncFragment);
   }
-  static event(isActive) {
+  static scroll() {
+    /* let target = eventData.currentTarget;
+    let scrollValue = target.scrollHeight - target.clientHeight; */
+    /* console.log(target.scrollHeight);
+    console.log(target.clientHeight); */
+    /* console.log(target.scrollTop); */
+    /* if (HsncAccessor.hsncIsScrolling) {
+      console.log("return");
+      eventData.preventDefault();
+      return;
+    } */
+    const hsncR = document.querySelector(".hsnc-r-cptg");
+    let fogT = hsncR.querySelector(".hsnc-z-eco-tfo");
+    let fogB = hsncR.querySelector(".hsnc-z-eco-bfo");
     const {
-      sncY
-    } = SncGet.getSncGroup();
+      hsncY
+    } = HsncGet.getHsncGroup();
     const {
-      sncZettaSiptg
-    } = SncGet.getSncSiptgGroup();
+      hsncZettaPo
+    } = HsncGet.getHsncPoGroup();
+    const scrollBuffer = 16;
+    const defaultHeight = 4 * 16;
+    let scrollable = 0;
+    /* hsncZettaPo.height = 4rem; */
+    let tempHeight = hsncZettaPo.length * defaultHeight;
+    for (let i = 0; i < hsncY.length; i++) {
+      if (hsncY[i].isActive) {
+        const {
+          hsncPetaEb
+        } = HsncGet.getHsncEbGroup(i);
+        /* hsncPetaEb.height = 4rem; */
+        tempHeight += hsncPetaEb.length * defaultHeight;
+      }
+    }
+    if (tempHeight > hsncR.clientHeight) {
+      scrollable = tempHeight - hsncR.clientHeight;
+    }
+    /* let scrollValue = (hsncR.scrollHeight - hsncR.clientHeight - 1) - 16; */
+    /* let scrollValue = (scrollHeight - hsncR.clientHeight) - 16; */
+    /* console.log(scrollable, tempHeight, hsncR.scrollTop, hsncR.clientHeight); */
+    /* if (scrollable > hsncR.scrollTop) {
+      fogB.style.height = "2rem";
+      fogT.style.height = "0rem";
+    } else {
+      fogT.style.height = "2rem";
+      fogB.style.height = "0rem";
+    } */
+    const scrollTop = hsncR.scrollTop;
+    if (scrollable <= scrollBuffer) {
+      if (HsncAccessor.hsncScrollState !== 0) {
+        fogT.style.height = "0rem";
+        fogB.style.height = "0rem";
+        HsncAccessor.hsncScrollState = 0;
+      }
+      return;
+    }
+    if (scrollTop < scrollBuffer) {
+      if (HsncAccessor.hsncScrollState !== 1) {
+        /* HsncAccessor.hsncIsScrolling = true;
+        setTimeout(HsncManager.setScroll, 300); */
+        /* hsncR.scrollTo({top: 0}); */
+        hsncR.scroll(0, 0);
+        fogT.style.height = "0rem";
+        fogB.style.height = "5rem";
+        HsncAccessor.hsncScrollState = 1;
+      }
+    } else if (scrollTop > scrollable - scrollBuffer) {
+      if (HsncAccessor.hsncScrollState !== 2) {
+        /* HsncAccessor.hsncIsScrolling = true;
+        setTimeout(HsncManager.setScroll, 300); */
+        /* hsncR.scrollTo({top: hsncR.scrollHeight}); */
+        hsncR.scroll(0, hsncR.scrollHeight)
+        fogT.style.height = "5rem";
+        fogB.style.height = "0rem";
+        HsncAccessor.hsncScrollState = 2;
+      }
+    } else {
+      if (HsncAccessor.hsncScrollState !== 3) {
+        fogT.style.height = "5rem";
+        fogB.style.height = "5rem";
+        HsncAccessor.hsncScrollState = 3;
+      }
+    }
+    /* if (scrollable !== 0) {
+      if (hsncR.scrollTop < scrollable - scrollBuffer && hsncR.scrollTop > scrollBuffer) {
+        fogT.style.height = "5rem";
+        fogB.style.height = "5rem";
+      } else if (hsncR.scrollTop < scrollBuffer) {
+        fogT.style.height = "0rem";
+        fogB.style.height = "5rem";
+      } else if (hsncR.scrollTop > scrollable - scrollBuffer) {
+        fogB.style.height = "0rem";
+        fogT.style.height = "5rem";
+      } else {
+        if (HsncAccessor.scrollValue > hsncR.scrollTop) {
+          fogB.style.height = "5rem";
+        } else if (HsncAccessor.scrollValue < hsncR.scrollTop) {
+          fogT.style.height = "5rem";
+        }
+      }
+      HsncAccessor.scrollValue = hsncR.scrollTop;
+    } else {
+      fogT.style.height = "0rem";
+      fogB.style.height = "0rem";
+    } */
+    /* if (scrollable !== 0) {
+      HsncAccessor.scrollValue = hsncR.scrollTop;
+    } else {
+      HsncAccessor.scrollValue = 0;
+    } */
+  }
+  /* static setScroll() {
+    console.log("false");
+    HsncAccessor.hsncIsScrolling = false;
+  } */
+  /* !!!!! ;v1.1.17a [test] [pro] (scroll-fog); !!!!! */
+  static event(isEventActive, isEventOnLoad) {
+    const {
+      hsncY
+    } = HsncGet.getHsncGroup();
+    const {
+      hsncZettaPo
+    } = HsncGet.getHsncPoGroup();
+    /* !!!!! :v1.1.17a [test] [pro] (scroll-fog): !!!!! */
+    const {
+      hsncR
+    } = HsncGet.getHsncRoot();
+    if (isEventOnLoad) {
+      hsncR.addEventListener("scroll", HsncHandler.adtHsncZettaEcoSfro);
+    }
+    /* !!!!! ;v1.1.17a [test] [pro] (scroll-fog); !!!!! */
     /*  */
     let displayTypeState = null;
     let eventListenerType = "";
-    if (isActive) {
+    if (isEventActive) {
       displayTypeState = FwaConfig.currentDisplayType;
       eventListenerType = "addEventListener";
     } else {
@@ -192,48 +326,48 @@ class SncManager {
     /*  */
     switch (displayTypeState) {
       case 1: {
-        for (let i = 0; i < sncY.length; i++) {
-          sncZettaSiptg[i][eventListenerType](
+        for (let i = 0; i < hsncY.length; i++) {
+          hsncZettaPo[i][eventListenerType](
             "click",
-            SncHandler.mdtSncZettaSiptg
+            HsncHandler.mdtHsncZettaPo
           );
         }
         break;
       }
       case 2: {
-        for (let i = 0; i < sncY.length; i++) {
-          sncZettaSiptg[i][eventListenerType](
+        for (let i = 0; i < hsncY.length; i++) {
+          hsncZettaPo[i][eventListenerType](
             "click",
-            SncHandler.tdtSncZettaSiptg
+            HsncHandler.tdtHsncZettaPo
           );
         }
         break;
       }
       case 3: {
-        for (let i = 0; i < sncY.length; i++) {
-          sncZettaSiptg[i][eventListenerType](
+        for (let i = 0; i < hsncY.length; i++) {
+          hsncZettaPo[i][eventListenerType](
             "mouseenter",
-            SncHandler.ddtSncZettaSiptg
+            HsncHandler.ddtHsncZettaPo
           );
-          sncZettaSiptg[i][eventListenerType](
+          hsncZettaPo[i][eventListenerType](
             "mouseleave",
-            SncHandler.ddtSncZettaSiptg
+            HsncHandler.ddtHsncZettaPo
           );
-          sncZettaSiptg[i][eventListenerType](
+          hsncZettaPo[i][eventListenerType](
             "click",
-            SncHandler.ddtSncZettaSiptg
+            HsncHandler.ddtHsncZettaPo
           );
           const {
-            sncPetaEb
-          } = SncGet.getSncEbGroup(i);
-          for (let j = 0; j < sncPetaEb.length; j++) {
-            sncPetaEb[j][eventListenerType](
+            hsncPetaEb
+          } = HsncGet.getHsncEbGroup(i);
+          for (let j = 0; j < hsncPetaEb.length; j++) {
+            hsncPetaEb[j][eventListenerType](
               "mouseenter",
-              SncHandler.ddtSncPeta
+              HsncHandler.ddtHsncPeta
             );
-            sncPetaEb[j][eventListenerType](
+            hsncPetaEb[j][eventListenerType](
               "mouseleave",
-              SncHandler.ddtSncPeta
+              HsncHandler.ddtHsncPeta
             );
           }
         }
@@ -241,154 +375,29 @@ class SncManager {
       }
     }
   }
- /*  static addEvent() {
-    const {
-      sncY
-    } = SncGet.getSncGroup();
-    const {
-      sncZettaSiptg
-    } = SncGet.getSncSiptgGroup();
-    for (let i = 0; i < sncY.length; i++) {
-      /* Init 
-      /* ========== FwaConfig.currentDisplayType ========== 
-      switch(FwaConfig.currentDisplayType) {
-        case 1: {
-          /* Mobile Display Type 
-          /* Snc Zetta 
-          sncZettaSiptg[i].addEventListener(
-            "click",
-            SncHandler.mdtSncZettaSiptg
-          );
-          break;
-        }
-        case 2: {
-          /* Tablet Display Type 
-          /* Snc Zetta 
-          sncZettaSiptg[i].addEventListener(
-            "click",
-            SncHandler.tdtSncZettaSiptg
-          );
-          break;
-        }
-        case 3: {
-          /* Desktop Display Type 
-          /* Snc Zetta 
-          sncZettaSiptg[i].addEventListener(
-            "mouseenter",
-            SncHandler.ddtSncZettaSiptg
-          );
-          sncZettaSiptg[i].addEventListener(
-            "mouseleave",
-            SncHandler.ddtSncZettaSiptg
-          );
-          sncZettaSiptg[i].addEventListener(
-            "click",
-            SncHandler.ddtSncZettaSiptg
-          );
-          /* Snc Peta 
-          const {
-            sncPetaEb
-          } = SncGet.getSncEbGroup(i);
-          for (let j = 0; j < sncPetaEb.length; j++) {
-            sncPetaEb[j].addEventListener(
-              "mouseenter",
-              SncHandler.ddtSncPeta
-            );
-            sncPetaEb[j].addEventListener(
-              "mouseleave",
-              SncHandler.ddtSncPeta
-            );
-          }
-          break;
-        }
-      }
-      /* ============================== 
-    }
-  }
-  static removeEvent() {
-    const {
-      sncY
-    } = SncGet.getSncGroup();
-    const {
-      sncZettaSiptg
-    } = SncGet.getSncSiptgGroup();
-    for (let i = 0; i < sncY.length; i++) {
-      /* ========== FwaConfig.previousDisplayType ========== 
-      switch (FwaConfig.previousDisplayType) {
-        case 1: {
-          /* Mobile Display Type 
-          sncZettaSiptg[i].removeEventListener(
-            "click",
-            SncHandler.mdtSncZettaSiptg
-          );
-          break;
-        }
-        case 2: {
-          /* Tablet Display Type 
-          sncZettaSiptg[i].removeEventListener(
-            "click",
-            SncHandler.tdtSncZettaSiptg
-          );
-          break;
-        }
-        case 3: {
-          /* Desktop Display Type 
-          sncZettaSiptg[i].removeEventListener(
-            "mouseenter",
-            SncHandler.ddtSncZettaSiptg
-          );
-          sncZettaSiptg[i].removeEventListener(
-            "mouseleave",
-            SncHandler.ddtSncZettaSiptg
-          );
-          sncZettaSiptg[i].removeEventListener(
-            "click",
-            SncHandler.ddtSncZettaSiptg
-          );
-          const {
-            sncPetaEb
-          } = SncGet.getSncEbGroup(i);
-          for (let j = 0; j < sncPetaEb.length; j++) {
-            sncPetaEb[j].removeEventListener(
-              "mouseenter",
-              SncHandler.ddtSncPeta
-            );
-            sncPetaEb[j].removeEventListener(
-              "mouseleave",
-              SncHandler.ddtSncPeta
-            ); 
-          }
-          break;
-        }
-      }
-      /* ============================== 
-    }
-  } */
 }
-class SncHandler {
-  static mdtSncZettaSiptg(eventData) {
+class HsncHandler {
+  static mdtHsncZettaPo(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".snc-y");
+    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
     const {
-      sncY,
-      sncE
-    } = SncGet.getSncGroup();
+      hsncY,
+      hsncE
+    } = HsncGet.getHsncGroup();
     const {
-      sncExaSiptgTitle,
-      sncExaSiptgRgro,
-      sncExaSiptgBgro
-    } = SncGet.getSncSiptgGroup();
+      hsncExaPoText,
+      hsncExaPoRgro,
+      hsncExaPoBgro
+    } = HsncGet.getHsncPoGroup();
     const {
-      sncTeraEb,
-      sncGigaTitleEb,
-      sncGigaBgroEb
-    } = SncGet.getSncEbGroup(targetIndex);
+      hsncTeraEb
+    } = HsncGet.getHsncEbGroup(targetIndex);
     /*  */
     let isActive = null;
     let type = "";
     let exaSize = null;
-    if (!sncY[targetIndex].isActive) {
+    if (!hsncY[targetIndex].isActive) {
       isActive = true;
       type = "add";
       exaSize = 4;
@@ -398,86 +407,41 @@ class SncHandler {
       exaSize = 0;
     }
     /*  */
-    sncY[targetIndex].classList[type]("cl-mdt-snc-z-siptg-handler");
-    sncExaSiptgTitle[targetIndex].classList[type]("cl-mdt-snc-z-siptg-handler");
-    sncExaSiptgRgro[targetIndex].classList[type]("cl-mdt-snc-z-siptg-handler");
-    sncExaSiptgBgro[targetIndex].classList[type]("cl-mdt-snc-z-siptg-handler");
-    SncSet.setExa(sncE[targetIndex], sncTeraEb, exaSize);
-    for (let i = 0; i < sncTeraEb.length; i++) {
-      sncTeraEb[i].classList[type]("cl-mdt-snc-z-siptg-handler");
+    hsncY[targetIndex].classList[type]("cl-mdt-hsnc-z-po-handler");
+    hsncExaPoText[targetIndex].classList[type]("cl-mdt-hsnc-z-po-handler");
+    hsncExaPoRgro[targetIndex].classList[type]("cl-mdt-hsnc-z-po-handler");
+    hsncExaPoBgro[targetIndex].classList[type]("cl-mdt-hsnc-z-po-handler");
+    HsncSet.setExa(hsncE[targetIndex], hsncTeraEb, exaSize);
+    for (let i = 0; i < hsncTeraEb.length; i++) {
+      hsncTeraEb[i].classList[type]("cl-mdt-hsnc-z-po-handler");
     }
     /*  */
-    sncY[targetIndex].isActive = isActive;
-    /* ********** Snc Zetta Bpt ********** */
-    /* if (!sncY[targetIndex].isActive) { */
-      /* ========== Activate ========== */
-      /* Set Yotta */
-      /* sncY[targetIndex].style.backgroundColor = "#333333"; */
-      /* Set Zetta Bpt */
-      /* sncExaSiptgTitle[targetIndex].style.fontWeight = "700";
-      sncExaSiptgRgro[targetIndex].style.transform = "rotate(180deg)";
-      sncExaSiptgBgro[targetIndex].style.left = "15%";
-      sncExaSiptgBgro[targetIndex].style.width = "70%"; */
-      /* Set Exa */
-      /* SncSet.setExa(sncE[targetIndex], sncTeraEb, 4); */
-      /* Set Tera */
-      /* for (let i = 0; i < sncTeraEb.length; i++) {
-        sncTeraEb[i].style.opacity = "1";
-        SncSet.setGigaBgro(
-          sncGigaBgroEb[i],
-          sncGigaTitleEb[i],
-          20
-        );
-      } */
-      /* Set Flag */
-      /* sncY[targetIndex].isActive = true; */
-      /* ============================== */
-    /* } else { */
-      /* ========== Deactivate ========== */
-      /* Set Yotta */
-      /* sncY[targetIndex].style.backgroundColor = "#222222"; */
-      /* Set Zetta Siptg */
-      /* sncExaSiptgTitle[targetIndex].style.fontWeight = "";
-      sncExaSiptgRgro[targetIndex].style.transform = "";
-      sncExaSiptgBgro[targetIndex].style.left = "";
-      sncExaSiptgBgro[targetIndex].style.width = ""; */
-      /* Set Exa */
-      /* SncSet.setExa(sncE[targetIndex], sncTeraEb, 0); */
-      /* Set Tera */
-      /* for (let i = 0; i < sncTeraEb.length; i++) {
-        sncTeraEb[i].style.opacity = "";
-        sncGigaBgroEb[i].style.left = "";
-        sncGigaBgroEb[i].style.width = "";
-      } */
-      /* Set Flag */
-      /* sncY[targetIndex].isActive = false; */
-      /* ============================== */
-    /* } */
-    /* ****************************** */
+    hsncY[targetIndex].isActive = isActive;
+    /* !!!!! :v1.1.17a [test] [pro] (scroll-fog): !!!!! */
+    HsncHandler.adtHsncZettaEcoSfro();
+    /* !!!!! ;v1.1.17a [test] [pro] (scroll-fog); !!!!! */
   }
-  static tdtSncZettaSiptg(eventData) {
+  static tdtHsncZettaPo(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".snc-y");
+    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
     const {
-      sncY,
-      sncE
-    } = SncGet.getSncGroup();
+      hsncY,
+      hsncE
+    } = HsncGet.getHsncGroup();
     const {
-      sncExaSiptgTitle,
-      sncExaSiptgRgro,
-      sncExaSiptgBgro
-    } = SncGet.getSncSiptgGroup();
+      hsncExaPoText,
+      hsncExaPoRgro,
+      hsncExaPoBgro
+    } = HsncGet.getHsncPoGroup();
     const {
-      sncTeraEb,
-      sncGigaTitleEb,
-      sncGigaBgroEb
-    } = SncGet.getSncEbGroup(targetIndex);
+      hsncTeraEb
+    } = HsncGet.getHsncEbGroup(targetIndex);
     /*  */
     let isActive = null;
     let type = "";
     let exaSize = null;
-    if (!sncY[targetIndex].isActive) {
+    if (!hsncY[targetIndex].isActive) {
       isActive = true;
       type = "add";
       exaSize = 4;
@@ -487,86 +451,44 @@ class SncHandler {
       exaSize = 0;
     }
     /*  */
-    sncY[targetIndex].classList[type]("cl-tdt-snc-z-siptg-handler");
-    sncExaSiptgTitle[targetIndex].classList[type]("cl-tdt-snc-z-siptg-handler");
-    sncExaSiptgRgro[targetIndex].classList[type]("cl-tdt-snc-z-siptg-handler");
-    sncExaSiptgBgro[targetIndex].classList[type]("cl-tdt-snc-z-siptg-handler");
-    SncSet.setExa(sncE[targetIndex], sncTeraEb, exaSize);
-    for (let i = 0; i < sncTeraEb.length; i++) {
-      sncTeraEb[i].classList[type]("cl-tdt-snc-z-siptg-handler");
+    hsncY[targetIndex].classList[type]("cl-tdt-hsnc-z-po-handler");
+    hsncExaPoText[targetIndex].classList[type]("cl-tdt-hsnc-z-po-handler");
+    hsncExaPoRgro[targetIndex].classList[type]("cl-tdt-hsnc-z-po-handler");
+    hsncExaPoBgro[targetIndex].classList[type]("cl-tdt-hsnc-z-po-handler");
+    HsncSet.setExa(hsncE[targetIndex], hsncTeraEb, exaSize);
+    for (let i = 0; i < hsncTeraEb.length; i++) {
+      hsncTeraEb[i].classList[type]("cl-tdt-hsnc-z-po-handler");
     }
     /*  */
-    sncY[targetIndex].isActive = isActive;
-    /*  */
-    /* if (!sncY[targetIndex].isActive) {
-      /* ========== Activate ========== 
-      /* Set Yotta 
-      sncY[targetIndex].style.backgroundColor = "#333333";
-      /* Set Zetta Bpt 
-      sncExaSiptgTitle[targetIndex].style.fontWeight = "700";
-      sncExaSiptgRgro[targetIndex].style.transform = "rotate(180deg)";
-      sncExaSiptgBgro[targetIndex].style.left = "15%";
-      sncExaSiptgBgro[targetIndex].style.width = "70%";
-      /* Set Exa 
-      SncSet.setExa(sncE[targetIndex], sncTeraEb, 4);
-      /* Set Tera 
-      for (let i = 0; i < sncTeraEb.length; i++) {
-        sncTeraEb[i].style.opacity = "1";
-        SncSet.setGigaBgro(
-          sncGigaBgroEb[i],
-          sncGigaTitleEb[i],
-          20
-        );
-      }
-      /* Set Flag 
-      sncY[targetIndex].isActive = true;
-      /* ============================== 
-    } else {
-      /* ========== Deactivate ========== 
-      /* Set Yotta 
-      sncY[targetIndex].style.backgroundColor = "#222222";
-      /* Set Zetta Siptg 
-      sncExaSiptgTitle[targetIndex].style.fontWeight = "";
-      sncExaSiptgRgro[targetIndex].style.transform = "";
-      sncExaSiptgBgro[targetIndex].style.left = "";
-      sncExaSiptgBgro[targetIndex].style.width = "";
-      /* Set Exa 
-      SncSet.setExa(sncE[targetIndex], sncTeraEb, 0);
-      /* Set Tera 
-      for (let i = 0; i < sncTeraEb.length; i++) {
-        sncTeraEb[i].style.opacity = "";
-        sncGigaBgroEb[i].style.left = "";
-        sncGigaBgroEb[i].style.width = "";
-      }
-      /* Set Flag 
-      sncY[targetIndex].isActive = false;
-      /* ============================== 
-    } */
+    hsncY[targetIndex].isActive = isActive;
+    /* !!!!! :v1.1.17a [test] [pro] (scroll-fog): !!!!! */
+    HsncHandler.adtHsncZettaEcoSfro();
+    /* !!!!! ;v1.1.17a [test] [pro] (scroll-fog); !!!!! */
   }
-  static ddtSncZettaSiptg(eventData) {
+  static ddtHsncZettaPo(eventData) {
     const {
       eventType,
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".snc-y");
+    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
     const {
-      sncY,
-      sncE
-    } = SncGet.getSncGroup();
+      hsncY,
+      hsncE
+    } = HsncGet.getHsncGroup();
     const {
-      sncExaSiptgTitle,
-      sncExaSiptgRgro,
-      sncExaSiptgBgro
-    } = SncGet.getSncSiptgGroup();
+      hsncExaPoText,
+      hsncExaPoRgro,
+      hsncExaPoBgro
+    } = HsncGet.getHsncPoGroup();
     const {
-      sncTeraEb,
-      sncGigaTitleEb
-    } = SncGet.getSncEbGroup(targetIndex);
+      hsncTeraEb,
+      hsncGigaTextEb
+    } = HsncGet.getHsncEbGroup(targetIndex);
     /*  */
     let isActive = null;
     let type = "";
     let typeHover = "";
     let exaSize = null;
-    if (!sncY[targetIndex].isActive) {
+    if (!hsncY[targetIndex].isActive) {
       isActive = true;
       type = "add";
       exaSize = 4;
@@ -582,85 +504,34 @@ class SncHandler {
     }
     /*  */
     if ((eventType === "mouseenter" || eventType === "mouseleave") && isActive) {
-      sncExaSiptgTitle[targetIndex].classList[typeHover]("cl-ddt-snc-z-siptg-handler");
-      sncExaSiptgRgro[targetIndex].classList[typeHover]("cl-ddt-snc-z-siptg-handler");
-      sncExaSiptgBgro[targetIndex].classList[typeHover]("cl-ddt-snc-z-siptg-handler");
+      hsncExaPoText[targetIndex].classList[typeHover]("cl-ddt-hsnc-z-po-handler");
+      hsncExaPoRgro[targetIndex].classList[typeHover]("cl-ddt-hsnc-z-po-handler");
+      hsncExaPoBgro[targetIndex].classList[typeHover]("cl-ddt-hsnc-z-po-handler");
     } else if (eventType === "click") {
-      sncY[targetIndex].classList[type]("cl-ddt-snc-z-siptg-handler-click");
-      sncExaSiptgRgro[targetIndex].classList[type]("cl-ddt-snc-z-siptg-handler-click");
-      SncSet.setExa(sncE[targetIndex], sncGigaTitleEb, exaSize);
-      for (let i = 0; i < sncTeraEb.length; i++) {
-        sncTeraEb[i].classList[type]("cl-ddt-snc-z-siptg-handler-click");
+      hsncY[targetIndex].classList[type]("cl-ddt-hsnc-z-po-handler-click");
+      hsncExaPoRgro[targetIndex].classList[type]("cl-ddt-hsnc-z-po-handler-click");
+      HsncSet.setExa(hsncE[targetIndex], hsncGigaTextEb, exaSize);
+      for (let i = 0; i < hsncTeraEb.length; i++) {
+        hsncTeraEb[i].classList[type]("cl-ddt-hsnc-z-po-handler-click");
       }
-      sncY[targetIndex].isActive = isActive;
+      hsncY[targetIndex].isActive = isActive;
+      /* !!!!! :v1.1.17a [test] [pro] (scroll-fog): !!!!! */
+      /* setTimeout(HsncManager.scroll, 300); */
+      HsncHandler.adtHsncZettaEcoSfro();
+      /* !!!!! ;v1.1.17a [test] [pro] (scroll-fog); !!!!! */
     }
-    /*  */
-    /*switch (eventType) {
-      /* case "mouseenter": {
-        if (!sncY[targetIndex].isActive) {
-          sncExaSiptgTitle[targetIndex].style.fontWeight = "700";
-          sncExaSiptgRgro[targetIndex].style.margin = "0rem 2.5rem 0rem 0rem";
-          sncExaSiptgRgro[targetIndex].style.borderTop = "0.5rem solid #FFFFFF";
-          sncExaSiptgRgro[targetIndex].style.borderRight = "0.4rem solid #00000000";
-          sncExaSiptgRgro[targetIndex].style.borderLeft = "0.4rem solid #00000000";
-          sncExaSiptgRgro[targetIndex].style.transform = "rotate(360deg)";
-          sncExaSiptgBgro[targetIndex].style.left = "10%";
-          sncExaSiptgBgro[targetIndex].style.width = "80%";
-        }
-        break;
-      }
-      case "mouseleave": {
-        if (!sncY[targetIndex].isActive) {
-          sncExaSiptgTitle[targetIndex].style.fontWeight = "";
-          sncExaSiptgRgro[targetIndex].style.margin = "";
-          sncExaSiptgRgro[targetIndex].style.borderTop = "";
-          sncExaSiptgRgro[targetIndex].style.borderRight = "";
-          sncExaSiptgRgro[targetIndex].style.borderLeft = "";
-          sncExaSiptgRgro[targetIndex].style.transform = "";
-          sncExaSiptgBgro[targetIndex].style.left = "";
-          sncExaSiptgBgro[targetIndex].style.width = "";
-        }
-        break;
-      } 
-      case "click": {
-        /* const {
-          sncTeraEb,
-          sncGigaTitleEb
-        } = SncGet.getSncEbGroup(targetIndex); 
-        if (!sncY[targetIndex].isActive) {
-          /* Activate 
-          sncY[targetIndex].style.backgroundColor = "#333333";
-          sncExaSiptgRgro[targetIndex].style.transform = "rotate(540deg)";
-          SncSet.setExa(sncE[targetIndex], sncGigaTitleEb, 4);
-          for (let i = 0; i < sncTeraEb.length; i++) {
-            sncTeraEb[i].style.opacity = "1";
-          }
-          sncY[targetIndex].isActive = true;
-        } else {
-          /* Deactivate 
-          sncY[targetIndex].style.backgroundColor = "#222222";
-          sncExaSiptgRgro[targetIndex].style.transform = "rotate(360deg)";
-          SncSet.setExa(sncE[targetIndex], sncGigaTitleEb, 0);
-          for (let i = 0; i < sncTeraEb.length; i++) {
-            sncTeraEb[i].style.opacity = "";
-          }
-          sncY[targetIndex].isActive = false;
-        }
-        break;
-      }
-    }*/
   }
-  static ddtSncPeta(eventData) {
+  static ddtHsncPeta(eventData) {
     const {
       eventType,
       eventIndex,
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".snc-y");
+    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
     const {
-      sncGigaTitleEb,
-      sncGigaRgroEb,
-      sncGigaBgroEb
-    } = SncGet.getSncEbGroup(targetIndex);
+      hsncGigaTextEb,
+      hsncGigaRgroEb,
+      hsncGigaBgroEb
+    } = HsncGet.getHsncEbGroup(targetIndex);
     /*  */
     let isActive = null;
     let type = "";
@@ -675,177 +546,257 @@ class SncHandler {
       exaSize = 0;
     }
     /*  */
-    sncGigaTitleEb[eventIndex].classList[type]("cl-ddt-snc-p-handler");
-    sncGigaRgroEb[eventIndex].classList[type]("cl-ddt-snc-p-handler");
-    SncUpdate.updateGigaBgroWidth(isActive, sncGigaBgroEb[eventIndex]);
+    hsncGigaTextEb[eventIndex].classList[type]("cl-ddt-hsnc-p-handler");
+    hsncGigaRgroEb[eventIndex].classList[type]("cl-ddt-hsnc-p-handler");
+    HsncUpdate.updateGigaBgroWidth(isActive, hsncGigaBgroEb[eventIndex]);
+  }
+  /* !!!!! :v1.1.17a [test] [pro] (scroll-fog): !!!!! */
+  static adtHsncZettaEcoSfro() {
+    const {
+      hsncR
+    } = HsncGet.getHsncRoot();
+    const {
+      hsncY
+    } = HsncGet.getHsncGroup();
+    const {
+      hsncZettaPo
+    } = HsncGet.getHsncPoGroup();
+    const {
+      hsncZettaEcoSfroTgro,
+      hsncZettaEcoSfroBgro
+    } = HsncGet.getHsncEcoGroup();
     /*  */
-    /* switch (eventType) {
-      case "mouseenter": {
-        sncGigaTitleEb[eventIndex].style.fontWeight = "700";
-        sncGigaRgroEb[eventIndex].style.margin = "0rem 0rem 0rem 1rem";
-        sncGigaRgroEb[eventIndex].style.borderTop = "0.25rem solid #00000000";
-        sncGigaRgroEb[eventIndex].style.borderBottom = "0.25rem solid #00000000";
-        sncGigaRgroEb[eventIndex].style.borderLeft = "0.5rem solid #FFFFFF";
-        sncGigaRgroEb[eventIndex].style.opacity = "1";
-
-        SncSet.setGigaBgro(
-          sncGigaBgroEb[eventIndex],
-          sncGigaTitleEb[eventIndex],
-          32
-        );
-        break;
+    const scrollTop = hsncR.scrollTop;
+    const scrollHeight = hsncR.scrollHeight;
+    const clientHeight = hsncR.clientHeight;
+    const scrollBuffer = 16;
+    const defaultHeight = 4 * 16;
+    let tgroType = "";
+    let bgroType = "";
+    let scrollable = 0;
+    let tempHeight = hsncZettaPo.length * defaultHeight;
+    for (let i = 0; i < hsncY.length; i++) {
+      if (hsncY[i].isActive) {
+        const {
+          hsncPetaEb
+        } = HsncGet.getHsncEbGroup(i);
+        tempHeight += hsncPetaEb.length * defaultHeight;
       }
-      case "mouseleave": {
-        sncGigaTitleEb[eventIndex].style.fontWeight = "";
-        sncGigaRgroEb[eventIndex].style.margin = "";
-        sncGigaRgroEb[eventIndex].style.borderTop = "";
-        sncGigaRgroEb[eventIndex].style.borderBottom = "";
-        sncGigaRgroEb[eventIndex].style.borderLeft = "";
-        sncGigaRgroEb[eventIndex].style.opacity = "";
-        sncGigaBgroEb[eventIndex].style.width = "0%";
-        break;
+    }
+    if (tempHeight > clientHeight) {
+      scrollable = tempHeight - clientHeight;
+    }
+    if (scrollable <= scrollBuffer) {
+      if (HsncAccessor.hsncScrollState !== 0) {
+        tgroType = "remove";
+        bgroType = "remove";
+        HsncAccessor.hsncScrollState = 0;
       }
-    } */
+      return;
+    }
+    if (scrollTop < scrollBuffer) {
+      if (HsncAccessor.hsncScrollState !== 1) {
+        hsncR.scroll(0, 0);
+        tgroType = "remove";
+        bgroType = "add";
+        HsncAccessor.hsncScrollState = 1;
+      }
+    } else if (scrollTop > scrollable - scrollBuffer) {
+      if (HsncAccessor.hsncScrollState !== 2) {
+        hsncR.scroll(0, scrollHeight);
+        tgroType = "add";
+        bgroType = "remove";
+        HsncAccessor.hsncScrollState = 2;
+      }
+    } else {
+      if (HsncAccessor.hsncScrollState !== 3) {
+        tgroType = "add";
+        bgroType = "add";
+        HsncAccessor.hsncScrollState = 3;
+      }
+    }
+    if (tgroType) {
+      hsncZettaEcoSfroTgro.classList[tgroType]("cl-adt-hsnc-z-eco-sfro-handler");
+    }
+    if (bgroType) {
+      hsncZettaEcoSfroBgro.classList[bgroType]("cl-adt-hsnc-z-eco-sfro-handler");
+    }
   }
+  /* !!!!! ;v1.1.17a [test] [pro] (scroll-fog); !!!!! */
 }
-class SncGet {
-  static getSncRoot() {
-    const sncRoot = [
+class HsncGet {
+  static getHsncRoot() {
+    const hsncRoot = [
       {
-        id: "sncR",
-        selector: ".plc-y-liptg .snc-r-cptg"
+        id: "hsncR",
+        selector: ".blf-y-ho .hsnc-r"
       }
     ];
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      SncAccessor.sncCache,
-      sncRoot
+      HsncAccessor.hsncCache,
+      hsncRoot
     );
     return saveVerifyGroup;
   }
-  static getSncGroup() {
-    const sncGroup = [
+  static getHsncGroup() {
+    const hsncGroup = [
       {
-        id: "sncY",
-        selector: ".snc-y",
+        id: "hsncY",
+        selector: ".hsnc-y",
         type: "all"
       },
       {
-        id: "sncZ",
-        selector: ".snc-z",
+        id: "hsncZ",
+        selector: ".hsnc-z",
         type: "all"
       },
       {
-        id: "sncE",
-        selector: ".snc-e",
+        id: "hsncE",
+        selector: ".hsnc-e",
         type: "all"
       }
     ];
     const {
-      sncR
-    } = this.getSncRoot();
+      hsncR
+    } = this.getHsncRoot();
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      SncAccessor.sncCache,
-      sncGroup,
-      sncR
+      HsncAccessor.hsncCache,
+      hsncGroup,
+      hsncR
     );
     return saveVerifyGroup;
   }
-  static getSncSiptgGroup() {
-    const sncSiptgGroup = [
+  static getHsncPoGroup() {
+    const hsncPoGroup = [
       {
-        id: "sncZettaSiptg",
-        selector: ".snc-z-siptg",
+        id: "hsncZettaPo",
+        selector: ".hsnc-z-po",
         type: "all"
       },
       {
-        id: "sncExaSiptgTitle",
-        selector: ".snc-e-siptg-title",
+        id: "hsncExaPoText",
+        selector: ".hsnc-e-po-text",
         type: "all"
       },
       {
-        id: "sncExaSiptgRgro",
-        selector: ".snc-e-siptg-rgro",
+        id: "hsncExaPoRgro",
+        selector: ".hsnc-e-po-rgro",
         type: "all"
       },
       {
-        id: "sncExaSiptgBgro",
-        selector: ".snc-e-siptg-bgro",
+        id: "hsncExaPoBgro",
+        selector: ".hsnc-e-po-bgro",
         type: "all"
       }
     ];
     const {
-      sncR
-    } = this.getSncRoot();
+      hsncR
+    } = this.getHsncRoot();
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      SncAccessor.sncCache,
-      sncSiptgGroup,
-      sncR
+      HsncAccessor.hsncCache,
+      hsncPoGroup,
+      hsncR
     );
     return saveVerifyGroup;
   }
-  static getSncEbGroup(gIndex) {
-    const sncEbGroup = [
+  static getHsncEbGroup(gIndex) {
+    const hsncEbGroup = [
       {
-        id: "sncPetaEb",
-        selector: ".snc-p",
+        id: "hsncPetaEb",
+        selector: ".hsnc-p",
         type: "all"
       },
       {
-        id: "sncTeraEb",
-        selector: ".snc-t",
+        id: "hsncTeraEb",
+        selector: ".hsnc-t",
         type: "all"
       },
       {
-        id: "sncGigaTitleEb",
-        selector: ".snc-g-title",
+        id: "hsncGigaTextEb",
+        selector: ".hsnc-g-text",
         type: "all"
       },
       {
-        id: "sncGigaRgroEb",
-        selector: ".snc-g-rgro",
+        id: "hsncGigaRgroEb",
+        selector: ".hsnc-g-rgro",
         type: "all"
       },
       {
-        id: "sncGigaBgroEb",
-        selector: ".snc-g-bgro",
+        id: "hsncGigaBgroEb",
+        selector: ".hsnc-g-bgro",
         type: "all"
       }
     ];
     const {
-      sncE
-    } = this.getSncGroup();
+      hsncE
+    } = this.getHsncGroup();
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      SncAccessor.sncCache,
-      sncEbGroup,
-      sncE[gIndex],
+      HsncAccessor.hsncCache,
+      hsncEbGroup,
+      hsncE[gIndex],
       gIndex
     );
     return saveVerifyGroup;
   }
-  
+  static getHsncEcoGroup() {
+    const hsncEcoGroup = [
+      {
+        id: "hsncYottaEco",
+        selector: ".hsnc-y-eco"
+      },
+      {
+        id: "hsncZettaEcoSdo",
+        selector: ".hsnc-z-eco-sdo"
+      },
+      {
+        id: "hsncZettaEcoSfroTgro",
+        selector: ".hsnc-z-eco-sfro-tgro"
+      },
+      {
+        id: "hsncZettaEcoSfroBgro",
+        selector: ".hsnc-z-eco-sfro-bgro"
+      }
+    ];
+    const {
+      hsncR
+    } = HsncGet.getHsncRoot();
+    const saveVerifyGroup = FwcAccessor.getVerifyCache(
+      HsncAccessor.hsncCache,
+      hsncEcoGroup,
+      hsncR
+    );
+    return saveVerifyGroup;
+  }
 }
-class SncSet {
+class HsncSet {
   static setAppendYsGroup(saveGenerate) {
     saveGenerate["zetta"].append(saveGenerate["exa"]);
     saveGenerate["yotta"].append(
-      saveGenerate["zettaSiptg"],
+      saveGenerate["zettaPo"],
       saveGenerate["zetta"]
     );
   }
   static setAppendZsGroup(saveGenerate) {
     saveGenerate["tera"].append(
-      saveGenerate["gigaTitle"],
+      saveGenerate["gigaText"],
       saveGenerate["gigaRgro"],
       saveGenerate["gigaBgro"]
     );
     saveGenerate["peta"].append(saveGenerate["tera"]);
     saveGenerate["exa"].append(saveGenerate["peta"]);
   }
-  static setAppendSiptgGroup(saveGenerate) {
-    saveGenerate["zettaSiptg"].append(
-      saveGenerate["exaSiptgTitle"],
-      saveGenerate["exaSiptgRgro"],
-      saveGenerate["exaSiptgBgro"]
+  static setAppendPoGroup(saveGenerate) {
+    saveGenerate["zettaPo"].append(
+      saveGenerate["exaPoText"],
+      saveGenerate["exaPoRgro"],
+      saveGenerate["exaPoBgro"]
+    );
+  }
+  static setAppendEcoGroup(saveGenerate) {
+    saveGenerate["yottaEco"].append(
+      saveGenerate["zettaEcoSdo"],
+      saveGenerate["zettaEcoSfroTgro"],
+      saveGenerate["zettaEcoSfroBgro"]
     );
   }
   static setGigaBgro(setElement, referElement, buffer) {
@@ -867,7 +818,7 @@ class SncSet {
     setElement.style.gridTemplateRows = gridTemplateData;
   }
 }
-class SncUpdate {
+class HsncUpdate {
   static updateExa(updateElement, referElement, size) {
     let gridTemplateData = "";
     for (let i = 0; i < referElement.length; i++) {
@@ -885,7 +836,7 @@ class SncUpdate {
     updateElement.style.width = setWidth;
   }
 }
-class SncSetup {
+class HsncSetup {
   static setupGigaBgro(setupElement, referElement, buffer) {
     const referWidth = referElement.offsetWidth;
     const setLeft = "calc" +
@@ -900,37 +851,43 @@ class SncSetup {
     setupElement.style.left = setLeft;
   }
 }
-class SncReset {
-  static resetSnc(displayTypeState) {
+class HsncReset {
+  static resetHsnc(displayTypeState) {
     const {
-       sncY
-    } = SncGet.getSncGroup();
+       hsncY
+    } = HsncGet.getHsncGroup();
     const {
-      sncZettaSiptg
-    } = SncGet.getSncSiptgGroup();
+      hsncZettaPo
+    } = HsncGet.getHsncPoGroup();
+    const {
+      hsncZettaEcoSfroTgro,
+      hsncZettaEcoSfroBgro
+    } = HsncGet.getHsncEcoGroup();
     const eventData = {};
-    for (let i = 0; i < sncZettaSiptg.length; i++) {
-      if (sncY[i].isActive) {
+    /* !!!!! :v1.1.17a [temp] [del] (scroll-fog-issue-fix): !!!!! */
+    hsncZettaEcoSfroTgro.classList.remove("cl-adt-hsnc-z-eco-sfro-handler");
+    hsncZettaEcoSfroBgro.classList.remove("cl-adt-hsnc-z-eco-sfro-handler");
+    HsncAccessor.hsncScrollState = 0;
+    /* !!!!! ;v1.1.17a [temp] (scroll-fog-issue-fix); !!!!! */
+    for (let i = 0; i < hsncZettaPo.length; i++) {
+      if (hsncY[i].isActive) {
         switch (displayTypeState) {
           case 1: {
-            /* Moblie Display Type */
-            eventData.currentTarget = sncZettaSiptg[i];
-            SncHandler.mdtSncZettaSiptg(eventData);
+            eventData.currentTarget = hsncZettaPo[i];
+            HsncHandler.mdtHsncZettaPo(eventData);
             break;
           }
           case 2: {
-            /* Tablet Display Type */
-            eventData.currentTarget = sncZettaSiptg[i];
-            SncHandler.tdtSncZettaSiptg(eventData);
+            eventData.currentTarget = hsncZettaPo[i];
+            HsncHandler.tdtHsncZettaPo(eventData);
             break;
           }
           case 3: {
-            /* Desktop Display Type */
-            eventData.currentTarget = sncZettaSiptg[i];
+            eventData.currentTarget = hsncZettaPo[i];
             eventData.type = "click"; 
-            SncHandler.ddtSncZettaSiptg(eventData); 
+            HsncHandler.ddtHsncZettaPo(eventData); 
             eventData.type = "mouseleave"; 
-            SncHandler.ddtSncZettaSiptg(eventData);
+            HsncHandler.ddtHsncZettaPo(eventData);
             break;
           }
         }
@@ -939,11 +896,11 @@ class SncReset {
   }
 }
 export {
-  SncAccessor,
-  SncController
+  HsncAccessor,
+  HsncController
 };
 /* NOTE
- * SncUtility.setTeraBgro.setLeft:
+ * HsncUtility.setTeraBgro.setLeft:
  *   calc(50% - (sourceWidth / 2)px - (buffer / 2)px)
  */
 /* AUTHORSHIP

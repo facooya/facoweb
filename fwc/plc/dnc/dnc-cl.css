@@ -4,72 +4,80 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* =============== :Handler: =============== */
-/* ==========----- :cl-mdt-dnc-z-alptg-handler: -----========== */
-.dnc-y.cl-mdt-dnc-z-alptg-handler {
-  background-color: var(--dnc-background-color-secondary);
+/* ==========----- :cl-mdt-hdnc-z-po-handler: -----========== */
+.hdnc-y.cl-mdt-hdnc-z-po-handler {
+  background-color: var(--hdnc-background-color-secondary);
 }
-.dnc-e-alptg-title.cl-mdt-dnc-z-alptg-handler {
+.hdnc-e-po-text.cl-mdt-hdnc-z-po-handler {
   font-weight: bold;
 }
-.dnc-e-alptg-rgro.cl-mdt-dnc-z-alptg-handler {
+.hdnc-e-po-rgro.cl-mdt-hdnc-z-po-handler {
   transform: rotate(180deg);
 }
-.dnc-e-alptg-bgro.cl-mdt-dnc-z-alptg-handler {
+.hdnc-e-po-bgro.cl-mdt-hdnc-z-po-handler {
   left: 15%;
   width: 70%;
 }
-.dnc-t.cl-mdt-dnc-z-alptg-handler {
+.hdnc-t.cl-mdt-hdnc-z-po-handler {
   opacity: 1;
 }
-/* ==========----- ;cl-mdt-dnc-z-alptg-handler; -----========== */
-/* ==========----- :cl-tdt-dnc-z-alptg-handler: -----========== */
-.dnc-e-alptg-bgro.cl-tdt-dnc-z-alptg-handler {
+/* ==========----- ;cl-mdt-hdnc-z-po-handler; -----========== */
+/* ==========----- :cl-tdt-hdnc-z-po-handler: -----========== */
+.hdnc-e-po-bgro.cl-tdt-hdnc-z-po-handler {
   left: 10%;
   width: 80%;
 }
-.dnc-e.cl-tdt-dnc-z-alptg-handler {
-  width: var(--dnc-e-width-secondary);
+.hdnc-e.cl-tdt-hdnc-z-po-handler {
+  width: var(--hdnc-e-width-secondary);
 }
-.dnc-e.cl-tdt-dnc-z-alptg-handler-nth-1 {
+.hdnc-e.cl-tdt-hdnc-z-po-handler-nth-1 {
   left: 0%;
 }
-.dnc-e.cl-tdt-dnc-z-alptg-handler-nth-5 {
+.hdnc-e.cl-tdt-hdnc-z-po-handler-nth-4 {
   right: 0%;
 }
-.dnc-t.cl-tdt-dnc-z-alptg-handler {
+.hdnc-t.cl-tdt-hdnc-z-po-handler {
   opacity: 1;
 }
-/* ==========----- ;cl-tdt-dnc-z-alptg-handler; -----========== */
-/* ==========----- :cl-ddt-dnc-y-handler: -----========== */
-.dnc-e-alptg-title.cl-ddt-dnc-y-handler {
+/* ==========----- ;cl-tdt-hdnc-z-po-handler; -----========== */
+/* ==========----- :cl-ddt-hdnc-y-handler: -----========== */
+.hdnc-e-po-text.cl-ddt-hdnc-y-handler {
   font-weight: bold;
 }
-.dnc-e-alptg-bgro.cl-ddt-dnc-y-handler {
+.hdnc-e-po-bgro.cl-ddt-hdnc-y-handler {
   left: 10%;
   width: 80%;
 }
-.dnc-e.cl-ddt-dnc-y-handler {
-  width: var(--dnc-e-width-secondary);
+.hdnc-e.cl-ddt-hdnc-y-handler {
+  width: var(--hdnc-e-width-secondary);
 }
-.dnc-e.cl-ddt-dnc-y-handler-nth-5 {
+.hdnc-e.cl-ddt-hdnc-y-handler-nth-4 {
   right: 0%;
 }
-.dnc-t.cl-ddt-dnc-y-handler {
+.hdnc-t.cl-ddt-hdnc-y-handler {
   opacity: 1;
 }
-/* ==========----- ;cl-ddt-dnc-y-handler; -----========== */
-/* ==========----- :cl-ddt-dnc-p-handler: -----========== */
-.dnc-g-title.cl-ddt-dnc-p-handler {
+/* ==========----- ;cl-ddt-hdnc-y-handler; -----========== */
+/* ==========----- :cl-ddt-hdnc-p-handler: -----========== */
+.hdnc-g-text.cl-ddt-hdnc-p-handler {
   font-weight: bold;
 }
-.dnc-g-rgro.cl-ddt-dnc-p-handler {
+.hdnc-g-rgro.cl-ddt-hdnc-p-handler {
   margin: 0rem 0rem 0rem 1rem;
   border-top: 0.25rem solid var(--transparent);
   border-bottom: 0.25rem solid var(--transparent);
   border-left: 0.5rem solid var(--white);
   opacity: 1;
 }
-/* ==========----- ;cl-ddt-dnc-p-handler; -----========== */
+/* ==========----- ;cl-ddt-hdnc-p-handler; -----========== */
+/* ==========----- :cl-mdt-hdnc-z-sfro-handler: -----========== */
+.hdnc-z-eco-sfro-tgro.cl-mdt-hdnc-z-sfro-handler {
+  height: 5rem;
+}
+.hdnc-z-eco-sfro-bgro.cl-mdt-hdnc-z-sfro-handler {
+  height: 5rem;
+}
+/* ==========----- ;cl-mdt-hdnc-z-sfro-handler; -----========== */
 /* =============== ;Handler; =============== */
 /* =============== :FACOOYA: =============== */
 /* NOTE

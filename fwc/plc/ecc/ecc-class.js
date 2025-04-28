@@ -4,25 +4,25 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  EccConfig
+  HeccConfig
 } from "./ecc-config.js";
 import {
   FwcAccessor
 } from "../../fwc-hub.js";
 
-class EccAccessor {
-  static eccCache = {};
-  static getEccPrcoGroup() {
-    return EccGet.getEccPrcoGroup();
+class HeccAccessor {
+  static heccCache = {};
+  static getHeccPboGroup() {
+    return HeccGet.getHeccPboGroup();
   }
-  static getEccNocoGroup() {
-    return EccGet.getEccNocoGroup();
+  static getHeccNooGroup() {
+    return HeccGet.getHeccNooGroup();
   }
 }
-class EccController {
+class HeccController {
   static process() {
-    EccManager.generate();
-    EccManager.event();
+    HeccManager.generate();
+    HeccManager.event();
   }
   static processOnLoad() {
     
@@ -31,150 +31,150 @@ class EccController {
 
   }
 }
-class EccManager {
+class HeccManager {
   static generate() {
     const {
-      eccR
-    } = EccGet.getEccRoot();
-    const eccFragment = document.createDocumentFragment();
+      heccR
+    } = HeccGet.getHeccRoot();
+    const heccFragment = document.createDocumentFragment();
     let tempGenerateElement = null;
     let tempSaveElement = {};
-    /* =============== :Prco Group: =============== */
-    for (let ysi = 0; ysi < EccConfig.elementPrcoGroup.length; ysi++) {
+    /* =============== :Pbo Group: =============== */
+    for (let ysi = 0; ysi < HeccConfig.elementPboGroup.length; ysi++) {
       tempGenerateElement = FwcAccessor.getGenerateElement(
-        EccConfig.elementPrcoGroup[ysi].tag,
-        EccConfig.elementPrcoGroup[ysi].selector
+        HeccConfig.elementPboGroup[ysi].tag,
+        HeccConfig.elementPboGroup[ysi].selector
       );
-      tempSaveElement[EccConfig.elementPrcoGroup[ysi].id] = tempGenerateElement;
+      tempSaveElement[HeccConfig.elementPboGroup[ysi].id] = tempGenerateElement;
     }
-    /* =============== ;Prco Group; =============== */
-    /* =============== :Noco Group: =============== */
-    for (let ysi = 0; ysi < EccConfig.elementNocoGroup.length; ysi++) {
+    /* =============== ;Pbo Group; =============== */
+    /* =============== :Noo Group: =============== */
+    for (let ysi = 0; ysi < HeccConfig.elementNooGroup.length; ysi++) {
       tempGenerateElement = FwcAccessor.getGenerateElement(
-        EccConfig.elementNocoGroup[ysi].tag,
-        EccConfig.elementNocoGroup[ysi].selector
+        HeccConfig.elementNooGroup[ysi].tag,
+        HeccConfig.elementNooGroup[ysi].selector
       );
-      tempSaveElement[EccConfig.elementNocoGroup[ysi].id] = tempGenerateElement;
+      tempSaveElement[HeccConfig.elementNooGroup[ysi].id] = tempGenerateElement;
     }
-    /* =============== ;Noco Group; =============== */
-    EccSet.setAppendFragment(eccFragment, tempSaveElement);
-    eccR.append(eccFragment);
+    /* =============== ;Noo Group; =============== */
+    HeccSet.setAppendFragment(heccFragment, tempSaveElement);
+    heccR.append(heccFragment);
   }
   static event() {
-    window.addEventListener("scroll", EccHandler.zettaPrco);
+    window.addEventListener("scroll", HeccHandler.zettaPbo);
   }
 }
-class EccHandler {
+class HeccHandler {
   /* PROC: Progress Rendering Component Object */
-  static zettaPrco() {
+  static zettaPbo() {
     const htmlElement = document.documentElement;
     const {
-      eccZettaPrcoLgro,
-      eccZettaPrcoRgro
-    } = EccGet.getEccPrcoGroup();
+      heccZettaPboLgro,
+      heccZettaPboRgro
+    } = HeccGet.getHeccPboGroup();
 
     const overflowHeight = htmlElement.scrollHeight - htmlElement.clientHeight;
     const scrollProgress = (htmlElement.scrollTop / overflowHeight) * 100;
     const setHeight = Math.round(scrollProgress).toString() + "%";
 
-    eccZettaPrcoLgro.style.height = setHeight;
-    eccZettaPrcoRgro.style.height = setHeight;
+    heccZettaPboLgro.style.height = setHeight;
+    heccZettaPboRgro.style.height = setHeight;
   }
 }
-class EccGet {
-  static getEccRoot() {
-    const eccRoot = [
+class HeccGet {
+  static getHeccRoot() {
+    const heccRoot = [
       {
-        id: "eccR",
-        selector: ".plc-y-liptg .ecc-r-nptg"
+        id: "heccR",
+        selector: ".blf-y-ho .hecc-r"
       }
     ];
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      EccAccessor.eccCache,
-      eccRoot
+      HeccAccessor.heccCache,
+      heccRoot
     );
     return saveVerifyGroup;
   }
-  static getEccPrcoGroup() {
-    const eccPrcoGroup = [
+  static getHeccPboGroup() {
+    const heccPboGroup = [
       {
-        id: "eccYottaPrco",
-        selector: ".ecc-y-prco"
+        id: "heccYottaPbo",
+        selector: ".hecc-y-pbo"
       },
       {
-        id: "eccZettaPrco",
-        selector: ".ecc-z-prco",
+        id: "heccZettaPbo",
+        selector: ".hecc-z-pbo",
         type: "all"
       },
       {
-        id: "eccZettaPrcoLgro",
-        selector: ".ecc-z-prco-lgro"
+        id: "heccZettaPboLgro",
+        selector: ".hecc-z-pbo-lgro"
       },
       {
-        id: "eccZettaPrcoRgro",
-        selector: ".ecc-z-prco-rgro"
+        id: "heccZettaPboRgro",
+        selector: ".hecc-z-pbo-rgro"
       }
     ];
     const {
-      eccR
-    } = this.getEccRoot();
+      heccR
+    } = this.getHeccRoot();
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      EccAccessor.eccCache,
-      eccPrcoGroup,
-      eccR
+      HeccAccessor.heccCache,
+      heccPboGroup,
+      heccR
     );
     return saveVerifyGroup;
   }
-  static getEccNocoGroup() {
-    const eccNocoGroup = [
+  static getHeccNooGroup() {
+    const heccNooGroup = [
       {
-        id: "eccYottaNoco",
-        selector: ".ecc-y-noco"
+        id: "heccYottaNoo",
+        selector: ".hecc-y-noo"
       },
       {
-        id: "eccZettaNocoSdo",
-        selector: ".ecc-z-noco-sdo"
+        id: "heccZettaNooSdo",
+        selector: ".hecc-z-noo-sdo"
       }
     ];
     const {
-      eccR
-    } = this.getEccRoot();
+      heccR
+    } = this.getHeccRoot();
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      EccAccessor.eccCache,
-      eccNocoGroup,
-      eccR
+      HeccAccessor.heccCache,
+      heccNooGroup,
+      heccR
     );
     return saveVerifyGroup;
   }
 }
-class EccSet {
-  static setAppendFragment(eccFragment, tempSaveElement) {
-    tempSaveElement["yottaPrco"].append(
-      tempSaveElement["zettaPrcoLgro"],
-      tempSaveElement["zettaPrcoRgro"]
+class HeccSet {
+  static setAppendFragment(heccFragment, tempSaveElement) {
+    tempSaveElement["yottaPbo"].append(
+      tempSaveElement["zettaPboLgro"],
+      tempSaveElement["zettaPboRgro"]
     );
-    tempSaveElement["yottaNoco"].append(
-      tempSaveElement["zettaNocoSdo"]
+    tempSaveElement["yottaNoo"].append(
+      tempSaveElement["zettaNooSdo"]
     );
-    eccFragment.append(
-      tempSaveElement["yottaPrco"],
-      tempSaveElement["yottaNoco"]
+    heccFragment.append(
+      tempSaveElement["yottaPbo"],
+      tempSaveElement["yottaNoo"]
     );
   }
 }
 export {
-  EccAccessor,
-  EccController
+  HeccAccessor,
+  HeccController
 }
 /* NOTE
  * CO: Component Object
  * PRCO: Progress Rendering CO
  * NOCO: Navigate Overlay CO
  * 
- * EccHandler.zettaPrco() {
+ * HeccHandler.zettaPbo() {
  *   overflowHeight(10) = scrollHeight(20) - clientHeight(10);
  *   scrollProgress(50) = (scrollTop(5) / overflowHeight(10)) * 100;
- *   zettaPrco.style.height = scrollProgress(50) + "%";
+ *   zettaPbo.style.height = scrollProgress(50) + "%";
  * }
  */
 /* AUTHORSHIP

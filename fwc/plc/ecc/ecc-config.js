@@ -3,48 +3,51 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-class EccData {
+class HeccData {
 
 }
-class EccElement {
-  static elementPrcoGroup = [
+class HeccElement {
+  static elementPboGroup = [
     {
-      id: "yottaPrco",
+      id: "yottaPbo",
       tag: "div",
-      selector: "ecc-y-prco"
+      selector: "hecc-y-pbo"
     },
     {
-      id: "zettaPrcoLgro",
+      id: "zettaPboLgro",
       tag: "div",
-      selector: "ecc-z-prco ecc-z-prco-lgro"
+      selector: "hecc-z-pbo hecc-z-pbo-lgro"
     },
     {
-      id: "zettaPrcoRgro",
+      id: "zettaPboRgro",
       tag: "div",
-      selector: "ecc-z-prco ecc-z-prco-rgro"
+      selector: "hecc-z-pbo hecc-z-pbo-rgro"
     }
   ];
-  static elementNocoGroup = [
+  static elementNooGroup = [
     {
-      id: "yottaNoco",
+      id: "yottaNoo",
       tag: "div",
-      selector: "ecc-y-noco"
+      selector: "hecc-y-noo"
     },
     {
-      id: "zettaNocoSdo",
+      id: "zettaNooSdo",
       tag: "div",
-      selector: "ecc-z-noco-sdo"
+      selector: "hecc-z-noo-sdo"
     }
   ];
 }
-class EccConfig {
-  static elementPrcoGroup = EccElement.elementPrcoGroup;
-  static elementNocoGroup = EccElement.elementNocoGroup;
+class HeccConfig {
+  static elementPboGroup = HeccElement.elementPboGroup;
+  static elementNooGroup = HeccElement.elementNooGroup;
 }
 export {
-  EccConfig
+  HeccConfig
 };
 /* DESCRIPTION
+ * PBO: Progress Bar Object
+ * NOO: Navigation Overlay Object
+ * GRO: Geometric Rendering Object
  */
 /* INFORMATION
  * @[Author] {Facooya} (Founder)

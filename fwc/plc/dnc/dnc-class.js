@@ -7,61 +7,62 @@ import {
   FwaConfig
 } from "../../../fwa/fwa-config.js";
 import {
-  DncConfig
+  HdncConfig
 } from "./dnc-config.js";
 import {
   FwcAccessor,
-  TpncAccessor,
-  SncAccessor
+  HtpncAccessor,
+  HsncAccessor
 } from "../../fwc-hub.js";
 
-class DncAccessor {
-  static dncCache = {};
-  static isActiveDnc = false;
+class HdncAccessor {
+  static hdncCache = {};
+  static isActiveHdnc = false;
+  static hdncScrollState = 0;
   /* =============== :Function: =============== */
-  static resetDnc(displayTypeState) {
-    DncReset.resetDnc(displayTypeState);
+  static resetHdnc(displayTypeState) {
+    HdncReset.resetHdnc(displayTypeState);
   }
-  static getDncRoot() {
-    return DncGet.getDncRoot();
+  static getHdncRoot() {
+    return HdncGet.getHdncRoot();
   }
-  static getDncGroup() {
-    return DncGet.getDncGroup();
+  static getHdncGroup() {
+    return HdncGet.getHdncGroup();
   }
   /* =============== ;Function; =============== */
 }
-class DncController {
+class HdncController {
   static process() {
-    DncManager.generate();
-    DncManager.init();
+    HdncManager.generate();
+    HdncManager.init();
   }
   static processOnLoad() {
-    /* DncManager.addEvent(); */
-    DncManager.event(true);
+    /* HdncManager.addEvent(); */
+    HdncManager.event(true);
   }
   static processOnResize() {
-    DncManager.initOnResize();
-    /* DncManager.removeEvent();
-    DncManager.addEvent(); */
-    DncManager.event(false);
-    DncManager.event(true);
+    HdncManager.initOnResize();
+    /* HdncManager.removeEvent();
+    HdncManager.addEvent(); */
+    HdncManager.event(false);
+    HdncManager.event(true);
   }
 }
-class DncManager {
+class HdncManager {
   static init() {
     const {
-      dncY,
-      dncE
-    } = DncGet.getDncGroup();
-    for (let i = 0; i < dncE.length; i++) {
+      hdncY,
+      hdncE
+    } = HdncGet.getHdncGroup();
+    for (let i = 0; i < hdncE.length; i++) {
       const {
-        dncPetaEb
-      } = DncGet.getDncEbGroup(i);
-      DncSet.setExa(dncE[i], dncPetaEb, 0);
-      dncY[i].isActive = false;
-      dncY[i].index = i;
-      for (let j = 0; j < dncPetaEb.length; j++) {
-        dncPetaEb[j].index = j;
+        hdncPetaEb
+      } = HdncGet.getHdncEbGroup(i);
+      HdncSet.setExa(hdncE[i], hdncPetaEb, 0);
+      hdncY[i].isActive = false;
+      hdncY[i].index = i;
+      for (let j = 0; j < hdncPetaEb.length; j++) {
+        hdncPetaEb[j].index = j;
       }
     }
     /*  */
@@ -72,18 +73,18 @@ class DncManager {
     } else {
       isDefaultSetup = false;
     }
-    for (let i = 0; i < dncY.length; i++) {
+    for (let i = 0; i < hdncY.length; i++) {
       const {
-        dncGigaTitleEb,
-        dncGigaBgroEb
-      } = DncGet.getDncEbGroup(i);
-      for (let j = 0; j < dncGigaBgroEb.length; j++) {
-        DncSetup.setupGigaBgro(
-          dncGigaBgroEb[j],
-          dncGigaTitleEb[j],
+        hdncGigaTextEb,
+        hdncGigaBgroEb
+      } = HdncGet.getHdncEbGroup(i);
+      for (let j = 0; j < hdncGigaBgroEb.length; j++) {
+        HdncSetup.setupGigaBgro(
+          hdncGigaBgroEb[j],
+          hdncGigaTextEb[j],
           buffer
         );
-        DncSetup.setupGigaBgroWidth(isDefaultSetup, dncGigaBgroEb[j]);
+        HdncSetup.setupGigaBgroWidth(isDefaultSetup, hdncGigaBgroEb[j]);
       }
     }
   }
@@ -93,109 +94,119 @@ class DncManager {
   static initOnResize() {
     const displayTypeState = FwaConfig.previousDisplayType;
     /* !!!!! v1.1.15a [suggestion] {add} (getDisplayTypeState) !!!!! */
-    DncReset.resetDnc(displayTypeState);
+    HdncReset.resetHdnc(displayTypeState);
     /* !!!!! v1.1.16a [test] {issue fix} !!!!! */
     const {
-      dncY,
-      dncE
-    } = DncGet.getDncGroup();
-    /* !!!!! v1.1.16a [suggestion] {move} (in resetDnc) !!!!! */
-    dncE[0].classList.remove("cl-tdt-dnc-z-alptg-handler-nth-1");
-    dncE[4].classList.remove("cl-tdt-dnc-z-alptg-handler-nth-5");
-    /* resetDncGigaBgro(); */
+      hdncY,
+      hdncE
+    } = HdncGet.getHdncGroup();
+    /* !!!!! v1.1.16a [suggestion] {move} (in resetHdnc) !!!!! */
+    hdncE[0].classList.remove("cl-tdt-hdnc-z-po-handler-nth-1");
+    hdncE[3].classList.remove("cl-tdt-hdnc-z-po-handler-nth-4");
+    /* resetHdncGigaBgro(); */
     let isDefaultSetup = null;
     if (FwaConfig.currentDisplayType === 3) {
       isDefaultSetup = false;
     } else {
       isDefaultSetup = true;
     }
-    for (let i = 0; i < dncY.length; i++) {
+    for (let i = 0; i < hdncY.length; i++) {
       const {
-        dncGigaBgroEb
-      } = DncGet.getDncEbGroup(i);
-      for (let j = 0; j < dncGigaBgroEb.length; j++) {
-        /* dncGigaBgroEb[j].style.left = "";
-        dncGigaBgroEb[j].style.width = ""; */
-        DncSetup.setupGigaBgroWidth(isDefaultSetup, dncGigaBgroEb[j]);
+        hdncGigaBgroEb
+      } = HdncGet.getHdncEbGroup(i);
+      for (let j = 0; j < hdncGigaBgroEb.length; j++) {
+        HdncSetup.setupGigaBgroWidth(isDefaultSetup, hdncGigaBgroEb[j]);
       }
     }
   }
   static generate() {
     const {
-      dncR
-    } = DncGet.getDncRoot();
-    const dncFragment = document.createDocumentFragment();
+      hdncR
+    } = HdncGet.getHdncRoot();
+    const hdncFragment = document.createDocumentFragment();
     let tempGenerateElement = null;
     let tempSaveElement = {};
-    /* =============== :Ys, Alptg, Zs Group: =============== */
-    for (let ysi = 0; ysi < DncConfig.exaAlptgTitleRs.length; ysi++) {
+    /* =============== :Ys, Po, Zs Group: =============== */
+    for (let ysi = 0; ysi < HdncConfig.hdncExaPoText.length; ysi++) {
       /* ==========----- :Ys Group: -----========== */
-      for (let zsi = 0; zsi < DncConfig.elementYsGroup.length; zsi++) {
+      for (let zsi = 0; zsi < HdncConfig.elementYsGroup.length; zsi++) {
         tempGenerateElement = FwcAccessor.getGenerateElement(
-          DncConfig.elementYsGroup[zsi].tag,
-          DncConfig.elementYsGroup[zsi].selector
+          HdncConfig.elementYsGroup[zsi].tag,
+          HdncConfig.elementYsGroup[zsi].selector
         );
-        tempSaveElement[DncConfig.elementYsGroup[zsi].id] = tempGenerateElement;
+        tempSaveElement[HdncConfig.elementYsGroup[zsi].id] = tempGenerateElement;
       }
       /* ==========----- ;Ys Group; -----========== */
-      /* ==========----- :Alptg Group: -----========== */
-      for (let zsi = 0; zsi < DncConfig.elementAlptgGroup.length; zsi++) {
+      /* ==========----- :Po Group: -----========== */
+      for (let zsi = 0; zsi < HdncConfig.elementPoGroup.length; zsi++) {
         tempGenerateElement = FwcAccessor.getGenerateElement(
-          DncConfig.elementAlptgGroup[zsi].tag,
-          DncConfig.elementAlptgGroup[zsi].selector
+          HdncConfig.elementPoGroup[zsi].tag,
+          HdncConfig.elementPoGroup[zsi].selector
         );
         FwcAccessor.setGenerateElement(
           tempGenerateElement,
-          DncConfig.elementAlptgGroup[zsi].text,
-          DncConfig.elementAlptgGroup[zsi].href,
+          HdncConfig.elementPoGroup[zsi].text,
+          HdncConfig.elementPoGroup[zsi].link,
           [ysi]
         );
-        tempSaveElement[DncConfig.elementAlptgGroup[zsi].id] = tempGenerateElement;
+        tempSaveElement[HdncConfig.elementPoGroup[zsi].id] = tempGenerateElement;
       }
-      /* ==========----- ;Alptg Group; -----========== */
+      /* ==========----- ;Po Group; -----========== */
       /* ==========----- :Zs Group: -----========== */
-      for (let zsi = 0; zsi < DncConfig.gigaTitleRs[ysi].length; zsi++) {
-        for (let esi = 0; esi < DncConfig.elementZsGroup.length; esi++) {
+      for (let zsi = 0; zsi < HdncConfig.hdncGigaText[ysi].length; zsi++) {
+        for (let esi = 0; esi < HdncConfig.elementZsGroup.length; esi++) {
           tempGenerateElement = FwcAccessor.getGenerateElement(
-            DncConfig.elementZsGroup[esi].tag,
-            DncConfig.elementZsGroup[esi].selector
+            HdncConfig.elementZsGroup[esi].tag,
+            HdncConfig.elementZsGroup[esi].selector
           );
           FwcAccessor.setGenerateElement(
             tempGenerateElement,
-            DncConfig.elementZsGroup[esi].text,
-            DncConfig.elementZsGroup[esi].href,
+            HdncConfig.elementZsGroup[esi].text,
+            HdncConfig.elementZsGroup[esi].link,
             [ysi, zsi]
           );
-          tempSaveElement[DncConfig.elementZsGroup[esi].id] = tempGenerateElement;
+          tempSaveElement[HdncConfig.elementZsGroup[esi].id] = tempGenerateElement;
         }
-        DncSet.setAppendZsGroup(tempSaveElement);
+        HdncSet.setAppendZsGroup(tempSaveElement);
       }
       /* ==========----- ;Zs Group; -----========== */
-      DncSet.setAppendAlptgGroup(tempSaveElement);
-      DncSet.setAppendYsGroup(tempSaveElement);
-      dncFragment.append(tempSaveElement["yotta"]);
+      HdncSet.setAppendPoGroup(tempSaveElement);
+      HdncSet.setAppendYsGroup(tempSaveElement);
+      hdncFragment.append(tempSaveElement["yotta"]);
       tempSaveElement = {};
     }
-    /* =============== ;Ys, Alptg, Zs Group; =============== */
+    /* =============== ;Ys, Po, Zs Group; =============== */
     /* =============== :Sdo Group: =============== */
-    for (let ysi = 0; ysi < DncConfig.elementSdoGroup.length; ysi++) {
+    /* for (let ysi = 0; ysi < HdncConfig.elementSdoGroup.length; ysi++) {
       tempGenerateElement = FwcAccessor.getGenerateElement(
-        DncConfig.elementSdoGroup[ysi].tag,
-        DncConfig.elementSdoGroup[ysi].selector
+        HdncConfig.elementSdoGroup[ysi].tag,
+        HdncConfig.elementSdoGroup[ysi].selector
       );
-      tempSaveElement[DncConfig.elementSdoGroup[ysi].id] = tempGenerateElement;
+      tempSaveElement[HdncConfig.elementSdoGroup[ysi].id] = tempGenerateElement;
     }
-    dncFragment.append(tempSaveElement["yottaSdo"]);
+    hdncFragment.append(tempSaveElement["yottaSdo"]); */
+    for (let ysi = 0; ysi < HdncConfig.elementEcoGroup.length; ysi++) {
+      tempGenerateElement = FwcAccessor.getGenerateElement(
+        HdncConfig.elementEcoGroup[ysi].tag,
+        HdncConfig.elementEcoGroup[ysi].selector
+      );
+      tempSaveElement[HdncConfig.elementEcoGroup[ysi].id] = tempGenerateElement;
+    }
+    HdncSet.setAppendEcoGroup(tempSaveElement);
+    hdncFragment.append(tempSaveElement["yottaEco"]);
     /* =============== ;Sdo Group; =============== */
-    dncR.append(dncFragment);
+    hdncR.append(hdncFragment);
   }
   static event(isActive) {
     const {
-      dncY
-    } = DncGet.getDncGroup();
+      hdncR
+    } = HdncGet.getHdncRoot();
     const {
-      dncZettaAlptg
-    } = DncGet.getDncAlptgGroup();
+      hdncY
+    } = HdncGet.getHdncGroup();
+    const {
+      hdncZettaPo
+    } = HdncGet.getHdncPoGroup();
     /*  */
     /* let type = ""; */
     let displayTypeState = null;
@@ -208,46 +219,50 @@ class DncManager {
       eventListenerType = "removeEventListener";
     }
     /*  */
-    for (let i = 0; i < dncY.length; i++) {
+    if (displayTypeState === 1) {
+      hdncR[eventListenerType]("scroll", HdncHandler.mdtHdncZettaEcoSfro);
+    }
+    /*  */
+    for (let i = 0; i < hdncY.length; i++) {
       /* Init */
-      dncY[i].isActive = false;
+      hdncY[i].isActive = false;
       /* ========== FwaConfig.currentDisplayType ========== */
       switch (displayTypeState) {
         case 1: {
-          dncZettaAlptg[i][eventListenerType](
+          hdncZettaPo[i][eventListenerType](
             "click",
-            DncHandler.mdtDncZettaAlptg
+            HdncHandler.mdtHdncZettaPo
           );
           break;
         }
         case 2: {
-          dncZettaAlptg[i][eventListenerType](
+          hdncZettaPo[i][eventListenerType](
             "click",
-            DncHandler.tdtDncZettaAlptg
+            HdncHandler.tdtHdncZettaPo
           );
           break;
         }
         case 3: {
-          dncY[i][eventListenerType](
+          hdncY[i][eventListenerType](
             "mouseenter",
-            DncHandler.ddtDncYotta
+            HdncHandler.ddtHdncYotta
           );
-          dncY[i][eventListenerType](
+          hdncY[i][eventListenerType](
             "mouseleave",
-            DncHandler.ddtDncYotta
+            HdncHandler.ddtHdncYotta
           );
-          /* Dnc Peta */
+          /* Hdnc Peta */
           const {
-            dncPetaEb
-          } = DncGet.getDncEbGroup(i);
-          for (let j = 0; j < dncPetaEb.length; j++) {
-            dncPetaEb[j][eventListenerType](
+            hdncPetaEb
+          } = HdncGet.getHdncEbGroup(i);
+          for (let j = 0; j < hdncPetaEb.length; j++) {
+            hdncPetaEb[j][eventListenerType](
               "mouseenter",
-              DncHandler.ddtDncPeta
+              HdncHandler.ddtHdncPeta
             );
-            dncPetaEb[j][eventListenerType](
+            hdncPetaEb[j][eventListenerType](
               "mouseleave",
-              DncHandler.ddtDncPeta
+              HdncHandler.ddtHdncPeta
             );
           }
           break;
@@ -256,143 +271,30 @@ class DncManager {
       /* ============================== */
     }
   }
-  /* static addEvent() {
-    const {
-      dncY
-    } = DncGet.getDncGroup();
-    const {
-      dncZettaAlptg
-    } = DncGet.getDncAlptgGroup();
-    for (let i = 0; i < dncY.length; i++) {
-      dncY[i].isActive = false;
-      /* ========== FwaConfig.currentDisplayType ========== 
-      switch (FwaConfig.currentDisplayType) {
-        case 1: {
-          dncZettaAlptg[i].addEventListener(
-            "click",
-            DncHandler.mdtDncZettaAlptg
-          );
-          break;
-        }
-        case 2: {
-          dncZettaAlptg[i].addEventListener(
-            "click",
-            DncHandler.tdtDncZettaAlptg
-          );
-          break;
-        }
-        case 3: {
-          dncY[i].addEventListener(
-            "mouseenter",
-            DncHandler.ddtDncYotta
-          );
-          dncY[i].addEventListener(
-            "mouseleave",
-            DncHandler.ddtDncYotta
-          );
-          const {
-            dncPetaEb
-          } = DncGet.getDncEbGroup(i);
-          for (let j = 0; j < dncPetaEb.length; j++) {
-            dncPetaEb[j].addEventListener(
-              "mouseenter",
-              DncHandler.ddtDncPeta
-            );
-            dncPetaEb[j].addEventListener(
-              "mouseleave",
-              DncHandler.ddtDncPeta
-            );
-          }
-          break;
-        }
-      }
-      /* ============================== 
-    }
-  }
-  static removeEvent() {
-    const {
-      dncY
-    } = DncGet.getDncGroup();
-    const {
-      dncZettaAlptg
-    } = DncGet.getDncAlptgGroup();
-    for (let i = 0; i < dncY.length; i++) {
-      /* ========== FwaConfig.previousDisplayType ========== 
-      switch (FwaConfig.previousDisplayType) {
-        case 1: {
-          /* Mobile Display Type 
-          dncZettaAlptg[i].removeEventListener(
-            "click",
-            DncHandler.mdtDncZettaAlptg
-          );
-          break;
-        }
-        case 2: {
-          /* Tablet Display Type 
-          dncZettaAlptg[i].removeEventListener(
-            "click",
-            DncHandler.tdtDncZettaAlptg
-          );
-          break;
-        }
-        case 3: {
-          /* Desktop Display Type 
-          dncY[i].removeEventListener(
-            "mouseenter",
-            DncHandler.ddtDncYotta
-          );
-          dncY[i].removeEventListener(
-            "mouseleave",
-            DncHandler.ddtDncYotta
-          );
-          const {
-            dncPetaEb
-          } = DncGet.getDncEbGroup(i);
-          for (let j = 0; j < dncPetaEb.length; j++) {
-            dncPetaEb[j].removeEventListener(
-              "mouseenter",
-              DncHandler.ddtDncPeta
-            );
-            dncPetaEb[j].removeEventListener(
-              "mouseleave",
-              DncHandler.ddtDncPeta
-            ); 
-          }
-          break;
-        }
-      }
-      /* ============================== 
-      dncY[i].isActive = false;
-    }
-  } */
 }
-class DncHandler {
-  static mdtDncZettaAlptg(eventData) {
+class HdncHandler {
+  static mdtHdncZettaPo(eventData) {
     /* =============== Setup: =============== */
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".dnc-y");
+    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
     const {
-      dncY,
-      dncE
-    } = DncGet.getDncGroup();
+      hdncY,
+      hdncE
+    } = HdncGet.getHdncGroup();
     const {
-      dncExaAlptgTitle,
-      dncExaAlptgRgro,
-      dncExaAlptgBgro
-    } = DncGet.getDncAlptgGroup();
+      hdncExaPoText,
+      hdncExaPoRgro,
+      hdncExaPoBgro
+    } = HdncGet.getHdncPoGroup();
     const {
-      dncTeraEb,
-      dncGigaTitleEb,
-      dncGigaBgroEb
-    } = DncGet.getDncEbGroup(targetIndex);
-    /*  */
-    const gigaBgroBuffer = 20;
+      hdncTeraEb
+    } = HdncGet.getHdncEbGroup(targetIndex);
     /*  */
     let isActive = null;
     let type = "";
     let exaSize = null;
-    if (!dncY[targetIndex].isActive) {
+    if (!hdncY[targetIndex].isActive) {
       isActive = true;
       type = "add";
       exaSize = 4;
@@ -402,104 +304,44 @@ class DncHandler {
       exaSize = 0;
     }
     /*  */
-    dncY[targetIndex].classList[type]("cl-mdt-dnc-z-alptg-handler");
-    dncExaAlptgTitle[targetIndex].classList[type]("cl-mdt-dnc-z-alptg-handler");
-    dncExaAlptgRgro[targetIndex].classList[type]("cl-mdt-dnc-z-alptg-handler");
-    dncExaAlptgBgro[targetIndex].classList[type]("cl-mdt-dnc-z-alptg-handler");
+    hdncY[targetIndex].classList[type]("cl-mdt-hdnc-z-po-handler");
+    hdncExaPoText[targetIndex].classList[type]("cl-mdt-hdnc-z-po-handler");
+    hdncExaPoRgro[targetIndex].classList[type]("cl-mdt-hdnc-z-po-handler");
+    hdncExaPoBgro[targetIndex].classList[type]("cl-mdt-hdnc-z-po-handler");
     /*  */
-    DncUpdate.updateExa(
-      dncE[targetIndex],
-      dncTeraEb,
+    HdncUpdate.updateExa(
+      hdncE[targetIndex],
+      hdncTeraEb,
       exaSize
     );
-    for (let i = 0; i < dncTeraEb.length; i++) {
-      dncTeraEb[i].classList[type]("cl-mdt-dnc-z-alptg-handler");
-      /* DncSet.setGigaBgro(
-        dncGigaBgroEb[i],
-        dncGigaTitleEb[i],
-        gigaBgroBuffer
-      ); */
-    }
-    if (isActive) {
-      for (let i = 0; i < dncTeraEb.length; i++) {
-        /* dncGigaBgroEb[i].style.left = dncGigaBgroEb[i].left;
-        dncGigaBgroEb[i].style.width = dncGigaBgroEb[i].width; */
-      }
+    for (let i = 0; i < hdncTeraEb.length; i++) {
+      hdncTeraEb[i].classList[type]("cl-mdt-hdnc-z-po-handler");
     }
     /*  */
-    dncY[targetIndex].isActive = isActive;
-    /* =============== Setup; =============== */
-    /* =============== Script: =============== */
-    /* if (isActive) { */
-      /* ==========----- Activation: -----========== */
-      /* A: Set Yotta */
-      /* dncY[targetIndex].style.backgroundColor = "#333333"; */
-      /* A: Set Exa Alptg */
-      /* dncExaAlptgTitle[targetIndex].style.fontWeight = "700";
-      dncExaAlptgRgro[targetIndex].style.transform = "rotate(180deg)";
-      dncExaAlptgBgro[targetIndex].style.left = "15%";
-      dncExaAlptgBgro[targetIndex].style.width = "70%"; */
-      /* A: Set Exa */
-      /* DncSet.setExa(dncE[targetIndex], dncTeraEb, 4); */
-      /* A: Set Tera */
-      /* for (let i = 0; i < dncTeraEb.length; i++) {
-        dncTeraEb[i].style.opacity = "1";
-        DncSet.setGigaBgro(
-          dncGigaBgroEb[i],
-          dncGigaTitleEb[i],
-          20
-        );
-      } */
-      /* A: Set Flag */
-      /* dncY[targetIndex].isActive = true; */
-      /* ==========----- Activation; -----========== */
-    /* } else { */
-      /* ==========----- Deactivation: -----========== */
-      /* D: Set Yotta */
-      /* dncY[targetIndex].style.backgroundColor = ""; */
-      /* D: Set Zetta Alptg */
-      /* dncExaAlptgTitle[targetIndex].style.fontWeight = "";
-      dncExaAlptgRgro[targetIndex].style.transform = "";
-      dncExaAlptgBgro[targetIndex].style.left = "";
-      dncExaAlptgBgro[targetIndex].style.width = ""; */
-      /* D: Set Exa */
-      /* DncSet.setExa(dncE[targetIndex], dncTeraEb, 0); */
-      /* D: Set Tera */
-      /* for (let i = 0; i < dncTeraEb.length; i++) {
-        dncTeraEb[i].style.opacity = "";
-        dncGigaBgroEb[i].style.left = "";
-        dncGigaBgroEb[i].style.width = "";
-      } */
-      /* D: Set Flag */
-      /* dncY[targetIndex].isActive = false; */
-      /* ==========----- Deactivation; -----========== */
-    /* } */
-    /* =============== Script; =============== */
+    hdncY[targetIndex].isActive = isActive;
+    /*  */
+    HdncHandler.mdtHdncZettaEcoSfro();
   }
-  static tdtDncZettaAlptg(eventData) {
+  static tdtHdncZettaPo(eventData) {
     /* =============== Setup: =============== */
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".dnc-y");
+    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
     const {
-      dncY,
-      dncE
-    } = DncGet.getDncGroup();
+      hdncY,
+      hdncE
+    } = HdncGet.getHdncGroup();
     const {
-      dncExaAlptgBgro
-    } = DncGet.getDncAlptgGroup();
+      hdncExaPoBgro
+    } = HdncGet.getHdncPoGroup();
     const {
-      dncTeraEb,
-      dncGigaTitleEb,
-      dncGigaBgroEb
-    } = DncGet.getDncEbGroup(targetIndex);
-    /*  */
-    const gigaBgroBuffer = 32;
+      hdncTeraEb
+    } = HdncGet.getHdncEbGroup(targetIndex);
     /*  */
     let isActive = null;
     let type = "";
     let exaSize = null;
-    if (!dncY[targetIndex].isActive) {
+    if (!hdncY[targetIndex].isActive) {
       isActive = true;
       type = "add";
       exaSize = 4;
@@ -509,105 +351,45 @@ class DncHandler {
       exaSize = 0;
     }
     /*  */
-    dncExaAlptgBgro[targetIndex].classList[type]("cl-tdt-dnc-z-alptg-handler");
-    dncE[targetIndex].classList[type]("cl-tdt-dnc-z-alptg-handler");
-    for (let i = 0; i < dncTeraEb.length; i++) {
-      dncTeraEb[i].classList[type]("cl-tdt-dnc-z-alptg-handler");
-      /* DncSet.setGigaBgro(
-        dncGigaBgroEb[i],
-        dncGigaTitleEb[i],
-        gigaBgroBuffer
-      ); */
+    hdncExaPoBgro[targetIndex].classList[type]("cl-tdt-hdnc-z-po-handler");
+    hdncE[targetIndex].classList[type]("cl-tdt-hdnc-z-po-handler");
+    for (let i = 0; i < hdncTeraEb.length; i++) {
+      hdncTeraEb[i].classList[type]("cl-tdt-hdnc-z-po-handler");
     }
-    DncUpdate.updateExa(dncE[targetIndex], dncTeraEb, exaSize);
+    HdncUpdate.updateExa(hdncE[targetIndex], hdncTeraEb, exaSize);
     /*  */
     if (targetIndex === 0) {
-      dncE[targetIndex].classList.add("cl-tdt-dnc-z-alptg-handler-nth-1");
-    } else if (targetIndex === 4) {
-      dncE[targetIndex].classList.add("cl-tdt-dnc-z-alptg-handler-nth-5");
+      hdncE[targetIndex].classList.add("cl-tdt-hdnc-z-po-handler-nth-1");
+    } else if (targetIndex === 3) {
+      hdncE[targetIndex].classList.add("cl-tdt-hdnc-z-po-handler-nth-4");
     }
     /*  */
     if (isActive) {
-      if (SncAccessor.isActiveSnc) {
-        TpncAccessor.tpncZettaSnioHandler();
+      if (HsncAccessor.isActiveHsnc) {
+        HtpncAccessor.htpncZettaSnioHandler();
       }
-      DncReset.resetTdtDnc(targetIndex);
+      HdncReset.resetTdtHdnc(targetIndex);
     }
     /*  */
-    dncY[targetIndex].isActive = isActive;
-    /* =============== Setup; =============== */
-    /* =============== Script: =============== */
-    /* if (isActive) { */
-      /* ==========----- Activation: -----========== */
-      /* T.A: Reset */
-      /* if (SncAccessor.isActiveSnc) {
-        TpncAccessor.tpncZettaSnioHandler();
-      } */
-      /* [ T.S.A: Reset ] {} () */
-      /* DncReset.resetTdtDnc(targetIndex); */
-      /* [ T.S.A: Set ] { dncExaAlptg } ( Tag.div ) */
-      /* dncExaAlptgBgro[targetIndex].style.left = "10%";
-      dncExaAlptgBgro[targetIndex].style.width = "80%"; */
-      /* [ T.S.A: Set ] { dncExaEb } ( Tag.ul ) */
-      /* switch (targetIndex) {
-        case 0:
-          dncE[targetIndex].style.left = "0%";
-          break;
-        case 4:
-          dncE[targetIndex].style.right = "0%";
-          break;
-      } */
-      /* dncE[targetIndex].style.width = "18rem"; */
-      /* DncSet.setExa(dncE[targetIndex], dncTeraEb, 4); */
-      /* T.S.A: Set Tera */
-      /* for (let i = 0; i < dncTeraEb.length; i++) {
-        dncTeraEb[i].style.opacity = "1";
-        DncSet.setGigaBgro(
-          dncGigaBgroEb[i],
-          dncGigaTitleEb[i],
-          32
-        );
-      } */
-      /* A: Set Flag */
-      /* dncY[targetIndex].isActive = true; */
-      /* ==========----- Activation; -----========== */
-    /* } else { */
-      /* ==========----- Deactivation: -----========== */
-      /* A: Set Exa Alptg */
-      /* dncExaAlptgBgro[targetIndex].style.left = "";
-      dncExaAlptgBgro[targetIndex].style.width = ""; */
-      /* D: Set Exa */
-      /* dncE[targetIndex].style.width = ""; */
-      /* DncSet.setExa(dncE[targetIndex], dncTeraEb, 0); */
-      /* D: Set Tera */
-      /* for (let i = 0; i < dncTeraEb.length; i++) {
-        dncTeraEb[i].style.opacity = "";
-        dncGigaBgroEb[i].style.left = "";
-        dncGigaBgroEb[i].style.width = "";
-      } */
-      /* D: Set Flag */
-      /* dncY[targetIndex].isActive = false; */
-      /* ==========----- Deactivation; -----========== */
-    /* } */
-    /* =============== Script; =============== */
+    hdncY[targetIndex].isActive = isActive;
   }
-  static ddtDncYotta(eventData) {
+  static ddtHdncYotta(eventData) {
     const {
       eventType,
       eventIndex
     } = FwcAccessor.getEventData(eventData);
     const {
-      dncY,
-      dncE
-    } = DncGet.getDncGroup();
+      hdncY,
+      hdncE
+    } = HdncGet.getHdncGroup();
     const {
-      dncPetaEb,
-      dncTeraEb
-    } = DncGet.getDncEbGroup(eventIndex);
+      hdncPetaEb,
+      hdncTeraEb
+    } = HdncGet.getHdncEbGroup(eventIndex);
     const {
-      dncExaAlptgTitle,
-      dncExaAlptgBgro
-    } = DncGet.getDncAlptgGroup();
+      hdncExaPoText,
+      hdncExaPoBgro
+    } = HdncGet.getHdncPoGroup();
     /*  */
     let isActive = null;
     let type = "";
@@ -622,90 +404,43 @@ class DncHandler {
       exaSize = 0;
     }
     /*  */
-    dncExaAlptgTitle[eventIndex].classList[type]("cl-ddt-dnc-y-handler");
-    dncExaAlptgBgro[eventIndex].classList[type]("cl-ddt-dnc-y-handler");
-    dncE[eventIndex].classList[type]("cl-ddt-dnc-y-handler");
-    for (let i = 0; i < dncPetaEb.length; i++) {
-      dncTeraEb[i].classList[type]("cl-ddt-dnc-y-handler");
+    hdncExaPoText[eventIndex].classList[type]("cl-ddt-hdnc-y-handler");
+    hdncExaPoBgro[eventIndex].classList[type]("cl-ddt-hdnc-y-handler");
+    hdncE[eventIndex].classList[type]("cl-ddt-hdnc-y-handler");
+    for (let i = 0; i < hdncPetaEb.length; i++) {
+      hdncTeraEb[i].classList[type]("cl-ddt-hdnc-y-handler");
     }
-    DncUpdate.updateExa(dncE[eventIndex], dncPetaEb, exaSize);
+    HdncUpdate.updateExa(hdncE[eventIndex], hdncPetaEb, exaSize);
     /*  */
     if (isActive) {
-      if (eventIndex === 4) {
+      if (eventIndex === 3) {
         const htmlElement = document.documentElement;
         const htmlElementRect = htmlElement.getBoundingClientRect();
-        const dncYottaRect = dncY[eventIndex].getBoundingClientRect();
+        const hdncYottaRect = hdncY[eventIndex].getBoundingClientRect();
         const htmlElementRectCalc = htmlElementRect.right - (21 * 16);
-        const dncYottaRectCalc = 
-          (dncYottaRect.right - (dncYottaRect.width / 2)) + (10 * 16);
-        if (htmlElementRectCalc < dncYottaRectCalc && SncAccessor.isActiveSnc) {
-          /* dncE[eventIndex].style.right = "0rem"; */
-          dncE[eventIndex].classList.add("cl-ddt-dnc-y-handler-nth-5");
+        const hdncYottaRectCalc = 
+          (hdncYottaRect.right - (hdncYottaRect.width / 2)) + (10 * 16);
+        if (htmlElementRectCalc < hdncYottaRectCalc && HsncAccessor.isActiveHsnc) {
+          hdncE[eventIndex].classList.add("cl-ddt-hdnc-y-handler-nth-4");
         } else {
-          /* dncE[eventIndex].style.right = ""; */
-          dncE[eventIndex].classList.remove("cl-ddt-dnc-y-handler-nth-5");
+          hdncE[eventIndex].classList.remove("cl-ddt-hdnc-y-handler-nth-4");
         }
       }
     }
     /*  */
-    dncY[eventIndex].isActive = isActive;
-    /*  */
-    /* switch (eventType) {
-      case "mouseenter": {
-        /* dncExaAlptgTitle[eventIndex].style.fontWeight = "700";
-        dncExaAlptgBgro[eventIndex].style.left = "10%";
-        dncExaAlptgBgro[eventIndex].style.width = "80%"; 
-        DncSet.setExa(dncE[eventIndex], dncPetaEb, 4);
-        /* dncE[eventIndex].style.width = "18rem";
-        for (let i = 0; i < dncPetaEb.length; i++) {
-          dncTeraEb[i].style.opacity = "1";
-        } 
-        switch (eventIndex) {
-          case 4: {
-            const htmlElement = document.documentElement;
-            const htmlElementRect = htmlElement.getBoundingClientRect();
-            const dncYottaRect = dncY[eventIndex].getBoundingClientRect();
-
-            const htmlElementRectCalc = htmlElementRect.right - (21 * 16);
-            const dncYottaRectCalc = 
-              (dncYottaRect.right - (dncYottaRect.width / 2)) + (10 * 16);
-
-            if (htmlElementRectCalc < dncYottaRectCalc && SncAccessor.isActiveSnc) {
-              /* dncE[eventIndex].style.right = "0rem"; 
-              dncE[eventIndex].classList.add("cl-ddt-dnc-y-handler-nth-5");
-            } else {
-              /* dncE[eventIndex].style.right = ""; 
-              dncE[eventIndex].classList.remove("cl-ddt-dnc-y-handler-nth-5");
-            }
-            break;
-          }
-        }
-        break;
-      }
-      case "mouseleave": {
-        /* dncExaAlptgTitle[eventIndex].style.fontWeight = "";
-        dncExaAlptgBgro[eventIndex].style.left = "";
-        dncExaAlptgBgro[eventIndex].style.width = ""; 
-        DncSet.setExa(dncE[eventIndex], dncPetaEb, 0);
-        /* dncE[eventIndex].style.width = "";
-        for (let i = 0; i < dncPetaEb.length; i++) {
-          dncTeraEb[i].style.opacity = "";
-        } 
-        break;
-      }
-    } */
+    hdncY[eventIndex].isActive = isActive;
   }
-  static ddtDncPeta(eventData) {
+  static ddtHdncPeta(eventData) {
     const {
       eventType,
       eventIndex,
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".dnc-y");
+    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
     const {
-      dncGigaTitleEb,
-      dncGigaRgroEb,
-      dncGigaBgroEb
-    } = DncGet.getDncEbGroup(targetIndex);
+      hdncGigaTextEb,
+      hdncGigaRgroEb,
+      hdncGigaBgroEb
+    } = HdncGet.getHdncEbGroup(targetIndex);
     /*  */
     const gigaBgroBuffer = 32;
     /*  */
@@ -719,185 +454,260 @@ class DncHandler {
       type = "remove";
     }
     /*  */
-    dncGigaTitleEb[eventIndex].classList[type]("cl-ddt-dnc-p-handler");
-    dncGigaRgroEb[eventIndex].classList[type]("cl-ddt-dnc-p-handler");
-    DncSetup.setupGigaBgroWidth(isActive, dncGigaBgroEb[eventIndex]);
-    /* if (isActive) {
-      /* DncSet.setGigaBgro(
-        dncGigaBgroEb[eventIndex],
-        dncGigaTitleEb[eventIndex],
-        gigaBgroBuffer
-      ); 
-      dncGigaBgroEb[eventIndex].style.width = dncGigaBgroEb[eventIndex].width;
+    hdncGigaTextEb[eventIndex].classList[type]("cl-ddt-hdnc-p-handler");
+    hdncGigaRgroEb[eventIndex].classList[type]("cl-ddt-hdnc-p-handler");
+    HdncSetup.setupGigaBgroWidth(isActive, hdncGigaBgroEb[eventIndex]);
+  }
+  static mdtHdncZettaEcoSfro() {
+    const {
+      hdncR
+    } = HdncGet.getHdncRoot();
+    const {
+      hdncY
+    } = HdncGet.getHdncGroup();
+    const {
+      hdncZettaPo
+    } = HdncGet.getHdncPoGroup();
+    const {
+      hdncZettaEcoSfroTgro,
+      hdncZettaEcoSfroBgro
+    } = HdncGet.getHdncEcoGroup();
+    /*  */
+    const scrollTop = hdncR.scrollTop;
+    const scrollHeight = hdncR.scrollHeight;
+    const clientHeight = hdncR.clientHeight;
+    const scrollBuffer = 16;
+    const defaultHeight = 4 * 16;
+    /*  */
+    let tgroType = "";
+    let bgroType = "";
+    let scrollable = 0;
+    let tempHeight = hdncZettaPo.length * defaultHeight;
+    /*  */
+    for (let i = 0; i < hdncY.length; i++) {
+      if (hdncY[i].isActive) {
+        const {
+          hdncPetaEb
+        } = HdncGet.getHdncEbGroup(i);
+        tempHeight += hdncPetaEb.length * defaultHeight;
+      }
+    }
+    if (tempHeight > clientHeight) {
+      scrollable = tempHeight - clientHeight;
+    }
+    /*  */
+    if (scrollable <= scrollBuffer) {
+      if (HdncAccessor.hdncScrollState !== 0) {
+        tgroType = "remove";
+        bgroType = "remove";
+        HdncAccessor.hdncScrollState = 0;
+      }
+      return;
+    }
+    /*  */
+    if (scrollTop < scrollBuffer) {
+      if (HdncAccessor.hdncScrollState !== 1) {
+        hdncR.scroll(0, 0);
+        tgroType = "remove";
+        bgroType = "add";
+        HdncAccessor.hdncScrollState = 1;
+      }
+    } else if (scrollTop > scrollable - scrollBuffer) {
+      if (HdncAccessor.hdncScrollState !== 2) {
+        hdncR.scroll(0, scrollHeight);
+        tgroType = "add";
+        bgroType = "remove";
+        HdncAccessor.hdncScrollState = 2;
+      }
     } else {
-      dncGigaBgroEb[eventIndex].style.width = "";
-    } */
-    /* getTarget */
-    /* switch (eventType) {
-      case "mouseenter": {
-        /* dncGigaTitleEb[eventIndex].style.fontWeight = "700";
-        dncGigaRgroEb[eventIndex].style.margin = "0rem 0rem 0rem 1rem";
-        dncGigaRgroEb[eventIndex].style.borderTop = "0.25rem solid #00000000";
-        dncGigaRgroEb[eventIndex].style.borderBottom = "0.25rem solid #00000000";
-        dncGigaRgroEb[eventIndex].style.borderLeft = "0.5rem solid #FFFFFF";
-        dncGigaRgroEb[eventIndex].style.opacity = "1"; 
-        DncSet.setGigaBgro(
-          dncGigaBgroEb[eventIndex],
-          dncGigaTitleEb[eventIndex],
-          32
-        );
-        break;
+      if (HdncAccessor.hdncScrollState !== 3) {
+        tgroType = "add";
+        bgroType = "add";
+        HdncAccessor.hdncScrollState = 3;
       }
-      case "mouseleave": {
-        /* dncGigaTitleEb[eventIndex].style.fontWeight = "";
-        dncGigaRgroEb[eventIndex].style.margin = "";
-        dncGigaRgroEb[eventIndex].style.borderTop = "";
-        dncGigaRgroEb[eventIndex].style.borderBottom = "";
-        dncGigaRgroEb[eventIndex].style.borderLeft = "";
-        dncGigaRgroEb[eventIndex].style.opacity = ""; 
-        dncGigaBgroEb[eventIndex].style.width = "";
-        break;
-      }
-    } */
+    }
+    /*  */
+    if (tgroType) {
+      hdncZettaEcoSfroTgro.classList[tgroType]("cl-mdt-hdnc-z-sfro-handler");
+    }
+    if (bgroType) {
+      hdncZettaEcoSfroBgro.classList[bgroType]("cl-mdt-hdnc-z-sfro-handler");
+    }
   }
 }
-class DncGet {
-  static getDncRoot() {
-    const dncRoot = [
+class HdncGet {
+  static getHdncRoot() {
+    const hdncRoot = [
       {
-        id: "dncR",
-        selector: ".plc-y-liptg .dnc-r-bptg"
+        id: "hdncR",
+        selector: ".blf-y-ho .hdnc-r"
       }
     ];
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      DncAccessor.dncCache,
-      dncRoot
+      HdncAccessor.hdncCache,
+      hdncRoot
     );
     return saveVerifyGroup;
   }
-  static getDncGroup() {
-    const dncGroup = [
+  static getHdncGroup() {
+    const hdncGroup = [
       {
-        id: "dncY",
-        selector: ".dnc-y",
+        id: "hdncY",
+        selector: ".hdnc-y",
         type: "all"
       },
       {
-        id: "dncZ",
-        selector: ".dnc-z",
+        id: "hdncZ",
+        selector: ".hdnc-z",
         type: "all"
       },
       {
-        id: "dncE",
-        selector: ".dnc-e",
+        id: "hdncE",
+        selector: ".hdnc-e",
         type: "all"
       }
     ];
     const {
-      dncR
-    } = this.getDncRoot();
+      hdncR
+    } = this.getHdncRoot();
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      DncAccessor.dncCache,
-      dncGroup,
-      dncR
+      HdncAccessor.hdncCache,
+      hdncGroup,
+      hdncR
     );
     return saveVerifyGroup;
   }
-  static getDncAlptgGroup() {
-    const dncAlptgGroup = [
+  static getHdncPoGroup() {
+    const hdncPoGroup = [
       {
-        id: "dncZettaAlptg",
-        selector: ".dnc-z-alptg",
+        id: "hdncZettaPo",
+        selector: ".hdnc-z-po",
         type: "all"
       },
       {
-        id: "dncExaAlptgTitle",
-        selector: ".dnc-e-alptg-title",
+        id: "hdncExaPoText",
+        selector: ".hdnc-e-po-text",
         type: "all"
       },
       {
-        id: "dncExaAlptgRgro",
-        selector: ".dnc-e-alptg-rgro",
+        id: "hdncExaPoRgro",
+        selector: ".hdnc-e-po-rgro",
         type: "all"
       },
       {
-        id: "dncExaAlptgBgro",
-        selector: ".dnc-e-alptg-bgro",
+        id: "hdncExaPoBgro",
+        selector: ".hdnc-e-po-bgro",
         type: "all"
       }
     ];
     const {
-      dncR
-    } = this.getDncRoot();
+      hdncR
+    } = this.getHdncRoot();
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      DncAccessor.dncCache,
-      dncAlptgGroup,
-      dncR
+      HdncAccessor.hdncCache,
+      hdncPoGroup,
+      hdncR
     );
     return saveVerifyGroup;
   }
-  static getDncEbGroup(gIndex) {
-    const dncEbGroup = [
+  static getHdncEbGroup(gIndex) {
+    const hdncEbGroup = [
       {
-        id: "dncPetaEb",
-        selector: ".dnc-p",
+        id: "hdncPetaEb",
+        selector: ".hdnc-p",
         type: "all"
       },
       {
-        id: "dncTeraEb",
-        selector: ".dnc-t",
+        id: "hdncTeraEb",
+        selector: ".hdnc-t",
         type: "all"
       },
       {
-        id: "dncGigaTitleEb",
-        selector: ".dnc-g-title",
+        id: "hdncGigaTextEb",
+        selector: ".hdnc-g-text",
         type: "all"
       },
       {
-        id: "dncGigaRgroEb",
-        selector: ".dnc-g-rgro",
+        id: "hdncGigaRgroEb",
+        selector: ".hdnc-g-rgro",
         type: "all"
       },
       {
-        id: "dncGigaBgroEb",
-        selector: ".dnc-g-bgro",
+        id: "hdncGigaBgroEb",
+        selector: ".hdnc-g-bgro",
         type: "all"
       }
     ];
     const {
-      dncE
-    } = this.getDncGroup();
+      hdncE
+    } = this.getHdncGroup();
     const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      DncAccessor.dncCache,
-      dncEbGroup,
-      dncE[gIndex],
+      HdncAccessor.hdncCache,
+      hdncEbGroup,
+      hdncE[gIndex],
       gIndex
     );
     return saveVerifyGroup;
   }
+  static getHdncEcoGroup() {
+    const hdncEcoGroup = [
+      {
+        id: "hdncYottaEco",
+        selector: ".hdnc-y-eco"
+      },
+      {
+        id: "hdncZettaEcoSdo",
+        selector: ".hdnc-z-eco-sdo"
+      },
+      {
+        id: "hdncZettaEcoSfroTgro",
+        selector: ".hdnc-z-eco-sfro-tgro"
+      },
+      {
+        id: "hdncZettaEcoSfroBgro",
+        selector: ".hdnc-z-eco-sfro-bgro"
+      }
+    ];
+    const {
+      hdncR
+    } = HdncGet.getHdncRoot();
+    const saveVerifyGroup = FwcAccessor.getVerifyCache(
+      HdncAccessor.hdncCache,
+      hdncEcoGroup,
+      hdncR
+    );
+    return saveVerifyGroup;
+  }
 }
-class DncSet {
+class HdncSet {
   static setAppendYsGroup(saveGenerate) {
     saveGenerate["zetta"].append(saveGenerate["exa"]);
     saveGenerate["yotta"].append(
-      saveGenerate["zettaAlptg"],
+      saveGenerate["zettaPo"],
       saveGenerate["zetta"]
     );
   }
   static setAppendZsGroup(saveGenerate) {
     saveGenerate["tera"].append(
-      saveGenerate["gigaTitle"],
+      saveGenerate["gigaText"],
       saveGenerate["gigaRgro"],
       saveGenerate["gigaBgro"]
     );
     saveGenerate["peta"].append(saveGenerate["tera"]);
     saveGenerate["exa"].append(saveGenerate["peta"]);
   }
-  static setAppendAlptgGroup(saveGenerate) {
-    saveGenerate["zettaAlptg"].append(
-      saveGenerate["exaAlptgTitle"],
-      saveGenerate["exaAlptgRgro"],
-      saveGenerate["exaAlptgBgro"]
+  static setAppendPoGroup(saveGenerate) {
+    saveGenerate["zettaPo"].append(
+      saveGenerate["exaPoText"],
+      saveGenerate["exaPoRgro"],
+      saveGenerate["exaPoBgro"]
+    );
+  }
+  static setAppendEcoGroup(saveGenerate) {
+    saveGenerate["yottaEco"].append(
+      saveGenerate["zettaEcoSdo"],
+      saveGenerate["zettaEcoSfroTgro"],
+      saveGenerate["zettaEcoSfroBgro"]
     );
   }
   static setExa(setElement, referElement, size) {
@@ -919,7 +729,7 @@ class DncSet {
     setElement.style.width = setWidth;
   }
 }
-class DncUpdate {
+class HdncUpdate {
   static updateExa(setElement, referElement, size) {
     let gridTemplateData = "";
     for (let i = 0; i < referElement.length; i++) {
@@ -928,7 +738,7 @@ class DncUpdate {
     setElement.style.gridTemplateRows = gridTemplateData;
   }
 }
-class DncSetup {
+class HdncSetup {
   static setupGigaBgro(setElement, referElement, buffer) {
     const referWidth = referElement.offsetWidth;
     const setLeft = "calc" +
@@ -952,42 +762,53 @@ class DncSetup {
     setElement.style.width = setWidth;
   }
 }
-class DncReset {
-  static resetDnc(displayTypeState) {
+class HdncReset {
+  static resetHdnc(displayTypeState) {
     const {
-      dncY,
-      dncE
-    } = DncGet.getDncGroup();
+      hdncY,
+      hdncE
+    } = HdncGet.getHdncGroup();
     const {
-      dncZettaAlptg
-    } = DncGet.getDncAlptgGroup();
+      hdncZettaPo
+    } = HdncGet.getHdncPoGroup();
+    const {
+      hdncZettaEcoSfroTgro,
+      hdncZettaEcoSfroBgro
+    } = HdncGet.getHdncEcoGroup();
     /*  */
     const eventData = {};
-    for (let i = 0; i < dncZettaAlptg.length; i++) {
-      if (dncY[i].isActive) {
+    /*  */
+    if (displayTypeState === 1) {
+      hdncZettaEcoSfroTgro.classList.remove("cl-mdt-hdnc-z-sfro-handler");
+      hdncZettaEcoSfroBgro.classList.remove("cl-mdt-hdnc-z-sfro-handler");
+      HdncAccessor.hdncScrollState = 0;
+    }
+    /*  */
+    for (let i = 0; i < hdncZettaPo.length; i++) {
+      if (hdncY[i].isActive) {
         switch (displayTypeState) {
           case 1: {
-            eventData.currentTarget = dncZettaAlptg[i];
-            DncHandler.mdtDncZettaAlptg(eventData);
+            eventData.currentTarget = hdncZettaPo[i];
+            HdncHandler.mdtHdncZettaPo(eventData);
             break;
           }
           case 2: {
-            eventData.currentTarget = dncZettaAlptg[i];
-            DncHandler.tdtDncZettaAlptg(eventData);
+            eventData.currentTarget = hdncZettaPo[i];
+            HdncHandler.tdtHdncZettaPo(eventData);
             break;
           }
           case 3: {
-            eventData.currentTarget = dncZettaAlptg[i];
+            eventData.currentTarget = hdncZettaPo[i];
             eventData.type = "mouseleave";
-            DncHandler.ddtDncYotta(eventData);
+            HdncHandler.ddtHdncYotta(eventData);
             /*  */
             const {
-              dncPetaEb
-            } = DncGet.getDncEbGroup(i);
-            for (let j = 0; j < dncE[i].length; j++) {
-              eventData.currentTarget = dncPetaEb[j];
+              hdncPetaEb
+            } = HdncGet.getHdncEbGroup(i);
+            for (let j = 0; j < hdncE[i].length; j++) {
+              eventData.currentTarget = hdncPetaEb[j];
               eventData.type = "mouseleave";
-              DncHandler.ddtDncPeta(eventData);
+              HdncHandler.ddtHdncPeta(eventData);
             }
             break;
           }
@@ -995,27 +816,27 @@ class DncReset {
       }
     }
   }
-  static resetTdtDnc(targetIndex) {
+  static resetTdtHdnc(targetIndex) {
     const {
-      dncY
-    } = DncGet.getDncGroup();
+      hdncY
+    } = HdncGet.getHdncGroup();
     const {
-      dncZettaAlptg
-    } = DncGet.getDncAlptgGroup();
+      hdncZettaPo
+    } = HdncGet.getHdncPoGroup();
     /*  */
     const eventData = {};
-    for (let i = 0; i < dncY.length; i++) {
-      if (dncY[i].isActive && targetIndex !== i) {
-        eventData.currentTarget = dncZettaAlptg[i];
-        DncHandler.tdtDncZettaAlptg(eventData);
+    for (let i = 0; i < hdncY.length; i++) {
+      if (hdncY[i].isActive && targetIndex !== i) {
+        eventData.currentTarget = hdncZettaPo[i];
+        HdncHandler.tdtHdncZettaPo(eventData);
         return;
       }
     }
   }
 }
 export {
-  DncAccessor,
-  DncController
+  HdncAccessor,
+  HdncController
 }
 /* NOTE
  */

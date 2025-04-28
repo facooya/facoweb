@@ -3,25 +3,27 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* import {
-  TpncController
-} from "./nc/tpnc/tpnc-class.js";
 import {
-  SncController
-} from "./nc/snc/snc-class.js"; */
-import {
-  TpncController,
-  DncController,
-  SncController,
-  EccController,
-  NplcController
+  HtpncController,
+  HdncController,
+  HsncController,
+  HeccController,
+  /* NplcController */
+  NpmhcController,
+  NpmscController
 } from "./fwc-hub.js";
 class FwcAccessor {
   static getGenerateElement(elementTag, setClass) {
     return FwcGet.getGenerateElement(elementTag, setClass);
   }
+  static getGenerateElement2(elementTag, setClass) {
+    return FwcGet.getGenerateElement2(elementTag, setClass);
+  }
   static getVerifyCache(dCache, dGroup, dRoot, dIndex) {
     return FwcGet.getVerifyCache(dCache, dGroup, dRoot, dIndex);
+  }
+  static getVerifyCache2(dCache, dGroup, dRoot, dIndex) {
+    return FwcGet.getVerifyCache2(dCache, dGroup, dRoot, dIndex);
   }
   static getEventData(eventData, indexTarget) {
     return FwcGet.getEventData(eventData, indexTarget);
@@ -34,34 +36,40 @@ class FwcController {
   /* =============== Process: =============== */
   static process() {
     const pStart = performance.now();
-    TpncController.process();
-    DncController.process();
-    SncController.process();
-    EccController.process();
+    HtpncController.process();
+    HdncController.process();
+    HsncController.process();
+    HeccController.process();
     /* !!!!! v1.1.15a [temp] URL Check nav-page? doc-page? home-page? !!!!! */
-    NplcController.process();
+    /* NplcController.process(); */
+    NpmhcController.process();
+    NpmscController.process();
     const pEnd = performance.now();
     console.log("per.fwc.process: " + (pEnd - pStart));
   }
   static processOnLoad() {
     const pStart = performance.now();
-    TpncController.processOnLoad();
-    DncController.processOnLoad();
-    SncController.processOnLoad();
-    EccController.processOnLoad();
+    HtpncController.processOnLoad();
+    HdncController.processOnLoad();
+    HsncController.processOnLoad();
+    HeccController.processOnLoad();
 
-    NplcController.processOnLoad();
+    /* NplcController.processOnLoad(); */
+    NpmhcController.processOnLoad();
+    NpmscController.processOnLoad();
     const pEnd = performance.now();
     console.log("per.fwc.processOnLoad: " + (pEnd - pStart));
   }
   static processOnResize() {
     const pStart = performance.now();
-    TpncController.processOnResize();
-    DncController.processOnResize();
-    SncController.processOnResize();
-    EccController.processOnResize();
+    HtpncController.processOnResize();
+    HdncController.processOnResize();
+    HsncController.processOnResize();
+    HeccController.processOnResize();
 
-    NplcController.processOnResize();
+    /* NplcController.processOnResize(); */
+    NpmhcController.processOnResize();
+    NpmscController.processOnResize();
     const pEnd = performance.now();
     console.log("per.fwc.processOnResize: " + (pEnd - pStart));
   }
@@ -80,6 +88,46 @@ class FwcGet {
   static getGenerateElement(elementTag, setClass) {
     const elementData = document.createElement(elementTag);
     elementData.setAttribute("class", setClass);
+    return elementData;
+  }
+  static getGenerateElement2(elementGroup, pIndex = []) {
+    const eGenerate = elementGroup.generate;
+    const elementData = document.createElement(eGenerate.htmlTag);
+    if (eGenerate.htmlClass) {
+      elementData.setAttribute("class", eGenerate.htmlClass);
+    }
+    if (eGenerate.htmlText || eGenerate.htmlLink) {
+      switch (pIndex.length) {
+        case 0: {
+          if (eGenerate.htmlText) {
+            elementData.textContent = eGenerate.htmlText;
+          }
+          if (eGenerate.htmlLink) {
+            elementData.setAttribute("href", eGenerate.htmlLink);
+          }
+          break;
+        }
+        case 1: {
+          if (eGenerate.htmlText) {
+            elementData.textContent = eGenerate.htmlText[pIndex[0]];
+          }
+          if (eGenerate.htmlLink) {
+            elementData.setAttribute("href", eGenerate.htmlLink[pIndex[0]]);
+          }
+          break;
+        }
+        case 2: {
+          if (eGenerate.htmlText) {
+            elementData.textContent = eGenerate.htmlText[pIndex[0]][pIndex[1]];
+          }
+          if (eGenerate.htmlLink) {
+            elementData.setAttribute("href", eGenerate.htmlLink[pIndex[0]][pIndex[1]]);
+          }
+          break;
+        }
+      }
+    }
+    
     return elementData;
   }
   static getVerifyCache(dCache, dGroup, dRoot, dIndex) {
@@ -103,6 +151,61 @@ class FwcGet {
       }
       saveVerifyCache[dGroup[i].id] = getCache;
     }
+    return saveVerifyCache;
+  }
+  static getVerifyCache2(dCache, dGroup, dRoot, dIndex) {
+    let saveVerifyCache = {};
+    /* dRoot Verify */
+    if (dRoot === undefined || dRoot === null) {
+      dRoot = document;
+    }
+    /*  */
+    for (let i = 0; i < dGroup.length; i++) {
+      let cacheKey = dGroup[i].elementId;
+      /* dIndex Verify: 0 = flase, if dIndex = 0; Error */
+      if (dIndex != null) {
+        cacheKey += dIndex.toString();
+      }
+      /* cache Verify */
+      let getCache = dCache[cacheKey];
+      if (!getCache) {
+        let queryType = "";
+        switch (dGroup[i].query.queryType) {
+          case "single": {
+            queryType = "querySelector";
+            break;
+          }
+          case "all": {
+            queryType = "querySelectorAll";
+            break;
+          }
+          default: {
+            queryType = "querySelector";
+            break;
+          }
+        }
+        /* if (!dGroup[i].query.queryType) {
+          if (dGroup[i].query.queryType === "single") {
+            queryType = "querySelector";
+          } else if (dGroup[i].query.queryType === "all") {
+            queryType = "querySelectorAll";
+          }
+        } else {
+          queryType = "querySelector";
+        } */
+        /* if (dGroup[i].type === "all") {
+          getCache = dRoot.querySelectorAll(dGroup[i].selector);
+        } else {
+          getCache = dRoot.querySelector(dGroup[i].selector);
+        } */
+        /* Find & Save */
+        getCache = dRoot[queryType](dGroup[i].query.querySelector);
+        dCache[cacheKey] = getCache;
+      }
+      /* Return */
+      saveVerifyCache[dGroup[i].elementId] = getCache;
+    }
+    /*  */
     return saveVerifyCache;
   }
   static getEventData(eventData, targetQuery) {
@@ -157,19 +260,6 @@ class FwcSet {
     }
   }
 }
-/* class FwcGet {
-  static getGenerateElement(elementTag, setClass) {
-    const elementData = document.createElement(elementTag);
-    elementData.setAttribute("class", setClass);
-    return elementData;
-  }
-  static getEventData(eventData) {
-    const eType = eventData.type;
-    const eCurrentTarget = eventData.currentTarget;
-    const eIndex = eCurrentTarget.index;
-    return { eType, eCurrentTarget, eIndex };
-  }
-} */
 export {
   FwcAccessor,
   FwcController

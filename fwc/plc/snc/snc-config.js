@@ -3,16 +3,16 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-class SncData {
-  /* ===== Title ===== */
-  static exaSiptgTitleRs = [
+class HsncData {
+  /* ===== Text ===== */
+  static hsncExaPoText = [
     "Tab 1",
     "Tab 2",
     "Tab 3"
   ];
-  /* ===== gigaTitle ===== */
-  static gigaTitleYs = [
-    "Version 1.1.16 Alpha",
+  /* ===== gigaText ===== */
+  static hsncGigaTextYs = [
+    "Version 1.1.17 Alpha",
     "Item 1-2",
     "Item 1-3",
     "Item 1-4",
@@ -24,17 +24,17 @@ class SncData {
     "Item 1-10",
     "Item 1-11",
   ];
-  static gigaTitleZs = [
+  static hsncGigaTextZs = [
     "Item 2-1",
     "Item 2-2"
   ];
-  static gigaTitleEs = [
+  static hsncGigaTextEs = [
     "Item 3-1",
     "Item 3-2",
     "Item 3-3"
   ];
-  /* ===== TeraHref ===== */
-  static teraHrefYs = [
+  /* ===== TeraLink ===== */
+  static hsncTeraLinkYs = [
     "./doc-page.html",
     "./doc-page.html",
     "./doc-page.html",
@@ -47,124 +47,153 @@ class SncData {
     "./doc-page.html",
     "./doc-page.html"
   ];
-  static teraHrefZs = [
+  static hsncTeraLinkZs = [
     "./doc-page.html",
     "./doc-page.html"
   ];
-  static teraHrefEs = [
+  static hsncTeraLinkEs = [
     "./doc-page.html",
     "./doc-page.html",
     "./doc-page.html"
   ];
   /* ===== Compile ===== */
-  static gigaTitleRs = [
-    SncData.gigaTitleYs,
-    SncData.gigaTitleZs,
-    SncData.gigaTitleEs
+  static hsncGigaText = [
+    HsncData.hsncGigaTextYs,
+    HsncData.hsncGigaTextZs,
+    HsncData.hsncGigaTextEs
   ];
-  static teraHrefRs = [
-    SncData.teraHrefYs,
-    SncData.teraHrefZs,
-    SncData.teraHrefEs
+  static hsncTeraLink = [
+    HsncData.hsncTeraLinkYs,
+    HsncData.hsncTeraLinkZs,
+    HsncData.hsncTeraLinkEs
   ];
 }
-class SncElement {
+class HsncElement {
   static elementYsGroup = [
     {
       id: "yotta",
       tag: "ul",
-      selector: "snc-y"
+      selector: "hsnc-y"
     },
     {
       id: "zetta",
       tag: "li",
-      selector: "snc-z"
+      selector: "hsnc-z"
     },
     {
       id: "exa",
       tag: "ul",
-      selector: "snc-e"
+      selector: "hsnc-e"
     }
   ];
   static elementZsGroup = [
     {
       id: "peta",
       tag: "li",
-      selector: "snc-p"
+      selector: "hsnc-p"
     },
     {
       id: "tera",
       tag: "a",
-      selector: "snc-t",
-      href: SncData.teraHrefRs
+      selector: "hsnc-t",
+      link: HsncData.hsncTeraLink
     },
     {
-      id: "gigaTitle",
+      id: "gigaText",
       tag: "div",
-      selector: "snc-g-title",
-      text: SncData.gigaTitleRs
+      selector: "hsnc-g-text",
+      text: HsncData.hsncGigaText
     },
     {
       id: "gigaRgro",
       tag: "div",
-      selector: "snc-g-rgro"
+      selector: "hsnc-g-rgro"
     },
     {
       id: "gigaBgro",
       tag: "div",
-      selector: "snc-g-bgro"
+      selector: "hsnc-g-bgro"
     }
   ];
-  static elementSiptgGroup = [
+  static elementPoGroup = [
     {
-      id: "zettaSiptg",
+      id: "zettaPo",
       tag: "li",
-      selector: "snc-z-siptg"
+      selector: "hsnc-z-po"
     },
     {
-      id: "exaSiptgTitle",
+      id: "exaPoText",
       tag: "div",
-      selector: "snc-e-siptg-title",
-      text: SncData.exaSiptgTitleRs
+      selector: "hsnc-e-po-text",
+      text: HsncData.hsncExaPoText
     },
     {
-      id: "exaSiptgRgro",
+      id: "exaPoRgro",
       tag: "div",
-      selector: "snc-e-siptg-rgro"
+      selector: "hsnc-e-po-rgro"
     },
     {
-      id: "exaSiptgBgro",
+      id: "exaPoBgro",
       tag: "div",
-      selector: "snc-e-siptg-bgro"
+      selector: "hsnc-e-po-bgro"
     }
   ];
-  static elementSdoGroup = [
+  /* static elementSdoGroup = [
     {
       id: "yottaSdo",
       tag: "div",
-      selector: "snc-y-sdo"
+      selector: "hsnc-y-sdo"
+    }
+  ]; */
+  static elementEcoGroup = [
+    {
+      id: "yottaEco",
+      tag: "div",
+      selector: "hsnc-y-eco"
+    },
+    {
+      id: "zettaEcoSdo",
+      tag: "div",
+      selector: "hsnc-z-eco-sdo"
+    },
+    {
+      id: "zettaEcoSfroTgro",
+      tag: "div",
+      selector: "hsnc-z-eco-sfro hsnc-z-eco-sfro-tgro"
+    },
+    {
+      id: "zettaEcoSfroBgro",
+      tag: "div",
+      selector: "hsnc-z-eco-sfro hsnc-z-eco-sfro-bgro"
     }
   ];
 }
-class SncConfig {
+class HsncConfig {
   /* =============== :Data: =============== */
-  static exaSiptgTitleRs = SncData.exaSiptgTitleRs;
-  static teraHrefRs = SncData.teraHrefRs;
-  static gigaTitleRs = SncData.gigaTitleRs;
+  static hsncExaPoText = HsncData.hsncExaPoText;
+  static hsncTeraLink = HsncData.hsncTeraLink;
+  static hsncGigaText = HsncData.hsncGigaText;
   /* =============== ;Data; =============== */
   /* =============== :Element: =============== */
-  static elementYsGroup = SncElement.elementYsGroup;
-  static elementZsGroup = SncElement.elementZsGroup;
-  static elementSiptgGroup = SncElement.elementSiptgGroup;
-  static elementSdoGroup = SncElement.elementSdoGroup;
+  static elementYsGroup = HsncElement.elementYsGroup;
+  static elementZsGroup = HsncElement.elementZsGroup;
+  static elementPoGroup = HsncElement.elementPoGroup;
+  /* static elementSdoGroup = HsncElement.elementSdoGroup; */
+  static elementEcoGroup = HsncElement.elementEcoGroup;
   /* =============== ;Element; =============== */
 }
 export {
-  SncConfig
+  HsncConfig
 };
-/* DESCRIPTION
- * SncConfig.exaSiptgTitleRs, gigaTitleRs, teraHrefRs
+/* HTML
+ * <nav class="hsnc-r">
+ *   <ul class="hsnc-y">
+ *   </ul>
+ * </nav>
  */
-/* INFORMATION
- * @[Author] {Facooya} (Founder)
+/* NOTE
+ * HsncConfig.exaPoTextRs, gigaTextRs, teraLinkRs
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
  */

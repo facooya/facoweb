@@ -16,6 +16,18 @@
   --timing-secondary: linear;
 }
 :root {
+  --facooya-bold-white:
+    0.25px 0px var(--white),
+    -0.25px 0px var(--white),
+    0px 0.25px var(--white),
+    0px -0.25px var(--white);
+  --facooya-bold-black:
+    0.25px 0px var(--black),
+    -0.25px 0px var(--black),
+    0px 0.25px var(--black),
+    0px -0.25px var(--black);
+}
+:root {
   --tpnc-height: 4rem;
   --dnc-height: 4rem;
 
