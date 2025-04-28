@@ -61,7 +61,6 @@ class BlfManager {
     if (faucRootRect.width + fsdcRootRect.width < wiw) {
       blfYottaFo.style.gridTemplateAreas = "\"fsmc fsmc\" \"fauc fsdc\" \"fllc fllc\"";
     } */
-    console.log(faucRootRect);
   }
 }
 class BlfHandler {

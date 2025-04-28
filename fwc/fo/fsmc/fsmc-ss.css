@@ -10,8 +10,6 @@
 .fsmc-y {
   /* Tag.ul */
   display: grid;
-  /* grid-template-columns: repeat(auto-fill, 1.8rem);
-  grid-auto-rows: 1.8rem; */
   grid-template-columns: repeat(3, 1.8rem);
   gap: 2rem;
   list-style-type: none;

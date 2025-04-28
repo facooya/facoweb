@@ -7,9 +7,10 @@
   grid-area: fllc;
   display: grid;
   grid-template-areas:
-    "icon"
-    "y"
-    "copyright";
+    "facooya-icon facooya-ta-icon"
+    "facooya-logo facooya-logo"
+    "y y"
+    "copyright copyright";
   gap: 1rem;
 }
 .fllc-y {
@@ -22,7 +23,7 @@
   justify-content: center;
 }
 .fllc-y-facooya-icon {
-  grid-area: icon;
+  grid-area: facooya-icon;
   width: 5rem;
   height: 5rem;
   mask-image: url("../../../svg/a.svg");
@@ -30,6 +31,28 @@
   mask-repeat: no-repeat;
   background-color: var(--white);
   justify-self: center;
+}
+.fllc-y-facooya-ta-icon {
+  grid-area: facooya-ta-icon;
+  width: 5rem;
+  height: 5rem;
+  mask-image: url("../../../svg/b.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: var(--white);
+  justify-self: center;
+}
+.fllc-y-facooya-logo {
+  grid-area: facooya-logo;
+  width: 20rem;
+  height: 5rem;
+  mask-image: url("../../../svg/c.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: var(--white);
+  justify-self: center;
+  /*  */
+  margin-top: 2rem;
 }
 .fllc-y-copyright {
   grid-area: copyright;

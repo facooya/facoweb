@@ -6,17 +6,17 @@
 .fauc-r {
   grid-area: fauc;
   display: grid;
-  grid-template-areas: "title" "list";
+  grid-template-areas: "tlo" "blo";
   gap: 1rem;
   white-space: nowrap;
 }
 .fauc-y-text {
-  grid-template-areas: title;
+  grid-template-areas: tlo;
   font-size: 1.5rem;
   color: #FFFFFF;
 }
 .fauc-y {
-  grid-template-areas: list;
+  grid-template-areas: blo;
   display: grid;
   grid-auto-flow: row;
   gap: 0.5rem;
