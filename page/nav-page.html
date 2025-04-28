@@ -19,7 +19,11 @@
     <link href="../fwc/npmo/npmhc/npmhc-ss.css" rel="stylesheet">
     <link href="../fwc/npmo/npmsc/npmsc-ss.css" rel="stylesheet">
     <!-- FO-SS -->
-    <link href="../fwc/fo/bpnc/bpnc-ss.css" rel="stylesheet">
+    <!-- <link href="../fwc/fo/bpnc/bpnc-ss.css" rel="stylesheet"> -->
+    <link href="../fwc/fo/fsmc/fsmc-ss.css" rel="stylesheet">
+    <link href="../fwc/fo/fsdc/fsdc-ss.css" rel="stylesheet">
+    <link href="../fwc/fo/fauc/fauc-ss.css" rel="stylesheet">
+    <link href="../fwc/fo/fllc/fllc-ss.css" rel="stylesheet">
     <!-- HO-CL -->
     <link href="../fwc/ho/htpnc/htpnc-cl.css" rel="stylesheet">
     <link href="../fwc/ho/hdnc/hdnc-cl.css" rel="stylesheet">
@@ -31,7 +35,7 @@
     <script src="../fwa/fwa.js" type="module"></script>
     <script src="../fwc/fwc.js" type="module"></script>
     <!-- %%% Web Title %%% -->
-    <title>v1.1.19a-9 Navigation page</title>
+    <title>v1.1.20a Navigation page</title>
   </head>
   <!-- 
     BLF: Body Layout Framework
@@ -53,7 +57,7 @@
     <main class="blf-y-npmo">
       <header class="npmhc-r">
         <div class="npmhc-y-tlo">
-          <h1 class="npmhc-z-tlo-text">V1.1.19A-9 Navigation page</h1>
+          <h1 class="npmhc-z-tlo-text">V1.1.20A Navigation page</h1>
           <div class="npmhc-z-tlo-bgro"></div>
         </div>
         <nav class="npmhc-y-tno">
@@ -199,40 +203,36 @@
     <!-- ===== Bottom Panel Component ===== -->
     <!-- 
       SMC: Social Media Component
-      ADC: Affiliate Domain Component
      -->
-    <footer class="plf-y-pfo blf-y-fo">
-      <nav class="smc-r fsmnc-r">
-        <h3 class="smc-y-title">Social Media</h3>
-        <ul class="smc-y">
-          <li class="smc-z-a">
-            <div class="smc-e-a-logo-icon"></div>
-          </li>
-          <li class="smc-z-b">
-            <div class="smc-e-b-logo-icon"></div>
-          </li>
-          <li class="smc-z-c">
-            <div class="smc-e-c-logo-icon"></div>
-          </li>
+    <footer class="blf-y-fo">
+      <nav class="fauc-r">
+        <h3 class="fauc-y-text">About Us</h3>
+        <ul class="fauc-y">
+          <li class="fauc-z">Contact Us</li>
+          <li class="fauc-z">Our Team</li>
+          <li class="fauc-z">Workshop</li>
         </ul>
       </nav>
-      <nav class="adc-r fadnc-r">
-        <h3 class="adc-y-title">Our Sites</h3>
-        <ul>
-          <li>a.facooya.com</li>
-          <li>b.facooya.com</li>
-          <li>c.facooya.com</li>
+      <!--  -->
+      <nav class="fsdc-r">
+        <h3 class="fsdc-y-text">Our Sites</h3>
+        <ul class="fsdc-y">
+          <li class="fsdc-z">a.facooya.com</li>
+          <li class="fsdc-z">b.facooya.com</li>
+          <li class="fsdc-z">c.facooya.com</li>
         </ul>
       </nav>
-      <nav class="bpnc-y-about">
+      <!--  -->
+      <!-- <nav class="bpnc-y-about">
         <h3 class="bpnc-z-about-title">About</h3>
         <ul>
           <li>Contact Us</li>
           <li>Our Team</li>
           <li>Workshop</li>
         </ul>
-      </nav>
-      <nav class="llc-r fbpnc-r">
+      </nav> -->
+      <!--  -->
+      <!-- <nav class="llc-r fbpnc-r">
         <div class="llc-y-facooya-icon"></div>
         <ul class="llc-y">
           <li>Privacy Policy</li>
@@ -241,7 +241,31 @@
           <li>Legal</li>
         </ul>
         <p class="llc-y-copyright">Copyright 2024 Facooya</p>
+      </nav> -->
+      <nav class="fsmc-r">
+        <ul class="fsmc-y">
+          <li class="fsmc-z-a">
+            <div class="fsmc-e-a-icon fsmc-e-icon"></div>
+          </li>
+          <li class="fsmc-z-b">
+            <div class="fsmc-e-b-icon fsmc-e-icon"></div>
+          </li>
+          <li class="fsmc-z-c">
+            <div class="fsmc-e-c-icon fsmc-e-icon"></div>
+          </li>
+        </ul>
       </nav>
+      <nav class="fllc-r">
+        <div class="fllc-y-facooya-icon"></div>
+        <ul class="fllc-y">
+          <li class="fllc-z">Privacy Policy</li>
+          <li class="fllc-z">Terms of Use</li>
+          <li class="fllc-z">Cookie Settings</li>
+          <li class="fllc-z">Legal</li>
+        </ul>
+        <p class="fllc-y-copyright">Copyright 2024 Facooya</p>
+      </nav>
+      <!--  -->
       <!-- NoScript -->
       <noscript>
         <div class="noscript-main">
@@ -272,10 +296,9 @@
         - NPMHC: Navigation Page M H C
         - NPMSC: Navigation Page M Section C
         - 
-        - SMC: Social Media C
-        - ADC: Affiliate Domain C
-        - DPC: Donation Panel C
-        - LLC: Legal Link C
+        - FSMC: F Social Media C
+        - FSDC: F Sub Domain C
+        - FLLC: F Legal Link C
         -->
       <!-- AUTHORSHIP
          - Founder: Facooya

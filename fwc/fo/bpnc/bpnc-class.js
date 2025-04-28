@@ -6,9 +6,6 @@
 
 /* =============== :FACOOYA: =============== */
 /* NOTE
- * TOC: Terms Of Copyright
- * TOU: Terms Of Use
- * LOA: List Of Authors
  */
 /* AUTHORSHIP
  * Founder: Facooya

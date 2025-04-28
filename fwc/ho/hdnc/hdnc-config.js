@@ -16,51 +16,51 @@ class HdncConfigData {
     "Menu 4"
   ];
   /* ===== GigaBloText ===== */
-  static hdncGigaBloTextLanguage = [
+  static hdncGigaBloTextMenu1 = [
     "Item 1-1"
   ];
-  static hdncGigaBloTextApplication = [
+  static hdncGigaBloTextMenu2 = [
     "Item 2-1",
     "Item 2-2"
   ];
-  static hdncGigaBloTextWeb = [
+  static hdncGigaBloTextMenu3 = [
     "Item 3-1",
     "Item 3-2",
     "Item 3-3"
   ];
-  static hdncGigaBloTextEtc = [
+  static hdncGigaBloTextMenu4 = [
     "Item 4-1",
     "Item 4-2"
   ];
   /* ===== TeraLink ===== */
-  static hdncTeraBloLinkLanguage = [
+  static hdncTeraBloLinkMenu1 = [
     "#item-1-1"
   ];
-  static hdncTeraBloLinkApplication = [
+  static hdncTeraBloLinkMenu2 = [
     "#item-2-1",
     "#item-2-2"
   ];
-  static hdncTeraBloLinkWeb = [
+  static hdncTeraBloLinkMenu3 = [
     "#item-3-1",
     "#item-3-2",
     "#item-3-3"
   ];
-  static hdncTeraBloLinkEtc = [
+  static hdncTeraBloLinkMenu4 = [
     "#item-4-1",
     "#item-4-2"
   ];
   /* ===== Compile ===== */
   static hdncGigaBloText = [
-    HdncConfigData.hdncGigaBloTextLanguage,
-    HdncConfigData.hdncGigaBloTextApplication,
-    HdncConfigData.hdncGigaBloTextWeb,
-    HdncConfigData.hdncGigaBloTextEtc
+    HdncConfigData.hdncGigaBloTextMenu1,
+    HdncConfigData.hdncGigaBloTextMenu2,
+    HdncConfigData.hdncGigaBloTextMenu3,
+    HdncConfigData.hdncGigaBloTextMenu4
   ];
   static hdncTeraBloLink = [
-    HdncConfigData.hdncTeraBloLinkLanguage,
-    HdncConfigData.hdncTeraBloLinkApplication,
-    HdncConfigData.hdncTeraBloLinkWeb,
-    HdncConfigData.hdncTeraBloLinkEtc
+    HdncConfigData.hdncTeraBloLinkMenu1,
+    HdncConfigData.hdncTeraBloLinkMenu2,
+    HdncConfigData.hdncTeraBloLinkMenu3,
+    HdncConfigData.hdncTeraBloLinkMenu4
   ];
 }
 class HdncConfigElement {

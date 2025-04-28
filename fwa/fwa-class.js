@@ -10,9 +10,12 @@ import {
   FwaConfig
 } from "./fwa-config.js";
 /* ===== Fwc Controller ===== */
-import {
+/* import {
   BlfController
-} from "../fwc/fwc-hub.js";
+} from "../fwc/fwc-hub.js"; */
+import {
+  FwcController
+} from "../fwc/fwc.js";
 /* =============== */
 class FwaAccessor {
   static fwaIsTimeout = true;
@@ -47,7 +50,7 @@ class FwaHandler {
     FwaConfig.isLoad = true;
     FwaLog.logb("=", 30);
     /* ========== Fwc Controller ========== */
-    BlfController.load();
+    FwcController.load();
     /* ============================== */
     FwaLog.logd(true, "fwa/fwa-class.js", "currentDt", FwaConfig.currentDisplayType);
     FwaLog.logd(true, "fwa/fwa-class.js", "FwaHandler.onLoad()", "Done");
@@ -57,7 +60,7 @@ class FwaHandler {
     if (FwaConfig.currentDisplayType !== FwaConfig.previousDisplayType) {
       FwaLog.logb("=", 30);
       /* ========== Fwc Controller ========== */
-      BlfController.resizeDisplay();
+      FwcController.resizeDisplay();
       /* ============================== */
       FwaConfig.previousDisplayType = FwaConfig.currentDisplayType;
       FwaLog.logd(true, "fwa/fwa-class.js", "currentDt", FwaConfig.currentDisplayType);
@@ -67,7 +70,7 @@ class FwaHandler {
     } else {
       clearTimeout(FwaAccessor.fwaTimeoutId);
       FwaAccessor.fwaTimeoutId = setTimeout(
-        BlfController.resizeSensor,
+        FwcController.resizeSensor,
         200
       );
     }

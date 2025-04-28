@@ -5,10 +5,77 @@
  */
 
 import {
-  BlfController
+  BlfController,
+  HtpncController,
+  HdncController,
+  HsncController,
+  HeccController,
+  NpmhcController,
+  NpmscController
 } from "./fwc-hub.js";
 /*  */
-BlfController.init();
+class FwcController {
+  static init() {
+    FwcManager.init();
+  }
+  static load() {
+    FwcManager.load();
+  }
+  static resizeDisplay() {
+    FwcManager.resizeDisplay();
+  }
+  static resizeSensor() {
+    FwcManager.resizeSensor();
+  }
+}
+/* ================================================== */
+class FwcManager {
+  static init() {
+    BlfController.init();
+    /* -------------------------------------------------- */
+    HtpncController.init();
+    HdncController.init();
+    HsncController.init();
+    HeccController.init();
+    /* -------------------------------------------------- */
+    NpmhcController.init();
+    NpmscController.init();
+  }
+  static load() {
+    BlfController.load();
+    /* -------------------------------------------------- */
+    HtpncController.load();
+    HdncController.load();
+    HsncController.load();
+    HeccController.load();
+    /* -------------------------------------------------- */
+    NpmhcController.load();
+    NpmscController.load();
+  }
+  static resizeDisplay() {
+    BlfController.resizeDisplay();
+    /* -------------------------------------------------- */
+    HtpncController.resizeDisplay();
+    HdncController.resizeDisplay();
+    HsncController.resizeDisplay();
+    HeccController.resizeDisplay();
+    /* -------------------------------------------------- */
+    NpmhcController.resizeDisplay();
+    NpmscController.resizeDisplay();
+  }
+  static resizeSensor() {
+    BlfController.resizeSensor();
+    /* -------------------------------------------------- */
+    HdncController.resizeSensor();
+    HsncController.resizeSensor();
+    HeccController.resizeSensor();
+  }
+}
+export {
+  FwcController
+};
+/*  */
+FwcController.init();
 /* NOTE
  */
 /* AUTHORSHIP

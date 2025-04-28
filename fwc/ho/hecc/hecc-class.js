@@ -9,7 +9,9 @@ import {
 } from "../../fwc-hub.js";
 /*  */
 class HeccAccessor {
-
+  static windowScrollHandler() {
+    HeccHandler.windowScroll();
+  }
 }
 class HeccController {
   static init() {
@@ -23,13 +25,17 @@ class HeccController {
   static resizeDisplay() {
     HeccManager.resizeDisplay();
   }
+  static resizeSensor() {
+    HeccManager.resizeSensor();
+  }
 }
 class HeccManager {
   static init() {
-    const {
+    /* const {
       heccR
-    } = HeccConfig.getHeccRoot();
-    heccR.timerId = null;
+    } = HeccConfig.getHeccRoot(); */
+    /*  */
+    /* heccR.timerId = null; */
   }
   static load() {
     
@@ -37,17 +43,31 @@ class HeccManager {
   static resizeDisplay() {
 
   }
+  static resizeSensor() {
+    HeccHandler.windowScroll();
+  }
   static event() {
     window.addEventListener("scroll", HeccHandler.windowScroll);
   }
 }
 class HeccHandler {
   static windowScroll() {
-    const {
+    /* const {
       heccR
-    } = HeccConfig.getHeccRoot();
+    } = HeccConfig.getHeccRoot(); */
+    /*  */
     HeccUtil.updateHeccZettaPbo();
     HeccUtil.setHeccZettaPbo();
+    /* clearTimeout(heccR.timerId);
+    heccR.timerId = setTimeout(
+      test,
+      50
+    );
+    function test() {
+      HeccUtil.updateHeccZettaPbo();
+      HeccUtil.setHeccZettaPbo();
+      console.log("hi");
+    } */
   }
 }
 export {

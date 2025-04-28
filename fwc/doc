@@ -1,9 +1,0 @@
-ECC: Et Cetera Component
-LC: Layout Component
-NC: Navigation Component
-
-SS: Style Sheet
-
-Configuration
-./plc/dnc/dnc-config.js
-./plc/snc/snc-config.js

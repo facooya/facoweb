@@ -8,6 +8,7 @@ import {
 } from "../../../fwa/fwa-config.js";
 import {
   BlfUtil,
+  HeccAccessor,
   NpmhcConfig,
   NpmhcUtil
 } from "../../fwc-hub.js";
@@ -86,6 +87,7 @@ class NpmhcHandler {
       tabData = parseInt(hashData);
     }
     NpmhcUtil.setNpmhcTno(tabData);
+    HeccAccessor.windowScrollHandler();
   }
   /* ================================================== */
   static ddtNpmhcExaTno(eventData) {

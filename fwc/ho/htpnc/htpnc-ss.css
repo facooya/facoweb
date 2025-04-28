@@ -30,9 +30,9 @@
   z-index: 2;
   /* Grid */
   display: grid;
-  grid-template-columns: 4rem 1fr 4rem;
+  grid-template-columns: 4rem minmax(8rem, 1fr) 4rem;
   grid-template-rows: var(--htpnc-height);
-  gap: 0rem 2rem;
+  gap: 0rem 1rem;
   grid-template-areas:
     "htpnc-z-hdngo htpnc-z-lgo htpnc-z-hsngo";
   list-style-type: none;
@@ -90,8 +90,6 @@
   cursor: pointer;
 }
 .htpnc-e-lgo-link {
-  /* Class */
-  /* facooya-link-class, facooya-center-class */
   /* Layout */
   display: grid;
   justify-content: center;

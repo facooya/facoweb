@@ -4,12 +4,7 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  HtpncController,
-  HdncController,
-  HsncController,
-  HeccController,
-  NpmhcController,
-  NpmscController
+  BlfConfig
 } from "../fwc-hub.js";
 /*  */
 class BlfAccessor {
@@ -31,35 +26,42 @@ class BlfController {
 }
 class BlfManager {
   static init() {
-    HtpncController.init();
-    HdncController.init();
-    HsncController.init();
-    HeccController.init();
-    /* -------------------------------------------------- */
-    NpmhcController.init();
-    NpmscController.init();
+
   }
   static load() {
-    HtpncController.load();
-    HdncController.load();
-    HsncController.load();
-    HeccController.load();
-    /* -------------------------------------------------- */
-    NpmhcController.load();
-    NpmscController.load();
+    const {
+      blfYottaFo
+    } = BlfConfig.getBlfGroup();
+    const {
+      blfFoFaucR,
+      blfFoFsdcR
+    } = BlfConfig.getBlfFoRoot();
+    /*  */
+    /* const faucRootRect = blfFoFaucR.getBoundingClientRect();
+    const fsdcRootRect = blfFoFsdcR.getBoundingClientRect();
+    blfYottaFo.style.gridTemplateAreas = "\"fsmc fsmc\" \"fauc fsdc\" \"fllc fllc\""; */
   }
   static resizeDisplay() {
-    HtpncController.resizeDisplay();
-    HdncController.resizeDisplay();
-    HsncController.resizeDisplay();
-    HeccController.resizeDisplay();
-    /* -------------------------------------------------- */
-    NpmhcController.resizeDisplay();
-    NpmscController.resizeDisplay();
+
   }
   static resizeSensor() {
-    HdncController.resizeSensor();
-    HsncController.resizeSensor();
+    const {
+      blfYottaFo
+    } = BlfConfig.getBlfGroup();
+    const {
+      blfFoFaucR,
+      blfFoFsdcR
+    } = BlfConfig.getBlfFoRoot();
+    const faucRootRect = blfFoFaucR.getBoundingClientRect();
+    const fsdcRootRect = blfFoFsdcR.getBoundingClientRect();
+    const wiw = window.innerWidth;
+    /* if (fsdcRootRect.right > wiw) {
+      blfYottaFo.style.gridTemplateAreas = "\"fsmc\" \"fauc\" \"fsdc\" \"fllc\"";
+    }
+    if (faucRootRect.width + fsdcRootRect.width < wiw) {
+      blfYottaFo.style.gridTemplateAreas = "\"fsmc fsmc\" \"fauc fsdc\" \"fllc fllc\"";
+    } */
+    console.log(faucRootRect);
   }
 }
 class BlfHandler {

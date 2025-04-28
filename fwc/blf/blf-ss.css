@@ -27,7 +27,7 @@
   grid-area: blf-y-mo;
   /* Grid */
   display: grid;
-  grid-template-columns: minmax(300px, 1200px);
+  grid-template-columns: minmax(200px, 1200px);
   grid-template-rows: auto 1fr;
   gap: 2rem 0rem;
   grid-template-areas:
@@ -45,6 +45,13 @@
   /* Tag.footer */
   grid-area: blf-y-fo;
   position: relative;
+  /*  */
+  display: grid;
+  grid-template-areas: "fauc fsdc" "fsmc fsmc" "fllc fllc";
+  gap: 2rem;
+  /*  */
+  background-color: #222222;
+  padding: 1rem 2rem;
 }
 @media (min-width: 768px) {
   .blf-r {

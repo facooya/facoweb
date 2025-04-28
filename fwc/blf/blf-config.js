@@ -43,6 +43,36 @@ class BlfConfigElement {
       }
     }
   ];
+  static blfFoRoot = [
+    {
+      elementId: "blfFoFsmcR",
+      query: {
+        querySelector: ".fsmc-r",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "blfFoFaucR",
+      query: {
+        querySelector: ".fauc-r",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "blfFoFsdcR",
+      query: {
+        querySelector: ".fsdc-r",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "blfFoFllcR",
+      query: {
+        querySelector: ".fllc-r",
+        queryType: "single"
+      }
+    }
+  ];
 }
 class BlfConfigGet {
   static getBlfRoot() {
@@ -59,14 +89,18 @@ class BlfConfigGet {
     );
     return saveVerifyGroup;
   }
+  static getBlfFoRoot() {
+    const returnGroup = BlfUtil.getElementCache(
+      BlfConfig.blfConfigCache,
+      BlfConfigElement.blfFoRoot
+    );
+    return returnGroup;
+  }
 }
 class BlfConfigManager {
   
 }
 class BlfConfig {
-  /* static blfRoot = BlfElement.blfRoot;
-  static blfGroup = BlfElement.blfGroup; */
-  /*  */
   static blfConfigCache = {};
   /* -------------------------------------------------- */
   static getBlfRoot() {
@@ -74,6 +108,9 @@ class BlfConfig {
   }
   static getBlfGroup() {
     return BlfConfigGet.getBlfGroup();
+  }
+  static getBlfFoRoot() {
+    return BlfConfigGet.getBlfFoRoot();
   }
 }
 export {
