@@ -76,14 +76,14 @@
   opacity: 1;
 }
 /* ==========----- ;cl-ddt-hdnc-p-blo-handler; -----========== */
-/* ==========----- :cl-mdt-hdnc-y-sfro-handler: -----========== */
-.hdnc-y-sfro-tgro.cl-mdt-hdnc-y-sfro-handler {
+/* ==========----- :cl-mdt-hdnc-r-scroll-handler: -----========== */
+.hdnc-y-sfro-tgro.cl-mdt-hdnc-r-scroll-handler {
   height: 5rem;
 }
-.hdnc-y-sfro-bgro.cl-mdt-hdnc-y-sfro-handler {
+.hdnc-y-sfro-bgro.cl-mdt-hdnc-r-scroll-handler {
   height: 5rem;
 }
-/* ==========----- ;cl-mdt-hdnc-y-sfro-handler; -----========== */
+/* ==========----- ;cl-mdt-hdnc-r-scroll-handler; -----========== */
 /* ==========----- :cl-tdt-hdnc-e-blo-scroll-handler: -----========== */
 .hdnc-e-blo-sgro-to.cl-tdt-hdnc-e-blo-scroll-handler {
   transform: scale(1, 1);
@@ -92,6 +92,14 @@
   transform: scale(1, 1);
 }
 /* ==========----- ;cl-tdt-hdnc-e-blo-scroll-handler; -----========== */
+/* ==========----- :cl-ddt-hdnc-e-blo-scroll-handler: -----========== */
+.hdnc-e-blo-sgro-to.cl-ddt-hdnc-e-blo-scroll-handler {
+  transform: scale(1, 1);
+}
+.hdnc-e-blo-sgro-bo.cl-ddt-hdnc-e-blo-scroll-handler {
+  transform: scale(1, 1);
+}
+/* ==========----- ;cl-ddt-hdnc-e-blo-scroll-handler; -----========== */
 /* =============== ;Handler; =============== */
 /* =============== :FACOOYA: =============== */
 /* NOTE

@@ -12,7 +12,7 @@ class HsncData {
   ];
   /* ===== gigaBloText ===== */
   static hsncGigaBloTextYs = [
-    "Version 1.1.18 Alpha long long long long long long long long long long",
+    "V1.1.19A long long long long long long long long long long",
     "Item 1-2",
     "Item 1-3",
     "Item 1-4",
