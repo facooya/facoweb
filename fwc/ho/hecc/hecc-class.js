@@ -4,38 +4,37 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  HeccConfig
-} from "./hecc-config.js";
-import {
   FwcAccessor,
-  HdncAccessor
+  HdncAccessor,
+  HeccConfig,
+  HeccUtil
 } from "../../fwc-hub.js";
-
+/*  */
 class HeccAccessor {
   static heccCache = {};
   static getHeccPboGroup() {
-    return HeccGet.getHeccPboGroup();
+    return HeccConfig.getHeccPboGroup();
   }
   static getHeccNooGroup() {
-    return HeccGet.getHeccNooGroup();
+    return HeccConfig.getHeccNooGroup();
   }
 }
 class HeccController {
-  static process() {
-    HeccManager.generate();
+  static init() {
+    HeccConfig.heccGenerate();
     HeccManager.event();
   }
-  static processOnLoad() {
-    HeccManager.initOnLoad();
+  static load() {
+    HeccManager.load();
   }
-  static processOnResize() {
+  static resizeDisplay() {
 
   }
 }
 class HeccManager {
-  static initOnLoad() {
-    window.previousInnerHeight = window.innerHeight;
-    window.timeoutId = null;
+  static load() {
+    /* window.previousInnerHeight = window.innerHeight;
+    window.timeoutId = null; */
   }
   static generate() {
     const {
@@ -64,14 +63,18 @@ class HeccManager {
     heccR.append(heccFragment);
   }
   static event() {
-    window.addEventListener("scroll", HeccHandler.adtHeccScrollGroup);
+    window.addEventListener("scroll", HeccHandler.windowScroll);
   }
 }
 class HeccHandler {
+  static windowScroll() {
+    HeccUtil.updateHeccZettaPbo();
+    HeccUtil.setHeccZettaPbo();
+  }
   static adtHeccScrollGroup() {
     HeccHandler.adtHeccZettaPbo();
-    clearTimeout(window.timeoutId);
-    window.timeoutId = setTimeout(HeccHandler.adtWindowHeight, 100);
+    /* clearTimeout(window.timeoutId);
+    window.timeoutId = setTimeout(HeccHandler.adtWindowHeight, 100); */
     /* HeccHandler.adtWindowHeight(); */
   }
   /*  */
@@ -80,7 +83,7 @@ class HeccHandler {
     const {
       heccZettaPboLgro,
       heccZettaPboRgro
-    } = HeccGet.getHeccPboGroup();
+    } = HeccConfig.getHeccPboGroup();
 
     const overflowHeight = htmlElement.scrollHeight - htmlElement.clientHeight;
     const scrollProgress = (htmlElement.scrollTop / overflowHeight) * 100;
@@ -96,21 +99,6 @@ class HeccHandler {
     const {
       hdncExaBlo
     } = HdncAccessor.getHdncBloGroup();
-    /* if (innerHeight > previousInnerHeight) {
-      /* hide mobile bar 
-      for (let i = 0; i < hdncExaBlo.length; i++) {
-        hdncExaBlo[i].style.maxHeight = 
-          (innerHeight - (10 * 16)).toString() + "px";
-      }
-      window.previousInnerHeight = innerHeight;
-    } else if (innerHeight < previousInnerHeight) {
-      /* visible mobile bar 
-      for (let i = 0; i < hdncExaBlo.length; i++) {
-        hdncExaBlo[i].style.maxHeight = 
-          (innerHeight - (10 * 16)).toString() + "px";
-      }
-      window.previousInnerHeight = innerHeight;
-    } */
     if (innerHeight !== previousInnerHeight) {
       for (let i = 0; i < hdncExaBlo.length; i++) {
         if (hdncExaBlo[i].isActive) {
@@ -123,7 +111,7 @@ class HeccHandler {
   }
 }
 class HeccGet {
-  static getHeccRoot() {
+  /* static getHeccRoot() {
     const saveVerifyGroup = FwcAccessor.getVerifyCache2(
       HeccAccessor.heccCache,
       HeccConfig.heccRoot
@@ -151,10 +139,7 @@ class HeccGet {
       heccR
     );
     return saveVerifyGroup;
-  }
-}
-class HeccSet {
-
+  } */
 }
 export {
   HeccAccessor,

@@ -37,7 +37,7 @@
     "htpnc-z-hdngo htpnc-z-lgo htpnc-z-hsngo";
   list-style-type: none;
 }
-.htpnc-y-eco {
+/* .htpnc-y-eco {
   position: absolute;
   top: 0rem;
   z-index: 1;
@@ -46,14 +46,27 @@
   pointer-events: none;
 }
 .htpnc-z-eco-sdo {
-  /* display: none; */
+  /* display: none; 
   position: absolute;
   z-index: 1;
   top: 0rem;
   width: 100%;
   height: calc(100% + 1px);
   background-color: var(--transparent);
+} */
+.htpnc-y-sdo {
+  /* Position */
+  position: absolute;
+  z-index: 1;
+  top: 0rem;
+  /* Layout */
+  width: 100%;
+  height: calc(100% + 1px);
+  /* Visual */
+  background: var(--transparent);
+  pointer-events: none;
 }
+/*  */
 .htpnc-y-snto {
   display: none;
 }
@@ -170,13 +183,18 @@
       opacity var(--htpnc-transition-slide),
       transform var(--htpnc-transition-slide);
     cursor: default;
-  }
-  .htpnc-z-snto-text {
+    /*  */
     color: var(--htpnc-color);
     font-weight: bold;
     font-size: 1.5rem;
     text-align: center;
   }
+  /* .htpnc-z-snto-text {
+    color: var(--htpnc-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+  } */
 }
 @media (min-width: 1280px) {
   .htpnc-y {

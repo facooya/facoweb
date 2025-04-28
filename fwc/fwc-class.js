@@ -34,29 +34,29 @@ class FwcAccessor {
 class FwcController {
   /* =============== Process: =============== */
   static init() {
-    HtpncController.process();
+    HtpncController.init();
     HdncController.process();
     HsncController.init();
-    HeccController.process();
+    HeccController.init();
     /*  */
     /* !!!!! v1.1.15a [temp] URL Check nav-page? doc-page? home-page? !!!!! */
     NpmhcController.process();
     NpmscController.process();
   }
   static load() {
-    HtpncController.processOnLoad();
+    HtpncController.load();
     HdncController.processOnLoad();
     HsncController.load();
-    HeccController.processOnLoad();
+    HeccController.load();
     /*  */
     NpmhcController.processOnLoad();
     NpmscController.processOnLoad();
   }
   static resizeDisplay() {
-    HtpncController.processOnResize();
+    HtpncController.resizeDisplay();
     HdncController.processOnResize();
     HsncController.resizeDisplay();
-    HeccController.processOnResize();
+    HeccController.resizeDisplay();
     /*  */
     NpmhcController.processOnResize();
     NpmscController.processOnResize();

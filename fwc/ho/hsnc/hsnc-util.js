@@ -48,7 +48,6 @@ class HsncUtilUpdate {
       const calcLeft = (hsncTeraBloWidth - (hsncGigaBloTextWidth + bufferWidth)) / 2;
       const setLeft = calcLeft + "px";
       /*  */
-      /* hsncGigaBloBgro[ebi].dataset.calcLeft = calcLeft; */
       hsncGigaBloBgro[ebi].dataset.left = setLeft;
     }
   }
@@ -64,7 +63,6 @@ class HsncUtilUpdate {
       const calcWidth = hsncGigaBloTextWidth + bufferWidth;
       const setWidth = calcWidth + "px";
       /*  */
-      /* hsncGigaBloBgro[ebi].dataset.calcWidth = calcWidth; */
       hsncGigaBloBgro[ebi].dataset.width = setWidth;
     }
   }

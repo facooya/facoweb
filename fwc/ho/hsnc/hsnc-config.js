@@ -264,39 +264,6 @@ class HsncConfigElement {
       }
     }
   ];
-  /* Append */
-  /* static hsncGroupAppend(getSaveElement) {
-    getSaveElement["hsncY"].append(
-      getSaveElement["hsncZettaTlo"],
-      getSaveElement["hsncZettaBlo"]
-    );
-  }
-  static hsncTloGroupAppend(getSaveElement) {
-    getSaveElement["hsncZettaTlo"].append(
-      getSaveElement["hsncExaTloText"],
-      getSaveElement["hsncExaTloRgro"],
-      getSaveElement["hsncExaTloBgro"]
-    );
-  }
-  static hsncBloGroupAppend(getSaveElement) {
-    getSaveElement["hsncZettaBlo"].append(getSaveElement["hsncExaBlo"]);
-  }
-  static hsncBloEbGroupAppend(getSaveElement) {
-    getSaveElement["hsncTeraBlo"].append(
-      getSaveElement["hsncGigaBloText"],
-      getSaveElement["hsncGigaBloRgro"],
-      getSaveElement["hsncGigaBloBgro"]
-    );
-    getSaveElement["hsncPetaBlo"].append(getSaveElement["hsncTeraBlo"]);
-    getSaveElement["hsncExaBlo"].append(getSaveElement["hsncPetaBlo"]);
-  } */
-  /* static hsncYottaGroupAppend(getSaveElement, hsncFragment) {
-    hsncFragment.append(
-      getSaveElement["hsncYottaSdo"],
-      getSaveElement["hsncYottaSfroTgro"],
-      getSaveElement["hsncYottaSfroBgro"]
-    );
-  } */
 }
 class HsncConfigManager {
   static hsncGenerate() {
@@ -364,7 +331,7 @@ class HsncConfigManager {
     /* =============== ;Yotta Group; =============== */
     hsncR.append(hsncFragment);
   }
-  /*  */
+  /* -------------------------------------------------- */
   static hsncGroupAppend(getSaveElement) {
     getSaveElement["hsncY"].append(
       getSaveElement["hsncZettaTlo"],
@@ -464,40 +431,6 @@ class HsncConfigGet {
   }
 }
 class HsncConfig {
-  /* =============== :Data: =============== */
-  /* static hsncExaTloText = HsncData.hsncExaTloText;
-  static hsncTeraBloLink = HsncData.hsncTeraBloLink;
-  static hsncGigaBloText = HsncData.hsncGigaBloText; */
-  /* =============== ;Data; =============== */
-  /* =============== :Element: =============== */
-  /* static hsncRoot = HsncElement.hsncRoot;
-  static hsncGroup = HsncElement.hsncGroup;
-  static hsncTloGroup = HsncElement.hsncTloGroup;
-  static hsncBloGroup = HsncElement.hsncBloGroup;
-  static hsncBloEbGroup = HsncElement.hsncBloEbGroup; */
-  /* static hsncEcoGroup = HsncElement.hsncEcoGroup; */
-  /* static hsncYottaGroup = HsncElement.hsncYottaGroup; */
-  /* =============== ;Element; =============== */
-  /* =============== :Element (Append): =============== */
-  /* static hsncGroupAppend(getSaveElement) {
-    HsncElement.hsncGroupAppend(getSaveElement);
-  }
-  static hsncTloGroupAppend(getSaveElement) {
-    HsncElement.hsncTloGroupAppend(getSaveElement);
-  }
-  static hsncBloGroupAppend(getSaveElement) {
-    HsncElement.hsncBloGroupAppend(getSaveElement);
-  }
-  static hsncBloEbGroupAppend(getSaveElement) {
-    HsncElement.hsncBloEbGroupAppend(getSaveElement);
-  } */
-  /* static hsncEcoGroupAppend(getSaveElement) {
-    HsncElement.hsncEcoGroupAppend(getSaveElement);
-  } */
-  /* static hsncYottaGroupAppend(getSaveElement, hsncFragment) {
-    HsncElement.hsncYottaGroupAppend(getSaveElement, hsncFragment);
-  } */
-  /* =============== ;Element (Append); =============== */
   static hsncConfigCache = {};
   /* -------------------------------------------------- */
   static hsncGenerate() {
@@ -526,14 +459,7 @@ class HsncConfig {
 export {
   HsncConfig
 };
-/* HTML
- * <nav class="hsnc-r">
- *   <ul class="hsnc-y">
- *   </ul>
- * </nav>
- */
 /* NOTE
- * HsncConfig.exaTloTextRs, gigaTextRs, teraLinkRs
  */
 /* AUTHORSHIP
  * Founder: Facooya

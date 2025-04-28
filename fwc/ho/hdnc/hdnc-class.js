@@ -10,6 +10,7 @@ import {
   HdncTool
 } from "./hdnc-tool.js";
 import {
+  HtpncConfig,
   HdncConfig,
   HdncUtil,
   FwcAccessor,
@@ -426,6 +427,9 @@ class HdncHandler {
       targetIndex
     } = FwcAccessor.getEventData(eventData, ".hdnc-y");
     const {
+      htpncZettaHsngo
+    } = HtpncConfig.getHtpncHsngoGroup();
+    const {
       hdncY
     } = HdncConfig.getHdncGroup();
     const {
@@ -448,8 +452,11 @@ class HdncHandler {
     }
     /*  */
     if (isActive) {
-      if (HsncAccessor.isActiveHsnc) {
+      /* if (HsncAccessor.isActiveHsnc) {
         HtpncAccessor.htpncZettaHsngoHandler();
+      } */
+      if (htpncZettaHsngo.isActive) {
+        HtpncAccessor.tdtHtpncZettaHsngoHandler();
       }
       HdncUtil.setHdncHandler(HdncHandler, 2);
     } else {

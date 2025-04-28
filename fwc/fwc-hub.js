@@ -19,6 +19,9 @@ import {
   HtpncAccessor,
   HtpncController
 } from "./ho/htpnc/htpnc-class.js";
+import {
+  HtpncConfig
+} from "./ho/htpnc/htpnc-config.js";
 /*  */
 import {
   HdncAccessor,
@@ -46,6 +49,12 @@ import {
   HeccAccessor,
   HeccController
 } from "./ho/hecc/hecc-class.js";
+import {
+  HeccConfig
+} from "./ho/hecc/hecc-config.js";
+import {
+  HeccUtil
+} from "./ho/hecc/hecc-util.js";
 /* import {
   NplcAccessor,
   NplcController
@@ -69,6 +78,7 @@ export {
   /* HTPNC */
   HtpncAccessor,
   HtpncController,
+  HtpncConfig,
   /* HDNC */
   HdncAccessor,
   HdncController,
@@ -82,6 +92,8 @@ export {
   /* HECC */
   HeccAccessor,
   HeccController,
+  HeccConfig,
+  HeccUtil,
   /* NPLC */
   /* NplcAccessor,
   NplcController */

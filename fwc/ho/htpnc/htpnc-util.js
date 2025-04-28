@@ -1,0 +1,17 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+
+class HtpncUtil {
+
+}
+export {
+  HtpncUtil
+};
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */

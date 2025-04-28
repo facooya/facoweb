@@ -4,8 +4,8 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  HdncConfig,
-  HsncAccessor
+  HtpncConfig,
+  HdncConfig
 } from "../../fwc-hub.js";
 /*  */
 class HdncToolManager {
@@ -100,6 +100,9 @@ class HdncToolManager {
 class HdncToolCl {
   static clDdtHdncYottaNthLast(lastIndex) {
     const {
+      htpncZettaHsngo
+    } = HtpncConfig.getHtpncHsngoGroup();
+    const {
       hdncY
     } = HdncConfig.getHdncGroup();
     const {
@@ -123,7 +126,7 @@ class HdncToolCl {
     /*  */
     const clData = "cl-ddt-hdnc-y-handler-nth-last";
     /*  */
-    if (offsetHtmlRight < offsetHdncRight && HsncAccessor.isActiveHsnc) {
+    if (offsetHtmlRight < offsetHdncRight && htpncZettaHsngo.isActive) {
       hdncExaBlo[lastIndex].classList.add(clData);
     } else {
       hdncExaBlo[lastIndex].classList.remove(clData);
