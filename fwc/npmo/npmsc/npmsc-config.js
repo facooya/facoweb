@@ -3,7 +3,14 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-class NpmscElement {
+import {
+  FwcAccessor
+} from "../../fwc-hub.js";
+/*  */
+class NpmscConfigData {
+
+}
+class NpmscConfigElement {
   static npmscRoot = [
     {
       elementId: "npmscR",
@@ -58,9 +65,38 @@ class NpmscElement {
     }
   ];
 }
+class NpmscConfigGet {
+  static getNpmscRoot() {
+    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+      NpmscConfig.npmscConfigCache,
+      NpmscConfigElement.npmscRoot
+    );
+    return saveVerifyGroup;
+  }
+  static getNpmscGroup() {
+    const {
+      npmscR
+    } = NpmscConfigGet.getNpmscRoot();
+    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+      NpmscConfig.npmscConfigCache,
+      NpmscConfigElement.npmscGroup,
+      npmscR
+    );
+    return saveVerifyGroup;
+  }
+}
 class NpmscConfig {
-  static npmscRoot = NpmscElement.npmscRoot;
-  static npmscGroup = NpmscElement.npmscGroup;
+  /* static npmscRoot = NpmscElement.npmscRoot;
+  static npmscGroup = NpmscElement.npmscGroup; */
+  /*  */
+  static npmscConfigCache = {};
+  /* -------------------------------------------------- */
+  static getNpmscRoot() {
+    return NpmscConfigGet.getNpmscRoot();
+  }
+  static getNpmscGroup() {
+    return NpmscConfigGet.getNpmscGroup();
+  }
 }
 export {
   NpmscConfig

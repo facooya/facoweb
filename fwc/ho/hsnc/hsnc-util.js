@@ -7,6 +7,7 @@ import {
   FwaConfig
 } from "../../../fwa/fwa-config.js";
 import {
+  HsncAccessor,
   HsncConfig
 } from "../../fwc-hub.js";
 /*  */
@@ -171,7 +172,8 @@ class HsncUtilTime {
   }
 }
 class HsncUtilReset {
-  static resetHsncHandler(pHsncHandler, optDisplayType) {
+  static resetHsncHandler(optDisplayType) {
+    const pHsncHandler = HsncAccessor.getHsncHandler();
     const {
       hsncY
     } = HsncConfig.getHsncGroup();
@@ -184,6 +186,8 @@ class HsncUtilReset {
     if (optDisplayType !== undefined) {
       displayType = optDisplayType;
     }
+    console.log("pdt:", FwaConfig.previousDisplayType);
+    console.log("dt:", displayType);
     /*  */
     for (let ybi = 0; ybi < hsncZettaTlo.length; ybi++) {
       if (hsncY[ybi].isActive) {
@@ -240,8 +244,8 @@ class HsncUtil {
     HsncUtilTime.timerHsncGigaBloBgro(ybIndex, pSetTimer);
   }
   /* -------------------------------------------------- */
-  static resetHsncHandler(pHsncHandler, optDisplayType) {
-    HsncUtilReset.resetHsncHandler(pHsncHandler, optDisplayType);
+  static resetHsncHandler(optDisplayType) {
+    HsncUtilReset.resetHsncHandler(optDisplayType);
   }
 }
 export {

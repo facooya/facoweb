@@ -13,7 +13,10 @@ import {
 } from "../../fwc-hub.js";
 /*  */
 class HsncAccessor {
-  static hsncCache = {};
+  static getHsncHandler() {
+    return HsncHandler;
+  }
+  /* static hsncCache = {};
   static isActiveHsnc = false;
   static hsncScrollState = 0;
   static getHsncRoot() {
@@ -27,7 +30,7 @@ class HsncAccessor {
   }
   static setHsnc(displayTypeState) {
     HsncUtil.resetHsncHandler(HsncHandler, displayTypeState);
-  }
+  } */
 }
 class HsncController {
   static init() {
@@ -70,7 +73,7 @@ class HsncManager {
     HsncUtil.setHsncExaBloGridTemplateRows(false);
   }
   static resizeDisplay() {
-    HsncUtil.resetHsncHandler(HsncHandler);
+    HsncUtil.resetHsncHandler();
   }
   static resizeSensor() {
     const {
@@ -211,6 +214,7 @@ class HsncHandler {
     const {
       targetIndex
     } = FwcAccessor.getEventData(eventData, ".hsnc-y");
+    console.log(targetIndex);
     const {
       hsncY
     } = HsncConfig.getHsncGroup();

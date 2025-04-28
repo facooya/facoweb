@@ -7,32 +7,30 @@ import {
   FwaConfig
 } from "../../../fwa/fwa-config.js";
 import {
-  NpmhcConfig
-} from "./npmhc-config.js";
-import {
   FwcAccessor,
-  NpmscAccessor
+  NpmhcConfig,
+  NpmhcUtil
 } from "../../fwc-hub.js";
 /*  */
 class NpmhcAccessor {
-  static npmhcCache = {};
+  /* static npmhcCache = {};
   static getNpmhcRoot() {
     return NpmhcGet.getNpmhcRoot();
   }
   static getNpmhcTnoGroup() {
     return NpmhcGet.getNpmhcTnoGroup();
-  }
+  } */
 }
 class NpmhcController {
-  static process() {
+  static init() {
     NpmhcManager.init();
   }
-  static processOnLoad() {
-    NpmhcManager.initOnLoad();
+  static load() {
+    NpmhcManager.load();
     NpmhcManager.event(true);
   }
-  static processOnResize() {
-    NpmhcManager.initOnResize();
+  static resizeDisplay() {
+    NpmhcManager.resizeDisplay();
     NpmhcManager.event(false);
     NpmhcManager.event(true);
   }
@@ -41,36 +39,33 @@ class NpmhcManager {
   static init() {
     const {
       npmhcExaTno
-    } = NpmhcGet.getNpmhcTnoGroup();
+    } = NpmhcConfig.getNpmhcTnoGroup();
     /* Set Index */
     for (let i = 0; i < npmhcExaTno.length; i++) {
       npmhcExaTno[i].index = i;
     }
   }
-  static initOnLoad() {
-    window.addEventListener("hashchange", NpmhcHandler.adtNpmhcOnHashChange);
-    NpmhcHandler.adtNpmhcOnHashChange();
+  static load() {
+    window.addEventListener("hashchange", NpmhcHandler.windowOnHashChange);
+    NpmhcHandler.windowOnHashChange();
   }
-  static initOnResize() {
+  static resizeDisplay() {
 
   }
   static event(isActive) {
     const {
       npmhcExaTno
-    } = NpmhcGet.getNpmhcTnoGroup();
+    } = NpmhcConfig.getNpmhcTnoGroup();
     /*  */
     const eventType = ["mouseenter", "mouseleave"];
-    let eventListenerType = "";
-    let displayTypeState = null;
+    let displayType = FwaConfig.previousDisplayType;
+    let eventListenerType = "removeEventListener";
     if (isActive) {
       eventListenerType = "addEventListener";
-      displayTypeState = FwaConfig.currentDisplayType;
-    } else {
-      eventListenerType = "removeEventListener";
-      displayTypeState = FwaConfig.previousDisplayType;
+      displayType = FwaConfig.currentDisplayType;
     }
     /*  */
-    if (displayTypeState === 3) {
+    if (displayType === 3) {
       for (let i = 0; i < npmhcExaTno.length; i++) {
         /* ETI: Event Type Index */
         for (let eti = 0; eti < eventType.length; eti++) {
@@ -84,7 +79,7 @@ class NpmhcManager {
   }
 }
 class NpmhcHandler {
-  static adtNpmhcOnHashChange() {
+  /* static adtNpmhcOnHashChange() {
     const {
       npmhcExaTno
     } = NpmhcGet.getNpmhcTnoGroup();
@@ -98,7 +93,22 @@ class NpmhcHandler {
       tabData = parseInt(hashData);
     }
     NpmhcSet.setTab(tabData);
+  } */
+  static windowOnHashChange() {
+    const {
+      npmhcExaTno
+    } = NpmhcConfig.getNpmhcTnoGroup();
+    let tabData = 0;
+    let hashData = window.location.hash.slice(1);
+    if (npmhcExaTno[hashData] === undefined) {
+      hashData = "#" + tabData.toString();
+      window.location.hash = hashData;
+    } else {
+      tabData = parseInt(hashData);
+    }
+    NpmhcUtil.setNpmhcTno(tabData);
   }
+  /* ================================================== */
   static ddtNpmhcExaTno(eventData) {
     const {
       eventType,
@@ -106,7 +116,8 @@ class NpmhcHandler {
     } = FwcAccessor.getEventData(eventData);
     const {
       npmhcTeraTnoText
-    } = NpmhcGet.getNpmhcTnoGroup();
+    } = NpmhcConfig.getNpmhcTnoGroup();
+    const clData = "cl-ddt-npmhc-e-tno-handler";
     let type = "";
     if (eventType === "mouseenter") {
       type = "add";
@@ -117,16 +128,16 @@ class NpmhcHandler {
     }
     /*  */
     if (type) {
-      npmhcTeraTnoText[eventIndex].classList[type]("cl-ddt-npmhc-e-tno-handler")
+      npmhcTeraTnoText[eventIndex].classList[type](clData);
     }
   }
 }
 class NpmhcSet {
-  static setTab(tab) {
+  /* static setTab(tab) {
     const {
       npmhcTeraTnoText,
       npmhcTeraTnoGro
-    } = NpmhcGet.getNpmhcTnoGroup();
+    } = NpmhcConfig.getNpmhcTnoGroup();
     const {
       npmscY
     } = NpmscAccessor.getNpmscGroup();
@@ -141,10 +152,10 @@ class NpmhcSet {
     npmhcTeraTnoText[tab].classList.add("cl-adt-npmhc-on-hash-change-handler");
     npmhcTeraTnoGro[tab].classList.add("cl-adt-npmhc-on-hash-change-handler");
     npmscY[tab].classList.add("cl-adt-npmhc-on-hash-change-handler");
-  }
+  } */
 }
 class NpmhcGet {
-  static getNpmhcRoot() {
+  /* static getNpmhcRoot() {
     const saveVerifyGroup = FwcAccessor.getVerifyCache2(
       NpmhcAccessor.npmhcCache,
       NpmhcConfig.npmhcRoot
@@ -172,7 +183,7 @@ class NpmhcGet {
       npmhcR
     );
     return saveVerifyGroup;
-  }
+  } */
 }
 export {
   NpmhcAccessor,

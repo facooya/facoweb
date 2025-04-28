@@ -7,8 +7,9 @@ import {
   FwaConfig
 } from "../../../fwa/fwa-config.js";
 import {
+  HdncAccessor,
   HdncConfig
-} from "./hdnc-config.js";
+} from "../../fwc-hub.js";
 /*  */
 class HdncUtilManager {
 
@@ -168,21 +169,6 @@ class HdncUtilSet {
         break;
       }
     }
-    /* if (isOption) {
-      let getWidth = "";
-      if (pSetWidth) {
-        getWidth = hdncGigaBloBgro[optEbIndex].dataset.width;
-      }
-      hdncGigaBloBgro[optEbIndex].style.width = getWidth;
-    } else {
-      let getWidth = "";
-      for (let ebi = 0; ebi < hdncGigaBloBgro.length; ebi++) {
-        if (pSetWidth) {
-          getWidth = hdncGigaBloBgro[ebi].dataset.width;
-        }
-        hdncGigaBloBgro[ebi].style.width = getWidth;
-      }
-    } */
   }
   /* ================================================== */
   static setHdncExaBloGridTemplateRows(pSetGrid, optYbIndex) {
@@ -219,14 +205,6 @@ class HdncUtilSet {
         break;
       }
     }
-    /*  */
-    /* let getGridRow = "";
-    if (pSetGrid) {
-      getGridRow = hdncExaBlo[ybIndex].dataset.setEnableGridRow;
-    } else {
-      getGridRow = hdncExaBlo[ybIndex].dataset.setDisableGridRow;
-    }
-    hdncExaBlo[ybIndex].style.gridTemplateRows = getGridRow; */
   }
   /* -------------------------------------------------- */
   static setHdncExaBloMaxHeight() {
@@ -261,7 +239,7 @@ class HdncUtilSet {
     }
   }
   /* ================================================== */
-  static setHdncHandler(pHdncHandler, optDisplayType) {
+  /* static setHdncHandler(pHdncHandler, optDisplayType) {
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
@@ -271,17 +249,84 @@ class HdncUtilSet {
     const {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
-    /* const {
-      hdncYottaSfroTgro,
-      hdncYottaSfroBgro
-    } = HdncConfig.getHdncYottaGroup(); */
+    const modifyEventData = {};
+    /*  
+    let displayType = FwaConfig.previousDisplayType;
+    if (optDisplayType !== undefined) {
+      displayType = optDisplayType;
+    }
+    /*  
+    for (let ybi = 0; ybi < hdncZettaTlo.length; ybi++) {
+      if (hdncY[ybi].isActive) {
+        switch (displayType) {
+          case 1: {
+            modifyEventData.currentTarget = hdncZettaTlo[ybi];
+            pHdncHandler.mdtHdncZettaTlo(modifyEventData);
+            break;
+          }
+          case 2: {
+            modifyEventData.currentTarget = hdncZettaTlo[ybi];
+            pHdncHandler.tdtHdncZettaTlo(modifyEventData);
+            break;
+          }
+          case 3: {
+            modifyEventData.currentTarget = hdncZettaTlo[ybi];
+            modifyEventData.type = "mouseleave";
+            pHdncHandler.ddtHdncYotta(modifyEventData);
+            /*  
+            const {
+              hdncPetaBlo
+            } = HdncConfig.getHdncBloEbGroup(ybi);
+            for (let ebi = 0; ebi < hdncExaBlo[ybi].length; ebi++) {
+              modifyEventData.currentTarget = hdncPetaBlo[ebi];
+              modifyEventData.type = "mouseleave";
+              pHdncHandler.ddtHdncPetaBlo(modifyEventData);
+            }
+            break;
+          }
+        }
+      }
+    }
+  } */
+}
+class HdncUtilTime {
+  static timerHdncGigaBloBgro(ybIndex, pSetTimer) {
+    const {
+      hdncGigaBloBgro
+    } = HdncConfig.getHdncBloEbGroup(ybIndex);
     /*  */
+    for (let ebi = 0; ebi < hdncGigaBloBgro.length; ebi++) {
+      if (pSetTimer) {
+        hdncGigaBloBgro[ebi].timerId = setTimeout(
+          HdncUtilTime.timeoutHdncGigaBloBgro,
+          150 * ebi,
+          ybIndex,
+          ebi
+        );
+      } else {
+        clearTimeout(hdncGigaBloBgro[ebi].timerId);
+      }
+    }
+  }
+  /* -------------------------------------------------- */
+  static timeoutHdncGigaBloBgro(ybIndex, ebIndex) {
+    HdncUtilSet.setHdncGigaBloBgroWidth(ybIndex, true, ebIndex);
+  }
+}
+class HdncUtilReset {
+  static resetHdncHandler(optDisplayType) {
+    const pHdncHandler = HdncAccessor.getHdncHandler();
+    const {
+      hdncY
+    } = HdncConfig.getHdncGroup();
+    const {
+      hdncZettaTlo
+    } = HdncConfig.getHdncTloGroup();
+    const {
+      hdncExaBlo
+    } = HdncConfig.getHdncBloGroup();
     const modifyEventData = {};
     /*  */
-    /* if (displayTypeState === 1) {
-      hdncYottaSfroTgro.classList.remove("cl-mdt-hdnc-y-sfro-handler");
-      hdncYottaSfroBgro.classList.remove("cl-mdt-hdnc-y-sfro-handler");
-    } */
     let displayType = FwaConfig.previousDisplayType;
     if (optDisplayType !== undefined) {
       displayType = optDisplayType;
@@ -319,59 +364,14 @@ class HdncUtilSet {
       }
     }
   }
-  /* -------------------------------------------------- */
-  /* static setTdtHdnc(pHdncHandler, targetIndex) {
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncZettaTlo
-    } = HdncConfig.getHdncTloGroup();
-    /*  
-    const eventData = {};
-    for (let i = 0; i < hdncY.length; i++) {
-      if (hdncY[i].isActive && targetIndex !== i) {
-        eventData.currentTarget = hdncZettaTlo[i];
-        pHdncHandler.tdtHdncZettaTlo(eventData);
-        return;
-      }
-    }
-  } */
-}
-class HdncUtilTime {
-  static timerHdncGigaBloBgro(ybIndex, pSetTimer) {
-    const {
-      hdncGigaBloBgro
-    } = HdncConfig.getHdncBloEbGroup(ybIndex);
-    /*  */
-    for (let ebi = 0; ebi < hdncGigaBloBgro.length; ebi++) {
-      if (pSetTimer) {
-        hdncGigaBloBgro[ebi].timerId = setTimeout(
-          HdncUtilTime.timeoutHdncGigaBloBgro,
-          150 * ebi,
-          ybIndex,
-          ebi
-        );
-      } else {
-        clearTimeout(hdncGigaBloBgro[ebi].timerId);
-      }
-    }
-  }
-  /* -------------------------------------------------- */
-  static timeoutHdncGigaBloBgro(ybIndex, ebIndex) {
-    HdncUtilSet.setHdncGigaBloBgroWidth(ybIndex, true, ebIndex);
-  }
 }
 /* ================================================== */
 class HdncUtil {
   static hdncUtilCache = {};
   /* -------------------------------------------------- */
-  static setHdncHandler(pHdncHandler, optDisplayType) {
-    HdncUtilSet.setHdncHandler(pHdncHandler, optDisplayType);
+  static resetHdncHandler(optDisplayType) {
+    HdncUtilReset.resetHdncHandler(optDisplayType);
   }
-  /* static setTdtHdnc(pHdncHandler, pIndex) {
-    HdncUtilSet.setTdtHdnc(pHdncHandler, pIndex);
-  } */
   /* -------------------------------------------------- */
   static updateHdncExaBloGridTemplateRows() {
     HdncUtilUpdate.updateHdncExaBloGridTemplateRows();

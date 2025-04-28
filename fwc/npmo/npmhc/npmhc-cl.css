@@ -9,17 +9,17 @@
   color: var(--black);
 }
 /* ==========----- ;cl-ddt-npmhc-exa-tno-handler; -----========== */
-/* ==========----- :cl-adt-npmhc-on-hash-change-handler: -----========== */
-.npmhc-t-tno-text.cl-adt-npmhc-on-hash-change-handler {
+/* ==========----- :cl-window-on-hash-change-handler: -----========== */
+.npmhc-t-tno-text.cl-window-on-hash-change-handler {
   color: var(--black);
 }
-.npmhc-t-tno-gro.cl-adt-npmhc-on-hash-change-handler {
+.npmhc-t-tno-gro.cl-window-on-hash-change-handler {
   border-color: var(--black);
 }
-.npmsc-y.cl-adt-npmhc-on-hash-change-handler {
+.npmsc-y.cl-window-on-hash-change-handler {
   display: grid;
 }
-/* ==========----- ;cl-adt-npmhc-on-hash-change-handler; -----========== */
+/* ==========----- ;cl-window-on-hash-change-handler; -----========== */
 /* =============== ;Handler; =============== */
 /* NOTE
  */

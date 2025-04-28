@@ -309,7 +309,6 @@ class HsncConfigManager {
           );
           tempSaveElement[HsncConfigElement.hsncBloEbGroup[esi].elementId] = tempGenerateElement;
         }
-        /* HsncSet.setAppendBloEbGroup(tempSaveElement); */
         HsncConfigManager.hsncBloEbGroupAppend(tempSaveElement);
       }
       /* ==========----- ;Blo Eb Group; -----========== */

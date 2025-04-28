@@ -3,40 +3,42 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
-  NpmscConfig
-} from "./npmsc-config.js";
-import {
-  FwcAccessor
-} from "../../fwc-hub.js";
 class NpmscAccessor {
-  static npmscCache = {};
+  /* static npmscCache = {};
   static getNpmscRoot() {
     return NpmscGet.getNpmscRoot();
   }
   static getNpmscGroup() {
     return NpmscGet.getNpmscGroup();
-  }
+  } */
 }
 class NpmscController {
-  static process() {
-
+  static init() {
+    NpmscManager.init();
   }
-  static processOnLoad() {
-
+  static load() {
+    NpmscManager.load();
   }
-  static processOnResize() {
-
+  static resizeDisplay() {
+    NpmscManager.resizeDisplay();
   }
 }
 class NpmscManager {
+  static init() {
 
+  }
+  static load() {
+
+  }
+  static resizeDisplay() {
+
+  }
 }
 class NpmscHandler {
 
 }
 class NpmscGet {
-  static getNpmscRoot() {
+  /* static getNpmscRoot() {
     const saveVerifyGroup = FwcAccessor.getVerifyCache2(
       NpmscAccessor.npmscCache,
       NpmscConfig.npmscRoot
@@ -53,7 +55,7 @@ class NpmscGet {
       npmscR
     );
     return saveVerifyGroup;
-  }
+  } */
 }
 class NpmscSet {
 

@@ -22,7 +22,7 @@ import {
 import {
   HtpncConfig
 } from "./ho/htpnc/htpnc-config.js";
-/*  */
+/* -------------------------------------------------- */
 import {
   HdncAccessor,
   HdncController
@@ -33,7 +33,7 @@ import {
 import {
   HdncUtil
 } from "./ho/hdnc/hdnc-util.js";
-/*  */
+/* -------------------------------------------------- */
 import {
   HsncAccessor,
   HsncController
@@ -44,7 +44,7 @@ import {
 import {
   HsncUtil
 } from "./ho/hsnc/hsnc-util.js";
-/*  */
+/* -------------------------------------------------- */
 import {
   HeccAccessor,
   HeccController
@@ -55,18 +55,25 @@ import {
 import {
   HeccUtil
 } from "./ho/hecc/hecc-util.js";
-/* import {
-  NplcAccessor,
-  NplcController
-} from ".//nplc-class.js"; */
+/* -------------------------------------------------- */
 import {
   NpmhcAccessor,
   NpmhcController
 } from "./npmo/npmhc/npmhc-class.js";
 import {
+  NpmhcConfig
+} from "./npmo/npmhc/npmhc-config.js";
+import {
+  NpmhcUtil
+} from "./npmo/npmhc/npmhc-util.js";
+/* -------------------------------------------------- */
+import {
   NpmscAccessor,
   NpmscController
 } from "./npmo/npmsc/npmsc-class.js";
+import {
+  NpmscConfig
+} from "./npmo/npmsc/npmsc-config.js";
 /* ================================================== */
 export {
   /* FWC */
@@ -94,15 +101,15 @@ export {
   HeccController,
   HeccConfig,
   HeccUtil,
-  /* NPLC */
-  /* NplcAccessor,
-  NplcController */
   /* NPMHC */
   NpmhcAccessor,
   NpmhcController,
+  NpmhcConfig,
+  NpmhcUtil,
   /* NPMSC */
   NpmscAccessor,
-  NpmscController
+  NpmscController,
+  NpmscConfig
 };
 /* ================================================== */
 /* NOTE

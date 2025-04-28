@@ -35,39 +35,34 @@ class FwcController {
   /* =============== Process: =============== */
   static init() {
     HtpncController.init();
-    HdncController.process();
+    HdncController.init();
     HsncController.init();
     HeccController.init();
     /*  */
     /* !!!!! v1.1.15a [temp] URL Check nav-page? doc-page? home-page? !!!!! */
-    NpmhcController.process();
-    NpmscController.process();
+    NpmhcController.init();
+    NpmscController.init();
   }
   static load() {
     HtpncController.load();
-    HdncController.processOnLoad();
+    HdncController.load();
     HsncController.load();
     HeccController.load();
     /*  */
-    NpmhcController.processOnLoad();
-    NpmscController.processOnLoad();
+    NpmhcController.load();
+    NpmscController.load();
   }
   static resizeDisplay() {
     HtpncController.resizeDisplay();
-    HdncController.processOnResize();
+    HdncController.resizeDisplay();
     HsncController.resizeDisplay();
     HeccController.resizeDisplay();
     /*  */
-    NpmhcController.processOnResize();
-    NpmscController.processOnResize();
+    NpmhcController.resizeDisplay();
+    NpmscController.resizeDisplay();
   }
-  /* static stepOnResize() {
-    HtpncController.stepOnResize();
-    HdncController.stepOnResize();
-  } */
   static resizeSensor() {
-    /* HtpncController.sensorOnResize(); */
-    HdncController.sensorOnResize();
+    HdncController.resizeSensor();
     HsncController.resizeSensor();
   }
   /* =============== Process; =============== */
@@ -115,7 +110,6 @@ class FwcGet {
         }
       }
     }
-    
     return elementData;
   }
   static getVerifyCache(dCache, dGroup, dRoot, dIndex) {

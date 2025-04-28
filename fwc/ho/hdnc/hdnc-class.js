@@ -10,17 +10,20 @@ import {
   HdncTool
 } from "./hdnc-tool.js";
 import {
-  HtpncConfig,
-  HdncConfig,
-  HdncUtil,
   FwcAccessor,
   HtpncAccessor,
-  HsncAccessor
+  HtpncConfig,
+  HdncConfig,
+  HdncUtil
 } from "../../fwc-hub.js";
 /*  */
 class HdncAccessor {
+  /* static pHdncHandler = HdncHandler; */
+  static getHdncHandler() {
+    return HdncHandler;
+  }
   /* =============== :Function: =============== */
-  static resetHdnc(displayTypeState) {
+  /* static resetHdnc(displayTypeState) {
     HdncUtil.setHdncHandler(HdncHandler, displayTypeState);
   }
   static setHdnc(displayTypeState) {
@@ -32,28 +35,27 @@ class HdncAccessor {
   static getHdncGroup() {
     return HdncConfig.getHdncGroup();
   }
-  /*  */
   static getHdncBloGroup() {
     return HdncConfig.getHdncBloGroup();
-  }
+  } */
   /* =============== ;Function; =============== */
 }
 class HdncController {
-  static process() {
+  static init() {
     HdncConfig.hdncGenerate();
     HdncManager.init();
   }
-  static processOnLoad() {
+  static load() {
     HdncManager.event(true);
-    HdncManager.initOnLoad();
+    HdncManager.load();
   }
-  static processOnResize() {
-    HdncManager.initOnResize();
+  static resizeDisplay() {
+    HdncManager.resizeDisplay();
     HdncManager.event(false);
     HdncManager.event(true);
   }
-  static sensorOnResize() {
-    HdncManager.initSensorOnResize();
+  static resizeSensor() {
+    HdncManager.resizeSensor();
   }
 }
 class HdncManager {
@@ -61,8 +63,7 @@ class HdncManager {
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
-    /* window.previousInnerHeight = window.innerHeight;
-    window.previousInnerWidth = window.innerWidth; */
+    /*  */
     for (let ybi = 0; ybi < hdncY.length; ybi++) {
       hdncY[ybi].index = ybi;
       hdncY[ybi].isActive = false;
@@ -78,7 +79,7 @@ class HdncManager {
     }
   }
   /* -------------------------------------------------- */
-  static initOnLoad() {
+  static load() {
     switch (FwaConfig.currentDisplayType) {
       case 1: {
         break;
@@ -110,7 +111,7 @@ class HdncManager {
     HdncUtil.setHdncExaBloGridTemplateRows(false);
   }
   /* -------------------------------------------------- */
-  static initOnResize() {
+  static resizeDisplay() {
     const {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
@@ -119,7 +120,7 @@ class HdncManager {
       hdncYottaSfroBo
     } = HdncConfig.getHdncYottaGroup();
     /*  */
-    HdncUtil.setHdncHandler(HdncHandler);
+    HdncUtil.resetHdncHandler();
     /*  */
     switch (FwaConfig.previousDisplayType) {
       case 1: {
@@ -153,10 +154,10 @@ class HdncManager {
         break;
       }
     }
-    HdncManager.initSensorOnResize();
+    HdncManager.resizeSensor();
   }
   /* -------------------------------------------------- */
-  static initSensorOnResize() {
+  static resizeSensor() {
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
@@ -328,7 +329,6 @@ class HdncHandler {
   }
   /* -------------------------------------------------- */
   static mdtHdncRootScroll() {
-    /* HdncTool.scrollManager(1); */
     const {
       hdncR
     } = HdncConfig.getHdncRoot();
@@ -357,45 +357,6 @@ class HdncHandler {
     /*  */
     hdncYottaSfroTo.style.height = setToHeight;
     hdncYottaSfroBo.style.height = setBoHeight;
-    /*  
-    let toType = "";
-    let boType = "";
-    /*  
-    if (scrollTop > scrollBuffer) {
-      toType = "add";
-    } else {
-      toType = "remove";
-    }
-    if (scrollTop + clientHeight + scrollBuffer < scrollHeight) {
-      boType = "add";
-    } else {
-      boType = "remove";
-    }
-    /*  
-    const innerHeight = window.innerHeight;
-    const calcHeight = innerHeight / 10;
-    const setHeight = calcHeight + "px";
-    if (toType === "add") {
-      hdncYottaSfroTo.style.height = setHeight;
-    } else {
-      hdncYottaSfroTo.style.height = "";
-    }
-    if (boType === "add") {
-      hdncYottaSfroBo.style.height = setHeight;
-    } else {
-      hdncYottaSfroBo.style.height = "";
-    } */
-    /*  */
-    /* if (toType) {
-      hdncYottaSfroTo.classList[toType](
-        "cl-mdt-hdnc-r-scroll-handler"
-      );
-    }
-    if (boType) {
-      hdncYottaSfroBo.classList[boType](
-        "cl-mdt-hdnc-r-scroll-handler"
-      );
-    } */
   }
   /* -------------------------------------------------- */
   static mdtHdncExaBloTransitionEnd(eventData) {
@@ -452,27 +413,14 @@ class HdncHandler {
     }
     /*  */
     if (isActive) {
-      /* if (HsncAccessor.isActiveHsnc) {
-        HtpncAccessor.htpncZettaHsngoHandler();
-      } */
       if (htpncZettaHsngo.isActive) {
         HtpncAccessor.tdtHtpncZettaHsngoHandler();
       }
-      HdncUtil.setHdncHandler(HdncHandler, 2);
+      HdncUtil.resetHdncHandler(2);
     } else {
       HdncUtil.timerHdncGigaBloBgro(targetIndex, false);
       HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
       HdncTool.resetTdtHdncExaBloScroll(HdncHandler, targetIndex);
-      /* hdncExaBlo[targetIndex].removeEventListener(
-        "scroll",
-        HdncHandler.tdtHdncExaBloScroll
-      );
-      hdncExaBloSgroTo[targetIndex].classList.remove(
-        "cl-tdt-hdnc-e-blo-scroll-handler"
-      );
-      hdncExaBloSgroBo[targetIndex].classList.remove(
-        "cl-tdt-hdnc-e-blo-scroll-handler"
-      ); */
     }
     /* classList */
     hdncExaTloText[targetIndex].classList[type](clData);
@@ -491,7 +439,6 @@ class HdncHandler {
     const {
       targetIndex
     } = FwcAccessor.getEventData(eventData, ".hdnc-y");
-    /* HdncTool.scrollManager(2, targetIndex); */
     const {
       hdncExaBlo,
       hdncExaBloSgroTo,
@@ -516,16 +463,6 @@ class HdncHandler {
     /*  */
     hdncExaBloSgroTo[targetIndex].classList[toType](clData);
     hdncExaBloSgroBo[targetIndex].classList[boType](clData);
-    /* if (toType) {
-      hdncExaBloSgroTo[targetIndex].classList[toType](
-        "cl-tdt-hdnc-e-blo-scroll-handler"
-      );
-    }
-    if (boType) {
-      hdncExaBloSgroBo[targetIndex].classList[boType](
-        "cl-tdt-hdnc-e-blo-scroll-handler"
-      );
-    } */
   }
   /* -------------------------------------------------- */
   static tdtHdncExaBloTransitionEnd(eventData) {
@@ -682,16 +619,6 @@ class HdncHandler {
     /*  */
     hdncExaBloSgroTo[targetIndex].classList[toType](clData);
     hdncExaBloSgroBo[targetIndex].classList[boType](clData);
-    /* if (toType) {
-      hdncExaBloSgroTo[targetIndex].classList[toType](
-        "cl-ddt-hdnc-e-blo-scroll-handler"
-      );
-    }
-    if (boType) {
-      hdncExaBloSgroBo[targetIndex].classList[boType](
-        "cl-ddt-hdnc-e-blo-scroll-handler"
-      );
-    } */
   }
   /* -------------------------------------------------- */
   static ddtHdncExaBloTransitionEnd(eventData) {
