@@ -31,8 +31,8 @@ class HdncUtilUpdate {
         setEnableGridRow += enableGridRowRemSize + "rem" + " ";
         setDisableGridRow += disableGridRowRemSize + "rem" + " ";
       }
-      hdncExaBlo[ybi].dataset.enableGridRow = setEnableGridRow;
-      hdncExaBlo[ybi].dataset.disableGridRow = setDisableGridRow;
+      hdncExaBlo[ybi].dataset.setEnableGridRow = setEnableGridRow;
+      hdncExaBlo[ybi].dataset.setDisableGridRow = setDisableGridRow;
     }
   }
   /* -------------------------------------------------- */
@@ -102,7 +102,8 @@ class HdncUtilUpdate {
       const calcLeft = (hdncTeraBloWidth - (hdncGigaBloTextWidth + bufferWidth)) / 2;
       const setLeft = calcLeft + "px";
       /*  */
-      hdncGigaBloBgro[ebi].dataset.left = setLeft;
+      hdncGigaBloBgro[ebi].dataset.calcLeft = calcLeft;
+      hdncGigaBloBgro[ebi].dataset.setLeft = setLeft;
     }
   }
   /* -------------------------------------------------- */
@@ -117,7 +118,8 @@ class HdncUtilUpdate {
       const calcWidth = hdncGigaBloTextWidth + bufferWidth;
       const setWidth = calcWidth + "px";
       /*  */
-      hdncGigaBloBgro[ebi].dataset.width = setWidth;
+      hdncGigaBloBgro[ebi].dataset.calcWidth = calcWidth;
+      hdncGigaBloBgro[ebi].dataset.setWidth = setWidth;
     }
   }
   /* ================================================== */
@@ -129,7 +131,7 @@ class HdncUtilSet {
       hdncGigaBloBgro
     } = HdncConfig.getHdncBloEbGroup(ybIndex);
     for (let ebi = 0; ebi < hdncGigaBloBgro.length; ebi++) {
-      const getLeft = hdncGigaBloBgro[ebi].dataset.left;
+      const getLeft = hdncGigaBloBgro[ebi].dataset.setLeft;
       hdncGigaBloBgro[ebi].style.left = getLeft;
     }
   }
@@ -139,14 +141,38 @@ class HdncUtilSet {
       hdncGigaBloBgro
     } = HdncConfig.getHdncBloEbGroup(ybIndex);
     /*  */
-    let isOption = false;
+    let optionMode = 0;
     if (optEbIndex == null) {
-      isOption = false;
+      optionMode = 1;
     } else {
-      isOption = true;
+      optionMode = 2;
     }
     /*  */
-    if (isOption) {
+    switch (optionMode) {
+      case 1: {
+        let getWidth = "";
+        for (let ebi = 0; ebi < hdncGigaBloBgro.length; ebi++) {
+          if (pSetWidth) {
+            getWidth = hdncGigaBloBgro[ebi].dataset.setWidth;
+          }
+          hdncGigaBloBgro[ebi].style.width = getWidth;
+        }
+        break;
+      }
+      case 2: {
+        let getWidth = "";
+        if (pSetWidth) {
+          getWidth = hdncGigaBloBgro[optEbIndex].dataset.setWidth;
+        }
+        hdncGigaBloBgro[optEbIndex].style.width = getWidth;
+        break;
+      }
+      default: {
+        console.log("HdncUtil.setHdncGigaBloBgroWidth::optionMode:Error");
+        break;
+      }
+    }
+    /* if (isOption) {
       let getWidth = "";
       if (pSetWidth) {
         getWidth = hdncGigaBloBgro[optEbIndex].dataset.width;
@@ -160,51 +186,51 @@ class HdncUtilSet {
         }
         hdncGigaBloBgro[ebi].style.width = getWidth;
       }
-    }
+    } */
   }
   /* ================================================== */
-  static setHdncExaBlo(isSet, pIndex) {
+  static setHdncExaBloGridTemplateRows(pSetGrid, optYbIndex) {
     const {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
     /*  */
-    let rowRemSize = null;
-    if (isSet) {
-      rowRemSize = 4;
-    } else {
-      rowRemSize = 0;
+    let optionMode = 0;
+    if (optYbIndex !== undefined) {
+      optionMode = 1;
     }
-    HdncUtilSet.setHdncExaBloGridTemplateRows_Old(pIndex, rowRemSize);
-    if (hdncExaBlo[pIndex].dataset.isSensorHeightResized && isSet) {
-      HdncUtilSet.setHdncExaBloMaxHeight(pIndex);
+    /*  */
+    switch (optionMode) {
+      case 0: {
+        let getGridRow = "";
+        for (let ybi = 0; ybi < hdncExaBlo.length; ybi++) {
+          if (pSetGrid) {
+            getGridRow = hdncExaBlo[ybi].dataset.setEnableGridRow;
+          } else {
+            getGridRow = hdncExaBlo[ybi].dataset.setDisableGridRow;
+          }
+          hdncExaBlo[ybi].style.gridTemplateRows = getGridRow;
+        }
+        break;
+      }
+      case 1: {
+        let getGridRow = "";
+        if (pSetGrid) {
+          getGridRow = hdncExaBlo[optYbIndex].dataset.setEnableGridRow;
+        } else {
+          getGridRow = hdncExaBlo[optYbIndex].dataset.setDisableGridRow;
+        }
+        hdncExaBlo[optYbIndex].style.gridTemplateRows = getGridRow;
+        break;
+      }
     }
-  }
-  /* -------------------------------------------------- */
-  static setHdncExaBloGridTemplateRows_Old(pIndex, rowRemSize) {
-    const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    const {
-      hdncPetaBlo
-    } = HdncConfig.getHdncBloEbGroup(pIndex);
-    let setGridTemplateRows = "";
-    for (let i = 0; i < hdncPetaBlo.length; i++) {
-      setGridTemplateRows += rowRemSize + "rem" + " ";
-    }
-    hdncExaBlo[pIndex].style.gridTemplateRows = setGridTemplateRows;
-  }
-  /*  */
-  static setHdncExaBloGridTemplateRows(ybIndex, pSetGrid) {
-    const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    let getGridRow = "";
+    /*  */
+    /* let getGridRow = "";
     if (pSetGrid) {
-      getGridRow = hdncExaBlo[ybIndex].dataset.enableGridRow;
+      getGridRow = hdncExaBlo[ybIndex].dataset.setEnableGridRow;
     } else {
-      getGridRow = hdncExaBlo[ybIndex].dataset.disableGridRow;
+      getGridRow = hdncExaBlo[ybIndex].dataset.setDisableGridRow;
     }
-    hdncExaBlo[ybIndex].style.gridTemplateRows = getGridRow;
+    hdncExaBlo[ybIndex].style.gridTemplateRows = getGridRow; */
   }
   /* -------------------------------------------------- */
   static setHdncExaBloMaxHeight() {
@@ -215,18 +241,6 @@ class HdncUtilSet {
     for (let ybi = 0; ybi < hdncExaBlo.length; ybi++) {
       hdncExaBlo[ybi].style.maxHeight = getMaxHeight;
     }
-  }
-  /* -------------------------------------------------- */
-  static setDataHdncExaBloMaxHeight() {
-    let remBuffer = null;
-    if (FwaConfig.currentDisplayType === 2) {
-      remBuffer = 10;
-    } else if (FwaConfig.currentDisplayType === 3) {
-      remBuffer = 6;
-    }
-    const innerHeight = window.innerHeight;
-    const calcMaxHeight = innerHeight - (remBuffer * 16);
-    HdncUtil.hdncUtilCache["hdncExaBloMaxHeight"] = calcMaxHeight;
   }
   /* ================================================== */
   static setHdncExaBloSgroLeft() {
@@ -251,68 +265,7 @@ class HdncUtilSet {
     }
   }
   /* ================================================== */
-  static setDataHdncExaBloSgro(pIndex) {
-    HdncUtilSet.setDataHdncExaBloSgroTop(pIndex);
-    HdncUtilSet.setDataHdncExaBloSgroLeft(pIndex);
-  }
-  /* ------------------------------ */
-  static setDataHdncExaBloSgroLeft(pIndex) {
-    const {
-      hdncZettaBlo,
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    const hdncZettaBloRect = hdncZettaBlo[pIndex].getBoundingClientRect();
-    const hdncExaBloRect = hdncExaBlo[pIndex].getBoundingClientRect();
-    const calcLeft = -(hdncZettaBloRect.left - hdncExaBloRect.left) +
-      (hdncExaBloRect.width / 2) - 16;
-    /*  */
-    HdncUtil.hdncUtilCache["hdncExaBloSgroLeft" + pIndex] = calcLeft;
-  }
-  /* ------------------------------ */
-  static setDataHdncExaBloSgroTop(pIndex, pHeight) {
-    /* remove pHeight ? */
-    const {
-      hdncExaBlo,
-      hdncExaBloSgroBo
-    } = HdncConfig.getHdncBloGroup();
-    let hdncExaBloRect = null;
-    let setTop = null;
-    if (pHeight) {
-      setTop = pHeight - 40;
-    } else {
-      hdncExaBloRect = hdncExaBlo[pIndex].getBoundingClientRect();
-      setTop = hdncExaBloRect.height - 40;
-    }
-    /*  */
-    hdncExaBloSgroBo[pIndex].dataset.top = setTop + "px";
-  }
-  /* -------------------------------------------------- */
-  static setHdncExaBloSgro(pIndex) {
-    HdncUtilSet.setHdncExaBloSgroTop_Old(pIndex);
-    HdncUtilSet.setHdncExaBloSgroLeft_Old(pIndex);
-  }
-  /* ------------------------------ */
-  static setHdncExaBloSgroTop_Old(pIndex) {
-    const {
-      hdncExaBloSgroBo
-    } = HdncConfig.getHdncBloGroup();
-    /*  */
-    const setTop = hdncExaBloSgroBo[pIndex].dataset.top;
-    hdncExaBloSgroBo[pIndex].style.top = setTop;
-  }
-  /* ------------------------------ */
-  static setHdncExaBloSgroLeft_Old(pIndex) {
-    const {
-      hdncExaBloSgroTo,
-      hdncExaBloSgroBo
-    } = HdncConfig.getHdncBloGroup();
-    /*  */
-    const setLeft = HdncUtil.hdncUtilCache["hdncExaBloSgroLeft" + pIndex] + "px";
-    hdncExaBloSgroTo[pIndex].style.left = setLeft;
-    hdncExaBloSgroBo[pIndex].style.left = setLeft;
-  }
-  /* ================================================== */
-  static setHdnc(pHdncHandler, displayTypeState) {
+  static setHdncHandler(pHdncHandler, optDisplayType) {
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
@@ -322,43 +275,47 @@ class HdncUtilSet {
     const {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
-    const {
+    /* const {
       hdncYottaSfroTgro,
       hdncYottaSfroBgro
-    } = HdncConfig.getHdncYottaGroup();
+    } = HdncConfig.getHdncYottaGroup(); */
     /*  */
-    const eventData = {};
+    const modifyEventData = {};
     /*  */
-    if (displayTypeState === 1) {
+    /* if (displayTypeState === 1) {
       hdncYottaSfroTgro.classList.remove("cl-mdt-hdnc-y-sfro-handler");
       hdncYottaSfroBgro.classList.remove("cl-mdt-hdnc-y-sfro-handler");
+    } */
+    let displayType = FwaConfig.previousDisplayType;
+    if (optDisplayType !== undefined) {
+      displayType = optDisplayType;
     }
     /*  */
-    for (let i = 0; i < hdncZettaTlo.length; i++) {
-      if (hdncY[i].isActive) {
-        switch (displayTypeState) {
+    for (let ybi = 0; ybi < hdncZettaTlo.length; ybi++) {
+      if (hdncY[ybi].isActive) {
+        switch (displayType) {
           case 1: {
-            eventData.currentTarget = hdncZettaTlo[i];
-            pHdncHandler.mdtHdncZettaTlo(eventData);
+            modifyEventData.currentTarget = hdncZettaTlo[ybi];
+            pHdncHandler.mdtHdncZettaTlo(modifyEventData);
             break;
           }
           case 2: {
-            eventData.currentTarget = hdncZettaTlo[i];
-            pHdncHandler.tdtHdncZettaTlo(eventData);
+            modifyEventData.currentTarget = hdncZettaTlo[ybi];
+            pHdncHandler.tdtHdncZettaTlo(modifyEventData);
             break;
           }
           case 3: {
-            eventData.currentTarget = hdncZettaTlo[i];
-            eventData.type = "mouseleave";
-            pHdncHandler.ddtHdncYotta(eventData);
+            modifyEventData.currentTarget = hdncZettaTlo[ybi];
+            modifyEventData.type = "mouseleave";
+            pHdncHandler.ddtHdncYotta(modifyEventData);
             /*  */
             const {
               hdncPetaBlo
-            } = HdncConfig.getHdncBloEbGroup(i);
-            for (let j = 0; j < hdncExaBlo[i].length; j++) {
-              eventData.currentTarget = hdncPetaBlo[j];
-              eventData.type = "mouseleave";
-              pHdncHandler.ddtHdncPetaBlo(eventData);
+            } = HdncConfig.getHdncBloEbGroup(ybi);
+            for (let ebi = 0; ebi < hdncExaBlo[ybi].length; ebi++) {
+              modifyEventData.currentTarget = hdncPetaBlo[ebi];
+              modifyEventData.type = "mouseleave";
+              pHdncHandler.ddtHdncPetaBlo(modifyEventData);
             }
             break;
           }
@@ -367,14 +324,14 @@ class HdncUtilSet {
     }
   }
   /* -------------------------------------------------- */
-  static setTdtHdnc(pHdncHandler, targetIndex) {
+  /* static setTdtHdnc(pHdncHandler, targetIndex) {
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
     const {
       hdncZettaTlo
     } = HdncConfig.getHdncTloGroup();
-    /*  */
+    /*  
     const eventData = {};
     for (let i = 0; i < hdncY.length; i++) {
       if (hdncY[i].isActive && targetIndex !== i) {
@@ -383,130 +340,71 @@ class HdncUtilSet {
         return;
       }
     }
-  }
+  } */
 }
 class HdncUtilTime {
-  static timerHdncGigaBloBgro(ybIndex) {
+  static timerHdncGigaBloBgro(ybIndex, pSetTimer) {
     const {
       hdncGigaBloBgro
     } = HdncConfig.getHdncBloEbGroup(ybIndex);
+    /*  */
     for (let ebi = 0; ebi < hdncGigaBloBgro.length; ebi++) {
-      /* hdncGigaBloBgro[ebi].timerId */
-      setTimeout(
-        HdncUtilTime.timeoutHdncGigaBloBgro,
-        150 * ebi,
-        ybIndex,
-        ebi
-      );
+      if (pSetTimer) {
+        hdncGigaBloBgro[ebi].timerId = setTimeout(
+          HdncUtilTime.timeoutHdncGigaBloBgro,
+          150 * ebi,
+          ybIndex,
+          ebi
+        );
+      } else {
+        clearTimeout(hdncGigaBloBgro[ebi].timerId);
+      }
     }
   }
   /* -------------------------------------------------- */
   static timeoutHdncGigaBloBgro(ybIndex, ebIndex) {
     HdncUtilSet.setHdncGigaBloBgroWidth(ybIndex, true, ebIndex);
   }
-  /* -------------------------------------------------- */
-  /* ================================================== */
-  static timerMdtHdncYotta(pIndex) {
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncPetaBlo,
-      hdncGigaBloText,
-      hdncGigaBloBgro
-    } = HdncConfig.getHdncBloEbGroup(pIndex);
-    const gigaBgroBuffer = 24;
-    if (hdncY[pIndex].isResize) {
-      for (let i = 0; i < hdncGigaBloBgro.length; i++) {
-        /* HdncUtilSet.setDataHdncGigaBloBgro_Old(
-          hdncGigaBloBgro[i],
-          hdncGigaBloText[i],
-          gigaBgroBuffer
-        ); */
-      }
-      hdncY[pIndex].isSensorResize = false;
-      hdncY[pIndex].isResize = false;
-    } else if (hdncY[pIndex].isSensorResize) {
-      /* Only MDT */
-      for (let i = 0; i < hdncGigaBloBgro.length; i++) {
-        /* HdncUtilSet.setDataHdncGigaBloBgro_Old(
-          hdncGigaBloBgro[i],
-          hdncGigaBloText[i],
-          gigaBgroBuffer
-        ); */
-      }
-      hdncY[pIndex].isSensorResize = false;
-    }
-    for (let i = 0; i < hdncGigaBloBgro.length; i++) {
-      hdncPetaBlo[i].timeoutId = setTimeout(
-        HdncUtilTime.timerMdtHdncPetaBlo,
-        150 * i,
-        hdncGigaBloBgro[i]
-      );
-    }
-  }
-  static timerMdtHdncPetaBlo(setElement) {
-    /* HdncUtilSet.setHdncGigaBloBgro_Old(setElement, true); */
-  }
-  static timerHdncGigaBloBgro_Old(ebIndex) {
-    const {
-      hdncGigaBloBgro
-    } = HdncConfig.getHdncBloEbGroup(ebIndex);
-    for (let i = 0; i < hdncGigaBloBgro.length; i++) {
-      hdncGigaBloBgro[i].timeoutId = setTimeout(
-        HdncUtilTime.timeoutHdncGigaBloBgro_Old,
-        150 * i,
-        hdncGigaBloBgro[i]
-      );
-    }
-  }
-  static timeoutHdncGigaBloBgro_Old(pElement) {
-    /* HdncUtilSet.setHdncGigaBloBgroWidth_Old(pElement, true); */
-  }
-  static timerDdtHdncYotta(hdncBloEbIndex, timeoutFlag) {
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    if (hdncY[hdncBloEbIndex].isResize) {
-      const {
-        hdncGigaBloText,
-        hdncGigaBloBgro
-      } = HdncConfig.getHdncBloEbGroup(hdncBloEbIndex);
-      const gigaBgroBuffer = 32;
-      for (let i = 0; i < hdncGigaBloBgro.length; i++) {
-        /* HdncUtilSet.setDataHdncGigaBloBgro_Old(
-          hdncGigaBloBgro[i],
-          hdncGigaBloText[i],
-          gigaBgroBuffer
-        ); */
-      }
-      hdncY[hdncBloEbIndex].isResize = false;
-    }
-    timeoutFlag.isTimeout = true;
-  }
-  static timerDdtHdncPetaBlo(setElement, timerElement, timeoutFlag) {
-    if (timeoutFlag.isTimeout) {
-      /* HdncUtilSet.setHdncGigaBloBgro_Old(setElement, true); */
-    } else {
-      /* timerElement.timeoutId = setTimeout(
-        HdncUtilSet.setDdtHdncPetaBloTimer,
-        50,
-        setElement,
-        timerElement,
-        timeoutFlag
-      ); */
-    }
-  }
 }
 /* ================================================== */
 class HdncUtil {
   static hdncUtilCache = {};
   /* -------------------------------------------------- */
-  static setHdnc(pHdncHandler, displayType) {
-    HdncUtilSet.setHdnc(pHdncHandler, displayType);
+  static setHdncHandler(pHdncHandler, optDisplayType) {
+    HdncUtilSet.setHdncHandler(pHdncHandler, optDisplayType);
   }
-  static setTdtHdnc(pHdncHandler, pIndex) {
+  /* static setTdtHdnc(pHdncHandler, pIndex) {
     HdncUtilSet.setTdtHdnc(pHdncHandler, pIndex);
+  } */
+  /* -------------------------------------------------- */
+  static updateHdncExaBloGridTemplateRows() {
+    HdncUtilUpdate.updateHdncExaBloGridTemplateRows();
+  }
+  static updateHdncExaBloMaxHeight() {
+    HdncUtilUpdate.updateHdncExaBloMaxHeight();
+  }
+  /*  */
+  static setHdncExaBloGridTemplateRows(pSetGrid, optYbIndex) {
+    HdncUtilSet.setHdncExaBloGridTemplateRows(pSetGrid, optYbIndex);
+  }
+  static setHdncExaBloMaxHeight() {
+    HdncUtilSet.setHdncExaBloMaxHeight();
+  }
+  /* -------------------------------------------------- */
+  static updateHdncExaBloSgroLeft() {
+    HdncUtilUpdate.updateHdncExaBloSgroLeft();
+  }
+  /*  */
+  static setHdncExaBloSgroLeft() {
+    HdncUtilSet.setHdncExaBloSgroLeft();
+  }
+  /* -------------------------------------------------- */
+  static updateHdncExaBloSgroBoTop() {
+    HdncUtilUpdate.updateHdncExaBloSgroBoTop();
+  }
+  /*  */
+  static setHdncExaBloSgroBoTop() {
+    HdncUtilSet.setHdncExaBloSgroBoTop();
   }
   /* -------------------------------------------------- */
   static updateHdncGigaBloBgroLeft(ybIndex) {
@@ -522,85 +420,9 @@ class HdncUtil {
   static setHdncGigaBloBgroWidth(ybIndex, pSetWidth, optEbIndex) {
     HdncUtilSet.setHdncGigaBloBgroWidth(ybIndex, pSetWidth, optEbIndex);
   }
-  /* -------------------------------------------------- */
-  /* static setHdncExaBlo(isSet, pIndex) {
-    HdncUtilSet.setHdncExaBlo(isSet, pIndex);
-  }
-  static setHdncExaBloGridTemplateRows_Old(pIndex, rowRemSize) {
-    HdncUtilSet.setHdncExaBloGridTemplateRows_Old(pIndex, rowRemSize);
-  } */
-  /* static setHdncExaBloMaxHeight(pIndex) {
-    HdncUtilSet.setHdncExaBloMaxHeight(pIndex);
-  } */
-  /* static setDataHdncExaBloMaxHeight() {
-    HdncUtilSet.setDataHdncExaBloMaxHeight();
-  } */
   /*  */
-  static updateHdncExaBloGridTemplateRows() {
-    HdncUtilUpdate.updateHdncExaBloGridTemplateRows();
-  }
-  static updateHdncExaBloMaxHeight() {
-    HdncUtilUpdate.updateHdncExaBloMaxHeight();
-  }
-  static setHdncExaBloGridTemplateRows(ybIndex, pSetGrid) {
-    HdncUtilSet.setHdncExaBloGridTemplateRows(ybIndex, pSetGrid);
-  }
-  static setHdncExaBloMaxHeight() {
-    HdncUtilSet.setHdncExaBloMaxHeight();
-  }
-  /* -------------------------------------------------- */
-  static updateHdncExaBloSgroLeft() {
-    HdncUtilUpdate.updateHdncExaBloSgroLeft();
-  }
-  static setHdncExaBloSgroLeft() {
-    HdncUtilSet.setHdncExaBloSgroLeft();
-  }
-  /* -------------------------------------------------- */
-  static updateHdncExaBloSgroBoTop() {
-    HdncUtilUpdate.updateHdncExaBloSgroBoTop();
-  }
-  static setHdncExaBloSgroBoTop() {
-    HdncUtilSet.setHdncExaBloSgroBoTop();
-  }
-  /* static setDataHdncExaBloSgro(pIndex) {
-    HdncUtilSet.setDataHdncExaBloSgro(pIndex);
-  }
-  static setDataHdncExaBloSgroTop(pIndex) {
-    HdncUtilSet.setDataHdncExaBloSgroTop(pIndex);
-  }
-  static setDataHdncExaBloSgroLeft(pIndex) {
-    HdncUtilSet.setDataHdncExaBloSgroLeft(pIndex);
-  }
-  static setHdncExaBloSgro(pIndex) {
-    HdncUtilSet.setHdncExaBloSgro(pIndex);
-  }
-  static setHdncExaBloSgroTop_Old(pIndex) {
-    HdncUtilSet.setHdncExaBloSgroTop_Old(pIndex);
-  }
-  static setHdncExaBloSgroLeft_Old(pIndex) {
-    HdncUtilSet.setHdncExaBloSgroLeft_Old(pIndex);
-  } */
-  /* -------------------------------------------------- */
-  /* static setTimerMdtHdncYotta(pIndex) {
-    HdncUtilTime.timerMdtHdncYotta(pIndex);
-  }
-  static setTimerMdtHdncPetaBlo(setElement) {
-    HdncUtilTime.timerMdtHdncPetaBlo(setElement);
-  }
-  static setTimerHdncGigaBloBgro(ebIndex) {
-    HdncUtilTime.timerHdncGigaBloBgro(ebIndex);
-  }
-  static setTimeoutHdncGigaBloBgro(pElement) {
-    HdncUtilTime.timeoutHdncGigaBloBgro(pElement);
-  }
-  static setDdtHdncYottaTimer(hdncBloEbIndex, timeoutFlag) {
-    HdncUtilTime.timerDdtHdncYotta(hdncBloEbIndex, timeoutFlag);
-  }
-  static setDdtHdncPetaBloTimer(setElement, timerElement, timeoutFlag) {
-    HdncUtilTime.timerDdtHdncPetaBlo(setElement, timerElement, timeoutFlag);
-  } */
-  static timerHdncGigaBloBgro(ybIndex) {
-    HdncUtilTime.timerHdncGigaBloBgro(ybIndex);
+  static timerHdncGigaBloBgro(ybIndex, pSetTimer) {
+    HdncUtilTime.timerHdncGigaBloBgro(ybIndex, pSetTimer);
   }
 }
 /*  */

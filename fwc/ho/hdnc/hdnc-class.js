@@ -6,39 +6,41 @@
 import {
   FwaConfig
 } from "../../../fwa/fwa-config.js";
-import {
+/* import {
   HdncConfig
 } from "./hdnc-config.js";
 import {
   HdncUtil
-} from "./hdnc-util.js";
+} from "./hdnc-util.js"; */
 import {
+  HdncTool
+} from "./hdnc-tool.js";
+import {
+  HdncConfig,
+  HdncUtil,
   FwcAccessor,
   HtpncAccessor,
   HsncAccessor
 } from "../../fwc-hub.js";
 /*  */
 class HdncAccessor {
-  static hdncCache = {};
+  /* static hdncCache = {}; */
   /* =============== :Function: =============== */
   static resetHdnc(displayTypeState) {
-    HdncUtil.setHdnc(displayTypeState);
+    HdncUtil.setHdncHandler(HdncHandler, displayTypeState);
   }
   static setHdnc(displayTypeState) {
-    HdncUtil.setHdnc(displayTypeState);
+    HdncUtil.setHdncHandler(HdncHandler, displayTypeState);
   }
   static getHdncRoot() {
     return HdncConfig.getHdncRoot();
-    /* return HdncConfig.getHdncRoot(); */
   }
   static getHdncGroup() {
     return HdncConfig.getHdncGroup();
-    /* return HdncConfig.getHdncGroup(); */
   }
   /*  */
   static getHdncBloGroup() {
     return HdncConfig.getHdncBloGroup();
-    /* return HdncConfig.getHdncBloGroup(); */
   }
   /* =============== ;Function; =============== */
 }
@@ -66,39 +68,54 @@ class HdncManager {
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
-    const {
+    /* const {
       hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
+    } = HdncConfig.getHdncBloGroup(); */
     /*  */
     window.previousInnerHeight = window.innerHeight;
     window.previousInnerWidth = window.innerWidth;
     /*  */
-    for (let i = 0; i < hdncExaBlo.length; i++) {
+    /* for (let i = 0; i < hdncExaBlo.length; i++) {
       const {
         hdncPetaBlo,
         hdncGigaBloBgro
       } = HdncConfig.getHdncBloEbGroup(i);
-      /*  */
-      hdncExaBlo[i].timeoutId = null;
-      /*  */
-      /* hdncExaBlo[i].dataset.timeoutId = null; */
+      /*  
+      /* hdncExaBlo[i].timeoutId = null; 
+      /*  
+      /* hdncExaBlo[i].dataset.timeoutId = null; 
       hdncExaBlo[i].dataset.isSensorWidthResized = true;
       hdncExaBlo[i].dataset.isSensorHeightResized = true;
-      /*  */
+      /*  
       hdncY[i].isActive = false;
       hdncY[i].index = i;
-      /*  */
-      hdncY[i].timeoutId = null;
-      hdncY[i].isTimeout = false;
-      /*  */
+      /*  
+      /* hdncY[i].timeoutId = null; 
+      /* hdncY[i].isTimeout = false; 
+      /*  
       hdncY[i].isResize = true;
       hdncY[i].isSensorResize = false;
-      /*  */
+      /*  
       for (let j = 0; j < hdncPetaBlo.length; j++) {
         hdncPetaBlo[j].index = j;
-        /*  */
-        hdncPetaBlo[j].timeoutId = null;
-        hdncGigaBloBgro[j].timeoutId = null;
+        /*  
+        /* hdncPetaBlo[j].timeoutId = null; 
+        /* hdncGigaBloBgro[j].timeoutId = null; 
+        hdncGigaBloBgro[j].timerId = null;
+      }
+    } */
+    /* !!!!!! v1.1.19a-4 !!!!! */
+    for (let ybi = 0; ybi < hdncY.length; ybi++) {
+      hdncY[ybi].index = ybi;
+      hdncY[ybi].isActive = false;
+      /*  */
+      const {
+        hdncPetaBlo,
+        hdncGigaBloBgro
+      } = HdncConfig.getHdncBloEbGroup(ybi);
+      for (let ebi = 0; ebi < hdncPetaBlo.length; ebi++) {
+        hdncPetaBlo[ebi].index = ebi;
+        hdncGigaBloBgro[ebi].timerId = null;
       }
     }
   }
@@ -106,40 +123,75 @@ class HdncManager {
   static initOnLoad() {
     /* !!!!! :v1.1.19a-3: !!!!! */
     /* set */
-    const {
+    /* const {
       hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    /* HdncUtil.setDataHdncExaBloMaxHeight(); */
-    /* for (let i = 0; i < hdncExaBlo.length; i++) {
-      HdncUtil.setHdncExaBloMaxHeight(i);
-      HdncUtil.setHdncExaBloGridTemplateRows(i, 0);
+    } = HdncConfig.getHdncBloGroup(); */
+    /* if (FwaConfig.currentDisplayType !== 1) {
+      HdncUtil.updateHdncExaBloMaxHeight();
+      HdncUtil.setHdncExaBloMaxHeight();
+      /*  
+      HdncUtil.updateHdncExaBloSgroBoTop();
+      HdncUtil.setHdncExaBloSgroBoTop();
     } */
-    HdncUtil.updateHdncExaBloMaxHeight();
-    HdncUtil.setHdncExaBloMaxHeight();
-    HdncUtil.updateHdncExaBloGridTemplateRows();
-    for (let i = 0; i < hdncExaBlo.length; i++) {
+    /* HdncUtil.updateHdncExaBloGridTemplateRows(); */
+    /* !!!!! v1.1.19a-4 !!!!! */
+    /* HdncUtil.setHdncExaBloGridTemplateRows(false); */
+    /* for (let i = 0; i < hdncExaBlo.length; i++) {
       HdncUtil.setHdncExaBloGridTemplateRows(i, false);
-      /*  */
-      /* HdncUtil.updateHdncGigaBloBgroLeft(i); */
-      /* HdncUtil.updateHdncGigaBloBgroWidth(i); */
-    }
+    } */
     /*  */
-    HdncUtil.updateHdncExaBloSgroBoTop();
-    HdncUtil.setHdncExaBloSgroBoTop();
+    /* HdncUtil.updateHdncExaBloSgroBoTop();
+    HdncUtil.setHdncExaBloSgroBoTop(); */
     /* !!!!! ;v1.1.19a-3; !!!!! */
+    switch (FwaConfig.currentDisplayType) {
+      case 1: {
+        break;
+      }
+      case 2: {
+        const {
+          hdncExaBlo
+        } = HdncConfig.getHdncBloGroup();
+        hdncExaBlo[0].classList.add("cl-tdt-hdnc-z-tlo-handler-nth-1");
+        hdncExaBlo[3].classList.add("cl-tdt-hdnc-z-tlo-handler-nth-4");
+        /*  */
+        HdncUtil.updateHdncExaBloMaxHeight();
+        HdncUtil.setHdncExaBloMaxHeight();
+        /*  */
+        HdncUtil.updateHdncExaBloSgroBoTop();
+        HdncUtil.setHdncExaBloSgroBoTop();
+        break;
+      }
+      case 3: {
+        HdncUtil.updateHdncExaBloMaxHeight();
+        HdncUtil.setHdncExaBloMaxHeight();
+        /*  */
+        HdncUtil.updateHdncExaBloSgroBoTop();
+        HdncUtil.setHdncExaBloSgroBoTop();
+        break;
+      }
+    }
+    HdncUtil.updateHdncExaBloGridTemplateRows();
+    HdncUtil.setHdncExaBloGridTemplateRows(false);
   }
   /* -------------------------------------------------- */
   static initOnResize() {
-    const {
+    /* const {
       hdncY
-    } = HdncConfig.getHdncGroup();
+    } = HdncConfig.getHdncGroup(); */
     const {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
-    HdncUtil.setHdnc(FwaConfig.previousDisplayType);
+    const {
+      hdncYottaSfroTgro,
+      hdncYottaSfroBgro
+    } = HdncConfig.getHdncYottaGroup();
+    /*  */
+    HdncUtil.setHdncHandler(HdncHandler);
     /*  */
     switch (FwaConfig.previousDisplayType) {
       case 1: {
+        hdncYottaSfroTgro.classList.remove("cl-mdt-hdnc-y-sfro-handler");
+        hdncYottaSfroBgro.classList.remove("cl-mdt-hdnc-y-sfro-handler");
         break;
       }
       case 2: {
@@ -154,31 +206,33 @@ class HdncManager {
     /*  */
     switch (FwaConfig.currentDisplayType) {
       case 1: {
-        for (let i = 0; i < hdncExaBlo.length; i++) {
-          hdncY[i].isSensorResize = false;
-          hdncExaBlo[i].isSensorResize = false;
-          hdncExaBlo[i].style.maxHeight = "";
+        for (let ybi = 0; ybi < hdncExaBlo.length; ybi++) {
+          /* hdncY[i].isSensorResize = false;
+          hdncExaBlo[i].isSensorResize = false; */
+          hdncExaBlo[ybi].style.maxHeight = "";
         }
         break;
       }
       case 2: {
-        for (let i = 0; i < hdncY.length; i++) {
+        hdncExaBlo[0].classList.add("cl-tdt-hdnc-z-tlo-handler-nth-1");
+        hdncExaBlo[3].classList.add("cl-tdt-hdnc-z-tlo-handler-nth-4");
+        /* for (let i = 0; i < hdncY.length; i++) {
           hdncExaBlo[i].dataset.isSensorWidthResized = true;
           hdncExaBlo[i].dataset.isSensorHeightResized = true;
-          /*  */
+          /*  
           hdncY[i].isSensorResize = false;
           hdncY[i].isResize = true;
-        }
+        } */
         break;
       }
       case 3: {
-        for (let i = 0; i < hdncY.length; i++) {
+        /* for (let i = 0; i < hdncY.length; i++) {
           hdncExaBlo[i].dataset.isSensorWidthResized = true;
           hdncExaBlo[i].dataset.isSensorHeightResized = true;
-          /*  */
+          /*  
           hdncY[i].isSensorResize = false;
           hdncY[i].isResize = true;
-        }
+        } */
         break;
       }
     }
@@ -189,85 +243,111 @@ class HdncManager {
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
-    if (FwaConfig.currentDisplayType === 1) {
-      /* const hdncGigaBloBgroBuffer = 24; */
+    /* !!!!! :v1.1.19a-4: !!!!! */
+    switch (FwaConfig.currentDisplayType) {
+      case 1: {
+        for (let ybi = 0; ybi < hdncY.length; ybi++) {
+          if (hdncY[ybi].isActive) {
+            HdncUtil.updateHdncGigaBloBgroLeft(ybi);
+            HdncUtil.updateHdncGigaBloBgroWidth(ybi);
+            /*  */
+            HdncUtil.setHdncGigaBloBgroLeft(ybi);
+            HdncUtil.setHdncGigaBloBgroWidth(ybi, true);
+          }
+        }
+        HdncHandler.mdtHdncRootScroll();
+        break;
+      }
+      case 2: {
+        HdncUtil.updateHdncExaBloMaxHeight();
+        HdncUtil.setHdncExaBloMaxHeight();
+        /*  */
+        HdncUtil.updateHdncExaBloSgroLeft();
+        HdncUtil.setHdncExaBloSgroLeft();
+        /*  */
+        HdncUtil.updateHdncExaBloSgroBoTop();
+        HdncUtil.setHdncExaBloSgroBoTop();
+        break;
+      }
+      case 3: {
+        HdncUtil.updateHdncExaBloMaxHeight();
+        HdncUtil.setHdncExaBloMaxHeight();
+        /*  */
+        HdncUtil.updateHdncExaBloSgroLeft();
+        HdncUtil.setHdncExaBloSgroLeft();
+        /*  */
+        HdncUtil.updateHdncExaBloSgroBoTop();
+        HdncUtil.setHdncExaBloSgroBoTop();
+        break;
+      }
+    }
+    /*  */
+    /* !!!!! ;v1.1.19a-4; !!!!! */
+    /* if (FwaConfig.currentDisplayType === 1) {
+      /* const hdncGigaBloBgroBuffer = 24; 
       for (let i = 0; i < hdncY.length; i++) {
-        hdncY[i].isSensorResize = true;
+        /* hdncY[i].isSensorResize = true; 
         if (hdncY[i].isActive) {
-          /* !!!!! v1.1.19a-2 !!!!! */
-          /* const {
-            hdncGigaBloText,
-            hdncGigaBloBgro
-          } = HdncConfig.getHdncBloEbGroup(i); */
-          /* for (let j = 0; j < hdncGigaBloBgro.length; j++) {
-            HdncUtil.setDataHdncGigaBloBgro_Old(
-              hdncGigaBloBgro[j],
-              hdncGigaBloText[j],
-              hdncGigaBloBgroBuffer
-            );
-            HdncUtil.setHdncGigaBloBgro_Old(hdncGigaBloBgro[j], true);
-          } */
           HdncUtil.updateHdncGigaBloBgroLeft(i);
           HdncUtil.updateHdncGigaBloBgroWidth(i);
-          /*  */
+          /*  
           HdncUtil.setHdncGigaBloBgroLeft(i);
           HdncUtil.setHdncGigaBloBgroWidth(i, true);
-          /* !!!!! ;v1.1.19a-2; !!!!! */
-          hdncY[i].isSensorResize = false;
+          /* !!!!! ;v1.1.19a-2; !!!!! 
+          /* hdncY[i].isSensorResize = false; 
         }
       }
       HdncHandler.mdtHdncRootScroll();
-    }
+    } */
     /*  */
-    if (FwaConfig.currentDisplayType !== 1) {
-      const {
+    /* if (FwaConfig.currentDisplayType !== 1) { */
+      /* const {
         hdncExaBlo
-      } = HdncConfig.getHdncBloGroup();
+      } = HdncConfig.getHdncBloGroup(); */
       /*  */
-      const innerWidth = window.innerWidth;
+      /* const innerWidth = window.innerWidth;
       const previousInnerWidth = window.previousInnerWidth;
       const innerHeight = window.innerHeight;
-      const previousInnerHeight = window.previousInnerHeight;
+      const previousInnerHeight = window.previousInnerHeight; */
       /*  */
-      for (let i = 0; i < hdncExaBlo.length; i++) {
+      /* for (let i = 0; i < hdncExaBlo.length; i++) {
         if (innerWidth !== previousInnerWidth) {
           hdncExaBlo[i].dataset.isSensorWidthResized = true;
         }
         if (innerHeight !== previousInnerHeight) {
           hdncExaBlo[i].dataset.isSensorHeightResized = true;
         }
-      }
+      } */
       /*  */
       /* !!!!! :v1.1.19a-3: !!!!! */
-      HdncUtil.updateHdncExaBloSgroLeft();
-      HdncUtil.setHdncExaBloSgroLeft();
+      /* HdncUtil.updateHdncExaBloSgroLeft();
+      HdncUtil.setHdncExaBloSgroLeft(); */
       /*  */
-      for (let i = 0; i < hdncExaBlo.length; i++) {
-        if (hdncExaBlo[i].dataset.isSensorWidthResized) {
+      /* for (let i = 0; i < hdncExaBlo.length; i++) {
+        if (hdncExaBlo[i].dataset.isSensorWidthResized) { */
           /* HdncUtil.setDataHdncExaBloSgroLeft(i);
           HdncUtil.setHdncExaBloSgroLeft(i); */
-          hdncExaBlo[i].isSensorWidthResized = false;
+          /* hdncExaBlo[i].isSensorWidthResized = false;
         }
-      }
+      } */
       /* !!!!! ;v1.1.19a-3; !!!!! */
-      window.previousInnerWidth = innerWidth;
+      /* window.previousInnerWidth = innerWidth; */
       /* !!!!! :v1.1.19a-3: !!!!! */
-      /* HdncUtil.setDataHdncExaBloMaxHeight(); */
-      HdncUtil.updateHdncExaBloMaxHeight();
-      HdncUtil.setHdncExaBloMaxHeight();
+      /* HdncUtil.updateHdncExaBloMaxHeight();
+      HdncUtil.setHdncExaBloMaxHeight(); */
       /*  */
-      HdncUtil.updateHdncExaBloSgroBoTop();
-      HdncUtil.setHdncExaBloSgroBoTop();
+      /* HdncUtil.updateHdncExaBloSgroBoTop();
+      HdncUtil.setHdncExaBloSgroBoTop(); */
       /*  */
-      for (let i = 0; i < hdncExaBlo.length; i++) {
-        if (hdncExaBlo[i].dataset.isSensorHeightResized) {
+      /* for (let i = 0; i < hdncExaBlo.length; i++) {
+        if (hdncExaBlo[i].dataset.isSensorHeightResized) { */
           /* HdncUtil.setHdncExaBloMaxHeight(i); */
-          hdncExaBlo[i].isSensorHeightResized = false;
+          /* hdncExaBlo[i].isSensorHeightResized = false;
         }
-      }
+      } */
       /* !!!!! ;v1.1.19a-3; !!!!! */
-      window.previousInnerHeight = innerHeight;
-    }
+      /* window.previousInnerHeight = innerHeight; */
+    /* } */
   }
   /* -------------------------------------------------- */
   static event(isActive) {
@@ -284,84 +364,81 @@ class HdncManager {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
     /*  */
-    let displayTypeState = null;
-    let eventListenerType = "";
+    let displayType = FwaConfig.previousDisplayType;
+    let eventListenerType = "removeEventListener";
     if (isActive) {
-      displayTypeState = FwaConfig.currentDisplayType;
+      displayType = FwaConfig.currentDisplayType;
       eventListenerType = "addEventListener";
-    } else {
-      displayTypeState = FwaConfig.previousDisplayType;
-      eventListenerType = "removeEventListener";
-    }
-    /* !!!!! v1.1.18a [temp] !!!!! */
-    if (displayTypeState === 1) {
-      hdncR[eventListenerType]("scroll", HdncHandler.mdtHdncRootScroll);
     }
     /*  */
-    for (let i = 0; i < hdncY.length; i++) {
-      /* Init */
-      hdncY[i].isActive = false;
-      /* ========== FwaConfig.currentDisplayType ========== */
-      switch (displayTypeState) {
-        case 1: {
-          hdncZettaTlo[i][eventListenerType](
+    switch (displayType) {
+      case 1: {
+        hdncR[eventListenerType]("scroll", HdncHandler.mdtHdncRootScroll);
+        for (let ybi = 0; ybi < hdncY.length; ybi++) {
+          hdncZettaTlo[ybi][eventListenerType](
             "click",
             HdncHandler.mdtHdncZettaTlo
           );
-          hdncExaBlo[i][eventListenerType](
+          hdncExaBlo[ybi][eventListenerType](
             "transitionend",
             HdncHandler.mdtHdncExaBloTransitionEnd
           );
-          break;
         }
-        case 2: {
-          hdncZettaTlo[i][eventListenerType](
+        break;
+      }
+      case 2: {
+        for (let ybi = 0; ybi < hdncY.length; ybi++) {
+          hdncZettaTlo[ybi][eventListenerType](
             "click",
             HdncHandler.tdtHdncZettaTlo
           );
-          /*  */
-          hdncExaBlo[i][eventListenerType](
+          hdncExaBlo[ybi][eventListenerType](
             "transitionend",
             HdncHandler.tdtHdncExaBloTransitionEnd
           );
-          break;
         }
-        case 3: {
-          hdncY[i][eventListenerType](
+        break;
+      }
+      case 3: {
+        for (let ybi = 0; ybi < hdncY.length; ybi++) {
+          hdncY[ybi][eventListenerType](
             "mouseenter",
             HdncHandler.ddtHdncYotta
           );
-          hdncY[i][eventListenerType](
+          hdncY[ybi][eventListenerType](
             "mouseleave",
             HdncHandler.ddtHdncYotta
           );
-          hdncExaBlo[i][eventListenerType](
+          hdncExaBlo[ybi][eventListenerType](
             "transitionend",
             HdncHandler.ddtHdncExaBloTransitionEnd
           );
-          /* Hdnc Peta */
+          /*  */
           const {
             hdncPetaBlo
-          } = HdncConfig.getHdncBloEbGroup(i);
-          for (let j = 0; j < hdncPetaBlo.length; j++) {
-            hdncPetaBlo[j][eventListenerType](
+          } = HdncConfig.getHdncBloEbGroup(ybi);
+          for (let ebi = 0; ebi < hdncPetaBlo.length; ebi++) {
+            hdncPetaBlo[ebi][eventListenerType](
               "mouseenter",
               HdncHandler.ddtHdncPetaBlo
             );
-            hdncPetaBlo[j][eventListenerType](
+            hdncPetaBlo[ebi][eventListenerType](
               "mouseleave",
               HdncHandler.ddtHdncPetaBlo
             );
           }
-          break;
         }
+        break;
       }
-      /* ============================== */
     }
+    /* !!!!! v1.1.18a [temp] !!!!! */
+    /* if (displayType === 1) {
+      hdncR[eventListenerType]("scroll", HdncHandler.mdtHdncRootScroll);
+    } */
+    /*  */
   }
 }
 class HdncHandler {
-  /* -------------------------------------------------- */
   static mdtHdncZettaTlo(eventData) {
     const {
       targetIndex
@@ -375,64 +452,52 @@ class HdncHandler {
       hdncExaTloBgro
     } = HdncConfig.getHdncTloGroup();
     const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    const {
-      hdncPetaBlo,
-      hdncTeraBlo,
-      hdncGigaBloBgro
+      hdncTeraBlo
     } = HdncConfig.getHdncBloEbGroup(targetIndex);
     /*  */
-    let isActive = null;
-    let type = "";
-    let hdncExaBloHeight = null;
+    let isActive = false;
+    let clType = "remove";
     if (!hdncY[targetIndex].isActive) {
       isActive = true;
-      type = "add";
-      hdncExaBloHeight = 4;
-    } else {
-      isActive = false;
-      type = "remove";
-      hdncExaBloHeight = 0;
+      clType = "add";
     }
     /*  */
-    if (isActive) {
-      /* !!!!! v1.1.19a-3 !!!!! */
-      /* hdncY[targetIndex].timeoutId = setTimeout(
-        HdncUtil.setTimerMdtHdncYotta,
-        300,
-        targetIndex
-      ); */
+    /* if (isActive) { */
       /*  */
+    /* } else { */
+      /*  */
+      /* clearTimeout(hdncY[targetIndex].timeoutId); */
+      /* !!!!! v1.1.19a-4 !!!!! */
+      /* HdncUtil.timerHdncGigaBloBgro(targetIndex, false); */
+      /* for (let i = 0; i < hdncGigaBloBgro.length; i++) { */
+        /* clearTimeout(hdncPetaBlo[i].timeoutId);
+      } */
+      /*  */
+      /* HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false); */
+    /* } */
+    if (isActive) {
+      /* PASS */
     } else {
-      clearTimeout(hdncY[targetIndex].timeoutId);
-      /* !!!!! :v1.1.19a-2: !!!!! */
-      for (let i = 0; i < hdncGigaBloBgro.length; i++) {
-        /* HdncUtil.setHdncGigaBloBgro_Old(hdncGigaBloBgro[i], false); */
-        clearTimeout(hdncPetaBlo[i].timeoutId);
-      }
-      /* HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, true); */
+      HdncUtil.timerHdncGigaBloBgro(targetIndex, false);
       HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
-      /* !!!!! ;v1.1.19a-2; !!!!! */
     }
     /*  */
-    hdncY[targetIndex].classList[type]("cl-mdt-hdnc-z-tlo-handler");
-    hdncExaTloText[targetIndex].classList[type]("cl-mdt-hdnc-z-tlo-handler");
-    hdncExaTloRgro[targetIndex].classList[type]("cl-mdt-hdnc-z-tlo-handler");
-    hdncExaTloBgro[targetIndex].classList[type]("cl-mdt-hdnc-z-tlo-handler");
+    hdncY[targetIndex].classList[clType]("cl-mdt-hdnc-z-tlo-handler");
+    hdncExaTloText[targetIndex].classList[clType]("cl-mdt-hdnc-z-tlo-handler");
+    hdncExaTloRgro[targetIndex].classList[clType]("cl-mdt-hdnc-z-tlo-handler");
+    hdncExaTloBgro[targetIndex].classList[clType]("cl-mdt-hdnc-z-tlo-handler");
     /*  */
-    /* !!!!! v1.1.19a-3 !!!!! */
-    /* HdncUtil.setHdncExaBloGridTemplateRows(targetIndex, hdncExaBloHeight); */
-    HdncUtil.setHdncExaBloGridTemplateRows(targetIndex, isActive);
+    /* HdncUtil.setHdncExaBloGridTemplateRows(isActive, targetIndex); */
     /*  */
-    for (let i = 0; i < hdncTeraBlo.length; i++) {
-      hdncTeraBlo[i].classList[type]("cl-mdt-hdnc-z-tlo-handler");
+    for (let ebi = 0; ebi < hdncTeraBlo.length; ebi++) {
+      hdncTeraBlo[ebi].classList[clType]("cl-mdt-hdnc-z-tlo-handler");
     }
     /*  */
     hdncY[targetIndex].isActive = isActive;
     /*  */
-    HdncHandler.mdtHdncRootScroll();
+    HdncUtil.setHdncExaBloGridTemplateRows(isActive, targetIndex);
+    /* !!!!! v1.1.19a-4 {move} (transitionend) !!!!! */
+    /* HdncHandler.mdtHdncRootScroll(); */
   }
   /* -------------------------------------------------- */
   static mdtHdncRootScroll() {
@@ -489,11 +554,11 @@ class HdncHandler {
       eventData.propertyName === "grid-template-rows" &&
       hdncY[targetIndex].isActive
     ) {
-      /* !!!!! v1.1.19a-3 !!!!! */
+      /* !!!!! v1.1.19a-3, v1.1.19a-4 !!!!! */
       HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
       HdncUtil.updateHdncGigaBloBgroWidth(targetIndex);
       HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.timerHdncGigaBloBgro(targetIndex);
+      HdncUtil.timerHdncGigaBloBgro(targetIndex, true);
       /*  */
       HdncHandler.mdtHdncRootScroll();
     }
@@ -516,70 +581,86 @@ class HdncHandler {
       hdncExaBloSgroBo
     } = HdncConfig.getHdncBloGroup();
     const {
-      hdncTeraBlo,
-      hdncGigaBloBgro
+      hdncTeraBlo
     } = HdncConfig.getHdncBloEbGroup(targetIndex);
     /*  */
-    let isActive = null;
-    let type = "";
+    let isActive = false;
+    let type = "remove";
     if (!hdncY[targetIndex].isActive) {
       isActive = true;
       type = "add";
-    } else {
-      isActive = false;
-      type = "remove";
     }
     /* TransitionEnd */
     /* !!!!! v1.1.19a-3 !!!!! */
     /* HdncUtil.setHdncExaBlo(isActive, targetIndex); */
-    HdncUtil.setHdncExaBloGridTemplateRows(targetIndex, isActive);
-    HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
+    
     /*  */
-    if (isActive) {
-      if (targetIndex === 0) {
+    /* if (isActive) { */
+      /* if (targetIndex === 0) {
         hdncExaBlo[targetIndex].classList.add("cl-tdt-hdnc-z-tlo-handler-nth-1");
       } else if (targetIndex === 3) {
         hdncExaBlo[targetIndex].classList.add("cl-tdt-hdnc-z-tlo-handler-nth-4");
-      }
-    } else {
+      } */
+    /* } else { */
+      /* !!!!! v1.1.19a-4 !!!!! */
+      /* HdncUtil.timerHdncGigaBloBgro(targetIndex, false);
+      /*  
       hdncExaBlo[targetIndex].removeEventListener(
         "scroll",
         HdncHandler.tdtHdncExaBloScroll
       );
+      /*  
+      hdncExaBloSgroTo[targetIndex].classList.remove(
+        "cl-tdt-hdnc-e-blo-scroll-handler"
+      );
+      hdncExaBloSgroBo[targetIndex].classList.remove(
+        "cl-tdt-hdnc-e-blo-scroll-handler"
+      ); */
+      /* !!!!! v1.1.19a-4 !!!!! */
+      /* for (let i = 0; i < hdncGigaBloBgro.length; i++) { */
+        /* clearTimeout(hdncGigaBloBgro[i].timeoutId); */
+      /* } */
       /*  */
+    /* } */
+    /*  */
+    if (isActive) {
+      if (HsncAccessor.isActiveHsnc) {
+        HtpncAccessor.htpncZettaHsngoHandler();
+      }
+      HdncUtil.setHdncHandler(HdncHandler, 2);
+    } else {
+      HdncUtil.timerHdncGigaBloBgro(targetIndex, false);
+      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
+      hdncExaBlo[targetIndex].removeEventListener(
+        "scroll",
+        HdncHandler.tdtHdncExaBloScroll
+      );
       hdncExaBloSgroTo[targetIndex].classList.remove(
         "cl-tdt-hdnc-e-blo-scroll-handler"
       );
       hdncExaBloSgroBo[targetIndex].classList.remove(
         "cl-tdt-hdnc-e-blo-scroll-handler"
       );
-      /*  */
-        /* !!!!! :v1.1.19a-2: !!!!! */
-      for (let i = 0; i < hdncGigaBloBgro.length; i++) {
-        /* HdncUtil.setHdncGigaBloBgroWidth_Old(hdncGigaBloBgro[i], false); */
-        clearTimeout(hdncGigaBloBgro[i].timeoutId);
-      }
-      /* HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false); */
-      /* !!!!! ;v1.1.19a-2; !!!!! */
     }
     /* classList */
     hdncExaTloText[targetIndex].classList[type]("cl-tdt-hdnc-z-tlo-handler");
     hdncExaTloBgro[targetIndex].classList[type]("cl-tdt-hdnc-z-tlo-handler");
     hdncExaBlo[targetIndex].classList[type]("cl-tdt-hdnc-z-tlo-handler");
-    for (let i = 0; i < hdncTeraBlo.length; i++) {
-      hdncTeraBlo[i].classList[type]("cl-tdt-hdnc-z-tlo-handler");
+    for (let ebi = 0; ebi < hdncTeraBlo.length; ebi++) {
+      hdncTeraBlo[ebi].classList[type]("cl-tdt-hdnc-z-tlo-handler");
     }
     /*  */
-    if (isActive) {
+    /* if (isActive) {
       if (HsncAccessor.isActiveHsnc) {
         HtpncAccessor.htpncZettaHsngoHandler();
-      }
-      /* !!!!! v1.1.19a-1 [test] !!!!! */
-      /* HdncUtil.setTdtHdnc(targetIndex); */
-      HdncUtil.setTdtHdnc(HdncHandler, targetIndex);
-    }
+      } */
+      /* HdncUtil.setTdtHdnc(HdncHandler, targetIndex); */
+      /* HdncUtil.setHdncHandler(HdncHandler, 2);
+    } */
     /*  */
     hdncY[targetIndex].isActive = isActive;
+    /*  */
+    HdncUtil.setHdncExaBloGridTemplateRows(isActive, targetIndex);
   }
   /* -------------------------------------------------- */
   static tdtHdncExaBloScroll(eventData) {
@@ -632,32 +713,28 @@ class HdncHandler {
     const {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
+    /*  */
     if (
       eventData.target === hdncExaBlo[targetIndex] &&
-      hdncY[targetIndex].isActive &&
-      eventData.propertyName === "grid-template-rows"
+      eventData.propertyName === "grid-template-rows" &&
+      hdncY[targetIndex].isActive
     ) {
-      if (hdncExaBlo[targetIndex].dataset.isSensorWidthResized) {
-        /* HdncUtil.setDataHdncGigaBloBgro(targetIndex); !!!!! v1.1.19a-2 !!!!! */
-        /* HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
-        HdncUtil.updateHdncGigaBloBgroWidth(targetIndex); */
-        /*  */
+      /* if (hdncExaBlo[targetIndex].dataset.isSensorWidthResized) {
         hdncExaBlo[targetIndex].dataset.isSensorWidthResized = false;
       }
       if (hdncExaBlo[targetIndex].dataset.isSensorHeightResized) {
-        /* HdncUtil.setDataHdncExaBloSgro(targetIndex); */
         hdncExaBlo[targetIndex].dataset.isSensorHeightResized = false;
-      }
+      } */
       /* Bgro */
       /* !!!!! v1.1.19a-2 !!!!! */
-      /* HdncUtil.setHdncGigaBloBgro(targetIndex, false); */
       HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
       HdncUtil.updateHdncGigaBloBgroWidth(targetIndex);
       HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
+      /* !!!!! v1.1.19a-4 !!!!! */
+      /* HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false); */
       /*  */
       /* !!!!! v1.1.19a-3 !!!!!! */
-      HdncUtil.timerHdncGigaBloBgro(targetIndex);
+      HdncUtil.timerHdncGigaBloBgro(targetIndex, true);
       /*  */
       /* HdncUtil.setTimerHdncGigaBloBgro(targetIndex); */
       /*  */
@@ -667,26 +744,22 @@ class HdncHandler {
       );
       /* Sgro */
       /* !!!!! v1.1.19a-3 !!!!! */
-      /* HdncUtil.setHdncExaBloSgro(targetIndex); */
       HdncUtil.updateHdncExaBloSgroLeft();
       HdncUtil.setHdncExaBloSgroLeft();
       /*  */
-      const scrollEventData = {};
-      scrollEventData.currentTarget = hdncExaBlo[targetIndex];
-      HdncHandler.tdtHdncExaBloScroll(scrollEventData);
-    } else if (
+      const modifyEventData = {};
+      modifyEventData.currentTarget = hdncExaBlo[targetIndex];
+      HdncHandler.tdtHdncExaBloScroll(modifyEventData);
+    }
+    /*  */
+    if (
       eventData.target === hdncExaBlo[targetIndex] &&
-      hdncY[targetIndex].isActive &&
-      eventData.propertyName === "max-height"
+      eventData.propertyName === "max-height" &&
+      hdncY[targetIndex].isActive
     ) {
-      /* !!!!! v1.1.19a-3 !!!!! */
-      /* HdncUtil.setDataHdncExaBloSgroTop(targetIndex);
-      HdncUtil.setHdncExaBloSgroTop(targetIndex); */
-      /*  */
-      const eventDataScroll = {};
-      eventDataScroll.currentTarget = hdncExaBlo[targetIndex];
-      HdncHandler.tdtHdncExaBloScroll(eventDataScroll);
-      console.log(targetIndex, "max-height");
+      const modifyEventData = {};
+      modifyEventData.currentTarget = hdncExaBlo[targetIndex];
+      HdncHandler.tdtHdncExaBloScroll(modifyEventData);
     }
   }
   /* ================================================== */
@@ -712,48 +785,57 @@ class HdncHandler {
       hdncExaBloSgroBo
     } = HdncConfig.getHdncBloGroup();
     /*  */
-    let isActive = null;
-    let type = "";
-    let hdncExaBloHeight = null;
+    let isActive = false;
+    let type = "remove";
     if (eventType === "mouseenter") {
       isActive = true;
       type = "add";
-      hdncExaBloHeight = 4;
-    } else if (eventType === "mouseleave") {
-      isActive = false;
-      type = "remove";
-      hdncExaBloHeight = 0;
     }
-    HdncUtil.setHdncExaBloGridTemplateRows(eventIndex, isActive);
     /*  */
     if (isActive) {
       /* !!!!! v1.1.19a-3 !!!!! */
       /* HdncUtil.setHdncExaBlo(isActive, eventIndex); */
-      /*  */
+      /* !!!!! v1.1.19a-4 !!!!! */
+      const hdncYottaLastIndex = hdncY.length - 1;
+      if (hdncYottaLastIndex === eventIndex) {
+        HdncTool.clDdtHdncYottaNthLast(hdncYottaLastIndex);
+        /* const htmlElement = document.documentElement;
+        const htmlElementRect = htmlElement.getBoundingClientRect();
+        const hdncYottaRect = hdncY[hdncYottaLast].getBoundingClientRect();
+        const htmlElementRectCalc = htmlElementRect.right - (21 * 16);
+        const hdncYottaRectCalc = 
+          (hdncYottaRect.right - (hdncYottaRect.width / 2)) + (10 * 16);
+        if (htmlElementRectCalc < hdncYottaRectCalc && HsncAccessor.isActiveHsnc) {
+          hdncExaBlo[hdncYottaLast].classList.add("cl-ddt-hdnc-y-handler-nth-4");
+        } else {
+          hdncExaBlo[hdncYottaLast].classList.remove("cl-ddt-hdnc-y-handler-nth-4");
+        } */
+      }
     } else {
-      hdncExaBlo[eventIndex].removeEventListener(
+      HdncTool.resetDdtHdncExaBloScroll(HdncHandler, eventIndex);
+      /* hdncExaBlo[eventIndex].removeEventListener(
         "scroll",
         HdncHandler.ddtHdncExaBloScroll
       );
-      /*  */
+      /*  
       hdncExaBloSgroTo[eventIndex].classList.remove(
         "cl-ddt-hdnc-e-blo-scroll-handler"
       );
       hdncExaBloSgroBo[eventIndex].classList.remove(
         "cl-ddt-hdnc-e-blo-scroll-handler"
-      );
+      ); */
     }
     /*  */
     hdncExaTloText[eventIndex].classList[type]("cl-ddt-hdnc-y-handler");
     hdncExaTloBgro[eventIndex].classList[type]("cl-ddt-hdnc-y-handler");
     hdncExaBlo[eventIndex].classList[type]("cl-ddt-hdnc-y-handler");
-    for (let i = 0; i < hdncPetaBlo.length; i++) {
-      hdncTeraBlo[i].classList[type]("cl-ddt-hdnc-y-handler");
+    for (let ebi = 0; ebi < hdncPetaBlo.length; ebi++) {
+      hdncTeraBlo[ebi].classList[type]("cl-ddt-hdnc-y-handler");
     }
     /* !!!!! v1.1.19a-3 !!!!! */
     /* HdncUtil.setHdncExaBloGridTemplateRows(eventIndex, hdncExaBloHeight); */
     /*  */
-    if (isActive) {
+    /* if (isActive) {
       if (eventIndex === 3) {
         const htmlElement = document.documentElement;
         const htmlElementRect = htmlElement.getBoundingClientRect();
@@ -767,18 +849,13 @@ class HdncHandler {
           hdncExaBlo[eventIndex].classList.remove("cl-ddt-hdnc-y-handler-nth-4");
         }
       }
-      /*  */
-      /* hdncY[eventIndex].isTimeout = false;
-      hdncY[eventIndex].timeoutId = setTimeout(
-        HdncUtil.setDdtHdncYottaTimer,
-        300,
-        eventIndex,
-        hdncY[eventIndex]
-      ); */
     } else {
-      /* clearTimeout(hdncY[eventIndex].timeoutId); */
-    }
+      
+    } */
+    /*  */
     hdncY[eventIndex].isActive = isActive;
+    /*  */
+    HdncUtil.setHdncExaBloGridTemplateRows(isActive, eventIndex);
   }
   /* -------------------------------------------------- */
   static ddtHdncPetaBlo(eventData) {
@@ -788,54 +865,27 @@ class HdncHandler {
       targetIndex
     } = FwcAccessor.getEventData(eventData, ".hdnc-y");
     const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncPetaBlo,
       hdncGigaBloText,
-      hdncGigaBloRgro,
-      hdncGigaBloBgro
+      hdncGigaBloRgro
     } = HdncConfig.getHdncBloEbGroup(targetIndex);
     /*  */
-    const gigaBgroBuffer = 32;
-    /*  */
-    let isActive = null;
-    let type = "";
+    const hdncGigaBloClData = "cl-ddt-hdnc-p-blo-handler";
+    /* Default: mouseleave */
+    let isActive = false;
+    let type = "remove";
     if (eventType === "mouseenter") {
       isActive = true;
       type = "add";
-    } else if (eventType === "mouseleave") {
-      isActive = false;
-      type = "remove";
     }
     /*  */
-    hdncGigaBloText[eventIndex].classList[type]("cl-ddt-hdnc-p-blo-handler");
-    hdncGigaBloRgro[eventIndex].classList[type]("cl-ddt-hdnc-p-blo-handler");
+    hdncGigaBloText[eventIndex].classList[type](hdncGigaBloClData);
+    hdncGigaBloRgro[eventIndex].classList[type](hdncGigaBloClData);
     if (isActive) {
-      if (hdncY[targetIndex].isTimeout) {
-        /* !!!!! v1.1.19a-2 !!!!! */
-        /* HdncUtil.setHdncGigaBloBgro_Old(hdncGigaBloBgro[eventIndex], isActive); */
-        /* HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-        HdncUtil.setHdncGigaBloBgroWidth(targetIndex, isActive); */
-        /*  */
-      } else {
-        /* hdncPetaBlo[eventIndex].timeoutId = setTimeout(
-          HdncUtil.setDdtHdncPetaBloTimer,
-          50,
-          hdncGigaBloBgro[eventIndex],
-          hdncPetaBlo[eventIndex],
-          hdncY[targetIndex]
-        ); */
-      }
       HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, isActive, eventIndex);
+      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, true, eventIndex);
     } else {
-      clearTimeout(hdncPetaBlo[eventIndex].timeoutId);
-      /* !!!!! v1.1.19a-2 !!!!! */
-      /* HdncUtil.setHdncGigaBloBgro_Old(hdncGigaBloBgro[eventIndex], isActive); */
       HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, isActive);
-      /*  */
+      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
     }
   }
   /* -------------------------------------------------- */
@@ -889,42 +939,32 @@ class HdncHandler {
     const {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
-    /* const modifyEventData = {};
-    modifyEventData.currentTarget = hdncExaBlo[eventIndex];
-    HdncHandler.tdtHdncExaBloTransitionEnd(modifyEventData); */
+    /*  */
     if (
       eventData.target === hdncExaBlo[targetIndex] &&
-      hdncY[targetIndex].isActive &&
-      eventData.propertyName === "grid-template-rows"
+      eventData.propertyName === "grid-template-rows" &&
+      hdncY[targetIndex].isActive
     ) {
       /* Bgro */
-      if (hdncExaBlo[targetIndex].dataset.isSensorWidthResized) {
-        /* !!!!! v1.1.19a-2 !!!!! */
-        /* HdncUtil.setDataHdncGigaBloBgro(targetIndex); */
+      /* if (hdncExaBlo[targetIndex].dataset.isSensorWidthResized) {
         HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
         HdncUtil.updateHdncGigaBloBgroWidth(targetIndex);
-        /*  */
+        /*  
         hdncExaBlo[targetIndex].dataset.isSensorWidthResized = false;
-      }
+      } */
+      HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
+      HdncUtil.updateHdncGigaBloBgroWidth(targetIndex);
       /*  */
       hdncExaBlo[targetIndex].addEventListener(
         "scroll",
         HdncHandler.ddtHdncExaBloScroll
       );
       /* Sgro */
-      /* don't cache sgro left */
-      /* !!!!! :v1.1.19a-3: !!!!! */
       HdncUtil.updateHdncExaBloSgroLeft();
       HdncUtil.setHdncExaBloSgroLeft();
-      /* HdncUtil.setDataHdncExaBloSgroLeft(targetIndex);
-      HdncUtil.setHdncExaBloSgroLeft(targetIndex); */
-      if (hdncExaBlo[targetIndex].dataset.isSensorHeightResized) {
-        /* HdncUtil.setDataHdncExaBloSgro(targetIndex); */
-        /* HdncUtil.setDataHdncExaBloSgroTop(targetIndex);
-        HdncUtil.setHdncExaBloSgroTop(targetIndex); */
+      /* if (hdncExaBlo[targetIndex].dataset.isSensorHeightResized) {
         hdncExaBlo[targetIndex].dataset.isSensorHeightResized = false;
-      }
-      /* !!!!! ;v1.1.19a-3; !!!!! */
+      } */
       /*  */
       const modifyEventData = {};
       modifyEventData.currentTarget = hdncExaBlo[targetIndex];

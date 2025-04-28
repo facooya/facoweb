@@ -185,7 +185,9 @@ class FwcGet {
   static getEventData(eventData, targetQuery) {
     const eventType = eventData.type;
     const eventCurrentTarget = eventData.currentTarget;
+    /* !!!!! v1.1.19a-4 !!!!! */
     const eventIndex = eventCurrentTarget.index;
+    /*  */
     let targetElement = null;
     let targetIndex = null;
     if (targetQuery !== undefined && targetQuery !== null) {

@@ -9,7 +9,6 @@
   background-color: var(--hdnc-background-color-secondary);
 }
 .hdnc-e-tlo-text.cl-mdt-hdnc-z-tlo-handler {
-  /* font-weight: bold; */
   text-shadow: var(--facooya-bold-white);
 }
 .hdnc-e-tlo-rgro.cl-mdt-hdnc-z-tlo-handler {
@@ -46,7 +45,6 @@
 /* ==========----- ;cl-tdt-hdnc-z-tlo-handler; -----========== */
 /* ==========----- :cl-ddt-hdnc-y-handler: -----========== */
 .hdnc-e-tlo-text.cl-ddt-hdnc-y-handler {
-  /* font-weight: bold; */
   text-shadow: var(--facooya-bold-white);
 }
 .hdnc-e-tlo-bgro.cl-ddt-hdnc-y-handler {
@@ -56,7 +54,7 @@
 .hdnc-e-blo.cl-ddt-hdnc-y-handler {
   width: var(--hdnc-e-width-secondary);
 }
-.hdnc-e-blo.cl-ddt-hdnc-y-handler-nth-4 {
+.hdnc-e-blo.cl-ddt-hdnc-y-handler-nth-last {
   right: 0%;
 }
 .hdnc-t-blo.cl-ddt-hdnc-y-handler {
@@ -65,11 +63,9 @@
 /* ==========----- ;cl-ddt-hdnc-y-handler; -----========== */
 /* ==========----- :cl-ddt-hdnc-p-blo-handler: -----========== */
 .hdnc-g-blo-text.cl-ddt-hdnc-p-blo-handler {
-  /* font-weight: bold; */
   text-shadow: var(--facooya-bold-white);
 }
 .hdnc-g-blo-rgro.cl-ddt-hdnc-p-blo-handler {
-  /* margin: 0rem 0rem 0rem 0.5rem; */
   border-top: 0.25rem solid var(--transparent);
   border-bottom: 0.25rem solid var(--transparent);
   border-left: 0.5rem solid var(--white);

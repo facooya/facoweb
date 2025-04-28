@@ -16,10 +16,18 @@ import {
   HtpncAccessor,
   HtpncController
 } from "./ho/htpnc/htpnc-class.js";
+/*  */
 import {
   HdncAccessor,
   HdncController
 } from "./ho/hdnc/hdnc-class.js";
+import {
+  HdncConfig
+} from "./ho/hdnc/hdnc-config.js";
+import {
+  HdncUtil
+} from "./ho/hdnc/hdnc-util.js";
+/*  */
 import {
   HsncAccessor,
   HsncController
@@ -54,6 +62,8 @@ export {
   /* HDNC */
   HdncAccessor,
   HdncController,
+  HdncConfig,
+  HdncUtil,
   /* HSNC */
   HsncAccessor,
   HsncController,
