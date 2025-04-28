@@ -41,11 +41,11 @@
 }
 /* ==========----- ;cl-tdt-hsnc-z-tlo-handler; -----========== */
 /* ==========----- :cl-ddt-hsnc-z-tlo-handler: -----========== */
-.hsnc-e-tlo-text.cl-ddt-hsnc-z-tlo-handler {
+.hsnc-e-tlo-text.cl-ddt-hsnc-z-tlo-handler-hover {
   text-shadow: var(--facooya-bold-white);
   margin: 0rem 1rem 0rem 0rem;
 }
-.hsnc-e-tlo-rgro.cl-ddt-hsnc-z-tlo-handler {
+.hsnc-e-tlo-rgro.cl-ddt-hsnc-z-tlo-handler-hover {
   /* margin: 0rem 2.5rem 0rem 0rem; */
   margin: 0rem 1rem 0rem 0rem;
   border-top: 0.5rem solid var(--white);
@@ -53,7 +53,7 @@
   border-left: 0.4rem solid var(--transparent);
   transform: rotate(360deg);
 }
-.hsnc-e-tlo-bgro.cl-ddt-hsnc-z-tlo-handler {
+.hsnc-e-tlo-bgro.cl-ddt-hsnc-z-tlo-handler-hover {
   left: 5%;
   width: 90%;
 }
@@ -81,10 +81,10 @@
 }
 /* ==========----- ;cl-ddt-hsnc-p-blo-handler; -----========== */
 /* ==========----- :cl-adt-hsnc-y-sfro-handler: -----========== */
-.hsnc-y-sfro-tgro.cl-adt-hsnc-y-sfro-handler {
+.hsnc-y-sfro-to.cl-adt-hsnc-y-sfro-handler {
   height: 5rem;
 }
-.hsnc-y-sfro-bgro.cl-adt-hsnc-y-sfro-handler {
+.hsnc-y-sfro-bo.cl-adt-hsnc-y-sfro-handler {
   height: 5rem;
 }
 /* ==========----- ;cl-adt-hsnc-y-sfro-handler; -----========== */

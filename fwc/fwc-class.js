@@ -33,29 +33,29 @@ class FwcAccessor {
 }
 class FwcController {
   /* =============== Process: =============== */
-  static process() {
+  static init() {
     HtpncController.process();
     HdncController.process();
-    HsncController.process();
+    HsncController.init();
     HeccController.process();
     /*  */
     /* !!!!! v1.1.15a [temp] URL Check nav-page? doc-page? home-page? !!!!! */
     NpmhcController.process();
     NpmscController.process();
   }
-  static processOnLoad() {
+  static load() {
     HtpncController.processOnLoad();
     HdncController.processOnLoad();
-    HsncController.processOnLoad();
+    HsncController.load();
     HeccController.processOnLoad();
     /*  */
     NpmhcController.processOnLoad();
     NpmscController.processOnLoad();
   }
-  static processOnResize() {
+  static resizeDisplay() {
     HtpncController.processOnResize();
     HdncController.processOnResize();
-    HsncController.processOnResize();
+    HsncController.resizeDisplay();
     HeccController.processOnResize();
     /*  */
     NpmhcController.processOnResize();
@@ -65,10 +65,10 @@ class FwcController {
     HtpncController.stepOnResize();
     HdncController.stepOnResize();
   } */
-  static sensorOnResize() {
+  static resizeSensor() {
     /* HtpncController.sensorOnResize(); */
     HdncController.sensorOnResize();
-    HsncController.sensorOnResize();
+    HsncController.resizeSensor();
   }
   /* =============== Process; =============== */
 }

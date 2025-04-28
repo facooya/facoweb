@@ -302,24 +302,24 @@ class HdncConfigElement {
       }
     },
     {
-      elementId: "hdncYottaSfroTgro",
+      elementId: "hdncYottaSfroTo",
       generate: {
         htmlTag: "div",
-        htmlClass: "hdnc-y-sfro hdnc-y-sfro-tgro"
+        htmlClass: "hdnc-y-sfro hdnc-y-sfro-to"
       },
       query: {
-        querySelector: ".hdnc-y-sfro-tgro",
+        querySelector: ".hdnc-y-sfro-to",
         queryType: "single"
       }
     },
     {
-      elementId: "hdncYottaSfroBgro",
+      elementId: "hdncYottaSfroBo",
       generate: {
         htmlTag: "div",
-        htmlClass: "hdnc-y-sfro hdnc-y-sfro-bgro"
+        htmlClass: "hdnc-y-sfro hdnc-y-sfro-bo"
       },
       query: {
-        querySelector: ".hdnc-y-sfro-bgro",
+        querySelector: ".hdnc-y-sfro-bo",
         queryType: "single"
       }
     }
@@ -433,8 +433,8 @@ class HdncConfigManager {
   static hdncYottaGroupAppend(getSaveElement, hdncFragment) {
     hdncFragment.append(
       getSaveElement["hdncYottaSdo"],
-      getSaveElement["hdncYottaSfroTgro"],
-      getSaveElement["hdncYottaSfroBgro"]
+      getSaveElement["hdncYottaSfroTo"],
+      getSaveElement["hdncYottaSfroBo"]
     );
   }
 }
@@ -533,9 +533,8 @@ class HdncConfig {
 export {
   HdncConfig
 };
-/* DESCRIPTION
- * HdncConfig.exaTloTextRs, gigaTextRs, teraLinkRs
+/* NOTE
  */
-/* INFORMATION
- * @[Author] {Facooya} (Founder)
+/* AUTHORSHIP
+ * Founder: Facooya
  */

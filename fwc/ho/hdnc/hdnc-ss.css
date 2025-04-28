@@ -55,37 +55,6 @@
   background: var(--transparent);
   pointer-events: none;
 }
-/* .hdnc-y-eco {
-  position: absolute;
-  top: 0rem;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-} */
-/* .hdnc-z-eco-sfro {
-  position: fixed;
-  z-index: 1;
-  width: 80%;
-  pointer-events: none;
-  transition: height 300ms ease;
-}
-.hdnc-z-eco-sfro-tgro {
-  top: 4rem;
-  height: 0rem;
-  background: linear-gradient(
-    var(--hdnc-background),
-    var(--transparent)
-  );
-}
-.hdnc-z-eco-sfro-bgro {
-  bottom: 0rem;
-  height: 0rem;
-  background: linear-gradient(
-    var(--transparent),
-    var(--hdnc-background)
-  );
-} */
 .hdnc-y-sfro {
   position: fixed;
   z-index: 3;
@@ -93,7 +62,7 @@
   transition: height 300ms ease;
   pointer-events: none;
 }
-.hdnc-y-sfro-tgro {
+.hdnc-y-sfro-to {
   top: 4rem;
   height: 0rem;
   background: linear-gradient(
@@ -101,7 +70,7 @@
     var(--transparent)
   );
 }
-.hdnc-y-sfro-bgro {
+.hdnc-y-sfro-bo {
   bottom: 0rem;
   height: 0rem;
   background: linear-gradient(

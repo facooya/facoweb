@@ -29,6 +29,7 @@
   mask-image: url("../../../svg/a.svg");
   mask-size: contain;
   mask-repeat: no-repeat;
+  mask-position: center;
   background-color: #FFFFFF;
 }
 .smc-e-b-logo-icon {

@@ -10,7 +10,7 @@ import {
   FwaController
 } from "./fwa-class.js";
 /* Class Controller */
-FwaController.process();
+FwaController.init();
 /* FwaLog */
 FwaLog.logb("=", 30);
 FwaLog.logd(true, "fwa/fwa.js", "fwa.js", "Done");

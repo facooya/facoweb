@@ -33,10 +33,10 @@
 .hdnc-e-blo.cl-tdt-hdnc-z-tlo-handler {
   width: var(--hdnc-e-width-secondary);
 }
-.hdnc-e-blo.cl-tdt-hdnc-z-tlo-handler-nth-1 {
+.hdnc-e-blo.cl-tdt-hdnc-z-tlo-handler-nth-first {
   left: 0%;
 }
-.hdnc-e-blo.cl-tdt-hdnc-z-tlo-handler-nth-4 {
+.hdnc-e-blo.cl-tdt-hdnc-z-tlo-handler-nth-last {
   right: 0%;
 }
 .hdnc-t-blo.cl-tdt-hdnc-z-tlo-handler {
@@ -73,10 +73,10 @@
 }
 /* ==========----- ;cl-ddt-hdnc-p-blo-handler; -----========== */
 /* ==========----- :cl-mdt-hdnc-r-scroll-handler: -----========== */
-.hdnc-y-sfro-tgro.cl-mdt-hdnc-r-scroll-handler {
+.hdnc-y-sfro-to.cl-mdt-hdnc-r-scroll-handler {
   height: 5rem;
 }
-.hdnc-y-sfro-bgro.cl-mdt-hdnc-r-scroll-handler {
+.hdnc-y-sfro-bo.cl-mdt-hdnc-r-scroll-handler {
   height: 5rem;
 }
 /* ==========----- ;cl-mdt-hdnc-r-scroll-handler; -----========== */

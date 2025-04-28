@@ -12,6 +12,9 @@ import {
   BlfAccessor,
   BlfController
 } from "./blf/blf-class.js";
+/* import {
+  PASS
+} from "./fo/bpnc/bpnc-class.js"; */
 import {
   HtpncAccessor,
   HtpncController
@@ -32,6 +35,13 @@ import {
   HsncAccessor,
   HsncController
 } from "./ho/hsnc/hsnc-class.js";
+import {
+  HsncConfig
+} from "./ho/hsnc/hsnc-config.js";
+import {
+  HsncUtil
+} from "./ho/hsnc/hsnc-util.js";
+/*  */
 import {
   HeccAccessor,
   HeccController
@@ -67,6 +77,8 @@ export {
   /* HSNC */
   HsncAccessor,
   HsncController,
+  HsncConfig,
+  HsncUtil,
   /* HECC */
   HeccAccessor,
   HeccController,

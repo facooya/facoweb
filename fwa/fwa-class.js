@@ -20,13 +20,13 @@ class FwaAccessor {
   static isFwaResizeKey = false;
 }
 class FwaController {
-  static process() {
-    FwaManager.setupProcess();
+  static init() {
+    FwaManager.init();
     FwaManager.event();
   }
 }
 class FwaManager {
-  static setupProcess() {
+  static init() {
     FwaConfig.currentDisplayType = FwaUtility.getDisplayType();
     FwaConfig.previousDisplayType = FwaConfig.currentDisplayType;
   }
@@ -47,7 +47,7 @@ class FwaHandler {
     FwaConfig.isLoad = true;
     FwaLog.logb("=", 30);
     /* ========== Fwc Controller ========== */
-    FwcController.processOnLoad();
+    FwcController.load();
     /* ============================== */
     FwaLog.logd(true, "fwa/fwa-class.js", "currentDt", FwaConfig.currentDisplayType);
     FwaLog.logd(true, "fwa/fwa-class.js", "FwaHandler.onLoad()", "Done");
@@ -57,7 +57,7 @@ class FwaHandler {
     if (FwaConfig.currentDisplayType !== FwaConfig.previousDisplayType) {
       FwaLog.logb("=", 30);
       /* ========== Fwc Controller ========== */
-      FwcController.processOnResize();
+      FwcController.resizeDisplay();
       /* ============================== */
       FwaConfig.previousDisplayType = FwaConfig.currentDisplayType;
       FwaLog.logd(true, "fwa/fwa-class.js", "currentDt", FwaConfig.currentDisplayType);
@@ -67,26 +67,10 @@ class FwaHandler {
     } else {
       clearTimeout(FwaAccessor.fwaTimeoutId);
       FwaAccessor.fwaTimeoutId = setTimeout(
-        FwcController.sensorOnResize,
+        FwcController.resizeSensor,
         200
       );
     }
-    /* else if (FwaAccessor.isFwaResizeKey) {
-      /* FwcController.processOnResize(); 
-      FwcController.sensorOnResize();
-      clearTimeout(FwaAccessor.fwaTimeoutId);
-      FwaAccessor.isFwaResizeKey = false;
-    } else {
-      /* clearTimeout(FwaAccessor.fwaTimeoutId);
-      FwaAccessor.fwaTimeoutId = setTimeout(FwcController.stepOnResize, 500); 
-      /* FwcController.stepOnResize(); 
-      clearTimeout(FwaAccessor.fwaTimeoutId);
-      FwaAccessor.fwaTimeoutId = setTimeout(
-        FwaSet.setFwaResizeKey,
-        200,
-        true
-      );
-    } */
   }
 }
 class FwaUtility {

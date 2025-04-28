@@ -221,7 +221,7 @@
   transition: height 300ms ease;
   pointer-events: none;
 }
-.hsnc-y-sfro-tgro {
+.hsnc-y-sfro-to {
   top: 4rem;
   height: 0rem;
   background: linear-gradient(
@@ -229,7 +229,7 @@
     var(--transparent)
   );
 }
-.hsnc-y-sfro-bgro {
+.hsnc-y-sfro-bo {
   bottom: 0rem;
   height: 0rem;
   background: linear-gradient(
@@ -249,7 +249,7 @@
     width: 20rem; /* FIXME: var(--hsnc-r-width); */
     right: -20rem; /* FIXME: calc(-1 * var(--hsnc-r-width)); */
   }
-  .hsnc-y-sfro-tgro {
+  .hsnc-y-sfro-to {
     top: 8rem;
   }
   .hsnc-e-tlo-rgro {
@@ -308,7 +308,7 @@
     transition:
       width var(--hsnc-duration-primary) var(--hsnc-timing-primary);
   } */
-  .hsnc-y-sfro-tgro {
+  .hsnc-y-sfro-to {
     top: 4rem;
   }
 }

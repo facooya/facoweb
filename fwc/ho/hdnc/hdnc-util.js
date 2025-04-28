@@ -167,10 +167,6 @@ class HdncUtilSet {
         hdncGigaBloBgro[optEbIndex].style.width = getWidth;
         break;
       }
-      default: {
-        console.log("HdncUtil.setHdncGigaBloBgroWidth::optionMode:Error");
-        break;
-      }
     }
     /* if (isOption) {
       let getWidth = "";
