@@ -3,5 +3,5 @@ FWC: Facooya Web Component
 
 Configuration
 ./fwa/fwa-config.js
-./nc/dnc/dnc-config.js
-./nc/snc/snc-config.js
+./fwc/ho/hdnc/hdnc-config.js
+./fwc/ho/hsnc/hsnc-config.js
