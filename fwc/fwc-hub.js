@@ -5,11 +5,6 @@
  */
 /* ================================================== */
 import {
-  FwcAccessor,
-  FwcController
-} from "./fwc-class.js";
-/* -------------------------------------------------- */
-import {
   BlfAccessor,
   BlfController
 } from "./blf/blf-class.js";
@@ -27,6 +22,9 @@ import {
 import {
   HtpncConfig
 } from "./ho/htpnc/htpnc-config.js";
+import {
+  HtpncUtil
+} from "./ho/htpnc/htpnc-util.js";
 /* -------------------------------------------------- */
 import {
   HdncAccessor,
@@ -79,11 +77,11 @@ import {
 import {
   NpmscConfig
 } from "./npmo/npmsc/npmsc-config.js";
+import {
+  NpmscUtil
+} from "./npmo/npmsc/npmsc-util.js";
 /* ================================================== */
 export {
-  /* FWC */
-  FwcAccessor,
-  FwcController,
   /* BLF */
   BlfAccessor,
   BlfController,
@@ -93,6 +91,7 @@ export {
   HtpncAccessor,
   HtpncController,
   HtpncConfig,
+  HtpncUtil,
   /* HDNC */
   HdncAccessor,
   HdncController,
@@ -116,7 +115,8 @@ export {
   /* NPMSC */
   NpmscAccessor,
   NpmscController,
-  NpmscConfig
+  NpmscConfig,
+  NpmscUtil
 };
 /* ================================================== */
 /* NOTE

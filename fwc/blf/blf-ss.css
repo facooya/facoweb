@@ -11,6 +11,11 @@
     "blf-y-ho"
     "blf-y-mo"
     "blf-y-fo";
+  /*  */
+  user-select: none;
+  -webkit-user-select: none;
+  /*  */
+  -webkit-tap-highlight-color: transparent;
 }
 .blf-y-ho {
   /* Tag.header */

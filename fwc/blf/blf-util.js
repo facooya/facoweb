@@ -81,11 +81,10 @@ class BlfUtilGet {
     /*  */
     return returnCache;
   }
-  /* -------------------------------------------------- */
+  /* ================================================== */
   static getEventData(eventData, targetQuery) {
     const eventType = eventData.type;
     const eventCurrentTarget = eventData.currentTarget;
-    /* !!!!! v1.1.19a-4 !!!!! */
     const eventIndex = eventCurrentTarget.index;
     /*  */
     let targetElement = null;
@@ -103,39 +102,6 @@ class BlfUtilGet {
     };
   }
 }
-class BlfUtilSet {
-  static setGenerateElement(elementData, dText, dHref, dIndex = []) {
-    switch (dIndex.length) {
-      case 0: {
-        if (dText) {
-          elementData.textContent = dText;
-        }
-        if (dHref) {
-          elementData.setAttribute("href", dHref);
-        }
-        break;
-      }
-      case 1: {
-        if (dText) {
-          elementData.textContent = dText[dIndex[0]];
-        }
-        if (dHref) {
-          elementData.setAttribute("href", dHref[dIndex[0]]);
-        }
-        break;
-      }
-      case 2: {
-        if (dText) {
-          elementData.textContent = dText[dIndex[0]][dIndex[1]];
-        }
-        if (dHref) {
-          elementData.setAttribute("href", dHref[dIndex[0]][dIndex[1]]);
-        }
-        break;
-      }
-    }
-  }
-}
 class BlfUtil {
   static getGenerateElement(elementGroup, pIndex = []) {
     return BlfUtilGet.getGenerateElement(elementGroup, pIndex);
@@ -147,9 +113,6 @@ class BlfUtil {
     return BlfUtilGet.getEventData(eventData, targetQuery);
   }
   /* -------------------------------------------------- */
-  static setGenerateElement(pElement, pText, pHref, pIndex = []) {
-    BlfUtilSet.setGenerateElement(pElement, pText, pHref, pIndex);
-  }
 }
 export {
   BlfUtil

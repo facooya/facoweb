@@ -26,7 +26,10 @@ class HeccController {
 }
 class HeccManager {
   static init() {
-
+    const {
+      heccR
+    } = HeccConfig.getHeccRoot();
+    heccR.timerId = null;
   }
   static load() {
     
@@ -40,6 +43,9 @@ class HeccManager {
 }
 class HeccHandler {
   static windowScroll() {
+    const {
+      heccR
+    } = HeccConfig.getHeccRoot();
     HeccUtil.updateHeccZettaPbo();
     HeccUtil.setHeccZettaPbo();
   }

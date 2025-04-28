@@ -13,10 +13,7 @@ import {
 } from "../fwc-hub.js";
 /*  */
 class BlfAccessor {
-  /* static blfCache = {};
-  static getBlfGroup() {
-    return BlfGet.getBlfGroup();
-  } */
+
 }
 class BlfController {
   static init() {
@@ -68,22 +65,6 @@ class BlfManager {
 class BlfHandler {
 
 }
-/* class BlfGet {
-  static getBlfRoot() {
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
-      BlfAccessor.blfCache,
-      BlfConfig.blfRoot
-    );
-    return saveVerifyGroup;
-  }
-  static getBlfGroup() {
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
-      BlfAccessor.blfCache,
-      BlfConfig.blfGroup
-    );
-    return saveVerifyGroup;
-  }
-} */
 export {
   BlfAccessor,
   BlfController
