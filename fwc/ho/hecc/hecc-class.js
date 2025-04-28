@@ -7,7 +7,8 @@ import {
   HeccConfig
 } from "./hecc-config.js";
 import {
-  FwcAccessor
+  FwcAccessor,
+  HdncAccessor
 } from "../../fwc-hub.js";
 
 class HeccAccessor {
@@ -25,13 +26,17 @@ class HeccController {
     HeccManager.event();
   }
   static processOnLoad() {
-    
+    HeccManager.initOnLoad();
   }
   static processOnResize() {
 
   }
 }
 class HeccManager {
+  static initOnLoad() {
+    window.previousInnerHeight = window.innerHeight;
+    window.timeoutId = null;
+  }
   static generate() {
     const {
       heccR
@@ -40,13 +45,6 @@ class HeccManager {
     let tempGenerateElement = null;
     let tempSaveElement = {};
     /* =============== :Pbo Group: =============== */
-    /* for (let ysi = 0; ysi < HeccConfig.elementPboGroup.length; ysi++) {
-      tempGenerateElement = FwcAccessor.getGenerateElement(
-        HeccConfig.elementPboGroup[ysi].tag,
-        HeccConfig.elementPboGroup[ysi].selector
-      );
-      tempSaveElement[HeccConfig.elementPboGroup[ysi].id] = tempGenerateElement;
-    } */
     for (let ysi = 0; ysi < HeccConfig.heccPboGroup.length; ysi++) {
       tempGenerateElement = FwcAccessor.getGenerateElement2(
         HeccConfig.heccPboGroup[ysi]
@@ -55,13 +53,6 @@ class HeccManager {
     }
     /* =============== ;Pbo Group; =============== */
     /* =============== :Noo Group: =============== */
-    /* for (let ysi = 0; ysi < HeccConfig.elementNooGroup.length; ysi++) {
-      tempGenerateElement = FwcAccessor.getGenerateElement(
-        HeccConfig.elementNooGroup[ysi].tag,
-        HeccConfig.elementNooGroup[ysi].selector
-      );
-      tempSaveElement[HeccConfig.elementNooGroup[ysi].id] = tempGenerateElement;
-    } */
     for (let ysi = 0; ysi < HeccConfig.heccNooGroup.length; ysi++) {
       tempGenerateElement = FwcAccessor.getGenerateElement2(
         HeccConfig.heccNooGroup[ysi]
@@ -69,16 +60,21 @@ class HeccManager {
       tempSaveElement[HeccConfig.heccNooGroup[ysi].elementId] = tempGenerateElement;
     }
     /* =============== ;Noo Group; =============== */
-    /* HeccSet.setAppendFragment(heccFragment, tempSaveElement); */
     HeccConfig.heccAppend(tempSaveElement, heccFragment);
     heccR.append(heccFragment);
   }
   static event() {
-    window.addEventListener("scroll", HeccHandler.adtHeccZettaPbo);
+    window.addEventListener("scroll", HeccHandler.adtHeccScrollGroup);
   }
 }
 class HeccHandler {
-  /* PROC: Progress Rendering Component Object */
+  static adtHeccScrollGroup() {
+    HeccHandler.adtHeccZettaPbo();
+    clearTimeout(window.timeoutId);
+    window.timeoutId = setTimeout(HeccHandler.adtWindowHeight, 100);
+    /* HeccHandler.adtWindowHeight(); */
+  }
+  /*  */
   static adtHeccZettaPbo() {
     const htmlElement = document.documentElement;
     const {
@@ -93,15 +89,41 @@ class HeccHandler {
     heccZettaPboLgro.style.height = setHeight;
     heccZettaPboRgro.style.height = setHeight;
   }
+  /*  */
+  static adtWindowHeight() {
+    const innerHeight = window.innerHeight;
+    const previousInnerHeight = window.previousInnerHeight;
+    const {
+      hdncExaBlo
+    } = HdncAccessor.getHdncBloGroup();
+    /* if (innerHeight > previousInnerHeight) {
+      /* hide mobile bar 
+      for (let i = 0; i < hdncExaBlo.length; i++) {
+        hdncExaBlo[i].style.maxHeight = 
+          (innerHeight - (10 * 16)).toString() + "px";
+      }
+      window.previousInnerHeight = innerHeight;
+    } else if (innerHeight < previousInnerHeight) {
+      /* visible mobile bar 
+      for (let i = 0; i < hdncExaBlo.length; i++) {
+        hdncExaBlo[i].style.maxHeight = 
+          (innerHeight - (10 * 16)).toString() + "px";
+      }
+      window.previousInnerHeight = innerHeight;
+    } */
+    if (innerHeight !== previousInnerHeight) {
+      for (let i = 0; i < hdncExaBlo.length; i++) {
+        if (hdncExaBlo[i].isActive) {
+          hdncExaBlo[i].style.maxHeight =
+            (innerHeight - (10 * 16)).toString() + "px";
+        }
+      }
+      window.previousInnerHeight = innerHeight;
+    }
+  }
 }
 class HeccGet {
   static getHeccRoot() {
-    /* const heccRoot = [
-      {
-        id: "heccR",
-        selector: ".blf-y-ho .hecc-r"
-      }
-    ]; */
     const saveVerifyGroup = FwcAccessor.getVerifyCache2(
       HeccAccessor.heccCache,
       HeccConfig.heccRoot
@@ -109,25 +131,6 @@ class HeccGet {
     return saveVerifyGroup;
   }
   static getHeccPboGroup() {
-    /* const heccPboGroup = [
-      {
-        id: "heccYottaPbo",
-        selector: ".hecc-y-pbo"
-      },
-      {
-        id: "heccZettaPbo",
-        selector: ".hecc-z-pbo",
-        type: "all"
-      },
-      {
-        id: "heccZettaPboLgro",
-        selector: ".hecc-z-pbo-lgro"
-      },
-      {
-        id: "heccZettaPboRgro",
-        selector: ".hecc-z-pbo-rgro"
-      }
-    ]; */
     const {
       heccR
     } = HeccGet.getHeccRoot();
@@ -139,16 +142,6 @@ class HeccGet {
     return saveVerifyGroup;
   }
   static getHeccNooGroup() {
-    /* const heccNooGroup = [
-      {
-        id: "heccYottaNoo",
-        selector: ".hecc-y-noo"
-      },
-      {
-        id: "heccZettaNooSdo",
-        selector: ".hecc-z-noo-sdo"
-      }
-    ]; */
     const {
       heccR
     } = HeccGet.getHeccRoot();
@@ -161,19 +154,7 @@ class HeccGet {
   }
 }
 class HeccSet {
-  /* static setAppendFragment(heccFragment, tempSaveElement) {
-    tempSaveElement["heccYottaPbo"].append(
-      tempSaveElement["heccZettaPboLgro"],
-      tempSaveElement["heccZettaPboRgro"]
-    );
-    tempSaveElement["heccYottaNoo"].append(
-      tempSaveElement["heccZettaNooSdo"]
-    );
-    heccFragment.append(
-      tempSaveElement["heccYottaPbo"],
-      tempSaveElement["heccYottaNoo"]
-    );
-  } */
+
 }
 export {
   HeccAccessor,

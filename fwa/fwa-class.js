@@ -14,15 +14,16 @@ import {
   FwcController
 } from "../fwc/fwc-hub.js";
 /* =============== */
+class FwaAccessor {
+  static fwaIsTimeout = true;
+  static fwaTimeoutId = null;
+  static isFwaResizeKey = false;
+}
 class FwaController {
   static process() {
     FwaManager.setupProcess();
     FwaManager.event();
   }
-  /* static setupProcess() { !!! v1.1.14a [del] (replaced)
-    FwaConfig.currentDt = FwaUtility.getDisplayType();
-    FwaConfig.previousDt = FwaConfig.currentDt;
-  } */
 }
 class FwaManager {
   static setupProcess() {
@@ -30,10 +31,6 @@ class FwaManager {
     FwaConfig.previousDisplayType = FwaConfig.currentDisplayType;
   }
   static event() {
-    /* window.addEventListener( !!! v1.1.14a [del] (unused)
-      "DOMContentLoaded",
-      this.fwaHandler.onDcl.bind(this.fwaHandler)
-    ); */
     window.addEventListener(
       "load",
       FwaHandler.onLoad,
@@ -46,10 +43,6 @@ class FwaManager {
   }
 }
 class FwaHandler {
-  /* onDcl() { !!! v1.1.14a [del] (unused)
-    FwaLog.logb("=", 30);
-    FwaLog.logd(true, "fwa/fwa-class.js", "FwaHandler.onDcl()", "Done");
-  } */
   static onLoad() {
     FwaConfig.isLoad = true;
     FwaLog.logb("=", 30);
@@ -69,7 +62,31 @@ class FwaHandler {
       FwaConfig.previousDisplayType = FwaConfig.currentDisplayType;
       FwaLog.logd(true, "fwa/fwa-class.js", "currentDt", FwaConfig.currentDisplayType);
       FwaLog.logd(true, "fwa/fwa-class.js", "FwaHandler.onResize()", "Done");
+      clearTimeout(FwaAccessor.fwaTimeoutId);
+      /* FwaAccessor.isFwaResizeKey = false; */
+    } else {
+      clearTimeout(FwaAccessor.fwaTimeoutId);
+      FwaAccessor.fwaTimeoutId = setTimeout(
+        FwcController.sensorOnResize,
+        200
+      );
     }
+    /* else if (FwaAccessor.isFwaResizeKey) {
+      /* FwcController.processOnResize(); 
+      FwcController.sensorOnResize();
+      clearTimeout(FwaAccessor.fwaTimeoutId);
+      FwaAccessor.isFwaResizeKey = false;
+    } else {
+      /* clearTimeout(FwaAccessor.fwaTimeoutId);
+      FwaAccessor.fwaTimeoutId = setTimeout(FwcController.stepOnResize, 500); 
+      /* FwcController.stepOnResize(); 
+      clearTimeout(FwaAccessor.fwaTimeoutId);
+      FwaAccessor.fwaTimeoutId = setTimeout(
+        FwaSet.setFwaResizeKey,
+        200,
+        true
+      );
+    } */
   }
 }
 class FwaUtility {
@@ -86,6 +103,11 @@ class FwaUtility {
       }
     }
     return -1;
+  }
+}
+class FwaSet {
+  static setFwaResizeKey(isActive) {
+    FwaAccessor.isFwaResizeKey = isActive;
   }
 }
 export {

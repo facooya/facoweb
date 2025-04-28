@@ -76,14 +76,22 @@
   opacity: 1;
 }
 /* ==========----- ;cl-ddt-hdnc-p-blo-handler; -----========== */
-/* ==========----- :cl-mdt-hdnc-z-sfro-handler: -----========== */
-.hdnc-z-eco-sfro-tgro.cl-mdt-hdnc-z-sfro-handler {
+/* ==========----- :cl-mdt-hdnc-y-sfro-handler: -----========== */
+.hdnc-y-sfro-tgro.cl-mdt-hdnc-y-sfro-handler {
   height: 5rem;
 }
-.hdnc-z-eco-sfro-bgro.cl-mdt-hdnc-z-sfro-handler {
+.hdnc-y-sfro-bgro.cl-mdt-hdnc-y-sfro-handler {
   height: 5rem;
 }
-/* ==========----- ;cl-mdt-hdnc-z-sfro-handler; -----========== */
+/* ==========----- ;cl-mdt-hdnc-y-sfro-handler; -----========== */
+/* ==========----- :cl-tdt-hdnc-e-blo-scroll-handler: -----========== */
+.hdnc-e-blo-sgro-to.cl-tdt-hdnc-e-blo-scroll-handler {
+  transform: scale(1, 1);
+}
+.hdnc-e-blo-sgro-bo.cl-tdt-hdnc-e-blo-scroll-handler {
+  transform: scale(1, 1);
+}
+/* ==========----- ;cl-tdt-hdnc-e-blo-scroll-handler; -----========== */
 /* =============== ;Handler; =============== */
 /* =============== :FACOOYA: =============== */
 /* NOTE

@@ -187,19 +187,20 @@
   background-color: var(--facooya-secondary);
   border-radius: 0.0625rem;
   /* transition: opacity 300ms ease; */
-  transition: width 300ms ease;
+  transition:
+    left 300ms ease,
+    width 300ms ease;
 }
 /* =============== :Hsnc Eco Group: =============== */
-.hsnc-y-eco {
+/* .hsnc-y-eco {
   position: absolute;
   top: 0rem;
   z-index: 10;
   width: 100%;
   height: 100%;
   pointer-events: none;
-}
-.hsnc-z-eco-sdo {
-  /* ios hsnc scroll bug fix */
+} */
+.hsnc-y-sdo {
   /* Position */
   position: absolute;
   /* .hsnc-y-mgpt < .hsnc-y */
@@ -210,15 +211,17 @@
   height: calc(100% + 1px);
   /* Visual */
   background: var(--transparent);
+  pointer-events: none;
 }
 /* !!!!! :v1.1.17a [test] [pro] (scroll-fog): !!!!! */
-.hsnc-z-eco-sfro {
+.hsnc-y-sfro {
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   width: 80%;
   transition: height 300ms ease;
+  pointer-events: none;
 }
-.hsnc-z-eco-sfro-tgro {
+.hsnc-y-sfro-tgro {
   top: 4rem;
   height: 0rem;
   background: linear-gradient(
@@ -226,7 +229,7 @@
     var(--transparent)
   );
 }
-.hsnc-z-eco-sfro-bgro {
+.hsnc-y-sfro-bgro {
   bottom: 0rem;
   height: 0rem;
   background: linear-gradient(
@@ -246,7 +249,7 @@
     width: 20rem; /* FIXME: var(--hsnc-r-width); */
     right: -20rem; /* FIXME: calc(-1 * var(--hsnc-r-width)); */
   }
-  .hsnc-z-eco-sfro-tgro {
+  .hsnc-y-sfro-tgro {
     top: 8rem;
   }
   .hsnc-e-tlo-rgro {
@@ -254,6 +257,9 @@
   }
   .hsnc-p-blo {
     padding: 0rem 2rem 0rem 2rem;
+  }
+  .hsnc-g-blo-bgro {
+    transition: width 300ms ease;
   }
 }
 @media (min-width: 1280px) {
@@ -302,7 +308,7 @@
     transition:
       width var(--hsnc-duration-primary) var(--hsnc-timing-primary);
   } */
-  .hsnc-z-eco-sfro-tgro {
+  .hsnc-y-sfro-tgro {
     top: 4rem;
   }
 }

@@ -37,6 +37,9 @@ class HtpncController {
     HtpncManager.initOnResize();
     HtpncManager.event();
   }
+  /* static stepOnResize() {
+    HtpncManager.initStepOnResize();
+  } */
 }
 class HtpncManager {
   static init() {
@@ -71,6 +74,16 @@ class HtpncManager {
       HtpncHandler.htpncZettaHsngo();
     }
   }
+  /* static initStepOnResize() {
+    if (HdncAccessor.isActiveHdnc) {
+      HtpncAccessor.isHtpncResizeKey = true;
+      HtpncHandler.htpncZettaHdngo();
+    }
+    if (HsncAccessor.isActiveHsnc) {
+      HtpncAccessor.isHtpncResizeKey = true;
+      HtpncHandler.htpncZettaHsngo();
+    }
+  } */
   static generate() {
     const {
       htpncR
@@ -79,18 +92,6 @@ class HtpncManager {
     let tempGenerateElement = null;
     let tempSaveElement = {};
     /* =============== :Ys Group: =============== */
-    /* for (let ysi = 0; ysi < HtpncConfig.elementYsGroup.length; ysi++) {
-      tempGenerateElement = FwcAccessor.getGenerateElement(
-        HtpncConfig.elementYsGroup[ysi].tag,
-        HtpncConfig.elementYsGroup[ysi].selector
-      );
-      FwcAccessor.setGenerateElement(
-        tempGenerateElement,
-        HtpncConfig.elementYsGroup[ysi].text,
-        HtpncConfig.elementYsGroup[ysi].link
-      );
-      tempSaveElement[HtpncConfig.elementYsGroup[ysi].id] = tempGenerateElement;
-    } */
     for (let ysi = 0; ysi < HtpncConfig.htpncGroup.length; ysi++) {
       tempGenerateElement = FwcAccessor.getGenerateElement2(
         HtpncConfig.htpncGroup[ysi]
@@ -99,18 +100,6 @@ class HtpncManager {
     }
     /* =============== ;Ys Group; =============== */
     /* =============== :Zs Group: =============== */
-    /* for (let ysi = 0; ysi < HtpncConfig.elementZsGroup.length; ysi++) {
-      tempGenerateElement = FwcAccessor.getGenerateElement(
-        HtpncConfig.elementZsGroup[ysi].tag,
-        HtpncConfig.elementZsGroup[ysi].selector
-      );
-      FwcAccessor.setGenerateElement(
-        tempGenerateElement,
-        HtpncConfig.elementZsGroup[ysi].text,
-        HtpncConfig.elementZsGroup[ysi].link
-      );
-      tempSaveElement[HtpncConfig.elementZsGroup[ysi].id] = tempGenerateElement;
-    } */
     for (let ysi = 0; ysi < HtpncConfig.htpncLgoGroup.length; ysi++) {
       tempGenerateElement = FwcAccessor.getGenerateElement2(
         HtpncConfig.htpncLgoGroup[ysi]
@@ -133,24 +122,6 @@ class HtpncManager {
     }
     /* =============== ;Zs Group; =============== */
     /* =============== :Hdngo Gro, Hsngo Gro Group: =============== */
-    /* for (let ysi = 0; ysi < HtpncConfig.hdngoGroLength; ysi++) {
-      for (let zsi = 0; zsi < HtpncConfig.elementHdngoGroGroup.length; zsi++) {
-        tempGenerateElement = FwcAccessor.getGenerateElement(
-          HtpncConfig.elementHdngoGroGroup[zsi].tag,
-          HtpncConfig.elementHdngoGroGroup[zsi].selector
-        );
-        tempSaveElement["zettaHdngo"].append(tempGenerateElement);
-      }
-    }
-    for (let ysi = 0; ysi < HtpncConfig.hsngoGroLength; ysi++) {
-      for (let zsi = 0; zsi < HtpncConfig.elementHsngoGroGroup.length; zsi++) {
-        tempGenerateElement = FwcAccessor.getGenerateElement(
-          HtpncConfig.elementHsngoGroGroup[zsi].tag,
-          HtpncConfig.elementHsngoGroGroup[zsi].selector
-        );
-        tempSaveElement["zettaHsngo"].append(tempGenerateElement);
-      }
-    } */
     for (let ysi = 0; ysi < HtpncConfig.htpncHdngoGroLength; ysi++) {
       for (let zsi = 0; zsi < HtpncConfig.htpncHdngoGroGroup.length; zsi++) {
         tempGenerateElement = FwcAccessor.getGenerateElement2(
@@ -219,8 +190,6 @@ class HtpncHandler {
       heccYottaNoo
     } = HeccAccessor.getHeccNooGroup();
     const displayTypeState = HtpncGet.getDisplayTypeState();
-    /*  */
-    /* HdncAccessor.setHdncGigaBloBgro(); */
     /*  */
     let isActive = null;
     let type = "";
@@ -308,8 +277,6 @@ class HtpncHandler {
       eventListenerType = "removeEventListener";
     }
     /*  */
-    /* HsncAccessor.setHsncGigaBloBgro(); */
-    /*  */
     switch (displayTypeState) {
       case 1: {
         if (isActive) {
@@ -330,16 +297,13 @@ class HtpncHandler {
       case 2: {
         if (isActive) {
           if (npmhcR.clientWidth < temporaryData) {
-            /* add nptlcZettaTno, npclcZ */
             const {
               npmhcZettaTno
             } = NpmhcAccessor.getNpmhcTnoGroup();
             const {
               npmscZ
             } = NpmscAccessor.getNpmscGroup();
-            /* const nptlcZettaTno = npmhcR.querySelector(".nptlc-z-tno"); */
             npmhcZettaTno.style.gridTemplateColumns = "1fr 1fr";
-            /* const npclcZ = npmscR.querySelector(".npclc-z"); */
             for (let i = 0; i < npmscZ.length; i++) {
               npmscZ[i].style.gridTemplateColumns = "1fr";
             }
@@ -351,24 +315,19 @@ class HtpncHandler {
             }
           }
         } else {
-          /* remove nptlcZettaTno, npclcZ */
           const {
             npmhcZettaTno
           } = NpmhcAccessor.getNpmhcTnoGroup();
           const {
             npmscZ
           } = NpmscAccessor.getNpmscGroup();
-          /* const nptlcZettaTno = npmhcR.querySelector(".nptlc-z-tno"); */
           npmhcZettaTno.style.gridTemplateColumns = "";
-          /* const npclcZ = npmscR.querySelector(".npclc-z"); */
           for (let i = 0; i < npmscZ.length; i++) {
             npmscZ[i].style.gridTemplateColumns = "";
           }
         }
         HtpncSet.setHtpncExaHsngoGro(isActive);
         htpncZettaEcoSdo.classList[type]("cl-tdt-htpnc-z-hsngo-handler");
-        /* npmhcR.classList[type]("cl-tdt-htpnc-z-hsngo-handler");
-        npmscR.classList[type]("cl-tdt-htpnc-z-hsngo-handler"); */
         blfYottaNpmo.classList[type]("cl-tdt-htpnc-z-hsngo-handler");
         heccZettaPboRgro.classList[type]("cl-tdt-htpnc-z-hsngo-handler");
         hsncR.classList[type]("cl-tdt-htpnc-z-hsngo-handler");
@@ -379,8 +338,6 @@ class HtpncHandler {
       case 3: {
         HtpncSet.setHtpncExaHsngoGro(isActive);
         htpncZettaEcoSdo.classList[type]("cl-ddt-htpnc-z-hsngo-handler");
-        /* npmhcR.classList[type]("cl-ddt-htpnc-z-hsngo-handler");
-        npmscR.classList[type]("cl-ddt-htpnc-z-hsngo-handler"); */
         blfYottaNpmo.classList[type]("cl-ddt-htpnc-z-hsngo-handler");
         hsncR.classList[type]("cl-ddt-htpnc-z-hsngo-handler");
         heccZettaPboRgro.classList[type]("cl-ddt-htpnc-z-hsngo-handler");
@@ -408,12 +365,6 @@ class HtpncGet {
   }
   /* =============== :getElementGroup: =============== */
   static getHtpncRoot() {
-    /* const htpncRoot = [
-      {
-        id: "htpncR",
-        selector: ".blf-y-ho .htpnc-r"
-      }
-    ]; */
     const saveVerifyGroup = FwcAccessor.getVerifyCache2(
       HtpncAccessor.htpncCache,
       HtpncConfig.htpncRoot
@@ -421,12 +372,6 @@ class HtpncGet {
     return saveVerifyGroup;
   }
   static getHtpncGroup() {
-    /* const htpncGroup = [
-      {
-        id: "htpncY",
-        selector: ".htpnc-y"
-      }
-    ]; */
     const {
       htpncR
     } = HtpncGet.getHtpncRoot();
@@ -437,45 +382,6 @@ class HtpncGet {
     );
     return saveVerifyGroup;
   }
-  /* static getHtpncGoGroup() {
-    const htpncIoGroup = [
-      {
-        id: "htpncZettaLgo",
-        selector: ".htpnc-z-lgo"
-      },
-      {
-        id: "htpncZettaHdngo",
-        selector: ".htpnc-z-hdngo"
-      },
-      {
-        id: "htpncZettaHsngo",
-        selector: ".htpnc-z-hsngo"
-      },
-      {
-        id: "htpncExaLgoLink",
-        selector: ".htpnc-e-lgo-link"
-      },
-      {
-        id: "htpncExaHdngoGro",
-        selector: ".htpnc-e-hdngo-gro",
-        type: "all"
-      },
-      {
-        id: "htpncExaHsngoGro",
-        selector: ".htpnc-e-hsngo-gro",
-        type: "all"
-      }
-    ];
-    const {
-      htpncR
-    } = this.getHtpncRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache(
-      HtpncAccessor.htpncCache,
-      htpncIoGroup,
-      htpncR
-    );
-    return saveVerifyGroup;
-  } */
   static getHtpncLgoGroup() {
     const {
       htpncR
@@ -532,16 +438,6 @@ class HtpncGet {
     return saveVerifyGroup;
   }
   static getHtpncSntoGroup() {
-    /* const htpncSntoGroup = [
-      {
-        id: "htpncYottaSnto",
-        selector: ".htpnc-y-snto"
-      },
-      {
-        id: "htpncZettaSntoText",
-        selector: ".htpnc-z-snto-text"
-      }
-    ]; */
     const {
       htpncR
     } = HtpncGet.getHtpncRoot();
@@ -553,16 +449,6 @@ class HtpncGet {
     return saveVerifyGroup;
   }
   static getHtpncEcoGroup() {
-    /* const htpncEcoGroup = [
-      {
-        id: "htpncYottaEco",
-        selector: ".htpnc-y-eco"
-      },
-      {
-        id: "htpncZettaEcoSdo",
-        selector: ".htpnc-z-eco-sdo"
-      }
-    ]; */
     const {
       htpncR
     } = HtpncGet.getHtpncRoot();

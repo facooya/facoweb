@@ -8,7 +8,6 @@ import {
   HdncController,
   HsncController,
   HeccController,
-  /* NplcController */
   NpmhcController,
   NpmscController
 } from "./fwc-hub.js";
@@ -35,54 +34,43 @@ class FwcAccessor {
 class FwcController {
   /* =============== Process: =============== */
   static process() {
-    const pStart = performance.now();
     HtpncController.process();
     HdncController.process();
     HsncController.process();
     HeccController.process();
+    /*  */
     /* !!!!! v1.1.15a [temp] URL Check nav-page? doc-page? home-page? !!!!! */
-    /* NplcController.process(); */
     NpmhcController.process();
     NpmscController.process();
-    const pEnd = performance.now();
-    console.log("per.fwc.process: " + (pEnd - pStart));
   }
   static processOnLoad() {
-    const pStart = performance.now();
     HtpncController.processOnLoad();
     HdncController.processOnLoad();
     HsncController.processOnLoad();
     HeccController.processOnLoad();
-
-    /* NplcController.processOnLoad(); */
+    /*  */
     NpmhcController.processOnLoad();
     NpmscController.processOnLoad();
-    const pEnd = performance.now();
-    console.log("per.fwc.processOnLoad: " + (pEnd - pStart));
   }
   static processOnResize() {
-    const pStart = performance.now();
     HtpncController.processOnResize();
     HdncController.processOnResize();
     HsncController.processOnResize();
     HeccController.processOnResize();
-
-    /* NplcController.processOnResize(); */
+    /*  */
     NpmhcController.processOnResize();
     NpmscController.processOnResize();
-    const pEnd = performance.now();
-    console.log("per.fwc.processOnResize: " + (pEnd - pStart));
+  }
+  /* static stepOnResize() {
+    HtpncController.stepOnResize();
+    HdncController.stepOnResize();
+  } */
+  static sensorOnResize() {
+    /* HtpncController.sensorOnResize(); */
+    HdncController.sensorOnResize();
+    HsncController.sensorOnResize();
   }
   /* =============== Process; =============== */
-  /* =============== Access: =============== */
-  /* static accessGetGenerateElement(elementTag, setClass) {
-    FwcGet.getGenerateElement(elementTag, setClass);
-  }
-  static accessGetEventData(eventData) {
-    const { eType, eCurrentTarget, eIndex } = FwcGet.getEventData(eventData);
-    return { eType, eCurrentTarget, eIndex };
-  } */
-  /* =============== Access; =============== */
 }
 class FwcGet {
   static getGenerateElement(elementTag, setClass) {
@@ -184,20 +172,6 @@ class FwcGet {
             break;
           }
         }
-        /* if (!dGroup[i].query.queryType) {
-          if (dGroup[i].query.queryType === "single") {
-            queryType = "querySelector";
-          } else if (dGroup[i].query.queryType === "all") {
-            queryType = "querySelectorAll";
-          }
-        } else {
-          queryType = "querySelector";
-        } */
-        /* if (dGroup[i].type === "all") {
-          getCache = dRoot.querySelectorAll(dGroup[i].selector);
-        } else {
-          getCache = dRoot.querySelector(dGroup[i].selector);
-        } */
         /* Find & Save */
         getCache = dRoot[queryType](dGroup[i].query.querySelector);
         dCache[cacheKey] = getCache;
@@ -264,7 +238,7 @@ export {
   FwcAccessor,
   FwcController
 };
-/* DESCRIPTION
+/* NOTE
  */
 /* INFORMATION
  * @[Author] {Facooya} (Founder)

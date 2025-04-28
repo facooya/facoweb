@@ -26,7 +26,7 @@
 .smc-e-a-logo-icon {
   width: 2rem;
   height: 2rem;
-  mask-image: url("../../../fwa/resource/a.svg");
+  mask-image: url("../../../svg/a.svg");
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: #FFFFFF;
@@ -34,7 +34,7 @@
 .smc-e-b-logo-icon {
   width: 2rem;
   height: 2rem;
-  mask-image: url("../../../fwa/resource/b.svg");
+  mask-image: url("../../../svg/b.svg");
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: #FFFFFF;
@@ -42,7 +42,7 @@
 .smc-e-c-logo-icon {
   width: 2rem;
   height: 2rem;
-  mask-image: url("../../../fwa/resource/c.svg");
+  mask-image: url("../../../svg/c.svg");
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: #FFFFFF;
@@ -51,7 +51,7 @@
 .llc-y-facooya-icon {
   width: 5rem;
   height: 5rem;
-  mask-image: url("../../../fwa/resource/d.svg");
+  mask-image: url("../../../svg/d.svg");
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: var(--white);

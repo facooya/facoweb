@@ -23,25 +23,7 @@
   overflow-y: scroll;
   overscroll-behavior: contain;
 }
-/* .htpnc-r-beptg {
-  --htpnc-transition-primary: var(--transition-primary);
-  --htpnc-transition-slide: var(--nc-transition-slide);
-  --htpnc-background: var(--nc-background);
-  --htpnc-color: var(--white);
-} */
 /* = = = = = TPNC-R = = = = = */
-/* .htpnc-r-beptg {
-  /* Position 
-  position: fixed;
-  z-index: 10;
-  top: 0rem;
-  /* Layout 
-  width: 100%;
-  background-color: var(--htpnc-background);
-
-  overflow-y: scroll;
-  overscroll-behavior: contain;
-} */
 .htpnc-y {
   /* Position */
   position: relative;
@@ -64,7 +46,7 @@
   pointer-events: none;
 }
 .htpnc-z-eco-sdo {
-  display: none;
+  /* display: none; */
   position: absolute;
   z-index: 1;
   top: 0rem;
@@ -72,15 +54,6 @@
   height: calc(100% + 1px);
   background-color: var(--transparent);
 }
-/* .htpnc-y-sdo {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  top: 0rem;
-  width: 100%;
-  height: calc(100% + 1px);
-  background-color: var(--transparent);
-} */
 .htpnc-y-snto {
   display: none;
 }
