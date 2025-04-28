@@ -51,6 +51,8 @@
   
   overflow-y: scroll;
   overscroll-behavior: contain;
+  /*  */
+  scrollbar-width: none;
 }
 .hecc-z-noo-sdo {
   position: relative;

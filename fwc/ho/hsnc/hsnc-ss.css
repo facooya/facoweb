@@ -41,6 +41,12 @@
   transition:
     right var(--nc-transition-slide),
     width var(--nc-transition-slide);
+  /*  */
+  scrollbar-width: none;
+  /*  */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 /* = = = = = SNC-Y = = = = = */
 .hsnc-y {

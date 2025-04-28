@@ -12,9 +12,6 @@
     "blf-y-mo"
     "blf-y-fo";
   /*  */
-  user-select: none;
-  -webkit-user-select: none;
-  /*  */
   -webkit-tap-highlight-color: transparent;
 }
 .blf-y-ho {
@@ -47,26 +44,23 @@
   position: relative;
   /*  */
   display: grid;
-  justify-content: space-evenly;
   grid-template-areas:
+    "fasc"
     "fauc"
-    "fsdc"
-    "fsmc"
-    "fadfc"
+    "fosc"
     "fllc";
   gap: 2rem;
   /*  */
   background-color: #222222;
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
 }
 @media (min-width: 320px) {
-  .blf-y-fo {
+  /* .blf-y-fo {
     grid-template-areas:
     "fauc fsdc"
-    "fsmc fsmc"
     "fadfc fadfc"
     "fllc fllc";
-  }
+  } */
 }
 @media (min-width: 768px) {
   .blf-r {

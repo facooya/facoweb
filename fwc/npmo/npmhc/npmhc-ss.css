@@ -93,6 +93,10 @@
   color: #777777;
   transition:
     color 200ms ease;
+  /*  */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 .npmhc-t-tno-gro {
   /* Tag.div */

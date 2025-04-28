@@ -1,0 +1,118 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.fasc-r {
+  grid-area: fasc;
+  display: grid;
+  grid-template-areas:
+    "y-fo y-fo y-fo"
+    "y-note y-note y-note"
+    "y-smo y-smo y-smo";
+  justify-content: left;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+/* ================================================== */
+.fasc-y-fo {
+  /* Tag.ul */
+  grid-area: y-fo;
+  display: grid;
+  grid-template-areas: "fo-dev-logo fo-ta-icon fo-icon";
+  justify-content: start;
+  list-style-type: none;
+  /*  */
+  margin-bottom: 1rem;
+}
+.fasc-z-fo {
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background: var(--white);
+}
+.fasc-z-fo-dev-logo {
+  grid-area: fo-dev-logo;
+  width: 6rem;
+  height: 3rem;
+  mask-image: url("../../../svg/logo-2w.svg");
+}
+.fasc-z-fo-ta-icon {
+  grid-area: fo-ta-icon;
+  width: 0.75rem;
+  height: 0.75rem;
+  mask-image: url("../../../svg/b.svg");
+  margin-right: 1rem;
+  align-self: end;
+}
+.fasc-z-fo-icon {
+  grid-area: fo-icon;
+  width: 3rem;
+  height: 3rem;
+  mask-image: url("../../../svg/c.svg");
+}
+/* ================================================== */
+.fasc-y-smo {
+  /* Tag.ul */
+  grid-area: y-smo;
+  display: grid;
+  grid-template-areas:
+    "a-icon b-icon c-icon";
+  grid-template-columns: repeat(3, 1.8rem);
+  gap: 1.5rem;
+  list-style-type: none;
+  align-items: end;
+  /*  */
+  width: calc(8.4rem + 2rem);
+}
+.fasc-z-smo {
+  height: 1.8rem;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: #FFFFFF;
+  align-items: center;
+}
+.fasc-z-smo-a-icon {
+  grid-area: a-icon;
+  mask-image: url("../../../svg/a.svg");
+}
+.fasc-z-smo-b-icon {
+  grid-area: b-icon;
+  mask-image: url("../../../svg/b.svg");
+}
+.fasc-z-smo-c-icon {
+  grid-area: c-icon;
+  mask-image: url("../../../svg/c.svg");
+}
+/* ================================================== */
+.fasc-y-text {
+  grid-area: y-text;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  /*  */
+  margin-bottom: 0.5rem;
+}
+.fasc-y-note {
+  grid-area: y-note;
+  color: #FFFFFF;
+  /*  */
+  margin-bottom: 1rem;
+}
+@media (min-width: 320px) {
+  /* .fasc-r {
+    grid-template-areas:
+      "y-text y-text y-text"
+      "y-note y-note y-note"
+      "y-fo . y-smo";
+  } */
+}
+@media (min-width: 768px) {
+
+}
+/* =============== :FACOOYA: =============== */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* =============== ;FACOOYA; =============== */

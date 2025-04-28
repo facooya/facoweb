@@ -22,6 +22,12 @@
 
   overflow-y: scroll;
   overscroll-behavior: contain;
+  /*  */
+  scrollbar-width: none;
+  /*  */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 /* = = = = = TPNC-R = = = = = */
 .htpnc-y {
@@ -54,9 +60,48 @@
   display: none;
 }
 .htpnc-z-lgo {
+  /* Tag.li */
   grid-area: htpnc-z-lgo;
   position: relative;
-  cursor: pointer;
+  height: 100%;
+}
+.htpnc-e-lgo {
+  /* Tag.a */
+  display: grid;
+  grid-template-areas:
+    "dev-logo ta-icon logo";
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.htpnc-p-lgo-dev-logo {
+  grid-area: dev-logo;
+  width: 4rem;
+  height: 2rem;
+  mask-image: url("../../../svg/logo-2w.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: var(--white);
+}
+.htpnc-p-lgo-ta-icon {
+  grid-area: ta-icon;
+  width: 0.5rem;
+  height: 1.5rem;
+  mask-image: url("../../../svg/b.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: var(--white);
+  margin-right: 0.5rem;
+  align-self: end;
+}
+.htpnc-p-lgo-logo {
+  grid-area: logo;
+  width: 10rem;
+  height: 2rem;
+  mask-image: url("../../../svg/logo-5w.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: var(--white);
 }
 .htpnc-z-hdngo {
   /* Position */

@@ -7,7 +7,7 @@ import {
   BlfUtil
 } from "../../fwc-hub.js";
 class HtpncConfigData {
-  static htpncExaLgoText = "Facooya";
+  /* static htpncExaLgoText = "Facooya"; */
   static htpncExaLgoLink = "/";
   /*  */
   static htpncZettaSntoText = "Navigation";
@@ -55,15 +55,47 @@ class HtpncConfigElement {
       }
     },
     {
-      elementId: "htpncExaLgoLink",
+      elementId: "htpncExaLgo",
       generate: {
         htmlTag: "a",
-        htmlClass: "htpnc-e-lgo-link",
-        htmlText: HtpncConfigData.htpncExaLgoText,
+        htmlClass: "htpnc-e-lgo",
         htmlLink: HtpncConfigData.htpncExaLgoLink
       },
       query: {
-        querySelector: ".htpnc-e-lgo-link",
+        querySelector: ".htpnc-e-lgo",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "htpncPetaLgoDevLogo",
+      generate: {
+        htmlTag: "div",
+        htmlClass: "htpnc-p-lgo-dev-logo"
+      },
+      query: {
+        querySelector: ".htpnc-p-lgo-dev-logo",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "htpncPetaLgoTaIcon",
+      generate: {
+        htmlTag: "div",
+        htmlClass: "htpnc-p-lgo-ta-icon"
+      },
+      query: {
+        querySelector: ".htpnc-p-lgo-ta-icon",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "htpncPetaLgoLogo",
+      generate: {
+        htmlTag: "div",
+        htmlClass: "htpnc-p-lgo-logo"
+      },
+      query: {
+        querySelector: ".htpnc-p-lgo-logo",
         queryType: "single"
       }
     }
@@ -201,8 +233,13 @@ class HtpncConfigManager {
   }
   /* -------------------------------------------------- */
   static setAppendFragment(htpncFragment, tempSaveElement) {
+    tempSaveElement["htpncExaLgo"].append(
+      tempSaveElement["htpncPetaLgoDevLogo"],
+      tempSaveElement["htpncPetaLgoTaIcon"],
+      tempSaveElement["htpncPetaLgoLogo"]
+    );
     tempSaveElement["htpncZettaLgo"].append(
-      tempSaveElement["htpncExaLgoLink"]
+      tempSaveElement["htpncExaLgo"]
     );
     tempSaveElement["htpncY"].append(
       tempSaveElement["htpncZettaLgo"],

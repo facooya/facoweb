@@ -34,6 +34,12 @@
   background-color: var(--nc-background);
   transition: 
     left var(--hdnc-duration-primary) var(--hdnc-timing-primary);
+  /*  */
+  scrollbar-width: none;
+  /*  */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 .hdnc-e-tlo-sdo {
   display: none;
@@ -92,47 +98,6 @@
   background: var(--transparent);
   pointer-events: none;
 }
-/* .hdnc-z-eco-sdo {
-  /* ios snc scroll bug fix 
-  /* Position 
-  position: absolute;
-  /* .hdnc-y-mgpt < .hdnc-y 
-  z-index: 2;
-  top: 0rem;
-  /* Layout 
-  width: 100%;
-  height: calc(100% + 1px);
-  /* Visual 
-  background: var(--transparent);
-} */
-/* !!!!! :v1.1.17a [test] (scroll-fog): !!!!! */
-/* .hdnc-z-eco-tfo {
-  position: fixed;
-  top: 4rem;
-  z-index: 1;
-  width: 100%;
-  height: 0rem;
-  background: linear-gradient(
-    var(--snc-background),
-    var(--transparent)
-  );
-  pointer-events: none;
-  transition: height 300ms ease;
-}
-.hdnc-z-eco-bfo {
-  position: fixed;
-  bottom: 0rem;
-  z-index: 1;
-  width: 100%;
-  height: 0rem;
-  background: linear-gradient(
-    var(--transparent),
-    var(--snc-background)
-  );
-  pointer-events: none;
-  transition: height 300ms ease;
-} */
-/* !!!!! ;v1.1.17a [test] (scroll-fog); !!!!! */
 /* = = = = = hdnc-Y = = = = = */
 .hdnc-y {
   /* Position */
@@ -164,24 +129,20 @@
   align-items: center;
   justify-content: center;
 
-  /* !!!!! :v1.1.18 [test] (sdo): !!!!! */
   overflow-y: auto;
   overscroll-behavior: contain;
-  /* !!!!! ;v1.1.18 [test] (sdo); !!!!! */
-  /* !!!!! :v1.1.17 [test] (ellipsis): !!!!! */
-  /* grid-template-columns: 1fr min-content;
-  grid-template-areas:
-    "hdnc-e-tlo-text hdnc-e-tlo-rgro" */
   grid-template-columns: 1fr;
   grid-template-areas:
-    "hdnc-e-tlo-text"
+    "hdnc-e-tlo-text";
+  /*  */
+  scrollbar-width: none;
 }
 .hdnc-e-tlo-text {
   grid-area: hdnc-e-tlo-text;
   justify-self: center;
   color: var(--hdnc-font-color-primary);
   transition: text-shadow 300ms ease;
-  /* !!!!! :v1.1.17 [test] (ellipsis): !!!!! */
+  /*  */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -189,13 +150,11 @@
   text-align: center;
 }
 .hdnc-e-tlo-rgro {
-  /* !!!!! :v1.1.17 [test] (ellipsis): !!!!! */
-  /* grid-area: hdnc-e-tlo-rgro;
-  margin: 0rem 1.5rem 0rem 0rem; */
+  /*  */
   position: absolute;
   right: 0rem;
   margin: 0rem 5% 0rem 0rem;
-  /* !!!!! ;v1.1.17 [test] (ellipsis); !!!!! */
+  /*  */
   border-top: 0.5rem solid var(--hdnc-rgro-color);
   border-right: 0.4rem solid var(--transparent);
   border-left: 0.4rem solid var(--transparent);
@@ -237,6 +196,8 @@
   transition:
     grid-template-rows var(--hdnc-duration-primary) var(--hdnc-timing-primary),
     max-height 300ms ease;
+  /*  */
+  scrollbar-width: none;
 }
 .hdnc-p-blo {
   position: relative;
@@ -292,23 +253,6 @@
   /* transition: opacity 300ms ease; */
 }
 /*  */
-/* .hdnc-e-blo-scro {
-  display: none;
-
-  position: absolute;
-  top: 0.5rem;
-  width: 1rem;
-  height: 1rem;
-  mask-image: url("../../../fwa/res/svg/chevron2.svg");
-  mask-position: center;
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  background-color: #FFFFFF;
-  transition: height 300ms ease;
-}
-.hdnc-e-blo-scro-bgro {
-  transform: rotate(180deg);
-} */
 .hdnc-e-blo-sgro {
   display: none;
   pointer-events: none;

@@ -45,9 +45,9 @@ class BlfConfigElement {
   ];
   static blfFoRoot = [
     {
-      elementId: "blfFoFsmcR",
+      elementId: "blfFoFascR",
       query: {
-        querySelector: ".fsmc-r",
+        querySelector: ".fasc-r",
         queryType: "single"
       }
     },
@@ -59,9 +59,9 @@ class BlfConfigElement {
       }
     },
     {
-      elementId: "blfFoFsdcR",
+      elementId: "blfFoFoscR",
       query: {
-        querySelector: ".fsdc-r",
+        querySelector: ".fosc-r",
         queryType: "single"
       }
     },

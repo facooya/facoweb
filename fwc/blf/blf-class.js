@@ -29,13 +29,13 @@ class BlfManager {
 
   }
   static load() {
-    const {
+    /* const {
       blfYottaFo
     } = BlfConfig.getBlfGroup();
     const {
       blfFoFaucR,
       blfFoFsdcR
-    } = BlfConfig.getBlfFoRoot();
+    } = BlfConfig.getBlfFoRoot(); */
     /*  */
     /* const faucRootRect = blfFoFaucR.getBoundingClientRect();
     const fsdcRootRect = blfFoFsdcR.getBoundingClientRect();
@@ -45,7 +45,7 @@ class BlfManager {
 
   }
   static resizeSensor() {
-    const {
+    /* const {
       blfYottaFo
     } = BlfConfig.getBlfGroup();
     const {
@@ -54,7 +54,7 @@ class BlfManager {
     } = BlfConfig.getBlfFoRoot();
     const faucRootRect = blfFoFaucR.getBoundingClientRect();
     const fsdcRootRect = blfFoFsdcR.getBoundingClientRect();
-    const wiw = window.innerWidth;
+    const wiw = window.innerWidth; */
     /* if (fsdcRootRect.right > wiw) {
       blfYottaFo.style.gridTemplateAreas = "\"fsmc\" \"fauc\" \"fsdc\" \"fllc\"";
     }
