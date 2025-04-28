@@ -4,7 +4,7 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  FwcAccessor
+  BlfUtil
 } from "../../fwc-hub.js";
 /*  */
 class HeccConfigData {
@@ -83,19 +83,6 @@ class HeccConfigElement {
       }
     }
   ];
-  /* static heccAppend(getSaveElement, heccFragment) {
-    getSaveElement["heccYottaPbo"].append(
-      getSaveElement["heccZettaPboLgro"],
-      getSaveElement["heccZettaPboRgro"]
-    );
-    getSaveElement["heccYottaNoo"].append(
-      getSaveElement["heccZettaNooSdo"]
-    );
-    heccFragment.append(
-      getSaveElement["heccYottaPbo"],
-      getSaveElement["heccYottaNoo"]
-    );
-  } */
 }
 class HeccConfigManager {
   static heccGenerate() {
@@ -107,7 +94,7 @@ class HeccConfigManager {
     let tempSaveElement = {};
     /* =============== :Pbo Group: =============== */
     for (let ysi = 0; ysi < HeccConfigElement.heccPboGroup.length; ysi++) {
-      tempGenerateElement = FwcAccessor.getGenerateElement2(
+      tempGenerateElement = BlfUtil.getGenerateElement(
         HeccConfigElement.heccPboGroup[ysi]
       );
       tempSaveElement[HeccConfigElement.heccPboGroup[ysi].elementId] = tempGenerateElement;
@@ -115,7 +102,7 @@ class HeccConfigManager {
     /* =============== ;Pbo Group; =============== */
     /* =============== :Noo Group: =============== */
     for (let ysi = 0; ysi < HeccConfigElement.heccNooGroup.length; ysi++) {
-      tempGenerateElement = FwcAccessor.getGenerateElement2(
+      tempGenerateElement = BlfUtil.getGenerateElement(
         HeccConfigElement.heccNooGroup[ysi]
       );
       tempSaveElement[HeccConfigElement.heccNooGroup[ysi].elementId] = tempGenerateElement;
@@ -141,7 +128,7 @@ class HeccConfigManager {
 }
 class HeccConfigGet {
   static getHeccRoot() {
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       HeccConfig.heccConfigCache,
       HeccConfigElement.heccRoot
     );
@@ -151,7 +138,7 @@ class HeccConfigGet {
     const {
       heccR
     } = HeccConfigGet.getHeccRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       HeccConfig.heccConfigCache,
       HeccConfigElement.heccPboGroup,
       heccR
@@ -162,7 +149,7 @@ class HeccConfigGet {
     const {
       heccR
     } = HeccConfigGet.getHeccRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       HeccConfig.heccConfigCache,
       HeccConfigElement.heccNooGroup,
       heccR
@@ -171,13 +158,6 @@ class HeccConfigGet {
   }
 }
 class HeccConfig {
-  /* static heccRoot = HeccElement.heccRoot;
-  static heccPboGroup = HeccElement.heccPboGroup;
-  static heccNooGroup = HeccElement.heccNooGroup; */
-  /*  */
-  /* static heccAppend(getSaveElement, heccFragment) {
-    HeccElement.heccAppend(getSaveElement, heccFragment);
-  } */
   static heccConfigCache = {};
   /* -------------------------------------------------- */
   static heccGenerate() {

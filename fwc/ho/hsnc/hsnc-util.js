@@ -186,8 +186,6 @@ class HsncUtilReset {
     if (optDisplayType !== undefined) {
       displayType = optDisplayType;
     }
-    console.log("pdt:", FwaConfig.previousDisplayType);
-    console.log("dt:", displayType);
     /*  */
     for (let ybi = 0; ybi < hsncZettaTlo.length; ybi++) {
       if (hsncY[ybi].isActive) {

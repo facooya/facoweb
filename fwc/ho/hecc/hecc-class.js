@@ -4,19 +4,12 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  FwcAccessor,
   HeccConfig,
   HeccUtil
 } from "../../fwc-hub.js";
 /*  */
 class HeccAccessor {
-  /* static heccCache = {};
-  static getHeccPboGroup() {
-    return HeccConfig.getHeccPboGroup();
-  }
-  static getHeccNooGroup() {
-    return HeccConfig.getHeccNooGroup();
-  } */
+
 }
 class HeccController {
   static init() {

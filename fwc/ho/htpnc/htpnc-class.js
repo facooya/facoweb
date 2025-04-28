@@ -10,7 +10,7 @@ import {
   HtpncTool
 } from "./htpnc-tool.js";
 import {
-  BlfAccessor,
+  BlfConfig,
   HtpncConfig,
   HdncConfig,
   HsncConfig,
@@ -240,7 +240,7 @@ class HtpncHandler {
     } = HsncConfig.getHsncRoot();
     const {
       blfYottaNpmo
-    } = BlfAccessor.getBlfGroup();
+    } = BlfConfig.getBlfGroup();
     const {
       npmhcR
     } = NpmhcConfig.getNpmhcRoot();
@@ -314,7 +314,7 @@ class HtpncHandler {
     } = HeccConfig.getHeccPboGroup();
     const {
       blfYottaNpmo
-    } = BlfAccessor.getBlfGroup();
+    } = BlfConfig.getBlfGroup();
     /*  */
     const clData = "cl-ddt-htpnc-z-hsngo-handler";
     let isActive = false;
@@ -345,7 +345,6 @@ export {
   HtpncController
 };
 /* NOTE
- * SDO: Scroll Defense Object
  */
 /* AUTHORSHIP
  * Founder: Facooya

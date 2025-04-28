@@ -4,7 +4,7 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  FwcAccessor
+  BlfUtil
 } from "../../fwc-hub.js";
 /*  */
 class NpmscConfigData {
@@ -67,7 +67,7 @@ class NpmscConfigElement {
 }
 class NpmscConfigGet {
   static getNpmscRoot() {
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       NpmscConfig.npmscConfigCache,
       NpmscConfigElement.npmscRoot
     );
@@ -77,7 +77,7 @@ class NpmscConfigGet {
     const {
       npmscR
     } = NpmscConfigGet.getNpmscRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       NpmscConfig.npmscConfigCache,
       NpmscConfigElement.npmscGroup,
       npmscR
@@ -86,9 +86,6 @@ class NpmscConfigGet {
   }
 }
 class NpmscConfig {
-  /* static npmscRoot = NpmscElement.npmscRoot;
-  static npmscGroup = NpmscElement.npmscGroup; */
-  /*  */
   static npmscConfigCache = {};
   /* -------------------------------------------------- */
   static getNpmscRoot() {

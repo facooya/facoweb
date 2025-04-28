@@ -10,7 +10,7 @@ import {
   HdncTool
 } from "./hdnc-tool.js";
 import {
-  FwcAccessor,
+  BlfUtil,
   HtpncAccessor,
   HtpncConfig,
   HdncConfig,
@@ -18,27 +18,9 @@ import {
 } from "../../fwc-hub.js";
 /*  */
 class HdncAccessor {
-  /* static pHdncHandler = HdncHandler; */
   static getHdncHandler() {
     return HdncHandler;
   }
-  /* =============== :Function: =============== */
-  /* static resetHdnc(displayTypeState) {
-    HdncUtil.setHdncHandler(HdncHandler, displayTypeState);
-  }
-  static setHdnc(displayTypeState) {
-    HdncUtil.setHdncHandler(HdncHandler, displayTypeState);
-  }
-  static getHdncRoot() {
-    return HdncConfig.getHdncRoot();
-  }
-  static getHdncGroup() {
-    return HdncConfig.getHdncGroup();
-  }
-  static getHdncBloGroup() {
-    return HdncConfig.getHdncBloGroup();
-  } */
-  /* =============== ;Function; =============== */
 }
 class HdncController {
   static init() {
@@ -287,7 +269,7 @@ class HdncHandler {
   static mdtHdncZettaTlo(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
+    } = BlfUtil.getEventData(eventData, ".hdnc-y");
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
@@ -362,7 +344,7 @@ class HdncHandler {
   static mdtHdncExaBloTransitionEnd(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
+    } = BlfUtil.getEventData(eventData, ".hdnc-y");
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
@@ -386,7 +368,7 @@ class HdncHandler {
   static tdtHdncZettaTlo(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
+    } = BlfUtil.getEventData(eventData, ".hdnc-y");
     const {
       htpncZettaHsngo
     } = HtpncConfig.getHtpncHsngoGroup();
@@ -438,7 +420,7 @@ class HdncHandler {
   static tdtHdncExaBloScroll(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
+    } = BlfUtil.getEventData(eventData, ".hdnc-y");
     const {
       hdncExaBlo,
       hdncExaBloSgroTo,
@@ -468,7 +450,7 @@ class HdncHandler {
   static tdtHdncExaBloTransitionEnd(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
+    } = BlfUtil.getEventData(eventData, ".hdnc-y");
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
@@ -515,7 +497,7 @@ class HdncHandler {
     const {
       eventType,
       eventIndex
-    } = FwcAccessor.getEventData(eventData);
+    } = BlfUtil.getEventData(eventData);
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
@@ -565,7 +547,7 @@ class HdncHandler {
       eventType,
       eventIndex,
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
+    } = BlfUtil.getEventData(eventData, ".hdnc-y");
     const {
       hdncGigaBloText,
       hdncGigaBloRgro
@@ -594,7 +576,7 @@ class HdncHandler {
   static ddtHdncExaBloScroll(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
+    } = BlfUtil.getEventData(eventData, ".hdnc-y");
     const {
       hdncExaBlo,
       hdncExaBloSgroTo,
@@ -624,7 +606,7 @@ class HdncHandler {
   static ddtHdncExaBloTransitionEnd(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hdnc-y");
+    } = BlfUtil.getEventData(eventData, ".hdnc-y");
     const {
       hdncY
     } = HdncConfig.getHdncGroup();

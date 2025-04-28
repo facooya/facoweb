@@ -7,19 +7,13 @@ import {
   FwaConfig
 } from "../../../fwa/fwa-config.js";
 import {
-  FwcAccessor,
+  BlfUtil,
   NpmhcConfig,
   NpmhcUtil
 } from "../../fwc-hub.js";
 /*  */
 class NpmhcAccessor {
-  /* static npmhcCache = {};
-  static getNpmhcRoot() {
-    return NpmhcGet.getNpmhcRoot();
-  }
-  static getNpmhcTnoGroup() {
-    return NpmhcGet.getNpmhcTnoGroup();
-  } */
+
 }
 class NpmhcController {
   static init() {
@@ -79,21 +73,6 @@ class NpmhcManager {
   }
 }
 class NpmhcHandler {
-  /* static adtNpmhcOnHashChange() {
-    const {
-      npmhcExaTno
-    } = NpmhcGet.getNpmhcTnoGroup();
-    let tabData = null;
-    let hashData = window.location.hash.slice(1);
-    if (npmhcExaTno[hashData] === undefined) {
-      tabData = 0;
-      hashData = "#" + tabData.toString();
-      window.location.hash = hashData;
-    } else {
-      tabData = parseInt(hashData);
-    }
-    NpmhcSet.setTab(tabData);
-  } */
   static windowOnHashChange() {
     const {
       npmhcExaTno
@@ -113,7 +92,7 @@ class NpmhcHandler {
     const {
       eventType,
       eventIndex
-    } = FwcAccessor.getEventData(eventData);
+    } = BlfUtil.getEventData(eventData);
     const {
       npmhcTeraTnoText
     } = NpmhcConfig.getNpmhcTnoGroup();
@@ -131,59 +110,6 @@ class NpmhcHandler {
       npmhcTeraTnoText[eventIndex].classList[type](clData);
     }
   }
-}
-class NpmhcSet {
-  /* static setTab(tab) {
-    const {
-      npmhcTeraTnoText,
-      npmhcTeraTnoGro
-    } = NpmhcConfig.getNpmhcTnoGroup();
-    const {
-      npmscY
-    } = NpmscAccessor.getNpmscGroup();
-    for (let i = 0; i < npmhcTeraTnoText.length; i++) {
-      npmhcTeraTnoText[i].classList.remove(
-        "cl-adt-npmhc-on-hash-change-handler",
-        "cl-ddt-npmhc-e-tno-handler"
-      );
-      npmhcTeraTnoGro[i].classList.remove("cl-adt-npmhc-on-hash-change-handler");
-      npmscY[i].classList.remove("cl-adt-npmhc-on-hash-change-handler");
-    }
-    npmhcTeraTnoText[tab].classList.add("cl-adt-npmhc-on-hash-change-handler");
-    npmhcTeraTnoGro[tab].classList.add("cl-adt-npmhc-on-hash-change-handler");
-    npmscY[tab].classList.add("cl-adt-npmhc-on-hash-change-handler");
-  } */
-}
-class NpmhcGet {
-  /* static getNpmhcRoot() {
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
-      NpmhcAccessor.npmhcCache,
-      NpmhcConfig.npmhcRoot
-    );
-    return saveVerifyGroup;
-  }
-  static getNpmhcTloGroup() {
-    const {
-      npmhcR
-    } = NpmhcGet.getNpmhcRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
-      NpmhcAccessor.npmhcCache,
-      NpmhcConfig.npmhcTloGroup,
-      npmhcR
-    );
-    return saveVerifyGroup;
-  }
-  static getNpmhcTnoGroup() {
-    const {
-      npmhcR
-    } = NpmhcGet.getNpmhcRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
-      NpmhcAccessor.npmhcCache,
-      NpmhcConfig.npmhcTnoGroup,
-      npmhcR
-    );
-    return saveVerifyGroup;
-  } */
 }
 export {
   NpmhcAccessor,

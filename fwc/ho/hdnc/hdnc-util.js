@@ -238,56 +238,6 @@ class HdncUtilSet {
       hdncExaBloSgroBo[ybi].style.top = getTop;
     }
   }
-  /* ================================================== */
-  /* static setHdncHandler(pHdncHandler, optDisplayType) {
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncZettaTlo
-    } = HdncConfig.getHdncTloGroup();
-    const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    const modifyEventData = {};
-    /*  
-    let displayType = FwaConfig.previousDisplayType;
-    if (optDisplayType !== undefined) {
-      displayType = optDisplayType;
-    }
-    /*  
-    for (let ybi = 0; ybi < hdncZettaTlo.length; ybi++) {
-      if (hdncY[ybi].isActive) {
-        switch (displayType) {
-          case 1: {
-            modifyEventData.currentTarget = hdncZettaTlo[ybi];
-            pHdncHandler.mdtHdncZettaTlo(modifyEventData);
-            break;
-          }
-          case 2: {
-            modifyEventData.currentTarget = hdncZettaTlo[ybi];
-            pHdncHandler.tdtHdncZettaTlo(modifyEventData);
-            break;
-          }
-          case 3: {
-            modifyEventData.currentTarget = hdncZettaTlo[ybi];
-            modifyEventData.type = "mouseleave";
-            pHdncHandler.ddtHdncYotta(modifyEventData);
-            /*  
-            const {
-              hdncPetaBlo
-            } = HdncConfig.getHdncBloEbGroup(ybi);
-            for (let ebi = 0; ebi < hdncExaBlo[ybi].length; ebi++) {
-              modifyEventData.currentTarget = hdncPetaBlo[ebi];
-              modifyEventData.type = "mouseleave";
-              pHdncHandler.ddtHdncPetaBlo(modifyEventData);
-            }
-            break;
-          }
-        }
-      }
-    }
-  } */
 }
 class HdncUtilTime {
   static timerHdncGigaBloBgro(ybIndex, pSetTimer) {

@@ -7,7 +7,7 @@ import {
   FwaConfig
 } from "../../../fwa/fwa-config.js";
 import {
-  FwcAccessor,
+  BlfUtil,
   HsncConfig,
   HsncUtil
 } from "../../fwc-hub.js";
@@ -16,21 +16,6 @@ class HsncAccessor {
   static getHsncHandler() {
     return HsncHandler;
   }
-  /* static hsncCache = {};
-  static isActiveHsnc = false;
-  static hsncScrollState = 0;
-  static getHsncRoot() {
-    return HsncConfig.getHsncRoot();
-  }
-  static getHsncGroup() {
-    return HsncConfig.getHsncGroup();
-  }
-  static resetHsnc(displayTypeState) {
-    HsncUtil.resetHsncHandler(HsncHandler, displayTypeState);
-  }
-  static setHsnc(displayTypeState) {
-    HsncUtil.resetHsncHandler(HsncHandler, displayTypeState);
-  } */
 }
 class HsncController {
   static init() {
@@ -213,8 +198,7 @@ class HsncHandler {
   static mdtHsncZettaTlo(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
-    console.log(targetIndex);
+    } = BlfUtil.getEventData(eventData, ".hsnc-y");
     const {
       hsncY
     } = HsncConfig.getHsncGroup();
@@ -286,7 +270,7 @@ class HsncHandler {
   static mdtHsncExaBloTransitionEnd(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
+    } = BlfUtil.getEventData(eventData, ".hsnc-y");
     const {
       hsncY
     } = HsncConfig.getHsncGroup();
@@ -342,7 +326,7 @@ class HsncHandler {
   static tdtHsncZettaTlo(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
+    } = BlfUtil.getEventData(eventData, ".hsnc-y");
     const {
       hsncY
     } = HsncConfig.getHsncGroup();
@@ -385,7 +369,7 @@ class HsncHandler {
   static tdtHsncExaBloTransitionEnd(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
+    } = BlfUtil.getEventData(eventData, ".hsnc-y");
     const {
       hsncY
     } = HsncConfig.getHsncGroup();
@@ -442,7 +426,7 @@ class HsncHandler {
     const {
       eventType,
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
+    } = BlfUtil.getEventData(eventData, ".hsnc-y");
     const {
       hsncY
     } = HsncConfig.getHsncGroup();
@@ -488,7 +472,7 @@ class HsncHandler {
   static ddtHsncExaBloTransitionEnd(eventData) {
     const {
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
+    } = BlfUtil.getEventData(eventData, ".hsnc-y");
     const {
       hsncY
     } = HsncConfig.getHsncGroup();
@@ -514,7 +498,7 @@ class HsncHandler {
       eventType,
       eventIndex,
       targetIndex
-    } = FwcAccessor.getEventData(eventData, ".hsnc-y");
+    } = BlfUtil.getEventData(eventData, ".hsnc-y");
     const {
       hsncGigaBloText,
       hsncGigaBloRgro

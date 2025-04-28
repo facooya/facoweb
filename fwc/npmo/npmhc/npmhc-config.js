@@ -4,7 +4,7 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  FwcAccessor
+  BlfUtil
 } from "../../fwc-hub.js";
 /*  */
 class NpmhcConfigData {
@@ -90,7 +90,7 @@ class NpmhcConfigElement {
 }
 class NpmhcConfigGet {
   static getNpmhcRoot() {
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       NpmhcConfig.npmhcConfigCache,
       NpmhcConfigElement.npmhcRoot
     );
@@ -100,7 +100,7 @@ class NpmhcConfigGet {
     const {
       npmhcR
     } = NpmhcConfigGet.getNpmhcRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       NpmhcConfig.npmhcConfigCache,
       NpmhcConfigElement.npmhcTloGroup,
       npmhcR
@@ -111,7 +111,7 @@ class NpmhcConfigGet {
     const {
       npmhcR
     } = NpmhcConfigGet.getNpmhcRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       NpmhcConfig.npmhcConfigCache,
       NpmhcConfigElement.npmhcTnoGroup,
       npmhcR
@@ -120,10 +120,6 @@ class NpmhcConfigGet {
   }
 }
 class NpmhcConfig {
-  /* static npmhcRoot = NpmhcElement.npmhcRoot;
-  static npmhcTloGroup = NpmhcElement.npmhcTloGroup;
-  static npmhcTnoGroup = NpmhcElement.npmhcTnoGroup; */
-  /*  */
   static npmhcConfigCache = {};
   /* -------------------------------------------------- */
   static getNpmhcRoot() {

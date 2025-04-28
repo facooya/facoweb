@@ -4,7 +4,7 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  FwcAccessor
+  BlfUtil
 } from "../../fwc-hub.js";
 /*  */
 class HsncConfigData {
@@ -277,7 +277,7 @@ class HsncConfigManager {
     for (let ysi = 0; ysi < HsncConfigData.hsncExaTloText.length; ysi++) {
       /* ==========----- :Hsnc Group: -----========== */
       for (let zsi = 0; zsi < HsncConfigElement.hsncGroup.length; zsi++) {
-        tempGenerateElement = FwcAccessor.getGenerateElement2(
+        tempGenerateElement = BlfUtil.getGenerateElement(
           HsncConfigElement.hsncGroup[zsi]
         );
         tempSaveElement[HsncConfigElement.hsncGroup[zsi].elementId] = tempGenerateElement;
@@ -285,7 +285,7 @@ class HsncConfigManager {
       /* ==========----- ;Hsnc Group; -----========== */
       /* ==========----- :Tlo Group: -----========== */
       for (let zsi = 0; zsi < HsncConfigElement.hsncTloGroup.length; zsi++) {
-        tempGenerateElement = FwcAccessor.getGenerateElement2(
+        tempGenerateElement = BlfUtil.getGenerateElement(
           HsncConfigElement.hsncTloGroup[zsi],
           [ysi]
         );
@@ -294,7 +294,7 @@ class HsncConfigManager {
       /* ==========----- ;Tlo Group; -----========== */
       /* ==========----- :Blo Group: -----========== */
       for (let zsi = 0; zsi < HsncConfigElement.hsncBloGroup.length; zsi++) {
-        tempGenerateElement = FwcAccessor.getGenerateElement2(
+        tempGenerateElement = BlfUtil.getGenerateElement(
           HsncConfigElement.hsncBloGroup[zsi]
         );
         tempSaveElement[HsncConfigElement.hsncBloGroup[zsi].elementId] = tempGenerateElement;
@@ -303,7 +303,7 @@ class HsncConfigManager {
       /* ==========----- :Blo Eb Group: -----========== */
       for (let zsi = 0; zsi < HsncConfigData.hsncGigaBloText[ysi].length; zsi++) {
         for (let esi = 0; esi < HsncConfigElement.hsncBloEbGroup.length; esi++) {
-          tempGenerateElement = FwcAccessor.getGenerateElement2(
+          tempGenerateElement = BlfUtil.getGenerateElement(
             HsncConfigElement.hsncBloEbGroup[esi],
             [ysi, zsi]
           );
@@ -321,7 +321,7 @@ class HsncConfigManager {
     /* =============== ;Ys, Tlo, Zs Group; =============== */
     /* =============== :Yotta Group: =============== */
     for (let ysi = 0; ysi < HsncConfigElement.hsncYottaGroup.length; ysi++) {
-      tempGenerateElement = FwcAccessor.getGenerateElement2(
+      tempGenerateElement = BlfUtil.getGenerateElement(
         HsncConfigElement.hsncYottaGroup[ysi]
       );
       tempSaveElement[HsncConfigElement.hsncYottaGroup[ysi].elementId] = tempGenerateElement;
@@ -366,7 +366,7 @@ class HsncConfigManager {
 }
 class HsncConfigGet {
   static getHsncRoot() {
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       HsncConfig.hsncConfigCache,
       HsncConfigElement.hsncRoot
     );
@@ -376,7 +376,7 @@ class HsncConfigGet {
     const {
       hsncR
     } = HsncConfigGet.getHsncRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       HsncConfig.hsncConfigCache,
       HsncConfigElement.hsncGroup,
       hsncR
@@ -387,7 +387,7 @@ class HsncConfigGet {
     const {
       hsncR
     } = HsncConfigGet.getHsncRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       HsncConfig.hsncConfigCache,
       HsncConfigElement.hsncYottaGroup,
       hsncR
@@ -398,7 +398,7 @@ class HsncConfigGet {
     const {
       hsncR
     } = HsncConfigGet.getHsncRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       HsncConfig.hsncConfigCache,
       HsncConfigElement.hsncTloGroup,
       hsncR
@@ -409,7 +409,7 @@ class HsncConfigGet {
     const {
       hsncR
     } = HsncConfigGet.getHsncRoot();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       HsncConfig.hsncConfigCache,
       HsncConfigElement.hsncBloGroup,
       hsncR
@@ -420,7 +420,7 @@ class HsncConfigGet {
     const {
       hsncExaBlo
     } = HsncConfigGet.getHsncBloGroup();
-    const saveVerifyGroup = FwcAccessor.getVerifyCache2(
+    const saveVerifyGroup = BlfUtil.getElementCache(
       HsncConfig.hsncConfigCache,
       HsncConfigElement.hsncBloEbGroup,
       hsncExaBlo[ybIndex],

@@ -8,13 +8,18 @@ import {
   FwcAccessor,
   FwcController
 } from "./fwc-class.js";
+/* -------------------------------------------------- */
 import {
   BlfAccessor,
   BlfController
 } from "./blf/blf-class.js";
-/* import {
-  PASS
-} from "./fo/bpnc/bpnc-class.js"; */
+import {
+  BlfConfig
+} from "./blf/blf-config.js";
+import {
+  BlfUtil
+} from "./blf/blf-util.js";
+/* -------------------------------------------------- */
 import {
   HtpncAccessor,
   HtpncController
@@ -82,6 +87,8 @@ export {
   /* BLF */
   BlfAccessor,
   BlfController,
+  BlfConfig,
+  BlfUtil,
   /* HTPNC */
   HtpncAccessor,
   HtpncController,

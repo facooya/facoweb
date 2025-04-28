@@ -4,11 +4,6 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 
-import {
-  BlfController
-} from "./fwc-hub.js";
-/*  */
-BlfController.init();
 /* NOTE
  */
 /* AUTHORSHIP
