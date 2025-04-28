@@ -102,21 +102,6 @@
   box-sizing: border-box;
   /* Visual */
   cursor: pointer;
-  /* !!! v1.1.14a [del] (replaced) */
-  /* Layout */
-  /* box-sizing: border-box; */
-  /* padding: 1rem 0.5rem; */
-  /* Typographic */
-  /* color: #999999;
-  font-weight: normal;
-  text-align: center;
-  display: grid;
-  align-self: center; */
-  /* justify-self: center; */
-  /* Visual */
-  /* cursor: pointer;
-  border: 0.25rem solid #999999;
-  border-radius: 1.5rem; */
 }
 .nptlc-p-tno {
   /* Tag.a */
@@ -131,7 +116,10 @@
   font-weight: bold;
   text-align: center;
   font-size: 1.25rem;
-  color: #999999;;
+  color: #999999;
+  /* !!!!! v1.1.15a [test] !!!!! */
+  transition:
+    color 200ms ease;
 }
 .nptlc-t-tno-sgro {
   /* Tag.div */
@@ -145,6 +133,9 @@
   /* ----- Visual ----- */
   border: 0.25rem solid #999999;
   border-radius: 1.5rem;
+  /* !!!!! v1.1.15a [test] !!!!! */
+  transition:
+    border 200ms ease;
 }
 /* ==========----------========== */
 /* ============================== */

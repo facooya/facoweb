@@ -74,6 +74,7 @@
   grid-area: snc-e-siptg-title;
   justify-self: center;
   color: #FFFFFF;
+  white-space: nowrap;
 }
 .snc-e-siptg-rgro {
   grid-area: snc-e-siptg-rgro;
@@ -139,6 +140,10 @@
   grid-area: snc-g-title;
   color: #FFFFFF;
   font-weight: 400;
+  /* !!!!! v1.1.15a [test] [pro] (.class-opt) !!!!! */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   /* transition: opacity 300ms; */
 }
 .snc-g-rgro {

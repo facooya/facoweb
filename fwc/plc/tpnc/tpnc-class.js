@@ -7,13 +7,23 @@ import {
   FwaConfig
 } from "../../../fwa/fwa-config.js";
 import {
-  FwcUtility,
-  DncController,
-  SncController
+  TpncConfig
+} from "./tpnc-config.js";
+import {
+  FwcAccessor,
+  DncAccessor,
+  SncAccessor,
+  EccAccessor,
+  NplcAccessor
 } from "../../fwc-hub.js";
+class TpncAccessor {
+  static tpncCache = {};
+  static isTpncResizeKey = false;
+  static tpncZettaSnioHandler() {
+    TpncHandler.tpncZettaSnio();
+  }
+}
 class TpncController {
-  static isResize = false;
-
   static process() {
     TpncManager.generate();
     TpncManager.init();
@@ -26,18 +36,19 @@ class TpncController {
     TpncManager.removeEvent();
     TpncManager.addEvent();
   }
-  static accessTpncZettaSnioHandler() {
-    TpncHandler.tpncZettaSnio();
-  }
 }
 class TpncManager {
   static init() {
 
   }
   static initOnLoad() {
-    const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg");
+    /* const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg");
     const tpncZettaDnio = tpncR.querySelector(".tpnc-z-dnio");
-    const tpncZettaSnio = tpncR.querySelector(".tpnc-z-snio");
+    const tpncZettaSnio = tpncR.querySelector(".tpnc-z-snio"); */
+    const {
+      tpncZettaDnio,
+      tpncZettaSnio
+    } = TpncGet.getTpncIoGroup();
 
     if (FwaConfig.currentDisplayType === 1) {
       tpncZettaDnio.addEventListener(
@@ -51,73 +62,81 @@ class TpncManager {
     );
   }
   static initOnResize() {
-    if (DncController.isActiveDnc) {
-      TpncController.isResize = true;
+    if (DncAccessor.isActiveDnc) {
+      TpncAccessor.isTpncResizeKey = true;
       TpncHandler.tpncZettaDnio();
     }
-    if (SncController.isActiveSnc) {
-      TpncController.isResize = true;
+    if (SncAccessor.isActiveSnc) {
+      TpncAccessor.isTpncResizeKey = true;
       TpncHandler.tpncZettaSnio();
     }
   }
   static generate() {
-    const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg");
-    /* Element: tpnc-y */
-    let selectorData = "tpnc-y";
-    const yotta = FwcUtility.getGenerateElement("ul", selectorData);
-    /* Element: tpnc-y-sdo sdo */
-    selectorData = "tpnc-y-sdo";
-    const yottaSdo = FwcUtility.getGenerateElement("div", selectorData);
-    /* Element: tpnc-z-lio */
-    selectorData = "tpnc-z-lio";
-    const zettaLio = FwcUtility.getGenerateElement("li", selectorData);
-    /* Element: tpnc-e-lio-link */
-    selectorData = "tpnc-e-lio-link";
-    const exaLioLink = FwcUtility.getGenerateElement("a", selectorData);
-    let dataZS = "/";
-    exaLioLink.setAttribute("href", dataZS);
-    dataZS = "Facooya";
-    exaLioLink.textContent = dataZS;
-    /* Element: tpnc-z-dnio */
-    selectorData = "tpnc-z-dnio";
-    const zettaDnio = FwcUtility.getGenerateElement("li", selectorData);
-    /* Element: tpnc-e-dnio-gro */
-    for (let i = 0; i < 3; i++) {
-      selectorData = "tpnc-e-dnio-gro";
-      const exaDnioGro = FwcUtility.getGenerateElement("span", selectorData);
-      /* Compile: tpnc-z-dnio-gro */
-      zettaDnio.appendChild(exaDnioGro);
+    /* const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg"); */
+    const {
+      tpncR
+    } = TpncGet.getTpncRoot();
+    const tpncFragment = document.createDocumentFragment();
+    let tempGenerateElement = null;
+    let tempSaveElement = {};
+    /* =============== :Ys Group: =============== */
+    for (let ysi = 0; ysi < TpncConfig.elementYsGroup.length; ysi++) {
+      tempGenerateElement = FwcAccessor.getGenerateElement(
+        TpncConfig.elementYsGroup[ysi].tag,
+        TpncConfig.elementYsGroup[ysi].selector
+      );
+      FwcAccessor.setGenerateElement(
+        tempGenerateElement,
+        TpncConfig.elementYsGroup[ysi].text,
+        TpncConfig.elementYsGroup[ysi].href
+      );
+      tempSaveElement[TpncConfig.elementYsGroup[ysi].id] = tempGenerateElement;
     }
-    /* Element: tpnc-z-snio */
-    selectorData = "tpnc-z-snio";
-    const zettaSnio = FwcUtility.getGenerateElement("li", selectorData);
-    /* Element: tpnc-e-snio-gro */
-    for (let i = 0; i < 9; i++) {
-      selectorData = "tpnc-e-snio-gro";
-      const exaSnioGro = FwcUtility.getGenerateElement("span", selectorData);
-      /* Compile: tpnc-e-snio-gro */
-      zettaSnio.appendChild(exaSnioGro);
+    /* =============== ;Ys Group; =============== */
+    /* =============== :Zs Group: =============== */
+    for (let ysi = 0; ysi < TpncConfig.elementZsGroup.length; ysi++) {
+      tempGenerateElement = FwcAccessor.getGenerateElement(
+        TpncConfig.elementZsGroup[ysi].tag,
+        TpncConfig.elementZsGroup[ysi].selector
+      );
+      FwcAccessor.setGenerateElement(
+        tempGenerateElement,
+        TpncConfig.elementZsGroup[ysi].text,
+        TpncConfig.elementZsGroup[ysi].href
+      );
+      tempSaveElement[TpncConfig.elementZsGroup[ysi].id] = tempGenerateElement;
     }
-    /* !!!!! v1.1.14a [test] (support-navigation-title) !!!!!! */
-    selectorData = "tpnc-y-snto";
-    const tpncYottaSnto = FwcUtility.getGenerateElement("div", selectorData);
-    selectorData = "tpnc-z-snto-title";
-    const tpncZettaSntoTitle = FwcUtility.getGenerateElement("div", selectorData);
-    tpncZettaSntoTitle.textContent = "Navigation";
-    tpncYottaSnto.appendChild(tpncZettaSntoTitle);
-    tpncR.appendChild(tpncYottaSnto);
-    /* Compile: */
-    zettaLio.appendChild(exaLioLink);
-    yotta.appendChild(zettaLio);
-    yotta.appendChild(zettaDnio);
-    yotta.appendChild(zettaSnio);
-    tpncR.appendChild(yotta);
-    tpncR.appendChild(yottaSdo);
-    /* debugf(0, "rc/nc/tpnc/tpnc-gc.js", "tpncGc()", "Done"); */
+    /* =============== ;Zs Group; =============== */
+    /* =============== :Dnio Gro, Snio Gro Group: =============== */
+    for (let ysi = 0; ysi < TpncConfig.dnioGroLength; ysi++) {
+      for (let zsi = 0; zsi < TpncConfig.elementDnioGroGroup.length; zsi++) {
+        tempGenerateElement = FwcAccessor.getGenerateElement(
+          TpncConfig.elementDnioGroGroup[zsi].tag,
+          TpncConfig.elementDnioGroGroup[zsi].selector
+        );
+        tempSaveElement["zettaDnio"].append(tempGenerateElement);
+      }
+    }
+    for (let ysi = 0; ysi < TpncConfig.snioGroLength; ysi++) {
+      for (let zsi = 0; zsi < TpncConfig.elementSnioGroGroup.length; zsi++) {
+        tempGenerateElement = FwcAccessor.getGenerateElement(
+          TpncConfig.elementSnioGroGroup[zsi].tag,
+          TpncConfig.elementSnioGroGroup[zsi].selector
+        );
+        tempSaveElement["zettaSnio"].append(tempGenerateElement);
+      }
+    }
+    /* =============== ;Dnio Gro, Snio Gro Group; =============== */
+    /* =============== :Compile: =============== */
+    TpncSet.setAppendFragment(tpncFragment, tempSaveElement);
+    tpncR.append(tpncFragment);
   }
   static addEvent() {
-    const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg");
-    const tpncZettaDnio = tpncR.querySelector(".tpnc-z-dnio");
+    /* const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg");
+    const tpncZettaDnio = tpncR.querySelector(".tpnc-z-dnio"); */
+    const {
+      tpncZettaDnio
+    } = TpncGet.getTpncIoGroup();
 
     if (FwaConfig.currentDisplayType === 1 && FwaConfig.previousDisplayType >= 2) {
       tpncZettaDnio.addEventListener(
@@ -128,8 +147,11 @@ class TpncManager {
   }
   static removeEvent() {
     if (FwaConfig.currentDisplayType >= 2 && FwaConfig.previousDisplayType === 1) {
-      const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg");
-      const tpncZettaDnio = tpncR.querySelector(".tpnc-z-dnio");
+      /* const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg");
+      const tpncZettaDnio = tpncR.querySelector(".tpnc-z-dnio"); */
+      const {
+        tpncZettaDnio
+      } = TpncGet.getTpncIoGroup();
       tpncZettaDnio.removeEventListener(
         "click",
         TpncHandler.tpncZettaDnio
@@ -140,107 +162,144 @@ class TpncManager {
 class TpncHandler {
   static tpncZettaDnio() {
     /* TPNC */
-    const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg")
-    const tpncYottaSdo = tpncR.querySelector(".tpnc-y-sdo");
+    /* const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg")
+    const tpncYottaSdo = tpncR.querySelector(".tpnc-y-sdo"); */
+    const {
+      tpncYottaSdo
+    } = TpncGet.getTpncSdoGroup();
     /* DNC */
-    const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg");
+    /* const dncR = document.querySelector(".plc-y-liptg .dnc-r-bptg"); */
+    const {
+      dncR
+    } = DncAccessor.getDncRoot();
     /* ECC-NOCO */
-    const eccNoco = document.querySelector(".plc-y-liptg .ecc-y-noco");
+    const {
+      eccYottaNoco
+    } = EccAccessor.getEccNocoGroup();
+    /* const eccYottaNoco = document.querySelector(".plc-y-liptg .ecc-y-noco"); */
     /*  */
-    const displayTypeState = TpncUtility.getDisplayTypeState();
+    const displayTypeState = TpncGet.getDisplayTypeState();
 
-    if (!DncController.isActiveDnc) {
+    if (!DncAccessor.isActiveDnc) {
       /* ========== Activation ========== */
       switch (displayTypeState) {
-        case 1:
+        case 1: {
           /* ----- Mobile Display Type ----- */
-          if (SncController.isActiveSnc) {
+          if (SncAccessor.isActiveSnc) {
             TpncHandler.tpncZettaSnio();
           }
           /* TPNC */
           tpncYottaSdo.style.display = "block";
-          TpncUtility.setTpncExaDnioGro(true);
+          TpncSet.setTpncExaDnioGro(true);
           /* DNC */
           dncR.style.left = "0%";
           /* ECC-NOCO */
-          eccNoco.style.left = "80%";
-          eccNoco.addEventListener("click", TpncHandler.tpncZettaDnio);
+          eccYottaNoco.style.left = "80%";
+          eccYottaNoco.addEventListener("click", TpncHandler.tpncZettaDnio);
           /* ------------------------ */
           break;
+        }
       }
-      DncController.isActiveDnc = true;
+      DncAccessor.isActiveDnc = true;
       /* ============================== */
     } else {
       /* ========== Deactivation ========== */
       switch (displayTypeState) {
-        case 1:
+        case 1: {
           /* ===== Mobile Display Type =====*/
           /* TPNC */
           tpncYottaSdo.style.display = "";
-          TpncUtility.setTpncExaDnioGro(false);
+          TpncSet.setTpncExaDnioGro(false);
           /* DNC */
           dncR.style.left = "";
           /* ECC-NOCO */
-          eccNoco.style.left = "100%";
-          eccNoco.removeEventListener("click", TpncHandler.tpncZettaDnio);
+          eccYottaNoco.style.left = "100%";
+          eccYottaNoco.removeEventListener("click", TpncHandler.tpncZettaDnio);
           break;
+        }
       }
-      DncController.accessResetDnc(displayTypeState);
-      DncController.isActiveDnc = false;
+      DncAccessor.resetDnc(displayTypeState);
+      DncAccessor.isActiveDnc = false;
       /* ============================== */
     }
   }
   static tpncZettaSnio() {
-    const plcYottaLiptg = document.querySelector(".plc-y-liptg");
-    const nplcR = document.querySelector(".nplc-r-heptg");
+    /* const plcYottaLiptg = document.querySelector(".plc-y-liptg"); */
+    /* const nplcR = document.querySelector(".nplc-r-heptg"); */
+    const {
+      nplcR
+    } = NplcAccessor.getNplcRoot();
     /* [ DTM: Initial ] { TPNC } */
-    const tpncR = plcYottaLiptg.querySelector(".tpnc-r-beptg");
-    const tpncYottaSdo = tpncR.querySelector(".tpnc-y-sdo");
+    /* const tpncR = plcYottaLiptg.querySelector(".tpnc-r-beptg");
+    const tpncYottaSdo = tpncR.querySelector(".tpnc-y-sdo"); */
     /* [ DTM: Initial ] { SNC } */
-    const sncR = plcYottaLiptg.querySelector(".snc-r-cptg");
+    /* const sncR = plcYottaLiptg.querySelector(".snc-r-cptg");
     const dncR = plcYottaLiptg.querySelector(".dnc-r-bptg");
-    const dncY = dncR.querySelectorAll(".dnc-y");
+    const dncY = dncR.querySelectorAll(".dnc-y"); */
+    const {
+      dncR
+    } = DncAccessor.getDncRoot();
+    const {
+      dncY
+    } = DncAccessor.getDncGroup();
+    const {
+      sncR
+    } = SncAccessor.getSncRoot();
+    /* const { sncR } = SncAccessor.getSncGroup(); */
     /* [ DTM: Initial ] { ECC-NOCO } */
-    const eccNoco = plcYottaLiptg.querySelector(".ecc-y-noco");
-    const eccZettaPrcoRgro = plcYottaLiptg.querySelector(".ecc-z-prco-rgro");
+    /* const eccYottaNoco = plcYottaLiptg.querySelector(".ecc-y-noco");
+    const eccZettaPrcoRgro = plcYottaLiptg.querySelector(".ecc-z-prco-rgro"); */
+    const {
+      eccYottaNoco
+    } = EccAccessor.getEccNocoGroup();
+    const {
+      eccZettaPrcoRgro
+    } = EccAccessor.getEccPrcoGroup();
     /* !!!!! v1.1.14a [test] (support-navigation-title) !!!!!! */
-    const tpncYottaSnto = tpncR.querySelector(".tpnc-y-snto");
-    const tpncY = tpncR.querySelector(".tpnc-y");
+    /* const tpncYottaSnto = tpncR.querySelector(".tpnc-y-snto");
+    const tpncY = tpncR.querySelector(".tpnc-y"); */
+    const {
+      tpncY
+    } = TpncGet.getTpncGroup();
+    const {
+      tpncYottaSnto
+    } = TpncGet.getTpncSntoGroup();
+    const {
+      tpncYottaSdo
+    } = TpncGet.getTpncSdoGroup();
     /*  */
-    const displayTypeState = TpncUtility.getDisplayTypeState();
+    const displayTypeState = TpncGet.getDisplayTypeState();
     
-    if (!SncController.isActiveSnc) {
+    if (!SncAccessor.isActiveSnc) {
       /* =============== Activation: =============== */
       switch (displayTypeState) {
-        case 1:
+        case 1: {
           /* Deactivation DNIO */
-          if (DncController.isActiveDnc) {
+          if (DncAccessor.isActiveDnc) {
             TpncHandler.tpncZettaDnio();
           }
           /* TPNC */
           tpncYottaSdo.style.display = "block";
-          TpncUtility.setTpncExaSnioGro(true);
+          TpncSet.setTpncExaSnioGro(true);
           /* SNC */
           sncR.style.right = "0%";
           /* ECC-NOCO */
-          eccNoco.style.left = "0%";
-          eccNoco.addEventListener("click", TpncHandler.tpncZettaSnio);
+          eccYottaNoco.style.left = "0%";
+          eccYottaNoco.addEventListener("click", TpncHandler.tpncZettaSnio);
           break;
-        case 2:
+        }
+        case 2: {
           /* [ H.T_A: Reset ] { Dnc.Complex } (  ) */
           for (let i = 0; i < dncY.length; i++) {
             if (dncY[i].isActive) {
-              DncController.accessResetDnc(displayTypeState);
+              DncAccessor.resetDnc(displayTypeState);
               break;
             }
           }
-          /* !!!!! v1.1.14a [del] (replaced) !!!!!
-          if (DncController.isActiveDnc) {
-            DncController.accessResetDncUtility();
-          } */
           /* !!!!! Nplc < 768px grid-template-columns: 1fr 1fr; */
           let temporaryData = 768 + (16 * 20);
           if (nplcR.clientWidth < temporaryData) {
+            /* !!!!! v1.1.15a [add] (getNplcAccessor) !!!!! */
             const nptlcZettaTno = nplcR.querySelector(".nptlc-z-tno");
             nptlcZettaTno.style.gridTemplateColumns = "1fr 1fr";
             const npclcZ = nplcR.querySelector(".npclc-z");
@@ -249,7 +308,7 @@ class TpncHandler {
 
           tpncYottaSdo.style.display = "block";
           /* [ T.A: Set ] { TpncExaSnioGro } */
-          TpncUtility.setTpncExaSnioGro(true);
+          TpncSet.setTpncExaSnioGro(true);
           /* [ T.A: Set ] { nplcRootHeptg } ( Tag.main ) */
           nplcR.style.marginRight = "20rem";
           /* [ T.A: Set ] { eccZettaPrcoRgro } ( Tag.div ) */
@@ -261,21 +320,20 @@ class TpncHandler {
           tpncYottaSnto.style.transform = "scale(1, 1)";
           tpncY.style.gap = "0rem 16rem";
           break;
-        case 3:
+        }
+        case 3: {
           tpncYottaSdo.style.display = "block";
-          TpncUtility.setTpncExaSnioGro(true);
+          TpncSet.setTpncExaSnioGro(true);
           
           nplcR.style.marginRight = "20rem";
           sncR.style.right = "0%";
 
           eccZettaPrcoRgro.style.right = "20rem";
-          /* !!!!! v1.1.14a [test] (support-navigation-title) !!!!!! */
           tpncYottaSnto.style.opacity = "1";
           tpncYottaSnto.style.transform = "scale(1, 1)";
           dncR.style.width = "calc(100% - 12rem - 16rem - 4rem)";
           break;
-        default:
-          break;
+        }
       }
       /* if (/* activeMode 1 === 1) { !!! v1.1.14a [del] (replaced)
         TpncUtility.setTpncZettaSniIr(true);
@@ -285,139 +343,515 @@ class TpncHandler {
         tpncYottaBept.style.display = "block";
         sncR.style.right = "0%";
       } */
-      SncController.isActiveSnc = true;
+      SncAccessor.isActiveSnc = true;
       /* =============== Activation; =============== */
     } else {
       /* ========== Deactivation Sni ========== */
       switch (displayTypeState) {
-        case 1:
+        case 1: {
           /* TPNC */
           tpncYottaSdo.style.display = "";
-          TpncUtility.setTpncExaSnioGro(false);
+          TpncSet.setTpncExaSnioGro(false);
           /* SNC */
           sncR.style.right = "";
           /* ECC-NOCO */
-          eccNoco.style.left = "-20%";
-          eccNoco.removeEventListener("click", TpncHandler.tpncZettaSnio);
+          eccYottaNoco.style.left = "-20%";
+          eccYottaNoco.removeEventListener("click", TpncHandler.tpncZettaSnio);
           break;
-        case 2:
-          /* !!!!! v1.1.14a [test] !!!!! */
+        }
+        case 2: {
+          /* !!!!! v1.1.15a [add] (getNplcAccessor) !!!!! */
           const nptlcZettaTno = nplcR.querySelector(".nptlc-z-tno");
           nptlcZettaTno.style.gridTemplateColumns = "";
           const npclcZ = nplcR.querySelector(".npclc-z");
           npclcZ.style.gridTemplateColumns = "";
           /* TPNC */
           tpncYottaSdo.style.display = "";
-          TpncUtility.setTpncExaSnioGro(false);
+          TpncSet.setTpncExaSnioGro(false);
 
           nplcR.style.marginRight = "";
 
           eccZettaPrcoRgro.style.right = "";
 
           sncR.style.right = "";
-          /* !!!!! v1.1.14a [test] (support-navigation-title) !!!!!! */
           tpncYottaSnto.style.opacity = "";
           tpncYottaSnto.style.transform = "";
           tpncY.style.gap = "";
           break;
-        case 3:
+        }
+        case 3: {
           tpncYottaSdo.style.display = "";
-          TpncUtility.setTpncExaSnioGro(false);
+          TpncSet.setTpncExaSnioGro(false);
 
           nplcR.style.marginRight = "";
           sncR.style.right = "";
           
           eccZettaPrcoRgro.style.right = "";
-          /* !!!!! v1.1.14a [test] (support-navigation-title) !!!!!! */
           tpncYottaSnto.style.opacity = "";
           tpncYottaSnto.style.transform = "";
           dncR.style.width = "";
           break;
-        default:
-          break;
+        }
       }
-      /* if (/* activeMode 1 == 1) { !!! v1.1.14a [del] (replaced)
-        TpncUtility.setTpncZettaSniIr(false);
-        tpncYottaBept.style.display = "";
-        sncR.style.right = "-80%";
-      }
-      SncManager.resetSnc();
-      TpncManager.isActiveSniZ = false; */
-      SncController.accessResetSnc(displayTypeState);
-      SncController.isActiveSnc = false;
+      SncAccessor.resetSnc(displayTypeState);
+      SncAccessor.isActiveSnc = false;
       /* ============================== */
     }
   }
 }
-class TpncUtility {
-  static getDisplayTypeState() {
+/*class TpncUtility {
+  /* !!!!! v1.1.15a [del] (replaced) !!!!! */
+  /* static getDisplayTypeState() {
     let displayTypeState = 0;
-    if (TpncController.isResize) {
+    if (TpncAccessor.isTpncResizeKey) {
       displayTypeState = FwaConfig.previousDisplayType;
     } else {
       displayTypeState = FwaConfig.currentDisplayType;
     }
-    TpncController.isResize = false;
+    TpncAccessor.isTpncResizeKey = false;
     return displayTypeState;
   }
-  /* tpncR, isActive */
+  /* tpncR, isActive 
   static setTpncExaDnioGro(isActive) {
-    const dnioGro = document.querySelectorAll(".tpnc-z-dnio .tpnc-e-dnio-gro");
+    /* const dnioGro = document.querySelectorAll(".tpnc-z-dnio .tpnc-e-dnio-gro"); 
+    const { tpncExaDnioGro } = TpncGet.getTpncIoGroup();
     if (isActive) {
-      /* Activation */
-      /* gap 0.475rem 0.35rem */
-      dnioGro[0].style.transform = "translate(0rem, 0.825rem) rotate(45deg) scale(1.3, 1)";
-      dnioGro[1].style.transform = "translate(-2rem, 0rem)";
-      dnioGro[2].style.transform = "translate(0rem, -0.825rem) rotate(-45deg) scale(1.3, 1)";
+      /* Activation 
+      /* gap 0.475rem 0.35rem 
+      tpncExaDnioGro[0].style.transform = "translate(0rem, 0.825rem) rotate(45deg) scale(1.3, 1)";
+      tpncExaDnioGro[1].style.transform = "translate(-2rem, 0rem)";
+      tpncExaDnioGro[2].style.transform = "translate(0rem, -0.825rem) rotate(-45deg) scale(1.3, 1)";
 
-      dnioGro[1].style.opacity = "0";
+      tpncExaDnioGro[1].style.opacity = "0";
     } else {
-      /* Deactivation */
-      dnioGro[0].style.transform = "";
-      dnioGro[1].style.transform = "";
-      dnioGro[2].style.transform = "";
+      /* Deactivation 
+      tpncExaDnioGro[0].style.transform = "";
+      tpncExaDnioGro[1].style.transform = "";
+      tpncExaDnioGro[2].style.transform = "";
 
-      dnioGro[1].style.opacity = "";
+      tpncExaDnioGro[1].style.opacity = "";
     }
   }
   static setTpncExaSnioGro(isActive) {
-    const snioGro = document.querySelectorAll(".tpnc-z-snio .tpnc-e-snio-gro");
+    /* const snioGro = document.querySelectorAll(".tpnc-z-snio .tpnc-e-snio-gro"); 
+    const { tpncExaSnioGro } = TpncGet.getTpncIoGroup();
     if (isActive) {
-      /* Activation */
-      /* gap 0.25rem 0.5rem */
-      snioGro[1].style.transform = "translate(0.375rem, 0.375rem) rotate(45deg) scale(0.7, 1.8)";
-      snioGro[3].style.transform = "translate(0.375rem, -0.375rem) rotate(45deg) scale(1.8, 0.7)";
-      snioGro[5].style.transform = "translate(-0.375rem, 0.375rem) rotate(45deg) scale(1.8, 0.7)";
-      snioGro[7].style.transform = "translate(-0.375rem, -0.375rem) rotate(45deg) scale(0.7, 1.8)";
+      /* Activation 
+      /* gap 0.25rem 0.5rem 
+      tpncExaSnioGro[1].style.transform = "translate(0.375rem, 0.375rem) rotate(45deg) scale(0.7, 1.8)";
+      tpncExaSnioGro[3].style.transform = "translate(0.375rem, -0.375rem) rotate(45deg) scale(1.8, 0.7)";
+      tpncExaSnioGro[5].style.transform = "translate(-0.375rem, 0.375rem) rotate(45deg) scale(1.8, 0.7)";
+      tpncExaSnioGro[7].style.transform = "translate(-0.375rem, -0.375rem) rotate(45deg) scale(0.7, 1.8)";
   
-      snioGro[0].style.transform = "rotate(45deg) scale(1, 0.7)";
-      snioGro[2].style.transform = "rotate(45deg) scale(0.7, 1)";
-      snioGro[6].style.transform = "rotate(45deg) scale(0.7, 1)";
-      snioGro[8].style.transform = "rotate(45deg) scale(1, 0.7)";
+      tpncExaSnioGro[0].style.transform = "rotate(45deg) scale(1, 0.7)";
+      tpncExaSnioGro[2].style.transform = "rotate(45deg) scale(0.7, 1)";
+      tpncExaSnioGro[6].style.transform = "rotate(45deg) scale(0.7, 1)";
+      tpncExaSnioGro[8].style.transform = "rotate(45deg) scale(1, 0.7)";
   
-      snioGro[4].style.transform = "rotate(45deg) scale(0.7)";
+      tpncExaSnioGro[4].style.transform = "rotate(45deg) scale(0.7)";
     } else {
-      /* Deactivation */
-      for (let i = 0; i < snioGro.length; i++) {
-        snioGro[i].style.transform = "";
+      /* Deactivation 
+      for (let i = 0; i < tpncExaSnioGro.length; i++) {
+        tpncExaSnioGro[i].style.transform = "";
       }
     }
+  } 
+}*/
+class TpncGet {
+  static getDisplayTypeState() {
+    let displayTypeState = 0;
+    if (TpncAccessor.isTpncResizeKey) {
+      displayTypeState = FwaConfig.previousDisplayType;
+    } else {
+      displayTypeState = FwaConfig.currentDisplayType;
+    }
+    TpncAccessor.isTpncResizeKey = false;
+    return displayTypeState;
   }
-  /* static generateElement(elementType, setClass) { !!! v1.1.14a [del] (move to FwcUtility)
-    const elementData = document.createElement(elementType);
+  /* =============== :getElementGroup: =============== */
+  static getTpncRoot() {
+    /* const tpncRoot = {
+      tpncR: {
+        id: "tpncR",
+        selector: ".plc-y-liptg .tpnc-r-beptg"
+      }
+    }
+    let {
+      tpncR
+    } = TpncAccessor.tpncCache;
+    if (!tpncR) {
+      tpncR = document.querySelector(tpncRoot.tpncR.selector);
+      TpncAccessor.tpncCache[tpncRoot.tpncR.id] = tpncR;
+    }
+    return {
+      tpncR
+    }; */
+    const tpncRoot = [
+      {
+        id: "tpncR",
+        selector: ".plc-y-liptg .tpnc-r-beptg"
+      }
+    ];
+    const saveVerifyGroup = FwcAccessor.getVerifyCache(
+      TpncAccessor.tpncCache,
+      tpncRoot
+    );
+    return saveVerifyGroup;
+  }
+  static getTpncGroup() {
+    /* const tpncR = document.querySelector(".plc-y-liptg .tpnc-r-beptg");
+    const tpncY = tpncR.querySelector(".tpnc-y"); */
+    /* const tpncGroup = {
+      tpncY: {
+        id: "tpncY",
+        selector: ".tpnc-y"
+      }
+    };
+    let {
+      tpncY
+    } = TpncAccessor.tpncCache;
+    const {
+      tpncR
+    } = this.getTpncRoot();
+    if (!tpncY) {
+      tpncY = tpncR.querySelector(tpncGroup.tpncY.selector);
+      TpncAccessor.tpncCache[tpncGroup.tpncY.id] = tpncY;
+    }
+    return {
+      tpncY
+    }; */
+    const tpncGroup = [
+      {
+        id: "tpncY",
+        selector: ".tpnc-y"
+      }
+    ];
+    const {
+      tpncR
+    } = this.getTpncRoot();
+    const saveVerifyGroup = FwcAccessor.getVerifyCache(
+      TpncAccessor.tpncCache,
+      tpncGroup,
+      tpncR
+    );
+    return saveVerifyGroup;
+  }
+  static getTpncIoGroup() {
+    /* const tpncIoGroup = {
+      tpncZettaLio: {
+        id: "tpncZettaLio",
+        selector: ".tpnc-z-lio"
+      },
+      tpncZettaDnio: {
+        id: "tpncZettaDnio",
+        selector: ".tpnc-z-dnio"
+      },
+      tpncZettaSnio: {
+        id: "tpncZettaSnio",
+        selector: ".tpnc-z-snio"
+      },
+      tpncExaLioLink: {
+        id: "tpncExaLioLink",
+        selector: ".tpnc-e-lio-link"
+      },
+      tpncExaDnioGro: {
+        id: "tpncExaDnioGro",
+        selector: ".tpnc-e-dnio-gro"
+      },
+      tpncExaSnioGro: {
+        id: "tpncExaSnioGro",
+        selector: ".tpnc-e-snio-gro"
+      }
+    };
+    let {
+      tpncZettaLio,
+      tpncZettaDnio,
+      tpncZettaSnio,
+      tpncExaLioLink,
+      tpncExaDnioGro,
+      tpncExaSnioGro
+    } = TpncAccessor.tpncCache;
+    const {
+      tpncR
+    } = this.getTpncRoot(); */
+    /* const tpncZettaLio = tpncY.querySelector(".tpnc-z-lio");
+    const tpncZettaDnio = tpncY.querySelector(".tpnc-z-dnio");
+    const tpncZettaSnio = tpncY.querySelector(".tpnc-z-snio"); */
+    /* ---------- */
+    /* const tpncExaLioLink = tpncZettaLio.querySelector(".tpnc-e-lio-link");
+    const tpncExaDnioGro = tpncZettaDnio.querySelectorAll(".tpnc-e-dnio-gro");
+    const tpncExaSnioGro = tpncZettaSnio.querySelectorAll(".tpnc-e-snio-gro"); */
+    /* if (!tpncZettaLio) {
+      tpncZettaLio = tpncR.querySelector(tpncIoGroup.tpncZettaLio.selector);
+      TpncAccessor.tpncCache[tpncIoGroup.tpncZettaLio.id] = tpncZettaLio;
+    }
+    if (!tpncZettaDnio) {
+      tpncZettaDnio = tpncR.querySelector(tpncIoGroup.tpncZettaDnio.selector);
+      TpncAccessor.tpncCache[tpncIoGroup.tpncZettaDnio.id] = tpncZettaDnio;
+    }
+    if (!tpncZettaSnio) {
+      tpncZettaSnio = tpncR.querySelector(tpncIoGroup.tpncZettaSnio.selector);
+      TpncAccessor.tpncCache[tpncIoGroup.tpncZettaSnio.id] = tpncZettaSnio;
+    }
+    if (!tpncExaLioLink) {
+      tpncExaLioLink = tpncR.querySelector(tpncIoGroup.tpncExaLioLink.selector);
+      TpncAccessor.tpncCache[tpncIoGroup.tpncExaLioLink.id] = tpncExaLioLink;
+    }
+    if (!tpncExaDnioGro) {
+      tpncExaDnioGro = tpncR.querySelectorAll(tpncIoGroup.tpncExaDnioGro.selector);
+      TpncAccessor.tpncCache[tpncIoGroup.tpncExaDnioGro.id] = tpncExaDnioGro;
+    }
+    if (!tpncExaSnioGro) {
+      tpncExaSnioGro = tpncR.querySelectorAll(tpncIoGroup.tpncExaSnioGro.selector);
+      TpncAccessor.tpncCache[tpncIoGroup.tpncExaSnioGro.id] = tpncExaSnioGro;
+    }
+    return {
+      tpncZettaLio,
+      tpncZettaDnio,
+      tpncZettaSnio,
+      tpncExaLioLink,
+      tpncExaDnioGro,
+      tpncExaSnioGro
+    }; */
+    const tpncIoGroup = [
+      {
+        id: "tpncZettaLio",
+        selector: ".tpnc-z-lio"
+      },
+      {
+        id: "tpncZettaDnio",
+        selector: ".tpnc-z-dnio"
+      },
+      {
+        id: "tpncZettaSnio",
+        selector: ".tpnc-z-snio"
+      },
+      {
+        id: "tpncExaLioLink",
+        selector: ".tpnc-e-lio-link"
+      },
+      {
+        id: "tpncExaDnioGro",
+        selector: ".tpnc-e-dnio-gro",
+        type: "all"
+      },
+      {
+        id: "tpncExaSnioGro",
+        selector: ".tpnc-e-snio-gro",
+        type: "all"
+      }
+    ];
+    const {
+      tpncR
+    } = this.getTpncRoot();
+    const saveVerifyGroup = FwcAccessor.getVerifyCache(
+      TpncAccessor.tpncCache,
+      tpncIoGroup,
+      tpncR
+    );
+    return saveVerifyGroup;
+  }
+  static getTpncSdoGroup() {
+    /* const tpncSdoGroup = { 
+      tpncYottaSdo: {
+        id: "tpncYottaSdo",
+        selector: ".tpnc-y-sdo"
+      }
+    };
+    let { tpncYottaSdo } = TpncAccessor.tpncCache;
+    const {
+      tpncR
+    } = this.getTpncRoot();
+    /* const tpncYottaSdo = tpncR.querySelector(".tpnc-y-sdo"); 
+    if (!tpncYottaSdo) {
+      tpncYottaSdo = tpncR.querySelector(tpncSdoGroup.tpncYottaSdo.selector);
+      TpncAccessor.tpncCache[tpncSdoGroup.tpncYottaSdo.id] = tpncYottaSdo;
+    }
+    return {
+      tpncYottaSdo
+    }; */
+    const tpncSdoGroup = [
+      {
+        id: "tpncYottaSdo",
+        selector: ".tpnc-y-sdo"
+      }
+    ];
+    const {
+      tpncR
+    } = this.getTpncRoot();
+    const saveVerifyGroup = FwcAccessor.getVerifyCache(
+      TpncAccessor.tpncCache,
+      tpncSdoGroup,
+      tpncR
+    );
+    return saveVerifyGroup;
+  }
+  static getTpncSntoGroup() {
+    /* const tpncSntoGroup = {
+      tpncYottaSnto: {
+        id: "tpncYottaSnto",
+        selector: ".tpnc-y-snto"
+      },
+      tpncZettaSntoTitle: {
+        id: "tpncZettaSntoTitle",
+        selector: ".tpnc-z-snto-title"
+      }
+    };
+    let {
+      tpncYottaSnto,
+      tpncZettaSntoTitle
+    } = TpncAccessor.tpncCache;
+    const {
+      tpncR
+    } = this.getTpncRoot();
+    /* const tpncYottaSnto = tpncR.querySelector(".tpnc-y-snto");
+    const tpncZettaSntoTitle = tpncR.querySelector(".tpnc-z-snto-title"); 
+    if (!tpncYottaSnto) {
+      tpncYottaSnto = tpncR.querySelector(tpncSntoGroup.tpncYottaSnto.selector);
+      TpncAccessor.tpncCache[tpncSntoGroup.tpncYottaSnto.id] = tpncYottaSnto;
+    }
+    if (!tpncZettaSntoTitle) {
+      tpncZettaSntoTitle = tpncR.querySelector(tpncSntoGroup.tpncZettaSntoTitle.selector);
+      TpncAccessor.tpncCache[tpncSntoGroup.tpncZettaSntoTitle.id] = tpncZettaSntoTitle;
+    }
+    return {
+      tpncYottaSnto,
+      tpncZettaSntoTitle
+    }; */
+    const tpncSntoGroup = [
+      {
+        id: "tpncYottaSnto",
+        selector: ".tpnc-y-snto"
+      },
+      {
+        id: "tpncZettaSntoTitle",
+        selector: ".tpnc-z-snto-title"
+      }
+    ];
+    const {
+      tpncR
+    } = this.getTpncRoot();
+    const saveVerifyGroup = FwcAccessor.getVerifyCache(
+      TpncAccessor.tpncCache,
+      tpncSntoGroup,
+      tpncR
+    );
+    return saveVerifyGroup;
+  }
+  /* =============== ;getElementGroup; =============== */
+  /* static getGenerateElement(elementTag, setClass) {
+    const elementData = document.createElement(elementTag);
     elementData.setAttribute("class", setClass);
     return elementData;
   } */
 }
+class TpncSet {
+  /* static setGenerateElement(elementData, dText, dHref, dIndex = []) {
+    switch (dIndex.length) {
+      case 0: {
+        if (dText) {
+          elementData.textContent = dText;
+        }
+        if (dHref) {
+          elementData.setAttribute("href", dHref);
+        }
+        break;
+      }
+      case 1: {
+        if (dText) {
+          elementData.textContent = dText[dIndex[0]];
+        }
+        if (dHref) {
+          elementData.setAttribute("href", dHref[dIndex[0]]);
+        }
+        break;
+      }
+      case 2: {
+        if (dText) {
+          elementData.textContent = dText[dIndex[0]][dIndex[1]];
+        }
+        if (dHref) {
+          elementData.setAttribute("href", dHref[dIndex[0]][dIndex[1]]);
+        }
+        break;
+      }
+    }
+  } */
+  static setTpncExaDnioGro(isActive) {
+    /* const dnioGro = document.querySelectorAll(".tpnc-z-dnio .tpnc-e-dnio-gro"); */
+    const {
+      tpncExaDnioGro
+    } = TpncGet.getTpncIoGroup();
+    if (isActive) {
+      /* Activation */
+      /* gap 0.475rem 0.35rem */
+      tpncExaDnioGro[0].style.transform = "translate(0rem, 0.825rem) rotate(45deg) scale(1.3, 1)";
+      tpncExaDnioGro[1].style.transform = "translate(-2rem, 0rem)";
+      tpncExaDnioGro[2].style.transform = "translate(0rem, -0.825rem) rotate(-45deg) scale(1.3, 1)";
+
+      tpncExaDnioGro[1].style.opacity = "0";
+    } else {
+      /* Deactivation */
+      tpncExaDnioGro[0].style.transform = "";
+      tpncExaDnioGro[1].style.transform = "";
+      tpncExaDnioGro[2].style.transform = "";
+
+      tpncExaDnioGro[1].style.opacity = "";
+    }
+  }
+  static setTpncExaSnioGro(isActive) {
+    /* const snioGro = document.querySelectorAll(".tpnc-z-snio .tpnc-e-snio-gro"); */
+    const {
+      tpncExaSnioGro
+    } = TpncGet.getTpncIoGroup();
+    if (isActive) {
+      /* Activation */
+      /* gap 0.25rem 0.5rem */
+      tpncExaSnioGro[1].style.transform = "translate(0.375rem, 0.375rem) rotate(45deg) scale(0.7, 1.8)";
+      tpncExaSnioGro[3].style.transform = "translate(0.375rem, -0.375rem) rotate(45deg) scale(1.8, 0.7)";
+      tpncExaSnioGro[5].style.transform = "translate(-0.375rem, 0.375rem) rotate(45deg) scale(1.8, 0.7)";
+      tpncExaSnioGro[7].style.transform = "translate(-0.375rem, -0.375rem) rotate(45deg) scale(0.7, 1.8)";
+  
+      tpncExaSnioGro[0].style.transform = "rotate(45deg) scale(1, 0.7)";
+      tpncExaSnioGro[2].style.transform = "rotate(45deg) scale(0.7, 1)";
+      tpncExaSnioGro[6].style.transform = "rotate(45deg) scale(0.7, 1)";
+      tpncExaSnioGro[8].style.transform = "rotate(45deg) scale(1, 0.7)";
+  
+      tpncExaSnioGro[4].style.transform = "rotate(45deg) scale(0.7)";
+    } else {
+      /* Deactivation */
+      for (let i = 0; i < tpncExaSnioGro.length; i++) {
+        tpncExaSnioGro[i].style.transform = "";
+      }
+    }
+  }
+  static setAppendFragment(tpncFragment, tempSaveElement) {
+    tempSaveElement["zettaLio"].append(
+      tempSaveElement["exaLioLink"]
+    );
+    tempSaveElement["yotta"].append(
+      tempSaveElement["zettaLio"],
+      tempSaveElement["zettaDnio"],
+      tempSaveElement["zettaSnio"]
+    );
+    tempSaveElement["yottaSnto"].append(
+      tempSaveElement["zettaSntoTitle"]
+    );
+    tpncFragment.append(
+      tempSaveElement["yotta"],
+      tempSaveElement["yottaSdo"],
+      tempSaveElement["yottaSnto"]
+    );
+  }
+}
 export {
-  TpncController,
-  TpncManager,
-  TpncHandler,
-  TpncUtility
+  TpncAccessor,
+  TpncController
 };
 /* DESCRIPTION
+ * Accessor
  * Controller -> Manager -> Handler
- * Utility -> UtilityY -> UtilityZ -> ...
+ * Get, Set, Setup, Reset
  * 
  * SDO: Scroll Defense Object
  * GRO: Geometry Rendering Object

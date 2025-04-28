@@ -6,7 +6,7 @@
 import {
   NplcController
 } from "./nplc-class.js";
-NplcController.process();
+/* NplcController.process(); */
 /* DESCRIPTION
  */
 /* INFORMATION

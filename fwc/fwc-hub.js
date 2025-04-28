@@ -5,69 +5,49 @@
  */
 /* ================================================== */
 import {
-  FwcController,
-  FwcUtility
+  FwcAccessor,
+  FwcController
 } from "./fwc-class.js";
 import {
-  TpncController,
-  TpncManager,
-  TpncHandler,
-  TpncUtility
+  TpncAccessor,
+  TpncController
 } from "./plc/tpnc/tpnc-class.js";
 import {
-  DncController,
-  DncManager,
-  DncHandler,
-  DncUtility
+  DncAccessor,
+  DncController
 } from "./plc/dnc/dnc-class.js";
 import {
-  SncController,
-  SncManager,
-  SncHandler,
-  SncUtility
+  SncAccessor,
+  SncController
 } from "./plc/snc/snc-class.js";
 import {
-  EccController,
-  EccManager,
-  EccHandler,
-  EccUtility
+  EccAccessor,
+  EccController
 } from "./plc/ecc/ecc-class.js";
 import {
-  NplcController,
-  NplcManager,
-  NplcHandler,
-  NplcUtility
+  NplcAccessor,
+  NplcController
 } from "./nplc/nplc-class.js";
 /* ================================================== */
 export {
   /* FWC */
+  FwcAccessor,
   FwcController,
-  FwcUtility,
   /* TPNC */
+  TpncAccessor,
   TpncController,
-  TpncManager,
-  TpncHandler,
-  TpncUtility,
   /* DNC */
+  DncAccessor,
   DncController,
-  DncManager,
-  DncHandler,
-  DncUtility,
   /* SNC */
+  SncAccessor,
   SncController,
-  SncManager,
-  SncHandler,
-  SncUtility,
   /* ECC */
+  EccAccessor,
   EccController,
-  EccManager,
-  EccHandler,
-  EccUtility,
   /* NPLC */
-  NplcController,
-  NplcManager,
-  NplcHandler,
-  NplcUtility
+  NplcAccessor,
+  NplcController
 };
 /* ================================================== */
 /* DESCRIPTION
