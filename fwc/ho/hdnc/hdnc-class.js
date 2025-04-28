@@ -104,15 +104,29 @@ class HdncManager {
   }
   /* -------------------------------------------------- */
   static initOnLoad() {
+    /* !!!!! :v1.1.19a-3: !!!!! */
     /* set */
     const {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
-    HdncUtil.setDataHdncExaBloMaxHeight();
-    for (let i = 0; i < hdncExaBlo.length; i++) {
+    /* HdncUtil.setDataHdncExaBloMaxHeight(); */
+    /* for (let i = 0; i < hdncExaBlo.length; i++) {
       HdncUtil.setHdncExaBloMaxHeight(i);
       HdncUtil.setHdncExaBloGridTemplateRows(i, 0);
+    } */
+    HdncUtil.updateHdncExaBloMaxHeight();
+    HdncUtil.setHdncExaBloMaxHeight();
+    HdncUtil.updateHdncExaBloGridTemplateRows();
+    for (let i = 0; i < hdncExaBlo.length; i++) {
+      HdncUtil.setHdncExaBloGridTemplateRows(i, false);
+      /*  */
+      /* HdncUtil.updateHdncGigaBloBgroLeft(i); */
+      /* HdncUtil.updateHdncGigaBloBgroWidth(i); */
     }
+    /*  */
+    HdncUtil.updateHdncExaBloSgroBoTop();
+    HdncUtil.setHdncExaBloSgroBoTop();
+    /* !!!!! ;v1.1.19a-3; !!!!! */
   }
   /* -------------------------------------------------- */
   static initOnResize() {
@@ -224,22 +238,34 @@ class HdncManager {
         }
       }
       /*  */
+      /* !!!!! :v1.1.19a-3: !!!!! */
+      HdncUtil.updateHdncExaBloSgroLeft();
+      HdncUtil.setHdncExaBloSgroLeft();
+      /*  */
       for (let i = 0; i < hdncExaBlo.length; i++) {
         if (hdncExaBlo[i].dataset.isSensorWidthResized) {
-          HdncUtil.setDataHdncExaBloSgroLeft(i);
-          HdncUtil.setHdncExaBloSgroLeft(i);
+          /* HdncUtil.setDataHdncExaBloSgroLeft(i);
+          HdncUtil.setHdncExaBloSgroLeft(i); */
           hdncExaBlo[i].isSensorWidthResized = false;
         }
       }
+      /* !!!!! ;v1.1.19a-3; !!!!! */
       window.previousInnerWidth = innerWidth;
+      /* !!!!! :v1.1.19a-3: !!!!! */
+      /* HdncUtil.setDataHdncExaBloMaxHeight(); */
+      HdncUtil.updateHdncExaBloMaxHeight();
+      HdncUtil.setHdncExaBloMaxHeight();
       /*  */
-      HdncUtil.setDataHdncExaBloMaxHeight();
+      HdncUtil.updateHdncExaBloSgroBoTop();
+      HdncUtil.setHdncExaBloSgroBoTop();
+      /*  */
       for (let i = 0; i < hdncExaBlo.length; i++) {
         if (hdncExaBlo[i].dataset.isSensorHeightResized) {
-          HdncUtil.setHdncExaBloMaxHeight(i);
+          /* HdncUtil.setHdncExaBloMaxHeight(i); */
           hdncExaBlo[i].isSensorHeightResized = false;
         }
       }
+      /* !!!!! ;v1.1.19a-3; !!!!! */
       window.previousInnerHeight = innerHeight;
     }
   }
@@ -371,11 +397,13 @@ class HdncHandler {
     }
     /*  */
     if (isActive) {
-      hdncY[targetIndex].timeoutId = setTimeout(
+      /* !!!!! v1.1.19a-3 !!!!! */
+      /* hdncY[targetIndex].timeoutId = setTimeout(
         HdncUtil.setTimerMdtHdncYotta,
         300,
         targetIndex
-      );
+      ); */
+      /*  */
     } else {
       clearTimeout(hdncY[targetIndex].timeoutId);
       /* !!!!! :v1.1.19a-2: !!!!! */
@@ -383,8 +411,9 @@ class HdncHandler {
         /* HdncUtil.setHdncGigaBloBgro_Old(hdncGigaBloBgro[i], false); */
         clearTimeout(hdncPetaBlo[i].timeoutId);
       }
-      HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, true);
+      /* HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
+      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, true); */
+      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
       /* !!!!! ;v1.1.19a-2; !!!!! */
     }
     /*  */
@@ -393,7 +422,10 @@ class HdncHandler {
     hdncExaTloRgro[targetIndex].classList[type]("cl-mdt-hdnc-z-tlo-handler");
     hdncExaTloBgro[targetIndex].classList[type]("cl-mdt-hdnc-z-tlo-handler");
     /*  */
-    HdncUtil.setHdncExaBloGridTemplateRows(targetIndex, hdncExaBloHeight);
+    /* !!!!! v1.1.19a-3 !!!!! */
+    /* HdncUtil.setHdncExaBloGridTemplateRows(targetIndex, hdncExaBloHeight); */
+    HdncUtil.setHdncExaBloGridTemplateRows(targetIndex, isActive);
+    /*  */
     for (let i = 0; i < hdncTeraBlo.length; i++) {
       hdncTeraBlo[i].classList[type]("cl-mdt-hdnc-z-tlo-handler");
     }
@@ -447,12 +479,22 @@ class HdncHandler {
       targetIndex
     } = FwcAccessor.getEventData(eventData, ".hdnc-y");
     const {
+      hdncY
+    } = HdncConfig.getHdncGroup();
+    const {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
     if (
       eventData.target === hdncExaBlo[targetIndex] &&
-      eventData.propertyName === "grid-template-rows"
+      eventData.propertyName === "grid-template-rows" &&
+      hdncY[targetIndex].isActive
     ) {
+      /* !!!!! v1.1.19a-3 !!!!! */
+      HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
+      HdncUtil.updateHdncGigaBloBgroWidth(targetIndex);
+      HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
+      HdncUtil.timerHdncGigaBloBgro(targetIndex);
+      /*  */
       HdncHandler.mdtHdncRootScroll();
     }
   }
@@ -488,7 +530,10 @@ class HdncHandler {
       type = "remove";
     }
     /* TransitionEnd */
-    HdncUtil.setHdncExaBlo(isActive, targetIndex);
+    /* !!!!! v1.1.19a-3 !!!!! */
+    /* HdncUtil.setHdncExaBlo(isActive, targetIndex); */
+    HdncUtil.setHdncExaBloGridTemplateRows(targetIndex, isActive);
+    HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
     /*  */
     if (isActive) {
       if (targetIndex === 0) {
@@ -514,7 +559,7 @@ class HdncHandler {
         /* HdncUtil.setHdncGigaBloBgroWidth_Old(hdncGigaBloBgro[i], false); */
         clearTimeout(hdncGigaBloBgro[i].timeoutId);
       }
-      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
+      /* HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false); */
       /* !!!!! ;v1.1.19a-2; !!!!! */
     }
     /* classList */
@@ -594,29 +639,38 @@ class HdncHandler {
     ) {
       if (hdncExaBlo[targetIndex].dataset.isSensorWidthResized) {
         /* HdncUtil.setDataHdncGigaBloBgro(targetIndex); !!!!! v1.1.19a-2 !!!!! */
-        HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
-        HdncUtil.updateHdncGigaBloBgroWidth(targetIndex);
+        /* HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
+        HdncUtil.updateHdncGigaBloBgroWidth(targetIndex); */
         /*  */
         hdncExaBlo[targetIndex].dataset.isSensorWidthResized = false;
       }
       if (hdncExaBlo[targetIndex].dataset.isSensorHeightResized) {
-        HdncUtil.setDataHdncExaBloSgro(targetIndex);
+        /* HdncUtil.setDataHdncExaBloSgro(targetIndex); */
         hdncExaBlo[targetIndex].dataset.isSensorHeightResized = false;
       }
       /* Bgro */
       /* !!!!! v1.1.19a-2 !!!!! */
       /* HdncUtil.setHdncGigaBloBgro(targetIndex, false); */
+      HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
+      HdncUtil.updateHdncGigaBloBgroWidth(targetIndex);
       HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
       HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
       /*  */
-      HdncUtil.setTimerHdncGigaBloBgro(targetIndex);
+      /* !!!!! v1.1.19a-3 !!!!!! */
+      HdncUtil.timerHdncGigaBloBgro(targetIndex);
+      /*  */
+      /* HdncUtil.setTimerHdncGigaBloBgro(targetIndex); */
       /*  */
       hdncExaBlo[targetIndex].addEventListener(
         "scroll",
         HdncHandler.tdtHdncExaBloScroll
       );
       /* Sgro */
-      HdncUtil.setHdncExaBloSgro(targetIndex);
+      /* !!!!! v1.1.19a-3 !!!!! */
+      /* HdncUtil.setHdncExaBloSgro(targetIndex); */
+      HdncUtil.updateHdncExaBloSgroLeft();
+      HdncUtil.setHdncExaBloSgroLeft();
+      /*  */
       const scrollEventData = {};
       scrollEventData.currentTarget = hdncExaBlo[targetIndex];
       HdncHandler.tdtHdncExaBloScroll(scrollEventData);
@@ -625,8 +679,10 @@ class HdncHandler {
       hdncY[targetIndex].isActive &&
       eventData.propertyName === "max-height"
     ) {
-      HdncUtil.setDataHdncExaBloSgroTop(targetIndex);
-      HdncUtil.setHdncExaBloSgroTop(targetIndex);
+      /* !!!!! v1.1.19a-3 !!!!! */
+      /* HdncUtil.setDataHdncExaBloSgroTop(targetIndex);
+      HdncUtil.setHdncExaBloSgroTop(targetIndex); */
+      /*  */
       const eventDataScroll = {};
       eventDataScroll.currentTarget = hdncExaBlo[targetIndex];
       HdncHandler.tdtHdncExaBloScroll(eventDataScroll);
@@ -668,9 +724,12 @@ class HdncHandler {
       type = "remove";
       hdncExaBloHeight = 0;
     }
+    HdncUtil.setHdncExaBloGridTemplateRows(eventIndex, isActive);
     /*  */
     if (isActive) {
-      HdncUtil.setHdncExaBlo(isActive, eventIndex);
+      /* !!!!! v1.1.19a-3 !!!!! */
+      /* HdncUtil.setHdncExaBlo(isActive, eventIndex); */
+      /*  */
     } else {
       hdncExaBlo[eventIndex].removeEventListener(
         "scroll",
@@ -691,7 +750,8 @@ class HdncHandler {
     for (let i = 0; i < hdncPetaBlo.length; i++) {
       hdncTeraBlo[i].classList[type]("cl-ddt-hdnc-y-handler");
     }
-    HdncUtil.setHdncExaBloGridTemplateRows(eventIndex, hdncExaBloHeight);
+    /* !!!!! v1.1.19a-3 !!!!! */
+    /* HdncUtil.setHdncExaBloGridTemplateRows(eventIndex, hdncExaBloHeight); */
     /*  */
     if (isActive) {
       if (eventIndex === 3) {
@@ -708,15 +768,15 @@ class HdncHandler {
         }
       }
       /*  */
-      hdncY[eventIndex].isTimeout = false;
+      /* hdncY[eventIndex].isTimeout = false;
       hdncY[eventIndex].timeoutId = setTimeout(
         HdncUtil.setDdtHdncYottaTimer,
         300,
         eventIndex,
         hdncY[eventIndex]
-      );
+      ); */
     } else {
-      clearTimeout(hdncY[eventIndex].timeoutId);
+      /* clearTimeout(hdncY[eventIndex].timeoutId); */
     }
     hdncY[eventIndex].isActive = isActive;
   }
@@ -755,18 +815,20 @@ class HdncHandler {
       if (hdncY[targetIndex].isTimeout) {
         /* !!!!! v1.1.19a-2 !!!!! */
         /* HdncUtil.setHdncGigaBloBgro_Old(hdncGigaBloBgro[eventIndex], isActive); */
-        HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-        HdncUtil.setHdncGigaBloBgroWidth(targetIndex, isActive);
+        /* HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
+        HdncUtil.setHdncGigaBloBgroWidth(targetIndex, isActive); */
         /*  */
       } else {
-        hdncPetaBlo[eventIndex].timeoutId = setTimeout(
+        /* hdncPetaBlo[eventIndex].timeoutId = setTimeout(
           HdncUtil.setDdtHdncPetaBloTimer,
           50,
           hdncGigaBloBgro[eventIndex],
           hdncPetaBlo[eventIndex],
           hdncY[targetIndex]
-        );
+        ); */
       }
+      HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
+      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, isActive, eventIndex);
     } else {
       clearTimeout(hdncPetaBlo[eventIndex].timeoutId);
       /* !!!!! v1.1.19a-2 !!!!! */
@@ -851,14 +913,18 @@ class HdncHandler {
       );
       /* Sgro */
       /* don't cache sgro left */
-      HdncUtil.setDataHdncExaBloSgroLeft(targetIndex);
-      HdncUtil.setHdncExaBloSgroLeft(targetIndex);
+      /* !!!!! :v1.1.19a-3: !!!!! */
+      HdncUtil.updateHdncExaBloSgroLeft();
+      HdncUtil.setHdncExaBloSgroLeft();
+      /* HdncUtil.setDataHdncExaBloSgroLeft(targetIndex);
+      HdncUtil.setHdncExaBloSgroLeft(targetIndex); */
       if (hdncExaBlo[targetIndex].dataset.isSensorHeightResized) {
         /* HdncUtil.setDataHdncExaBloSgro(targetIndex); */
-        HdncUtil.setDataHdncExaBloSgroTop(targetIndex);
-        HdncUtil.setHdncExaBloSgroTop(targetIndex);
+        /* HdncUtil.setDataHdncExaBloSgroTop(targetIndex);
+        HdncUtil.setHdncExaBloSgroTop(targetIndex); */
         hdncExaBlo[targetIndex].dataset.isSensorHeightResized = false;
       }
+      /* !!!!! ;v1.1.19a-3; !!!!! */
       /*  */
       const modifyEventData = {};
       modifyEventData.currentTarget = hdncExaBlo[targetIndex];
