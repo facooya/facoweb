@@ -3,76 +3,54 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-.npmsc-r {
-  /* Tag.section */
-  /* .npmsc-r */
-  /* ----- Grid ----- */
-  grid-area: npmsc-r;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-areas:
-    "npmsc-y";
-  /* ----- Layout ----- */
-  margin: 0rem 1rem;
+/* ================================================== */
+.npmsc {
+  padding: 32px 0;
 }
-.npmsc-y {
-  /* Tag.nav */
-  grid-area: npmsc-y;
-  /* [JS] display: grid; */
+/* ================================================== */
+.npmsc-nav {
+
+}
+.npmsc-nav .list {
   display: none;
-  grid-template-columns: 1fr;
-  grid-auto-rows: min-content;
-  gap: 0.5rem 0.5rem;
+  flex-flow: column;
+  gap: 12px;
+  list-style: none;
 }
-.npmsc-z {
-  /* Tag.ul */
-  /* ----- Grid ----- */
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.5rem;
-  /* ----- Visual ----- */
-  list-style-type: none;
-}
-.npmsc-e {
-  /* Tag.li */
-  padding: 1rem 0rem;
-  border: 0.125rem solid var(--black);
-  border-radius: 1rem;
+.npmsc-nav .item {
+  border: 2px solid #222222;
+  border-radius: 8px;
+  padding: 8px;
   cursor: pointer;
 }
-.npmsc-p {
-  /* Tag.a */
-  /* !!!!! v1.1.14a [tmp] (move to option) !!!!! */
-  text-decoration-line: none;
+.npmsc-nav .link {
+  text-decoration: none;
 }
-.npmsc-t-text {
-  /* Tag.div */
-  padding: 0rem 0rem 0.5rem 0.5rem;
-  color: var(--black);
+.npmsc-nav .text {
+  color: #222222;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.125rem;
 }
-.npmsc-t-sub-text {
-  /* Tag.div */
-  padding: 0rem 0rem 0rem 1.5rem;
-  color: var(--black);
+.npmsc-nav .sub-text {
+  color: #555555;
+  font-size: 1rem;
+  margin-top: 4px;
+  margin-left: 8px;
 }
-@media (min-width: 768px) {
-  .npmsc-r {
-    transition:
-      margin var(--nc-transition-slide);
-  }
-  .npmsc-z {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+/* ================================================== */
+@media (min-width: 768px) {}
+/* ================================================== */
 @media (min-width: 1280px) {
-  .npmsc-r {
-    padding: 0rem 0rem 1rem 0rem;
+  .npmsc {
+    max-width: 1280px;
+    margin: 0 auto;
   }
 }
+/* ================================================== */
+/* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
+/* ========================= ;FACOOYA; ========================= */

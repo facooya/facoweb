@@ -3,25 +3,16 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-
+/* ================================================== */
 import {
   BodyConfig,
-  BodyController,
-  HtbcController,
-  HdncController,
-  HsncController,
-  /* FascController,
-  FngcController,
-  FllcController, */
-  NpmhcController,
-  NpmscController
-  /* DpmacController,
-  DpmscController,
-  DpmfcController */
+  BodyController
 } from "./fwc-hub.js";
 /* -------------------------------------------------- */
-import { DpmController } from "./dpm/dpm-class.js";
+import { HeaderController } from "./h/h-class.js";
 import { FooterController } from "./f/f-class.js";
+import { NpmController } from "./npm/npm-class.js";
+import { DpmController } from "./dpm/dpm-class.js";
 /* ================================================== */
 class FwcController {
   static init() {
@@ -42,9 +33,7 @@ class FwcManager {
   static init() {
     BodyController.init();
     /* -------------------------------------------------- */
-    HtbcController.init();
-    HdncController.init();
-    HsncController.init();
+    HeaderController.init();
     /* -------------------------------------------------- */
     FooterController.init();
     /* -------------------------------------------------- */
@@ -53,8 +42,7 @@ class FwcManager {
         break;
       }
       case 2: {
-        NpmhcController.init();
-        NpmscController.init();
+        NpmController.init();
         break;
       }
       case 3: {
@@ -66,10 +54,7 @@ class FwcManager {
   static load() {
     BodyController.load();
     /* -------------------------------------------------- */
-    HtbcController.load();
-    HdncController.load();
-    HsncController.load();
-    /* HeccController.load(); */
+    HeaderController.load();
     /* -------------------------------------------------- */
     FooterController.load();
     /* -------------------------------------------------- */
@@ -78,8 +63,7 @@ class FwcManager {
         break;
       }
       case 2: {
-        NpmhcController.load();
-        NpmscController.load();
+        NpmController.load();
         break;
       }
       case 3: {
@@ -91,10 +75,7 @@ class FwcManager {
   static resizeDisplay() {
     BodyController.resizeDisplay();
     /* -------------------------------------------------- */
-    HtbcController.resizeDisplay();
-    HdncController.resizeDisplay();
-    HsncController.resizeDisplay();
-    /* HeccController.resizeDisplay(); */
+    HeaderController.resizeDisplay();
     /* -------------------------------------------------- */
     FooterController.resizeDisplay();
     /* -------------------------------------------------- */
@@ -103,8 +84,7 @@ class FwcManager {
         break;
       }
       case 2: {
-        NpmhcController.resizeDisplay();
-        NpmscController.resizeDisplay();
+        NpmController.resizeDisplay();
         break;
       }
       case 3: {
@@ -116,10 +96,7 @@ class FwcManager {
   static resizeSensor() {
     BodyController.resizeSensor();
     /* -------------------------------------------------- */
-    HtbcController.resizeSensor();
-    HdncController.resizeSensor();
-    HsncController.resizeSensor();
-    /* HeccController.resizeSensor(); */
+    HeaderController.resizeSensor();
     /* -------------------------------------------------- */
     FooterController.resizeSensor();
     /* -------------------------------------------------- */
@@ -128,8 +105,7 @@ class FwcManager {
         break;
       }
       case 2: {
-        /* NpmhcController.resizeSensor();
-        NpmscController.resizeSensor(); */
+        NpmController.resizeSensor();
         break;
       }
       case 3: {
@@ -142,11 +118,11 @@ class FwcManager {
 export { FwcController };
 /* ================================================== */
 window.addEventListener("DOMContentLoaded", () => FwcController.init());
-/* FwcController.init(); */
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

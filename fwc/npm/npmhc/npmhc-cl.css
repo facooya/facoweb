@@ -3,26 +3,25 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* =============== :Handler: =============== */
-/* ==========----- :cl-ddt-npmhc-exa-tno-handler: -----========== */
-.npmhc-t-tno-text.cl-ddt-npmhc-e-tno-handler {
-  color: var(--black);
+/* ================================================== */
+.npmhc-tab .item.active {
+  border-color: #222222;
+  cursor: default;
 }
-/* ==========----- ;cl-ddt-npmhc-exa-tno-handler; -----========== */
-/* ==========----- :cl-window-on-hash-change-handler: -----========== */
-.npmhc-t-tno-text.cl-window-on-hash-change-handler {
-  color: var(--black);
+.npmhc-tab .text.active {
+  color: #222222;
 }
-.npmhc-t-tno-gro.cl-window-on-hash-change-handler {
-  border-color: var(--black);
+/*  */
+@media (hover: hover) {
+  .npmhc-tab .text:hover {
+    color: #222222;
+  }
 }
-.npmsc-y.cl-window-on-hash-change-handler {
-  display: grid;
-}
-/* ==========----- ;cl-window-on-hash-change-handler; -----========== */
-/* =============== ;Handler; =============== */
+/* ================================================== */
+/* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
+/* ========================= ;FACOOYA; ========================= */

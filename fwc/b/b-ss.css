@@ -3,6 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ================================================== */
 .b {
   -webkit-tap-highlight-color: #00000000;
 }
@@ -20,7 +21,6 @@
   background: #ffffff;
 }
 .dpm {
-  padding: 0 16px;
   background: #ffffff;
 }
 .f {
@@ -29,6 +29,7 @@
   padding: 24px 32px;
   transition: margin-right 300ms ease;
 }
+/* ================================================== */
 @media (min-width: 768px) {
   .h {
     height: 128px;
@@ -37,6 +38,7 @@
     min-height: calc(100vh - 128px);
   }
 }
+/* ================================================== */
 @media (min-width: 1280px) {
   .h {
     height: 64px;
@@ -45,10 +47,11 @@
     min-height: calc(100vh - 64px);
   }
 }
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

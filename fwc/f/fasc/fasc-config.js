@@ -13,7 +13,7 @@ class FascConfigData {
     This site provides information promptly.
     We believe our services will assist in launching humanity to space.`;
   /* -------------------------------------------------- */
-  static aLink = "#acooya";
+  static aLink = "#facooya";
   static bLink = "#facooya";
   static cLink = "#facooya";
 }

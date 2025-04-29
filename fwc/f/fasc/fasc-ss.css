@@ -86,10 +86,10 @@
   mask-image: url("../../res/svg/a.svg");
 }
 .fasc-social .b-icon {
-  mask-image: url("../../res/svg/a.svg");
+  mask-image: url("../../res/svg/b.svg");
 }
 .fasc-social .c-icon {
-  mask-image: url("../../res/svg/a.svg");
+  mask-image: url("../../res/svg/c.svg");
 }
 /* ================================================== */
 @media (min-width: 768px) {

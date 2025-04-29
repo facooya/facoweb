@@ -11,48 +11,8 @@ import {
 import {
   BodyConfig
 } from "./b/b-config.js";
-/* Footer, Main */
+/* ================================================== */
 /* import {
-  BodyUtil
-} from "./b/b-util.js"; */
-/* -------------------------------------------------- */
-import {
-  HtbcAccessor,
-  HtbcController
-} from "./h/htbc/htbc-class.js";
-/* -------------------------------------------------- */
-import {
-  HdncAccessor,
-  HdncController
-} from "./h/hdnc/hdnc-class.js";
-/* -------------------------------------------------- */
-import {
-  HsncAccessor,
-  HsncController
-} from "./h/hsnc/hsnc-class.js";
-/* ================================================== */
-import {
-  FascAccessor,
-  FascController
-} from "./f/fasc/fasc-class.js";
-import {
-  FascConfig
-} from "./f/fasc/fasc-config.js";
-/* -------------------------------------------------- */
-import {
-  FngcAccessor,
-  FngcController
-} from "./f/fngc/fngc-class.js";
-/* -------------------------------------------------- */
-import {
-  FllcAccessor,
-  FllcController
-} from "./f/fllc/fllc-class.js";
-import {
-  FllcConfig
-} from "./f/fllc/fllc-config.js";
-/* ================================================== */
-import {
   NpmhcAccessor,
   NpmhcController
 } from "./npm/npmhc/npmhc-class.js";
@@ -61,9 +21,9 @@ import {
 } from "./npm/npmhc/npmhc-config.js";
 import {
   NpmhcUtil
-} from "./npm/npmhc/npmhc-util.js";
+} from "./npm/npmhc/npmhc-util.js"; */
 /* -------------------------------------------------- */
-import {
+/* import {
   NpmscAccessor,
   NpmscController
 } from "./npm/npmsc/npmsc-class.js";
@@ -72,88 +32,23 @@ import {
 } from "./npm/npmsc/npmsc-config.js";
 import {
   NpmscUtil
-} from "./npm/npmsc/npmsc-util.js";
-/* ================================================== */
-/* import {
-  DpmAccessor,
-  DpmController
-} from "./dpm/dpm-class.js"; */
-/* -------------------------------------------------- */
-/* import {
-  DpmacAccessor,
-  DpmacController
-} from "./dpm/dpmac/dpmac-class.js";
-import {
-  DpmacConfig
-} from "./dpm/dpmac/dpmac-config.js"; */
-/* import {
-  DpmacUtil
-} from "./dpm/dpmac/dpmac-util.js"; */
-/* -------------------------------------------------- */
-/* import {
-  DpmscAccessor,
-  DpmscController
-} from "./dpm/dpmsc/dpmsc-class.js";
-import {
-  DpmscConfig
-} from "./dpm/dpmsc/dpmsc-config.js"; */
-/* -------------------------------------------------- */
-/* import {
-  DpmfcAccessor,
-  DpmfcController
-} from "./dpm/dpmfc/dpmfc-class.js";
-import {
-  DpmfcConfig
-} from "./dpm/dpmfc/dpmfc-config.js"; */
+} from "./npm/npmsc/npmsc-util.js"; */
 /* ================================================== */
 export {
   /* B */
   BodyAccessor,
   BodyController,
   BodyConfig,
-  /* HTBC */
-  HtbcAccessor,
-  HtbcController,
-  /* HDNC */
-  HdncAccessor,
-  HdncController,
-  /* HSNC */
-  HsncAccessor,
-  HsncController,
-  /* FASC */
-  FascAccessor,
-  FascController,
-  FascConfig,
-  /* FAUC */
-  FngcAccessor,
-  FngcController,
-  /* FLLC */
-  FllcAccessor,
-  FllcController,
-  FllcConfig,
   /* NPMHC */
-  NpmhcAccessor,
+  /* NpmhcAccessor,
   NpmhcController,
   NpmhcConfig,
-  NpmhcUtil,
+  NpmhcUtil, */
   /* NPMSC */
-  NpmscAccessor,
+  /* NpmscAccessor,
   NpmscController,
   NpmscConfig,
-  NpmscUtil
-  /* DPMAC */
-  /* DpmacAccessor,
-  DpmacController,
-  DpmacConfig,
-  /* DpmacUtil, 
-  /* DPMSC 
-  DpmscAccessor,
-  DpmscController,
-  DpmscConfig,
-  /* DPMFC 
-  DpmfcAccessor,
-  DpmfcController,
-  DpmfcConfig */
+  NpmscUtil */
 };
 /* ================================================== */
 /* ========================= :FACOOYA: ========================= */

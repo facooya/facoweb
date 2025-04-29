@@ -4,11 +4,31 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
-class NpmhcConfig {
-  static tabIndex = 0;
+import {
+  NpmhcController,
+  NpmscController
+} from "./npm-hub.js";
+/* ================================================== */
+class NpmAccessor {
+
 }
 /* ================================================== */
-export { NpmhcConfig };
+class NpmController {
+  static init() {
+    NpmhcController.init();
+  }
+  static load() {
+
+  }
+  static resizeDisplay() {
+
+  }
+  static resizeSensor() {
+
+  }
+}
+/* ================================================== */
+export { NpmAccessor, NpmController };
 /* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

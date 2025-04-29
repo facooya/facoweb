@@ -3,124 +3,96 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* import {
-  FwaConfig
-} from "../../../fwa/fwa-config.js"; */
-import {
-  BodyConfig,
-  /* BodyUtil, */
-  /* HeccAccessor, */
-  NpmhcConfig,
-  NpmhcUtil
-} from "../../fwc-hub.js";
+/* ================================================== */
+import { NpmscAccessor } from "../npm-hub.js";
 /*  */
+import { NpmhcConfig } from "./npmhc-config.js";
+/* ================================================== */
 class NpmhcAccessor {
 
 }
+/* ================================================== */
 class NpmhcController {
   static init() {
     NpmhcManager.init();
   }
   static load() {
     NpmhcManager.load();
-    NpmhcManager.event(true);
   }
   static resizeDisplay() {
     NpmhcManager.resizeDisplay();
-    NpmhcManager.event(false);
-    NpmhcManager.event(true);
+  }
+  static resizeSensor() {
+    NpmhcManager.resizeSensor();
   }
 }
+/* ================================================== */
 class NpmhcManager {
   static init() {
-    const {
-      npmhcExaTno
-    } = NpmhcConfig.getNpmhcTnoGroup();
-    /* Set Index */
-    for (let i = 0; i < npmhcExaTno.length; i++) {
-      npmhcExaTno[i].index = i;
+    const items = document.querySelectorAll(".npmhc-tab .item");
+    for (let i = 0; i < items.length; i++) {
+      items[i].index = i;
     }
+    /*  */
+    NpmhcLogic.updateTab();
+    /*  */
+    NpmhcManager.initEvent();
   }
   static load() {
-    window.addEventListener("hashchange", NpmhcHandler.windowOnHashChange);
-    NpmhcHandler.windowOnHashChange();
+
   }
   static resizeDisplay() {
 
   }
-  static event(isActive) {
-    const {
-      npmhcExaTno
-    } = NpmhcConfig.getNpmhcTnoGroup();
-    /*  */
-    const eventType = ["mouseenter", "mouseleave"];
-    let displayType = BodyConfig.previousDisplayType;
-    let eventListenerType = "removeEventListener";
-    if (isActive) {
-      eventListenerType = "addEventListener";
-      displayType = BodyConfig.currentDisplayType;
-    }
-    /*  */
-    if (displayType === 3) {
-      for (let i = 0; i < npmhcExaTno.length; i++) {
-        /* ETI: Event Type Index */
-        for (let eti = 0; eti < eventType.length; eti++) {
-          npmhcExaTno[i][eventListenerType](
-            eventType[eti],
-            NpmhcHandler.ddtNpmhcExaTno
-          );
-        }
-      }
-    }
-  }
-}
-class NpmhcHandler {
-  static windowOnHashChange() {
-    const {
-      npmhcExaTno
-    } = NpmhcConfig.getNpmhcTnoGroup();
-    let tabData = 0;
-    let hashData = window.location.hash.slice(1);
-    if (npmhcExaTno[hashData] === undefined) {
-      hashData = "#" + tabData.toString();
-      window.location.hash = hashData;
-    } else {
-      tabData = parseInt(hashData);
-    }
-    NpmhcUtil.setNpmhcTno(tabData);
-    /* HeccAccessor.windowScrollHandler(); */
+  static resizeSensor() {
+
   }
   /* ================================================== */
-  static ddtNpmhcExaTno(eventData) {
-    /* const {
-      eventType,
-      eventIndex
-    } = BodyUtil.getEventData(eventData); */
-
-    const {
-      npmhcTeraTnoText
-    } = NpmhcConfig.getNpmhcTnoGroup();
-    const clData = "cl-ddt-npmhc-e-tno-handler";
-    let type = "";
-    if (eventType === "mouseenter") {
-      type = "add";
-    } else if (eventType === "mouseleave") {
-      if (window.location.hash.slice(1) !== eventIndex.toString()) {
-        type = "remove";
-      }
-    }
-    /*  */
-    if (type) {
-      npmhcTeraTnoText[eventIndex].classList[type](clData);
+  static initEvent() {
+    const items = document.querySelectorAll(".npmhc-tab .item");
+    items.forEach(item => {
+      item.addEventListener("click", NpmhcHandler.itemClick);
+    });
+  }
+}
+/* ================================================== */
+class NpmhcHandler {
+  static itemClick(event) {
+    const item = event.currentTarget;
+    const itemIndex = item.index;
+    if (itemIndex !== NpmhcConfig.tabIndex) {
+      NpmhcConfig.tabIndex = itemIndex;
+      NpmhcLogic.updateTab();
     }
   }
 }
-export {
-  NpmhcAccessor,
-  NpmhcController
-};
+/* ================================================== */
+class NpmhcLogic {
+  static updateTab() {
+    const tabIndex = NpmhcConfig.tabIndex;
+    const tab = document.querySelector(".npmhc-tab");
+    const items = tab.querySelectorAll(".item");
+    const texts = tab.querySelectorAll(".text");
+    const active = "active";
+    /*  */
+    for (let i = 0; i < items.length; i++) {
+      items[i].classList.remove(active);
+      texts[i].classList.remove(active);
+    }
+    /*  */
+    items[tabIndex].classList.add(active);
+    texts[tabIndex].classList.add(active);
+    /*  */
+    NpmscAccessor.updateNavList();
+  }
+}
+/* ================================================== */
+export { NpmhcAccessor, NpmhcController };
+/* ================================================== */
+/* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
+/* ========================= ;FACOOYA; ========================= */

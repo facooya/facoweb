@@ -12,16 +12,24 @@ import {
 /* ================================================== */
 class HeaderController {
   static init() {
-
+    HtbcController.init();
+    HdncController.init();
+    HsncController.init();
   }
   static load() {
-
+    HtbcController.load();
+    HdncController.load();
+    HsncController.load();
   }
   static resizeDisplay() {
-
+    HtbcController.resizeDisplay();
+    HdncController.resizeDisplay();
+    HsncController.resizeDisplay();
   }
   static resizeSensor() {
-    
+    HtbcController.resizeSensor();
+    HdncController.resizeSensor();
+    HsncController.resizeSensor();
   }
 }
 /* ================================================== */
