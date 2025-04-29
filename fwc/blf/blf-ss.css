@@ -38,6 +38,21 @@
   justify-content: center;
   transition: margin 300ms ease;
 }
+/* !!!!! :v1.1.21a-2 [temp]: !!!!!! */
+.blf-y-dpmo {
+  /* Tag.main */
+  grid-area: blf-y-mo;
+  /* Grid */
+  display: grid;
+  grid-template-columns: minmax(200px, 1200px);
+  /* Layout */
+  min-height: calc(100vh - 4rem);
+  padding: 1rem;
+  /* Visual */
+  background-color: #FFFFFF;
+  justify-content: center;
+}
+/* !!!!! ;v1.1.21a-2 [temp]; !!!!!! */
 .blf-y-fo {
   /* Tag.footer */
   grid-area: blf-y-fo;

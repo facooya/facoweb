@@ -36,6 +36,13 @@ class BlfConfigElement {
       }
     },
     {
+      elementId: "blfYottaDpmo",
+      query: {
+        querySelector: ".blf-y-dpmo",
+        queryType: "single"
+      }
+    },
+    {
       elementId: "blfYottaFo",
       query: {
         querySelector: ".blf-y-fo",
@@ -201,8 +208,6 @@ class BlfConfigManager {
     }
     /* ================================================== */
     BlfConfigManager.blfFoAppend(tempSaveElement, blfFoFragment);
-    /* blfYottaFo.append(blfFoFragment); */
-    /* blfYottaFo.insertBefore(blfFoFragment, secondChild); */
     blfYottaFo.prepend(blfFoFragment);
   }
   /*  */
@@ -227,6 +232,7 @@ class BlfConfigManager {
 class BlfConfig {
   static currentDisplayType = 0;
   static previousDisplayType = 0;
+  static currentPageType = 0;
   static resizeTimerId = 0;
   /* -------------------------------------------------- */
   static blfConfigCache = {};

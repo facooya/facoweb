@@ -329,6 +329,7 @@ class HtpncHandler {
     } = FllcConfig.getFllcRoot();
     const {
       blfYottaNpmo,
+      blfYottaDpmo,
       blfYottaFo
     } = BlfConfig.getBlfGroup();
     /*  */
@@ -352,12 +353,26 @@ class HtpncHandler {
     /*  */
     HtpncTool.clHtpncExaHsngoGro(isActive);
     htpncYottaSdo.classList[clType](clData);
-    blfYottaNpmo.classList[clType](clData);
+    /* blfYottaNpmo.classList[clType](clData); */
     blfYottaFo.classList[clType](clData);
     hsncR.classList[clType](clData);
     heccZettaPboRgro.classList[clType](clData);
     htpncYottaSnto.classList[clType](clData);
     hdncR.classList[clType](clData);
+    /*  */
+    switch (BlfConfig.currentPageType) {
+      case 1: {
+        break;
+      }
+      case 2: {
+        blfYottaNpmo.classList[clType](clData);
+        break;
+      }
+      case 3: {
+        /* blfYottaDpmo.classList[clType](clData); */
+        break;
+      }
+    }
     /*  */
     htpncZettaHsngo.isActive = isActive;
   }

@@ -120,6 +120,19 @@ class BlfUtilGet {
       }
     }
   }
+  static getPageType() {
+    const pageType = [
+      ".blf-y-hpmo",
+      ".blf-y-npmo",
+      ".blf-y-dpmo"
+    ];
+    for (let pti = 0; pti < pageType.length; pti++) {
+      if (document.querySelector(pageType[pti])) {
+        const getPageType = pti + 1;
+        return getPageType;
+      }
+    }
+  }
 }
 class BlfUtil {
   static getGenerateElement(elementGroup, pIndex = []) {
@@ -133,6 +146,9 @@ class BlfUtil {
   }
   static getDisplayType() {
     return BlfUtilGet.getDisplayType();
+  }
+  static getPageType() {
+    return BlfUtilGet.getPageType();
   }
   /* -------------------------------------------------- */
 }

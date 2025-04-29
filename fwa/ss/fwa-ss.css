@@ -16,11 +16,11 @@ html {
   background-color: #222222;
   scrollbar-width: none;
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0rem;
   height: 0.5rem;
   display: none;
-}
+} */
 /* ::-webkit-scrollbar-thumb {
   border-radius: 0.25rem;
   background-color: #707070;

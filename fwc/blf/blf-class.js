@@ -39,6 +39,7 @@ class BlfManager {
   static init() {
     BlfConfig.currentDisplayType = BlfUtil.getDisplayType();
     BlfConfig.previousDisplayType = BlfConfig.currentDisplayType;
+    BlfConfig.currentPageType = BlfUtil.getPageType();
   }
   static load() {
     BlfTool.calcBlfYottaFo();

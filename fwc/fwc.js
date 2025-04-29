@@ -5,6 +5,7 @@
  */
 
 import {
+  BlfConfig,
   BlfController,
   HtpncController,
   HdncController,
@@ -48,8 +49,19 @@ class FwcManager {
     FoscController.init();
     FllcController.init();
     /* -------------------------------------------------- */
-    NpmhcController.init();
-    NpmscController.init();
+    switch (BlfConfig.currentPageType) {
+      case 1: {
+        break;
+      }
+      case 2: {
+        NpmhcController.init();
+        NpmscController.init();
+        break;
+      }
+      case 3: {
+        break;
+      }
+    }
   }
   static load() {
     BlfController.load();
@@ -64,8 +76,19 @@ class FwcManager {
     FoscController.load();
     FllcController.load();
     /* -------------------------------------------------- */
-    NpmhcController.load();
-    NpmscController.load();
+    switch (BlfConfig.currentPageType) {
+      case 1: {
+        break;
+      }
+      case 2: {
+        NpmhcController.load();
+        NpmscController.load();
+        break;
+      }
+      case 3: {
+        break;
+      }
+    }
   }
   static resizeDisplay() {
     BlfController.resizeDisplay();
@@ -80,8 +103,19 @@ class FwcManager {
     FoscController.resizeDisplay();
     FllcController.resizeDisplay();
     /* -------------------------------------------------- */
-    NpmhcController.resizeDisplay();
-    NpmscController.resizeDisplay();
+    switch (BlfConfig.currentPageType) {
+      case 1: {
+        break;
+      }
+      case 2: {
+        NpmhcController.resizeDisplay();
+        NpmscController.resizeDisplay();
+        break;
+      }
+      case 3: {
+        break;
+      }
+    }
   }
   static resizeSensor() {
     BlfController.resizeSensor();
