@@ -1,0 +1,45 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* ================================================== */
+.dpmfc-tab .item.active {
+  cursor: default;
+  border-color: #222222;
+}
+.dpmfc-tab .text.active {
+  color: #222222;
+}
+/* ================================================== */
+.dpmfc-navigation .list.active {
+  display: flex;
+}
+.dpmfc-navigation .item.active {
+  display: block;
+}
+/* ================================================== */
+.dpmfc-pagination.wide-x {
+  grid-template-areas: "left number right";
+}
+/* -------------------------------------------------- */
+.dpmfc-pagination .number-item.active {
+  background: #222222;
+  color: #FFFFFF;
+}
+/* -------------------------------------------------- */
+.dpmfc-pagination .control .item.enabled {
+  border-color: #222222;
+  cursor: pointer;
+}
+.dpmfc-pagination .control .icon.enabled {
+  background: #000000;
+}
+/* ================================================== */
+/* ========================= :FACOOYA: ========================= */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* ========================= ;FACOOYA; ========================= */

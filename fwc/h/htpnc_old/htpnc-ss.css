@@ -1,0 +1,236 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* PT-CODE: ZBYS [g2p2-g2p7] */
+.htpnc-r {
+  --htpnc-transition-primary: var(--transition-primary);
+  --htpnc-transition-slide: var(--nc-transition-slide);
+  --htpnc-background: var(--nc-background);
+  --htpnc-color: var(--white);
+}
+/* = = = = = TPNC-R = = = = = */
+.htpnc-r {
+  /* Position */
+  position: fixed;
+  z-index: 10;
+  top: 0rem;
+  /* Layout */
+  width: 100%;
+  background-color: var(--htpnc-background);
+
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  /*  */
+  scrollbar-width: none;
+  /*  */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+/* = = = = = TPNC-R = = = = = */
+.htpnc-y {
+  /* Position */
+  position: relative;
+  z-index: 2;
+  /* Grid */
+  display: grid;
+  grid-template-columns: 4rem minmax(10rem, 1fr) 4rem;
+  grid-template-rows: var(--htpnc-height);
+  gap: 0rem 1rem;
+  grid-template-areas:
+    "htpnc-z-hdngo htpnc-z-lgo htpnc-z-hsngo";
+  list-style-type: none;
+}
+.htpnc-y-sdo {
+  /* Position */
+  position: absolute;
+  z-index: 1;
+  top: 0rem;
+  /* Layout */
+  width: 100%;
+  height: calc(100% + 1px);
+  /* Visual */
+  background: var(--transparent);
+  pointer-events: none;
+}
+/*  */
+.htpnc-y-snto {
+  display: none;
+}
+.htpnc-z-lgo {
+  /* Tag.li */
+  grid-area: htpnc-z-lgo;
+  position: relative;
+  height: 100%;
+}
+.htpnc-e-lgo {
+  /* Tag.a */
+  display: grid;
+  grid-template-areas:
+    "dev-logo ta-icon logo";
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.htpnc-p-lgo-dev-logo {
+  grid-area: dev-logo;
+  width: 4rem;
+  height: 2rem;
+  mask-image: url("../../res/svg/logo-2w.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: var(--white);
+}
+.htpnc-p-lgo-ta-icon {
+  grid-area: ta-icon;
+  width: 0.5rem;
+  height: 0.5rem;
+  mask-image: url("../../res/svg/a.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: var(--white);
+  align-self: end;
+  /*  */
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+.htpnc-p-lgo-logo {
+  grid-area: logo;
+  width: 10rem;
+  height: 2rem;
+  mask-image: url("../../res/svg/logo-5w.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: var(--white);
+}
+.htpnc-z-hdngo {
+  /* Position */
+  grid-area: htpnc-z-hdngo;
+  position: relative;
+  /* Grid */
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.475rem;
+  /* Layout */
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  /* Visual */
+  cursor: pointer;
+}
+.htpnc-z-hsngo {
+  /* Position */
+  grid-area: htpnc-z-hsngo;
+  position: relative;
+  /* Grid */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.25rem;
+  /* Layout */
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  /* Visual */
+  cursor: pointer;
+}
+.htpnc-e-lgo-link {
+  /* Layout */
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  /* Typographic */
+  /* color: var(--htpnc-color);
+  font-weight: bold;
+  font-size: 2rem; */
+  /* Visual */
+  cursor: pointer;
+}
+.htpnc-e-hdngo-gro {
+  /* Box Model */
+  width: 100%;
+  height: 100%; /* Cascade => { top } */
+  /* Visual */
+  background: var(--htpnc-color);
+  border-radius: 0.1rem;
+  opacity: 1; /* Cascade => { transition: opacity } */
+  transform: translate(0rem, 0rem) rotate(0deg) scale(1, 1); /* Cascade => { transition: transform } */
+  transition:
+    top var(--htpnc-transition-primary),
+    left var(--htpnc-transition-primary),
+    transform var(--htpnc-transition-primary),
+    opacity var(--htpnc-transition-primary);
+}
+.htpnc-e-hsngo-gro {
+  /* Positioning */
+  width: 100%; /* 0.5rem */
+  height: 100%;
+  background-color: var(--htpnc-color);
+  border-radius: 0.1rem;
+  /* Visual */
+  transition: 
+    transform var(--htpnc-transition-primary);
+}
+@media (min-width: 768px) {
+  .htpnc-y {
+    /* Tag.ul */
+    grid-template-columns: 1fr 4rem;
+    grid-template-rows: var(--htpnc-height) 4rem;
+    grid-template-areas:
+      "htpnc-z-lgo htpnc-z-hsngo"
+      ". .";
+    gap: 0rem 2rem;
+    transition:
+      gap var(--htpnc-transition-slide);
+  }
+  .htpnc-z-hdngo {
+    /* Tag.li */
+    display: none;
+  }
+  .htpnc-y-snto {
+    position: absolute;
+    top: 1.25rem;
+    right: 4rem;
+
+    display: block;
+    width: 15rem;
+    box-sizing: border-box;
+
+    opacity: 0;
+    transform-origin: right;
+    transform: scale(0, 0);
+    transition:
+      opacity var(--htpnc-transition-slide),
+      transform var(--htpnc-transition-slide);
+    cursor: default;
+    /*  */
+    color: var(--htpnc-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+@media (min-width: 1280px) {
+  .htpnc-y {
+    /* Tag.ul */
+    grid-template-columns: 16rem 1fr 4rem;
+    grid-template-rows: var(--htpnc-height);
+    grid-template-areas:
+      "htpnc-z-lgo . htpnc-z-hsngo";
+  }
+  .htpnc-z-lgo {
+    padding: 0rem 0rem 0rem 1rem;
+  }
+}
+/* =============== :FACOOYA: =============== */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+/* =============== ;FACOOYA; =============== */

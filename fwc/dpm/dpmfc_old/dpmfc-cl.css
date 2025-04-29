@@ -1,0 +1,55 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* ============================== */
+.dpmfc-e-tso.cl-set-dpmfc-e-tso-util {
+  cursor: default;
+}
+.dpmfc-p-tso-text.cl-set-dpmfc-e-tso-util {
+  color: #000000;
+}
+.dpmfc-p-tso-aro.cl-set-dpmfc-e-tso-util {
+  border: 0.25rem solid #000000;
+}
+.dpmfc-z-bso.cl-set-dpmfc-e-tso-util {
+  display: flex;
+}
+/* ============================== */
+.dpmfc-e-pno-clo.cl-dpmfc-e-pno-clo-util {
+  background: #222222;
+  cursor: default;
+}
+.dpmfc-p-pno-clo-text.cl-dpmfc-e-pno-clo-util {
+  color: #FFFFFF;
+}
+/* ============================== */
+.dpmfc-y-pno.cl-dpmfc-y-pno-util {
+  grid-template-areas: "llo clo rlo";
+}
+.dpmfc-z-pno-clo.cl-dpmfc-y-pno-util {
+  flex-wrap: nowrap;
+}
+/* ============================== */
+.dpmfc-e-pno-llo.cl-dpmfc-pno-disabled-util {
+  border-color: #777777;
+  cursor: default;
+}
+.dpmfc-e-pno-rlo.cl-dpmfc-pno-disabled-util {
+  border-color: #777777;
+  cursor: default;
+}
+.dpmfc-p-pno-llo.cl-dpmfc-pno-disabled-util {
+  background: #777777;
+}
+.dpmfc-p-pno-rlo.cl-dpmfc-pno-disabled-util {
+  background: #777777;
+}
+/* ========================= :FACOOYA: ========================= */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* ========================= ;FACOOYA; ========================= */

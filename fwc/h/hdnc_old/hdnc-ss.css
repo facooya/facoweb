@@ -1,0 +1,404 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.hdnc-r {
+  --hdnc-duration-primary: var(--duration-primary);
+  --hdnc-timing-primary: var(--timing-primary);
+  --hdnc-timing-secondary: var(--timing-secondary);
+  /*  */
+  --hdnc-background: var(--nc-background);
+  --hdnc-font-color-primary: #FFFFFF;
+  --hdnc-font-color-secondary: #FFFFFF;
+  --hdnc-rgro-color: #FFFFFF;
+  --hdnc-background-color-secondary: var(--background-color-secondary);
+  --hdnc-e-width-primary: 10rem;
+  --hdnc-e-width-secondary: 20rem;
+}
+.hdnc-r {
+  /* Positioning */
+  position: fixed;
+  top: var(--tpnc-height); /* TPC.height = 4rem */
+  left: -80%;
+  z-index: 100; /* FIXME: Part section < Temp */
+  /* Grid */
+  display: grid;
+  grid-auto-rows: min-content; /* hdnc-z: 4rem + hdnc-e: auto, !!! template-rows? */
+  /* Layout */
+  width: 80%;
+  height: calc(100% - var(--tpnc-height)); /* 4rem = TPC.height */
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  /* Visual */
+  background-color: var(--nc-background);
+  transition: 
+    left var(--hdnc-duration-primary) var(--hdnc-timing-primary);
+  /*  */
+  scrollbar-width: none;
+  /*  */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+.hdnc-e-tlo-sdo {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  top: 0rem;
+  width: 100%;
+  height: calc(100% + 1px);
+  background: var(--transparent);
+  pointer-events: none;
+}
+.hdnc-p-blo-sdo {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  top: 0rem;
+  width: 100%;
+  height: calc(100% + 1px);
+  background: var(--transparent);
+  pointer-events: none;
+}
+.hdnc-y-sfro {
+  position: fixed;
+  z-index: 3;
+  width: 80%;
+  transition: height 300ms ease;
+  pointer-events: none;
+}
+.hdnc-y-sfro-to {
+  top: 4rem;
+  height: 0rem;
+  background: linear-gradient(
+    var(--hdnc-background),
+    var(--transparent)
+  );
+}
+.hdnc-y-sfro-bo {
+  bottom: 0rem;
+  height: 0rem;
+  background: linear-gradient(
+    var(--transparent),
+    var(--hdnc-background)
+  );
+}
+.hdnc-y-sdo {
+  /* ios snc scroll bug fix */
+  /* Position */
+  position: absolute;
+  /* .hdnc-y-mgpt < .hdnc-y */
+  z-index: 3;
+  top: 0rem;
+  /* Layout */
+  width: 100%;
+  height: calc(100% + 1px);
+  /* Visual */
+  background: var(--transparent);
+  pointer-events: none;
+}
+/* = = = = = hdnc-Y = = = = = */
+.hdnc-y {
+  /* Position */
+  position: relative;
+  /* .hdnc-y-mgpt < .hdnc-y */
+  z-index: 2;
+  /* Grid */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4rem auto;
+  grid-template-areas:
+    "hdnc-z-tlo"
+    "hdnc-z-blo";
+  /* Layout */
+  box-sizing: border-box;
+  /* Visual */
+  background-color: var(--nc-background);
+  list-style-type: none;
+  cursor: pointer;
+  transition:
+    background-color var(--hdnc-duration-primary) var(--hdnc-timing-secondary);
+}
+/* = = = = = hdnc-Z-BEPT = = = = = */
+.hdnc-z-tlo {
+  grid-area: hdnc-z-tlo;
+  position: relative;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "hdnc-e-tlo-text";
+  /*  */
+  scrollbar-width: none;
+}
+.hdnc-e-tlo-text {
+  grid-area: hdnc-e-tlo-text;
+  justify-self: center;
+  color: var(--hdnc-font-color-primary);
+  transition: text-shadow 300ms ease;
+  /*  */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 70%;
+  text-align: center;
+}
+.hdnc-e-tlo-rgro {
+  /*  */
+  position: absolute;
+  right: 0rem;
+  margin: 0rem 5% 0rem 0rem;
+  /*  */
+  border-top: 0.5rem solid var(--hdnc-rgro-color);
+  border-right: 0.4rem solid var(--transparent);
+  border-left: 0.4rem solid var(--transparent);
+  transform: rotate(0deg);
+  transition:
+    border var(--hdnc-duration-primary) var(--hdnc-timing-primary),
+    transform var(--hdnc-duration-primary) var(--hdnc-timing-primary);
+}
+.hdnc-e-tlo-bgro {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  width: 0%;
+  height: 0.125rem;
+  background-color: var(--facooya-primary);
+  border-radius: 0.0625rem; /* height / 2 */
+  transition:
+    left var(--hdnc-duration-primary) var(--hdnc-timing-primary),
+    width var(--hdnc-duration-primary) var(--hdnc-timing-primary);
+}
+/* = = = = = hdnc-Z ~ hdnc-P = = = = = */
+.hdnc-z-blo {
+  grid-area: hdnc-z-blo;
+  position: relative;
+  display: grid;
+}
+.hdnc-e-blo {
+  position: relative;
+  list-style-type: none; /* .lstfc */
+  /* Refresh visible shield */
+  /* grid-template-rows: [JS] */
+  display: grid;
+  grid-auto-rows: 0rem;
+  /*  */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* max-height: calc(100vh - 14rem); */
+  /*  */
+  transition:
+    grid-template-rows var(--hdnc-duration-primary) var(--hdnc-timing-primary),
+    max-height 300ms ease;
+  /*  */
+  scrollbar-width: none;
+}
+.hdnc-p-blo {
+  position: relative;
+  /*  */
+  padding: 0rem 10% 0rem 10%;
+}
+/* = = = = = hdnc-T = = = = = */
+.hdnc-t-blo {
+  /* Position */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* Grid */
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-areas:
+    "hdnc-g-blo-text hdnc-g-blo-rgro";
+  gap: 0rem 0.5rem;
+  /* Visual */
+  opacity: 0;
+  text-decoration: none;
+  transition:
+    opacity var(--hdnc-duration-primary) var(--hdnc-timing-primary);
+}
+.hdnc-g-blo-text {
+  grid-area: hdnc-g-blo-text;
+  color: var(--hdnc-font-color-secondary);
+  font-weight: normal;
+  /* transition: opacity 300ms; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hdnc-g-blo-rgro {
+  grid-area: hdnc-g-blo-rgro;
+  /* margin: 0rem 0rem 0rem 0.5rem; */
+  border-top: 0.25rem solid var(--transparent);
+  border-bottom: 0.25rem solid var(--transparent);
+  border-left: 0.5rem solid var(--hdnc-rgro-color);
+  /* transition: opacity 300ms ease; */
+}
+.hdnc-g-blo-bgro {
+  position: absolute;
+  top: 70%;
+  width: 0rem;
+  height: 0.125rem;
+  background-color: var(--facooya-secondary);
+  border-radius: 0.0625rem;
+  transition:
+    left 300ms ease,
+    width 300ms ease;
+  /* transition: opacity 300ms ease; */
+}
+/*  */
+.hdnc-e-blo-sgro {
+  display: none;
+  pointer-events: none;
+  /*  */
+  position: absolute;
+  left: 9rem;
+  width: 2rem;
+  height: 2rem;
+  background: radial-gradient(circle, #777777, transparent 70%);
+  border-radius: 1rem;
+  /*  */
+  transform: scale(0, 0);
+  transition:
+    transform 150ms linear,
+    top 150ms ease,
+    right 150ms ease,
+    bottom 150ms ease,
+    left 150ms ease;
+}
+/*  */
+.hdnc-p-blo-sgro {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  /* mask-image: url("../../../fwa/res/svg/chevron2.svg"); */
+  mask-image: url("../../res/icon/chevron-icon.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: #FFFFFF;
+  transition: height 300ms ease;
+}
+.hdnc-p-blo-sgro-bo {
+  transform: rotate(180deg);
+}
+@media (min-width: 768px) {
+  .hdnc-r {
+    /* Reset */
+    left: auto;
+    width: 100%;
+    height: auto;
+    transition: none;
+    overflow-y: visible;
+    /* Grid */
+    grid-template-columns: repeat(4, 1fr);
+    /* Box Model */
+    box-sizing: border-box;
+    padding: 0rem 1rem;
+  }
+  .hdnc-y-sdo {
+    display: none;
+  }
+  .hdnc-y-sfro {
+    display: none;
+  }
+  .hdnc-e-tlo-rgro {
+    display: none;
+  }
+  .hdnc-e-blo {
+    /* Position */
+    position: absolute;
+    /* Layout */
+    width: 10rem;
+    /* Grid */
+    justify-self: center;
+    grid-template-columns: 1fr;
+    /* grid-template-rows: [JS] !!! */
+    /* Visual */
+    border-radius: 0rem 0rem 1rem 1rem;
+    background-color: var(--hdnc-background);
+    transition:
+      grid-template-rows var(--hdnc-duration-primary) var(--hdnc-timing-primary), 
+      width var(--hdnc-duration-primary) var(--hdnc-timing-primary),
+      max-height 300ms ease;
+  }
+  .hdnc-e-tlo-sdo {
+    display: block;
+  }
+  .hdnc-p-blo-sdo {
+    display: block;
+  }
+  .hdnc-g-blo-bgro {
+    transition: width 300ms ease;
+  }
+  /* .hdnc-z-eco-sdo {
+    position: absolute;
+    z-index: 22;
+    top: 0rem;
+    width: 100%;
+    height: calc(100% + 1px);
+    background: var(--white);
+  } */
+  /* .hdnc-e-blo-scro {
+    display: block;
+  } */
+  .hdnc-e-blo-sgro {
+    display: block;
+  }
+}
+@media (min-width: 1280px) {
+  .hdnc-r {
+    /* 16rem HTPNC Logo */
+    top: 0rem;
+    left: 16rem;
+    right: 4rem;
+    grid-template-columns: repeat(4, minmax(8rem, 15rem));
+    width: calc(100% - 16rem - 4rem);
+    transition:
+      width var(--hdnc-duration-primary) var(--hdnc-timing-primary);
+  }
+  .hdnc-y {
+    cursor: default;
+  }
+  .hdnc-g-blo-text {
+    max-width: 14rem;
+    transition: text-shadow 300ms ease;
+  }
+  .hdnc-g-blo-rgro {
+    margin: 0rem;
+    border-top: 0rem solid var(--transparent);
+    border-bottom: 0rem solid var(--transparent);
+    border-left: 0rem solid var(--transparent);
+    opacity: 0;
+    /* Reset: transition(mobile) */
+    transition:
+      margin var(--hdnc-duration-primary) var(--hdnc-timing-primary),
+      border var(--hdnc-duration-primary) var(--hdnc-timing-primary),
+      opacity var(--hdnc-duration-primary) var(--hdnc-timing-secondary);
+  }
+  .hdnc-g-blo-bgro {
+    /* Position */
+    top: 75%;
+    /* Layout */
+    width: 0%;
+    /* Visual */
+    /* Reset: opacity(mobile), transition(mobile) */
+    transition:
+      width var(--hdnc-duration-primary) var(--hdnc-timing-primary);
+  }
+}
+/* =============== :FACOOYA: =============== */
+/* NOTE
+ * CL: Class List
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* =============== ;FACOOYA; =============== */

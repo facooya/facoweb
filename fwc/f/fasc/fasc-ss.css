@@ -1,0 +1,118 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.fasc {
+  grid-area: fasc;
+  display: grid;
+  grid-template-areas: "logo" "text" "social";
+  gap: 12px;
+}
+/* ================================================== */
+.fasc-logo-wrapper {
+  grid-area: logo;
+}
+.fasc-logo-container {
+  display: inline-flex;
+}
+.fasc-logo-item {
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background: #FFFFFF;
+}
+.fasc-dev-item {
+  /* width: 6rem;
+  height: 3rem; */
+  width: 64px;
+  height: 32px;
+  mask-image: url("../../res/svg/logo-2w.svg");
+}
+.fasc-ta-item {
+  /* width: 0.75rem;
+  height: 0.75rem; */
+  width: 8px;
+  height: 8px;
+  mask-image: url("../../res/svg/a.svg");
+  margin-right: 8px;
+  align-self: end;
+}
+.fasc-facooya-item {
+  /* width: 3rem;
+  height: 3rem; */
+  width: 32px;
+  height: 32px;
+  mask-image: url("../../res/svg/b.svg");
+}
+/* ================================================== */
+.fasc-text-container {
+  grid-area: text;
+  /*  */
+  color: #FFFFFF;
+}
+.fasc-text-link-item {
+  font-weight: bold;
+  color: #FFFFFF;
+}
+/* ================================================== */
+.fasc-social-container {
+  grid-area: social;
+  /*  */
+  display: inline-flex;
+  gap: 24px;
+}
+.fasc-social-item-icon {
+  display: block;
+  /* width: 1.8rem;
+  height: 1.8rem; */
+  width: 24px;
+  height: 24px;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: #FFFFFF;
+}
+.fasc-social-a-icon {
+  mask-image: url("../../res/svg/a.svg");
+}
+.fasc-social-b-icon {
+  mask-image: url("../../res/svg/b.svg");
+}
+.fasc-social-c-icon {
+  mask-image: url("../../res/svg/c.svg");
+}
+@media (min-width: 768px) {
+  .fasc {
+    grid-template-areas: "logo social" "text social";
+    gap: 12px 32px;
+  }
+  .fasc-social-container {
+    justify-content: end;
+    align-items: end;
+  }
+}
+@media (min-width: 1280px) {
+  .fasc {
+    grid-template-areas: "logo text social";
+    justify-self: center;
+    gap: 32px;
+    max-width: 90%;
+  }
+  .fasc-logo-wrapper {
+    align-self: center;
+  }
+  .fasc-text-container {
+    align-self: center;
+  }
+  .fasc-social-container {
+    justify-content: start;
+    align-items: center;
+  }
+}
+/* ========================= :FACOOYA: ========================= */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* ========================= ;FACOOYA; ========================= */

@@ -5,19 +5,16 @@
  */
 
 import {
-  BlfConfig,
-  BlfController,
-  HtpncController,
+  BodyConfig,
+  BodyController,
+  HtbcController,
   HdncController,
   HsncController,
-  HeccController,
   FascController,
-  FaucController,
-  FoscController,
+  FngcController,
   FllcController,
   NpmhcController,
   NpmscController,
-  DpmhcController,
   DpmacController,
   DpmscController,
   DpmfcController
@@ -41,19 +38,18 @@ class FwcController {
 /* ================================================== */
 class FwcManager {
   static init() {
-    BlfController.init();
+    BodyController.init();
     /* -------------------------------------------------- */
-    HtpncController.init();
+    HtbcController.init();
     HdncController.init();
     HsncController.init();
-    HeccController.init();
+    /* HeccController.init(); */
     /* -------------------------------------------------- */
     FascController.init();
-    FaucController.init();
-    FoscController.init();
+    FngcController.init();
     FllcController.init();
     /* -------------------------------------------------- */
-    switch (BlfConfig.currentPageType) {
+    switch (BodyConfig.pageType) {
       case 1: {
         break;
       }
@@ -63,7 +59,6 @@ class FwcManager {
         break;
       }
       case 3: {
-        DpmhcController.init();
         DpmacController.init();
         DpmscController.init();
         DpmfcController.init();
@@ -72,19 +67,18 @@ class FwcManager {
     }
   }
   static load() {
-    BlfController.load();
+    BodyController.load();
     /* -------------------------------------------------- */
-    HtpncController.load();
+    HtbcController.load();
     HdncController.load();
     HsncController.load();
-    HeccController.load();
+    /* HeccController.load(); */
     /* -------------------------------------------------- */
     FascController.load();
-    FaucController.load();
-    FoscController.load();
+    FngcController.load();
     FllcController.load();
     /* -------------------------------------------------- */
-    switch (BlfConfig.currentPageType) {
+    switch (BodyConfig.pageType) {
       case 1: {
         break;
       }
@@ -94,7 +88,6 @@ class FwcManager {
         break;
       }
       case 3: {
-        DpmhcController.load();
         DpmacController.load();
         DpmscController.load();
         DpmfcController.load();
@@ -103,19 +96,18 @@ class FwcManager {
     }
   }
   static resizeDisplay() {
-    BlfController.resizeDisplay();
+    BodyController.resizeDisplay();
     /* -------------------------------------------------- */
-    HtpncController.resizeDisplay();
+    HtbcController.resizeDisplay();
     HdncController.resizeDisplay();
     HsncController.resizeDisplay();
-    HeccController.resizeDisplay();
+    /* HeccController.resizeDisplay(); */
     /* -------------------------------------------------- */
     FascController.resizeDisplay();
-    FaucController.resizeDisplay();
-    FoscController.resizeDisplay();
+    FngcController.resizeDisplay();
     FllcController.resizeDisplay();
     /* -------------------------------------------------- */
-    switch (BlfConfig.currentPageType) {
+    switch (BodyConfig.pageType) {
       case 1: {
         break;
       }
@@ -125,7 +117,6 @@ class FwcManager {
         break;
       }
       case 3: {
-        DpmhcController.resizeDisplay();
         DpmacController.resizeDisplay();
         DpmscController.resizeDisplay();
         DpmfcController.resizeDisplay();
@@ -134,19 +125,19 @@ class FwcManager {
     }
   }
   static resizeSensor() {
-    BlfController.resizeSensor();
+    BodyController.resizeSensor();
     /* -------------------------------------------------- */
-    HtpncController.resizeSensor();
+    HtbcController.resizeSensor();
     HdncController.resizeSensor();
     HsncController.resizeSensor();
-    HeccController.resizeSensor();
+    /* HeccController.resizeSensor(); */
     /* -------------------------------------------------- */
     /* FascController.resizeSensor();
     FaucController.resizeSensor();
     FoscController.resizeSensor(); */
     FllcController.resizeSensor();
     /* -------------------------------------------------- */
-    switch (BlfConfig.currentPageType) {
+    switch (BodyConfig.pageType) {
       case 1: {
         break;
       }
@@ -156,21 +147,19 @@ class FwcManager {
         break;
       }
       case 3: {
-        /* DpmhcController.resizeSensor();
-        DpmscController.resizeSensor(); */
         DpmfcController.resizeSensor();
         break;
       }
     }
   }
 }
-export {
-  FwcController
-};
-/*  */
+export { FwcController };
+/* ================================================== */
 FwcController.init();
+/* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
+ /* ========================= ;FACOOYA; ========================= */
