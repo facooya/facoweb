@@ -124,6 +124,13 @@
 }
 /* ==========----- ;setHtpncExaHsngo; -----========== */
 /* =============== ;Handler; =============== */
+/* =============== :Tool: =============== */
+.htpnc-p-lgo-logo.cl-htpnc-p-lgo-logo-tool {
+  /* max-width: 320px */
+  width: 2rem;
+  mask-image: url("../../../svg/a.svg");
+}
+/* =============== ;Tool; =============== */
 /* =============== :FACOOYA: =============== */
 /* NOTE
  * CL: Class List

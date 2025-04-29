@@ -36,7 +36,7 @@
   z-index: 2;
   /* Grid */
   display: grid;
-  grid-template-columns: 4rem minmax(8rem, 1fr) 4rem;
+  grid-template-columns: 4rem minmax(10rem, 1fr) 4rem;
   grid-template-rows: var(--htpnc-height);
   gap: 0rem 1rem;
   grid-template-areas:
@@ -86,13 +86,15 @@
 .htpnc-p-lgo-ta-icon {
   grid-area: ta-icon;
   width: 0.5rem;
-  height: 1.5rem;
-  mask-image: url("../../../svg/b.svg");
+  height: 0.5rem;
+  mask-image: url("../../../svg/a.svg");
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: var(--white);
-  margin-right: 0.5rem;
   align-self: end;
+  /*  */
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
 }
 .htpnc-p-lgo-logo {
   grid-area: logo;

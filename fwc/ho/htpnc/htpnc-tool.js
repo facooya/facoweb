@@ -37,6 +37,24 @@ class HtpncToolCl {
       htpncExaHsngoGro[ebi].classList[clType](clData);
     }
   }
+  /* ========== */
+  static clHtpncPetaLgoLogo() {
+    const {
+      htpncZettaLgo,
+      htpncPetaLgoLogo
+    } = HtpncConfig.getHtpncLgoGroup();
+    const htpncZettaLgoWidth = htpncZettaLgo.clientWidth;
+    const devLogoRemWidth = 4;
+    const taIconRemWidth = 0.5;
+    const logoRemWidth = 10;
+    const calcWidth = (devLogoRemWidth + taIconRemWidth + logoRemWidth) * 16;
+    /*  */
+    if (htpncZettaLgoWidth < calcWidth) {
+      htpncPetaLgoLogo.classList.add("cl-htpnc-p-lgo-logo-tool");
+    } else {
+      htpncPetaLgoLogo.classList.remove("cl-htpnc-p-lgo-logo-tool");
+    }
+  }
 }
 class HtpncTool {
   static clHtpncExaHdngoGro(isActive) {
@@ -44,6 +62,9 @@ class HtpncTool {
   }
   static clHtpncExaHsngoGro(isActive) {
     HtpncToolCl.clHtpncExaHsngoGro(isActive);
+  }
+  static clHtpncPetaLgoLogo() {
+    HtpncToolCl.clHtpncPetaLgoLogo();
   }
 }
 export {

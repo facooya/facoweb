@@ -58,7 +58,18 @@ import {
 import {
   HeccUtil
 } from "./ho/hecc/hecc-util.js";
-/* -------------------------------------------------- */
+/* ================================================== */
+import {
+  FllcAccessor,
+  FllcController
+} from "./fo/fllc/fllc-class.js";
+import {
+  FllcConfig
+} from "./fo/fllc/fllc-config.js";
+/* import {
+  FllcUtil
+} from "./fo/fllc/fllc-util.js"; */
+/* ================================================== */
 import {
   NpmhcAccessor,
   NpmhcController
@@ -107,6 +118,11 @@ export {
   HeccController,
   HeccConfig,
   HeccUtil,
+  /* FLLC */
+  FllcAccessor,
+  FllcController,
+  FllcConfig,
+  /* FllcUtil, */
   /* NPMHC */
   NpmhcAccessor,
   NpmhcController,

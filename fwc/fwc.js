@@ -10,6 +10,7 @@ import {
   HdncController,
   HsncController,
   HeccController,
+  FllcController,
   NpmhcController,
   NpmscController
 } from "./fwc-hub.js";
@@ -38,6 +39,8 @@ class FwcManager {
     HsncController.init();
     HeccController.init();
     /* -------------------------------------------------- */
+    FllcController.init();
+    /* -------------------------------------------------- */
     NpmhcController.init();
     NpmscController.init();
   }
@@ -48,6 +51,8 @@ class FwcManager {
     HdncController.load();
     HsncController.load();
     HeccController.load();
+    /* -------------------------------------------------- */
+    FllcController.load();
     /* -------------------------------------------------- */
     NpmhcController.load();
     NpmscController.load();
@@ -60,15 +65,20 @@ class FwcManager {
     HsncController.resizeDisplay();
     HeccController.resizeDisplay();
     /* -------------------------------------------------- */
+    FllcController.resizeDisplay();
+    /* -------------------------------------------------- */
     NpmhcController.resizeDisplay();
     NpmscController.resizeDisplay();
   }
   static resizeSensor() {
     BlfController.resizeSensor();
     /* -------------------------------------------------- */
+    HtpncController.resizeSensor();
     HdncController.resizeSensor();
     HsncController.resizeSensor();
     HeccController.resizeSensor();
+    /* -------------------------------------------------- */
+    FllcController.resizeSensor();
   }
 }
 export {

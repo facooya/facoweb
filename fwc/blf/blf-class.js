@@ -6,6 +6,9 @@
 import {
   BlfConfig
 } from "../fwc-hub.js";
+import {
+  BlfTool
+} from "./blf-tool.js";
 /*  */
 class BlfAccessor {
 
@@ -42,7 +45,7 @@ class BlfManager {
     blfYottaFo.style.gridTemplateAreas = "\"fsmc fsmc\" \"fauc fsdc\" \"fllc fllc\""; */
   }
   static resizeDisplay() {
-
+    BlfManager.resizeSensor();
   }
   static resizeSensor() {
     /* const {
@@ -61,6 +64,7 @@ class BlfManager {
     if (faucRootRect.width + fsdcRootRect.width < wiw) {
       blfYottaFo.style.gridTemplateAreas = "\"fsmc fsmc\" \"fauc fsdc\" \"fllc fllc\"";
     } */
+    BlfTool.calcBlfYottaFo();
   }
 }
 class BlfHandler {

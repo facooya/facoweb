@@ -39,6 +39,9 @@ class HtpncController {
     HtpncManager.event(false);
     HtpncManager.event(true);
   }
+  static resizeSensor() {
+    HtpncManager.resizeSensor();
+  }
 }
 class HtpncManager {
   static init() {
@@ -52,7 +55,9 @@ class HtpncManager {
     htpncZettaHsngo.isActive = false;
   }
   static load() {
-
+    if (FwaConfig.currentDisplayType === 1) {
+      HtpncTool.clHtpncPetaLgoLogo();
+    }
   }
   static resizeDisplay() {
     const {
@@ -85,6 +90,29 @@ class HtpncManager {
         break;
       }
     }
+    HtpncManager.resizeSensor();
+  }
+  static resizeSensor() {
+    if (FwaConfig.currentDisplayType === 1) {
+      HtpncTool.clHtpncPetaLgoLogo();
+    }
+    /* if (FwaConfig.currentDisplayType === 1) {
+      const {
+        htpncZettaLgo,
+        htpncPetaLgoLogo
+      } = HtpncConfig.getHtpncLgoGroup();
+      const htpncZettaLgoWidth = htpncZettaLgo.clientWidth;
+      const devLogoRemWidth = 4;
+      const taIconRemWidth = 0.5;
+      const logoRemWidth = 10;
+      const calcWidth = (devLogoRemWidth + taIconRemWidth + logoRemWidth) * 16;
+      /* 
+      if (htpncZettaLgoWidth < calcWidth) {
+        htpncPetaLgoLogo.classList.add("test");
+      } else {
+        htpncPetaLgoLogo.classList.remove("test");
+      }
+    } */
   }
   static event(isActive) {
     const {

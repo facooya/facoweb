@@ -54,14 +54,6 @@
   background-color: #222222;
   padding: 2rem 2rem;
 }
-@media (min-width: 320px) {
-  /* .blf-y-fo {
-    grid-template-areas:
-    "fauc fsdc"
-    "fadfc fadfc"
-    "fllc fllc";
-  } */
-}
 @media (min-width: 768px) {
   .blf-r {
     grid-template-rows: 8rem min-content min-content;

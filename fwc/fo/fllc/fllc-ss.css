@@ -8,29 +8,29 @@
   display: grid;
   grid-template-areas:
     ". y-fo ."
-    "y y y"
-    ". since ."
-    ". copyright .";
+    "y-ll y-ll y-ll"
+    ". y-to .";
 }
+/* ------------------------------ */
 .fllc-y {
-  grid-area: y;
+  grid-area: y-ll;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
   gap: 1rem;
   list-style-type: none;
   color: #FFFFFF;
   justify-content: center;
 }
-/* .fllc-y-facooya-icon {
-  grid-area: facooya-icon;
-  width: 5rem;
-  height: 5rem;
-  mask-image: url("../res/facooya-icon.svg");
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  background-color: var(--white);
-  justify-self: center;
-} */
+.fllc-e {
+  color: white;
+}
+.fllc-p-text {
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  text-align: center;
+  white-space: nowrap;
+}
+/* ------------------------------ */
 .fllc-y-fo {
   grid-area: y-fo;
   display: grid;
@@ -38,13 +38,12 @@
     "fo-ta-icon fo-logo";
   list-style-type: none;
   justify-content: center;
+  margin: 0rem 0rem 2rem 0rem;
 }
 .fllc-z-fo {
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: var(--white);
-  /*  */
-  margin-bottom: 2rem;
 }
 .fllc-z-fo-ta-icon {
   grid-area: fo-ta-icon;
@@ -62,32 +61,34 @@
   /*  */
   margin-left: 0.5rem;
 }
-.fllc-y-since {
-  grid-area: since;
+/* ------------------------------ */
+.fllc-y-to {
+  grid-area: y-to;
+  display: grid;
+  grid-template-areas:
+    "to-since"
+    "to-copyright";
+}
+.fllc-z-to-since {
+  grid-area: to-since;
   font-size: 0.75rem;
   color: #AAAAAA;
   justify-self: center;
   /*  */
   margin-top: 1rem;
 }
-.fllc-y-copyright {
-  grid-area: copyright;
+.fllc-z-to-copyright {
+  grid-area: to-copyright;
   font-size: 0.75rem;
   color: #AAAAAA;
   justify-self: center;
   /*  */
   margin-top: 0.5rem;
 }
-/*  */
-.fllc-z {
-  font-size: 0.75rem;
-  text-align: center;
-  white-space: nowrap;
-}
-/* =============== :FACOOYA: =============== */
+/* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* =============== ;FACOOYA; =============== */
+ /* ========================= ;FACOOYA; ========================= */
