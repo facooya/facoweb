@@ -23,7 +23,7 @@ class DpmscController {
   static resizeDisplay() {
     DpmscManager.resizeDisplay();
     DpmscManager.event(false);
-    DpmscManager.event(true);
+    DpmscManager.event();
   }
 }
 class DpmscManager {
@@ -32,6 +32,7 @@ class DpmscManager {
   }
   static load() {
     DpmscHandler.getText();
+    DpmscHandler.getLine();
   }
   static resizeDisplay() {
 
@@ -79,14 +80,14 @@ class DpmscHandler {
     hashElement.scrollIntoView();
   }
   static getText() {
-    const {
+    /* const {
       dpmscZ
     } = DpmscConfig.getDpmscZbGroup();
     const {
       dpmscGigaText
-    } = DpmscConfig.getDpmscPbGroup(2);
-
-    let getText = dpmscGigaText[0].innerHTML;
+    } = DpmscConfig.getDpmscPbGroup(2); */
+    const dpmscViewerCode = document.querySelectorAll(".dpmsc-viewer-code");
+    let getText = dpmscViewerCode[0].innerHTML;
     /*  */
     let regExp = /(".*?(?<!\\)"|\/\*[\s\S]*?\*\/|'.*?')/;
     /* getText = getText.replace(regExp, "<span class='green'>$&</span>");
@@ -126,7 +127,25 @@ class DpmscHandler {
     regExp = /\bprintf\b/g;
     setTag = setTag.replace(regExp, "<span class='blue'>$&</span>")
     dpmscGigaText[0].innerHTML = setTag; */
-    dpmscGigaText[0].innerHTML = part.join("");
+    dpmscViewerCode[0].innerHTML = part.join("");
+  }
+  static getLine() {
+    /* const {
+      dpmscGigaText
+    } = DpmscConfig.getDpmscPbGroup(2); */
+    const dpmscLineList = document.querySelectorAll(".dpmsc-line-list");
+    const dpmscViewerCode = document.querySelectorAll(".dpmsc-viewer-code");
+    let getText = dpmscViewerCode[0].textContent;
+    const parts = getText.split("\n");
+    for (let i = 0; i < parts.length; i++) {
+      const dpmscLineItem = document.createElement("li");
+      const dpmscLineNumber = document.createElement("span");
+      dpmscLineItem.setAttribute("class", "dpmsc-line-item");
+      dpmscLineNumber.setAttribute("class", "dpmsc-line-number");
+      dpmscLineNumber.textContent = (i + 1).toString();
+      dpmscLineItem.append(dpmscLineNumber);
+      dpmscLineList[0].append(dpmscLineItem);
+    }
   }
 }
 /*  */

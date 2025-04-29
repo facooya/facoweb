@@ -236,6 +236,7 @@ class BlfConfig {
   static resizeTimerId = 0;
   /* -------------------------------------------------- */
   static blfConfigCache = {};
+  /* static blfCache = {}; */
   /* -------------------------------------------------- */
   static blfHoGenerate() {
     BlfConfigManager.blfHoGenerate();

@@ -3,6 +3,10 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+import {
+  BlfConfig
+} from "../fwc-hub.js";
+/*  */
 class BlfUtilGet {
   static getGenerateElement(pElement, pIndex = []) {
     const eGenerate = pElement.generate;
@@ -86,6 +90,20 @@ class BlfUtilGet {
     /*  */
     return returnCache;
   }
+  /* static getCache(pElement) {
+    const returnElement = null;
+    const cacheId = pElement.cacheId;
+    /*  
+    let getCache = BlfConfig.blfCache[cacheId];
+    if (!getCache) {
+      console.log(pElement[0].query.querySelector);
+      getCache = document.querySelector(pElement[0].query.querySelector);
+      BlfConfig.blfCache[cacheId] = getCache;
+    }
+    returnElement = getCache;
+    console.log(BlfConfig.blfCache);
+    return returnElement;
+  } */
   /* ================================================== */
   static getEventData(eventData, targetQuery) {
     const eventType = eventData.type;
@@ -151,6 +169,9 @@ class BlfUtil {
     return BlfUtilGet.getPageType();
   }
   /* -------------------------------------------------- */
+  /* static getCache(pElement) {
+    return BlfUtilGet.getCache(pElement);
+  } */
 }
 export {
   BlfUtil

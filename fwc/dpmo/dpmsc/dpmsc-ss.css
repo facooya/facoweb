@@ -8,39 +8,32 @@ section.dpmsc-r {
   /* Position */
   grid-area: dpmsc-r;
 }
-ul.dpmsc-y {
-  /* Tag.ul */
+.dpmsc-content-list {
   display: flex;
   flex-flow: column;
   gap: 2rem;
   list-style: none;
 }
-li.dpmsc-z {
-  /* Tag.li */
+.dpmsc-content-item {
   scroll-margin-top: 4rem;
 }
-h2.dpmsc-p-tlo {
-  /* Tag.h2 */
+.dpmsc-title-heading {
   padding: 0.5rem 0rem 1rem 0.5rem;
 }
-a.dpmsc-t-tlo {
-  /* Tag.a */
+.dpmsc-title-link {
   text-decoration: none;
 }
-span.dpmsc-g-tlo-text {
-  /* Tag.span */
+.dpmsc-title-text {
   color: #222222;
   font-size: 1.25rem;
 }
-ul.dpmsc-e {
-  /* Tag.ul */
+.dpmsc-viewer-list {
   display: flex;
   flex-flow: column;
   gap: 1rem;
   list-style: none;
 }
-h3.dpmsc-t-text {
-  /* Tag.h3 */
+.dpmsc-viewer-name {
   display: inline-block;
   padding: 0.5rem 1rem;
   background-color: #000000;
@@ -50,18 +43,21 @@ h3.dpmsc-t-text {
   font-weight: normal;
   cursor: default;
 }
-div.dpmsc-t {
+.dpmsc-viewer-container {
   /* Tag.div */
   padding: 0.5rem 1rem;
   line-height: 1.5rem;
   background-color: #222222;
   border-radius: 0rem 1rem 1rem 1rem;
+  display: flex;
+  gap: 1rem;
 }
-pre.dpmsc-g-text {
-  /* Tag.pre */
+.dpmsc-viewer-text, .dpmsc-viewer-code {
   color: #FFFFFF;
   font-size: 1rem;
   overflow: auto;
+  justify-self: start;
+  padding: 0.5rem 0rem;
 }
 /* ============================== */
 .orange {
@@ -91,6 +87,38 @@ pre.dpmsc-g-text {
 .comment {
   color: #00AA00;
   /* color: #006400; */
+}
+/* ============================== */
+/* div.dpmsc-t {
+  display: flex;
+  gap: 1rem;
+}
+pre.dpmsc-g-text {
+  justify-self: start;
+} */
+/* .dpmsc-viewer-container {
+  display: flex;
+  gap: 1rem;
+} */
+/* .dpmsc-viewer-code {
+  justify-self: start;
+}
+.dpmsc-viewer-text {
+  justify-self: start;
+} */
+/* ============================== */
+/* ========== Line ========== */
+.dpmsc-line-list {
+  list-style: none;
+  padding: 0.5rem 0rem;
+}
+.dpmsc-line-number {
+  color: #808080;
+  cursor: default;
+  user-select: none;
+  -moz-user-select: none;
+  display: flex;
+  justify-content: end;
 }
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

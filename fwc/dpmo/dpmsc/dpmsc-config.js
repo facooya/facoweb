@@ -20,6 +20,100 @@ class DpmscConfigElement {
       }
     }
   ];
+  static dpmsc = [
+    {
+      elementId: "dpmsc",
+      cacheId: "dpmsc",
+      query: {
+        querySelector: ".dpmsc",
+        queryType: "single"
+      }
+    }
+  ];
+  static dpmscContent = [
+    {
+      elementId: "dpmscContentList",
+      query: {
+        querySelector: ".dpmsc-content-list",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmscContentItem",
+      query: {
+        querySelector: ".dpmsc-content-item",
+        queryType: "all"
+      }
+    }
+  ];
+  static dpmscTitle = [
+    {
+      elementId: "dpmscTitleContainer",
+      query: {
+        querySelector: ".dpmsc-title-container",
+        queryType: "all"
+      }
+    },
+    {
+      elementId: "dpmscTitleHeading",
+      query: {
+        querySelector: ".dpmsc-title-heading",
+        queryType: "all"
+      }
+    },
+    {
+      elementId: "dpmscTitleLink",
+      query: {
+        querySelector: ".dpmsc-title-link",
+        queryType: "all"
+      }
+    },
+    {
+      elementId: "dpmscTitleText",
+      query: {
+        querySelector: ".dpmsc-title-text",
+        queryType: "all"
+      }
+    }
+  ];
+  static dpmscViewer = [
+    {
+      elementId: "dpmscViewerList",
+      query: {
+        querySelector: ".dpmsc-viewer-list",
+        queryType: "all"
+      }
+    },
+    {
+      elementId: "dpmscViewerItem",
+      query: {
+        querySelector: ".dpmsc-viewer-item",
+        queryType: "all"
+      }
+    },
+    {
+      elementId: "dpmscViewerName",
+      query: {
+        querySelector: ".dpmsc-viewer-name",
+        queryType: "all"
+      }
+    },
+    {
+      elementId: "dpmscViewerContainer",
+      query: {
+        querySelector: ".dpmsc-viewer-container",
+        queryType: "all"
+      }
+    },
+    {
+      elementId: "dpmscViewer",
+      query: {
+        querySelector: ".dpmsc-viewer",
+        queryType: "all"
+      }
+    }
+  ];
+  /*  */
   static dpmscGroup = [
     {
       elementId: "dpmscY",
@@ -107,11 +201,25 @@ class DpmscConfigElement {
   ];
 }
 class DpmscConfigGet {
+  static getDpmsc() {
+    const dpmscElement = document.querySelector(".dpmsc");
+    return dpmscElement;
+  }
+  static getDpmscContent() {
+    const { dpmsc } = DpmscConfigGet.getDpmsc();
+
+    return 0;
+  }
+  static getDpmscViewer() {
+    return 0;
+  }
+  /*  */
   static getDpmscRoot() {
     const getGroup = BlfUtil.getElementCache(
       DpmscConfig.dpmscConfigCache,
       DpmscConfigElement.dpmscRoot
     );
+    this.getDpmsc();
     return getGroup;
   }
   static getDpmscGroup() {
