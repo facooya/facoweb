@@ -8,20 +8,44 @@
   /* Position */
   grid-area: dpmhc-r;
   cursor: default;
+  scroll-margin-top: 4rem;
 }
-.dpmhc-z-text {
+.dpmhc-z-tlo-text {
   /* Tag.h1 */
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
-  padding: 0.5rem 0rem;
+  padding: 1rem 0rem;
 }
-.dpmhc-z-bro {
+/* ============================== */
+/* .dpmhc-y-cno {
+
+} */
+.dpmhc-z-cno {
+  /* Tag.ul */
+  list-style: none;
+}
+.dpmhc-p-cno {
+
+}
+.dpmhc-t-cno {
+  /* Tag.a */
+  /* color: #222222;
+  font-size: 1.25rem; */
+}
+.dpmhc-g-cno-text {
+  /* Tag.span */
+  color: #222222;
+  font-size: 1.25rem;
+}
+/* ============================== */
+.dpmhc-z-blo-bro {
   /* Tag.div */
   width: 100%;
   height: 0.5rem;
   background-color: #222222;
   border-radius: 0.25rem;
+  margin: 1rem 0rem 0rem 0rem;
 }
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

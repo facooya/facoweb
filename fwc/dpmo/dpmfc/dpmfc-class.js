@@ -38,11 +38,13 @@ class DpmfcManager {
   }
   static load() {
     DpmfcUtil.setDpmfcExaTso(0);
-    window.addEventListener("hashchange", DpmfcHandler.windowOnHashChange);
+    DpmfcUtil.setDpmfcZettaBso();
+    /* window.addEventListener("hashchange", DpmfcHandler.windowOnHashChange); */
   }
   static resizeDisplay() {
     DpmfcUtil.resetDpmfcExaTso(BlfConfig.previousDisplayType);
     DpmfcUtil.setDpmfcExaTso(0);
+    DpmfcUtil.setDpmfcZettaBso();
   }
   static event(isActive) {
     const {
@@ -62,6 +64,13 @@ class DpmfcManager {
     /*  */
     switch (displayType) {
       case 1: {
+        const {
+          dpmfcPetaTsoTlo
+        } = DpmfcConfig.getDpmfcTsoTloGroup();
+        dpmfcPetaTsoTlo[eventListenerType](
+          "click",
+          DpmfcHandler.mdtDpmfcPetaTsoTlo
+        );
         for (let ebi = 0; ebi < dpmfcExaTso.length; ebi++) {
           dpmfcExaTso[ebi][eventListenerType](
             "click",
@@ -76,6 +85,28 @@ class DpmfcManager {
           "click",
           DpmfcHandler.dpmfcZettaBscoNext
         );
+        /*  */
+        /* const test0 = document.querySelector(".test0");
+        const test1 = document.querySelector(".test1");
+        const test2 = document.querySelector(".test2");
+        const test3 = document.querySelector(".test3");
+        test0[eventListenerType](
+          "click",
+          DpmfcHandler.testHandler
+        );
+        test1[eventListenerType](
+          "click",
+          DpmfcHandler.testHandler
+        );
+        test2[eventListenerType](
+          "click",
+          DpmfcHandler.testHandler
+        );
+        test3[eventListenerType](
+          "click",
+          DpmfcHandler.testHandler
+        ); */
+        /*  */
         break;
       }
       case 2: {
@@ -100,64 +131,43 @@ class DpmfcManager {
   }
 }
 class DpmfcHandler {
-  static windowOnHashChange() {
-    let hashData = window.location.hash.slice(1);
-    window.scrollTo({top: 64});
-    /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+  /* static testHandler(event) {
+    const hash = event.currentTarget.hash;
+    const hashTarget = document.querySelector(hash);
+    history.replaceState(null, null, hash);
+    hashTarget.scrollIntoView();
+  } */
+  /* static windowOnHashChange() {
+    console.log("hash");
+    history.replaceState(null, null, window.location.hash); */
+    /* window.scrollTo({top: 64}); */
+    /* !!!!! v1.1.21a-5 [test] (hash back) !!!!! */
+    /* const hash = window.location.hash; */
+    /* window.location.hash = target; */
+    /* window.location.hash = "#developer-note"; */
+    /* history.replaceState(null, null, window.location.hash); */
+  /* } */
+  static mdtDpmfcPetaTsoTlo(eventData) {
+    const {
+      eventCurrentTarget
+    } = BlfUtil.getEventData(eventData);
+    /*  */
+    const hash = eventCurrentTarget.hash;
+    const hashElement = document.querySelector(hash);
+    history.replaceState(null, null, hash);
+    hashElement.scrollIntoView();
   }
+  /*  */
   static mdtDpmfcExaTso(eventData) {
     const {
       eventIndex
     } = BlfUtil.getEventData(eventData);
     /*  */
     DpmfcUtil.setDpmfcExaTso(eventIndex);
-    /* const dpmfcZettaBsoRect = dpmfcZettaBso[eventIndex].getBoundingClientRect(); */
-    /*  */
-    /* const {
-      dpmfcExaBso
-    } = DpmfcConfig.getDpmfcBsoEbGroup(eventIndex); */
-    /* let page = DpmfcConfig.dpmfcBscoPage; */
-    /* if (dpmfcExaBso.length > 5) {
-      /* let heightCalc = 0;
-      for (let ebi = 0; ebi < 5; ebi++) {
-        heightCalc += dpmfcExaBso[ebi].getBoundingClientRect().height;
-      }
-      heightCalc += 32;
-      dpmfcYottaBso.style.height = heightCalc + "px"; 
-      /*  
-      for (let ebi = 0; ebi < dpmfcExaBso.length; ebi++) {
-        dpmfcExaBso[ebi].style.display = "none";
-      }
-      for (let ebi = page * 5; ebi < (page + 1) * 5; ebi++) {
-        if (dpmfcExaBso[ebi]) {
-          dpmfcExaBso[ebi].style.display = "";
-        }
-      }
-    } else {
-      /* dpmfcYottaBso.style.height = dpmfcZettaBsoRect.height + "px"; 
-    } */
     /*  */
     DpmfcConfig.dpmfcTsoTab = eventIndex;
     DpmfcConfig.dpmfcBscoPage = 0;
     DpmfcUtil.setDpmfcZettaBso();
-    /* const {
-      dpmfcPetaTsoText,
-      dpmfcPetaTsoAro
-    } = DpmfcConfig.getDpmfcTsoEbGroup();
-    const {
-      dpmfcZettaBso
-    } = DpmfcConfig.getDpmfcBsoZbGroup();
-    /*  
-    const clData = "cl-mdt-dpmfc-e-tso-handler";
-    let clType = "remove";
-    for (let ebi = 0; ebi < dpmfcPetaTsoText.length; ebi++) {
-      dpmfcZettaBso[ebi].style.display = "";
-      dpmfcPetaTsoText[ebi].style.color = "";
-      dpmfcPetaTsoAro[ebi].style.border = "";
-    }
-    dpmfcZettaBso[eventIndex].style.display = "flex";
-    dpmfcPetaTsoText[eventIndex].style.color = "#000000";
-    dpmfcPetaTsoAro[eventIndex].style.border = "0.25rem solid #000000"; */
   }
   static tdtDpmfcExaTso(eventData) {
     const {
@@ -178,33 +188,18 @@ class DpmfcHandler {
       DpmfcConfig.dpmfcBscoPage--;
       /*  */
       DpmfcUtil.setDpmfcZettaBso();
-      /* const {
-        dpmfcExaTso
-      } = DpmfcConfig.getDpmfcTsoEbGroup(); */
-      /* const modifyEventData = {};
-      modifyEventData.currentTarget = dpmfcExaTso[DpmfcConfig.dpmfcTsoTab];
-      DpmfcHandler.mdtDpmfcExaTso(modifyEventData); */
     }
   }
   static dpmfcZettaBscoNext() {
-    /* const {
-      dpmfcExaTso
-    } = DpmfcConfig.getDpmfcTsoEbGroup(); */
     const {
       dpmfcExaBso
     } = DpmfcConfig.getDpmfcBsoEbGroup(DpmfcConfig.dpmfcTsoTab);
-    /* !!!!! currentTab !!!!!! */
     const pageLength = (dpmfcExaBso.length / 5) - 1;
+    /*  */
     if (pageLength > DpmfcConfig.dpmfcBscoPage) {
       DpmfcConfig.dpmfcBscoPage++;
     }
     DpmfcUtil.setDpmfcZettaBso();
-    /*  */
-    /* DpmfcConfig.dpmfcBscoPage++; */
-    /*  */
-    /* const modifyEventData = {};
-    modifyEventData.currentTarget = dpmfcExaTso[DpmfcConfig.dpmfcTsoTab];
-    DpmfcHandler.mdtDpmfcExaTso(modifyEventData); */
   }
 }
 export {

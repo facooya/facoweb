@@ -17,8 +17,8 @@ import {
   FllcController,
   NpmhcController,
   NpmscController,
-  /* DpmhcController,
-  DpmscController, */
+  DpmhcController,
+  DpmscController,
   DpmfcController
 } from "./fwc-hub.js";
 /*  */
@@ -62,8 +62,8 @@ class FwcManager {
         break;
       }
       case 3: {
-        /* DpmhcController.init();
-        DpmscController.init(); */
+        DpmhcController.init();
+        DpmscController.init();
         DpmfcController.init();
         break;
       }
@@ -92,8 +92,8 @@ class FwcManager {
         break;
       }
       case 3: {
-        /* DpmhcController.load();
-        DpmscController.load(); */
+        DpmhcController.load();
+        DpmscController.load();
         DpmfcController.load();
         break;
       }
@@ -122,8 +122,8 @@ class FwcManager {
         break;
       }
       case 3: {
-        /* DpmhcController.resizeDisplay();
-        DpmscController.resizeDisplay(); */
+        DpmhcController.resizeDisplay();
+        DpmscController.resizeDisplay();
         DpmfcController.resizeDisplay();
         break;
       }

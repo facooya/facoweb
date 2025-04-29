@@ -20,6 +20,43 @@ class DpmfcConfigElement {
       }
     }
   ];
+  static dpmfcTsoTloGroup = [
+    {
+      elementId: "dpmfcZettaTsoTlo",
+      query: {
+        querySelector: ".dpmfc-z-tso-tlo",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcExaTsoTloTro",
+      query: {
+        querySelector: ".dpmfc-e-tso-tlo-tro",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcExaTsoTlo",
+      query: {
+        querySelector: ".dpmfc-e-tso-tlo",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcPetaTsoTlo",
+      query: {
+        querySelector: ".dpmfc-p-tso-tlo",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcTeraTsoTloText",
+      query: {
+        querySelector: ".dpmfc-t-tso-tlo-text",
+        queryType: "single"
+      }
+    }
+  ];
   static dpmfcTsoGroup = [
     {
       elementId: "dpmfcYottaTso",
@@ -29,21 +66,7 @@ class DpmfcConfigElement {
       }
     },
     {
-      elementId: "dpmfc-z-tso-tro",
-      query: {
-        querySelector: ".dpmfc-z-tso-tro",
-        queryType: "single"
-      }
-    },
-    {
-      elementId: "dpmfc-z-tso-text",
-      query: {
-        querySelector: ".dpmfc-z-tso-text",
-        queryType: "single"
-      }
-    },
-    {
-      elementId: "dpmfc-z-tso",
+      elementId: "dpmfcZettaTso",
       query: {
         querySelector: ".dpmfc-z-tso",
         queryType: "single"
@@ -153,6 +176,17 @@ class DpmfcConfigGet {
     );
     return getGroup;
   }
+  static getDpmfcTsoTloGroup() {
+    const {
+      dpmfcR
+    } = DpmfcConfigGet.getDpmfcRoot();
+    const getGroup = BlfUtil.getElementCache(
+      DpmfcConfig.dpmfcConfigCache,
+      DpmfcConfigElement.dpmfcTsoTloGroup,
+      dpmfcR
+    );
+    return getGroup;
+  }
   static getDpmfcTsoGroup() {
     const {
       dpmfcR
@@ -228,6 +262,9 @@ class DpmfcConfig {
   /* -------------------------------------------------- */
   static getDpmfcRoot() {
     return DpmfcConfigGet.getDpmfcRoot();
+  }
+  static getDpmfcTsoTloGroup() {
+    return DpmfcConfigGet.getDpmfcTsoTloGroup();
   }
   static getDpmfcTsoGroup() {
     return DpmfcConfigGet.getDpmfcTsoGroup();

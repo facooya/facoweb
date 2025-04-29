@@ -116,6 +116,21 @@ import {
   NpmscUtil
 } from "./npmo/npmsc/npmsc-util.js";
 /* ================================================== */
+import {
+  DpmhcAccessor,
+  DpmhcController
+} from "./dpmo/dpmhc/dpmhc-class.js";
+import {
+  DpmhcConfig
+} from "./dpmo/dpmhc/dpmhc-config.js";
+/* -------------------------------------------------- */
+import {
+  DpmscAccessor,
+  DpmscController
+} from "./dpmo/dpmsc/dpmsc-class.js";
+import {
+  DpmscConfig
+} from "./dpmo/dpmsc/dpmsc-config.js";
 /* -------------------------------------------------- */
 import {
   DpmfcAccessor,
@@ -181,6 +196,14 @@ export {
   NpmscController,
   NpmscConfig,
   NpmscUtil,
+  /* DPMHC */
+  DpmhcAccessor,
+  DpmhcController,
+  DpmhcConfig,
+  /* DPMSC */
+  DpmscAccessor,
+  DpmscController,
+  DpmscConfig,
   /* DPMFC */
   DpmfcAccessor,
   DpmfcController,
@@ -190,7 +213,6 @@ export {
 /* ================================================== */
 /* NOTE
  * Manage import export in FWC.
- * class file only.
  * 
  * C: Component
  * NC: Navigate C

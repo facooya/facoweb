@@ -33,18 +33,6 @@ class DpmfcUtilSet {
         break;
       }
     }
-    /*  */
-    /* const clData = "cl-mdt-dpmfc-e-tso";
-    let clType = "remove";
-    for (let ebi = 0; ebi < dpmfcPetaTsoText.length; ebi++) {
-      dpmfcZettaBso[ebi].style.display = "";
-      dpmfcPetaTsoText[ebi].style.color = "";
-      dpmfcPetaTsoAro[ebi].style.border = "";
-    }
-    dpmfcZettaBso[pIndex].style.display = "flex";
-    dpmfcPetaTsoText[pIndex].style.color = "#000000";
-    dpmfcPetaTsoAro[pIndex].style.border = "0.25rem solid #000000"; */
-    /*  */
     DpmfcUtilReset.resetDpmfcExaTso(BlfConfig.currentDisplayType);
     dpmfcPetaTsoText[pIndex].classList[clType](clData);
     dpmfcPetaTsoAro[pIndex].classList[clType](clData);
