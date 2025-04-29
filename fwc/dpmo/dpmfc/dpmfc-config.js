@@ -4,7 +4,8 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  BlfUtil
+  BlfUtil,
+  DpmfcUtil
 } from "../../fwc-hub.js";
 /*  */
 class DpmfcConfigData {
@@ -144,29 +145,6 @@ class DpmfcConfigElement {
       }
     }
   ];
-  /* static dpmfcBscoGroup = [
-    {
-      elementId: "dpmfcYottaBsco",
-      query: {
-        querySelector: ".dpmfc-y-bsco",
-        queryType: "single"
-      }
-    },
-    {
-      elementId: "dpmfcZettaBscoPrev",
-      query: {
-        querySelector: ".dpmfc-z-bsco-prev",
-        queryType: "single"
-      }
-    },
-    {
-      elementId: "dpmfcZettaBscoNext",
-      query: {
-        querySelector: ".dpmfc-z-bsco-next",
-        queryType: "single"
-      }
-    }
-  ]; */
   static dpmfcPnoGroup = [
     {
       elementId: "dpmfcYottaPno",
@@ -183,9 +161,13 @@ class DpmfcConfigElement {
         querySelector: ".dpmfc-z-pno-clo",
         queryType: "single"
       }
-    },
-    {
+    }
+    /* {
       elementId: "dpmfcExaPnoClo",
+      generate: {
+        htmlTag: "li",
+        htmlClass: "dpmfc-e-pno-clo"
+      },
       query: {
         querySelector: ".dpmfc-e-pno-clo",
         queryType: "all"
@@ -193,6 +175,34 @@ class DpmfcConfigElement {
     },
     {
       elementId: "dpmfcPetaPnoCloText",
+      generate: {
+        htmlTag: "span",
+        htmlClass: "dpmfc-p-pno-clo-text"
+      },
+      query: {
+        querySelector: ".dpmfc-p-pno-clo-text",
+        queryType: "all"
+      }
+    } */
+  ];
+  static dpmfcPnoCloDynamic = [
+    {
+      elementId: "dpmfcExaPnoClo",
+      generate: {
+        htmlTag: "li",
+        htmlClass: "dpmfc-e-pno-clo"
+      },
+      query: {
+        querySelector: ".dpmfc-e-pno-clo",
+        queryType: "all"
+      }
+    },
+    {
+      elementId: "dpmfcPetaPnoCloText",
+      generate: {
+        htmlTag: "span",
+        htmlClass: "dpmfc-p-pno-clo-text"
+      },
       query: {
         querySelector: ".dpmfc-p-pno-clo-text",
         queryType: "all"
@@ -224,14 +234,14 @@ class DpmfcConfigElement {
     {
       elementId: "dpmfcPetaPnoLloFirst",
       query: {
-        querySelector: ".dpmfc-e-pno-llo-first",
+        querySelector: ".dpmfc-p-pno-llo-first",
         queryType: "single"
       }
     },
     {
       elementId: "dpmfcPetaPnoLloPrevious",
       query: {
-        querySelector: ".dpmfc-e-pno-llo-previous",
+        querySelector: ".dpmfc-p-pno-llo-previous",
         queryType: "single"
       }
     }
@@ -261,14 +271,14 @@ class DpmfcConfigElement {
     {
       elementId: "dpmfcPetaPnoRloNext",
       query: {
-        querySelector: ".dpmfc-e-pno-rlo-next",
+        querySelector: ".dpmfc-p-pno-rlo-next",
         queryType: "single"
       }
     },
     {
       elementId: "dpmfcPetaPnoRloLast",
       query: {
-        querySelector: ".dpmfc-e-pno-rlo-last",
+        querySelector: ".dpmfc-p-pno-rlo-last",
         queryType: "single"
       }
     }
@@ -349,17 +359,6 @@ class DpmfcConfigGet {
     );
     return getGroup;
   }
-  /* static getDpmfcBscoGroup() {
-    const {
-      dpmfcR
-    } = DpmfcConfigGet.getDpmfcRoot();
-    const getGroup = BlfUtil.getElementCache(
-      DpmfcConfig.dpmfcConfigCache,
-      DpmfcConfigElement.dpmfcBscoGroup,
-      dpmfcR
-    );
-    return getGroup;
-  } */
   static getDpmfcPnoGroup() {
     const {
       dpmfcR
@@ -381,6 +380,14 @@ class DpmfcConfigGet {
       dpmfcR
     );
     return getGroup;
+  }
+  static getDpmfcPnoCloDynamic() {
+    const {
+      dpmfcZettaPnoClo
+    } = DpmfcConfigGet.getDpmfcPnoCloGroup();
+    const dpmfcExaPnoClo = dpmfcZettaPnoClo.querySelectorAll(".dpmfc-e-pno-clo");
+    const dpmfcPetaPnoCloText = dpmfcZettaPnoClo.querySelectorAll(".dpmfc-p-pno-clo-text");
+    return { dpmfcExaPnoClo, dpmfcPetaPnoCloText };
   }
   static getDpmfcPnoLloGroup() {
     const {
@@ -405,10 +412,44 @@ class DpmfcConfigGet {
     return getGroup;
   }
 }
+class DpmfcConfigManager {
+  static dpmfcPnoCloGenerate(pPageMaxIndex) {
+    const {
+      dpmfcZettaPnoClo
+    } = DpmfcConfigGet.getDpmfcPnoCloGroup();
+    const dpmfcPnoCloFragment = document.createDocumentFragment();
+
+    let dpmfcExaPnoClo = null;
+    let dpmfcPetaPnoCloText = null;
+
+    for (let pi = 0; pi <= pPageMaxIndex; pi++) {
+      dpmfcExaPnoClo = BlfUtil.getGenerateElement(
+        DpmfcConfigElement.dpmfcPnoCloDynamic[0],
+        [pi]
+      );
+      dpmfcPetaPnoCloText = BlfUtil.getGenerateElement(
+        DpmfcConfigElement.dpmfcPnoCloDynamic[1],
+        [pi]
+      );
+      dpmfcExaPnoClo.append(dpmfcPetaPnoCloText);
+      dpmfcPnoCloFragment.append(dpmfcExaPnoClo);
+    }
+    dpmfcZettaPnoClo.append(dpmfcPnoCloFragment);
+  }
+  static dpmfcPnoCloRemove() {
+    const {
+      dpmfcZettaPnoClo
+    } = DpmfcConfigGet.getDpmfcPnoCloGroup();
+    const dpmfcExaPnoClo = dpmfcZettaPnoClo.querySelectorAll(".dpmfc-e-pno-clo");
+    DpmfcUtil.utilDpmfcPnoCloEvent(false, dpmfcZettaPnoClo.length - 1);
+    for (let pi = dpmfcExaPnoClo.length - 1; pi >= 0; pi--) {
+      dpmfcExaPnoClo[pi].remove();
+    }
+  }
+}
 class DpmfcConfig {
   static dpmfcConfigCache = {};
   static dpmfcTsoTab = 0;
-  /* static dpmfcBscoPage = 0; */
   static dpmfcPnoPage = 0;
   /*  */
   static dpmfcDefaultPageData = ["1", "2", "3", "4", "5", "6", "7"];
@@ -435,20 +476,27 @@ class DpmfcConfig {
   static getDpmfcBsoEbGroup(pIndex) {
     return DpmfcConfigGet.getDpmfcBsoEbGroup(pIndex);
   }
-  /* static getDpmfcBscoGroup() {
-    return DpmfcConfigGet.getDpmfcBscoGroup();
-  } */
   static getDpmfcPnoGroup() {
     return DpmfcConfigGet.getDpmfcPnoGroup();
   }
   static getDpmfcPnoCloGroup() {
     return DpmfcConfigGet.getDpmfcPnoCloGroup();
   }
+  static getDpmfcPnoCloDynamic() {
+    return DpmfcConfigGet.getDpmfcPnoCloDynamic();
+  }
   static getDpmfcPnoLloGroup() {
     return DpmfcConfigGet.getDpmfcPnoLloGroup();
   }
   static getDpmfcPnoRloGroup() {
     return DpmfcConfigGet.getDpmfcPnoRloGroup();
+  }
+  /* -------------------------------------------------- */
+  static dpmfcPnoCloGenerate(pPageMaxIndex) {
+    DpmfcConfigManager.dpmfcPnoCloGenerate(pPageMaxIndex);
+  }
+  static dpmfcPnoCloRemove() {
+    DpmfcConfigManager.dpmfcPnoCloRemove();
   }
 }
 export {

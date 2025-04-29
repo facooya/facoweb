@@ -33,21 +33,35 @@
 .dpmfc-z-bso.cl-ddt-dpmfc-e-tso {
   display: flex;
 }
-/* ================================================== */
-.dpmfc-e-pno-clo.cl-dpmfc-e-pno-clo-util {
-  border: none;
-  cursor: default;
-}
-/* ================================================== */
+/* ============================== */
 .dpmfc-e-pno-clo.cl-dpmfc-e-pno-clo-handler {
   background: #222222;
+  cursor: default;
 }
 .dpmfc-p-pno-clo-text.cl-dpmfc-e-pno-clo-handler {
   color: #FFFFFF;
 }
-/* ================================================== */
-.dpmfc-e-pno-clo.cl-set-page-data-util {
-  display: flex;
+/* ============================== */
+.dpmfc-y-pno.cl-dpmfc-y-pno-util {
+  grid-template-areas: "llo clo rlo";
+}
+.dpmfc-z-pno-clo.cl-dpmfc-y-pno-util {
+  flex-wrap: nowrap;
+}
+/* ============================== */
+.dpmfc-e-pno-llo.cl-dpmfc-pno-disabled-util {
+  border-color: #777777;
+  cursor: default;
+}
+.dpmfc-e-pno-rlo.cl-dpmfc-pno-disabled-util {
+  border-color: #777777;
+  cursor: default;
+}
+.dpmfc-p-pno-llo.cl-dpmfc-pno-disabled-util {
+  background: #777777;
+}
+.dpmfc-p-pno-rlo.cl-dpmfc-pno-disabled-util {
+  background: #777777;
 }
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
