@@ -17,6 +17,9 @@
   padding: 0 16px;
   transition: margin-right 300ms ease;
 }
+.hpm {
+  background: #333333;
+}
 .npm {
   background: #ffffff;
 }

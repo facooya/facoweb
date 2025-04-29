@@ -15,6 +15,9 @@ class HtbcConfigManager {
   static initGenerate() {
     const htbc = document.querySelector(".htbc");
     const htbcFrag = document.createDocumentFragment();
+    /* Tob Bar */
+    const topBar = document.createElement("div");
+    topBar.setAttribute("class", "htbc-top-bar");
     /* Logo */
     const logo = document.createElement("div");
     logo.setAttribute("class", "htbc-logo");
@@ -45,8 +48,12 @@ class HtbcConfigManager {
       snrItem.setAttribute("class", "snr-item");
       snr.append(snrItem);
     }
+    /* Sge */
+    const sge = document.createElement("div");
+    sge.setAttribute("class", "htbc-sge-group top-bar-sge");
+    topBar.append(logo, dnr, snr, sge);
     /* Append */
-    htbcFrag.append(logo, dnr, snr);
+    /* htbcFrag.append(logo, dnr, snr); */
     /* :Etc: */
     /* Overlay */
     const overlay = document.createElement("div");
@@ -54,12 +61,9 @@ class HtbcConfigManager {
     const overlaySge = document.createElement("div");
     overlaySge.setAttribute("class", "htbc-sge-group overlay-sge");
     overlay.append(overlaySge);
-    /* Sge */
-    const sge = document.createElement("div");
-    sge.setAttribute("class", "htbc-sge-group htbc-sge");
     /* ;Etc; */
     /* Append */
-    htbcFrag.append(overlay, sge);
+    htbcFrag.append(topBar, overlay);
     htbc.append(htbcFrag);
   }
 }

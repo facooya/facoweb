@@ -4,13 +4,15 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
-.htbc {
+.htbc {}
+/* ================================================== */
+.htbc-top-bar {
   position: fixed;
   z-index: 10;
   top: 0;
   /*  */
   width: 100%;
-  background: #222222;
+  background-color: #222222;
   /*  */
   display: grid;
   grid-template-columns: 64px minmax(112px, 1fr) 64px;
@@ -18,7 +20,7 @@
   gap: 0 16px;
   grid-template-areas: "dnr logo snr";
   /*  */
-  overflow-y: scroll;
+  overflow: scroll;
   overscroll-behavior: contain;
   scrollbar-width: none;
   /*  */
@@ -29,7 +31,7 @@
 /* -------------------------------------------------- */
 .htbc-sge-group {
   height: calc(100% + 1px);
-  background: #00000000;
+  background-color: #00000000;
   pointer-events: none;
 }
 /* ================================================== */
@@ -74,37 +76,6 @@
 /* ;Logo; */
 /* ================================================== */
 /* :DNR: */
-.htbc-dnr-old {
-  grid-area: dnr;
-  position: relative;
-  /* Grid */
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  /* gap: 0.475rem; */
-  gap: 7.6px;
-  /* Layout */
-  width: 64px;
-  height: 64px;
-  padding: 16px;
-  /* Visual */
-  cursor: pointer;
-}
-.htbc-dnr .dnr-item-old {
-  /* Box Model */
-  width: 100%;
-  height: 100%;
-  /* Visual */
-  background: #FFFFFF;
-  border-radius: 2px;
-  opacity: 1;
-  transform: translate(0, 0) rotate(0) scale(1, 1);
-  transition:
-    top 300ms ease,
-    left 300ms ease,
-    transform 300ms ease,
-    opacity 300ms ease;
-}
-
 .htbc-dnr {
   grid-area: dnr;
   position: relative;
@@ -129,32 +100,6 @@
 /* ;DNR; */
 /* ================================================== */
 /* :SNR: */
-.htbc-snr-old {
-  grid-area: snr;
-  position: relative;
-  /* Grid */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 4px;
-  /* Layout */
-  width: 64px;
-  height: 64px;
-  padding: 16px;
-  /* Visual */
-  cursor: pointer;
-}
-.htbc-snr .snr-item-old {
-  /* Position */
-  width: 100%;
-  height: 100%;
-  background: #FFFFFF;
-  border-radius: 2px;
-  /* Visual */
-  transition: 
-    transform 300ms ease;
-}
-
 .htbc-snr {
   grid-area: snr;
   position: relative;
@@ -175,6 +120,16 @@
 }
 /* ;SNR; */
 /* ================================================== */
+/* SGE */
+.htbc-top-bar-sge {
+  /* Position */
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  /* Layout */
+  width: 100%;
+}
+/* ================================================== */
 /* :Etc: */
 /* Overlay */
 .htbc-overlay {
@@ -184,10 +139,10 @@
   z-index: 100;
   width: 20%;
   height: calc(100% - 64px);
-  background: #77777777;
+  background-color: #77777777;
   transition: left 300ms ease;
   /*  */
-  overflow-y: scroll;
+  overflow: scroll;
   overscroll-behavior: contain;
   scrollbar-width: none;
 }
@@ -195,20 +150,10 @@
   position: relative;
   z-index: 101;
 }
-/* -------------------------------------------------- */
-/* SGE */
-.htbc-sge {
-  /* Position */
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  /* Layout */
-  width: 100%;
-}
 /* ;Etc; */
 /* ================================================== */
 @media (min-width: 768px) {
-  .htbc {
+  .htbc-top-bar {
     grid-template-columns: 1fr 64px;
     grid-template-rows: 64px 64px;
     grid-template-areas: "logo snr" ". .";
@@ -224,7 +169,7 @@
 }
 /* ================================================== */
 @media (min-width: 1280px) {
-  .htbc {
+  .htbc-top-bar {
     grid-template-columns: 256px 1fr 64px;
     grid-template-rows: 64px;
     grid-template-areas: "logo . snr";
