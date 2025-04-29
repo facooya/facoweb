@@ -144,7 +144,7 @@ class DpmfcConfigElement {
       }
     }
   ];
-  static dpmfcBscoGroup = [
+  /* static dpmfcBscoGroup = [
     {
       elementId: "dpmfcYottaBsco",
       query: {
@@ -163,6 +163,112 @@ class DpmfcConfigElement {
       elementId: "dpmfcZettaBscoNext",
       query: {
         querySelector: ".dpmfc-z-bsco-next",
+        queryType: "single"
+      }
+    }
+  ]; */
+  static dpmfcPnoGroup = [
+    {
+      elementId: "dpmfcYottaPno",
+      query: {
+        querySelector: ".dpmfc-y-pno",
+        queryType: "single"
+      }
+    }
+  ];
+  static dpmfcPnoCloGroup = [
+    {
+      elementId: "dpmfcZettaPnoClo",
+      query: {
+        querySelector: ".dpmfc-z-pno-clo",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcExaPnoClo",
+      query: {
+        querySelector: ".dpmfc-e-pno-clo",
+        queryType: "all"
+      }
+    },
+    {
+      elementId: "dpmfcPetaPnoCloText",
+      query: {
+        querySelector: ".dpmfc-p-pno-clo-text",
+        queryType: "all"
+      }
+    }
+  ];
+  static dpmfcPnoLloGroup = [
+    {
+      elementId: "dpmfcZettaPnoLlo",
+      query: {
+        querySelector: ".dpmfc-z-pno-llo",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcExaPnoLloFirst",
+      query: {
+        querySelector: ".dpmfc-e-pno-llo-first",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcExaPnoLloPrevious",
+      query: {
+        querySelector: ".dpmfc-e-pno-llo-previous",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcPetaPnoLloFirst",
+      query: {
+        querySelector: ".dpmfc-e-pno-llo-first",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcPetaPnoLloPrevious",
+      query: {
+        querySelector: ".dpmfc-e-pno-llo-previous",
+        queryType: "single"
+      }
+    }
+  ];
+  static dpmfcPnoRloGroup = [
+    {
+      elementId: "dpmfcZettaPnoRlo",
+      query: {
+        querySelector: ".dpmfc-z-pno-rlo",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcExaPnoRloNext",
+      query: {
+        querySelector: ".dpmfc-e-pno-rlo-next",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcExaPnoRloLast",
+      query: {
+        querySelector: ".dpmfc-e-pno-rlo-last",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcPetaPnoRloNext",
+      query: {
+        querySelector: ".dpmfc-e-pno-rlo-next",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcPetaPnoRloLast",
+      query: {
+        querySelector: ".dpmfc-e-pno-rlo-last",
         queryType: "single"
       }
     }
@@ -243,7 +349,7 @@ class DpmfcConfigGet {
     );
     return getGroup;
   }
-  static getDpmfcBscoGroup() {
+  /* static getDpmfcBscoGroup() {
     const {
       dpmfcR
     } = DpmfcConfigGet.getDpmfcRoot();
@@ -253,12 +359,60 @@ class DpmfcConfigGet {
       dpmfcR
     );
     return getGroup;
+  } */
+  static getDpmfcPnoGroup() {
+    const {
+      dpmfcR
+    } = DpmfcConfigGet.getDpmfcRoot();
+    const getGroup = BlfUtil.getElementCache(
+      DpmfcConfig.dpmfcConfigCache,
+      DpmfcConfigElement.dpmfcPnoGroup,
+      dpmfcR
+    );
+    return getGroup;
+  }
+  static getDpmfcPnoCloGroup() {
+    const {
+      dpmfcR
+    } = DpmfcConfigGet.getDpmfcRoot();
+    const getGroup = BlfUtil.getElementCache(
+      DpmfcConfig.dpmfcConfigCache,
+      DpmfcConfigElement.dpmfcPnoCloGroup,
+      dpmfcR
+    );
+    return getGroup;
+  }
+  static getDpmfcPnoLloGroup() {
+    const {
+      dpmfcR
+    } = DpmfcConfigGet.getDpmfcRoot();
+    const getGroup = BlfUtil.getElementCache(
+      DpmfcConfig.dpmfcConfigCache,
+      DpmfcConfigElement.dpmfcPnoLloGroup,
+      dpmfcR
+    );
+    return getGroup;
+  }
+  static getDpmfcPnoRloGroup() {
+    const {
+      dpmfcR
+    } = DpmfcConfigGet.getDpmfcRoot();
+    const getGroup = BlfUtil.getElementCache(
+      DpmfcConfig.dpmfcConfigCache,
+      DpmfcConfigElement.dpmfcPnoRloGroup,
+      dpmfcR
+    );
+    return getGroup;
   }
 }
 class DpmfcConfig {
   static dpmfcConfigCache = {};
   static dpmfcTsoTab = 0;
-  static dpmfcBscoPage = 0;
+  /* static dpmfcBscoPage = 0; */
+  static dpmfcPnoPage = 0;
+  /*  */
+  static dpmfcDefaultPageData = ["1", "2", "3", "4", "5", "6", "7"];
+  static dpmfcModifyPageData = DpmfcConfig.dpmfcDefaultPageData;
   /* -------------------------------------------------- */
   static getDpmfcRoot() {
     return DpmfcConfigGet.getDpmfcRoot();
@@ -281,8 +435,20 @@ class DpmfcConfig {
   static getDpmfcBsoEbGroup(pIndex) {
     return DpmfcConfigGet.getDpmfcBsoEbGroup(pIndex);
   }
-  static getDpmfcBscoGroup() {
+  /* static getDpmfcBscoGroup() {
     return DpmfcConfigGet.getDpmfcBscoGroup();
+  } */
+  static getDpmfcPnoGroup() {
+    return DpmfcConfigGet.getDpmfcPnoGroup();
+  }
+  static getDpmfcPnoCloGroup() {
+    return DpmfcConfigGet.getDpmfcPnoCloGroup();
+  }
+  static getDpmfcPnoLloGroup() {
+    return DpmfcConfigGet.getDpmfcPnoLloGroup();
+  }
+  static getDpmfcPnoRloGroup() {
+    return DpmfcConfigGet.getDpmfcPnoRloGroup();
   }
 }
 export {

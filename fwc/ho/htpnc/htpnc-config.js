@@ -8,7 +8,7 @@ import {
 } from "../../fwc-hub.js";
 class HtpncConfigData {
   /* static htpncExaLgoText = "Facooya"; */
-  static htpncExaLgoLink = "/";
+  static htpncExaLgoLink = "#dev.facooya.com";
   /*  */
   static htpncZettaSntoText = "Navigation";
   /*  */

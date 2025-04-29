@@ -3,27 +3,12 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-.dpmfc-r {
-  /* Tag.header */
+footer.dpmfc-r {
   /* Position */
   grid-area: dpmfc-r;
   margin: 1rem 0rem 1rem 0rem;
   scroll-margin-top: 3.5rem;
 }
-/* .dpmfc-z-tso-tro {
-  /* Tag.div 
-  width: 100%;
-  height: 0.5rem;
-  background: #222222;
-  border-radius: 0.25rem;
-}
-.dpmfc-z-tso-text {
-  /* Tag.h2 
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  padding: 0.5rem 0rem;
-} */
 /*  */
 div.dpmfc-e-tso-tlo-tro {
   width: 100%;
@@ -120,11 +105,149 @@ span.dpmfc-t-tso-tlo-text {
   padding: 0.5rem 0rem 0rem 1rem;
 }
 /* ============================== */
-.dpmfc-z-bsco {
+/* .dpmfc-z-bsco {
   display: inline-block;
   padding: 1rem;
   cursor: pointer;
+} */
+/* li.dpmfc-e-pno-clo {
+  /* display: inline-block; 
+  /* order: 2; 
+  grid-area: clo;
 }
+ul.dpmfc-p-pno-clo {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+li.dpmfc-t-pno-clo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 0.125rem solid #000000;
+  border-radius: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+}
+span.dpmfc-g-pno-clo-text {
+  font-weight: bold;
+} */
+nav.dpmfc-y-pno {
+  /* display: flex; */
+  display: grid;
+  grid-template-areas:
+    "clo clo clo"
+    "llo . rlo";
+  gap: 1rem;
+  justify-content: space-between;
+  margin: 1rem 0rem 0rem 0rem;
+}
+/* ============================== */
+ul.dpmfc-z-pno-clo {
+  grid-area: clo;
+  order: 2;
+  display: flex;
+  gap: 0.5rem;
+  justify-self: center;
+  list-style: none;
+}
+li.dpmfc-e-pno-clo {
+  /* display: flex; */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  /* Layout */
+  width: 2.5rem;
+  height: 2.5rem;
+  /* Visual */
+  border: 0.125rem solid #222222;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+span.dpmfc-p-pno-clo-text {
+  font-weight: bold;
+}
+/* ============================== */
+ul.dpmfc-z-pno-llo {
+  grid-area: llo;
+  order: 1;
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+li.dpmfc-e-pno-llo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.125rem solid #222222;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+/* ============================== */
+ul.dpmfc-z-pno-rlo {
+  grid-area: rlo;
+  order: 3;
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+li.dpmfc-e-pno-rlo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.125rem solid #222222;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+/* ============================== */
+/* ul.dpmfc-z-pno {
+  list-style: none;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-areas:
+    "first previous . clo . next last";
+  gap: 0.5rem;
+}
+li.dpmfc-e-pno-llo {
+  display: flex;
+  /* order: 1; 
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border: 0.125rem solid #000000;
+  border-radius: 0.5rem;
+}
+li.dpmfc-e-pno-rlo {
+  display: flex;
+  /* order: 3; 
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border: 0.125rem solid #000000;
+  border-radius: 0.5rem;
+} */
+
+/* li.dpmfc-e-pno-llo-first {
+  grid-area: first;
+}
+li.dpmfc-e-pno-llo-previous {
+  grid-area: previous;
+}
+li.dpmfc-e-pno-rlo-next {
+  grid-area: next;
+}
+li.dpmfc-e-pno-rlo-last {
+  grid-area: last;
+} */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */

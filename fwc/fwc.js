@@ -153,8 +153,8 @@ class FwcManager {
       }
       case 3: {
         /* DpmhcController.resizeSensor();
-        DpmscController.resizeSensor();
-        DpmfcController.resizeSensor(); */
+        DpmscController.resizeSensor(); */
+        DpmfcController.resizeSensor();
         break;
       }
     }

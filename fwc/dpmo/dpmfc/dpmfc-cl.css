@@ -33,6 +33,22 @@
 .dpmfc-z-bso.cl-ddt-dpmfc-e-tso {
   display: flex;
 }
+/* ================================================== */
+.dpmfc-e-pno-clo.cl-dpmfc-e-pno-clo-util {
+  border: none;
+  cursor: default;
+}
+/* ================================================== */
+.dpmfc-e-pno-clo.cl-dpmfc-e-pno-clo-handler {
+  background: #222222;
+}
+.dpmfc-p-pno-clo-text.cl-dpmfc-e-pno-clo-handler {
+  color: #FFFFFF;
+}
+/* ================================================== */
+.dpmfc-e-pno-clo.cl-set-page-data-util {
+  display: flex;
+}
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
