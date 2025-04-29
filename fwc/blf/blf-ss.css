@@ -45,10 +45,9 @@
   /*  */
   display: grid;
   grid-template-areas:
-    "fasc"
-    "fauc"
-    "fosc"
-    "fllc";
+    "fasc fasc"
+    "fauc fosc"
+    "fllc fllc";
   gap: 2rem;
   /*  */
   background-color: #222222;
@@ -60,6 +59,13 @@
   }
   .blf-y-npmo {
     min-height: calc(100vh - 8rem);
+  }
+  .blf-y-fo {
+    gap: 1rem 3rem;
+    grid-template-areas:
+      "fasc fauc fosc"
+      "fasc . ."
+      "fllc fllc fllc";
   }
 }
 @media (min-width: 1280px) {

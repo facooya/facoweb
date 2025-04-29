@@ -33,19 +33,25 @@
 /* ------------------------------ */
 .fllc-y-fo {
   grid-area: y-fo;
-  display: grid;
+  /* display: grid;
   grid-template-areas:
     "fo-ta-icon fo-logo";
-  list-style-type: none;
   justify-content: center;
+  margin: 0rem 0rem 2rem 0rem; */
   margin: 0rem 0rem 2rem 0rem;
 }
 .fllc-z-fo {
+  display: grid;
+  grid-template-areas:
+    "fo-ta-icon fo-logo";
+  justify-content: center;
+}
+.fllc-e-fo {
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: var(--white);
 }
-.fllc-z-fo-ta-icon {
+.fllc-e-fo-ta-icon {
   grid-area: fo-ta-icon;
   width: 3rem;
   height: 3rem;
@@ -53,7 +59,7 @@
   /*  */
   margin-right: 0.5rem;
 }
-.fllc-z-fo-logo {
+.fllc-e-fo-logo {
   grid-area: fo-logo;
   width: 15rem;
   height: 3rem;
@@ -74,6 +80,7 @@
   font-size: 0.75rem;
   color: #AAAAAA;
   justify-self: center;
+  white-space: nowrap;
   /*  */
   margin-top: 1rem;
 }
@@ -82,8 +89,41 @@
   font-size: 0.75rem;
   color: #AAAAAA;
   justify-self: center;
+  white-space: nowrap;
   /*  */
   margin-top: 0.5rem;
+}
+@media (min-width: 768px) {
+  .fllc-r {
+    grid-template-areas:
+      ". y-fo y-fo ."
+      "y-to y-to y-ll y-ll";
+    grid-template-columns: 1fr auto auto 1fr;
+  }
+  .fllc-y {
+    grid-template-columns: repeat(4, max-content);
+    gap: 1.5rem;
+    justify-content: end;
+    align-items: end;
+  }
+  .fllc-y-fo {
+    margin: 0rem 0rem 0.5rem 0rem;
+  }
+  .fllc-y-to {
+    grid-template-areas:
+      "to-since to-copyright";
+    gap: 1.5rem;
+    justify-content: start;
+    align-items: end;
+  }
+}
+@media (min-width: 1280px) {
+  .fllc-r {
+    grid-template-areas:
+      "y-to y-fo y-ll";
+    grid-template-columns: 1fr auto 1fr;
+    margin: 0rem;
+  }
 }
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

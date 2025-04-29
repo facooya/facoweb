@@ -32,38 +32,12 @@ class BlfManager {
 
   }
   static load() {
-    /* const {
-      blfYottaFo
-    } = BlfConfig.getBlfGroup();
-    const {
-      blfFoFaucR,
-      blfFoFsdcR
-    } = BlfConfig.getBlfFoRoot(); */
-    /*  */
-    /* const faucRootRect = blfFoFaucR.getBoundingClientRect();
-    const fsdcRootRect = blfFoFsdcR.getBoundingClientRect();
-    blfYottaFo.style.gridTemplateAreas = "\"fsmc fsmc\" \"fauc fsdc\" \"fllc fllc\""; */
+    BlfTool.calcBlfYottaFo();
   }
   static resizeDisplay() {
     BlfManager.resizeSensor();
   }
   static resizeSensor() {
-    /* const {
-      blfYottaFo
-    } = BlfConfig.getBlfGroup();
-    const {
-      blfFoFaucR,
-      blfFoFsdcR
-    } = BlfConfig.getBlfFoRoot();
-    const faucRootRect = blfFoFaucR.getBoundingClientRect();
-    const fsdcRootRect = blfFoFsdcR.getBoundingClientRect();
-    const wiw = window.innerWidth; */
-    /* if (fsdcRootRect.right > wiw) {
-      blfYottaFo.style.gridTemplateAreas = "\"fsmc\" \"fauc\" \"fsdc\" \"fllc\"";
-    }
-    if (faucRootRect.width + fsdcRootRect.width < wiw) {
-      blfYottaFo.style.gridTemplateAreas = "\"fsmc fsmc\" \"fauc fsdc\" \"fllc fllc\"";
-    } */
     BlfTool.calcBlfYottaFo();
   }
 }

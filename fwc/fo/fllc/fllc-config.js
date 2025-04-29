@@ -6,6 +6,24 @@
 import {
   BlfUtil
 } from "../../fwc-hub.js";
+/*  */
+class FllcConfigData {
+  static fllcExaLink = [
+    "#",
+    "#",
+    "#",
+    "#"
+  ];
+  static fllcPetaText = [
+    "Privacy Policy",
+    "Terms of Use",
+    "Cookie Settings",
+    "Legal"
+  ];
+  /*  */
+  static fllcZettaToSinceText = "Since 2023";
+  static fllcZettaToCopyrightText = "Copyright 2024 Facooya"
+}
 class FllcConfigElement {
   static fllcRoot = [
     {
@@ -44,6 +62,30 @@ class FllcConfigElement {
         querySelector: ".fllc-z",
         queryType: "all"
       }
+    },
+    {
+      elementId: "fllcE",
+      generate: {
+        htmlTag: "a",
+        htmlClass: "fllc-e",
+        htmlLink: FllcConfigData.fllcExaLink
+      },
+      query: {
+        querySelector: ".fllc-e",
+        queryType: "all"
+      }
+    },
+    {
+      elementId: "fllcPetaText",
+      generate: {
+        htmlTag: "div",
+        htmlClass: "fllc-p-text",
+        htmlText: FllcConfigData.fllcPetaText
+      },
+      query: {
+        querySelector: ".fllc-p-text",
+        queryType: "all"
+      }
     }
   ];
   static fllcFoGroup = [
@@ -59,24 +101,35 @@ class FllcConfigElement {
       }
     },
     {
-      elementId: "fllcZettaFoTaIcon",
+      elementId: "fllcZettaFo",
       generate: {
-        htmlTag: "div",
-        htmlClass: "fllc-z-fo-ta-icon fllc-z-fo"
+        htmlTag: "a",
+        htmlClass: "fllc-z-fo"
       },
       query: {
-        querySelector: ".fllc-z-fo-ta-icon",
+        querySelector: ".fllc-z-fo",
         queryType: "single"
       }
     },
     {
-      elementId: "fllcZettaFoLogo",
+      elementId: "fllcExaFoTaIcon",
       generate: {
         htmlTag: "div",
-        htmlClass: "fllc-z-fo-logo fllc-z-fo"
+        htmlClass: "fllc-e-fo-ta-icon fllc-e-fo"
       },
       query: {
-        querySelector: ".fllc-z-fo-logo",
+        querySelector: ".fllc-e-fo-ta-icon",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "fllcExaFoLogo",
+      generate: {
+        htmlTag: "div",
+        htmlClass: "fllc-e-fo-logo fllc-e-fo"
+      },
+      query: {
+        querySelector: ".fllc-e-fo-logo",
         queryType: "single"
       }
     }
@@ -97,7 +150,8 @@ class FllcConfigElement {
       elementId: "fllcZettaToSince",
       generate: {
         htmlTag: "div",
-        htmlClass: "fllc-z-to-since"
+        htmlClass: "fllc-z-to-since",
+        htmlText: FllcConfigData.fllcZettaToSinceText
       },
       query: {
         querySelector: ".fllc-z-to-copyright",
@@ -108,7 +162,8 @@ class FllcConfigElement {
       elementId: "fllcZettaToCopyright",
       generate: {
         htmlTag: "div",
-        htmlClass: "fllc-z-to-copyright"
+        htmlClass: "fllc-z-to-copyright",
+        htmlText: FllcConfigData.fllcZettaToCopyrightText
       },
       query: {
         querySelector: ".fllc-z-to-copyright",
@@ -127,53 +182,139 @@ class FllcConfigGet {
   }
   static getFllcGroup() {
     const {
-      FllcR
+      fllcR
     } = FllcConfigGet.getFllcRoot();
     const getGroup = BlfUtil.getElementCache(
       FllcConfig.fllcConfigCache,
       FllcConfigElement.fllcGroup,
-      FllcR
+      fllcR
     );
     return getGroup;
   }
   static getFllcYbGroup() {
     const {
-      FllcR
+      fllcR
     } = FllcConfigGet.getFllcRoot();
     const getGroup = BlfUtil.getElementCache(
       FllcConfig.fllcConfigCache,
       FllcConfigElement.fllcYbGroup,
-      FllcR
+      fllcR
     );
     return getGroup;
   }
   static getFllcFoGroup() {
     const {
-      FllcR
+      fllcR
     } = FllcConfigGet.getFllcRoot();
     const getGroup = BlfUtil.getElementCache(
       FllcConfig.fllcConfigCache,
       FllcConfigElement.fllcFoGroup,
-      FllcR
+      fllcR
     );
     return getGroup;
   }
   static getFllcToGroup() {
     const {
-      FllcR
+      fllcR
     } = FllcConfigGet.getFllcRoot();
     const getGroup = BlfUtil.getElementCache(
       FllcConfig.fllcConfigCache,
       FllcConfigElement.fllcToGroup,
-      FllcR
+      fllcR
     );
     return getGroup;
+  }
+}
+class FllcConfigManager {
+  static fllcGenerate() {
+    const {
+      fllcR
+    } = FllcConfigGet.getFllcRoot();
+    const fllcFragment = document.createDocumentFragment();
+    let tempGenerateElement = null;
+    let tempSaveElement = {};
+    /* ==========----- :FllcGroup: -----========== */
+    for (let cei = 0; cei < FllcConfigElement.fllcGroup.length; cei++) {
+      tempGenerateElement = BlfUtil.getGenerateElement(
+        FllcConfigElement.fllcGroup[cei]
+      );
+      tempSaveElement[FllcConfigElement.fllcGroup[cei].elementId] = tempGenerateElement;
+    }
+    /* ==========----- ;FllcGroup; -----========== */
+    /* ==========----- :FllcYbGroup: -----========== */
+    for (let cdi = 0; cdi < FllcConfigData.fllcExaLink.length; cdi++) {
+      for (let cei = 0; cei < FllcConfigElement.fllcYbGroup.length; cei++) {
+        tempGenerateElement = BlfUtil.getGenerateElement(
+          FllcConfigElement.fllcYbGroup[cei],
+          [cdi]
+        );
+        tempSaveElement[FllcConfigElement.fllcYbGroup[cei].elementId] = tempGenerateElement;
+      }
+      FllcConfigManager.fllcYbGroupAppend(tempSaveElement);
+    }
+    /* ==========----- ;FllcYbGroup; -----========== */
+    /* ==========----- :FllcFoGroup: -----========== */
+    for (let cei = 0; cei < FllcConfigElement.fllcFoGroup.length; cei++) {
+      tempGenerateElement = BlfUtil.getGenerateElement(
+        FllcConfigElement.fllcFoGroup[cei]
+      );
+      tempSaveElement[FllcConfigElement.fllcFoGroup[cei].elementId] = tempGenerateElement;
+    }
+    /* ==========----- ;FllcFoGroup; -----========== */
+    /* ==========----- :FllcToGroup: -----========== */
+    for (let cei = 0; cei < FllcConfigElement.fllcToGroup.length; cei++) {
+      tempGenerateElement = BlfUtil.getGenerateElement(
+        FllcConfigElement.fllcToGroup[cei]
+      );
+      tempSaveElement[FllcConfigElement.fllcToGroup[cei].elementId] = tempGenerateElement;
+    }
+    /* ==========----- ;FllcToGroup; -----========== */
+    FllcConfigManager.fllcFoGroupAppend(tempSaveElement);
+    FllcConfigManager.fllcToGroupAppend(tempSaveElement);
+    FllcConfigManager.fllcFragmentAppend(tempSaveElement, fllcFragment);
+    fllcR.append(fllcFragment);
+    /* CDI(cdi) = ConfigDataIndex, CEI(cei) = ConfigElementIndex */
+  }
+  static fllcFragmentAppend(getSaveElement, fllcFragment) {
+    fllcFragment.append(
+      getSaveElement["fllcY"],
+      getSaveElement["fllcYottaFo"],
+      getSaveElement["fllcYottaTo"]
+    );
+  }
+  static fllcYbGroupAppend(getSaveElement) {
+    getSaveElement["fllcE"].append(
+      getSaveElement["fllcPetaText"]
+    );
+    getSaveElement["fllcZ"].append(
+      getSaveElement["fllcE"]
+    );
+    getSaveElement["fllcY"].append(
+      getSaveElement["fllcZ"]
+    );
+  }
+  static fllcFoGroupAppend(getSaveElement) {
+    getSaveElement["fllcZettaFo"].append(
+      getSaveElement["fllcExaFoTaIcon"],
+      getSaveElement["fllcExaFoLogo"]
+    );
+    getSaveElement["fllcYottaFo"].append(
+      getSaveElement["fllcZettaFo"]
+    );
+  }
+  static fllcToGroupAppend(getSaveElement) {
+    getSaveElement["fllcYottaTo"].append(
+      getSaveElement["fllcZettaToSince"],
+      getSaveElement["fllcZettaToCopyright"]
+    );
   }
 }
 class FllcConfig {
   static fllcConfigCache = {};
   /* -------------------------------------------------- */
-
+  static fllcGenerate() {
+    FllcConfigManager.fllcGenerate();
+  }
   /* -------------------------------------------------- */
   static getFllcRoot() {
     return FllcConfigGet.getFllcRoot();

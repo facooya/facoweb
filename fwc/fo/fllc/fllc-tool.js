@@ -11,8 +11,8 @@ class FllcToolCl {
   static clFllcYottaFo() {
     const {
       fllcYottaFo,
-      fllcZettaFoTaIcon,
-      fllcZettaFoLogo
+      fllcExaFoTaIcon,
+      fllcExaFoLogo
     } = FllcConfig.getFllcFoGroup();
     const taIconRemWidth = 3;
     const logoRemWidth = 15;
@@ -27,8 +27,8 @@ class FllcToolCl {
       clType = "add";
     }
     fllcYottaFo.classList[clType](clData);
-    fllcZettaFoTaIcon.classList[clType](clData);
-    fllcZettaFoLogo.classList[clType](clData);
+    fllcExaFoTaIcon.classList[clType](clData);
+    fllcExaFoLogo.classList[clType](clData);
   }
 }
 class FllcTool {

@@ -6,7 +6,8 @@
 .blf-y-fo.calc-blf-y-fo-tool {
   grid-template-areas:
     "fasc fasc"
-    "fauc fosc"
+    "fauc ."
+    "fosc ."
     "fllc fllc";
 }
 /* ========================= :FACOOYA: ========================= */

@@ -145,9 +145,9 @@
   width: 100%;
   height: 100%;
   /* Typographic */
-  color: var(--htpnc-color);
+  /* color: var(--htpnc-color);
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 2rem; */
   /* Visual */
   cursor: pointer;
 }
@@ -221,10 +221,13 @@
 @media (min-width: 1280px) {
   .htpnc-y {
     /* Tag.ul */
-    grid-template-columns: 12rem 1fr 4rem;
+    grid-template-columns: 16rem 1fr 4rem;
     grid-template-rows: var(--htpnc-height);
     grid-template-areas:
       "htpnc-z-lgo . htpnc-z-hsngo";
+  }
+  .htpnc-z-lgo {
+    padding: 0rem 0rem 0rem 1rem;
   }
 }
 /* =============== :FACOOYA: =============== */

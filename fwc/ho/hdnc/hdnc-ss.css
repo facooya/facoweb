@@ -355,11 +355,12 @@
 }
 @media (min-width: 1280px) {
   .hdnc-r {
+    /* 16rem HTPNC Logo */
     top: 0rem;
-    left: 12rem;
+    left: 16rem;
     right: 4rem;
     grid-template-columns: repeat(4, minmax(8rem, 15rem));
-    width: calc(100% - 12rem - 4rem);
+    width: calc(100% - 16rem - 4rem);
     transition:
       width var(--hdnc-duration-primary) var(--hdnc-timing-primary);
   }

@@ -10,6 +10,9 @@ import {
   HdncController,
   HsncController,
   HeccController,
+  FascController,
+  FaucController,
+  FoscController,
   FllcController,
   NpmhcController,
   NpmscController
@@ -39,6 +42,9 @@ class FwcManager {
     HsncController.init();
     HeccController.init();
     /* -------------------------------------------------- */
+    FascController.init();
+    FaucController.init();
+    FoscController.init();
     FllcController.init();
     /* -------------------------------------------------- */
     NpmhcController.init();
@@ -52,6 +58,9 @@ class FwcManager {
     HsncController.load();
     HeccController.load();
     /* -------------------------------------------------- */
+    FascController.load();
+    FaucController.load();
+    FoscController.load();
     FllcController.load();
     /* -------------------------------------------------- */
     NpmhcController.load();
@@ -65,6 +74,9 @@ class FwcManager {
     HsncController.resizeDisplay();
     HeccController.resizeDisplay();
     /* -------------------------------------------------- */
+    FascController.resizeDisplay();
+    FaucController.resizeDisplay();
+    FoscController.resizeDisplay();
     FllcController.resizeDisplay();
     /* -------------------------------------------------- */
     NpmhcController.resizeDisplay();

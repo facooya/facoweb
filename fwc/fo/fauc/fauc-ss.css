@@ -11,17 +11,22 @@
   white-space: nowrap;
 }
 .fauc-y-text {
-  grid-template-areas: tlo;
+  grid-area: tlo;
   font-size: 1.5rem;
   color: #FFFFFF;
 }
 .fauc-y {
-  grid-template-areas: blo;
+  grid-area: blo;
   display: grid;
   grid-auto-flow: row;
   gap: 0.5rem;
-  color: #FFFFFF;
   list-style-type: none;
+}
+.fauc-e {
+  text-decoration: none;
+}
+.fauc-p-text {
+  color: #FFFFFF;
 }
 /* =============== :FACOOYA: =============== */
 /* NOTE

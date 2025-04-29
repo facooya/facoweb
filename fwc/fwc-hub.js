@@ -60,6 +60,30 @@ import {
 } from "./ho/hecc/hecc-util.js";
 /* ================================================== */
 import {
+  FascAccessor,
+  FascController
+} from "./fo/fasc/fasc-class.js";
+import {
+  FascConfig
+} from "./fo/fasc/fasc-config.js";
+/* -------------------------------------------------- */
+import {
+  FaucAccessor,
+  FaucController
+} from "./fo/fauc/fauc-class.js";
+import {
+  FaucConfig
+} from "./fo/fauc/fauc-config.js";
+/* -------------------------------------------------- */
+import {
+  FoscAccessor,
+  FoscController
+} from "./fo/fosc/fosc-class.js";
+import {
+  FoscConfig
+} from "./fo/fosc/fosc-config.js";
+/* -------------------------------------------------- */
+import {
   FllcAccessor,
   FllcController
 } from "./fo/fllc/fllc-class.js";
@@ -118,6 +142,18 @@ export {
   HeccController,
   HeccConfig,
   HeccUtil,
+  /* FASC */
+  FascAccessor,
+  FascController,
+  FascConfig,
+  /* FAUC */
+  FaucAccessor,
+  FaucController,
+  FaucConfig,
+  /* FOSC */
+  FoscAccessor,
+  FoscController,
+  FoscConfig,
   /* FLLC */
   FllcAccessor,
   FllcController,
@@ -148,6 +184,6 @@ export {
  * ECC: Et Cetera C
  * NPLC: Navigate Page Layout C
  */
-/* INFORMATION
- * @[Author] {Facooya} (Founder)
+/* AUTHORSHIP
+ * Founder: Facooya
  */

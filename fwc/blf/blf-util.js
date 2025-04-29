@@ -10,6 +10,11 @@ class BlfUtilGet {
     if (eGenerate.htmlClass) {
       elementData.setAttribute("class", eGenerate.htmlClass);
     }
+    /* !!!!! :v1.1.20a-4: !!!!! */
+    if (eGenerate.htmlTarget) {
+      elementData.setAttribute("target", eGenerate.htmlTarget);
+    }
+    /* !!!!! ;v1.1.20a-4; !!!!! */
     if (eGenerate.htmlText || eGenerate.htmlLink) {
       switch (pIndex.length) {
         case 0: {
