@@ -15,8 +15,9 @@ import {
   HdncConfig,
   HsncConfig,
   HeccConfig,
-  NpmhcConfig,
-  NpmscConfig,
+  FllcConfig,
+  /* NpmhcConfig,
+  NpmscConfig, */
   HsncUtil,
   HdncUtil
 } from "../../fwc-hub.js";
@@ -249,7 +250,7 @@ class HtpncHandler {
     const {
       hsncR
     } = HsncConfig.getHsncRoot();
-    const {
+    /* const {
       blfYottaNpmo
     } = BlfConfig.getBlfGroup();
     const {
@@ -260,7 +261,7 @@ class HtpncHandler {
     } = NpmhcConfig.getNpmhcTnoGroup();
     const {
       npmscZ
-    } = NpmscConfig.getNpmscGroup();
+    } = NpmscConfig.getNpmscGroup(); */
     const {
       heccZettaPboRgro
     } = HeccConfig.getHeccPboGroup();
@@ -276,12 +277,12 @@ class HtpncHandler {
     }
     /*  */
     if (isActive) {
-      if (npmhcR.clientWidth < temporaryData) {
+      /* if (npmhcR.clientWidth < temporaryData) {
         npmhcZettaTno.style.gridTemplateColumns = "1fr 1fr";
         for (let i = 0; i < npmscZ.length; i++) {
           npmscZ[i].style.gridTemplateColumns = "1fr";
         }
-      }
+      } */
       for (let i = 0; i < hdncY.length; i++) {
         if (hdncY[i].isActive) {
           HdncUtil.resetHdncHandler(2);
@@ -290,14 +291,14 @@ class HtpncHandler {
       }
     } else {
       HsncUtil.resetHsncHandler(2);
-      npmhcZettaTno.style.gridTemplateColumns = "";
+      /* npmhcZettaTno.style.gridTemplateColumns = "";
       for (let i = 0; i < npmscZ.length; i++) {
         npmscZ[i].style.gridTemplateColumns = "";
-      }
+      } */
     }
     HtpncTool.clHtpncExaHsngoGro(isActive);
     htpncYottaSdo.classList[clType](clData);
-    blfYottaNpmo.classList[clType](clData);
+    /* blfYottaNpmo.classList[clType](clData); */
     heccZettaPboRgro.classList[clType](clData);
     hsncR.classList[clType](clData);
     htpncYottaSnto.classList[clType](clData);
@@ -324,10 +325,16 @@ class HtpncHandler {
       heccZettaPboRgro
     } = HeccConfig.getHeccPboGroup();
     const {
-      blfYottaNpmo
+      fllcR
+    } = FllcConfig.getFllcRoot();
+    const {
+      blfYottaNpmo,
+      blfYottaFo
     } = BlfConfig.getBlfGroup();
     /*  */
     const clData = "cl-ddt-htpnc-z-hsngo-handler";
+    /* TransitionEnd */
+    const tabletWidth = 1280 + (20 * 16);
     let isActive = false;
     let clType = "remove";
     if (!htpncZettaHsngo.isActive) {
@@ -335,14 +342,18 @@ class HtpncHandler {
       clType = "add";
     }
     if (isActive) {
-
+      if (blfYottaFo.clientWidth < tabletWidth) {
+        fllcR.classList.add(clData);
+      }
     } else {
+      fllcR.classList.remove(clData);
       HsncUtil.resetHsncHandler(3);
     }
     /*  */
     HtpncTool.clHtpncExaHsngoGro(isActive);
     htpncYottaSdo.classList[clType](clData);
     blfYottaNpmo.classList[clType](clData);
+    blfYottaFo.classList[clType](clData);
     hsncR.classList[clType](clData);
     heccZettaPboRgro.classList[clType](clData);
     htpncYottaSnto.classList[clType](clData);

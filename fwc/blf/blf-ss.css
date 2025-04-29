@@ -51,7 +51,8 @@
   gap: 2rem;
   /*  */
   background-color: #222222;
-  padding: 2rem 2rem;
+  padding: 1.5rem 2rem;
+  transition: margin 300ms ease;
 }
 @media (min-width: 768px) {
   .blf-r {

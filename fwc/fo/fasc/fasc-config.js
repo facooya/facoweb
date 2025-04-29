@@ -8,11 +8,23 @@ import {
 } from "../../fwc-hub.js";
 /*  */
 class FascConfigData {
-  static fascYottaText = "dev.facooya.com is a programming-related site. \
-    We provide information promptly. \
+  static fascZettaToHeaderText = "Welcome to ";
+  static fascZettaToDevLink = "#dev.facooya.com";
+  static fascZettaToDevText = "dev.facooya.com";
+  static fascZettaToMainText = ", a programming-related site. \
+    This site provides information promptly. \
     We believe our services will assist in launching humanity to space.";
   /*  */
-  static fascZettaFoLink = "/";
+  /* static fascZettaToYsLink = "#dev.facooya.com";
+  static fascZettaToYsText = "dev.facooya.com";
+  static fascZettaToZsText = " " + "is a programming-related site." + " ";
+  static fascZettaToEsText = "This site provides information promptly." + " ";
+  static fascZettaToPsText = "We believe our services will assist in launching humanity to space."; */
+  /* static fascYottaText = "dev.facooya.com is a programming-related site. \
+    We provide information promptly. \
+    We believe our services will assist in launching humanity to space."; */
+  /*  */
+  static fascZettaFoLink = "#dev.facooya.com";
   static fascExaSmoALink = "#facooya";
   static fascExaSmoBLink = "#facooya";
   static fascExaSmoCLink = "#facooya";
@@ -33,7 +45,7 @@ class FascConfigElement {
       }
     }
   ];
-  static fascGroup = [
+  /* static fascGroup = [
     {
       elementId: "fascYottaText",
       generate: {
@@ -46,7 +58,7 @@ class FascConfigElement {
         queryType: "single"
       }
     }
-  ];
+  ]; */
   static fascFoGroup = [
     {
       elementId: "fascYottaFo",
@@ -74,7 +86,7 @@ class FascConfigElement {
     {
       elementId: "fascExaFoDevLogo",
       generate: {
-        htmlTag: "div",
+        htmlTag: "span",
         htmlClass: "fasc-e-fo-dev-logo fasc-e-fo"
       },
       query: {
@@ -85,7 +97,7 @@ class FascConfigElement {
     {
       elementId: "fascExaFoTaIcon",
       generate: {
-        htmlTag: "div",
+        htmlTag: "span",
         htmlClass: "fasc-e-fo-ta-icon fasc-e-fo"
       },
       query: {
@@ -96,7 +108,7 @@ class FascConfigElement {
     {
       elementId: "fascExaFoIcon",
       generate: {
-        htmlTag: "div",
+        htmlTag: "span",
         htmlClass: "fasc-e-fo-icon fasc-e-fo"
       },
       query: {
@@ -104,6 +116,105 @@ class FascConfigElement {
         queryType: "single"
       }
     }
+  ];
+  static fascToGroup = [
+    {
+      elementId: "fascYottaTo",
+      generate: {
+        htmlTag: "p",
+        htmlClass: "fasc-y-to"
+      },
+      query: {
+        querySelector: ".fasc-y-to",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "fascZettaToHeader",
+      generate: {
+        htmlTag: "span",
+        htmlClass: "fasc-z-to-header fasc-z-to",
+        htmlText: FascConfigData.fascZettaToHeaderText
+      },
+      query: {
+        querySelector: ".fasc-z-to-header",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "fascZettaToDev",
+      generate: {
+        htmlTag: "a",
+        htmlClass: "fasc-z-to-dev fasc-z-to",
+        htmlLink: FascConfigData.fascZettaToDevLink,
+        htmlText: FascConfigData.fascZettaToDevText
+      },
+      query: {
+        querySelector: ".fasc-z-to-dev",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "fascZettaToMain",
+      generate: {
+        htmlTag: "span",
+        htmlClass: "fasc-z-to-main fasc-z-to",
+        htmlText: FascConfigData.fascZettaToMainText
+      },
+      query: {
+        querySelector: ".fasc-z-to-main",
+        queryType: "single"
+      }
+    }
+    /* {
+      elementId: "fascZettaToYs",
+      generate: {
+        htmlTag: "a",
+        htmlClass: "fasc-z-to-ys fasc-z-to",
+        htmlLink: FascConfigData.fascZettaToYsLink,
+        htmlText: FascConfigData.fascZettaToYsText
+      },
+      query: {
+        querySelector: ".fasc-z-to-ys",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "fascZettaToZs",
+      generate: {
+        htmlTag: "span",
+        htmlClass: "fasc-z-to-zs fasc-z-to",
+        htmlText: FascConfigData.fascZettaToZsText
+      },
+      query: {
+        querySelector: ".fasc-z-to-zs",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "fascZettaToEs",
+      generate: {
+        htmlTag: "span",
+        htmlClass: "fasc-z-to-es fasc-z-to",
+        htmlText: FascConfigData.fascZettaToEsText
+      },
+      query: {
+        querySelector: ".fasc-z-to-es",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "fascZettaToPs",
+      generate: {
+        htmlTag: "span",
+        htmlClass: "fasc-z-to-ps fasc-z-to",
+        htmlText: FascConfigData.fascZettaToPsText
+      },
+      query: {
+        querySelector: ".fasc-z-to-ps",
+        queryType: "single"
+      }
+    } */
   ];
   static fascSmoGroup = [
     {
@@ -121,7 +232,7 @@ class FascConfigElement {
       elementId: "fascZettaSmoA",
       generate: {
         htmlTag: "li",
-        htmlClass: "fasc-z-smo-a"
+        htmlClass: "fasc-z-smo-a fasc-z-smo"
       },
       query: {
         querySelector: ".fasc-z-smo-a",
@@ -156,7 +267,7 @@ class FascConfigElement {
       elementId: "fascZettaSmoB",
       generate: {
         htmlTag: "li",
-        htmlClass: "fasc-z-smo-b"
+        htmlClass: "fasc-z-smo-b fasc-z-smo"
       },
       query: {
         querySelector: ".fasc-z-smo-b",
@@ -191,7 +302,7 @@ class FascConfigElement {
       elementId: "fascZettaSmoC",
       generate: {
         htmlTag: "li",
-        htmlClass: "fasc-z-smo-c"
+        htmlClass: "fasc-z-smo-c fasc-z-smo"
       },
       query: {
         querySelector: ".fasc-z-smo-c",
@@ -232,7 +343,7 @@ class FascConfigGet {
     );
     return getGroup;
   }
-  static getFascGroup() {
+  /* static getFascGroup() {
     const {
       fascR
     } = FascConfigGet.getFascRoot();
@@ -242,7 +353,7 @@ class FascConfigGet {
       fascR
     );
     return getGroup;
-  }
+  } */
   static getFascFoGroup() {
     const {
       fascR
@@ -250,6 +361,17 @@ class FascConfigGet {
     const getGroup = BlfUtil.getElementCache(
       FascConfig.fascConfigCache,
       FascConfigElement.fascFoGroup,
+      fascR
+    );
+    return getGroup;
+  }
+  static getFascToGroup() {
+    const {
+      fascR
+    } = FascConfigGet.getFascRoot();
+    const getGroup = BlfUtil.getElementCache(
+      FascConfig.fascConfigCache,
+      FascConfigElement.fascToGroup,
       fascR
     );
     return getGroup;
@@ -275,13 +397,21 @@ class FascConfigManager {
     let tempGenerateElement = null;
     let tempSaveElement = {};
     /* ==========----- :FascGroup: -----========== */
-    for (let gi = 0; gi < FascConfigElement.fascGroup.length; gi++) {
+    /* for (let gi = 0; gi < FascConfigElement.fascGroup.length; gi++) {
       tempGenerateElement = BlfUtil.getGenerateElement(
         FascConfigElement.fascGroup[gi]
       );
       tempSaveElement[FascConfigElement.fascGroup[gi].elementId] = tempGenerateElement;
-    }
+    } */
     /* ==========----- ;FascGroup; -----========== */
+    /* ==========----- :FascToGroup: -----========== */
+    for (let ei = 0; ei < FascConfigElement.fascToGroup.length; ei++) {
+      tempGenerateElement = BlfUtil.getGenerateElement(
+        FascConfigElement.fascToGroup[ei]
+      );
+      tempSaveElement[FascConfigElement.fascToGroup[ei].elementId] = tempGenerateElement;
+    }
+    /* ==========----- ;FascToGroup; -----========== */
     /* ==========----- :FascFoGroup: -----========== */
     for (let fgi = 0; fgi < FascConfigElement.fascFoGroup.length; fgi++) {
       tempGenerateElement = BlfUtil.getGenerateElement(
@@ -299,6 +429,7 @@ class FascConfigManager {
     }
     /* ==========----- ;FascSmoGroup; -----========== */
     FascConfigManager.fascFoAppend(tempSaveElement);
+    FascConfigManager.fascToAppend(tempSaveElement);
     FascConfigManager.fascSmoAppend(tempSaveElement);
     FascConfigManager.fascFragmentAppend(tempSaveElement, fascFragment);
     fascR.append(fascFragment);
@@ -306,8 +437,8 @@ class FascConfigManager {
   static fascFragmentAppend(getSaveElement, fascFragment) {
     fascFragment.append(
       getSaveElement["fascYottaFo"],
-      getSaveElement["fascYottaSmo"],
-      getSaveElement["fascYottaText"]
+      getSaveElement["fascYottaTo"],
+      getSaveElement["fascYottaSmo"]
     );
   }
   static fascFoAppend(getSaveElement) {
@@ -320,6 +451,21 @@ class FascConfigManager {
       getSaveElement["fascZettaFo"]
     );
   }
+  static fascToAppend(getSaveElement) {
+    getSaveElement["fascYottaTo"].append(
+      getSaveElement["fascZettaToHeader"],
+      getSaveElement["fascZettaToDev"],
+      getSaveElement["fascZettaToMain"]
+    );
+  }
+  /* static fascToAppend(getSaveElement) {
+    getSaveElement["fascYottaTo"].append(
+      getSaveElement["fascZettaToYs"],
+      getSaveElement["fascZettaToZs"],
+      getSaveElement["fascZettaToEs"],
+      getSaveElement["fascZettaToPs"]
+    );
+  } */
   static fascSmoAppend(getSaveElement) {
     getSaveElement["fascExaSmoA"].append(
       getSaveElement["fascPetaSmoAIcon"]
@@ -356,11 +502,14 @@ class FascConfig {
   static getFascRoot() {
     return FascConfigGet.getFascRoot();
   }
-  static getFascGroup() {
+  /* static getFascGroup() {
     return FascConfigGet.getFascGroup();
-  }
+  } */
   static getFascFoGroup() {
     return FascConfigGet.getFascFoGroup();
+  }
+  static getFascToGroup() {
+    return FascConfigGet.getFascToGroup();
   }
   static getFascSmoGroup() {
     return FascConfigGet.getFascSmoGroup();

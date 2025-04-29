@@ -20,6 +20,7 @@ class FllcConfigData {
     "Cookie Settings",
     "Legal"
   ];
+  static fllcZettaFoLink = "#www.facooya.com";
   /*  */
   static fllcZettaToSinceText = "Since 2023";
   static fllcZettaToCopyrightText = "Copyright 2024 Facooya"
@@ -104,7 +105,8 @@ class FllcConfigElement {
       elementId: "fllcZettaFo",
       generate: {
         htmlTag: "a",
-        htmlClass: "fllc-z-fo"
+        htmlClass: "fllc-z-fo",
+        htmlLink: FllcConfigData.fllcZettaFoLink
       },
       query: {
         querySelector: ".fllc-z-fo",
@@ -150,7 +152,7 @@ class FllcConfigElement {
       elementId: "fllcZettaToSince",
       generate: {
         htmlTag: "div",
-        htmlClass: "fllc-z-to-since",
+        htmlClass: "fllc-z-to-since fllc-z-to",
         htmlText: FllcConfigData.fllcZettaToSinceText
       },
       query: {
@@ -162,7 +164,7 @@ class FllcConfigElement {
       elementId: "fllcZettaToCopyright",
       generate: {
         htmlTag: "div",
-        htmlClass: "fllc-z-to-copyright",
+        htmlClass: "fllc-z-to-copyright fllc-z-to",
         htmlText: FllcConfigData.fllcZettaToCopyrightText
       },
       query: {

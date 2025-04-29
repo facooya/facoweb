@@ -23,9 +23,9 @@
   left: 0%;
 }
 /*  */
-.blf-y-npmo.cl-tdt-htpnc-z-hsngo-handler {
+/* .blf-y-npmo.cl-tdt-htpnc-z-hsngo-handler {
   margin: 0rem 20rem 0rem 0rem;
-}
+} */
 .hecc-z-pbo-rgro.cl-tdt-htpnc-z-hsngo-handler {
   right: 20rem;
 }
@@ -43,6 +43,9 @@
 .blf-y-npmo.cl-ddt-htpnc-z-hsngo-handler {
   margin: 0rem 20rem 0rem 0rem;
 }
+.blf-y-fo.cl-ddt-htpnc-z-hsngo-handler {
+  margin: 0rem 20rem 0rem 0rem;
+}
 .hecc-z-pbo-rgro.cl-ddt-htpnc-z-hsngo-handler {
   right: 20rem;
 }
@@ -55,6 +58,13 @@
 }
 .hdnc-r.cl-ddt-htpnc-z-hsngo-handler {
   width: calc(100% - 16rem - 16rem - 4rem);
+}
+.fllc-r.cl-ddt-htpnc-z-hsngo-handler {
+  grid-template-areas:
+    ". y-fo y-fo ."
+    "y-to y-to y-ll y-ll";
+  grid-template-columns: 1fr auto auto 1fr;
+  gap: 1rem 0rem;
 }
 /* ==========----- ;htpncZettaHsngo; -----========== */
 /* ==========----- :setHtpncExaHdngo: -----========== */
@@ -104,7 +114,7 @@
 .htpnc-p-lgo-logo.cl-htpnc-p-lgo-logo-tool {
   /* max-width: 320px */
   width: 2rem;
-  mask-image: url("../../../svg/a.svg");
+  mask-image: url("../../res/facooya/icon.svg");
 }
 /* =============== ;Tool; =============== */
 /* =============== :FACOOYA: =============== */

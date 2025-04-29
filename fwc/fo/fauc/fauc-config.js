@@ -86,7 +86,7 @@ class FaucConfigElement {
     {
       elementId: "faucPetaText",
       generate: {
-        htmlTag: "div",
+        htmlTag: "span",
         htmlClass: "fauc-p-text",
         htmlText: FaucConfigData.faucPetaText
       },

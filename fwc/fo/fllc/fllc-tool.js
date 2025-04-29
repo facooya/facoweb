@@ -26,7 +26,7 @@ class FllcToolCl {
     if (innerWidth < calcFoWidth) {
       clType = "add";
     }
-    fllcYottaFo.classList[clType](clData);
+    /* fllcYottaFo.classList[clType](clData); */
     fllcExaFoTaIcon.classList[clType](clData);
     fllcExaFoLogo.classList[clType](clData);
   }

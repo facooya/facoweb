@@ -86,7 +86,7 @@ class FoscConfigElement {
     {
       elementId: "foscPetaText",
       generate: {
-        htmlTag: "div",
+        htmlTag: "span",
         htmlClass: "fosc-p-text",
         htmlText: FoscConfigData.foscPetaText
       },
