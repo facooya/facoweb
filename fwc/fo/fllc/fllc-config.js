@@ -22,8 +22,8 @@ class FllcConfigData {
   ];
   static fllcZettaFoLink = "#facooya.com";
   /*  */
-  static fllcZettaToSinceText = "Since 2023";
-  static fllcZettaToCopyrightText = "Copyright 2024 Facooya"
+  /* static fllcZettaToSinceText = "Since 2023"; */
+  static fllcZettaToCopyrightText = "Copyright 2023-2024 Facooya";
 }
 class FllcConfigElement {
   static fllcRoot = [
@@ -148,7 +148,7 @@ class FllcConfigElement {
         queryType: "single"
       }
     },
-    {
+    /* {
       elementId: "fllcZettaToSince",
       generate: {
         htmlTag: "div",
@@ -159,7 +159,7 @@ class FllcConfigElement {
         querySelector: ".fllc-z-to-copyright",
         queryType: "single"
       }
-    },
+    }, */
     {
       elementId: "fllcZettaToCopyright",
       generate: {
@@ -306,7 +306,7 @@ class FllcConfigManager {
   }
   static fllcToGroupAppend(getSaveElement) {
     getSaveElement["fllcYottaTo"].append(
-      getSaveElement["fllcZettaToSince"],
+      /* getSaveElement["fllcZettaToSince"], */
       getSaveElement["fllcZettaToCopyright"]
     );
   }

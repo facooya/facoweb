@@ -38,19 +38,25 @@
   justify-content: center;
   transition: margin 300ms ease;
 }
-/* !!!!! :v1.1.21a-2 [temp]: !!!!!! */
+/* !!!!! :v1.1.21a-2-3 [temp]: !!!!!! */
 .blf-y-dpmo {
   /* Tag.main */
   grid-area: blf-y-mo;
   /* Grid */
   display: grid;
   grid-template-columns: minmax(200px, 1200px);
+  grid-template-areas:
+    "dpmhc-r"
+    "dpmsc-r"
+    "dpmfc-r";
+  gap: 1rem;
   /* Layout */
   min-height: calc(100vh - 4rem);
-  padding: 1rem;
+  padding: 0rem 1rem;
   /* Visual */
   background-color: #FFFFFF;
   justify-content: center;
+  align-content: start;
 }
 /* !!!!! ;v1.1.21a-2 [temp]; !!!!!! */
 .blf-y-fo {
@@ -92,15 +98,10 @@
     min-height: calc(100vh - 4rem);
   }
 }
-/* =============== :FACOOYA: =============== */
+/* ========================= :FACOOYA: ========================= */
 /* NOTE
- * PLF: Primary Layout Framework
- * PHO, M, F: Primary Header Object, Main, Footer
- * TOC: Terms Of Copyright
- * TOU: Terms Of Use
- * LOA: List Of Authors
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* =============== ;FACOOYA; =============== */
+ /* ========================= ;FACOOYA; ========================= */

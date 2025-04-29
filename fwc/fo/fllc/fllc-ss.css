@@ -61,8 +61,8 @@
 /* ------------------------------ */
 .fllc-y-to {
   grid-area: y-to;
-  display: flex;
-  gap: 1.5rem;
+  /* display: flex;
+  gap: 1.5rem; */
   cursor: default;
 }
 .fllc-z-to {

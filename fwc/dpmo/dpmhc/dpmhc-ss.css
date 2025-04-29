@@ -1,0 +1,32 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.dpmhc-r {
+  /* Tag.header */
+  /* Position */
+  grid-area: dpmhc-r;
+  cursor: default;
+}
+.dpmhc-z-text {
+  /* Tag.h1 */
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem 0rem;
+}
+.dpmhc-z-bro {
+  /* Tag.div */
+  width: 100%;
+  height: 0.5rem;
+  background-color: #222222;
+  border-radius: 0.25rem;
+}
+/* ========================= :FACOOYA: ========================= */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* ========================= ;FACOOYA; ========================= */

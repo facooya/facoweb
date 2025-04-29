@@ -1,0 +1,84 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.dpmsc-r {
+  /* Tag.section */
+  /* Position */
+  grid-area: dpmsc-r;
+}
+.dpmsc-y {
+  /* Tag.ul */
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  list-style: none;
+}
+/*  */
+.dpmsc-e-text {
+  /* Tag.h2 */
+  margin: 0rem 0rem 0.5rem 0.5rem;
+  font-size: 1.25rem;
+  cursor: default;
+}
+.dpmsc-e {
+  /* Tag.ul */
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+  list-style: none;
+}
+.dpmsc-t-text {
+  /* Tag.h3 */
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #000000;
+  color: #FFFFFF;
+  border-radius: 1rem 1rem 0rem 0rem;
+  font-size: 1rem;
+  font-weight: normal;
+  cursor: default;
+}
+.dpmsc-t {
+  /* Tag.div */
+  padding: 0.5rem 1rem;
+  line-height: 1.5rem;
+  background-color: #222222;
+  border-radius: 0rem 1rem 1rem 1rem;
+}
+.dpmsc-g-text {
+  /* Tag.pre */
+  color: #FFFFFF;
+  font-size: 1rem;
+  overflow: auto;
+}
+/* ================================================== */
+/* .dpmsc-p-rpo-text {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #000000;
+  color: #FFFFFF;
+  border-radius: 1rem 1rem 0rem 0rem;
+  cursor: default;
+}
+.dpmsc-p-rpo {
+  padding: 0.5rem 1rem;
+  line-height: 1.5rem;
+  background-color: #222222;
+  border-radius: 0rem 1rem 1rem 1rem;
+}
+.dpmsc-t-rpo-text {
+  color: #FFFFFF;
+  font-size: 1rem;
+} */
+/* ========================= :FACOOYA: ========================= */
+/* NOTE
+ * PO: Panel Object
+ * CPO: Code PO
+ * RPO: Result PO
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* ========================= ;FACOOYA; ========================= */

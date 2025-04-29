@@ -1,0 +1,104 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.dpmfc-r {
+  /* Tag.header */
+  /* Position */
+  grid-area: dpmfc-r;
+  margin: 0rem 0rem 1rem 0rem;
+}
+.dpmfc-z-tso-tro {
+  /* Tag.div */
+  width: 100%;
+  height: 0.5rem;
+  background: #222222;
+  border-radius: 0.25rem;
+}
+.dpmfc-z-tso-text {
+  /* Tag.h2 */
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5rem 0rem;
+}
+/* ============================== */
+.dpmfc-z-tso {
+  /* Tag.ul */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: min-content;
+  gap: 1rem;
+  list-style: none;
+  margin: 0.5rem 0rem 0rem 0rem;
+}
+.dpmfc-e-tso {
+  /* Tag.li */
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.dpmfc-p-tso-text {
+  /* Tag.h3 */
+  color: #777777;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+.dpmfc-p-tso-aro {
+  /* Tag.div */
+  position: absolute;
+  top: 0rem;
+  bottom: 0rem;
+  left: 0rem;
+  right: 0rem;
+  /*  */
+  border: 0.25rem solid #777777;
+  border-radius: 1.5rem;
+}
+/* ============================== */
+.dpmfc-y-bso {
+  /* Tag.section */
+  margin: 2rem 0rem 0rem 0rem;
+}
+.dpmfc-z-bso {
+  /* Tag.ul */
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+  list-style: none;
+}
+.dpmfc-e-bso {
+  /* Tag.li */
+  border: 0.125rem solid #000000;
+  border-radius: 1rem;
+  padding: 1rem 0.5rem;
+}
+.dpmfc-p-bso {
+  /* Tag.a */
+  text-decoration: none;
+}
+.dpmfc-t-bso-ht-text {
+  /* Tag.h3 */
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.dpmfc-t-bso-pt-text {
+  /* Tag.p */
+  color: #555555;
+  font-weight: normal;
+  font-size: 1rem;
+  padding: 0.5rem 0rem 0rem 1rem;
+}
+/* ========================= :FACOOYA: ========================= */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* ========================= ;FACOOYA; ========================= */
