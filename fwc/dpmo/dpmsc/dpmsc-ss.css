@@ -15,7 +15,7 @@
   list-style: none;
 }
 .dpmsc-content-item {
-  scroll-margin-top: 4rem;
+  /* scroll-margin-top: 4rem; */
 }
 .dpmsc-title-heading {
   padding: 0.5rem 0rem 1rem 0.5rem;

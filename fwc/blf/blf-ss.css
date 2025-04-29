@@ -98,6 +98,16 @@
   .blf-y-npmo {
     min-height: calc(100vh - 4rem);
   }
+  /* .blf-y-dpmo {
+    grid-template-areas:
+      "dpmhc-r ."
+      "dpmsc-r ."
+      "dpmfc-r .";
+  }
+  .dpmac {
+    position: sticky;
+    top: 5rem;
+  } */
 }
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

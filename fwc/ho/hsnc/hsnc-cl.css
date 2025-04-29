@@ -4,96 +4,54 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* =============== :Handler: =============== */
-/* ==========----- :cl-mdt-hsnc-z-tlo-handler: -----========== */
-.hsnc-y.cl-mdt-hsnc-z-tlo-handler {
-  background-color: var(--hsnc-background-color-secondary);
+.hsnc-item.cl-hsnc-item-container-click {
+  background: #333333;
 }
-.hsnc-e-tlo-text.cl-mdt-hsnc-z-tlo-handler {
+.hsnc-item-text.cl-hsnc-item-container-click {
   text-shadow: var(--facooya-bold-white);
 }
-.hsnc-e-tlo-rgro.cl-mdt-hsnc-z-tlo-handler {
-  transform: rotate(180deg);
+.hsnc-item-rr.cl-hsnc-item-container-click {
+  transform: scale(1, 1) rotate(360deg) !important;
 }
-.hsnc-e-tlo-bgro.cl-mdt-hsnc-z-tlo-handler {
+.hsnc-item-br.cl-hsnc-item-container-click {
   left: 5%;
   width: 90%;
 }
-.hsnc-t-blo.cl-mdt-hsnc-z-tlo-handler {
+.hsnc-sub-list.cl-hsnc-item-container-click {
   opacity: 1;
 }
-/* ==========----- ;cl-mdt-hsnc-z-tlo-handler; -----========== */
-/* ==========----- :cl-tdt-hsnc-z-tlo-handler: -----========== */
-.hsnc-y.cl-tdt-hsnc-z-tlo-handler {
-  background-color: var(--hsnc-background-color-secondary);
-}
-.hsnc-e-tlo-text.cl-tdt-hsnc-z-tlo-handler {
-  text-shadow: var(--facooya-bold-white);
-}
-.hsnc-e-tlo-rgro.cl-tdt-hsnc-z-tlo-handler {
-  transform: rotate(180deg);
-}
-.hsnc-e-tlo-bgro.cl-tdt-hsnc-z-tlo-handler {
-  left: 5%;
-  width: 90%;
-}
-.hsnc-t-blo.cl-tdt-hsnc-z-tlo-handler {
-  opacity: 1;
-}
-/* ==========----- ;cl-tdt-hsnc-z-tlo-handler; -----========== */
-/* ==========----- :cl-ddt-hsnc-z-tlo-handler: -----========== */
-.hsnc-e-tlo-text.cl-ddt-hsnc-z-tlo-handler-hover {
-  text-shadow: var(--facooya-bold-white);
-  margin: 0rem 1rem 0rem 0rem;
-}
-.hsnc-e-tlo-rgro.cl-ddt-hsnc-z-tlo-handler-hover {
-  /* margin: 0rem 2.5rem 0rem 0rem; */
-  margin: 0rem 1rem 0rem 0rem;
-  border-top: 0.5rem solid var(--white);
-  border-right: 0.4rem solid var(--transparent);
-  border-left: 0.4rem solid var(--transparent);
-  transform: rotate(360deg);
-}
-.hsnc-e-tlo-bgro.cl-ddt-hsnc-z-tlo-handler-hover {
-  left: 5%;
-  width: 90%;
-}
-.hsnc-y.cl-ddt-hsnc-z-tlo-handler-click {
-  background-color: var(--hsnc-background-color-secondary);
-}
-.hsnc-e-tlo-rgro.cl-ddt-hsnc-z-tlo-handler-click {
-  transform: rotate(540deg);
-}
-.hsnc-t-blo.cl-ddt-hsnc-z-tlo-handler-click {
-  opacity: 1;
-}
-/* ==========----- ;cl-ddt-hsnc-z-tlo-handler; -----========== */
-/* ==========----- :cl-ddt-hsnc-p-blo-handler: -----========== */
-.hsnc-g-blo-text.cl-ddt-hsnc-p-blo-handler {
-  /* font-weight: bold; */
-  text-shadow: var(--facooya-bold-white);
-}
-.hsnc-g-blo-rgro.cl-ddt-hsnc-p-blo-handler {
-  margin: 0rem 0rem 0rem 0.5rem;
-  border-top: 0.25rem solid var(--transparent);
-  border-bottom: 0.25rem solid var(--transparent);
-  border-left: 0.5rem solid var(--white);
-  opacity: 1;
-}
-/* ==========----- ;cl-ddt-hsnc-p-blo-handler; -----========== */
-/* ==========----- :cl-adt-hsnc-y-sfro-handler: -----========== */
-.hsnc-y-sfro-to.cl-adt-hsnc-y-sfro-handler {
-  height: 5rem;
-}
-.hsnc-y-sfro-bo.cl-adt-hsnc-y-sfro-handler {
-  height: 5rem;
-}
-/* ==========----- ;cl-adt-hsnc-y-sfro-handler; -----========== */
 /* =============== ;Handler; =============== */
-/* =============== :FACOOYA: =============== */
+.hsnc-item-text.cl-hsnc-item-container-set-hover-lock {
+  text-shadow: var(--facooya-bold-white);
+  margin: 0rem 1rem 0rem 0rem;
+}
+.hsnc-item-rr.cl-hsnc-item-container-set-hover-lock {
+  margin: 0rem 1rem 0rem 0rem;
+  transform: scale(1, 1) rotate(180deg);
+  opacity: 1;
+}
+.hsnc-item-br.cl-hsnc-item-container-set-hover-lock {
+  left: 5%;
+  width: 90%;
+}
+/*  */
+.hsnc-sub-item-text.cl-hsnc-sub-item-set-active {
+  margin: 0rem 0.75rem 0rem 0rem;
+}
+.hsnc-sub-item-rr.cl-hsnc-sub-item-set-active {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+/* =============== :Util: =============== */
+.hsnc-sub-item-lr.cl-hsnc-set-sub-item-lr-enabled {
+  transform: scale(1, 1);
+}
+.hsnc-sub-item-text.cl-hsnc-set-sub-item-lr-enabled {
+  text-shadow: var(--facooya-bold-white);
+}
+/* =============== ;Util; =============== */
 /* NOTE
- * CL: Class List
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* =============== ;FACOOYA; =============== */

@@ -125,6 +125,17 @@ import {
 } from "./dpmo/dpmhc/dpmhc-config.js";
 /* -------------------------------------------------- */
 import {
+  DpmacAccessor,
+  DpmacController
+} from "./dpmo/dpmac/dpmac-class.js";
+import {
+  DpmacConfig
+} from "./dpmo/dpmac/dpmac-config.js";
+import {
+  DpmacUtil
+} from "./dpmo/dpmac/dpmac-util.js";
+/* -------------------------------------------------- */
+import {
   DpmscAccessor,
   DpmscController
 } from "./dpmo/dpmsc/dpmsc-class.js";
@@ -200,6 +211,11 @@ export {
   DpmhcAccessor,
   DpmhcController,
   DpmhcConfig,
+  /* DPMAC */
+  DpmacAccessor,
+  DpmacController,
+  DpmacConfig,
+  DpmacUtil,
   /* DPMSC */
   DpmscAccessor,
   DpmscController,

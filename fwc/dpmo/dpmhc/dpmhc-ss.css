@@ -3,49 +3,46 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-.dpmhc-r {
-  /* Tag.header */
-  /* Position */
+.dpmhc {
   grid-area: dpmhc-r;
   cursor: default;
-  scroll-margin-top: 4rem;
+  /* scroll-margin-top: 4rem; */
 }
-.dpmhc-z-tlo-text {
-  /* Tag.h1 */
+/* ============================== */
+.dpmhc-title {
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
   padding: 1rem 0rem;
 }
 /* ============================== */
-/* .dpmhc-y-cno {
-
-} */
-.dpmhc-z-cno {
-  /* Tag.ul */
-  list-style: none;
-}
-.dpmhc-p-cno {
-
-}
-.dpmhc-t-cno {
-  /* Tag.a */
-  /* color: #222222;
-  font-size: 1.25rem; */
-}
-.dpmhc-g-cno-text {
-  /* Tag.span */
-  color: #222222;
+/* .dpmhc-toc-heading {
   font-size: 1.25rem;
+  color: #000000;
 }
+.dpmhc-index-list {
+  list-style: none;
+  line-height: 1.5rem;
+}
+.dpmhc-index-link {
+  text-decoration: none;
+}
+.dpmhc-index-text {
+  color: #222222;
+  font-size: 1rem;
+  margin-left: 1rem;
+} */
 /* ============================== */
-.dpmhc-z-blo-bro {
-  /* Tag.div */
+.dpmhc-bottom-render {
   width: 100%;
   height: 0.5rem;
-  background-color: #222222;
+  background: #222222;
   border-radius: 0.25rem;
-  margin: 1rem 0rem 0rem 0rem;
+}
+@media (min-width: 1280px) {
+  .dpmac-toc-nav {
+    
+  }
 }
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

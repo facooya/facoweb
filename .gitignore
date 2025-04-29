@@ -9,12 +9,5 @@ Makefile
 !.gitignore
 !.gitattributes
 
-!a.svg
-!b.svg
-!c.svg
-!d.svg
-!logo-2w.svg
-!logo-5w.svg
-!chevron-icon.svg
-!skip-page-icon.svg
-!step-page-icon.svg
+!fwc/res/svg/*.svg
+!fwc/res/icon/*.svg

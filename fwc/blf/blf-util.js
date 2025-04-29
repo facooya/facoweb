@@ -7,6 +7,13 @@ import {
   BlfConfig
 } from "../fwc-hub.js";
 /*  */
+class BlfUtilSet {
+  static setDeviceState() {
+    if (window.matchMedia("(hover: none)").matches) {
+      BlfConfig.isTouchDevice = true;
+    }
+  }
+}
 class BlfUtilGet {
   static getGenerateElement(pElement, pIndex = []) {
     const eGenerate = pElement.generate;
@@ -153,6 +160,10 @@ class BlfUtilGet {
   }
 }
 class BlfUtil {
+  static setDeviceState() {
+    BlfUtilSet.setDeviceState();
+  }
+  /* -------------------------------------------------- */
   static getGenerateElement(elementGroup, pIndex = []) {
     return BlfUtilGet.getGenerateElement(elementGroup, pIndex);
   }

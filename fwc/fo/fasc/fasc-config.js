@@ -16,7 +16,7 @@ class FascConfigData {
     We believe our services will assist in launching humanity to space.";
   /*  */
   static fascZettaFoLink = "#dev.facooya.com";
-  static fascExaSmoALink = "#acooya";
+  static fascExaSmoALink = "#facooya";
   static fascExaSmoBLink = "#facooya";
   static fascExaSmoCLink = "#facooya";
   /*  */

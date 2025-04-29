@@ -77,10 +77,10 @@ class BlfConfigElement {
       elementId: "hsncR",
       generate: {
         htmlTag: "nav",
-        htmlClass: "hsnc-r"
+        htmlClass: "hsnc-r hsnc"
       },
       query: {
-        querySelector: ".hsnc-r",
+        querySelector: ".hsnc",
         queryType: "single"
       }
     },
@@ -234,6 +234,11 @@ class BlfConfig {
   static previousDisplayType = 0;
   static currentPageType = 0;
   static resizeTimerId = 0;
+  /*  */
+  static isTouchDevice = false;
+  static screenType = BlfConfig.currentDisplayType;
+  static previousScreenType = BlfConfig.previousDisplayType;
+  static pageType = BlfConfig.currentPageType;
   /* -------------------------------------------------- */
   static blfConfigCache = {};
   /* static blfCache = {}; */

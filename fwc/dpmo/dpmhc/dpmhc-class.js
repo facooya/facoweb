@@ -18,83 +18,73 @@ class DpmhcController {
   }
   static load() {
     DpmhcManager.load();
-    DpmhcManager.event(true);
+    DpmhcManager.loadEvent();
   }
   static resizeDisplay() {
     DpmhcManager.resizeDisplay();
-    DpmhcManager.event(false);
-    DpmhcManager.event(true);
   }
 }
 class DpmhcManager {
   static init() {
-    /* const {
-      dpmhcExaCno
-    } = DpmhcConfig.getDpmhcCnoEbGroup();
-    for (let ebi = 0; ebi < dpmhcExaCno.length; ebi++) {
-      dpmhcExaCno[ebi].index = ebi;
-    } */
+
   }
   static load() {
-
+    /* const dpmscIndexLink = document.querySelectorAll(".dpmsc-title-link"); */
+    const tocIndex = document.querySelectorAll(".toc-index");
+    const scrollY = window.scrollY;
+    for (let i = 0; i < tocIndex.length; i++) {
+      const rect = tocIndex[i].getBoundingClientRect();
+      DpmhcConfig.rectCache["a" + i] = rect.y + scrollY - 64;
+    }
+    console.log(DpmhcConfig.rectCache);
   }
   static resizeDisplay() {
 
   }
-  static event(isActive) {
-    /* const test = document.querySelectorAll(".dpmhc-t-cno"); */
-    const {
-      dpmhcTeraCno
-    } = DpmhcConfig.getDpmhcCnoEbGroup();
+  static loadEvent() {
+    const dpmhcIndexLink = document.querySelectorAll(".dpmhc-index-link");
     /*  */
-    let displayType = BlfConfig.previousDisplayType;
-    let eventListenerType = "removeEventListener";
-    if (isActive) {
-      displayType = BlfConfig.currentDisplayType;
-      eventListenerType = "addEventListener";
+    for (let tbi = 0; tbi < dpmhcIndexLink.length; tbi++) {
+      dpmhcIndexLink[tbi].addEventListener(
+        "click",
+        DpmhcHandler.dpmhcIndexLink
+      );
     }
     /*  */
-    switch (displayType) {
-      case 1: {
-        for (let tbi = 0; tbi < dpmhcTeraCno.length; tbi++) {
-          dpmhcTeraCno[tbi][eventListenerType](
-            "click",
-            DpmhcHandler.mdtDpmhcTeraCno
-          );
-        }
-        break;
-      }
-      case 2: {
-        break;
-      }
-      case 3: {
-        break;
-      }
-    }
+    /* window.addEventListener("scroll", DpmhcHandler.indexLocation); */
   }
 }
 class DpmhcHandler {
-  /* static testHandler(eventData) {
-    const hash = eventData.currentTarget.hash;
-    const hashTarget = document.querySelector(hash);
-    history.replaceState(null, null, hash);
-    hashTarget.scrollIntoView();
-  } */
-  static mdtDpmhcTeraCno(eventData) {
-    const {
-      eventCurrentTarget
-    } = BlfUtil.getEventData(eventData);
+  static dpmhcIndexLink(eventData) {
+    const currentTarget = eventData.currentTarget;
     /*  */
-    const hash = eventCurrentTarget.hash;
+    const hash = currentTarget.hash;
     const hashElement = document.querySelector(hash);
     history.replaceState(null, null, hash);
     hashElement.scrollIntoView();
   }
-  static tdtDpmhcTeraCno(eventData) {
-
-  }
-  static ddtDpmhcTeraCno(eventData) {
-
+  static indexLocation_Old() {
+    /* const dpmhcIndexLink = document.querySelectorAll(".dpmhc-index-link"); */
+    /* let current = null;
+    for (let i = 0; i < dpmhcIndexLink.length; i++) {
+      const rect = dpmhcIndexLink[i].getBoundingClientRect();
+      if (rect.y < 64) {
+        current = dpmhcIndexLink[i];
+      }
+    } */
+    /* const dpmhcTitleLink = document.querySelector("#developer-note");
+    const dpmhcTitleLinkRect = dpmhcTitleLink.getBoundingClientRect();
+    console.log(dpmhcTitleLinkRect);
+    console.log("window: ", window.scrollY); */
+    const count = Object.keys(DpmhcConfig.rectCache).length;
+    for (let i = 0; i < count; i++) {
+      const value = DpmhcConfig.rectCache["a" + i];
+      if (value > window.scrollY) {
+        /* console.log(value);
+        console.log(window.scrollY); */
+        break;
+      }
+    }
   }
 }
 /*  */

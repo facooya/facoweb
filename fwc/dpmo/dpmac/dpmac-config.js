@@ -3,29 +3,16 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
-  BlfUtil
-} from "../../fwc-hub.js";
-/*  */
-class DpmhcConfigData {
-
-}
-class DpmhcConfigElement {
-  
-}
-class DpmhcConfigGet {
-
-}
-class DpmhcConfig {
-  static rectCache = {};
+class DpmacConfig {
+  static indexPositions = [];
+  static currentIndex = 0;
 }
 /*  */
 export {
-  DpmhcConfig
+  DpmacConfig
 };
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
- * CNO: Contents Navigation Object
  */
 /* AUTHORSHIP
  * Founder: Facooya

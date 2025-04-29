@@ -9,7 +9,11 @@ import {
 /*  */
 import {
   BlfConfig,
-  BlfUtil
+  BlfUtil,
+  HsncUtil,
+  DpmacAccessor,
+  DpmacConfig,
+  DpmacUtil
 } from "../fwc-hub.js";
 import {
   BlfTool
@@ -40,6 +44,7 @@ class BlfManager {
     BlfConfig.currentDisplayType = BlfUtil.getDisplayType();
     BlfConfig.previousDisplayType = BlfConfig.currentDisplayType;
     BlfConfig.currentPageType = BlfUtil.getPageType();
+    BlfUtil.setDeviceState();
   }
   static load() {
     BlfTool.calcBlfYottaFo();
@@ -60,6 +65,14 @@ class BlfManager {
       "resize",
       BlfHandler.onResize
     );
+    window.addEventListener(
+      "scroll",
+      BlfHandler.onScroll
+    );
+    window.addEventListener(
+      "hashchange",
+      BlfHandler.onHashChange
+    )
   }
 }
 class BlfHandler {
@@ -79,6 +92,14 @@ class BlfHandler {
         200
       );
     }
+  }
+  static onScroll() {
+    DpmacUtil.setCurrentIndex();
+  }
+  static onHashChange() {
+    /* if mobile */
+    DpmacUtil.setCurrentIndexHashChange();
+    HsncUtil.setSubItemLr();
   }
 }
 export {

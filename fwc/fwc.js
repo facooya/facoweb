@@ -18,6 +18,7 @@ import {
   NpmhcController,
   NpmscController,
   DpmhcController,
+  DpmacController,
   DpmscController,
   DpmfcController
 } from "./fwc-hub.js";
@@ -63,6 +64,7 @@ class FwcManager {
       }
       case 3: {
         DpmhcController.init();
+        DpmacController.init();
         DpmscController.init();
         DpmfcController.init();
         break;
@@ -93,6 +95,7 @@ class FwcManager {
       }
       case 3: {
         DpmhcController.load();
+        DpmacController.load();
         DpmscController.load();
         DpmfcController.load();
         break;
@@ -123,6 +126,7 @@ class FwcManager {
       }
       case 3: {
         DpmhcController.resizeDisplay();
+        DpmacController.resizeDisplay();
         DpmscController.resizeDisplay();
         DpmfcController.resizeDisplay();
         break;
