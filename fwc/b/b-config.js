@@ -45,7 +45,7 @@ class BodyConfigManager {
       hFrag.append(nav);
     }); */
     /*  */
-    const htbc = document.createElement("section");
+    const htbc = document.createElement("div");
     htbc.setAttribute("class", "htbc");
     const hdnc = document.createElement("nav");
     hdnc.setAttribute("class", "hdnc");

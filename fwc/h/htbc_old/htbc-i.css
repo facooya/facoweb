@@ -3,21 +3,8 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-.dpmac {
-  display: none;
-}
-.toc-index {
-  scroll-margin-top: 4rem;
-}
-@media (min-width: 768px) {
-  .toc-index {
-    scroll-margin-top: 8rem;
-  }
-}
-@media (min-width: 1280px) {
-  .toc-index {
-    scroll-margin-top: 4rem;
-  }
+@media (hover: hover) {
+  
 }
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

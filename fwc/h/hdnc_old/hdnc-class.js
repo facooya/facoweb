@@ -3,647 +3,525 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* import {
-  FwaConfig
-} from "../../../fwa/fwa-config.js"; */
-import {
-  HdncTool
-} from "./hdnc-tool.js";
+import { HdncConfig } from "./hdnc-config.js";
+import { HdncTool } from "./hdnc-tool.js";
 import {
   BodyConfig,
-  BodyUtil,
-  HtbcAccessor,
-  HtbcConfig,
-  HdncConfig,
-  HdncUtil
+  HtbcAccessor
 } from "../../fwc-hub.js";
-/*  */
+/* ================================================== */
 class HdncAccessor {
-  static getHdncHandler() {
-    return HdncHandler;
+  static itemCloseAll() {
+    HdncLogic.itemCloseAll();
+  }
+  static updateSubListTransformForLast(item, shouldDefault) {
+    HdncTool.updateSubListTransformForLast(item, shouldDefault);
   }
 }
+/* ================================================== */
 class HdncController {
   static init() {
-    HdncConfig.hdncGenerate();
     HdncManager.init();
   }
   static load() {
-    HdncManager.event(true);
     HdncManager.load();
   }
   static resizeDisplay() {
     HdncManager.resizeDisplay();
-    HdncManager.event(false);
-    HdncManager.event(true);
   }
   static resizeSensor() {
     HdncManager.resizeSensor();
   }
 }
+/* ================================================== */
 class HdncManager {
   static init() {
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    /*  */
-    for (let ybi = 0; ybi < hdncY.length; ybi++) {
-      hdncY[ybi].index = ybi;
-      hdncY[ybi].isActive = false;
-      /*  */
-      const {
-        hdncPetaBlo,
-        hdncGigaBloBgro
-      } = HdncConfig.getHdncBloEbGroup(ybi);
-      for (let ebi = 0; ebi < hdncPetaBlo.length; ebi++) {
-        hdncPetaBlo[ebi].index = ebi;
-        hdncGigaBloBgro[ebi].timerId = null;
+    HdncConfig.generate();
+    const items = document.querySelectorAll(".hdnc-item");
+    for (let i = 0; i < items.length; i++) {
+      items[i].index = i;
+      items[i].isOpen = false;
+      const subItems = items[i].querySelectorAll(".hdnc-sub-item");
+      const subItemContainers = items[i].querySelectorAll(".hdnc-sub-item-container");
+      for (let j = 0; j < subItems.length; j++) {
+        subItems[j].index = j;
+        subItemContainers.isHover = false;
+      }
+      if (i === 3) {
+        items[i].isDefaultTransform = true;
       }
     }
   }
-  /* -------------------------------------------------- */
+  /* ------------------------------ */
   static load() {
-    switch (BodyConfig.currentDisplayType) {
-      case 1: {
-        break;
-      }
-      case 2: {
-        const {
-          hdncExaBlo
-        } = HdncConfig.getHdncBloGroup();
-        hdncExaBlo[0].classList.add("cl-tdt-hdnc-z-tlo-handler-nth-first");
-        hdncExaBlo[3].classList.add("cl-tdt-hdnc-z-tlo-handler-nth-last");
-        /*  */
-        HdncUtil.updateHdncExaBloMaxHeight();
-        HdncUtil.setHdncExaBloMaxHeight();
-        /*  */
-        HdncUtil.updateHdncExaBloSgroBoTop();
-        HdncUtil.setHdncExaBloSgroBoTop();
-        break;
-      }
-      case 3: {
-        HdncUtil.updateHdncExaBloMaxHeight();
-        HdncUtil.setHdncExaBloMaxHeight();
-        /*  */
-        HdncUtil.updateHdncExaBloSgroBoTop();
-        HdncUtil.setHdncExaBloSgroBoTop();
-        break;
-      }
-    }
-    HdncUtil.updateHdncExaBloGridTemplateRows();
-    HdncUtil.setHdncExaBloGridTemplateRows(false);
+    HdncManager.loadEvent();
+    HdncTool.updateSubListMaxHeight();
   }
-  /* -------------------------------------------------- */
+  /* ------------------------------ */
   static resizeDisplay() {
-    const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    const {
-      hdncYottaSfroTo,
-      hdncYottaSfroBo
-    } = HdncConfig.getHdncYottaGroup();
-    /*  */
-    HdncUtil.resetHdncHandler();
-    /*  */
-    switch (BodyConfig.previousDisplayType) {
-      case 1: {
-        hdncYottaSfroTo.classList.remove("cl-mdt-hdnc-y-sfro-handler");
-        hdncYottaSfroBo.classList.remove("cl-mdt-hdnc-y-sfro-handler");
-        break;
-      }
-      case 2: {
-        hdncExaBlo[0].classList.remove("cl-tdt-hdnc-z-tlo-handler-nth-first");
-        hdncExaBlo[3].classList.remove("cl-tdt-hdnc-z-tlo-handler-nth-last");
-        break;
-      }
-      case 3: {
-        break;
-      }
+    if (BodyConfig.previousScreenType >= 2) {
+      HdncLogic.itemCloseAll();
     }
-    /*  */
-    switch (BodyConfig.currentDisplayType) {
-      case 1: {
-        for (let ybi = 0; ybi < hdncExaBlo.length; ybi++) {
-          hdncExaBlo[ybi].style.maxHeight = "";
+    HdncManager.resizeEvent();
+    HdncTool.updateSubListMaxHeight();
+    if (BodyConfig.previousScreenType === 3) {
+      const items = document.querySelectorAll(".hdnc-item");
+      items.forEach(item => {
+        if (item.index === 3 && !item.isDefaultTransform) {
+          HdncTool.updateSubListTransformForLast(item, true);
         }
-        break;
-      }
-      case 2: {
-        hdncExaBlo[0].classList.add("cl-tdt-hdnc-z-tlo-handler-nth-first");
-        hdncExaBlo[3].classList.add("cl-tdt-hdnc-z-tlo-handler-nth-last");
-        break;
-      }
-      case 3: {
-        break;
-      }
+      });
     }
-    HdncManager.resizeSensor();
   }
-  /* -------------------------------------------------- */
+  /* ------------------------------ */
   static resizeSensor() {
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    switch (BodyConfig.currentDisplayType) {
-      case 1: {
-        for (let ybi = 0; ybi < hdncY.length; ybi++) {
-          if (hdncY[ybi].isActive) {
-            HdncUtil.updateHdncGigaBloBgroLeft(ybi);
-            HdncUtil.updateHdncGigaBloBgroWidth(ybi);
-            /*  */
-            HdncUtil.setHdncGigaBloBgroLeft(ybi);
-            HdncUtil.setHdncGigaBloBgroWidth(ybi, true);
-          }
+    const items = document.querySelectorAll(".hdnc-item");
+    items.forEach(item => {
+      if (item.isOpen) {
+        HdncLogic.subItemContainerTools(item);
+        if (BodyConfig.isTouchDevice) {
+          const subItemBrs = item.querySelectorAll(".hdnc-sub-item-br");
+          subItemBrs.forEach(subItemBr => {
+            subItemBr.style.width = `${subItemBr.width}px`;
+          });
         }
-        HdncHandler.mdtHdncRootScroll();
-        break;
       }
-      case 2: {
-        HdncUtil.updateHdncExaBloMaxHeight();
-        HdncUtil.setHdncExaBloMaxHeight();
-        /*  */
-        HdncUtil.updateHdncExaBloSgroLeft();
-        HdncUtil.setHdncExaBloSgroLeft();
-        /*  */
-        HdncUtil.updateHdncExaBloSgroBoTop();
-        HdncUtil.setHdncExaBloSgroBoTop();
-        break;
-      }
-      case 3: {
-        HdncUtil.updateHdncExaBloMaxHeight();
-        HdncUtil.setHdncExaBloMaxHeight();
-        /*  */
-        HdncUtil.updateHdncExaBloSgroLeft();
-        HdncUtil.setHdncExaBloSgroLeft();
-        /*  */
-        HdncUtil.updateHdncExaBloSgroBoTop();
-        HdncUtil.setHdncExaBloSgroBoTop();
-        break;
-      }
-    }
+    });
+    HdncHandler.scroll();
+    HdncTool.updateSubListMaxHeight();
   }
-  /* -------------------------------------------------- */
-  static event(isActive) {
-    const {
-      hdncR
-    } = HdncConfig.getHdncRoot();
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncZettaTlo
-    } = HdncConfig.getHdncTloGroup();
-    const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
+  /* ============================== */
+  static loadEvent() {
+    const hdnc = document.querySelector(".hdnc");
+    const screenType = BodyConfig.screenType;
+    const isTouchDevice = BodyConfig.isTouchDevice;
     /*  */
-    let displayType = BodyConfig.previousDisplayType;
-    let eventListenerType = "removeEventListener";
-    if (isActive) {
-      displayType = BodyConfig.currentDisplayType;
-      eventListenerType = "addEventListener";
+    const subLists = document.querySelectorAll(".hdnc-sub-list");
+    subLists.forEach(subList => {
+      subList.addEventListener("transitionend", HdncHandler.subListTransitionEnd);
+    });
+    /*  */
+    if (screenType === 1) {
+      hdnc.addEventListener("scroll", HdncHandler.scroll);
+    } else if (screenType >= 2) {
+      subLists.forEach(subList => {
+        subList.addEventListener("scroll", HdncHandler.subListScroll);
+      });
     }
     /*  */
-    switch (displayType) {
-      case 1: {
-        hdncR[eventListenerType]("scroll", HdncHandler.mdtHdncRootScroll);
-        for (let ybi = 0; ybi < hdncY.length; ybi++) {
-          hdncZettaTlo[ybi][eventListenerType](
-            "click",
-            HdncHandler.mdtHdncZettaTlo
-          );
-          hdncExaBlo[ybi][eventListenerType](
-            "transitionend",
-            HdncHandler.mdtHdncExaBloTransitionEnd
-          );
-        }
-        break;
+    if (screenType === 3 && !isTouchDevice) {
+      const items = hdnc.querySelectorAll(".hdnc-item");
+      items.forEach(item => {
+        item.addEventListener("mouseenter", HdncHandler.itemHover);
+        item.addEventListener("mouseleave", HdncHandler.itemHover);
+      });
+    } else {
+      const itemContainers = hdnc.querySelectorAll(".hdnc-item-container");
+      itemContainers.forEach(container => {
+        container.addEventListener("click", HdncHandler.itemContainerClick);
+      });
+    }
+    /*  */
+    if (!isTouchDevice) {
+      const subItemContainers = hdnc.querySelectorAll(".hdnc-sub-item-container");
+      subItemContainers.forEach(subContainer => {
+        subContainer.addEventListener("mouseenter", HdncHandler.subItemContainerHover);
+        subContainer.addEventListener("mouseleave", HdncHandler.subItemContainerHover);
+      });
+    }
+    /*  */
+    /* if (BodyConfig.screenType === 1) {
+      const hdnc = document.querySelector(".hdnc");
+      hdnc.addEventListener("scroll", HdncHandler.scroll);
+      /*  
+      const itemContainers = document.querySelectorAll(".hdnc-item-container");
+      itemContainers.forEach(container => {
+        container.addEventListener("click", HdncHandler.itemContainerClick);
+      });
+      const subLists = document.querySelectorAll(".hdnc-sub-list");
+      subLists.forEach(subList => {
+        subList.addEventListener("transitionend", HdncHandler.subListTransitionEnd);
+      });
+      /*  
+      if (!BodyConfig.isTouchDevice) {
+        const subItemContainers = document.querySelectorAll(".hdnc-sub-item-container");
+        subItemContainers.forEach(subContainer => {
+          subContainer.addEventListener("mouseenter", HdncHandler.subItemContainerHover);
+          subContainer.addEventListener("mouseleave", HdncHandler.subItemContainerHover);
+        });
       }
-      case 2: {
-        for (let ybi = 0; ybi < hdncY.length; ybi++) {
-          hdncZettaTlo[ybi][eventListenerType](
-            "click",
-            HdncHandler.tdtHdncZettaTlo
-          );
-          hdncExaBlo[ybi][eventListenerType](
-            "transitionend",
-            HdncHandler.tdtHdncExaBloTransitionEnd
-          );
-        }
-        break;
+    } else if (BodyConfig.screenType === 2) {
+      const itemContainers = document.querySelectorAll(".hdnc-item-container");
+      itemContainers.forEach(container => {
+        container.addEventListener("click", HdncHandler.itemContainerClick);
+      });
+      const subLists = document.querySelectorAll(".hdnc-sub-list");
+      subLists.forEach(subList => {
+        subList.addEventListener("transitionend", HdncHandler.subListTransitionEnd);
+      });
+      /*  
+      if (!BodyConfig.isTouchDevice) {
+        const subItemContainers = document.querySelectorAll(".hdnc-sub-item-container");
+        subItemContainers.forEach(subContainer => {
+          subContainer.addEventListener("mouseenter", HdncHandler.subItemContainerHover);
+          subContainer.addEventListener("mouseleave", HdncHandler.subItemContainerHover);
+        });
       }
-      case 3: {
-        for (let ybi = 0; ybi < hdncY.length; ybi++) {
-          hdncY[ybi][eventListenerType](
-            "mouseenter",
-            HdncHandler.ddtHdncYotta
-          );
-          hdncY[ybi][eventListenerType](
-            "mouseleave",
-            HdncHandler.ddtHdncYotta
-          );
-          hdncExaBlo[ybi][eventListenerType](
-            "transitionend",
-            HdncHandler.ddtHdncExaBloTransitionEnd
-          );
-          /*  */
-          const {
-            hdncPetaBlo
-          } = HdncConfig.getHdncBloEbGroup(ybi);
-          for (let ebi = 0; ebi < hdncPetaBlo.length; ebi++) {
-            hdncPetaBlo[ebi][eventListenerType](
-              "mouseenter",
-              HdncHandler.ddtHdncPetaBlo
-            );
-            hdncPetaBlo[ebi][eventListenerType](
-              "mouseleave",
-              HdncHandler.ddtHdncPetaBlo
-            );
-          }
-        }
-        break;
+    } else if (BodyConfig.screenType === 3) {
+      const subLists = document.querySelectorAll(".hdnc-sub-list");
+      subLists.forEach(subList => {
+        subList.addEventListener("transitionend", HdncHandler.subListTransitionEnd);
+      });
+      /*  
+      if (!BodyConfig.isTouchDevice) {
+        const items = document.querySelectorAll(".hdnc-item");
+        items.forEach(item => {
+          item.addEventListener("mouseenter", HdncHandler.itemHover);
+          item.addEventListener("mouseleave", HdncHandler.itemHover);
+        });
+        const subItemContainers = document.querySelectorAll(".hdnc-sub-item-container");
+        subItemContainers.forEach(subContainer => {
+          subContainer.addEventListener("mouseenter", HdncHandler.subItemContainerHover);
+          subContainer.addEventListener("mouseleave", HdncHandler.subItemContainerHover);
+        });
+      } else {
+        const itemContainers = document.querySelectorAll(".hdnc-item-container");
+        itemContainers.forEach(container => {
+          container.addEventListener("click", HdncHandler.itemContainerClick);
+        });
       }
+    } */
+  }
+  static resizeEvent() {
+    const hdnc = document.querySelector(".hdnc");
+    const screenType = BodyConfig.screenType;
+    const previousScreenType = BodyConfig.previousScreenType;
+    const isTouchDevice = BodyConfig.isTouchDevice;
+    /*  */
+    if (previousScreenType === 1) {
+      hdnc.removeEventListener("scroll", HdncHandler.scroll);
+      const subLists = hdnc.querySelectorAll(".hdnc-sub-list");
+      subLists.forEach(subList => {
+        subList.addEventListener("scroll", HdncHandler.subListScroll);
+      });
+    } else if (screenType === 1) {
+      hdnc.addEventListener("scroll", HdncHandler.scroll);
+      const subLists = hdnc.querySelectorAll(".hdnc-sub-list");
+      subLists.forEach(subList => {
+        subList.removeEventListener("scroll", HdncHandler.subListScroll);
+      });
+    }
+    /*  */
+    if (previousScreenType === 3 && !isTouchDevice) {
+      const items = hdnc.querySelectorAll(".hdnc-item");
+      items.forEach(item => {
+        item.removeEventListener("mouseenter", HdncHandler.itemHover);
+        item.removeEventListener("mouseleave", HdncHandler.itemHover);
+      });
+      const itemContainers = hdnc.querySelectorAll(".hdnc-item-container");
+      itemContainers.forEach(container => {
+        container.addEventListener("click", HdncHandler.itemContainerClick);
+      });
+    } else if (screenType === 3 && !isTouchDevice) {
+      const itemContainers = hdnc.querySelectorAll(".hdnc-item-container");
+      itemContainers.forEach(container => {
+        container.removeEventListener("click", HdncHandler.itemContainerClick);
+      });
+      const items = hdnc.querySelectorAll(".hdnc-item");
+      items.forEach(item => {
+        item.addEventListener("mouseenter", HdncHandler.itemHover);
+        item.addEventListener("mouseleave", HdncHandler.itemHover);
+      });
     }
   }
 }
+/* ================================================== */
 class HdncHandler {
-  static mdtHdncZettaTlo(eventData) {
-    const {
-      targetIndex
-    } = BodyUtil.getEventData(eventData, ".hdnc-y");
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncExaTloText,
-      hdncExaTloRgro,
-      hdncExaTloBgro
-    } = HdncConfig.getHdncTloGroup();
-    const {
-      hdncTeraBlo
-    } = HdncConfig.getHdncBloEbGroup(targetIndex);
+  static itemHover(event) {
+    /* ForDstNtd */
+    const eventType = event.type;
+    const item = event.currentTarget;
+    let shouldOpen = false;
     /*  */
-    const clData = "cl-mdt-hdnc-z-tlo-handler";
-    let isActive = false;
+    if (eventType === "mouseenter") {
+      shouldOpen = true;
+      /*  */
+      if (item.index === 3) {
+        const htbcSnrContainer = document.querySelector(".htbc-snr-container");
+        HdncTool.updateSubListTransformForLast(item, !htbcSnrContainer.isEnabled);
+      }
+    }
+    if (!shouldOpen) {
+      HdncLogic.subListScrollLogic(item, false);
+    }
+    HdncTool.updateSubListHeight(item, shouldOpen);
+    /*  */
+    item.isOpen = shouldOpen;
+  }
+  /* -------------------------------------------------- */
+  static itemContainerClick(event) {
+    /* !ForDstNtd */
+    const itemContainer = event.currentTarget;
+    const item = itemContainer.closest(".hdnc-item");
+    /*  */
+    const itemText = itemContainer.querySelector(".hdnc-item-text");
+    const itemRr = itemContainer.querySelector(".hdnc-item-rr");
+    const itemBr = itemContainer.querySelector(".hdnc-item-br");
+    /*  */
+    const subList = item.querySelector(".hdnc-sub-list");
+    /*  */
+    const clDataOpen = "cl-hdnc-item-container-click";
+    let shouldOpen = false;
     let clType = "remove";
-    if (!hdncY[targetIndex].isActive) {
-      isActive = true;
+    let isTouchDevice = BodyConfig.isTouchDevice;
+    let screenType = BodyConfig.previousScreenType;
+    if (!item.isOpen) {
+      shouldOpen = true;
       clType = "add";
-    }
-    if (isActive) {
-      /* PASS */
-    } else {
-      HdncUtil.timerHdncGigaBloBgro(targetIndex, false);
-      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
+      screenType = BodyConfig.screenType;
     }
     /*  */
-    hdncY[targetIndex].classList[clType](clData);
-    hdncExaTloText[targetIndex].classList[clType](clData);
-    hdncExaTloRgro[targetIndex].classList[clType](clData);
-    hdncExaTloBgro[targetIndex].classList[clType](clData);
+    /* HdncLogic.itemContainerClickCommon();
+    HdncLogic.itemContainerClickForMst(); */
     /*  */
-    for (let ebi = 0; ebi < hdncTeraBlo.length; ebi++) {
-      hdncTeraBlo[ebi].classList[clType](clData);
-    }
-    /*  */
-    hdncY[targetIndex].isActive = isActive;
-    /*  */
-    HdncUtil.setHdncExaBloGridTemplateRows(isActive, targetIndex);
-  }
-  /* -------------------------------------------------- */
-  static mdtHdncRootScroll() {
-    const {
-      hdncR
-    } = HdncConfig.getHdncRoot();
-    const {
-      hdncYottaSfroTo,
-      hdncYottaSfroBo
-    } = HdncConfig.getHdncYottaGroup();
-    /*  */
-    const innerHeight = window.innerHeight;
-    const calcHeight = innerHeight / 10;
-    /*  */
-    const scrollTop = hdncR.scrollTop;
-    const scrollHeight = hdncR.scrollHeight;
-    const clientHeight = hdncR.clientHeight;
-    const scrollBuffer = 8;
-    /*  */
-    let setToHeight = "";
-    let setBoHeight = "";
-    /*  */
-    if (scrollTop > scrollBuffer) {
-      setToHeight = calcHeight + "px";
-    }
-    if (scrollTop + clientHeight + scrollBuffer < scrollHeight) {
-      setBoHeight = calcHeight + "px";
-    }
-    /*  */
-    hdncYottaSfroTo.style.height = setToHeight;
-    hdncYottaSfroBo.style.height = setBoHeight;
-  }
-  /* -------------------------------------------------- */
-  static mdtHdncExaBloTransitionEnd(eventData) {
-    const {
-      targetIndex
-    } = BodyUtil.getEventData(eventData, ".hdnc-y");
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    if (
-      eventData.target === hdncExaBlo[targetIndex] &&
-      eventData.propertyName === "grid-template-rows" &&
-      hdncY[targetIndex].isActive
-    ) {
-      HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.updateHdncGigaBloBgroWidth(targetIndex);
-      HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.timerHdncGigaBloBgro(targetIndex, true);
-      /*  */
-      HdncHandler.mdtHdncRootScroll();
-    }
-  }
-  /* ================================================== */
-  static tdtHdncZettaTlo(eventData) {
-    const {
-      targetIndex
-    } = BodyUtil.getEventData(eventData, ".hdnc-y");
-    /* const {
-      htpncZettaHsngo
-    } = HtpncConfig.getHtpncHsngoGroup(); */
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncExaTloText,
-      hdncExaTloBgro
-    } = HdncConfig.getHdncTloGroup();
-    const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    const {
-      hdncTeraBlo
-    } = HdncConfig.getHdncBloEbGroup(targetIndex);
-    /*  */
-    const clData = "cl-tdt-hdnc-z-tlo-handler";
-    let isActive = false;
-    let type = "remove";
-    if (!hdncY[targetIndex].isActive) {
-      isActive = true;
-      type = "add";
-    }
-    /*  */
-    if (isActive) {
-      if (htpncZettaHsngo.isActive) {
-        //HtpncAccessor.tdtHtpncZettaHsngoHandler();
+    if (shouldOpen) {
+      if (screenType === 2) {
+        HdncLogic.itemCloseAll();
+        const htbcSnrContainer = document.querySelector(".htbc-snr-container");
+        if (htbcSnrContainer.isEnabled) {
+          HtbcAccessor.snrContainerClick();
+        }
+      } else if (screenType === 3) {
+        if (isTouchDevice) {
+          HdncLogic.itemCloseAll();
+        }
+        const htbcSnrContainer = document.querySelector(".htbc-snr-container");
+        HdncTool.updateSubListTransformForLast(item, !htbcSnrContainer.isEnabled);
       }
-      HdncUtil.resetHdncHandler(2);
-    } else {
-      HdncUtil.timerHdncGigaBloBgro(targetIndex, false);
-      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
-      HdncTool.resetTdtHdncExaBloScroll(HdncHandler, targetIndex);
-    }
-    /* classList */
-    hdncExaTloText[targetIndex].classList[type](clData);
-    hdncExaTloBgro[targetIndex].classList[type](clData);
-    hdncExaBlo[targetIndex].classList[type](clData);
-    for (let ebi = 0; ebi < hdncTeraBlo.length; ebi++) {
-      hdncTeraBlo[ebi].classList[type](clData);
-    }
-    /*  */
-    hdncY[targetIndex].isActive = isActive;
-    /*  */
-    HdncUtil.setHdncExaBloGridTemplateRows(isActive, targetIndex);
-  }
-  /* -------------------------------------------------- */
-  static tdtHdncExaBloScroll(eventData) {
-    const {
-      targetIndex
-    } = BodyUtil.getEventData(eventData, ".hdnc-y");
-    const {
-      hdncExaBlo,
-      hdncExaBloSgroTo,
-      hdncExaBloSgroBo
-    } = HdncConfig.getHdncBloGroup();
-    /*  */
-    const scrollTop = hdncExaBlo[targetIndex].scrollTop;
-    const scrollHeight = hdncExaBlo[targetIndex].scrollHeight;
-    const clientHeight = hdncExaBlo[targetIndex].clientHeight;
-    const scrollBuffer = 8;
-    /*  */
-    const clData = "cl-tdt-hdnc-e-blo-scroll-handler";
-    let toType = "remove";
-    let boType = "remove";
-    /*  */
-    if (scrollTop > scrollBuffer) {
-      toType = "add";
-    }
-    if (scrollTop + clientHeight + scrollBuffer < scrollHeight) {
-      boType = "add";
-    }
-    /*  */
-    hdncExaBloSgroTo[targetIndex].classList[toType](clData);
-    hdncExaBloSgroBo[targetIndex].classList[boType](clData);
-  }
-  /* -------------------------------------------------- */
-  static tdtHdncExaBloTransitionEnd(eventData) {
-    const {
-      targetIndex
-    } = BodyUtil.getEventData(eventData, ".hdnc-y");
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    /*  */
-    if (
-      eventData.target === hdncExaBlo[targetIndex] &&
-      eventData.propertyName === "grid-template-rows" &&
-      hdncY[targetIndex].isActive
-    ) {
-      hdncExaBlo[targetIndex].addEventListener(
-        "scroll",
-        HdncHandler.tdtHdncExaBloScroll
-      );
-      /*  */
-      HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.updateHdncGigaBloBgroWidth(targetIndex);
-      HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-      /*  */
-      HdncUtil.timerHdncGigaBloBgro(targetIndex, true);
-      /* Sgro */
-      HdncUtil.updateHdncExaBloSgroLeft();
-      HdncUtil.setHdncExaBloSgroLeft();
-      /*  */
-      const modifyEventData = {};
-      modifyEventData.currentTarget = hdncExaBlo[targetIndex];
-      HdncHandler.tdtHdncExaBloScroll(modifyEventData);
-    }
-    /*  */
-    if (
-      eventData.target === hdncExaBlo[targetIndex] &&
-      eventData.propertyName === "max-height" &&
-      hdncY[targetIndex].isActive
-    ) {
-      const modifyEventData = {};
-      modifyEventData.currentTarget = hdncExaBlo[targetIndex];
-      HdncHandler.tdtHdncExaBloScroll(modifyEventData);
-    }
-  }
-  /* ================================================== */
-  static ddtHdncYotta(eventData) {
-    const {
-      eventType,
-      eventIndex
-    } = BodyUtil.getEventData(eventData);
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncPetaBlo,
-      hdncTeraBlo
-    } = HdncConfig.getHdncBloEbGroup(eventIndex);
-    const {
-      hdncExaTloText,
-      hdncExaTloBgro
-    } = HdncConfig.getHdncTloGroup();
-    const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
-    /*  */
-    const clData = "cl-ddt-hdnc-y-handler";
-    let isActive = false;
-    let type = "remove";
-    if (eventType === "mouseenter") {
-      isActive = true;
-      type = "add";
-    }
-    /*  */
-    if (isActive) {
-      const hdncYottaLastIndex = hdncY.length - 1;
-      if (hdncYottaLastIndex === eventIndex) {
-        HdncTool.clDdtHdncYottaNthLast(hdncYottaLastIndex);
+    } else if (!shouldOpen) {
+      if (BodyConfig.isTouchDevice) {
+        HdncTool.timerSubItemContainer(item, true);
+        const subItemBrs = item.querySelectorAll(".hdnc-sub-item-br");
+        subItemBrs.forEach(subItemBr => {
+          subItemBr.style.width = "";
+        });
       }
-    } else {
-      HdncTool.resetDdtHdncExaBloScroll(HdncHandler, eventIndex);
+      if (screenType >= 2) {
+        HdncLogic.subListScrollLogic(item, false);
+      }
     }
     /*  */
-    hdncExaTloText[eventIndex].classList[type](clData);
-    hdncExaTloBgro[eventIndex].classList[type](clData);
-    hdncExaBlo[eventIndex].classList[type](clData);
-    for (let ebi = 0; ebi < hdncPetaBlo.length; ebi++) {
-      hdncTeraBlo[ebi].classList[type](clData);
+    if (!BodyConfig.isTouchDevice) {
+      HdncLogic.itemContainerSetHoverLock(item, shouldOpen);
     }
     /*  */
-    hdncY[eventIndex].isActive = isActive;
+    HdncTool.updateSubListHeight(item, shouldOpen);
     /*  */
-    HdncUtil.setHdncExaBloGridTemplateRows(isActive, eventIndex);
+    item.classList[clType](clDataOpen);
+    itemText.classList[clType](clDataOpen);
+    itemRr.classList[clType](clDataOpen);
+    itemBr.classList[clType](clDataOpen);
+    subList.classList[clType](clDataOpen);
+    /*  */
+    item.isOpen = shouldOpen;
   }
   /* -------------------------------------------------- */
-  static ddtHdncPetaBlo(eventData) {
-    const {
-      eventType,
-      eventIndex,
-      targetIndex
-    } = BodyUtil.getEventData(eventData, ".hdnc-y");
-    const {
-      hdncGigaBloText,
-      hdncGigaBloRgro
-    } = HdncConfig.getHdncBloEbGroup(targetIndex);
-    /*  */
-    const clData = "cl-ddt-hdnc-p-blo-handler";
-    /* Default: mouseleave */
-    let isActive = false;
-    let type = "remove";
-    if (eventType === "mouseenter") {
-      isActive = true;
-      type = "add";
-    }
-    /*  */
-    hdncGigaBloText[eventIndex].classList[type](clData);
-    hdncGigaBloRgro[eventIndex].classList[type](clData);
-    if (isActive) {
-      HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, true, eventIndex);
-    } else {
-      HdncUtil.setHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.setHdncGigaBloBgroWidth(targetIndex, false);
-    }
-  }
-  /* -------------------------------------------------- */
-  static ddtHdncExaBloScroll(eventData) {
-    const {
-      targetIndex
-    } = BodyUtil.getEventData(eventData, ".hdnc-y");
-    const {
-      hdncExaBlo,
-      hdncExaBloSgroTo,
-      hdncExaBloSgroBo
-    } = HdncConfig.getHdncBloGroup();
-    /*  */
-    const scrollTop = hdncExaBlo[targetIndex].scrollTop;
-    const scrollHeight = hdncExaBlo[targetIndex].scrollHeight;
-    const clientHeight = hdncExaBlo[targetIndex].clientHeight;
-    const scrollBuffer = 8;
-    /*  */
-    const clData = "cl-ddt-hdnc-e-blo-scroll-handler";
-    let toType = "remove";
-    let boType = "remove";
-    /*  */
-    if (scrollTop > scrollBuffer) {
-      toType = "add";
-    }
-    if (scrollTop + clientHeight + scrollBuffer < scrollHeight) {
-      boType = "add";
-    }
-    /*  */
-    hdncExaBloSgroTo[targetIndex].classList[toType](clData);
-    hdncExaBloSgroBo[targetIndex].classList[boType](clData);
-  }
-  /* -------------------------------------------------- */
-  static ddtHdncExaBloTransitionEnd(eventData) {
-    const {
-      targetIndex
-    } = BodyUtil.getEventData(eventData, ".hdnc-y");
-    const {
-      hdncY
-    } = HdncConfig.getHdncGroup();
-    const {
-      hdncExaBlo
-    } = HdncConfig.getHdncBloGroup();
+  static subListTransitionEnd(event) {
+    /* ForAll */
+    const target = event.target;
+    const subList = event.currentTarget;
     /*  */
     if (
-      eventData.target === hdncExaBlo[targetIndex] &&
-      eventData.propertyName === "grid-template-rows" &&
-      hdncY[targetIndex].isActive
+      target === subList
+      && event.propertyName === "height"
     ) {
-      hdncExaBlo[targetIndex].addEventListener(
-        "scroll",
-        HdncHandler.ddtHdncExaBloScroll
-      );
+      /* const clData = "cl-hdnc-sub-item-rr-hover"; */
+      const item = subList.closest(".hdnc-item");
       /*  */
-      HdncUtil.updateHdncGigaBloBgroLeft(targetIndex);
-      HdncUtil.updateHdncGigaBloBgroWidth(targetIndex);
-      /* Sgro */
-      HdncUtil.updateHdncExaBloSgroLeft();
-      HdncUtil.setHdncExaBloSgroLeft();
+      if (item.isOpen) {
+        HdncLogic.subItemContainerTools(item);
+        if (BodyConfig.isTouchDevice) {
+          HdncTool.timerSubItemContainer(item);
+        } else {
+          const subItemContainers = item.querySelectorAll(".hdnc-sub-item-container");
+          subItemContainers.forEach(subItemContainer => {
+            if (subItemContainer.isHover) {
+              const subItemBr = subItemContainer.querySelector(".hdnc-sub-item-br");
+              subItemBr.style.width = `${subItemBr.width}px`;
+              const clData = "cl-hdnc-sub-item-rr-hover";
+              const subItemRr = subItemContainer.querySelector(".hdnc-sub-item-rr");
+              subItemRr.classList.add(clData);
+            }
+          });
+        }
+        HdncTool.updateChevronWrapperLeft(item);
+        HdncTool.updateChevronBrWrapperTop(item);
+        /*  */
+        HdncLogic.subListScrollLogic(item, true);
+      }
       /*  */
-      const modifyEventData = {};
-      modifyEventData.currentTarget = hdncExaBlo[targetIndex];
-      HdncHandler.ddtHdncExaBloScroll(modifyEventData);
+      HdncHandler.scroll();
     }
   }
-  /* -------------------------------------------------- */
+  static subItemContainerHover(event) {
+    /* ForNtd */
+    const eventType = event.type;
+    const subItemContainer = event.currentTarget;
+    /* const item = subItemContainer.closest(".hdnc-item"); */
+    const subItem = subItemContainer.closest(".hdnc-sub-item");
+    const subItemBr = subItem.querySelector(".hdnc-sub-item-br");
+    const subItemRr = subItem.querySelector(".hdnc-sub-item-rr");
+    const clData = "cl-hdnc-sub-item-rr-hover";
+    /*  */
+    if (eventType === "mouseenter") {
+      subItemBr.style.width = `${subItemBr.width}px`;
+      subItemRr.classList.add(clData);
+      subItemContainer.isHover = true;
+    } else if (eventType === "mouseleave") {
+      subItemBr.style.width = "";
+      subItemRr.classList.remove(clData);
+      subItemContainer.isHover = false;
+    }
+  }
+  static scroll() {
+    /* ForMst */
+    const hdnc = document.querySelector(".hdnc");
+    const screenType = BodyConfig.screenType;
+    if (screenType === 1) {
+      const fogTr = document.querySelector(".hdnc-fog-tr");
+      const fogBr = document.querySelector(".hdnc-fog-br");
+      /*  */
+      const innerHeight = window.innerHeight;
+      const calcFogHeight = innerHeight / 10;
+      const scrollTop = hdnc.scrollTop;
+      const scrollHeight = hdnc.scrollHeight;
+      const clientHeight = hdnc.clientHeight;
+      const scrollBuffer = 8;
+      /*  */
+      let trHeight = 0;
+      let brHeight = 0;
+      /*  */
+      if (scrollTop > scrollBuffer) {
+        trHeight = calcFogHeight;
+      }
+      if (scrollTop + clientHeight + scrollBuffer < scrollHeight) {
+        brHeight = calcFogHeight;
+      }
+      /*  */
+      fogTr.style.height = `${trHeight}px`;
+      fogBr.style.height = `${brHeight}px`;
+    }
+  }
+  static subListScroll(event) {
+    /* ForTdst */
+    const subList = event.currentTarget;
+    const item = subList.closest(".hdnc-item");
+    HdncLogic.subListScrollLogic(item, true);
+  }
 }
+class HdncLogic {
+  static itemCloseAll() {
+    const items =document.querySelectorAll(".hdnc-item");
+    items.forEach(item => {
+      if (item.isOpen) {
+        const itemContainer = item.querySelector(".hdnc-item-container");
+        const modifyEvent = { currentTarget: itemContainer };
+        HdncHandler.itemContainerClick(modifyEvent);
+      }
+    });
+  }
+  static itemContainerSetHoverLock(item, shouldLock) {
+    const itemText = item.querySelector(".hdnc-item-text");
+    const itemRr = item.querySelector(".hdnc-item-rr");
+    const itemBr = item.querySelector(".hdnc-item-br");
+    /*  */
+    const clDataHover = "cl-hdnc-item-container-set-hover-lock";
+    let clAction = "remove";
+    if (shouldLock) {
+      clAction = "add";
+    }
+    /*  */
+    itemText.classList[clAction](clDataHover);
+    itemRr.classList[clAction](clDataHover);
+    itemBr.classList[clAction](clDataHover);
+  }
+  static subItemContainerTools(item) {
+    HdncTool.updateSubItemRrLeft(item);
+    HdncTool.updateSubItemBrLeft(item);
+    HdncTool.calcSubItemBrWidth(item);
+  }
+  /* static lastSubListRight(item) {
+    const subList = item.querySelector(".hdnc-sub-list");
+    const clData = "cl-hdnc-sub-list-last-right";
+    const htbcSnrContainer = document.querySelector(".htbc-snr-container");
+    const itemIndex = item.index;
+    if (itemIndex !== 3 || !htbcSnrContainer.isEnabled) {
+      subList.classList.remove(clData);
+      return;
+    }
+    /*  */
+    /* Define 
+    const buffer = 16;
+    const hsncWidth = 320;
+    const subListWidth = 320;
+    /* hsncLeft 
+    const html = document.documentElement;
+    const htmlWidth = html.offsetWidth;
+    const hsncLeft = htmlWidth - (hsncWidth + buffer);
+    /* subListRight 
+    const itemWidth = item.offsetWidth;
+    const deltaWidth = subListWidth - itemWidth;
+    const itemRect = item.getBoundingClientRect();
+    const subListRight = itemRect.right + (deltaWidth / 2);
+    /*  
+    let clAction = "remove";
+    if (hsncLeft < subListRight) {
+      clAction = "add";
+    }
+    subList.classList[clAction](clData);
+  } */
+  static subListScrollLogic(item, shouldAction) {
+    const subList = item.querySelector(".hdnc-sub-list");
+    const chevronTrWrapper = item.querySelector(".hdnc-chevron-tr-wrapper");
+    const chevronBrWrapper = item.querySelector(".hdnc-chevron-br-wrapper");
+    const clData = "cl-hdnc-sub-list-scroll-chevron-enabled";
+    if (!shouldAction) {
+      chevronTrWrapper.classList.remove(clData);
+      chevronBrWrapper.classList.remove(clData);
+      return;
+    }
+    /*  */
+    const buffer = 8;
+    const scrollTop = subList.scrollTop;
+    const scrollHeight = subList.scrollHeight;
+    const clientHeight = subList.clientHeight;
+    const calcScrollPosition = scrollTop + clientHeight + buffer;
+    /*  */
+    let clTrAction = "remove";
+    let clBrAction = "remove";
+    /*  */
+    if (shouldAction) {
+      if (scrollTop > buffer) {
+        clTrAction = "add";
+      }
+      if (calcScrollPosition < scrollHeight) {
+        clBrAction = "add";
+      }
+    }
+    /*  */
+    chevronTrWrapper.classList[clTrAction](clData);
+    chevronBrWrapper.classList[clBrAction](clData);
+  }
+}
+/* ================================================== */
 export {
   HdncAccessor,
   HdncController
 };
+/* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
+/* ========================= ;FACOOYA; ========================= */

@@ -10,12 +10,7 @@ class DpmacConfigManager {
     const scrollY = window.scrollY;
     const scrollMarginTop = 64;
     const calcScroll = scrollY - scrollMarginTop;
-    /* tocIndexes.forEach((tocIndex, index) => {
-      const rect = tocIndex.getBoundingClientRect();
-      const calcPosition = rect.y + scrollY - scrollMarginTop;
-      tocIndex.index = index;
-      DpmacConfig.tocIndexPositions.push(calcPosition);
-    }); */
+    /*  */
     for (let i = 0; i < tocIndexes.length; i++) {
       const rect = tocIndexes[i].getBoundingClientRect();
       const calcPosition = rect.y + calcScroll;

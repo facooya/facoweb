@@ -15,7 +15,7 @@ class FascConfigData {
   static textItemLink = "#dev.facooya.com";
   /*  */
   static ALink = "#facooya";
-  static bLink = "#facooya";
+  static BLink = "#facooya";
   static CLink = "#facooya";
 }
 class FascConfigManager {
@@ -51,7 +51,7 @@ class FascConfigManager {
     socialAIcon.setAttribute("class", "fasc-social-a-icon fasc-social-item-icon");
     const socialBLink = document.createElement("a");
     socialBLink.setAttribute("class", "fasc-social-b-link fasc-social-item-link");
-    socialBLink.setAttribute("href", FascConfigData.bLink);
+    socialBLink.setAttribute("href", FascConfigData.BLink);
     socialBLink.setAttribute("target", "_blank");
     const socialBIcon = document.createElement("span");
     socialBIcon.setAttribute("class", "fasc-social-b-icon fasc-social-item-icon");

@@ -3,87 +3,61 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-@media (hover: none) {
-  .hsnc-item-text {
-    margin-right: 32px;
-  }
-  .hsnc-item-rr {
-    margin-right: 32px;
-    transform: rotate(180deg);
-    transition: transform 300ms ease;
-  }
-  .hsnc-sub-item-text {
-    transition: margin 300ms ease;
-  }
-  .hsnc-sub-item-rr {
-    opacity: 0;
-    transform: scale(0, 0);
-    transition:
-      left 300ms ease,
-      margin 300ms ease,
-      opacity 300ms ease,
-      transform 300ms ease;
-  }
-}
+/* ================================================== */
 @media (hover: hover) {
-  .hsnc-item-text {
+  /* Item */
+  .hsnc-list .item-text {
     transition:
-      text-shadow 300ms ease,
-      margin 300ms ease;
+      margin-right 300ms,
+      text-shadow 300ms;
   }
-  .hsnc-item-rr {
-    margin: 0px;
+  .hsnc-list .item-rr {
+    margin-right: 0;
     opacity: 0;
     transform: scale(0, 0) rotate(180deg);
     transition:
-      margin 300ms ease,
-      opacity 300ms ease,
-      transform 300ms ease;
+      margin-right 300ms,
+      opacity 300ms,
+      transform 300ms;
   }
-  .hsnc-sub-item-text {
+  /* -------------------------------------------------- */
+  /* Sub Item */
+  .hsnc-list .sub-item-text {
     transition:
-      text-shadow 300ms ease,
-      margin 300ms ease;
+      text-shadow 300ms,
+      margin-right 300ms;
   }
-  .hsnc-sub-item-rr {
-    opacity: 0;
-    transform: scale(0, 0);
-    transition:
-      left 300ms ease,
-      margin 300ms ease,
-      opacity 300ms ease,
-      transform 300ms ease;
-  }
-  /*  */
-  .hsnc-item-container:hover .hsnc-item-text {
-    text-shadow: var(--facooya-bold-white);
+  /* ================================================== */
+  /* Hover */
+  .hsnc-list .item-container:hover .item-text {
     margin-right: 32px;
+    text-shadow: var(--bold-white);
   }
-  .hsnc-item-container:hover .hsnc-item-rr {
-    margin-right: 32px;
+  .hsnc-list .item-container:hover .item-rr {
+    margin-right: 24px;
     opacity: 1;
     transform: scale(1, 1) rotate(180deg);
   }
-  .hsnc-item-container:hover .hsnc-item-br {
+  .hsnc-list .item-container:hover .item-br {
     left: 5%;
     width: 90%;
   }
-  /* ============================== */
-  .hsnc-sub-item-container:hover .hsnc-sub-item-text {
+  /* -------------------------------------------------- */
+  .hsnc-list .sub-item-container:hover .sub-item-text {
     margin-right: 12px;
-    text-shadow: var(--facooya-bold-white);
+    text-shadow: var(--bold-white);
   }
-  .hsnc-sub-item-container:hover .hsnc-sub-item-rr {
-    margin: 0px;
+  .hsnc-list .sub-item-container:hover .sub-item-rr {
+    margin-right: 0;
     transform: scale(1, 1);
     opacity: 1;
   }
 }
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
- * I: Interaction
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

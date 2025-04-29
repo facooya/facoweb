@@ -5,18 +5,20 @@
  */
 import {
   BodyConfig,
-  HdncAccessor,
-  HsncAccessor
 } from "../../fwc-hub.js";
+/* -------------------------------------------------- */
 import { HtbcConfig } from "./htbc-config.js";
+/* -------------------------------------------------- */
+/* itemCloseAll() <=> nrClick() */
+import { HdncAccessor, HsncAccessor } from "../h-hub.js";
 /* ================================================== */
 class HtbcAccessor {
-  /* Hdnc.itemCloseAll <=> Htbc.snrContainerClick
-   * Screen type: Tablet */
-  static snrContainerClick() {
-    HtbcHandler.snrContainerClick();
+  static snrClick() {
+    /* snrClick() <=> itemCloseAll() */
+    HtbcHandler.snrClick();
   }
 }
+/* ================================================== */
 class HtbcController {
   static init() {
     HtbcManager.init();
@@ -31,52 +33,54 @@ class HtbcController {
     HtbcManager.resizeSensor();
   }
 }
+/* ================================================== */
 class HtbcManager {
   static init() {
-    HtbcConfig.generate();
-    const dnrContainer = document.querySelector(".htbc-dnr-container");
-    const snrContainer = document.querySelector(".htbc-snr-container");
-    dnrContainer.isEnabled = false;
-    snrContainer.isEnabled = false;
+    HtbcConfig.initGenerate();
+    HtbcManager.initEvent();
   }
   static load() {
-    HtbcManager.loadEvent();
-    HtbcLogic.updateFacooyaLogo();
-    /* HtbcLogic.logoSize(); */
+    HtbcLogic.updateLogoFacooya();
   }
   static resizeDisplay() {
     HtbcManager.resizeEvent();
-    HtbcLogic.nrContainerClose();
+    HtbcLogic.updateNrState();
   }
   static resizeSensor() {
-    /* HtbcLogic.logoSize(); */
-    HtbcLogic.updateFacooyaLogo();
+    HtbcLogic.updateLogoFacooya();
   }
-  /* -------------------------------------------------- */
-  static loadEvent() {
-    const snrContainer = document.querySelector(".htbc-snr-container");
-    snrContainer.addEventListener("click", HtbcHandler.snrContainerClick);
+  /* ================================================== */
+  static initEvent() {
+    const snr = document.querySelector(".htbc-snr");
+    snr.isActive = false;
+    snr.addEventListener("click", HtbcHandler.snrClick);
+    /*  */
     if (BodyConfig.screenType === 1) {
-      const dnrContainer = document.querySelector(".htbc-dnr-container");
-      dnrContainer.addEventListener("click", HtbcHandler.dnrContainerClick);
+      const dnr = document.querySelector(".htbc-dnr");
+      dnr.isActive = false;
+      dnr.addEventListener("click", HtbcHandler.dnrClick);
       const overlay = document.querySelector(".htbc-overlay");
       overlay.addEventListener("click", HtbcHandler.overlayClick);
     } else if (BodyConfig.screenType === 3) {
-      const snrItem = document.querySelector(".htbc-snr-item");
+      /* For HDNC Last Item */
+      const snrItem = snr.querySelector(".snr-item");
       snrItem.addEventListener("transitionend", HtbcHandler.snrItemTransitionEnd);
     }
   }
+  /* -------------------------------------------------- */
   static resizeEvent() {
-    const dnrContainer = document.querySelector(".htbc-dnr-container");
+    const dnr = document.querySelector(".htbc-dnr");
     const overlay = document.querySelector(".htbc-overlay");
     if (BodyConfig.screenType === 1) {
-      dnrContainer.addEventListener("click", HtbcHandler.dnrContainerClick);
+      dnr.isActive = false;
+      dnr.addEventListener("click", HtbcHandler.dnrClick);
       overlay.addEventListener("click", HtbcHandler.overlayClick);
     } else if (BodyConfig.previousScreenType === 1) {
-      dnrContainer.removeEventListener("click", HtbcHandler.dnrContainerClick);
+      dnr.removeEventListener("click", HtbcHandler.dnrClick);
       overlay.removeEventListener("click", HtbcHandler.overlayClick);
     }
-    const snrItem = document.querySelector(".htbc-snr-item");
+    /* For HDNC Last Item */
+    const snrItem = document.querySelector(".htbc-snr .snr-item");
     if (BodyConfig.screenType === 3) {
       snrItem.addEventListener("transitionend", HtbcHandler.snrItemTransitionEnd);
     } else if (BodyConfig.previousScreenType === 3) {
@@ -84,60 +88,67 @@ class HtbcManager {
     }
   }
 }
+/* ================================================== */
 class HtbcHandler {
   static overlayClick() {
-    HtbcLogic.nrContainerClose();
+    /* Only Mst */
+    HtbcLogic.updateNrState();
   }
-  static dnrContainerClick() {
+  /* -------------------------------------------------- */
+  static dnrClick() {
+    /* Only Mst */
     const hdnc = document.querySelector(".hdnc");
-    const dnrContainer = document.querySelector(".htbc-dnr-container");
-    const snrContainer = document.querySelector(".htbc-snr-container");
-    const dnrItems = document.querySelectorAll(".htbc-dnr-item");
+    const dnr = document.querySelector(".htbc-dnr");
+    const snr = document.querySelector(".htbc-snr");
+    const dnrItems = dnr.querySelectorAll(".dnr-item");
     /*  */
-    const clData = "cl-htbc-dnr-container-click";
-    let shouldEnable = false;
-    let clAction = "remove";
-    if (!dnrContainer.isEnabled) {
-      shouldEnable = true;
-      clAction = "add";
+    const dnrActiveClass = "dnr-active";
+    let shouldActive = false;
+    let action = "remove";
+    if (!dnr.isActive) {
+      shouldActive = true;
+      action = "add";
     }
-    /*  */
-    if (shouldEnable) {
-      if (snrContainer.isEnabled) {
-        HtbcHandler.snrContainerClick();
+    /* Logic */
+    if (shouldActive) {
+      if (snr.isActive) {
+        HtbcHandler.snrClick();
       }
       HtbcLogic.updateOverlay(0);
     } else {
       HdncAccessor.itemCloseAll();
       HtbcLogic.updateOverlay(1);
     }
-    /*  */
+    /* DNR Item */
+    const activeClass = "active";
     dnrItems.forEach(item => {
-      item.classList[clAction](clData);
+      item.classList[action](activeClass);
     });
-    hdnc.classList[clAction](clData);
-    /*  */
-    dnrContainer.isEnabled = shouldEnable;
+    /* HDNC */
+    hdnc.classList[action](dnrActiveClass);
+    /* State */
+    dnr.isActive = shouldActive;
   }
-  static snrContainerClick() {
+  /* -------------------------------------------------- */
+  static snrClick() {
     const hsnc = document.querySelector(".hsnc");
-    const dnrContainer = document.querySelector(".htbc-dnr-container");
-    const snrContainer = document.querySelector(".htbc-snr-container");
-    const snrItems = document.querySelectorAll(".htbc-snr-item");
+    const dnr = document.querySelector(".htbc-dnr");
+    const snr = document.querySelector(".htbc-snr");
+    const snrItems = snr.querySelectorAll(".snr-item");
     /*  */
-    const clData = "cl-htbc-snr-container-click";
-    let shouldEnable = false;
-    let clAction = "remove";
+    const snrActiveClass = "snr-active";
+    let shouldActive = false;
+    let action = "remove";
     let screenType = BodyConfig.previousScreenType;
-    if (!snrContainer.isEnabled) {
-      shouldEnable = true;
-      clAction = "add";
+    if (!snr.isActive) {
+      shouldActive = true;
+      action = "add";
       screenType = BodyConfig.screenType;
     }
     /*  */
-    if (shouldEnable) {
-      if (screenType === 1 && dnrContainer.isEnabled) {
-        HtbcHandler.dnrContainerClick();
+    if (shouldActive) {
+      if (screenType === 1 && dnr.isActive) {
+        HtbcHandler.dnrClick();
       } else if (screenType === 2) {
         HdncAccessor.itemCloseAll();
       }
@@ -146,30 +157,32 @@ class HtbcHandler {
       HsncAccessor.itemCloseAll();
       HtbcLogic.updateOverlay();
     }
-    /*  */
+    /* SNR Item */
+    const activeClass = "active";
     snrItems.forEach(item => {
-      item.classList[clAction](clData);
+      item.classList[action](activeClass);
     });
-    hsnc.classList[clAction](clData);
-    /*  */
+    /* HSNC */
+    hsnc.classList[action](snrActiveClass);
+    /* Screen Type */
     if (screenType >= 2) {
       const m = document.querySelector(".m");
       const f = document.querySelector(".f");
       const htbc = document.querySelector(".htbc");
-      const snrSlideText = document.querySelector(".htbc-snr-slide-text");
-      m.classList[clAction](clData);
-      f.classList[clAction](clData);
-      htbc.classList[clAction](clData);
-      snrSlideText.classList[clAction](clData);
+      m.classList[action](snrActiveClass);
+      f.classList[action](snrActiveClass);
+      htbc.classList[action](snrActiveClass);
       if (screenType === 3) {
         const hdnc = document.querySelector(".hdnc");
-        hdnc.classList[clAction](clData);
+        hdnc.classList[action](snrActiveClass);
       }
     }
-    /*  */
-    snrContainer.isEnabled = shouldEnable;
+    /* State */
+    snr.isActive = shouldActive;
   }
+  /* -------------------------------------------------- */
   static snrItemTransitionEnd(event) {
+    /* Only Dst Work */
     const target = event.target;
     const snrItem = event.currentTarget;
     /*  */
@@ -177,86 +190,114 @@ class HtbcHandler {
       target === snrItem
       && event.propertyName === "transform"
     ) {
-      const hdncItems = document.querySelectorAll(".hdnc-item");
+      const hdncItems = document.querySelectorAll(".hdnc-list .item");
       hdncItems.forEach(item => {
         if (item.index === 3) {
-          const snrContainer = snrItem.closest(".htbc-snr-container");
-          if (snrContainer.isEnabled) {
-            HdncAccessor.updateSubListTransformForLast(item, false);
+          /* const snr = snrItem.closest(".htbc-snr");
+          if (snr.isActive) {
+            HdncAccessor.updateSubListTransform(item, false);
           } else {
-            HdncAccessor.updateSubListTransformForLast(item, true);
-          }
+            HdncAccessor.updateSubListTransform(item, true);
+          } */
+          /* HdncAccessor.updateSubListTransform(item); */
+          
+          /* classList.add() */
+          HtbcLogic.hdncItemLastAlignX_Right(item);
+          HdncAccessor.updateChevronWrapperLeft(item);
         }
       });
     }
   }
 }
+/* ================================================== */
 class HtbcLogic {
   static updateOverlay(overlayType) {
     const overlay = document.querySelector(".htbc-overlay");
-    const clOverlays = [
-      "cl-htbc-overlay-right-enabled",
-      "cl-htbc-overlay-right-disabled",
-      "cl-htbc-overlay-left-enabled"
+    const overlayTypes = [
+      "right-open",
+      "right-close",
+      "left-open"
     ];
-    clOverlays.forEach(clOverlay => {
-      overlay.classList.remove(clOverlay);
+    /* Reset Default:left-close */
+    overlayTypes.forEach(type => {
+      overlay.classList.remove(type);
     });
+    /* Overlay Type
+     * overlayType = null:default, 0:right-open, 1:right-close, 2:left-open
+     */
     if (overlayType != null) {
-      overlay.classList.add(clOverlays[overlayType]);
+      overlay.classList.add(overlayTypes[overlayType]);
     }
   }
-  static nrContainerClose() {
-    const dnrContainer = document.querySelector(".htbc-dnr-container");
-    const snrContainer = document.querySelector(".htbc-snr-container");
-    /*  */
-    if (dnrContainer.isEnabled) {
-      HtbcHandler.dnrContainerClick();
-    } else if (snrContainer.isEnabled) {
-      HtbcHandler.snrContainerClick();
-    }
+  /* -------------------------------------------------- */
+  static updateNrState() {
+    const dnr = document.querySelector(".htbc-dnr");
+    const snr = document.querySelector(".htbc-snr");
+    /* State */
+    if (dnr.isActive) { HtbcHandler.dnrClick(); }
+    else if (snr.isActive) { HtbcHandler.snrClick(); }
   }
-  static updateFacooyaLogo() {
+  /* -------------------------------------------------- */
+  static updateLogoFacooya() {
     const htbc = document.querySelector(".htbc");
-    const facooyaLogoItem = htbc.querySelector(".htbc-facooya-logo-item");
-    const clData = "cl-htbc-facooya-logo-item-mini";
-    if (BodyConfig.screenType !== 1) {
-      facooyaLogoItem.classList.remove(clData);
-      return;
-    }
-    /* const logoContainer = document.querySelector(".htbc-logo-container");
-    const logoContainerWidth = logoContainer.offsetWidth;
-    const devWidth = 64;
-    const taWidth = 8;
-    const logoWidth = 160;
-    const calcWidth = devWidth + taWidth + logoWidth; */
+    const logoFacooya = htbc.querySelector(".htbc-logo .logo-facooya");
+    const miniClass = "mini";
+    /* HMI */
+    if (BodyConfig.screenType !== 1) { logoFacooya.classList.remove(miniClass); return; }
+    /* Calculation Logo Area Width */
     const htbcWidth = htbc.offsetWidth;
     const nrWidth = 64;
     const gapWidth = 16;
-    let calcLogoWrapperWidth = htbcWidth;
-    calcLogoWrapperWidth -= (nrWidth + gapWidth) * 2;
-    /*  */
+    let calcLogoAreaWidth = htbcWidth;
+    calcLogoAreaWidth -= (nrWidth + gapWidth) * 2;
+    /* Calculation Logo Width */
     const devWidth = 48;
     const taWidth = 8;
-    const logoWidth = 120;
-    const calcLogoWidth = devWidth + taWidth + logoWidth;
-    /*  */
-    if (calcLogoWrapperWidth < calcLogoWidth) {
-      facooyaLogoItem.classList.add(clData);
+    const facooyaWidth = 120;
+    const calcLogoWidth = devWidth + taWidth + facooyaWidth;
+    /* State */
+    if (calcLogoAreaWidth < calcLogoWidth) { logoFacooya.classList.add(miniClass); }
+    else { logoFacooya.classList.remove(miniClass); }
+  }
+  /* ================================================== */
+  static hdncItemLastAlignX_Right(item) {
+    const alignX_RightClass = "align-x-right";
+    const snr = document.querySelector(".htbc-snr");
+    const hdncSubList = item.querySelector(".sub-list");
+    /* Exit */
+    if (!snr.isActive) {
+      hdncSubList.classList.remove(alignX_RightClass);
+      return;
+    }
+    /* Define */
+    const buffer = 16;
+    const hsncW = 320;
+    const hdncSubListW = 320;
+    /* hsncLeft */
+    const html = document.documentElement;
+    const htmlW = html.offsetWidth;
+    const hsncL = htmlW - (hsncW + buffer);
+    /* hdncSubListRight */
+    const itemW = item.offsetWidth;
+    const deltaW = hdncSubListW - itemW;
+    const itemRect = item.getBoundingClientRect();
+    const subListR = itemRect.right + (deltaW / 2);
+    console.log(hsncL, subListR);
+    /* Main */
+    if (hsncL < subListR) {
+      hdncSubList.classList.add(alignX_RightClass);
     } else {
-      facooyaLogoItem.classList.remove(clData);
+      hdncSubList.classList.remove(alignX_RightClass);
     }
   }
 }
 /* ================================================== */
-export {
-  HtbcAccessor,
-  HtbcController
-};
+export { HtbcAccessor, HtbcController };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

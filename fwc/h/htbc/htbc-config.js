@@ -12,68 +12,70 @@ class HtbcConfigData {
 }
 /* ================================================== */
 class HtbcConfigManager {
-  static generate() {
+  static initGenerate() {
     const htbc = document.querySelector(".htbc");
     const htbcFrag = document.createDocumentFragment();
     /* Logo */
-    const logoWrapper = document.createElement("div");
-    logoWrapper.setAttribute("class", "htbc-logo-wrapper");
-    const logoContainer = document.createElement("a");
-    logoContainer.setAttribute("class", "htbc-logo-container");
-    logoContainer.setAttribute("href", HtbcConfigData.logoLink);
-    const devLogoItem = document.createElement("span");
-    devLogoItem.setAttribute("class", "htbc-dev-logo-item");
-    const taLogoItem = document.createElement("span");
-    taLogoItem.setAttribute("class", "htbc-ta-logo-item");
-    const facooyaLogoItem = document.createElement("span");
-    facooyaLogoItem.setAttribute("class", "htbc-facooya-logo-item");
-    logoContainer.append(devLogoItem, taLogoItem, facooyaLogoItem);
-    logoWrapper.append(logoContainer);
-    /* Dnr */
-    const dnrContainer = document.createElement("div");
-    dnrContainer.setAttribute("class", "htbc-dnr-container");
+    const logo = document.createElement("div");
+    logo.setAttribute("class", "htbc-logo");
+    const logoLink = document.createElement("a");
+    logoLink.setAttribute("class", "logo-link");
+    logoLink.setAttribute("href", HtbcConfigData.logoLink);
+    const logoDev = document.createElement("span");
+    logoDev.setAttribute("class", "logo-item logo-dev");
+    const logoTa = document.createElement("span");
+    logoTa.setAttribute("class", "logo-item logo-ta");
+    const logoFacooya = document.createElement("span");
+    logoFacooya.setAttribute("class", "logo-item logo-facooya");
+    logoLink.append(logoDev, logoTa, logoFacooya);
+    logo.append(logoLink);
+    /* DNR */
+    const dnr = document.createElement("div");
+    dnr.setAttribute("class", "htbc-dnr");
     for (let i = 0; i < HtbcConfigData.dnrItemLength; i++) {
       const dnrItem = document.createElement("span");
-      dnrItem.setAttribute("class", "htbc-dnr-item");
-      dnrContainer.append(dnrItem);
+      dnrItem.setAttribute("class", "dnr-item");
+      dnr.append(dnrItem);
     }
-    /* Snr */
-    const snrContainer = document.createElement("div");
-    snrContainer.setAttribute("class", "htbc-snr-container");
+    /* SNR */
+    const snr = document.createElement("div");
+    snr.setAttribute("class", "htbc-snr");
     for (let i = 0; i < HtbcConfigData.snrItemLength; i++) {
       const snrItem = document.createElement("span");
-      snrItem.setAttribute("class", "htbc-snr-item");
-      snrContainer.append(snrItem);
+      snrItem.setAttribute("class", "snr-item");
+      snr.append(snrItem);
     }
-    /*  */
-    htbcFrag.append(logoWrapper, dnrContainer, snrContainer);
-    /* Etc */
-    const snrSlideText = document.createElement("div");
-    snrSlideText.setAttribute("class", "htbc-snr-slide-text");
-    snrSlideText.textContent = HtbcConfigData.snrSlideText;
-    const sge = document.createElement("div");
-    sge.setAttribute("class", "htbc-sge");
+    /* Append */
+    htbcFrag.append(logo, dnr, snr);
+    /* :Etc: */
+    /* Overlay */
     const overlay = document.createElement("div");
     overlay.setAttribute("class", "htbc-overlay");
     const overlaySge = document.createElement("div");
-    overlaySge.setAttribute("class", "htbc-overlay-sge");
+    overlaySge.setAttribute("class", "htbc-sge-group overlay-sge");
     overlay.append(overlaySge);
-    /*  */
-    htbcFrag.append(overlay, snrSlideText, sge);
+    /* Sge */
+    const sge = document.createElement("div");
+    sge.setAttribute("class", "htbc-sge-group htbc-sge");
+    /* ;Etc; */
+    /* Append */
+    htbcFrag.append(overlay, sge);
     htbc.append(htbcFrag);
   }
 }
+/* ================================================== */
 class HtbcConfig {
-  static generate() {
-    HtbcConfigManager.generate();
+  static initGenerate() {
+    HtbcConfigManager.initGenerate();
   }
 }
 /* ================================================== */
 export { HtbcConfig };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

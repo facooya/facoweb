@@ -4,96 +4,109 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
-/* for Mst */
-.htbc-facooya-logo-item.cl-htbc-facooya-logo-item-mini {
+/* For Mst */
+.htbc-logo .logo-facooya.mini {
   width: 32px;
   mask-image: url("../../res/svg/a.svg");
 }
 /* ================================================== */
-/* Default state: .htbc-overlay { left: -20%; }
- * Class list: cl-htbc-overlay-left-disabled */
-.htbc-overlay.cl-htbc-overlay-right-enabled {
+/* For Mst
+ * Default state: .htbc-overlay { left: -20%; }
+ * Class list: left-close */
+.htbc-overlay.right-open {
   left: 80%;
 }
-.htbc-overlay.cl-htbc-overlay-right-disabled {
+.htbc-overlay.right-close {
   left: 100%;
 }
-.htbc-overlay.cl-htbc-overlay-left-enabled {
+.htbc-overlay.left-open {
   left: 0%;
 }
 /* ================================================== */
-.hdnc.cl-htbc-dnr-container-click {
-  left: 0rem;
+/* For Mst
+ * Default state: .hdnc { left: -80%; }
+ */
+.hdnc.dnr-active {
+  left: 0;
 }
 /* ================================================== */
-.hsnc.cl-htbc-snr-container-click {
-  right: 0rem;
+/* Default state: .hdnc { right: -80%; || right: -320px }
+ * Mst: -80%, Tdst: -320px
+ */
+.hsnc.snr-active {
+  right: 0;
 }
-/* screenType >= Tablet */
-.m.cl-htbc-snr-container-click {
-  margin: 0rem 20rem 0rem 0rem;
+.m.snr-active {
+  margin-right: 320px;
 }
-.f.cl-htbc-snr-container-click {
-  margin: 0rem 20rem 0rem 0rem;
+.f.snr-active {
+  margin-right: 320px;
 }
-.htbc.cl-htbc-snr-container-click {
-  gap: 0rem 16rem;
+.hdnc.snr-active {
+  /* For Dst
+   * total(576px) = htbcLogoW(256px) + hsncW(320px);
+   * width = 100% - total(576px);
+   */
+  width: calc(100% - 576px);
 }
-.htbc-snr-slide-text.cl-htbc-snr-container-click {
-  opacity: 1;
-  transform: scale(1, 1);
+/* ================================================== */
+/* Align */
+.hdnc-list .item:last-child .sub-list.align-x-right {
+  /* Only Dst && Last */
+  left: 100%;
+  transform: translateX(-100%);
 }
-/* screenType === Desktop */
-.hdnc.cl-htbc-snr-container-click {
-  /* Default: width: calc(100% - 16rem[logo] - 4rem[snr]); */
-  width: calc(100% - 16rem - 16rem - 4rem);
+/* ================================================== */
+/* :DNR Active: */
+/* dnrInnerH(32px) = height(6px) * 3 + marginY(7px) * 2 */
+.htbc-dnr .dnr-item.active:nth-child(1) {
+  transform: translate(0, 13px) rotate(45deg) scale(1.3, 1);
 }
-/* ==========----- :dnrContainerClick: -----========== */
-/* gap 0.475rem 0.35rem */
-.htbc-dnr-item.cl-htbc-dnr-container-click:nth-child(1) {
-  transform: translate(0rem, 0.825rem) rotate(45deg) scale(1.3, 1);
-}
-.htbc-dnr-item.cl-htbc-dnr-container-click:nth-child(2) {
-  transform: translate(-2rem, 0rem);
+.htbc-dnr .dnr-item.active:nth-child(2) {
+  transform: translate(-32px, 0);
   opacity: 0;
 }
-.htbc-dnr-item.cl-htbc-dnr-container-click:nth-child(3) {
-  transform: translate(0rem, -0.825rem) rotate(-45deg) scale(1.3, 1);
+.htbc-dnr .dnr-item.active:nth-child(3) {
+  transform: translate(0, -13px) rotate(-45deg) scale(1.3, 1);
 }
-/* ==========----- ;dnrContainerClick; -----========== */
-/* ==========----- :snrContainerClick: -----========== */
-.htbc-snr-item.cl-htbc-snr-container-click:nth-child(1) {
+/* ;DNR Active; */
+/* ================================================== */
+/* :SNR Active: */
+/* snrInnerW(32px) = width(8px) * 3 + gap(4px) * 2
+ * snrInnerH(32px) = height(8px) * 3 + gap(4px) * 2 */
+.htbc-snr .snr-item.active:nth-child(1) {
   transform: rotate(45deg) scale(1, 0.7);
 }
-.htbc-snr-item.cl-htbc-snr-container-click:nth-child(2) {
-  transform: translate(0.375rem, 0.375rem) rotate(45deg) scale(0.7, 1.8);
+.htbc-snr .snr-item.active:nth-child(2) {
+  transform: translate(6px, 6px) rotate(45deg) scale(0.7, 1.8);
 }
-.htbc-snr-item.cl-htbc-snr-container-click:nth-child(3) {
+.htbc-snr .snr-item.active:nth-child(3) {
   transform: rotate(45deg) scale(0.7, 1);
 }
-.htbc-snr-item.cl-htbc-snr-container-click:nth-child(4) {
-  transform: translate(0.375rem, -0.375rem) rotate(45deg) scale(1.8, 0.7);
+.htbc-snr .snr-item.active:nth-child(4) {
+  transform: translate(6px, -6px) rotate(45deg) scale(1.8, 0.7);
 }
-.htbc-snr-item.cl-htbc-snr-container-click:nth-child(5) {
+.htbc-snr .snr-item.active:nth-child(5) {
   transform: rotate(45deg) scale(0.7);
 }
-.htbc-snr-item.cl-htbc-snr-container-click:nth-child(6) {
-  transform: translate(-0.375rem, 0.375rem) rotate(45deg) scale(1.8, 0.7);
+.htbc-snr .snr-item.active:nth-child(6) {
+  transform: translate(-6px, 6px) rotate(45deg) scale(1.8, 0.7);
 }
-.htbc-snr-item.cl-htbc-snr-container-click:nth-child(7) {
+.htbc-snr .snr-item.active:nth-child(7) {
   transform: rotate(45deg) scale(0.7, 1);
 }
-.htbc-snr-item.cl-htbc-snr-container-click:nth-child(8) {
-  transform: translate(-0.375rem, -0.375rem) rotate(45deg) scale(0.7, 1.8);
+.htbc-snr .snr-item.active:nth-child(8) {
+  transform: translate(-6px, -6px) rotate(45deg) scale(0.7, 1.8);
 }
-.htbc-snr-item.cl-htbc-snr-container-click:nth-child(9) {
+.htbc-snr .snr-item.active:nth-child(9) {
   transform: rotate(45deg) scale(1, 0.7);
 }
-/* ==========----- ;snrContainerClick; -----========== */
+/* ;SNR Active; */
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

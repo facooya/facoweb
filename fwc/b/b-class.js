@@ -7,6 +7,8 @@ import {
   FwcController
 } from "../fwc.js";
 /*  */
+import { DpmacAccessor } from "../dpm/dpm-hub.js";
+/*  */
 import { BodyConfig } from "./b-config.js";
 /* ================================================== */
 class BodyAccessor {
@@ -101,6 +103,16 @@ class BodyHandler {
     if (target) {
       DpmacConfig.currentIndex = target.index;
     } */
+    /* DpmacAccessor.tocClick(); */
+    /* const hash = window.location.hash;
+    const hashElement = document.querySelector(hash);
+    history.replaceState(null, null, "/");
+    hashElement.scrollIntoView(); */
+    /* URL */
+    /* const hash = window.location.hash;
+    DpmacAccessor.tocHashReplace(hash); */
+    /* const path = window.location.pathname;
+    history.replaceState(null, null, path); */
   }
   /* ============================== */
 }

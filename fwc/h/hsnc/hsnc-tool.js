@@ -3,27 +3,28 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ================================================== */
+/* DpmacConfig.tocIndex => subItemLr() */
 import { DpmacConfig } from "../../dpm/dpm-hub.js";
 /* ================================================== */
-class HsncToolCalc {
-  static calcSubItemBrWidth(item) {
-    const subItemTexts = item.querySelectorAll(".hsnc-sub-item-text");
-    const subItemBrs = item.querySelectorAll(".hsnc-sub-item-br");
-    const bufferWidth = 24;
+class HsncToolSubItem {
+  static subItemBrWidth(item) {
+    /* Calcualtion Width */
+    const subItemTexts = item.querySelectorAll(".sub-item-text");
+    const subItemBrs = item.querySelectorAll(".sub-item-br");
+    const bufferW = 24;
     /*  */
     for (let i = 0; i < subItemBrs.length; i++) {
-      const textWidth = subItemTexts[i].clientWidth;
-      let calcWidth = textWidth + bufferWidth;
-      subItemBrs[i].width = calcWidth;
+      const textW = subItemTexts[i].clientWidth;
+      let calcW = textW + bufferW;
+      subItemBrs[i].width = calcW;
     }
   }
-}
-class HsncToolUpdate {
-  /* ============================== */
-  static updateSubItemBrLeft(item) {
-    const subItemContainers = item.querySelectorAll(".hsnc-sub-item-container");
-    const subItemTexts = item.querySelectorAll(".hsnc-sub-item-text");
-    const subItemBrs = item.querySelectorAll(".hsnc-sub-item-br");
+  /* ================================================== */
+  static subItemBrLeft(item) {
+    const subItemContainers = item.querySelectorAll(".sub-item-container");
+    const subItemTexts = item.querySelectorAll(".sub-item-text");
+    const subItemBrs = item.querySelectorAll(".sub-item-br");
     const bufferWidth = 24;
     /*  */
     for (let i = 0; i < subItemBrs.length; i++) {
@@ -34,11 +35,11 @@ class HsncToolUpdate {
       subItemBrs[i].style.left = `${subItemBrs[i].left}px`;
     }
   }
-  /* ============================== */
-  static updateSubItemRrLeft(item) {
-    const subItemContainers = item.querySelectorAll(".hsnc-sub-item-container");
-    const subItemTexts = item.querySelectorAll(".hsnc-sub-item-text");
-    const subItemRrs = item.querySelectorAll(".hsnc-sub-item-rr");
+  /* -------------------------------------------------- */
+  static subItemRrLeft(item) {
+    const subItemContainers = item.querySelectorAll(".sub-item-container");
+    const subItemTexts = item.querySelectorAll(".sub-item-text");
+    const subItemRrs = item.querySelectorAll(".sub-item-rr");
     /*  */
     for (let i = 0; i < subItemRrs.length; i++) {
       const containerWidth = subItemContainers[i].clientWidth;
@@ -48,86 +49,38 @@ class HsncToolUpdate {
       subItemRrs[i].style.left = `${subItemRrs[i].left}px`;
     }
   }
-  /* ============================== */
-  static updateSubItemLrForToc() {
-    const hsncItems = document.querySelectorAll(".hsnc-item");
-    if (hsncItems[0].isToc) {
-      const clDataEnabled = "cl-hsnc-set-sub-item-lr-enabled";
-      const subItemLrs = hsncItems[0].querySelectorAll(".hsnc-sub-item-lr");
-      const subItemTexts = hsncItems[0].querySelectorAll(".hsnc-sub-item-text");
+  /* ================================================== */
+  static subItemLr() {
+    /* Only TOC */
+    const items = document.querySelectorAll(".hsnc-list .item");
+    if (items[0].isToc) {
+      const tocActive = "toc-active";
+      const subItemLrs = items[0].querySelectorAll(".sub-item-lr");
+      const subItemTexts = items[0].querySelectorAll(".sub-item-text");
       /*  */
       for (let i = 0; i < subItemLrs.length; i++) {
-        subItemLrs[i].classList.remove(clDataEnabled);
-        subItemTexts[i].classList.remove(clDataEnabled);
+        subItemLrs[i].classList.remove(tocActive);
+        subItemTexts[i].classList.remove(tocActive);
       }
-      /* hsncSubItemLrs.forEach(lr => {
-        lr.classList.remove(clDataEnabled);
-      });
-      subItemTexts.forEach(text => {
-        text.classList.remove(clDataEnabled);
-      }); */
       /*  */
-      /* const hashIndex = DpmacConfig.currentIndex; */
       const tocIndex = DpmacConfig.tocIndex;
-      subItemLrs[tocIndex].classList.add(clDataEnabled);
-      subItemTexts[tocIndex].classList.add(clDataEnabled);
+      subItemLrs[tocIndex].classList.add(tocActive);
+      subItemTexts[tocIndex].classList.add(tocActive);
     }
   }
-}
-class HsncToolSet {
-  /* ============================== */
-  static setHsncSubItemBrLeft(hsncItem) {
-    const hsncSubItemBrs = hsncItem.querySelectorAll(".hsnc-sub-item-br");
-    hsncSubItemBrs.forEach(br => {
-      br.style.left = `${br.left}px`;
-    });
-  }
-  /* ============================== */
-  static setHsncSubItemBrWidth(hsncItem, index) {
-    const hsncSubItemBrs = hsncItem.querySelectorAll(".hsnc-sub-item-br");
-    if (index != null) {
-      const br = hsncSubItemBrs[index];
-      br.style.width = `${br.width}px`;
-    } else {
-      hsncSubItemBrs.forEach(br => {
-        br.style.width = `${br.width}px`;
-      });
-    }
-  }
-  /* ============================== */
-  static setSubItemLr() {
-    const hsncItems = document.querySelectorAll(".hsnc-item");
-    if (hsncItems[0].isToc) {
-      const clDataEnabled = "cl-hsnc-set-sub-item-lr-enabled";
-      const hsncSubItemLrs = hsncItems[0].querySelectorAll(".hsnc-sub-item-lr");
-      const subItemTexts = hsncItems[0].querySelectorAll(".hsnc-sub-item-text");
-      hsncSubItemLrs.forEach(lr => {
-        lr.classList.remove(clDataEnabled);
-      });
-      subItemTexts.forEach(text => {
-        text.classList.remove(clDataEnabled);
-      });
-      /* const currentIndex = DpmacConfig.currentIndex; */
-      const tocIndex = DpmacConfig.tocIndex;
-      hsncSubItemLrs[tocIndex].classList.add(clDataEnabled);
-      subItemTexts[tocIndex].classList.add(clDataEnabled);
-    }
-  }
-  /* ============================== */
-}
-class HsncToolTimer {
-  /* ============================== */
-  static timerSubItemContainer(item, shouldReset) {
-    const subItemContainers = item.querySelectorAll(".hsnc-sub-item-container");
+  /* ================================================== */
+  static subItemContainerTimer(item, shouldReset) {
+    /* Only Td */
+    const subItemContainers = item.querySelectorAll(".sub-item-container");
     if (shouldReset) {
-      subItemContainers.forEach(subContainer => {
-        clearTimeout(subContainer.timerId);
-        HsncToolTimer.timeoutSubItemContainer(subContainer, shouldReset);
+      subItemContainers.forEach(subItemContainer => {
+        clearTimeout(subItemContainer.timerId);
+        HsncToolSubItem.subItemContainerTimeout(subItemContainer, shouldReset);
       });
     } else {
       for (let i = 0; i < subItemContainers.length; i++) {
         subItemContainers[i].timerId = setTimeout(
-          HsncToolTimer.timeoutSubItemContainer,
+          HsncToolSubItem.subItemContainerTimeout,
           i * 150,
           subItemContainers[i],
           shouldReset
@@ -135,55 +88,49 @@ class HsncToolTimer {
       }
     }
   }
-  /* ------------------------------ */
-  static timeoutSubItemContainer(subContainer, shouldReset) {
-    const subItemText = subContainer.querySelector(".hsnc-sub-item-text");
-    const subItemRr = subContainer.querySelector(".hsnc-sub-item-rr");
-    const subItemBr = subContainer.querySelector(".hsnc-sub-item-br");
+  /* -------------------------------------------------- */
+  static subItemContainerTimeout(subItemContainer, shouldReset) {
+    const subItemText = subItemContainer.querySelector(".sub-item-text");
+    const subItemRr = subItemContainer.querySelector(".sub-item-rr");
+    const subItemBr = subItemContainer.querySelector(".sub-item-br");
     /*  */
-    const clData = "cl-hsnc-timeout-sub-item-container";
-    let clAction = "remove";
-    let setSubItemBrWidth = "";
+    const active = "active";
+    let action = "remove";
+    let setSubItemBrW = "";
     if (!shouldReset) {
-      clAction = "add";
-      setSubItemBrWidth = `${subItemBr.width}px`;
+      action = "add";
+      setSubItemBrW = `${subItemBr.width}px`;
     }
-    subItemBr.style.width = setSubItemBrWidth;
+    subItemBr.style.width = setSubItemBrW;
     /*  */
-    subItemText.classList[clAction](clData);
-    subItemRr.classList[clAction](clData);
+    subItemText.classList[action](active);
+    subItemRr.classList[action](active);
   }
-  /* ============================== */
 }
+/* ================================================== */
 class HsncTool {
-  static calcSubItemBrWidth(item) {
-    HsncToolCalc.calcSubItemBrWidth(item);
+  static subItemBrWidth(item) {
+    HsncToolSubItem.subItemBrWidth(item);
   }
-  /* ============================== */
-  static updateSubItemBrLeft(item) {
-    HsncToolUpdate.updateSubItemBrLeft(item);
+  /* -------------------------------------------------- */
+  static subItemBrLeft(item) {
+    HsncToolSubItem.subItemBrLeft(item);
   }
-  static updateSubItemRrLeft(item) {
-    HsncToolUpdate.updateSubItemRrLeft(item);
+  static subItemRrLeft(item) {
+    HsncToolSubItem.subItemRrLeft(item);
   }
-  static updateSubItemLrForToc() {
-    HsncToolUpdate.updateSubItemLrForToc();
+  /* -------------------------------------------------- */
+  static subItemLr() {
+    HsncToolSubItem.subItemLr();
   }
-  /* ============================== */
-  /* static setHsncSubItemBrWidth(item, index) {
-    HsncToolSet.setHsncSubItemBrWidth(item, index);
+  /* -------------------------------------------------- */
+  static subItemContainerTimer(item, shouldReset) {
+    HsncToolSubItem.subItemContainerTimer(item, shouldReset);
   }
-  static setSubItemLr() {
-    HsncToolSet.setSubItemLr();
-  } */
-  /* ============================== */
-  static timerSubItemContainer(item, shouldReset) {
-    HsncToolTimer.timerSubItemContainer(item, shouldReset);
-  }
-  /* ============================== */
 }
-/*  */
+/* ================================================== */
 export { HsncTool };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */

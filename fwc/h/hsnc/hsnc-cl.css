@@ -3,58 +3,61 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* =============== :Handler: =============== */
-.hsnc-item.cl-hsnc-item-container-click {
+/* ================================================== */
+/* Item Open*/
+.hsnc-list .item.open {
   background: #333333;
 }
-.hsnc-item-text.cl-hsnc-item-container-click {
-  text-shadow: var(--facooya-bold-white);
+.hsnc-list .item-text.open {
+  text-shadow: var(--bold-white);
 }
-.hsnc-item-rr.cl-hsnc-item-container-click {
+.hsnc-list .item-rr.open {
   transform: scale(1, 1) rotate(360deg) !important;
 }
-.hsnc-item-br.cl-hsnc-item-container-click {
+.hsnc-list .item-br.open {
   left: 5%;
   width: 90%;
 }
-.hsnc-sub-list.cl-hsnc-item-container-click {
+.hsnc-list .sub-list.open {
   opacity: 1;
 }
-/* =============== ;Handler; =============== */
-.hsnc-item-text.cl-hsnc-item-container-set-hover-lock {
-  text-shadow: var(--facooya-bold-white);
+/* ================================================== */
+/* Item Hover Lock */
+.hsnc-list .item-text.hover-lock{
   margin-right: 32px;
+  text-shadow: var(--bold-white);
 }
-.hsnc-item-rr.cl-hsnc-item-container-set-hover-lock {
-  margin-right: 32px;
+.hsnc-list .item-rr.hover-lock{
+  margin-right: 24px;
   transform: scale(1, 1) rotate(180deg);
   opacity: 1;
 }
-.hsnc-item-br.cl-hsnc-item-container-set-hover-lock {
+.hsnc-list .item-br.hover-lock{
   left: 5%;
   width: 90%;
 }
-/*  */
-/* =============== :Util: =============== */
-.hsnc-sub-item-lr.cl-hsnc-set-sub-item-lr-enabled {
+/* ================================================== */
+/* TOC Active */
+.hsnc-list .sub-item-lr.toc-active {
   transform: scale(1, 1);
 }
-.hsnc-sub-item-text.cl-hsnc-set-sub-item-lr-enabled {
-  text-shadow: var(--facooya-bold-white);
+.hsnc-list .sub-item-text.toc-active {
+  text-shadow: var(--bold-white);
 }
-/*  */
-.hsnc-sub-item-text.cl-hsnc-timeout-sub-item-container {
+/* ================================================== */
+/* Sub Item Active */
+.hsnc-list .sub-item-text.active {
   margin-right: 12px;
 }
-.hsnc-sub-item-rr.cl-hsnc-timeout-sub-item-container {
+.hsnc-list .sub-item-rr.active {
   opacity: 1;
   transform: scale(1, 1);
 }
-/* =============== ;Util; =============== */
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

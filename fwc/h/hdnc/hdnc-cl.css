@@ -3,84 +3,79 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* =============== :Handler: =============== */
-/* screenType === 1 */
-.hdnc-item.cl-hdnc-item-container-click {
-  background: #333333;
+/* ================================================== */
+/* Item Open */
+.hdnc-list .item.open {
+  background-color: #333333;
 }
-.hdnc-item-text.cl-hdnc-item-container-click {
-  text-shadow: var(--facooya-bold-white);
+.hdnc-list .item-text.open {
+  text-shadow: var(--bold-white);
 }
-.hdnc-item-rr.cl-hdnc-item-container-click {
+.hdnc-list .item-rr.open {
+  /* .hdnc-list .item-container:hover .item-rr = 40
+   * .hdnc-list .item-rr.open = 30 */
   transform: scale(1, 1) rotate(360deg) !important;
 }
-.hdnc-item-br.cl-hdnc-item-container-click {
+.hdnc-list .item-br.open {
   left: 5%;
   width: 90%;
 }
-.hdnc-sub-list.cl-hdnc-item-container-click {
+.hdnc-list .sub-list.open {
   opacity: 1;
 }
-/* =============== ;Handler; =============== */
-.hdnc-item-text.cl-hdnc-item-container-set-hover-lock {
-  text-shadow: var(--facooya-bold-white);
+/* ================================================== */
+/* Item Hover Lock */
+.hdnc-list .item-text.hover-lock {
   margin-right: 32px;
+  text-shadow: var(--bold-white);
 }
-.hdnc-item-rr.cl-hdnc-item-container-set-hover-lock {
-  margin-right: 32px;
+.hdnc-list .item-rr.hover-lock {
+  margin-right: 24px;
   transform: scale(1, 1) rotate(180deg);
   opacity: 1;
 }
-.hdnc-item-br.cl-hdnc-item-container-set-hover-lock {
+.hdnc-list .item-br.hover-lock {
   left: 5%;
   width: 90%;
 }
-/*  */
-/* =============== :Util: =============== */
-.hdnc-sub-item-text.cl-hdnc-timeout-sub-item-container {
+/* ================================================== */
+/* Sub Item Active  */
+.hdnc-list .sub-item-text.active {
   margin-right: 12px;
 }
-.hdnc-sub-item-rr.cl-hdnc-timeout-sub-item-container {
+.hdnc-list .sub-item-rr.active {
   opacity: 1;
   transform: scale(1, 1);
 }
-.hdnc-sub-item-rr.cl-hdnc-sub-item-rr-hover {
-  transform: scale(1, 1);
-  opacity: 1;
-}
-/*  */
-.hdnc-chevron-tr-wrapper.cl-hdnc-sub-list-scroll-chevron-enabled {
-  opacity: 1;
-  transform: scale(1, 1);
-}
-.hdnc-chevron-br-wrapper.cl-hdnc-sub-list-scroll-chevron-enabled {
-  opacity: 1;
-  transform: scale(1, 1);
-}
-/* screenType === 2 */
+/* ================================================== */
 @media (min-width: 768px) {
-  .hdnc-item.cl-hdnc-item-container-click {
-    background: #222222;
+  .hdnc-list .item.open {
+    background-color: #222222;
   }
-  .hdnc-sub-list.cl-hdnc-item-container-click {
+  /* -------------------------------------------------- */
+  .hdnc-list .sub-list.open {
     width: 320px;
   }
-}
-@media (min-width: 1280px) {
-  /* .hdnc-sub-item-rr.cl-hdnc-sub-item-rr-hover {
-    margin: 0rem 0rem 0rem 0rem;
-    transform: scale(1, 1);
+  /* ================================================== */
+  /* Chevron Active */
+  .hdnc-list .item-chevron-tr-wrapper.active {
     opacity: 1;
-  } */
-  /* .hdnc-sub-list.cl-hdnc-sub-list-last-right {
-    right: 0px !important;
-  } */
+    transform: scale(1, 1);
+  }
+  .hdnc-list .item-chevron-br-wrapper.active {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+  /* -------------------------------------------------- */
+
 }
-/* =============== ;Util; =============== */
+/* ================================================== */
+@media (min-width: 1280px) {}
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

@@ -5,6 +5,10 @@
  */
 import { DpmfcConfig } from "./dpmfc-config.js";
 import { DpmfcTool } from "./dpmfc-tool.js";
+/* -------------------------------------------------- */
+import {
+  DpmacAccessor
+} from "../dpm-hub.js";
 /* ================================================== */
 class DpmfcAccessor {
   static getDpmfcHandler() {
@@ -53,8 +57,11 @@ class DpmfcManager {
   static resizeSensor() {
     DpmfcTool.updateWidePagination();
   }
-  /* ------------------------------ */
+  /* -------------------------------------------------- */
   static loadEvent() {
+    /* Title */
+    const hash = document.querySelector(".dpmfc-title .hash");
+    hash.addEventListener("click", DpmfcHandler.titleHashClick);
     /* Tab */
     const tab = document.querySelector(".dpmfc-tab");
     const tabItems = tab.querySelectorAll(".item");
@@ -77,6 +84,13 @@ class DpmfcManager {
 }
 /* ================================================== */
 class DpmfcHandler {
+  /* Title */
+  static titleHashClick(event) {
+    const titleHash = event.currentTarget;
+    const hash = titleHash.hash;
+    DpmacAccessor.tocHashReplace(hash);
+  }
+  /* ================================================== */
   /* Tab */
   static tabItemClick(event) {
     const item = event.currentTarget;

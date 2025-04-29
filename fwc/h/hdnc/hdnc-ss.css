@@ -3,357 +3,376 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-.hdnc-sge-util {
+/* ================================================== */
+.hdnc {
+  --item-br-background: #90ee90;
+  --sub-item-br-background: #87ceeb;
+}
+/* -------------------------------------------------- */
+.hdnc-sge-group {
   position: absolute;
-  top: 0px;
+  top: 0;
   width: 100%;
   height: calc(100% + 1px);
   background: #00000000;
   pointer-events: none;
 }
+/* -------------------------------------------------- */
 .hdnc {
-  --hdnc-duration-primary: var(--duration-primary);
-  --hdnc-timing-primary: var(--timing-primary);
-  --hdnc-timing-secondary: var(--timing-secondary);
-  /*  */
-  --hdnc-background: var(--nc-background);
-  --hdnc-font-color-primary: #FFFFFF;
-  --hdnc-font-color-secondary: #FFFFFF;
-  --hdnc-rgro-color: #FFFFFF;
-  /*  */
-  --hdnc-background-color-secondary: var(--background-color-secondary);
-  /*  */
-  --mdt-hdnc-top: var(--tpnc-height);
-  --tdt-hdnc-top: calc(var(--tpnc-height) + var(--dnc-height));
-  --ddt-hdnc-top: var(--tpnc-height);
-  --mdt-hdnc-width: 80%;
-  --tdt-hdnc-width: 20rem;
-  --ddt-hdnc-width: 20rem;
-}
-.hdnc {
+  /* For Mst: top, left, width, height, overflow, transition */
+  /* Position */
   position: fixed;
-  top: 4rem;
+  top: 64px;
   left: -80%;
   z-index: 100;
   /* Layout */
   width: 80%;
-  height: calc(100% - 4rem);
-  overflow-y: scroll;
-  overscroll-behavior: contain;
+  height: calc(100% - 64px);
   /* Visual */
   background: #222222;
-  transition: left 300ms ease;
-  /*  */
+  transition: left 300ms;
+  /* Scroll */
+  overflow-y: scroll;
+  overscroll-behavior: contain;
   scrollbar-width: none;
-  /*  */
+  /* Select */
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  /* Dynamic: top, left, width, height, overflow, transition */
 }
-/*  */
-.hdnc-list {
-  list-style: none;
-}
-.hdnc-item {
-  background: #222222;
-  transition: background-color 300ms ease;
-}
-.hdnc-item-container {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 4rem;
-
-  cursor: pointer;
-}
-.hdnc-item-text {
-  white-space: nowrap;
-  color: #FFFFFF;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  text-align: center;
-  width: 70%;
-}
-.hdnc-item-rr {
-  position: absolute;
-  right: 0rem;
-
-  mask-image: url("../../res/icon/dropdown-arrow.svg");
-
-  background: #FFFFFF;
-  width: 0.7rem;
-  height: 0.7rem;
-}
-.hdnc-item-br {
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  width: 0%;
-  height: 0.125rem;
-  background: var(--facooya-primary);
-  border-radius: 0.0625rem;
-  transition: left 300ms ease, width 300ms ease;
-}
-/* ---------- */
-.hdnc-sub-list {
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-
-  overflow: hidden;
-  height: 0rem;
-  opacity: 0;
-
-  list-style: none;
-  transition: height 300ms ease, opacity 300ms ease;
-  /*  */
-}
-.hdnc-sub-item {
-  height: 4rem;
-  padding: 0% 10%;
-}
-.hdnc-sub-item-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 4rem;
-
-  text-decoration: none;
-}
-.hdnc-sub-item-text {
-  color: #FFFFFF;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  /*  */
-  text-align: center;
-  max-width: 90%;
-}
-.hdnc-sub-item-lr {
-  width: 0.5rem;
-  height: 0.5rem;
-  transform: scale(0, 0);
-  background: #FFFFFF;
-  border-radius: 0.1rem;
-  transition: transform 300ms ease;
-}
-.hdnc-sub-item-rr {
-  position: absolute;
-  left: 100%;
-  width: 0.5rem;
-  height: 0.5rem;
-  mask-image: url("../../res/icon/link-arrow.svg");
-  background: #FFFFFF;
-}
-.hdnc-sub-item-br {
-  position: absolute;
-  top: 70%;
-  width: 0rem;
-  height: 0.125rem;
-  background: var(--facooya-secondary);
-  border-radius: 0.0625rem;
-  transition: left 300ms ease, width 300ms ease;
-}
-/* ---------- */
 .hdnc-sge {
   z-index: 2;
 }
+/* ================================================== */
+/* List */
+.hdnc-list {
+  list-style: none;
+}
+/* ================================================== */
+/* :Item: */
+.hdnc-list .item {
+  /* Only Mst transition: background-color */
+  background: #222222;
+  transition: background-color 300ms;
+}
+.hdnc-list .item-container {
+  position: relative;
+  height: 64px;
+  line-height: 64px;
+  /*  */
+  text-align: center;
+  cursor: pointer;
+}
+/* -------------------------------------------------- */
+/* Inner Container */
+.hdnc-list .item-text {
+  /* Hover Reset: margin-right */
+  display: inline-block;
+  /* Layout */
+  width: 70%;
+  overflow: hidden;
+  vertical-align: middle;
+  /* Text */
+  color: #ffffff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.hdnc-list .item-rr {
+  /* Hover Reset: margin-right, transform, transition */
+  /* Position */
+  position: absolute;
+  /* top(26px) = itemTextH(64px) / 2 - height(12px) / 2 */
+  top: 26px;
+  right: 0;
+  /* Layout */
+  width: 12px;
+  height: 12px;
+  margin-right: 24px;
+  /* Visual */
+  background: #ffffff;
+  mask-image: url("../../res/icon/dropdown-arrow.svg");
+  transform: rotate(180deg);
+  transition: transform 300ms;
+}
+.hdnc-list .item-br {
+  /* Position */
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  /* Layout */
+  width: 0;
+  height: 2px;
+  /* Visual */
+  background: var(--item-br-background);
+  border-radius: 1px;
+  transition: left 300ms, width 300ms;
+}
+.hdnc-list .item-container-sge {
+  /* Only Tdst */
+  display: none;
+}
+/* -------------------------------------------------- */
+.hdnc-list .item-chevron-wrapper {
+  /* Only Tdst */
+  display: none;
+}
+/* ;Item; */
+/* ================================================== */
+/* Sub List */
+.hdnc-list .sub-list {
+  position: relative;
+  /* Layout */
+  height: 0;
+  overflow: hidden;
+  /* Visual */
+  opacity: 0;
+  list-style: none;
+  transition: height 300ms, opacity 300ms;
+}
+.hdnc-list .sub-list-sge {
+  /* display: none; Only Mst */
+  display: none;
+}
+/* ================================================== */
+/* :Sub Item: */
+.hdnc-list .sub-item {
+  height: 64px;
+  padding: 0 10%;
+}
+.hdnc-list .sub-item-container {
+  position: relative;
+  display: block;
+  height: 100%;
+  /*  */
+  text-align: center;
+  text-decoration: none;
+}
+/* -------------------------------------------------- */
+/* Inner Container */
+.hdnc-list .sub-item-text {
+  /* Hover Reset: transition */
+  display: inline-block;
+  line-height: 64px;
+  max-width: 90%;
+  overflow: hidden;
+  /* Text */
+  color: #ffffff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: margin-right 300ms;
+}
+.hdnc-list .sub-item-rr {
+  position: absolute;
+  /* top(28px) = textH(64px) / 2 - height(8px) / 2 */
+  top: 28px;
+  left: 100%;
+  /*  */
+  width: 8px;
+  height: 8px;
+  /*  */
+  opacity: 0;
+  background-color: #ffffff;
+  mask-image: url("../../res/icon/link-arrow.svg");
+  transform: scale(0, 0);
+  transition:
+    left 300ms,
+    margin-right 300ms,
+    opacity 300ms,
+    transform 300ms;
+}
+.hdnc-list .sub-item-br {
+  position: absolute;
+  top: 70%;
+
+  width: 0;
+  height: 2px;
+
+  background: var(--sub-item-br-background);
+  border-radius: 1px;
+  transition: left 300ms, width 300ms;
+}
+/* ;Sub Item; */
+/* ================================================== */
+/* :Etc: */
+/* Fog Only Mst */
 .hdnc-fog {
   position: fixed;
   z-index: 3;
 
   width: 80%;
-  height: 0px;
+  height: 0;
   
-  transition: height 300ms ease;
+  transition: height 300ms;
   pointer-events: none;
 }
 .hdnc-fog-tr {
   top: 64px;
-  background: linear-gradient(#222222, #00000000);
+  background-image: linear-gradient(#222222, #00000000);
 }
 .hdnc-fog-br {
-  bottom: 0px;
-  background: linear-gradient(#00000000, #222222);
+  bottom: 0;
+  background-image: linear-gradient(#00000000, #222222);
 }
-/*  */
-.hdnc-chevron-wrapper {
-  /* display: flex; */
-  display: none;
-  justify-content: center;
-  align-items: center;
-  /*  */
-  position: absolute;
-  top: 72px; /* htbcHeight(64px) + buffer(8px) */
-  left: 0px;
-  /*  */
-  width: 32px;
-  height: 32px;
-  background: radial-gradient(circle, #777777, #00000000 70%);
-  /*  */
-  opacity: 0;
-  transform: scale(0, 0);
-  border-radius: 16px;
-  /*  */
-  pointer-events: none;
-  transition:
-    transform 300ms linear,
-    top 300ms ease,
-    left 300ms ease,
-    opacity 300ms ease;
-}
-.hdnc-chevron {
-  width: 16px;
-  height: 16px;
-  /*  */
-  mask-image: url("../../res/icon/chevron.svg");
-  mask-position: center;
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  background: #FFFFFF;
-}
-.hdnc-chevron-br {
-  transform: rotate(180deg);
-}
-.hdnc-item-container-sge {
-  display: none;
-  /*  */
-  /* position: absolute;
-  top: 0px;
-  width: 100%;
-  height: calc(100% + 1px);
-  background: #00000000;
-  pointer-events: none; */
-}
-/*  */
-.hdnc-sub-list-sge {
-  display: none;
-  /*  */
-  /* position: absolute;
-  top: 0px;
-  width: 100%;
-  height: calc(100% + 1px);
-  background: #00000000;
-  pointer-events: none; */
-}
-/*  */
+/* ;Etc; */
+/* ================================================== */
 @media (min-width: 768px) {
-  /* .hdnc-chevron-br-wrapper {
-    display: none;
-  } */
-  /*  */
   .hdnc {
     /* Reset */
     left: auto;
-    width: 100%;
     height: auto;
     transition: none;
-    overflow-y: visible;
-    /* Box Model */
-    padding: 0rem 1rem;
+    overflow: visible;
+    /* Apply */
+    width: 100%;
+    padding: 0 16px;
   }
+  /* ================================================== */
   .hdnc-list {
-    display: flex;
-    justify-content: center;
     position: relative;
+    display: flex;
     width: 100%;
   }
-  .hdnc-item {
+  /* ================================================== */
+  /* Item */
+  .hdnc-list .item {
     position: relative;
+    /* width: listWidth(100%) / itemCount(4) */
     width: 25%;
-    display: flex;
-    justify-content: center;
   }
-  .hdnc-item-container {
-    width: 100%;
+  .hdnc-list .item-container {
     position: relative;
-    overflow: auto;
+    width: 100%;
+    overflow: scroll;
     scrollbar-width: none;
     overscroll-behavior: contain;
   }
-  .hdnc-sub-list {
-    position: absolute;
-    top: 4rem;
-    width: 10rem;
-    opacity: 1;
-    border-radius: 0rem 0rem 1rem 1rem;
-    background: #222222;
-    /*  */
-    overflow: auto;
-    scrollbar-width: none;
-    overscroll-behavior: contain;
-    /*  */
-    transition:
-      width 300ms ease,
-      height 300ms ease,
-      max-height 300ms ease;
-  }
-  .hdnc-item:first-child .hdnc-sub-list {
-    left: 0px;
-  }
-  .hdnc-item:last-child .hdnc-sub-list {
-    right: 0px;
-    transition:
-      width 300ms ease,
-      height 300ms ease,
-      max-height 300ms ease;
-  }
-  /*  */
-  .hdnc-fog {
-    display: none;
-  }
-  /*  */
-  .hdnc-chevron-wrapper {
-    display: flex;
-  }
-  /*  */
-  .hdnc-item-container-sge, .hdnc-sub-list-sge {
+  .hdnc-list .item-container-sge {
+    /* Only Tdst */
     display: block;
   }
+  /* ================================================== */
+  /* Sub List */
+  .hdnc-list .sub-list {
+    position: absolute;
+    top: 64px;
+    left: 50%;
+    width: 160px;
+    opacity: 1;
+    border-radius: 0 0 16px 16px;
+    background: #222222;
+    /*  */
+    overflow: scroll;
+    scrollbar-width: none;
+    overscroll-behavior: contain;
+    /*  */
+    transform: translateX(-50%);
+    transition:
+      width 300ms,
+      height 300ms,
+      max-height 300ms;
+  }
+  .hdnc-list .item:first-child .sub-list {
+    /* align-x-left */
+    left: 0%;
+    transform: translateX(-0%);
+  }
+  .hdnc-list .item:last-child .sub-list {
+    /* align-x-right */
+    left: 100%;
+    transform: translateX(-100%);
+  }
+  .hdnc-list .sub-list-sge {
+    /* Only Tdst */
+    display: block;
+  }
+  /* ================================================== */
+  /* Chevron */
+  /* Only Tdst */
+  .hdnc-list .item-chevron-wrapper {
+    /* Only Tdst */
+    position: absolute;
+    /* top = 64px(htbcHeight) + 8px(buffer) */
+    top: 72px;
+    display: inline-block;
+    /*  */
+    width: 32px;
+    height: 32px;
+    background-image: radial-gradient(circle, #777777, #00000000 70%);
+    /*  */
+    opacity: 0;
+    transform: scale(0, 0);
+    border-radius: 16px;
+    /*  */
+    pointer-events: none;
+    transition:
+      transform 300ms linear,
+      top 300ms,
+      left 300ms,
+      opacity 300ms;
+  }
+  .hdnc-list .item-chevron {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    /* marginX(8px) = (chevronWrapperW(32px) - width(16px)) / 2
+     * marginY(8px) = (chevronWrapperH(32px) - height(16px)) / 2 */
+    margin: 8px;
+    /*  */
+    background: #ffffff;
+    mask: url("../../res/icon/chevron.svg") no-repeat center;
+  }
+  .hdnc-list .item-chevron-br {
+    transform: rotate(180deg);
+  }
+  /* ================================================== */
+  /* Etc */
+  .hdnc-fog {
+    /* Only Mst = display: block; */
+    display: none;
+  }
 }
+/* ================================================== */
 @media (min-width: 1280px) {
   .hdnc {
-    top: 0rem;
-    left: 16rem;
-    right: 4rem;
-    width: calc(100% - 16rem - 4rem);
-    transition: width 300ms ease;
+    top: 0;
+    /* left: htbcLogoWidth(256px) */
+    left: 256px;
+    /* right: htbcSnrWidth(64px) */
+    right: 64px;
+    /* total(320px) = HtbcLogoW(256px) + HtbcSnrW(64px)
+     * width = 100% - total(320px) */
+    width: calc(100% - 320px);
+    transition: width 300ms;
   }
-  .hdnc-list {
-    justify-content: start;
+  /* ================================================== */
+  .hdnc-list .item {
+    max-width: 240px;
   }
-  /*  */
-  .hdnc-item {
-    max-width: 15rem;
+  .hdnc-list .item:first-child .sub-list {
+    /* Revert: left, transform */
+    left: 50%;
+    transform: translateX(-50%);
   }
-  .hdnc-item-container {
-    cursor: default;
-  }
-  /*  */
-  .hdnc-item:first-child .hdnc-sub-list {
-    /* Reset: left */
-    left: auto;
-  }
-  .hdnc-item:last-child .hdnc-sub-list {
-    /* Reset: right */
-    /* Default: transform translateX JS */
-    right: auto;
+  .hdnc-list .item:last-child .sub-list {
+    /* Revert: left, transform */
+    /* .align-x-right IN htbc-cl.css
+     * .align-x-right => left, transform
+     * transition => .align-x-right */
+    left: 50%;
+    transform: translateX(-50%);
     transition:
-      transform 300ms ease,
-      width 300ms ease,
-      height 300ms ease,
-      max-height 300ms ease;
+      width 300ms,
+      height 300ms,
+      max-height 300ms,
+      left 300ms,
+      transform 300ms;
   }
 }
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

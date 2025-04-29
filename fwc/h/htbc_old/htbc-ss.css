@@ -1,0 +1,225 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+.htbc {
+  position: fixed;
+  z-index: 10;
+  top: 0rem;
+  /*  */
+  width: 100%;
+  background: #222222;
+  /*  */
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  /*  */
+  scrollbar-width: none;
+  /*  */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  /*  */
+  display: grid;
+  grid-template-columns: 64px minmax(112px, 1fr) 64px;
+  grid-template-rows: 64px;
+  gap: 0rem 16px;
+  grid-template-areas: "dnr logo snr";
+}
+/* ================================================== */
+.htbc-logo-wrapper {
+  grid-area: logo;
+  justify-self: center;
+}
+.htbc-logo-container {
+  /* grid-area: logo; */
+  position: relative;
+  display: inline-grid;
+  grid-template-areas: "dev-logo ta-logo facooya-logo";
+  /* justify-content: center; */
+  align-items: center;
+  height: 100%;
+}
+.htbc-dev-logo-item {
+  grid-area: dev-logo;
+  /* width: 4rem;
+  height: 2rem; */
+  width: 48px;
+  height: 24px;
+  mask-image: url("../../res/svg/logo-2w.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background: #FFFFFF;
+}
+.htbc-ta-logo-item {
+  grid-area: ta-logo;
+  width: 8px;
+  height: 8px;
+  mask-image: url("../../res/svg/a.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background: #FFFFFF;
+  align-self: end;
+  /*  */
+  margin-right: 6px;
+  margin-bottom: 20px;
+}
+.htbc-facooya-logo-item {
+  grid-area: facooya-logo;
+  width: 120px;
+  height: 24px;
+  mask-image: url("../../res/svg/logo-5w.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background: #FFFFFF;
+}
+/* ================================================== */
+.htbc-dnr-container {
+  grid-area: dnr;
+  position: relative;
+  /* Grid */
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.475rem;
+  /* Layout */
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  /* Visual */
+  cursor: pointer;
+}
+.htbc-dnr-item {
+  /* Box Model */
+  width: 100%;
+  height: 100%;
+  /* Visual */
+  background: #FFFFFF;
+  border-radius: 0.1rem;
+  opacity: 1;
+  transform: translate(0rem, 0rem) rotate(0deg) scale(1, 1);
+  transition:
+    top 300ms ease,
+    left 300ms ease,
+    transform 300ms ease,
+    opacity 300ms ease;
+}
+/* ================================================== */
+.htbc-snr-container {
+  grid-area: snr;
+  position: relative;
+  /* Grid */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.25rem;
+  /* Layout */
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  /* Visual */
+  cursor: pointer;
+}
+.htbc-snr-item {
+  /* Positioning */
+  width: 100%; /* 0.5rem */
+  height: 100%;
+  background: #FFFFFF;
+  border-radius: 0.1rem;
+  /* Visual */
+  transition: 
+    transform 300ms ease;
+}
+/* ================================================== */
+.htbc-sge {
+  /* Position */
+  position: absolute;
+  z-index: 1;
+  top: 0rem;
+  /* Layout */
+  width: 100%;
+  height: calc(100% + 1px);
+  /* Visual */
+  background: #00000000;
+  pointer-events: none;
+}
+/*  */
+.htbc-snr-slide-text {
+  display: none;
+  /*  */
+  position: absolute;
+  top: 1.25rem;
+  right: 4rem;
+  /*  */
+  width: 15rem;
+  opacity: 0;
+  transform-origin: right;
+  transform: scale(0, 0);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+  cursor: default;
+  /*  */
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+/*  */
+.htbc-overlay {
+  position: fixed;
+  top: 4rem;
+  left: -20%;
+  z-index: 100;
+  width: 20%;
+  height: calc(100% - 4rem);
+  background: #77777777;
+  transition: left 300ms ease;
+  
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+.htbc-overlay-sge {
+  position: relative;
+  z-index: 101;
+  height: calc(100% + 1px);
+  background: #00000000;
+}
+@media (min-width: 768px) {
+  .htbc {
+    grid-template-columns: 1fr 4rem;
+    grid-template-rows: 4rem 4rem;
+    grid-template-areas: "logo snr" ". .";
+    gap: 0rem 2rem;
+    transition: gap 300ms ease;
+  }
+  /* ================================================== */
+  .htbc-dnr-container {
+    display: none;
+  }
+  /* ================================================== */
+  .htbc-snr-slide-text {
+    display: block;
+  }
+  /*  */
+  .htbc-overlay {
+    display: none;
+  }
+}
+@media (min-width: 1280px) {
+  .htbc {
+    grid-template-columns: 16rem 1fr 4rem;
+    grid-template-rows: 4rem;
+    grid-template-areas: "logo . snr";
+  }
+  .htbc-logo-container {
+    padding: 0rem 0rem 0rem 1rem;
+  }
+}
+/* ========================= :FACOOYA: ========================= */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+ /* ========================= ;FACOOYA; ========================= */

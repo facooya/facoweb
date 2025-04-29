@@ -3,538 +3,155 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
-  BodyUtil
-} from "../../fwc-hub.js";
-/*  */
 class HdncConfigData {
-  /* ===== ExaTloText ===== */
-  static hdncExaTloText = [
+  /* ===== itemTexts ===== */
+  static itemTexts = [
     "Menu 1",
     "Menu 2",
     "Menu 3",
     "Menu 4"
   ];
-  /* ===== GigaBloText ===== */
-  static hdncGigaBloTextMenu1 = [
+  /* ===== subItemText ===== */
+  static subItemTextsMenu1 = [
     "Item 1-1"
   ];
-  static hdncGigaBloTextMenu2 = [
+  static subItemTextsMenu2 = [
     "Item 2-1",
     "Item 2-2"
   ];
-  static hdncGigaBloTextMenu3 = [
+  static subItemTextsMenu3 = [
     "Item 3-1",
     "Item 3-2",
     "Item 3-3"
   ];
-  static hdncGigaBloTextMenu4 = [
+  static subItemTextsMenu4 = [
     "Item 4-1",
     "Item 4-2"
   ];
-  /* ===== TeraLink ===== */
-  static hdncTeraBloLinkMenu1 = [
+  /* ===== subContainerLink ===== */
+  static subContainerLinksMenu1 = [
     "#item-1-1"
   ];
-  static hdncTeraBloLinkMenu2 = [
+  static subContainerLinksMenu2 = [
     "#item-2-1",
     "#item-2-2"
   ];
-  static hdncTeraBloLinkMenu3 = [
+  static subContainerLinksMenu3 = [
     "#item-3-1",
     "#item-3-2",
     "#item-3-3"
   ];
-  static hdncTeraBloLinkMenu4 = [
+  static subContainerLinksMenu4 = [
     "#item-4-1",
     "#item-4-2"
   ];
   /* ===== Compile ===== */
-  static hdncGigaBloText = [
-    HdncConfigData.hdncGigaBloTextMenu1,
-    HdncConfigData.hdncGigaBloTextMenu2,
-    HdncConfigData.hdncGigaBloTextMenu3,
-    HdncConfigData.hdncGigaBloTextMenu4
+  static subItemTexts = [
+    HdncConfigData.subItemTextsMenu1,
+    HdncConfigData.subItemTextsMenu2,
+    HdncConfigData.subItemTextsMenu3,
+    HdncConfigData.subItemTextsMenu4
   ];
-  static hdncTeraBloLink = [
-    HdncConfigData.hdncTeraBloLinkMenu1,
-    HdncConfigData.hdncTeraBloLinkMenu2,
-    HdncConfigData.hdncTeraBloLinkMenu3,
-    HdncConfigData.hdncTeraBloLinkMenu4
-  ];
-}
-class HdncConfigElement {
-  static hdncRoot = [
-    {
-      elementId: "hdncR",
-      generate: {
-        htmlTag: "nav",
-        htmlClass: "hdnc-r"
-      },
-      query: {
-        querySelector: ".blf-y-ho .hdnc-r",
-        queryType: "single"
-      }
-    }
-  ];
-  static hdncGroup = [
-    {
-      elementId: "hdncY",
-      generate: {
-        htmlTag: "ul",
-        htmlClass: "hdnc-y"
-      },
-      query: {
-        querySelector: ".hdnc-y",
-        queryType: "all"
-      }
-    }
-  ];
-  static hdncTloGroup = [
-    {
-      elementId: "hdncZettaTlo",
-      generate: {
-        htmlTag: "li",
-        htmlClass: "hdnc-z-tlo"
-      },
-      query: {
-        querySelector: ".hdnc-z-tlo",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncExaTloText",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-e-tlo-text",
-        htmlText: HdncConfigData.hdncExaTloText
-      },
-      query: {
-        querySelector: ".hdnc-e-tlo-text",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncExaTloRgro",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-e-tlo-rgro"
-      },
-      query: {
-        querySelector: ".hdnc-e-tlo-rgro",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncExaTloBgro",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-e-tlo-bgro"
-      },
-      query: {
-        querySelector: ".hdnc-e-tlo-bgro",
-        queryType: "all"
-      }
-    },
-    /*  */
-    {
-      elementId: "hdncExaTloSdo",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-e-tlo-sdo"
-      },
-      query: {
-        querySelector: ".hdnc-e-tlo-sdo",
-        queryType: "all"
-      }
-    }
-  ];
-  static hdncBloGroup = [
-    {
-      elementId: "hdncZettaBlo",
-      generate: {
-        htmlTag: "li",
-        htmlClass: "hdnc-z-blo"
-      },
-      query: {
-        querySelector: ".hdnc-z-blo",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncExaBlo",
-      generate: {
-        htmlTag: "ul",
-        htmlClass: "hdnc-e-blo"
-      },
-      query: {
-        querySelector: ".hdnc-e-blo",
-        queryType: "all"
-      }
-    },
-    /*  */
-    {
-      elementId: "hdncPetaBloSdo",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-p-blo-sdo"
-      },
-      query: {
-        querySelector: ".hdnc-p-blo-sdo",
-        queryType: "all"
-      }
-    },
-    /*  */
-    {
-      elementId: "hdncExaBloSgroTo",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-e-blo-sgro hdnc-e-blo-sgro-to"
-      },
-      query: {
-        querySelector: ".hdnc-e-blo-sgro-to",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncPetaBloSgroTo",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-p-blo-sgro hdnc-p-blo-sgro-to"
-      },
-      query: {
-        querySelector: ".hdnc-p-blo-sgro-to",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncExaBloSgroBo",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-e-blo-sgro hdnc-e-blo-sgro-bo"
-      },
-      query: {
-        querySelector: ".hdnc-e-blo-sgro-bo",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncPetaBloSgroBo",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-p-blo-sgro hdnc-p-blo-sgro-bo"
-      },
-      query: {
-        querySelector: ".hdnc-p-blo-sgro-bo",
-        queryType: "all"
-      }
-    }
-  ];
-  static hdncBloEbGroup = [
-    {
-      elementId: "hdncPetaBlo",
-      generate: {
-        htmlTag: "li",
-        htmlClass: "hdnc-p-blo"
-      },
-      query: {
-        querySelector: ".hdnc-p-blo",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncTeraBlo",
-      generate: {
-        htmlTag: "a",
-        htmlClass: "hdnc-t-blo",
-        htmlLink: HdncConfigData.hdncTeraBloLink
-      },
-      query: {
-        querySelector: ".hdnc-t-blo",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncGigaBloText",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-g-blo-text",
-        htmlText: HdncConfigData.hdncGigaBloText
-      },
-      query: {
-        querySelector: ".hdnc-g-blo-text",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncGigaBloRgro",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-g-blo-rgro"
-      },
-      query: {
-        querySelector: ".hdnc-g-blo-rgro",
-        queryType: "all"
-      }
-    },
-    {
-      elementId: "hdncGigaBloBgro",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-g-blo-bgro"
-      },
-      query: {
-        querySelector: ".hdnc-g-blo-bgro",
-        queryType: "all"
-      }
-    }
-  ];
-  static hdncYottaGroup = [
-    {
-      elementId: "hdncYottaSdo",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-y-sdo"
-      },
-      query: {
-        querySelector: ".hdnc-y-sdo",
-        queryType: "single"
-      }
-    },
-    {
-      elementId: "hdncYottaSfroTo",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-y-sfro hdnc-y-sfro-to"
-      },
-      query: {
-        querySelector: ".hdnc-y-sfro-to",
-        queryType: "single"
-      }
-    },
-    {
-      elementId: "hdncYottaSfroBo",
-      generate: {
-        htmlTag: "div",
-        htmlClass: "hdnc-y-sfro hdnc-y-sfro-bo"
-      },
-      query: {
-        querySelector: ".hdnc-y-sfro-bo",
-        queryType: "single"
-      }
-    }
+  static subContainerLinks = [
+    HdncConfigData.subContainerLinksMenu1,
+    HdncConfigData.subContainerLinksMenu2,
+    HdncConfigData.subContainerLinksMenu3,
+    HdncConfigData.subContainerLinksMenu4
   ];
 }
 class HdncConfigManager {
-  static hdncGenerate() {
-    const {
-      hdncR
-    } = HdncConfigGet.getHdncRoot();
-    const hdncFragment = document.createDocumentFragment();
-    let tempGenerateElement = null;
-    let tempSaveElement = {};
-    /* =============== :Ys, Tlo, Zs Group: =============== */
-    for (let ysi = 0; ysi < HdncConfigData.hdncExaTloText.length; ysi++) {
-      /* ==========----- :Ys Group: -----========== */
-      for (let zsi = 0; zsi < HdncConfigElement.hdncGroup.length; zsi++) {
-        tempGenerateElement = BodyUtil.getGenerateElement(
-          HdncConfigElement.hdncGroup[zsi]
-        );
-        tempSaveElement[HdncConfigElement.hdncGroup[zsi].elementId] = tempGenerateElement;
+  static generate() {
+    const hdnc = document.querySelector(".hdnc");
+    const hdncFrag = document.createDocumentFragment();
+    /* list in hdnc */
+    const list = document.createElement("ul");
+    list.setAttribute("class", "hdnc-list");
+    const itemTexts = HdncConfigData.itemTexts;
+    for (let i = 0; i < itemTexts.length; i++) {
+      const item = document.createElement("li");
+      item.setAttribute("class", "hdnc-item");
+      /* itemContainer in item */
+      const itemContainer = document.createElement("div");
+      itemContainer.setAttribute("class", "hdnc-item-container");
+      const itemText = document.createElement("span");
+      itemText.setAttribute("class", "hdnc-item-text");
+      itemText.textContent = itemTexts[i];
+      const itemRr = document.createElement("span");
+      itemRr.setAttribute("class", "hdnc-item-rr");
+      const itemBr = document.createElement("span");
+      itemBr.setAttribute("class", "hdnc-item-br");
+      const itemContainerSge = document.createElement("div");
+      itemContainerSge.setAttribute("class", "hdnc-sge-util hdnc-item-container-sge");
+      itemContainer.append(itemText, itemRr, itemBr, itemContainerSge);
+      /* subList in item */
+      const subList = document.createElement("ul");
+      subList.setAttribute("class", "hdnc-sub-list");
+      const subItemTexts = HdncConfigData.subItemTexts[i];
+      const subContainerLinks = HdncConfigData.subContainerLinks[i];
+      for (let j = 0; j < subItemTexts.length; j++) {
+        const subItem = document.createElement("li");
+        subItem.setAttribute("class", "hdnc-sub-item");
+        /* subContainer in subItem */
+        const subItemContainer = document.createElement("a");
+        subItemContainer.setAttribute("class", "hdnc-sub-item-container");
+        subItemContainer.setAttribute("href", subContainerLinks[j]);
+        const subItemText = document.createElement("span");
+        subItemText.setAttribute("class", "hdnc-sub-item-text");
+        subItemText.textContent = subItemTexts[j];
+        const subItemRr = document.createElement("span");
+        subItemRr.setAttribute("class", "hdnc-sub-item-rr");
+        const subItemBr = document.createElement("span");
+        subItemBr.setAttribute("class", "hdnc-sub-item-br");
+        subItemContainer.append(subItemText, subItemRr, subItemBr);
+        subItem.append(subItemContainer);
+        /*  */
+        subList.append(subItem);
       }
-      /* ==========----- ;Ys Group; -----========== */
-      /* ==========----- :Tlo Group: -----========== */
-      for (let zsi = 0; zsi < HdncConfigElement.hdncTloGroup.length; zsi++) {
-        tempGenerateElement = BodyUtil.getGenerateElement(
-          HdncConfigElement.hdncTloGroup[zsi],
-          [ysi]
-        );
-        tempSaveElement[HdncConfigElement.hdncTloGroup[zsi].elementId] = tempGenerateElement;
-      }
-      /* ==========----- ;Tlo Group; -----========== */
-      /* ==========----- :Blo Group: -----========== */
-      for (let zsi = 0; zsi < HdncConfigElement.hdncBloGroup.length; zsi++) {
-        tempGenerateElement = BodyUtil.getGenerateElement(
-          HdncConfigElement.hdncBloGroup[zsi]
-        );
-        tempSaveElement[HdncConfigElement.hdncBloGroup[zsi].elementId] = tempGenerateElement;
-      }
-      /* ==========----- ;Blo Group; -----========== */
-      /* ==========----- :Blo Eb Group: -----========== */
-      for (let zsi = 0; zsi < HdncConfigData.hdncGigaBloText[ysi].length; zsi++) {
-        for (let esi = 0; esi < HdncConfigElement.hdncBloEbGroup.length; esi++) {
-          tempGenerateElement = BodyUtil.getGenerateElement(
-            HdncConfigElement.hdncBloEbGroup[esi],
-            [ysi, zsi]
-          );
-          tempSaveElement[HdncConfigElement.hdncBloEbGroup[esi].elementId] = tempGenerateElement;
-        }
-        HdncConfigManager.hdncBloEbGroupAppend(tempSaveElement);
-      }
-      /* ==========----- ;Blo Eb Group; -----========== */
-      HdncConfigManager.hdncTloGroupAppend(tempSaveElement);
-      HdncConfigManager.hdncBloGroupAppend(tempSaveElement);
-      HdncConfigManager.hdncGroupAppend(tempSaveElement);
-      hdncFragment.append(tempSaveElement["hdncY"]);
-      tempSaveElement = {};
+      /* Sge in subList */
+      const subListSge = document.createElement("div");
+      subListSge.setAttribute("class", "hdnc-sge-util hdnc-sub-list-sge");
+      subList.append(subListSge);
+      /*  */
+      item.append(itemContainer, subList);
+      /* Chevron in item */
+      const chevronTrWrapper = document.createElement("span");
+      chevronTrWrapper.setAttribute("class", "hdnc-chevron-wrapper hdnc-chevron-tr-wrapper");
+      const chevronTr = document.createElement("span");
+      chevronTr.setAttribute("class", "hdnc-chevron hdnc-chevron-tr");
+      chevronTrWrapper.append(chevronTr);
+      const chevronBrWrapper = document.createElement("span");
+      chevronBrWrapper.setAttribute("class", "hdnc-chevron-wrapper hdnc-chevron-br-wrapper");
+      const chevronBr = document.createElement("span");
+      chevronBr.setAttribute("class", "hdnc-chevron hdnc-chevron-br");
+      chevronBrWrapper.append(chevronBr);
+      item.append(chevronTrWrapper, chevronBrWrapper);
+      /*  */
+      list.append(item);
     }
-    /* =============== ;Ys, Tlo, Zs Group; =============== */
-    /* =============== :Yotta Group: =============== */
-    for (let ysi = 0; ysi < HdncConfigElement.hdncYottaGroup.length; ysi++) {
-      tempGenerateElement = BodyUtil.getGenerateElement(
-        HdncConfigElement.hdncYottaGroup[ysi]
-      );
-      tempSaveElement[HdncConfigElement.hdncYottaGroup[ysi].elementId] = tempGenerateElement;
-    }
-    HdncConfigManager.hdncYottaGroupAppend(tempSaveElement, hdncFragment);
-    /* =============== ;Yotta Group; =============== */
-    hdncR.append(hdncFragment);
-  }
-  /*  */
-  static hdncGroupAppend(getSaveElement) {
-    getSaveElement["hdncY"].append(
-      getSaveElement["hdncZettaTlo"],
-      getSaveElement["hdncZettaBlo"]
-    );
-  }
-  static hdncTloGroupAppend(getSaveElement) {
-    getSaveElement["hdncZettaTlo"].append(
-      getSaveElement["hdncExaTloText"],
-      getSaveElement["hdncExaTloRgro"],
-      getSaveElement["hdncExaTloBgro"],
-      getSaveElement["hdncExaTloSdo"]
-    );
-  }
-  static hdncBloGroupAppend(getSaveElement) {
-    getSaveElement["hdncExaBlo"].append(
-      getSaveElement["hdncPetaBloSdo"]
-    );
-    getSaveElement["hdncExaBloSgroTo"].append(
-      getSaveElement["hdncPetaBloSgroTo"]
-    );
-    getSaveElement["hdncExaBloSgroBo"].append(
-      getSaveElement["hdncPetaBloSgroBo"]
-    );
-    getSaveElement["hdncZettaBlo"].append(
-      getSaveElement["hdncExaBlo"],
-      getSaveElement["hdncExaBloSgroTo"],
-      getSaveElement["hdncExaBloSgroBo"]
-    );
-  }
-  static hdncBloEbGroupAppend(getSaveElement) {
-    getSaveElement["hdncTeraBlo"].append(
-      getSaveElement["hdncGigaBloText"],
-      getSaveElement["hdncGigaBloRgro"],
-      getSaveElement["hdncGigaBloBgro"]
-    );
-    getSaveElement["hdncPetaBlo"].append(getSaveElement["hdncTeraBlo"]);
-    getSaveElement["hdncExaBlo"].append(getSaveElement["hdncPetaBlo"]);
-  }
-  static hdncYottaGroupAppend(getSaveElement, hdncFragment) {
-    hdncFragment.append(
-      getSaveElement["hdncYottaSdo"],
-      getSaveElement["hdncYottaSfroTo"],
-      getSaveElement["hdncYottaSfroBo"]
-    );
-  }
-}
-class HdncConfigGet {
-  static getHdncRoot() {
-    const saveVerifyGroup = BodyUtil.getElementCache(
-      HdncConfig.hdncConfigCache,
-      HdncConfigElement.hdncRoot
-    );
-    return saveVerifyGroup;
-  }
-  static getHdncGroup() {
-    const {
-      hdncR
-    } = HdncConfigGet.getHdncRoot();
-    const saveVerifyGroup = BodyUtil.getElementCache(
-      HdncConfig.hdncConfigCache,
-      HdncConfigElement.hdncGroup,
-      hdncR
-    );
-    return saveVerifyGroup;
-  }
-  static getHdncTloGroup() {
-    const {
-      hdncR
-    } = HdncConfigGet.getHdncRoot();
-    const saveVerifyGroup = BodyUtil.getElementCache(
-      HdncConfig.hdncConfigCache,
-      HdncConfigElement.hdncTloGroup,
-      hdncR
-    );
-    return saveVerifyGroup;
-  }
-  static getHdncBloGroup() {
-    const {
-      hdncR
-    } = HdncConfigGet.getHdncRoot();
-    const saveVerifyGroup = BodyUtil.getElementCache(
-      HdncConfig.hdncConfigCache,
-      HdncConfigElement.hdncBloGroup,
-      hdncR
-    );
-    return saveVerifyGroup;
-  }
-  static getHdncBloEbGroup(ebIndex) {
-    const {
-      hdncExaBlo
-    } = HdncConfigGet.getHdncBloGroup();
-    const saveVerifyGroup = BodyUtil.getElementCache(
-      HdncConfig.hdncConfigCache,
-      HdncConfigElement.hdncBloEbGroup,
-      hdncExaBlo[ebIndex],
-      ebIndex
-    );
-    return saveVerifyGroup;
-  }
-  static getHdncYottaGroup() {
-    const {
-      hdncR
-    } = HdncConfigGet.getHdncRoot();
-    const returnCacheGroup = BodyUtil.getElementCache(
-      HdncConfig.hdncConfigCache,
-      HdncConfigElement.hdncYottaGroup,
-      hdncR
-    );
-    return returnCacheGroup;
+    /* Etc in hdnc */
+    const sge = document.createElement("div");
+    sge.setAttribute("class", "hdnc-sge-util hdnc-sge");
+    const fogTr = document.createElement("div");
+    fogTr.setAttribute("class", "hdnc-fog hdnc-fog-tr");
+    const fogBr = document.createElement("div");
+    fogBr.setAttribute("class", "hdnc-fog hdnc-fog-br");
+    /*  */
+    hdncFrag.append(list, sge, fogTr, fogBr);
+    hdnc.append(hdncFrag);
   }
 }
 class HdncConfig {
-  static hdncConfigCache = {};
-  /* -------------------------------------------------- */
-  static hdncGenerate() {
-    HdncConfigManager.hdncGenerate();
+  static generate() {
+    HdncConfigManager.generate();
   }
-  /* -------------------------------------------------- */
-  static getHdncRoot() {
-    return HdncConfigGet.getHdncRoot();
-  }
-  static getHdncGroup() {
-    return HdncConfigGet.getHdncGroup();
-  }
-  static getHdncTloGroup() {
-    return HdncConfigGet.getHdncTloGroup();
-  }
-  static getHdncBloGroup() {
-    return HdncConfigGet.getHdncBloGroup();
-  }
-  static getHdncBloEbGroup(ebIndex) {
-    return HdncConfigGet.getHdncBloEbGroup(ebIndex);
-  }
-  static getHdncYottaGroup() {
-    return HdncConfigGet.getHdncYottaGroup();
-  }
-  /* -------------------------------------------------- */
 }
 export {
   HdncConfig
 };
+/* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
+ /* ========================= ;FACOOYA; ========================= */

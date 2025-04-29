@@ -14,12 +14,13 @@ import {
   FngcController,
   FllcController,
   NpmhcController,
-  NpmscController,
-  DpmacController,
+  NpmscController
+  /* DpmacController,
   DpmscController,
-  DpmfcController
+  DpmfcController */
 } from "./fwc-hub.js";
-/*  */
+/* -------------------------------------------------- */
+import { DpmController } from "./dpm/dpm-class.js";
 /* ================================================== */
 class FwcController {
   static init() {
@@ -43,7 +44,6 @@ class FwcManager {
     HtbcController.init();
     HdncController.init();
     HsncController.init();
-    /* HeccController.init(); */
     /* -------------------------------------------------- */
     FascController.init();
     FngcController.init();
@@ -59,9 +59,7 @@ class FwcManager {
         break;
       }
       case 3: {
-        DpmacController.init();
-        DpmscController.init();
-        DpmfcController.init();
+        DpmController.init();
         break;
       }
     }
@@ -88,9 +86,7 @@ class FwcManager {
         break;
       }
       case 3: {
-        DpmacController.load();
-        DpmscController.load();
-        DpmfcController.load();
+        DpmController.load();
         break;
       }
     }
@@ -117,9 +113,7 @@ class FwcManager {
         break;
       }
       case 3: {
-        DpmacController.resizeDisplay();
-        DpmscController.resizeDisplay();
-        DpmfcController.resizeDisplay();
+        DpmController.resizeDisplay();
         break;
       }
     }
@@ -147,7 +141,7 @@ class FwcManager {
         break;
       }
       case 3: {
-        DpmfcController.resizeSensor();
+        DpmController.resizeSensor();
         break;
       }
     }
@@ -155,7 +149,8 @@ class FwcManager {
 }
 export { FwcController };
 /* ================================================== */
-FwcController.init();
+window.addEventListener("DOMContentLoaded", () => FwcController.init());
+/* FwcController.init(); */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */

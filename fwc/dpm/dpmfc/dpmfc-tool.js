@@ -35,6 +35,7 @@ class DpmfcToolNavigation {
     });
     lists[tabIndex].classList.add(clActive);
   }
+  /* -------------------------------------------------- */
   static updateNavigationItem() {
     const tabIndex = DpmfcConfig.tabIndex;
     const pageIndex = DpmfcConfig.pageIndex;
@@ -50,6 +51,7 @@ class DpmfcToolNavigation {
       items[i].classList.add(clActive);
     }
   }
+  /* -------------------------------------------------- */
   static resetNavigationItem() {
     const tabIndex = DpmfcConfig.tabIndex;
     const navigation = document.querySelector(".dpmfc-navigation");
