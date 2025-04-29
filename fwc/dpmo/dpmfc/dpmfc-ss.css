@@ -7,7 +7,7 @@
   /* Tag.header */
   /* Position */
   grid-area: dpmfc-r;
-  margin: 0rem 0rem 1rem 0rem;
+  margin: 1rem 0rem 1rem 0rem;
 }
 .dpmfc-z-tso-tro {
   /* Tag.div */
@@ -64,10 +64,12 @@
 .dpmfc-y-bso {
   /* Tag.section */
   margin: 2rem 0rem 0rem 0rem;
+  height: 30rem;
+  transition: height 300ms;
 }
 .dpmfc-z-bso {
   /* Tag.ul */
-  display: flex;
+  display: none;
   flex-flow: column;
   gap: 0.5rem;
   list-style: none;
@@ -77,6 +79,7 @@
   border: 0.125rem solid #000000;
   border-radius: 1rem;
   padding: 1rem 0.5rem;
+  cursor: pointer;
 }
 .dpmfc-p-bso {
   /* Tag.a */
@@ -94,6 +97,12 @@
   font-weight: normal;
   font-size: 1rem;
   padding: 0.5rem 0rem 0rem 1rem;
+}
+/* ============================== */
+.dpmfc-z-bsco {
+  display: inline-block;
+  padding: 1rem;
+  cursor: pointer;
 }
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

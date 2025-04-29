@@ -16,7 +16,10 @@ import {
   FoscController,
   FllcController,
   NpmhcController,
-  NpmscController
+  NpmscController,
+  /* DpmhcController,
+  DpmscController, */
+  DpmfcController
 } from "./fwc-hub.js";
 /*  */
 /* ================================================== */
@@ -59,6 +62,9 @@ class FwcManager {
         break;
       }
       case 3: {
+        /* DpmhcController.init();
+        DpmscController.init(); */
+        DpmfcController.init();
         break;
       }
     }
@@ -86,6 +92,9 @@ class FwcManager {
         break;
       }
       case 3: {
+        /* DpmhcController.load();
+        DpmscController.load(); */
+        DpmfcController.load();
         break;
       }
     }
@@ -113,6 +122,9 @@ class FwcManager {
         break;
       }
       case 3: {
+        /* DpmhcController.resizeDisplay();
+        DpmscController.resizeDisplay(); */
+        DpmfcController.resizeDisplay();
         break;
       }
     }
@@ -125,7 +137,27 @@ class FwcManager {
     HsncController.resizeSensor();
     HeccController.resizeSensor();
     /* -------------------------------------------------- */
+    /* FascController.resizeSensor();
+    FaucController.resizeSensor();
+    FoscController.resizeSensor(); */
     FllcController.resizeSensor();
+    /* -------------------------------------------------- */
+    switch (BlfConfig.currentPageType) {
+      case 1: {
+        break;
+      }
+      case 2: {
+        /* NpmhcController.resizeSensor();
+        NpmscController.resizeSensor(); */
+        break;
+      }
+      case 3: {
+        /* DpmhcController.resizeSensor();
+        DpmscController.resizeSensor();
+        DpmfcController.resizeSensor(); */
+        break;
+      }
+    }
   }
 }
 export {

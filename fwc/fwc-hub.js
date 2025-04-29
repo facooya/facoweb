@@ -116,6 +116,18 @@ import {
   NpmscUtil
 } from "./npmo/npmsc/npmsc-util.js";
 /* ================================================== */
+/* -------------------------------------------------- */
+import {
+  DpmfcAccessor,
+  DpmfcController
+} from "./dpmo/dpmfc/dpmfc-class.js";
+import {
+  DpmfcConfig
+} from "./dpmo/dpmfc/dpmfc-config.js";
+import {
+  DpmfcUtil
+} from "./dpmo/dpmfc/dpmfc-util.js";
+/* ================================================== */
 export {
   /* BLF */
   BlfAccessor,
@@ -168,7 +180,12 @@ export {
   NpmscAccessor,
   NpmscController,
   NpmscConfig,
-  NpmscUtil
+  NpmscUtil,
+  /* DPMFC */
+  DpmfcAccessor,
+  DpmfcController,
+  DpmfcConfig,
+  DpmfcUtil
 };
 /* ================================================== */
 /* NOTE

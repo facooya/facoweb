@@ -5,7 +5,7 @@
  */
 import {
   BlfUtil
-} from "../../fwc/fwc-hub.js";
+} from "../../fwc-hub.js";
 /*  */
 class DpmfcConfigData {
 
@@ -121,10 +121,33 @@ class DpmfcConfigElement {
       }
     }
   ];
+  static dpmfcBscoGroup = [
+    {
+      elementId: "dpmfcYottaBsco",
+      query: {
+        querySelector: ".dpmfc-y-bsco",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcZettaBscoPrev",
+      query: {
+        querySelector: ".dpmfc-z-bsco-prev",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "dpmfcZettaBscoNext",
+      query: {
+        querySelector: ".dpmfc-z-bsco-next",
+        queryType: "single"
+      }
+    }
+  ];
 }
 class DpmfcConfigGet {
   static getDpmfcRoot() {
-    const getGroup = DpmfcUtil.getElementCache(
+    const getGroup = BlfUtil.getElementCache(
       DpmfcConfig.dpmfcConfigCache,
       DpmfcConfigElement.dpmfcRoot
     );
@@ -134,7 +157,7 @@ class DpmfcConfigGet {
     const {
       dpmfcR
     } = DpmfcConfigGet.getDpmfcRoot();
-    const getGroup = DpmfcUtil.getElementCache(
+    const getGroup = BlfUtil.getElementCache(
       DpmfcConfig.dpmfcConfigCache,
       DpmfcConfigElement.dpmfcTsoGroup,
       dpmfcR
@@ -145,7 +168,7 @@ class DpmfcConfigGet {
     const {
       dpmfcR
     } = DpmfcConfigGet.getDpmfcRoot();
-    const getGroup = DpmfcUtil.getElementCache(
+    const getGroup = BlfUtil.getElementCache(
       DpmfcConfig.dpmfcConfigCache,
       DpmfcConfigElement.dpmfcTsoEbGroup,
       dpmfcR
@@ -156,7 +179,7 @@ class DpmfcConfigGet {
     const {
       dpmfcR
     } = DpmfcConfigGet.getDpmfcRoot();
-    const getGroup = DpmfcUtil.getElementCache(
+    const getGroup = BlfUtil.getElementCache(
       DpmfcConfig.dpmfcConfigCache,
       DpmfcConfigElement.dpmfcBsoGroup,
       dpmfcR
@@ -167,20 +190,32 @@ class DpmfcConfigGet {
     const {
       dpmfcR
     } = DpmfcConfigGet.getDpmfcRoot();
-    const getGroup = DpmfcUtil.getElementCache(
+    const getGroup = BlfUtil.getElementCache(
       DpmfcConfig.dpmfcConfigCache,
       DpmfcConfigElement.dpmfcBsoZbGroup,
       dpmfcR
     );
     return getGroup;
   }
-  static getDpmfcBsoEbGroup() {
+  static getDpmfcBsoEbGroup(pIndex) {
+    const {
+      dpmfcZettaBso
+    } = DpmfcConfigGet.getDpmfcBsoZbGroup();
+    const getGroup = BlfUtil.getElementCache(
+      DpmfcConfig.dpmfcConfigCache,
+      DpmfcConfigElement.dpmfcBsoEbGroup,
+      dpmfcZettaBso[pIndex],
+      pIndex
+    );
+    return getGroup;
+  }
+  static getDpmfcBscoGroup() {
     const {
       dpmfcR
     } = DpmfcConfigGet.getDpmfcRoot();
-    const getGroup = DpmfcUtil.getElementCache(
+    const getGroup = BlfUtil.getElementCache(
       DpmfcConfig.dpmfcConfigCache,
-      DpmfcConfigElement.dpmfcBsoEbGroup,
+      DpmfcConfigElement.dpmfcBscoGroup,
       dpmfcR
     );
     return getGroup;
@@ -188,6 +223,8 @@ class DpmfcConfigGet {
 }
 class DpmfcConfig {
   static dpmfcConfigCache = {};
+  static dpmfcTsoTab = 0;
+  static dpmfcBscoPage = 0;
   /* -------------------------------------------------- */
   static getDpmfcRoot() {
     return DpmfcConfigGet.getDpmfcRoot();
@@ -204,10 +241,16 @@ class DpmfcConfig {
   static getDpmfcBsoZbGroup() {
     return DpmfcConfigGet.getDpmfcBsoZbGroup();
   }
-  static getDpmfcBsoEbGroup() {
-    return DpmfcConfigGet.getDpmfcBsoEbGroup();
+  static getDpmfcBsoEbGroup(pIndex) {
+    return DpmfcConfigGet.getDpmfcBsoEbGroup(pIndex);
+  }
+  static getDpmfcBscoGroup() {
+    return DpmfcConfigGet.getDpmfcBscoGroup();
   }
 }
+export {
+  DpmfcConfig
+};
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
