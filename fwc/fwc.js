@@ -10,9 +10,9 @@ import {
   HtbcController,
   HdncController,
   HsncController,
-  FascController,
+  /* FascController,
   FngcController,
-  FllcController,
+  FllcController, */
   NpmhcController,
   NpmscController
   /* DpmacController,
@@ -21,6 +21,7 @@ import {
 } from "./fwc-hub.js";
 /* -------------------------------------------------- */
 import { DpmController } from "./dpm/dpm-class.js";
+import { FooterController } from "./f/f-class.js";
 /* ================================================== */
 class FwcController {
   static init() {
@@ -45,9 +46,7 @@ class FwcManager {
     HdncController.init();
     HsncController.init();
     /* -------------------------------------------------- */
-    FascController.init();
-    FngcController.init();
-    FllcController.init();
+    FooterController.init();
     /* -------------------------------------------------- */
     switch (BodyConfig.pageType) {
       case 1: {
@@ -72,9 +71,7 @@ class FwcManager {
     HsncController.load();
     /* HeccController.load(); */
     /* -------------------------------------------------- */
-    FascController.load();
-    FngcController.load();
-    FllcController.load();
+    FooterController.load();
     /* -------------------------------------------------- */
     switch (BodyConfig.pageType) {
       case 1: {
@@ -99,9 +96,7 @@ class FwcManager {
     HsncController.resizeDisplay();
     /* HeccController.resizeDisplay(); */
     /* -------------------------------------------------- */
-    FascController.resizeDisplay();
-    FngcController.resizeDisplay();
-    FllcController.resizeDisplay();
+    FooterController.resizeDisplay();
     /* -------------------------------------------------- */
     switch (BodyConfig.pageType) {
       case 1: {
@@ -126,10 +121,7 @@ class FwcManager {
     HsncController.resizeSensor();
     /* HeccController.resizeSensor(); */
     /* -------------------------------------------------- */
-    /* FascController.resizeSensor();
-    FaucController.resizeSensor();
-    FoscController.resizeSensor(); */
-    FllcController.resizeSensor();
+    FooterController.resizeSensor();
     /* -------------------------------------------------- */
     switch (BodyConfig.pageType) {
       case 1: {

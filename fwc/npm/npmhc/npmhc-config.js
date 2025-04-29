@@ -3,9 +3,9 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
+/* import {
   BodyUtil
-} from "../../fwc-hub.js";
+} from "../../fwc-hub.js"; */
 /*  */
 class NpmhcConfigData {
 
@@ -89,7 +89,7 @@ class NpmhcConfigElement {
   ];
 }
 class NpmhcConfigGet {
-  static getNpmhcRoot() {
+  /* static getNpmhcRoot() {
     const saveVerifyGroup = BodyUtil.getElementCache(
       NpmhcConfig.npmhcConfigCache,
       NpmhcConfigElement.npmhcRoot
@@ -117,7 +117,7 @@ class NpmhcConfigGet {
       npmhcR
     );
     return saveVerifyGroup;
-  }
+  } */
 }
 class NpmhcConfig {
   static npmhcConfigCache = {};

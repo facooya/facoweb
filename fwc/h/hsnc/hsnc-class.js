@@ -15,6 +15,9 @@ class HsncAccessor {
   static itemCloseAll() {
     HsncLogic.itemCloseAll();
   }
+  static subItemLr() {
+    HsncTool.subItemLr();
+  }
 }
 /* ================================================== */
 class HsncController {
@@ -123,6 +126,12 @@ class HsncManager {
             container.addEventListener("mouseenter", HsncHandler.subItemContainerHover);
             container.addEventListener("mouseleave", HsncHandler.subItemContainerHover);
           });
+        } else if (item.isToc) {
+          const subItemContainers = item.querySelectorAll(".sub-item-container");
+          subItemContainers.forEach(container => {
+            container.addEventListener("mouseenter", HsncHandler.tocSubItemContainerHover);
+            container.addEventListener("mouseleave", HsncHandler.tocSubItemContainerHover);
+          })
         }
       });
     }
@@ -222,6 +231,19 @@ class HsncHandler {
     } else if (eventType === "mouseleave") {
       subItemBr.style.width = "";
       subItemContainer.isHover = false;
+    }
+  }
+  /* -------------------------------------------------- */
+  static tocSubItemContainerHover(event) {
+    /* Only TOC */
+    const eventType = event.type;
+    const subItemContainer = event.currentTarget;
+    const subItemText = subItemContainer.querySelector(".sub-item-text");
+    /*  */
+    if (eventType === "mouseenter") {
+      subItemText.style.marginRight = "-12px";
+    } else if (eventType === "mouseleave") {
+      subItemText.style.marginRight = "0";
     }
   }
   /* -------------------------------------------------- */

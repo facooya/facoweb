@@ -5,77 +5,80 @@
  */
 /* ================================================== */
 class FllcConfigData {
-  static itemLinks = [
+  static links = [
     "#",
     "#",
     "#",
     "#"
   ];
-  static itemTexts = [
+  static texts = [
     "Privacy Policy",
     "Terms of Use",
     "Cookie Settings",
     "Legal"
   ];
   /*  */
-  static logoContainerLink = "#facooya.com";
+  static logoLink = "#facooya.com";
   static copyrightText = "Copyright 2023-2024 Facooya";
 }
+/* ================================================== */
 class FllcConfigManager {
-  static generate() {
+  static initGenerate() {
+    const frag = document.createDocumentFragment();
     const fllc = document.querySelector(".fllc");
-    const fllcFrag = document.createDocumentFragment();
     /*  */
     const list = document.createElement("ul");
     list.setAttribute("class", "fllc-list");
-    const itemLinks = FllcConfigData.itemLinks;
-    const itemTexts = FllcConfigData.itemTexts;
-    for (let i = 0; i < itemLinks.length; i++) {
+    const links = FllcConfigData.links;
+    const texts = FllcConfigData.texts;
+    for (let i = 0; i < links.length; i++) {
       const item = document.createElement("li");
-      item.setAttribute("class", "fllc-item");
-      const itemLink = document.createElement("a");
-      itemLink.setAttribute("class", "fllc-item-link");
-      itemLink.setAttribute("href", itemLinks[i]);
-      const itemText = document.createElement("span");
-      itemText.setAttribute("class", "fllc-item-text");
-      itemText.textContent = itemTexts[i];
+      item.setAttribute("class", "item");
+      const link = document.createElement("a");
+      link.setAttribute("class", "link");
+      link.setAttribute("href", links[i]);
+      const text = document.createElement("span");
+      text.setAttribute("class", "text");
+      text.textContent = texts[i];
       /*  */
-      itemLink.append(itemText);
-      item.append(itemLink);
+      link.append(text);
+      item.append(link);
       list.append(item);
     }
     /*  */
-    const logoWrapper = document.createElement("div");
-    logoWrapper.setAttribute("class", "fllc-logo-wrapper");
-    const logoContainer = document.createElement("a");
-    logoContainer.setAttribute("class", "fllc-logo-container");
-    logoContainer.setAttribute("href", FllcConfigData.logoContainerLink);
-    const taItem = document.createElement("span");
-    taItem.setAttribute("class", "fllc-ta-item fllc-logo-item");
-    const facooyaItem = document.createElement("span");
-    facooyaItem.setAttribute("class", "fllc-facooya-item fllc-logo-item");
-    logoContainer.append(taItem, facooyaItem);
-    logoWrapper.append(logoContainer);
+    const logo = document.createElement("div");
+    logo.setAttribute("class", "fllc-logo");
+    const logoLink = document.createElement("a");
+    logoLink.setAttribute("class", "logo-link");
+    logoLink.setAttribute("href", FllcConfigData.logoLink);
+    const taIcon = document.createElement("span");
+    taIcon.setAttribute("class", "logo-icon ta-icon");
+    const facooyaIcon = document.createElement("span");
+    facooyaIcon.setAttribute("class", "logo-icon facooya-icon");
+    logoLink.append(taIcon, facooyaIcon);
+    logo.append(logoLink);
     /*  */
     const copyright = document.createElement("p");
     copyright.setAttribute("class", "fllc-copyright");
     copyright.textContent = FllcConfigData.copyrightText;
     /*  */
-    fllcFrag.append(list, logoWrapper, copyright);
-    fllc.append(fllcFrag);
+    frag.append(list, logo, copyright);
+    fllc.append(frag);
   }
 }
+/* ================================================== */
 class FllcConfig {
-  static generate() {
-    FllcConfigManager.generate();
+  static initGenerate() {
+    FllcConfigManager.initGenerate();
   }
 }
 /* ================================================== */
 export { FllcConfig };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

@@ -3,6 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ================================================== */
 import { FascConfig } from "./fasc-config.js";
 /* ================================================== */
 class FascAccessor {
@@ -13,7 +14,7 @@ class FascController {
   static init() {
     FascManager.init();
   }
-  static load() {
+  /* static load() {
     FascManager.load();
   }
   static resizeDisplay() {
@@ -21,14 +22,14 @@ class FascController {
   }
   static resizeSensor() {
     FascManager.resizeSensor();
-  }
+  } */
 }
 /* ================================================== */
 class FascManager {
   static init() {
-    FascConfig.generate();
+    FascConfig.initGenerate();
   }
-  static load() {
+  /* static load() {
 
   }
   static resizeDisplay() {
@@ -36,21 +37,19 @@ class FascManager {
   }
   static resizeSensor() {
     
-  }
+  } */
 }
 /* ================================================== */
 class FascHandler {
 
 }
 /* ================================================== */
-export {
-  FascAccessor,
-  FascController
-};
+export { FascAccessor, FascController };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

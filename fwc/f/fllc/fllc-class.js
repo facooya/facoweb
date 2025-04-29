@@ -3,16 +3,18 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ================================================== */
 import { FllcConfig } from "./fllc-config.js";
 /* ================================================== */
 class FllcAccessor {
 
 }
+/* ================================================== */
 class FllcController {
   static init() {
     FllcManager.init();
   }
-  static load() {
+  /* static load() {
     FllcManager.load();
   }
   static resizeDisplay() {
@@ -20,13 +22,14 @@ class FllcController {
   }
   static resizeSensor() {
     FllcManager.resizeSensor();
-  }
+  } */
 }
+/* ================================================== */
 class FllcManager {
   static init() {
-    FllcConfig.generate();
+    FllcConfig.initGenerate();
   }
-  static load() {
+  /* static load() {
 
   }
   static resizeDisplay() {
@@ -34,17 +37,19 @@ class FllcManager {
   }
   static resizeSensor() {
 
-  }
+  } */
 }
+/* ================================================== */
 class FllcHandler {
 
 }
 /* ================================================== */
 export { FllcAccessor, FllcController };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

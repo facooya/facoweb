@@ -111,7 +111,6 @@ export {
   BodyAccessor,
   BodyController,
   BodyConfig,
-  BodyUtil,
   /* HTBC */
   HtbcAccessor,
   HtbcController,

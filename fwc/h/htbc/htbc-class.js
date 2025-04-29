@@ -4,10 +4,13 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
+  BodyAccessor,
   BodyConfig,
 } from "../../fwc-hub.js";
 /* -------------------------------------------------- */
 import { HtbcConfig } from "./htbc-config.js";
+/* -------------------------------------------------- */
+import { DpmacConfig } from "../../dpm/dpm-hub.js";
 /* -------------------------------------------------- */
 /* itemCloseAll() <=> nrClick() */
 import { HdncAccessor, HsncAccessor } from "../h-hub.js";
@@ -61,8 +64,7 @@ class HtbcManager {
       dnr.addEventListener("click", HtbcHandler.dnrClick);
       const overlay = document.querySelector(".htbc-overlay");
       overlay.addEventListener("click", HtbcHandler.overlayClick);
-    } else if (BodyConfig.screenType === 3) {
-      /* For HDNC Last Item */
+    } else if (BodyConfig.screenType >= 2) {
       const snrItem = snr.querySelector(".snr-item");
       snrItem.addEventListener("transitionend", HtbcHandler.snrItemTransitionEnd);
     }
@@ -79,11 +81,11 @@ class HtbcManager {
       dnr.removeEventListener("click", HtbcHandler.dnrClick);
       overlay.removeEventListener("click", HtbcHandler.overlayClick);
     }
-    /* For HDNC Last Item */
+    /*  */
     const snrItem = document.querySelector(".htbc-snr .snr-item");
-    if (BodyConfig.screenType === 3) {
+    if (BodyConfig.screenType >= 2) {
       snrItem.addEventListener("transitionend", HtbcHandler.snrItemTransitionEnd);
-    } else if (BodyConfig.previousScreenType === 3) {
+    } else if (BodyConfig.previousScreenType >= 2) {
       snrItem.removeEventListener("transitionend", HtbcHandler.snrItemTransitionEnd);
     }
   }
@@ -193,19 +195,15 @@ class HtbcHandler {
       const hdncItems = document.querySelectorAll(".hdnc-list .item");
       hdncItems.forEach(item => {
         if (item.index === 3) {
-          /* const snr = snrItem.closest(".htbc-snr");
-          if (snr.isActive) {
-            HdncAccessor.updateSubListTransform(item, false);
-          } else {
-            HdncAccessor.updateSubListTransform(item, true);
-          } */
-          /* HdncAccessor.updateSubListTransform(item); */
-          
-          /* classList.add() */
           HtbcLogic.hdncItemLastAlignX_Right(item);
           HdncAccessor.updateChevronWrapperLeft(item);
         }
       });
+      /*  */
+      if (BodyConfig.pageType === 3) {
+        DpmacConfig.updateTocPosition();
+        BodyAccessor.onScroll();
+      }
     }
   }
 }

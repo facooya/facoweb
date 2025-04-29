@@ -3,128 +3,102 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ================================================== */
 class FngcConfigData {
-  static auTitleText = "About Us";
-  static auItemTexts = [
+  static auTitle = "About Us";
+  static auTexts = [
     "Contact Us",
     "Our Team",
     "Our Work"
   ];
-  static auItemLinks = [
+  static auLinks = [
     "#",
     "#",
     "#"
   ];
   /* ================================================== */
-  static osTitleText = "Our Services";
-  static osItemTexts = [
+  static osTitle = "Our Services";
+  static osTexts = [
     "a.facooya.com",
     "b.facooya.com",
     "c.facooya.com",
     "d.facooya.com"
   ];
-  static osItemLinks = [
+  static osLinks = [
     "#a.facooya.com",
     "#b.facooya.com",
     "#c.facooya.com",
     "#d.facooya.com"
   ];
   /* ================================================== */
-  static titleTexts = [
-    FngcConfigData.auTitleText,
-    FngcConfigData.osTitleText
+  static titles = [
+    FngcConfigData.auTitle,
+    FngcConfigData.osTitle
   ];
-  static itemTextGroups = [
-    FngcConfigData.auItemTexts,
-    FngcConfigData.osItemTexts
+  static textGroups = [
+    FngcConfigData.auTexts,
+    FngcConfigData.osTexts
   ];
-  static itemLinkGroups = [
-    FngcConfigData.auItemLinks,
-    FngcConfigData.osItemLinks
+  static linkGroups = [
+    FngcConfigData.auLinks,
+    FngcConfigData.osLinks
   ];
 }
+/* ================================================== */
 class FngcConfigManager {
-  static generate() {
+  static initGenerate() {
+    const frag = document.createDocumentFragment();
     const fngc = document.querySelector(".fngc");
-    const fngcFrag = document.createDocumentFragment();
     /*  */
-    const titleTexts = FngcConfigData.titleTexts;
-    for (let i = 0; i < titleTexts.length; i++) {
-      /* Container */
-      const container = document.createElement("div");
-      container.setAttribute("class", "fngc-container");
+    const titles = FngcConfigData.titles;
+    for (let i = 0; i < titles.length; i++) {
+      /* Section */
+      const section = document.createElement("section");
+      section.setAttribute("class", "fngc-section");
       /* Title */
       const title = document.createElement("h3");
-      title.setAttribute("class", "fngc-title");
-      title.textContent = titleTexts[i];
+      title.setAttribute("class", "title");
+      title.textContent = titles[i];
       /* List */
       const list = document.createElement("ul");
-      list.setAttribute("class", "fngc-list");
-      const itemTexts = FngcConfigData.itemTextGroups[i];
-      const itemLinks = FngcConfigData.itemLinkGroups[i];
-      for (let j = 0; j < itemTexts.length; j++) {
+      list.setAttribute("class", "list");
+      const texts = FngcConfigData.textGroups[i];
+      const links = FngcConfigData.linkGroups[i];
+      for (let j = 0; j < texts.length; j++) {
         /* Item */
         const item = document.createElement("li");
-        item.setAttribute("class", "fngc-item");
-        const itemLink = document.createElement("a");
-        itemLink.setAttribute("class", "fngc-item-link");
-        itemLink.setAttribute("href", itemLinks[j]);
-        const itemText = document.createElement("span");
-        itemText.setAttribute("class", "fngc-item-text");
-        itemText.textContent = itemTexts[j];
+        item.setAttribute("class", "item");
+        const link = document.createElement("a");
+        link.setAttribute("class", "link");
+        link.setAttribute("href", links[j]);
+        const text = document.createElement("span");
+        text.setAttribute("class", "text");
+        text.textContent = texts[j];
         /*  */
-        itemLink.append(itemText);
-        item.append(itemLink);
+        link.append(text);
+        item.append(link);
         list.append(item);
       }
       /*  */
-      container.append(title, list);
-      fngcFrag.append(container);
+      section.append(title, list);
+      frag.append(section);
     }
-    fngc.append(fngcFrag);
+    fngc.append(frag);
   }
-  /* static generate_old() {
-    const fngc = document.querySelector(".fngc");
-    const fngcFrag = document.createDocumentFragment();
-    /*  
-    const title = document.createElement("h3");
-    title.setAttribute("class", "fngc-title");
-    title.textContent = FngcConfigData.titleText;
-    /*  
-    const list = document.createElement("ul");
-    list.setAttribute("class", "fngc-list");
-    const itemTexts = FngcConfigData.itemTexts;
-    const itemLinks = FngcConfigData.itemLinks;
-    for (let i = 0; i < itemTexts.length; i++) {
-      const item = document.createElement("li");
-      item.setAttribute("class", "fngc-item");
-      const itemLink = document.createElement("a");
-      itemLink.setAttribute("class", "fngc-item-link");
-      itemLink.setAttribute("href", itemLinks[i]);
-      const itemText = document.createElement("span");
-      itemText.setAttribute("class", "fngc-item-text");
-      itemText.textContent = itemTexts[i];
-      /*  
-      itemLink.append(itemText);
-      item.append(itemLink);
-      list.append(item);
-    }
-    /*  
-    fngcFrag.append(title, list);
-    fngc.append(fngcFrag);
-  } */
 }
+/* ================================================== */
 class FngcConfig {
-  static generate() {
-    FngcConfigManager.generate();
+  static initGenerate() {
+    FngcConfigManager.initGenerate();
   }
 }
 /* ================================================== */
 export { FngcConfig };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

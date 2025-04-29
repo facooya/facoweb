@@ -4,24 +4,34 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
+import {
+  BodyConfig
+} from "../../fwc-hub.js";
+/* ================================================== */
 class DpmacConfigManager {
-  static setTocIndexPosition() {
-    const tocIndexes = document.querySelectorAll(".toc-index");
+  static updateTocPosition() {
+    const tocIndexes = document.querySelectorAll(".toc");
     const scrollY = window.scrollY;
-    const scrollMarginTop = 64;
+
+    const buffer = 8;
+    let scrollMarginTop = 64 + buffer;
+    if (BodyConfig.screenType === 2) {
+      scrollMarginTop = 128 + buffer;
+    }
+
     const calcScroll = scrollY - scrollMarginTop;
     /*  */
     for (let i = 0; i < tocIndexes.length; i++) {
       const rect = tocIndexes[i].getBoundingClientRect();
       const calcPosition = rect.y + calcScroll;
       tocIndexes[i].index = i;
-      DpmacConfig.tocIndexPositions.push(calcPosition);
+      DpmacConfig.tocPositions[i] = calcPosition;
     }
   }
   /* -------------------------------------------------- */
-  static updateTocIndexScroll() {
+  static updateCurrentToc() {
     const scrollY = window.scrollY;
-    const indexPositions = DpmacConfig.tocIndexPositions;
+    const indexPositions = DpmacConfig.tocPositions;
     const firstIndex = 1;
     const lastIndex = indexPositions.length - 1;
     /*  */
@@ -47,14 +57,14 @@ class DpmacConfigManager {
 }
 /* ================================================== */
 class DpmacConfig {
-  static tocIndexPositions = [];
+  static tocPositions = [];
   static tocIndex = 0;
   /* -------------------------------------------------- */
-  static setTocIndexPosition() {
-    DpmacConfigManager.setTocIndexPosition();
+  static updateTocPosition() {
+    DpmacConfigManager.updateTocPosition();
   }
-  static updateTocIndex() {
-    DpmacConfigManager.updateTocIndexScroll();
+  static updateCurrentToc() {
+    DpmacConfigManager.updateCurrentToc();
   }
   static updateTocIndexHash() {
     DpmacConfigManager.updateTocIndexHash();
@@ -62,6 +72,7 @@ class DpmacConfig {
 }
 /* ================================================== */
 export { DpmacConfig };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */

@@ -4,84 +4,45 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 .b {
-  /* display: grid;
-  grid-template-rows: 4rem min-content min-content;
-  grid-template-areas: "h" "m" "f"; */
-  /*  */
   -webkit-tap-highlight-color: #00000000;
 }
 .h {
-  /* grid-area: h; */
   position: relative;
-  height: 4rem;
+  height: 64px;
 }
 .m {
-  /* grid-area: m; */
   position: relative;
-  min-height: calc(100vh - 4rem);
-  transition: margin 300ms ease;
+  min-height: calc(100vh - 64px);
+  padding: 0 16px;
+  transition: margin-right 300ms ease;
 }
 .npm {
-  /* display: grid;
-  justify-content: center;
-  grid-template-columns: minmax(320px, 1280px);
-  grid-template-rows: auto 1fr;
-  gap: 2rem 0rem;
-  grid-template-areas: "npmhc" "npmsc"; */
-  padding: 0rem 0rem 1rem 0rem;
-  background: #FFFFFF;
-  transition: margin 300ms ease;
+  background: #ffffff;
 }
 .dpm {
-  /* display: grid;
-  justify-content: center;
-  align-content: start;
-  grid-template-columns: minmax(250px, 1280px);
-  grid-template-areas: "dpmhc" "dpmsc" "dpmfc";
-  gap: 1rem; */
-  padding: 0rem 1rem;
-  background: #FFFFFF;
+  padding: 0 16px;
+  background: #ffffff;
 }
 .f {
-  /* grid-area: f; */
   position: relative;
-  display: grid;
-  grid-template-areas:
-    "fngc fngc"
-    "fasc fasc"
-    "fllc fllc";
-  gap: 3rem;
   background: #222222;
-  padding: 1.5rem 2rem;
-  transition: margin 300ms ease;
+  padding: 24px 32px;
+  transition: margin-right 300ms ease;
 }
 @media (min-width: 768px) {
-  /* .b {
-    grid-template-rows: 8rem min-content min-content;
-  } */
   .h {
-    height: 8rem;
+    height: 128px;
   }
   .m {
-    min-height: calc(100vh - 8rem);
-  }
-  .f {
-    gap: 3rem;
-    grid-template-areas:
-      "fngc"
-      "fasc"
-      "fllc";
+    min-height: calc(100vh - 128px);
   }
 }
 @media (min-width: 1280px) {
-  /* .b {
-    grid-template-rows: 4rem min-content min-content;
-  } */
   .h {
-    height: 4rem;
+    height: 64px;
   }
   .m {
-    min-height: calc(100vh - 4rem);
+    min-height: calc(100vh - 64px);
   }
 }
 /* ========================= :FACOOYA: ========================= */

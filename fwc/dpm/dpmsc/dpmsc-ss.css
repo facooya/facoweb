@@ -3,6 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ================================================== */
 .dpmsc {}
 /* ================================================== */
 /* Title */
@@ -15,45 +16,61 @@
   -webkit-user-select: none;
   -moz-user-select: none;
 }
-/* Article */
-.dpmsc-article {
+/* ================================================== */
+/* Chapter */
+.dpmsc .chapter {
   padding: 1rem 0;
 }
-.dpmsc-article .article-title {
+.dpmsc .chapter-title {
   font-size: 1.25rem;
   /*  */
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
 }
-.dpmsc-article .article-hash {
+.dpmsc .chapter-link {
   color: #000000;
   text-decoration: none;
 }
-/* Section */
-.dpmsc-article .section {
-  padding-left: 0.5rem;
+/* ================================================== */
+/* Part */
+.dpmsc .part {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.75rem;
 }
-.dpmsc-article .content {
-  padding-top: 1rem;
-}
-.dpmsc-article .container {
-  padding-top: 0.5rem;
-  padding-left: 0.5rem;
-}
-/* Text */
-.dpmsc-article .content-title {
+.dpmsc .part-title {
   font-size: 1.125rem;
+  /* padding-left: 0.5rem; */
+  /* margin-bottom: 0.5rem; */
 }
-.dpmsc-article .text-depth {
+/* ================================================== */
+/* Unit */
+.dpmsc .unit {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   padding-left: 0.5rem;
 }
-.dpmsc-article .space-y {
+.dpmsc .unit-title {
+  margin-left: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.0625rem;
+  font-weight: bold;
+}
+/* ================================================== */
+/* Spacer */
+.dpmsc .spacer-x {
+  padding-left: 0.5rem;
+}
+.dpmsc .spacer-y {
   padding: 0.5rem 0;
 }
-
-/* Viewer Section */
-.dpmsc-article .viewer-header {
+/* ================================================== */
+/* Viewer */
+.dpmsc .viewer {
+  
+}
+.dpmsc .viewer-header {
   padding: 8px 16px;
   background: #000000;
   color: #ffffff;
@@ -64,21 +81,21 @@
   -webkit-user-select: none;
   -moz-user-select: none;
 }
-.dpmsc-article .viewer-title {
+.dpmsc .viewer-name {
   display: inline-block;
   font-weight: normal;
   font-size: 0.875rem;
 }
-.dpmsc-article .viewer-tool {
+.dpmsc .viewer-tool {
   display: inline-flex;
   gap: 16px;
   float: right;
   list-style: none;
 }
-.dpmsc-article .viewer-tool-wide, .viewer-tool-copy {
+.dpmsc .viewer-tool-wide, .viewer-tool-copy {
   cursor: pointer;
 }
-.dpmsc-article .viewer-container {
+.dpmsc .viewer-main {
   display: flex;
   line-height: 1.5rem;
   background: #222222;
@@ -87,44 +104,119 @@
   padding: 8px 16px;
   border-radius: 0 0 16px 16px;
 }
-.dpmsc-article .viewer-container .number-list {
+.dpmsc .viewer-main .line-number-list {
   padding: 0.5rem 0;
   list-style: none;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
 }
-.dpmsc-article .viewer-container .number-item {
+.dpmsc .viewer-main .line-number-item {
   padding-right: 1rem;
   font-size: 1rem;
   text-align: right;
   color: #808080;
 }
-/* Code */
-.dpmsc-article .code {
-  overflow: auto;
-  padding: 0.5rem 0;
+/* ================================================== */
+/* Snippet */
+.dpmsc .snippet {
+  
 }
-/* Result Section */
-.dpmsc-article .result-title {
-  margin: 8px 0;
-  margin-left: 8px;
-  font-size: 1.125rem;
+.dpmsc .snippet-header {
+  padding: 8px 16px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 0.875rem;
+  border-radius: 16px 16px 0 0;
+  /*  */
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
 }
-.dpmsc-article .result-container {
+.dpmsc .snippet-name {
+  display: inline-block;
+  font-weight: normal;
+  font-size: 0.875rem;
+}
+.dpmsc .snippet-tool {
+  display: inline-flex;
+  gap: 16px;
+  float: right;
+  list-style: none;
+}
+.dpmsc .snippet-tool-copy {
+  cursor: pointer;
+}
+.dpmsc .snippet-main {
+  /* display: flex; */
+  line-height: 1.5rem;
+  background: #222222;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 0 0 16px 16px;
+}
+/* ================================================== */
+/* Code */
+.dpmsc .code {
+  overflow: auto;
+  padding: 8px 0;
+}
+/* ================================================== */
+/* Result */
+.dpmsc .result {
+
+}
+.dpmsc .result-main {
   padding: 8px 16px;
   background: #222222;
   color: #ffffff;
   font-size: 1rem;
   border-radius: 16px;
 }
+.dpmsc .result-console {
+  overflow: auto;
+  padding: 8px 0;
+}
+/* -------------------------------------------------- */
+.dpmsc .result-image {
+  width: 100%;
+  border-radius: 16px;
+  background-color: #222222;
+}
+/* -------------------------------------------------- */
+.dpmsc .result-video {
+  width: 100%;
+  border-radius: 16px;
+  background-color: #222222;
+}
+/* ================================================== */
+@media (min-width: 768px) {
+  .dpmsc .result-image {
+    width: 80%;
+  }
+  .dpmsc .result-video {
+    width: 80%;
+  }
+}
+/* ================================================== */
+@media (min-width: 1280px) {
+  .dpmsc {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .dpmsc .result-image {
+    width: 60%;
+  }
+  .dpmsc .result-video {
+    width: 60%;
+  }
+}
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

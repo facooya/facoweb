@@ -4,28 +4,30 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
-.dpmac {
-  display: none;
-}
-.toc {
-  scroll-margin-top: 64px;
+import {
+  FngcController,
+  FascController,
+  FllcController
+} from "./f-hub.js";
+/* ================================================== */
+class FooterController {
+  static init() {
+    FngcController.init();
+    FascController.init();
+    FllcController.init();
+  }
+  static load() {
+
+  }
+  static resizeDisplay() {
+
+  }
+  static resizeSensor() {
+    
+  }
 }
 /* ================================================== */
-@media (min-width: 768px) {
-  .toc {
-    scroll-margin-top: 128px;
-  }
-}
-/* ================================================== */
-@media (min-width: 1280px) {
-  .dpmac {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .toc {
-    scroll-margin-top: 64px;
-  }
-}
+export { FooterController };
 /* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

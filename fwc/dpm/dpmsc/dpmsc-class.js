@@ -31,16 +31,16 @@ class DpmscManager {
   }
   static load() {
     DpmscConfig.viewerCodeReplaceColor();
-    DpmscConfig.viewerNumberItemCreate();
+    DpmscConfig.viewerLineNumberItemCreate();
   }
   static resizeDisplay() {
 
   }
   static initEvent() {
     const dpmsc = document.querySelector(".dpmsc");
-    const viewerSections = dpmsc.querySelectorAll(".viewer-section");
+    const viewers = dpmsc.querySelectorAll(".viewer");
     /*  */
-    viewerSections.forEach(viewer => {
+    viewers.forEach(viewer => {
       const toolWide = viewer.querySelector(".viewer-tool-wide");
       const toolCopy = viewer.querySelector(".viewer-tool-copy");
       /*  */
@@ -50,48 +50,51 @@ class DpmscManager {
       viewer.isWide = false;
     });
     /*  */
-    const articleHashs = dpmsc.querySelectorAll(".article-hash");
-    articleHashs.forEach(hash => {
-      hash.addEventListener("click", DpmscHandler.articleHashClick);
+    const snippets = dpmsc.querySelectorAll(".snippet");
+    snippets.forEach(snippet => {
+      const toolCopy = snippet.querySelector(".snippet-tool-copy");
+      toolCopy.addEventListener("click", DpmscHandler.snippetToolCopyClick);
+    })
+    /*  */
+    const chapterLinks = dpmsc.querySelectorAll(".chapter-link");
+    chapterLinks.forEach(link => {
+      link.addEventListener("click", DpmscHandler.chapterLinkClick);
     });
   }
 }
 /* ================================================== */
 class DpmscHandler {
-  /* static dpmscTitleLink(event) {
-    const currentTarget = event.currentTarget;
-    const hash = currentTarget.hash;
-    const hashElement = document.querySelector(hash);
-    history.replaceState(null, null, hash);
-    hashElement.scrollIntoView();
-  } */
-  static articleHashClick(event) {
+  static chapterLinkClick(event) {
     const currentTarget = event.currentTarget;
     const hash = currentTarget.hash;
     DpmacAccessor.tocHashReplace(hash);
-    /* const hashElement = document.querySelector(hash);
-    history.replaceState(null, null, hash);
-    hashElement.scrollIntoView(); */
   }
-  /* -------------------------------------------------- */
+  /* ================================================== */
   static viewerToolWideClick(event) {
     const toolWide = event.currentTarget;
-    const viewerSection = toolWide.closest(".viewer-section");
-    const numberList = viewerSection.querySelector(".number-list");
+    const viewer = toolWide.closest(".viewer");
+    const lineNumberList = viewer.querySelector(".line-number-list");
     /*  */
-    if (viewerSection.isWide) {
-      numberList.style.display = "";
-      viewerSection.isWide = false;
+    if (viewer.isWide) {
+      lineNumberList.style.display = "";
+      viewer.isWide = false;
     } else {
-      numberList.style.display = "none";
-      viewerSection.isWide = true;
+      lineNumberList.style.display = "none";
+      viewer.isWide = true;
     }
   }
   /* -------------------------------------------------- */
   static viewerToolCopyClick(event) {
     const toolCopy = event.currentTarget;
-    const viewerSection = toolCopy.closest(".viewer-section");
-    const code = viewerSection.querySelector(".code");
+    const viewer = toolCopy.closest(".viewer");
+    const code = viewer.querySelector(".code");
+    navigator.clipboard.writeText(code.textContent);
+  }
+  /* ================================================== */
+  static snippetToolCopyClick(event) {
+    const toolCopy = event.currentTarget;
+    const snippet = toolCopy.closest(".snippet");
+    const code = snippet.querySelector(".code");
     navigator.clipboard.writeText(code.textContent);
   }
 }
@@ -103,4 +106,4 @@ export { DpmscAccessor, DpmscController };
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

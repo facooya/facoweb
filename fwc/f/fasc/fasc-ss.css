@@ -3,116 +3,131 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ================================================== */
 .fasc {
   grid-area: fasc;
   display: grid;
   grid-template-areas: "logo" "text" "social";
   gap: 12px;
+  margin: 48px 0;
 }
 /* ================================================== */
-.fasc-logo-wrapper {
+/* Logo */
+.fasc-logo {
   grid-area: logo;
+  height: 32px;
 }
-.fasc-logo-container {
-  display: inline-flex;
+/* Link */
+.fasc-logo .logo-link {
+  display: inline-block;
+  height: 32px;
 }
-.fasc-logo-item {
+/* Icon */
+.fasc-logo .logo-icon {
+  display: inline-block;
   mask-size: contain;
   mask-repeat: no-repeat;
-  background: #FFFFFF;
+  background: #ffffff;
 }
-.fasc-dev-item {
-  /* width: 6rem;
-  height: 3rem; */
+.fasc-logo .dev-icon {
   width: 64px;
   height: 32px;
   mask-image: url("../../res/svg/logo-2w.svg");
 }
-.fasc-ta-item {
-  /* width: 0.75rem;
-  height: 0.75rem; */
+.fasc-logo .ta-icon {
   width: 8px;
   height: 8px;
-  mask-image: url("../../res/svg/a.svg");
   margin-right: 8px;
-  align-self: end;
+  mask-image: url("../../res/svg/a.svg");
 }
-.fasc-facooya-item {
-  /* width: 3rem;
-  height: 3rem; */
+.fasc-logo .facooya-icon {
   width: 32px;
   height: 32px;
   mask-image: url("../../res/svg/b.svg");
 }
 /* ================================================== */
-.fasc-text-container {
+/* Text */
+.fasc-text {
   grid-area: text;
-  /*  */
-  color: #FFFFFF;
+  color: #ffffff;
 }
-.fasc-text-link-item {
+.fasc-text .text-dev-link {
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 /* ================================================== */
-.fasc-social-container {
+.fasc-social {
   grid-area: social;
   /*  */
-  display: inline-flex;
-  gap: 24px;
+  display: inline-block;
+  height: 24px;
 }
-.fasc-social-item-icon {
-  display: block;
-  /* width: 1.8rem;
-  height: 1.8rem; */
+/* Link */
+.fasc-social .social-link {
+  display: inline-block;
+  height: 24px;
+  margin-left: 24px;
+}
+.fasc-social .social-link:first-child {
+  margin-left: 0;
+}
+/* Icon */
+.fasc-social .social-icon {
+  display: inline-block;
   width: 24px;
   height: 24px;
+  /*  */
+  background-color: #ffffff;
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
-  background-color: #FFFFFF;
 }
-.fasc-social-a-icon {
+.fasc-social .a-icon {
   mask-image: url("../../res/svg/a.svg");
 }
-.fasc-social-b-icon {
-  mask-image: url("../../res/svg/b.svg");
+.fasc-social .b-icon {
+  mask-image: url("../../res/svg/a.svg");
 }
-.fasc-social-c-icon {
-  mask-image: url("../../res/svg/c.svg");
+.fasc-social .c-icon {
+  mask-image: url("../../res/svg/a.svg");
 }
+/* ================================================== */
 @media (min-width: 768px) {
   .fasc {
     grid-template-areas: "logo social" "text social";
     gap: 12px 32px;
   }
-  .fasc-social-container {
-    justify-content: end;
-    align-items: end;
+  .fasc-social {
+    justify-self: end;
+    align-self: end;
   }
 }
+/* ================================================== */
 @media (min-width: 1280px) {
   .fasc {
     grid-template-areas: "logo text social";
-    justify-self: center;
     gap: 32px;
     max-width: 90%;
+    margin: 48px auto;
   }
-  .fasc-logo-wrapper {
+  .fasc-logo {
+    justify-self: right;
     align-self: center;
   }
-  .fasc-text-container {
+  .fasc-text {
+    justify-self: center;
     align-self: center;
   }
-  .fasc-social-container {
-    justify-content: start;
-    align-items: center;
+  .fasc-social {
+    justify-self: left;
+    align-self: center;
   }
 }
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

@@ -5,6 +5,9 @@
  */
 /* ================================================== */
 @media (hover: hover) {
+  .hdnc-list .item-container {
+    cursor: default;
+  }
   .hdnc-list .item-text {
     transition:
       margin-right 300ms,

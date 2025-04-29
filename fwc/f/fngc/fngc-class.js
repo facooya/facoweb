@@ -3,16 +3,18 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ================================================== */
 import { FngcConfig } from "./fngc-config.js";
 /* ================================================== */
 class FngcAccessor {
 
 }
+/* ================================================== */
 class FngcController {
   static init() {
     FngcManager.init();
   }
-  static load() {
+  /* static load() {
     FngcManager.load();
   }
   static resizeDisplay() {
@@ -20,13 +22,14 @@ class FngcController {
   }
   static resizeSensor() {
     FngcManager.resizeSensor();
-  }
+  } */
 }
+/* ================================================== */
 class FngcManager {
   static init() {
-    FngcConfig.generate();
+    FngcConfig.initGenerate();
   }
-  static load() {
+  /* static load() {
 
   }
   static resizeDisplay() {
@@ -34,17 +37,19 @@ class FngcManager {
   }
   static resizeSensor() {
 
-  }
+  } */
 }
+/* ================================================== */
 class FngcHandler {
 
 }
 /* ================================================== */
 export { FngcAccessor, FngcController };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

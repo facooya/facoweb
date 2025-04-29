@@ -8,7 +8,7 @@
 } from "../../../fwa/fwa-config.js"; */
 import {
   BodyConfig,
-  BodyUtil,
+  /* BodyUtil, */
   /* HeccAccessor, */
   NpmhcConfig,
   NpmhcUtil
@@ -92,10 +92,11 @@ class NpmhcHandler {
   }
   /* ================================================== */
   static ddtNpmhcExaTno(eventData) {
-    const {
+    /* const {
       eventType,
       eventIndex
-    } = BodyUtil.getEventData(eventData);
+    } = BodyUtil.getEventData(eventData); */
+
     const {
       npmhcTeraTnoText
     } = NpmhcConfig.getNpmhcTnoGroup();

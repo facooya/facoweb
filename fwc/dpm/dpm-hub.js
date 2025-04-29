@@ -12,15 +12,14 @@ import { DpmacAccessor, DpmacController } from "./dpmac/dpmac-class.js";
 import { DpmscAccessor, DpmscController } from "./dpmsc/dpmsc-class.js";
 import { DpmfcAccessor, DpmfcController } from "./dpmfc/dpmfc-class.js";
 /* ================================================== */
+export { DpmacConfig, DpmscConfig, DpmfcConfig };
+/* -------------------------------------------------- */
 export {
-  DpmacConfig,
-  DpmscConfig,
-  DpmfcConfig,
-  /* -------------------------------------------------- */
   DpmacAccessor, DpmacController,
   DpmscAccessor, DpmscController,
   DpmfcAccessor, DpmfcController
 };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */

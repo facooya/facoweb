@@ -3,6 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ================================================== */
 import {
   DpmacController,
   DpmscController,
@@ -26,15 +27,17 @@ class DpmController {
     DpmfcController.resizeDisplay();
   }
   static resizeSensor() {
+    DpmacController.resizeSensor();
     DpmfcController.resizeSensor();
   }
 }
 /* ================================================== */
 export { DpmController };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

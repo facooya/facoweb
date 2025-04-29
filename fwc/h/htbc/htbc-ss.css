@@ -41,13 +41,9 @@
   align-self: center;
 }
 .htbc-logo .logo-link {
-  /* position: relative;
-  display: inline-grid;
-  grid-template-areas: "logo-dev logo-ta logo-facooya";
-  align-items: center;
-  height: 100%; */
   display: inline-block;
   height: 24px;
+  white-space: nowrap;
 }
 /* Logo Item */
 .htbc-logo .logo-item {

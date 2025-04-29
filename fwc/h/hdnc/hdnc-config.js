@@ -47,13 +47,13 @@ class HdncConfigData {
     "#item-4-2"
   ];
   /* ===== Compile ===== */
-  static subItemTexts = [
+  static subItemTextGroups = [
     HdncConfigData.subItemTextsMenu1,
     HdncConfigData.subItemTextsMenu2,
     HdncConfigData.subItemTextsMenu3,
     HdncConfigData.subItemTextsMenu4
   ];
-  static subContainerLinks = [
+  static subContainerLinkGroups = [
     HdncConfigData.subContainerLinksMenu1,
     HdncConfigData.subContainerLinksMenu2,
     HdncConfigData.subContainerLinksMenu3,

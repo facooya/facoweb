@@ -30,29 +30,29 @@ class DpmscConfigData {
 }
 /* ================================================== */
 class DpmscConfigManager {
-  static viewerNumberItemCreate() {
+  static viewerLineNumberItemCreate() {
     const dpmsc = document.querySelector(".dpmsc");
-    const viewerContainers = dpmsc.querySelectorAll(".viewer-container");
+    const viewersMain = dpmsc.querySelectorAll(".viewer-main");
     /*  */
-    viewerContainers.forEach(container => {
+    viewersMain.forEach(main => {
       const frag = document.createDocumentFragment();
-      const numberList = container.querySelector(".number-list");
-      const code = container.querySelector(".code");
+      const lineNumberList = main.querySelector(".line-number-list");
+      const code = main.querySelector(".code");
       const codeText = code.textContent;
       const lineCount = codeText.split("\n");
       for (let i = 0; i < lineCount.length; i++) {
-        const numberItem = document.createElement("li");
-        numberItem.setAttribute("class", "number-item");
-        numberItem.textContent = (i + 1).toString();
-        frag.append(numberItem);
+        const lineNumberItem = document.createElement("li");
+        lineNumberItem.setAttribute("class", "line-number-item");
+        lineNumberItem.textContent = (i + 1).toString();
+        frag.append(lineNumberItem);
       }
-      numberList.append(frag);
+      lineNumberList.append(frag);
     });
   }
   /* -------------------------------------------------- */
   static viewerCodeReplaceColor() {
     const dpmsc = document.querySelector(".dpmsc");
-    const codes = dpmsc.querySelectorAll(".viewer-container .code");
+    const codes = dpmsc.querySelectorAll(".code");
     /*  */
     const textData = DpmscConfig.textData;
     const findData = DpmscConfig.findData;
@@ -91,16 +91,17 @@ class DpmscConfig {
   static viewerCodeReplaceColor() {
     DpmscConfigManager.viewerCodeReplaceColor();
   }
-  static viewerNumberItemCreate() {
-    DpmscConfigManager.viewerNumberItemCreate();
+  static viewerLineNumberItemCreate() {
+    DpmscConfigManager.viewerLineNumberItemCreate();
   }
 }
 /* ================================================== */
 export { DpmscConfig };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

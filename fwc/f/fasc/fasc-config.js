@@ -5,83 +5,89 @@
  */
 /* ================================================== */
 class FascConfigData {
-  static logoContainerLink = "#dev.facooya.com";
-  /*  */
-  static devLinkHtml = `<a href="#dev.facooya.com" class="fasc-text-link-item">dev.facooya.com</a>`
-  static textContainerText = `Welcome to ${FascConfigData.devLinkHtml},
+  static logoLink = "#dev.facooya.com";
+  /* -------------------------------------------------- */
+  static textDevLinkHtml = `<a href="#dev.facooya.com" class="text-dev-link">dev.facooya.com</a>`
+  static textHtml = `Welcome to ${FascConfigData.textDevLinkHtml},
     a programming-related site.
     This site provides information promptly.
     We believe our services will assist in launching humanity to space.`;
-  static textItemLink = "#dev.facooya.com";
-  /*  */
-  static ALink = "#facooya";
-  static BLink = "#facooya";
-  static CLink = "#facooya";
+  /* -------------------------------------------------- */
+  static aLink = "#acooya";
+  static bLink = "#facooya";
+  static cLink = "#facooya";
 }
+/* ================================================== */
 class FascConfigManager {
-  static generate() {
+  static initGenerate() {
+    const frag = document.createDocumentFragment();
     const fasc = document.querySelector(".fasc");
-    const fascFrag = document.createDocumentFragment();
+    /* ------------------------------ */
     /* Logo */
-    const logoWrapper = document.createElement("div");
-    logoWrapper.setAttribute("class", "fasc-logo-wrapper");
-    const logoContainer = document.createElement("a");
-    logoContainer.setAttribute("class", "fasc-logo-container");
-    logoContainer.setAttribute("href", FascConfigData.logoContainerLink);
-    const devItem = document.createElement("span");
-    devItem.setAttribute("class", "fasc-dev-item fasc-logo-item");
-    const taItem = document.createElement("span");
-    taItem.setAttribute("class", "fasc-ta-item fasc-logo-item");
-    const facooyaItem = document.createElement("span");
-    facooyaItem.setAttribute("class", "fasc-facooya-item fasc-logo-item");
-    logoContainer.append(devItem, taItem, facooyaItem);
-    logoWrapper.append(logoContainer);
+    const logo = document.createElement("div");
+    logo.setAttribute("class", "fasc-logo");
+    const logoLink = document.createElement("a");
+    logoLink.setAttribute("class", "logo-link");
+    logoLink.setAttribute("href", FascConfigData.logoLink);
+    const devIcon = document.createElement("span");
+    devIcon.setAttribute("class", "logo-icon dev-icon");
+    const taIcon = document.createElement("span");
+    taIcon.setAttribute("class", "logo-icon ta-icon");
+    const facooyaIcon = document.createElement("span");
+    facooyaIcon.setAttribute("class", "logo-icon facooya-icon");
+    logoLink.append(devIcon, taIcon, facooyaIcon);
+    logo.append(logoLink);
+    /* ------------------------------ */
     /* Text */
-    const textContainer = document.createElement("p");
-    textContainer.setAttribute("class", "fasc-text-container");
-    textContainer.innerHTML = FascConfigData.textContainerText;
+    const text = document.createElement("p");
+    text.setAttribute("class", "fasc-text");
+    text.innerHTML = FascConfigData.textHtml;
+    /* ------------------------------ */
     /* Social */
-    const socialContainer = document.createElement("div");
-    socialContainer.setAttribute("class", "fasc-social-container");
-    const socialALink = document.createElement("a");
-    socialALink.setAttribute("class", "fasc-social-a-link fasc-social-item-link");
-    socialALink.setAttribute("href", FascConfigData.ALink);
-    socialALink.setAttribute("target", "_blank");
-    const socialAIcon = document.createElement("span");
-    socialAIcon.setAttribute("class", "fasc-social-a-icon fasc-social-item-icon");
-    const socialBLink = document.createElement("a");
-    socialBLink.setAttribute("class", "fasc-social-b-link fasc-social-item-link");
-    socialBLink.setAttribute("href", FascConfigData.BLink);
-    socialBLink.setAttribute("target", "_blank");
-    const socialBIcon = document.createElement("span");
-    socialBIcon.setAttribute("class", "fasc-social-b-icon fasc-social-item-icon");
-    const socialCLink = document.createElement("a");
-    socialCLink.setAttribute("class", "fasc-social-c-link fasc-social-item-link");
-    socialCLink.setAttribute("href", FascConfigData.CLink);
-    socialCLink.setAttribute("target", "_blank");
-    const socialCIcon = document.createElement("span");
-    socialCIcon.setAttribute("class", "fasc-social-c-icon fasc-social-item-icon");
-    /*  */
-    socialALink.append(socialAIcon);
-    socialBLink.append(socialBIcon);
-    socialCLink.append(socialCIcon);
-    socialContainer.append(socialALink, socialBLink, socialCLink);
-    /*  */
-    fascFrag.append(logoWrapper, textContainer, socialContainer);
-    fasc.append(fascFrag);
+    const social = document.createElement("div");
+    social.setAttribute("class", "fasc-social");
+    const aLink = document.createElement("a");
+    aLink.setAttribute("class", "social-link a-link");
+    aLink.setAttribute("href", FascConfigData.aLink);
+    aLink.setAttribute("target", "_blank");
+    const aIcon = document.createElement("span");
+    aIcon.setAttribute("class", "social-icon a-icon");
+    aLink.append(aIcon);
+    /* ------------------------------ */
+    const bLink = document.createElement("a");
+    bLink.setAttribute("class", "social-link b-link");
+    bLink.setAttribute("href", FascConfigData.bLink);
+    bLink.setAttribute("target", "_blank");
+    const bIcon = document.createElement("span");
+    bIcon.setAttribute("class", "social-icon b-icon");
+    bLink.append(bIcon);
+    /* ------------------------------ */
+    const cLink = document.createElement("a");
+    cLink.setAttribute("class", "social-link c-link");
+    cLink.setAttribute("href", FascConfigData.cLink);
+    cLink.setAttribute("target", "_blank");
+    const cIcon = document.createElement("span");
+    cIcon.setAttribute("class", "social-icon c-icon");
+    cLink.append(cIcon);
+    social.append(aLink, bLink, cLink);
+    /* ------------------------------ */
+    frag.append(logo, text, social);
+    fasc.append(frag);
   }
 }
+/* ================================================== */
 class FascConfig {
-  static generate() {
-    FascConfigManager.generate();
+  static initGenerate() {
+    FascConfigManager.initGenerate();
   }
 }
 /* ================================================== */
 export { FascConfig };
+/* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* ========================= ;FACOOYA; ========================= */
+/* ========================= ;FACOOYA; ========================= */

@@ -6,11 +6,11 @@
 import { DpmacConfig } from "./dpmac-config.js";
 /* ================================================== */
 class DpmacAccessor {
-  static indexLocation() {
-    DpmacHandler.indexLocation();
-  }
   static tocHashReplace(hash) {
     DpmacLogic.tocHashReplace(hash);
+  }
+  static updateCurrentToc() {
+    DpmacConfig.updateCurrentToc();
   }
 }
 /* ================================================== */
@@ -24,6 +24,9 @@ class DpmacController {
   static resizeDisplay() {
     DpmacManager.resizeDisplay();
   }
+  static resizeSensor() {
+    DpmacManager.resizeSensor();
+  }
 }
 /* ================================================== */
 class DpmacManager {
@@ -31,25 +34,18 @@ class DpmacManager {
 
   }
   static load() {
-    DpmacConfig.setTocIndexPosition();
+    DpmacConfig.updateTocPosition();
   }
   static resizeDisplay() {
-
+    DpmacConfig.updateTocPosition();
+  }
+  static resizeSensor() {
+    DpmacConfig.updateTocPosition();
   }
 }
 /* ================================================== */
 class DpmacHandler {
-  static indexLocation() {
-    console.log(window.scrollY);
-  }
-  /* static tocClick(event) {
-    const currentTarget = event.currentTarget;
-    const hash = currentTarget.hash;
-    /* const hash = window.location.hash; 
-    const hashElement = document.querySelector(hash);
-    history.replaceState(null, null, hash);
-    hashElement.scrollIntoView();
-  } */
+  
 }
 /* ================================================== */
 class DpmacLogic {
