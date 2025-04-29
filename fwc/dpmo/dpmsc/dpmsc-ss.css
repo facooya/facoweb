@@ -3,7 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-section.dpmsc-r {
+.dpmsc {
   /* Tag.section */
   /* Position */
   grid-area: dpmsc-r;
@@ -59,54 +59,6 @@ section.dpmsc-r {
   justify-self: start;
   padding: 0.5rem 0rem;
 }
-/* ============================== */
-.orange {
-  color: #FF7F00;
-}
-.blue {
-  /* color: #0077FF; */
-  color: #1E90FF;
-}
-.blue-light {
-  /* color: #00FFFF; */
-  color: #00CED1;
-}
-.green {
-  /* color: #00EE00; */
-  color: #00FF7F;
-}
-.green-bold {
-  /* color: #99EE99; */
-  /* color: #7FFF00; */
-  color: #7FFF7F;
-  font-weight: bold;
-}
-.yellow {
-  color: #BA55D3;
-}
-.comment {
-  color: #00AA00;
-  /* color: #006400; */
-}
-/* ============================== */
-/* div.dpmsc-t {
-  display: flex;
-  gap: 1rem;
-}
-pre.dpmsc-g-text {
-  justify-self: start;
-} */
-/* .dpmsc-viewer-container {
-  display: flex;
-  gap: 1rem;
-} */
-/* .dpmsc-viewer-code {
-  justify-self: start;
-}
-.dpmsc-viewer-text {
-  justify-self: start;
-} */
-/* ============================== */
 /* ========== Line ========== */
 .dpmsc-line-list {
   list-style: none;
@@ -119,6 +71,20 @@ pre.dpmsc-g-text {
   -moz-user-select: none;
   display: flex;
   justify-content: end;
+}
+/* ============================== */
+/* .fold {
+  display: inline-block;
+  background: #555555;
+} */
+.line {
+  /* background: #333333; */
+  height: 1.5rem;
+}
+.fold {
+  background: #555555;
+  border-radius: 0.25rem;
+  padding: 0rem 0.25rem;
 }
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
