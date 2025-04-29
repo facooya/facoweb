@@ -20,7 +20,7 @@ class FllcConfigData {
     "Cookie Settings",
     "Legal"
   ];
-  static fllcZettaFoLink = "#facooya.com";
+  static fllcZettaFoLink = "#www.facooya.com";
   /*  */
   static fllcZettaToSinceText = "Since 2023";
   static fllcZettaToCopyrightText = "Copyright 2024 Facooya"

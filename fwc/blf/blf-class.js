@@ -20,6 +20,8 @@ class BlfAccessor {
 }
 class BlfController {
   static init() {
+    BlfConfig.blfHoGenerate();
+    BlfConfig.blfFoGenerate();
     BlfManager.init();
     BlfManager.event();
   }

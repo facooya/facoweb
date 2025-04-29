@@ -43,30 +43,92 @@ class BlfConfigElement {
       }
     }
   ];
-  static blfFoRoot = [
+  static blfHoGroup = [
     {
-      elementId: "blfFoFascR",
+      elementId: "htpncR",
+      generate: {
+        htmlTag: "nav",
+        htmlClass: "htpnc-r"
+      },
+      query: {
+        querySelector: ".htpnc-r",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "hdncR",
+      generate: {
+        htmlTag: "nav",
+        htmlClass: "hdnc-r"
+      },
+      query: {
+        querySelector: ".hdnc-r",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "hsncR",
+      generate: {
+        htmlTag: "nav",
+        htmlClass: "hsnc-r"
+      },
+      query: {
+        querySelector: ".hsnc-r",
+        queryType: "single"
+      }
+    },
+    {
+      elementId: "heccR",
+      generate: {
+        htmlTag: "div",
+        htmlClass: "hecc-r"
+      },
+      query: {
+        querySelector: ".hecc-r",
+        queryType: "single"
+      }
+    }
+  ]
+  static blfFoGroup = [
+    {
+      elementId: "fascR",
+      generate: {
+        htmlTag: "nav",
+        htmlClass: "fasc-r"
+      },
       query: {
         querySelector: ".fasc-r",
         queryType: "single"
       }
     },
     {
-      elementId: "blfFoFaucR",
+      elementId: "faucR",
+      generate: {
+        htmlTag: "nav",
+        htmlClass: "fauc-r"
+      },
       query: {
         querySelector: ".fauc-r",
         queryType: "single"
       }
     },
     {
-      elementId: "blfFoFoscR",
+      elementId: "foscR",
+      generate: {
+        htmlTag: "nav",
+        htmlClass: "fosc-r"
+      },
       query: {
         querySelector: ".fosc-r",
         queryType: "single"
       }
     },
     {
-      elementId: "blfFoFllcR",
+      elementId: "fllcR",
+      generate: {
+        htmlTag: "nav",
+        htmlClass: "fllc-r"
+      },
       query: {
         querySelector: ".fllc-r",
         queryType: "single"
@@ -89,16 +151,78 @@ class BlfConfigGet {
     );
     return saveVerifyGroup;
   }
-  static getBlfFoRoot() {
+  static getBlfHoGroup() {
+    const getGroup = BlfUtil.getElementCache(
+      BlfConfig.blfConfigCache,
+      BlfConfigElement.blfGroup
+    );
+    return getGroup;
+  }
+  static getblfFoGroup() {
     const returnGroup = BlfUtil.getElementCache(
       BlfConfig.blfConfigCache,
-      BlfConfigElement.blfFoRoot
+      BlfConfigElement.blfFoGroup
     );
     return returnGroup;
   }
 }
 class BlfConfigManager {
-  
+  static blfHoGenerate() {
+    const {
+      blfYottaHo
+    } = BlfConfigGet.getBlfGroup();
+    const blfHoFragment = document.createDocumentFragment();
+    let tempGenerateElement = null;
+    let tempSaveElement = {};
+    /* ================================================== */
+    for (let gi = 0; gi < BlfConfigElement.blfHoGroup.length; gi++) {
+      tempGenerateElement = BlfUtil.getGenerateElement(
+        BlfConfigElement.blfHoGroup[gi]
+      );
+      tempSaveElement[BlfConfigElement.blfHoGroup[gi].elementId] = tempGenerateElement;
+    }
+    /* ================================================== */
+    BlfConfigManager.blfHoAppend(tempSaveElement, blfHoFragment);
+    blfYottaHo.append(blfHoFragment);
+  }
+  static blfFoGenerate() {
+    const {
+      blfYottaFo
+    } = BlfConfigGet.getBlfGroup();
+    const blfFoFragment = document.createDocumentFragment();
+    let tempGenerateElement = null;
+    let tempSaveElement = {};
+    /* ================================================== */
+    for (let gi = 0; gi < BlfConfigElement.blfFoGroup.length; gi++) {
+      tempGenerateElement = BlfUtil.getGenerateElement(
+        BlfConfigElement.blfFoGroup[gi]
+      );
+      tempSaveElement[BlfConfigElement.blfFoGroup[gi].elementId] = tempGenerateElement;
+    }
+    /* ================================================== */
+    BlfConfigManager.blfFoAppend(tempSaveElement, blfFoFragment);
+    /* blfYottaFo.append(blfFoFragment); */
+    /* blfYottaFo.insertBefore(blfFoFragment, secondChild); */
+    blfYottaFo.prepend(blfFoFragment);
+  }
+  /*  */
+  static blfHoAppend(getElement, blfHoFragment) {
+    blfHoFragment.append(
+      getElement["htpncR"],
+      getElement["hdncR"],
+      getElement["hsncR"],
+      getElement["heccR"]
+    );
+  }
+  /*  */
+  static blfFoAppend(getElement, blfFoFragment) {
+    blfFoFragment.append(
+      getElement["fascR"],
+      getElement["faucR"],
+      getElement["foscR"],
+      getElement["fllcR"]
+    );
+  }
 }
 class BlfConfig {
   static currentDisplayType = 0;
@@ -107,14 +231,24 @@ class BlfConfig {
   /* -------------------------------------------------- */
   static blfConfigCache = {};
   /* -------------------------------------------------- */
+  static blfHoGenerate() {
+    BlfConfigManager.blfHoGenerate();
+  }
+  static blfFoGenerate() {
+    BlfConfigManager.blfFoGenerate();
+  }
+  /* -------------------------------------------------- */
   static getBlfRoot() {
     return BlfConfigGet.getBlfRoot();
   }
   static getBlfGroup() {
     return BlfConfigGet.getBlfGroup();
   }
-  static getBlfFoRoot() {
-    return BlfConfigGet.getBlfFoRoot();
+  static getBlfHoGroup() {
+    return BlfConfigGet.getBlfHoGroup();
+  }
+  static getblfFoGroup() {
+    return BlfConfigGet.getblfFoGroup();
   }
 }
 export {

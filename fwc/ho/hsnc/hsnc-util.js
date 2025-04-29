@@ -3,10 +3,11 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
+/* import {
   FwaConfig
-} from "../../../fwa/fwa-config.js";
+} from "../../../fwa/fwa-config.js"; */
 import {
+  BlfConfig,
   HsncAccessor,
   HsncConfig
 } from "../../fwc-hub.js";
@@ -182,7 +183,7 @@ class HsncUtilReset {
     } = HsncConfig.getHsncTloGroup();
     /*  */
     const modifyEventData = {};
-    let displayType = FwaConfig.previousDisplayType;
+    let displayType = BlfConfig.previousDisplayType;
     if (optDisplayType !== undefined) {
       displayType = optDisplayType;
     }
