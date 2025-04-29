@@ -36,19 +36,20 @@
 .dpmsc-viewer-name {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background-color: #000000;
+  /* background-color: #000000;
   color: #FFFFFF;
-  border-radius: 1rem 1rem 0rem 0rem;
+  border-radius: 1rem 1rem 0rem 0rem; */
   font-size: 1rem;
   font-weight: normal;
   cursor: default;
+  margin-right: auto;
 }
 .dpmsc-viewer-container {
   /* Tag.div */
   padding: 0.5rem 1rem;
   line-height: 1.5rem;
   background-color: #222222;
-  border-radius: 0rem 1rem 1rem 1rem;
+  border-radius: 0rem 0rem 0.75rem 0.75rem;
   display: flex;
   gap: 1rem;
 }
@@ -73,24 +74,29 @@
   justify-content: end;
 }
 /* ============================== */
-/* .fold {
-  display: inline-block;
-  background: #555555;
-} */
-.line {
-  /* background: #333333; */
-  height: 1.5rem;
+.dpmsc-viewer-top-bar {
+  display: flex;
+  align-items: center;
+  background: #111111;
+  color: #FFFFFF;
+  border-radius: 0.75rem 0.75rem 0rem 0rem;
+  user-select: none;
+  -moz-user-select: none;
 }
-.fold {
-  background: #555555;
-  border-radius: 0.25rem;
-  padding: 0rem 0.25rem;
+.dpmsc-viewer-code-tool {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  align-items: center;
+}
+.dpmsc-viewer-wide {
+  cursor: pointer;
+}
+.dpmsc-viewer-copy {
+  cursor: pointer;
 }
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
- * PO: Panel Object
- * CPO: Code PO
- * RPO: Result PO
  */
 /* AUTHORSHIP
  * Founder: Facooya

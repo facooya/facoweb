@@ -7,7 +7,7 @@
     <meta name="author" content="Facooya">
     <meta name="robots" content="noindex, nofollow">
     <!-- Title -->
-    <title>V1.1.22-A.2 Document page</title>
+    <title>V1.1.22-A.3 Document page</title>
     <!-- FWA-SS -->
     <link href="../fwa/ss/fwa-root.css" rel="stylesheet">
     <link href="../fwa/ss/fwa-ss.css" rel="stylesheet">
@@ -54,7 +54,7 @@
     <main class="blf-y-dpmo dpmc">
       <header class="dpmhc-r" id="contents">
         <div class="dpmhc-y-tlo">
-          <h1 class="dpmhc-z-tlo-text">V1.1.22-A.2 Document Page</h1>
+          <h1 class="dpmhc-z-tlo-text">V1.1.22-A.3 Document Page</h1>
         </div>
         <nav class="dpmhc-y-cno">
           <ul class="dpmhc-z-cno">
@@ -113,7 +113,10 @@
             </div>
             <ul class="dpmsc-viewer-list">
               <li class="dpmsc-viewer-item">
-                <h3 class="dpmsc-viewer-name">user.note</h3>
+                <!-- <h3 class="dpmsc-viewer-name">user.note</h3> -->
+                <div class="dpmsc-viewer-top-bar">
+                  <h3 class="dpmsc-viewer-name">user.note</h3>
+                </div>
                 <div class="dpmsc-viewer-container">
 <pre class="dpmsc-viewer-text">
 Temporary Null
@@ -121,7 +124,10 @@ Temporary Null
                 </div>
               </li>
               <li class="dpmsc-viewer-item">
-                <h3 class="dpmsc-viewer-name">result</h3>
+                <!-- <h3 class="dpmsc-viewer-name">result</h3> -->
+                <div class="dpmsc-viewer-top-bar">
+                  <h3 class="dpmsc-viewer-name">result</h3>
+                </div>
                 <div class="dpmsc-viewer-container">
 <pre class="dpmsc-viewer-text">
 Temporary Result
@@ -141,20 +147,22 @@ Temporary Result
             </div>
             <ul class="dpmsc-viewer-list">
               <li class="dpmsc-viewer-item">
-                <h3 class="dpmsc-viewer-name">developer.note</h3>
+                <!-- <h3 class="dpmsc-viewer-name">developer.note</h3> -->
+                <div class="dpmsc-viewer-top-bar">
+                  <h3 class="dpmsc-viewer-name">developer.note</h3>
+                </div>
                 <div class="dpmsc-viewer-container">
 <pre class="dpmsc-viewer-text">
 Routinely update {
   Code cleanup.
 }
-Updated by v1.1.22-a.2 {
-  Updated something.
-  Updated DPMSC config manager.
-  Update paused "fold" function.
+Updated by v1.1.22-a.3 {
+  Updated DPMSC wide mode.
+  Updated DPMSC copy function.
 }
-Scheduled update for v1.1.22-a.3 {
-  Update DPMSC wide mode.
-  Update DPMSC copy function.
+Scheduled update for v1.1.22-a.4 {
+  Update DPMHC class name.
+  Update table of contents.
 }
 Scheduled update {
   Update all renamming for HTML class name. (Renewal)
@@ -176,7 +184,23 @@ Scheduled update {
             </div>
             <ul class="dpmsc-viewer-list">
               <li class="dpmsc-viewer-item">
-                <h3 class="dpmsc-viewer-name">test.c</h3>
+                <!-- <h3 class="dpmsc-viewer-name">test.c</h3>
+                <div class="dpmsc-viewer-tools">
+                  <span class="dpmsc-viewer-wide">wide</span>
+                  <span class="dpmsc-viewer-copy">copy</span>
+                </div> -->
+                <div class="dpmsc-viewer-top-bar">
+                  <h3 class="dpmsc-viewer-name">test.c</h3>
+                  <div class="dpmsc-viewer-code-tool">
+                    <div class="dpmsc-viewer-wide">wide</div>
+                    <div class="dpmsc-viewer-copy">copy</div>
+                    <!-- <svg width="4rem" height="4rem" viewBox="0 0 140 140">
+                      <path d="M 20,60 L 80,60 L 80,120 L 20,120 Z
+                        M 60,60 L 60,20 L 120,20 L 120,80 L 80,80"
+                      style="stroke: white; stroke-width: 16; stroke-linejoin: round"/>
+                    </svg> -->
+                  </div>
+                </div>
                 <div class="dpmsc-viewer-container">
                   <ul class="dpmsc-line-list"></ul>
 <pre class="dpmsc-viewer-code">#include &lt;stdio.h&gt;
@@ -208,46 +232,14 @@ int main() {
                 </div>
               </li>
               <li class="dpmsc-viewer-item">
-                <h3 class="dpmsc-viewer-name">result</h3>
+                <!-- <h3 class="dpmsc-viewer-name">result</h3> -->
+                <div class="dpmsc-viewer-top-bar">
+                  <h3 class="dpmsc-viewer-name">result</h3>
+                </div>
                 <div class="dpmsc-viewer-container">
 <pre class="dpmsc-viewer-text">Text: Test text
 Text: Test text
 Don't select "int" int printf.</pre>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- .dpmsc #test-fold -->
-          <li class="dpmsc-content-item" id="test-fold">
-            <div class="dpmsc-title-container">
-              <h2 class="dpmsc-title-heading">
-                <a class="dpmsc-title-link" href="#test-fold">
-                  <span class="dpmsc-title-text">Test fold</span>
-                </a>
-              </h2>
-            </div>
-            <ul class="dpmsc-viewer-list">
-              <li class="dpmsc-viewer-item">
-                <h3 class="dpmsc-viewer-name">test-fold.c</h3>
-                <div class="dpmsc-viewer-container">
-                  <ul class="dpmsc-line-list"></ul>
-<pre class="dpmsc-viewer-code">#include &lt;stdio.h&gt;
-
-/* click testFoldFunction() */
-void testFoldFunction() {
-  int a = 0;
-  printf("Fold me\n");
-}
-
-int main() {
-  return 0;
-}</pre>
-                </div>
-              </li>
-              <li class="dpmsc-viewer-item">
-                <h3 class="dpmsc-viewer-name">result</h3>
-                <div class="dpmsc-viewer-container">
-<pre class="dpmsc-viewer-text">Fold me</pre>
                 </div>
               </li>
             </ul>
@@ -307,9 +299,15 @@ int main() {
               </a>
             </li>
             <li class="dpmfc-e-bso">
-              <a class="dpmfc-p-bso" href="./nav-page.html">
+              <a class="dpmfc-p-bso" href="#nav-page">
                 <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.22 Alpha.2</h3>
                 <p class="dpmfc-t-bso-pt-text">V1.1.22-A.2 [ nav-page ]</p>
+              </a>
+            </li>
+            <li class="dpmfc-e-bso">
+              <a class="dpmfc-p-bso" href="./nav-page.html">
+                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.22 Alpha.3</h3>
+                <p class="dpmfc-t-bso-pt-text">V1.1.22-A.3 [ nav-page ]</p>
               </a>
             </li>
           </ul>
