@@ -3,12 +3,13 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
+/* import {
   FwaConfig
-} from "../../../fwa/fwa-config.js";
+} from "../../../fwa/fwa-config.js"; */
 import {
-  FascConfig,
-  BlfUtil
+  BlfConfig,
+  BlfUtil,
+  FascConfig
 } from "../../fwc-hub.js";
 /*  */
 class FascAccessor {
@@ -44,10 +45,10 @@ class FascManager {
       fascZettaToDev
     } = FascConfig.getFascToGroup();
     /*  */
-    let displayType = FwaConfig.previousDisplayType;
+    let displayType = BlfConfig.previousDisplayType;
     let eventListenerType = "removeEventListener";
     if (isActive) {
-      displayType = FwaConfig.currentDisplayType;
+      displayType = BlfConfig.currentDisplayType;
       eventListenerType = "addEventListener";
     }
     /*  */

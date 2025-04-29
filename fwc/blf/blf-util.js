@@ -106,6 +106,20 @@ class BlfUtilGet {
       targetIndex
     };
   }
+  /* ================================================== */
+  static getDisplayType() {
+    const displayType = [
+      "(max-width: 767px)",
+      "(min-width: 768px) and (max-width: 1279px)",
+      "(min-width: 1280px)"
+    ];
+    for (let dti = 0; dti < displayType.length; dti++) {
+      if (window.matchMedia(displayType[dti]).matches) {
+        const getDisplayType = dti + 1;
+        return getDisplayType;
+      }
+    }
+  }
 }
 class BlfUtil {
   static getGenerateElement(elementGroup, pIndex = []) {
@@ -116,6 +130,9 @@ class BlfUtil {
   }
   static getEventData(eventData, targetQuery) {
     return BlfUtilGet.getEventData(eventData, targetQuery);
+  }
+  static getDisplayType() {
+    return BlfUtilGet.getDisplayType();
   }
   /* -------------------------------------------------- */
 }

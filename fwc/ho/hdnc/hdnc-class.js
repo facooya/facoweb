@@ -3,13 +3,14 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
+/* import {
   FwaConfig
-} from "../../../fwa/fwa-config.js";
+} from "../../../fwa/fwa-config.js"; */
 import {
   HdncTool
 } from "./hdnc-tool.js";
 import {
+  BlfConfig,
   BlfUtil,
   HtpncAccessor,
   HtpncConfig,
@@ -62,7 +63,7 @@ class HdncManager {
   }
   /* -------------------------------------------------- */
   static load() {
-    switch (FwaConfig.currentDisplayType) {
+    switch (BlfConfig.currentDisplayType) {
       case 1: {
         break;
       }
@@ -104,7 +105,7 @@ class HdncManager {
     /*  */
     HdncUtil.resetHdncHandler();
     /*  */
-    switch (FwaConfig.previousDisplayType) {
+    switch (BlfConfig.previousDisplayType) {
       case 1: {
         hdncYottaSfroTo.classList.remove("cl-mdt-hdnc-y-sfro-handler");
         hdncYottaSfroBo.classList.remove("cl-mdt-hdnc-y-sfro-handler");
@@ -120,7 +121,7 @@ class HdncManager {
       }
     }
     /*  */
-    switch (FwaConfig.currentDisplayType) {
+    switch (BlfConfig.currentDisplayType) {
       case 1: {
         for (let ybi = 0; ybi < hdncExaBlo.length; ybi++) {
           hdncExaBlo[ybi].style.maxHeight = "";
@@ -143,7 +144,7 @@ class HdncManager {
     const {
       hdncY
     } = HdncConfig.getHdncGroup();
-    switch (FwaConfig.currentDisplayType) {
+    switch (BlfConfig.currentDisplayType) {
       case 1: {
         for (let ybi = 0; ybi < hdncY.length; ybi++) {
           if (hdncY[ybi].isActive) {
@@ -196,10 +197,10 @@ class HdncManager {
       hdncExaBlo
     } = HdncConfig.getHdncBloGroup();
     /*  */
-    let displayType = FwaConfig.previousDisplayType;
+    let displayType = BlfConfig.previousDisplayType;
     let eventListenerType = "removeEventListener";
     if (isActive) {
-      displayType = FwaConfig.currentDisplayType;
+      displayType = BlfConfig.currentDisplayType;
       eventListenerType = "addEventListener";
     }
     /*  */

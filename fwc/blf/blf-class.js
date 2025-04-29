@@ -4,7 +4,12 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 import {
-  BlfConfig
+  FwcController
+} from "../fwc.js";
+/*  */
+import {
+  BlfConfig,
+  BlfUtil
 } from "../fwc-hub.js";
 import {
   BlfTool
@@ -16,6 +21,7 @@ class BlfAccessor {
 class BlfController {
   static init() {
     BlfManager.init();
+    BlfManager.event();
   }
   static load() {
     BlfManager.load();
@@ -29,7 +35,8 @@ class BlfController {
 }
 class BlfManager {
   static init() {
-
+    BlfConfig.currentDisplayType = BlfUtil.getDisplayType();
+    BlfConfig.previousDisplayType = BlfConfig.currentDisplayType;
   }
   static load() {
     BlfTool.calcBlfYottaFo();
@@ -40,9 +47,36 @@ class BlfManager {
   static resizeSensor() {
     BlfTool.calcBlfYottaFo();
   }
+  static event() {
+    window.addEventListener(
+      "load",
+      BlfHandler.onLoad,
+      { once: true }
+    );
+    window.addEventListener(
+      "resize",
+      BlfHandler.onResize
+    );
+  }
 }
 class BlfHandler {
-
+  static onLoad() {
+    FwcController.load();
+  }
+  static onResize() {
+    BlfConfig.currentDisplayType = BlfUtil.getDisplayType();
+    if (BlfConfig.currentDisplayType !== BlfConfig.previousDisplayType) {
+      FwcController.resizeDisplay();
+      BlfConfig.previousDisplayType = BlfConfig.currentDisplayType;
+      clearTimeout(BlfConfig.resizeTimerId);
+    } else {
+      clearTimeout(BlfConfig.resizeTimerId);
+      BlfConfig.resizeTimerId = setTimeout(
+        FwcController.resizeSensor,
+        200
+      );
+    }
+  }
 }
 export {
   BlfAccessor,

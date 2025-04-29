@@ -78,7 +78,7 @@
   grid-area: dev-logo;
   width: 4rem;
   height: 2rem;
-  mask-image: url("../../../svg/logo-2w.svg");
+  mask-image: url("../../res/svg/logo-2w.svg");
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: var(--white);
@@ -87,7 +87,7 @@
   grid-area: ta-icon;
   width: 0.5rem;
   height: 0.5rem;
-  mask-image: url("../../../svg/a.svg");
+  mask-image: url("../../res/svg/a.svg");
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: var(--white);
@@ -100,7 +100,7 @@
   grid-area: logo;
   width: 10rem;
   height: 2rem;
-  mask-image: url("../../../svg/logo-5w.svg");
+  mask-image: url("../../res/svg/logo-5w.svg");
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: var(--white);

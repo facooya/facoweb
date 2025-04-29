@@ -3,10 +3,11 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
+/* import {
   FwaConfig
-} from "../../../fwa/fwa-config.js";
+} from "../../../fwa/fwa-config.js"; */
 import {
+  BlfConfig,
   BlfUtil,
   HsncConfig,
   HsncUtil
@@ -74,7 +75,7 @@ class HsncManager {
       }
     }
     /*  */
-    switch (FwaConfig.currentDisplayType) {
+    switch (BlfConfig.currentDisplayType) {
       case 1: {
         HsncHandler.mdtHsncRootScroll();
         break;
@@ -111,10 +112,10 @@ class HsncManager {
       scroll: "scroll"
     };
     /*  */
-    let displayType = FwaConfig.previousDisplayType;
+    let displayType = BlfConfig.previousDisplayType;
     let eventListenerType = "removeEventListener";
     if (isActive) {
-      displayType = FwaConfig.currentDisplayType;
+      displayType = BlfConfig.currentDisplayType;
       eventListenerType = "addEventListener";
     }
     /*  */

@@ -44,14 +44,14 @@
   /* grid-area: fo-dev-logo; */
   width: 6rem;
   height: 3rem;
-  mask-image: url("../../../svg/logo-2w.svg");
+  mask-image: url("../../res/svg/logo-2w.svg");
 }
 .fasc-e-fo-ta-icon {
   /* Tag.span */
   /* grid-area: fo-ta-icon; */
   width: 0.75rem;
   height: 0.75rem;
-  mask-image: url("../../../svg/a.svg");
+  mask-image: url("../../res/svg/a.svg");
   margin: 0rem 1rem 0rem 0rem;
   align-self: end;
 }
@@ -60,7 +60,7 @@
   /* grid-area: fo-icon; */
   width: 3rem;
   height: 3rem;
-  mask-image: url("../../../svg/a.svg");
+  mask-image: url("../../res/svg/b.svg");
 }
 /* ================================================== */
 .fasc-y-to {
@@ -114,13 +114,13 @@
   /* align-items: center; */
 }
 .fasc-p-smo-a-icon {
-  mask-image: url("../../../svg/a.svg");
+  mask-image: url("../../res/svg/a.svg");
 }
 .fasc-p-smo-b-icon {
-  mask-image: url("../../../svg/b.svg");
+  mask-image: url("../../res/svg/b.svg");
 }
 .fasc-p-smo-c-icon {
-  mask-image: url("../../../svg/c.svg");
+  mask-image: url("../../res/svg/c.svg");
 }
 @media (min-width: 768px) {
   .fasc-r {

@@ -18,6 +18,7 @@ import {
   NpmscController
 } from "./fwc-hub.js";
 /*  */
+/* ================================================== */
 class FwcController {
   static init() {
     FwcManager.init();

@@ -9,7 +9,7 @@ import {
 /*  */
 class FascConfigData {
   static fascZettaToHeaderText = "Welcome to ";
-  static fascZettaToDevLink = "/";
+  static fascZettaToDevLink = "#dev.facooya.com";
   static fascZettaToDevText = "dev.facooya.com";
   static fascZettaToMainText = ", a programming-related site. \
     This site provides information promptly. \

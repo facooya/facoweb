@@ -8,7 +8,7 @@ import {
 } from "../../fwc/fwc-hub.js";
 /*  */
 class BlfConfigData {
-
+  
 }
 class BlfConfigElement {
   static blfRoot = [
@@ -101,6 +101,10 @@ class BlfConfigManager {
   
 }
 class BlfConfig {
+  static currentDisplayType = 0;
+  static previousDisplayType = 0;
+  static resizeTimerId = 0;
+  /* -------------------------------------------------- */
   static blfConfigCache = {};
   /* -------------------------------------------------- */
   static getBlfRoot() {

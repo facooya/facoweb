@@ -3,10 +3,11 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
+/* import {
   FwaConfig
-} from "../../../fwa/fwa-config.js";
+} from "../../../fwa/fwa-config.js"; */
 import {
+  BlfConfig,
   BlfUtil,
   HeccAccessor,
   NpmhcConfig,
@@ -53,11 +54,11 @@ class NpmhcManager {
     } = NpmhcConfig.getNpmhcTnoGroup();
     /*  */
     const eventType = ["mouseenter", "mouseleave"];
-    let displayType = FwaConfig.previousDisplayType;
+    let displayType = BlfConfig.previousDisplayType;
     let eventListenerType = "removeEventListener";
     if (isActive) {
       eventListenerType = "addEventListener";
-      displayType = FwaConfig.currentDisplayType;
+      displayType = BlfConfig.currentDisplayType;
     }
     /*  */
     if (displayType === 3) {

@@ -92,11 +92,11 @@ class FwaUtility {
     return -1;
   }
 }
-class FwaSet {
+/* class FwaSet {
   static setFwaResizeKey(isActive) {
     FwaAccessor.isFwaResizeKey = isActive;
   }
-}
+} */
 export {
   FwaController
 };

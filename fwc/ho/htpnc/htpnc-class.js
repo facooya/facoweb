@@ -3,9 +3,9 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
+/* import {
   FwaConfig
-} from "../../../fwa/fwa-config.js";
+} from "../../../fwa/fwa-config.js"; */
 import {
   HtpncTool
 } from "./htpnc-tool.js";
@@ -56,7 +56,7 @@ class HtpncManager {
     htpncZettaHsngo.isActive = false;
   }
   static load() {
-    if (FwaConfig.currentDisplayType === 1) {
+    if (BlfConfig.currentDisplayType === 1) {
       HtpncTool.clHtpncPetaLgoLogo();
     }
   }
@@ -71,7 +71,7 @@ class HtpncManager {
     if (htpncZettaHdngo.isActive) {
       HtpncHandler.mdtHtpncZettaHdngo();
     }
-    switch (FwaConfig.previousDisplayType) {
+    switch (BlfConfig.previousDisplayType) {
       case 1: {
         if (htpncZettaHsngo.isActive) {
           HtpncHandler.mdtHtpncZettaHsngo();
@@ -94,7 +94,7 @@ class HtpncManager {
     HtpncManager.resizeSensor();
   }
   static resizeSensor() {
-    if (FwaConfig.currentDisplayType === 1) {
+    if (BlfConfig.currentDisplayType === 1) {
       HtpncTool.clHtpncPetaLgoLogo();
     }
   }
@@ -105,10 +105,10 @@ class HtpncManager {
     const {
       htpncZettaHsngo
     } = HtpncConfig.getHtpncHsngoGroup();
-    let displayType = FwaConfig.previousDisplayType;
+    let displayType = BlfConfig.previousDisplayType;
     let eventListenerType = "removeEventListener";
     if (isActive) {
-      displayType = FwaConfig.currentDisplayType;
+      displayType = BlfConfig.currentDisplayType;
       eventListenerType = "addEventListener";
     }
     switch (displayType) {

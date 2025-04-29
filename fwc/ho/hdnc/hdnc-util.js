@@ -3,10 +3,11 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
+/* import {
   FwaConfig
-} from "../../../fwa/fwa-config.js";
+} from "../../../fwa/fwa-config.js"; */
 import {
+  BlfConfig,
   HdncAccessor,
   HdncConfig
 } from "../../fwc-hub.js";
@@ -40,9 +41,9 @@ class HdncUtilUpdate {
   static updateHdncExaBloMaxHeight() {
     let topRemBuffer = 0;
     const bottomRemBuffer = 2;
-    if (FwaConfig.currentDisplayType === 2) {
+    if (BlfConfig.currentDisplayType === 2) {
       topRemBuffer = 8;
-    } else if (FwaConfig.currentDisplayType === 3) {
+    } else if (BlfConfig.currentDisplayType === 3) {
       topRemBuffer = 4;
     }
     const remBuffer = topRemBuffer + bottomRemBuffer;
@@ -277,7 +278,7 @@ class HdncUtilReset {
     } = HdncConfig.getHdncBloGroup();
     const modifyEventData = {};
     /*  */
-    let displayType = FwaConfig.previousDisplayType;
+    let displayType = BlfConfig.previousDisplayType;
     if (optDisplayType !== undefined) {
       displayType = optDisplayType;
     }
