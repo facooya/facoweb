@@ -9,6 +9,42 @@ import {
   DpmfcConfig
 } from "../../fwc-hub.js";
 /*  */
+class DpmfcUtilInit {
+  static initDpmfcExaPnoClo() {
+    const {
+      dpmfcExaPnoClo,
+      dpmfcPetaPnoCloText
+    } = DpmfcConfig.getDpmfcPnoCloDynamic();
+    for (let pi = 0; pi <= DpmfcConfig.dpmfcData.pageMaxIndex; pi++) {
+      dpmfcExaPnoClo[pi].index = pi;
+      dpmfcPetaPnoCloText[pi].textContent = (pi + 1).toString();
+    }
+  }
+}
+class DpmfcUtilEvent {
+  static eventDpmfcExaPnoClo(isActive) {
+    const getHandler = DpmfcAccessor.getDpmfcHandler();
+    const {
+      dpmfcExaPnoClo
+    } = DpmfcConfig.getDpmfcPnoCloDynamic();
+    /*  */
+    let eventListenerType = "removeEventListener";
+    if (isActive) {
+      eventListenerType = "addEventListener";
+    }
+    /*  */
+    for (let pi = 0; pi <= DpmfcConfig.dpmfcData.pageMaxIndex; pi++) {
+      dpmfcExaPnoClo[pi][eventListenerType](
+        "click",
+        getHandler.dpmfcExaPnoClo
+      );
+    }
+    /*  */
+    if (isActive) {
+      DpmfcUtilInit.initDpmfcExaPnoClo();
+    }
+  }
+}
 class DpmfcUtilCl {
   static clDpmfcYottaPno() {
     const {
@@ -17,32 +53,45 @@ class DpmfcUtilCl {
     const {
       dpmfcZettaPnoClo
     } = DpmfcConfig.getDpmfcPnoCloGroup();
-    const {
+    /* const {
       dpmfcExaPnoClo
-    } = DpmfcConfig.getDpmfcPnoCloDynamic();
-    const clData = "cl-dpmfc-y-pno-util";
+    } = DpmfcConfig.getDpmfcPnoCloDynamic(); */
     /*  */
     const controlButton = 4;
-    const cloButton = dpmfcExaPnoClo.length;
-    const allButton = cloButton + controlButton;
+    const cloButton = DpmfcConfig.dpmfcData.pageMaxIndex + 1;
+    const pnoButton = cloButton + controlButton;
     const sidePaddingRem = 1;
     const gapRem = 1;
     const buttonWidthRem = 2.5;
     /*  */
     let calcWidth = sidePaddingRem * 2;
-    calcWidth += buttonWidthRem * allButton;
-    calcWidth += gapRem * (allButton - 1);
+    calcWidth += buttonWidthRem * pnoButton;
+    calcWidth += gapRem * (pnoButton - 1);
     calcWidth *= 16;
-    /* const calcWidth = ((sidePaddingRem * 2) + (buttonWidthRem * allButton) +
-      (gapRem * (allButton - 1))) * 16; */
     /*  */
-    if (calcWidth >= window.innerWidth) {
-      dpmfcYottaPno.classList.remove(clData);
-      dpmfcZettaPnoClo.classList.remove(clData);
-    } else {
-      dpmfcYottaPno.classList.add(clData);
-      dpmfcZettaPnoClo.classList.add(clData);
+    const clData = "cl-dpmfc-y-pno-util";
+    let clType = "remove";
+    /*  */
+    if (calcWidth < window.innerWidth) {
+      clType = "add";
     }
+    /*  */
+    dpmfcYottaPno.classList[clType](clData);
+    dpmfcZettaPnoClo.classList[clType](clData);
+  }
+  static clDpmfcExaPnoClo() {
+    const {
+      dpmfcExaPnoClo,
+      dpmfcPetaPnoCloText
+    } = DpmfcConfig.getDpmfcPnoCloDynamic();
+    const pageIndex = DpmfcConfig.dpmfcData.pageIndex;
+    const clData = "cl-dpmfc-e-pno-clo-util";
+    for (let pi = 0; pi < dpmfcExaPnoClo.length; pi++) {
+      dpmfcExaPnoClo[pi].classList.remove(clData);
+      dpmfcPetaPnoCloText[pi].classList.remove(clData);
+    }
+    dpmfcExaPnoClo[pageIndex].classList.add(clData);
+    dpmfcPetaPnoCloText[pageIndex].classList.add(clData);
   }
   static clDpmfcPnoDisabled() {
     const {
@@ -57,13 +106,13 @@ class DpmfcUtilCl {
       dpmfcPetaPnoRloNext,
       dpmfcPetaPnoRloLast
     } = DpmfcConfig.getDpmfcPnoRloGroup();
-    const {
+    /* const {
       dpmfcExaPnoClo
-    } = DpmfcConfig.getDpmfcPnoCloDynamic();
+    } = DpmfcConfig.getDpmfcPnoCloDynamic(); */
     const clData = "cl-dpmfc-pno-disabled-util";
     /*  */
-    const pageMaxIndex = dpmfcExaPnoClo.length - 1;
-    const pageIndex = DpmfcConfig.dpmfcPnoPage;
+    const pageMaxIndex = DpmfcConfig.dpmfcData.pageMaxIndex;
+    const pageIndex = DpmfcConfig.dpmfcData.pageIndex;
     /* reset */
     dpmfcExaPnoLloFirst.classList.remove(clData);
     dpmfcExaPnoLloPrevious.classList.remove(clData);
@@ -99,23 +148,19 @@ class DpmfcUtilCl {
   }
 }
 class DpmfcUtilPnoClo {
-  static utilDpmfcPnoCloEvent(isActive, pPageMaxIndex) {
-    /* const {
-      dpmfcExaPnoClo,
-      dpmfcPetaPnoCloText
-    } = DpmfcConfig.getDpmfcPnoCloGroup(); */
+  static utilDpmfcPnoCloEvent(isActive) {
+    /* eventDpmfcExaPnoClo */
     const getHandler = DpmfcAccessor.getDpmfcHandler();
     const {
       dpmfcExaPnoClo
     } = DpmfcConfig.getDpmfcPnoCloDynamic();
-    /* const dpmfcExaPnoClo = document.querySelectorAll(".dpmfc-e-pno-clo"); */
     /*  */
     let eventListenerType = "removeEventListener";
     if (isActive) {
       eventListenerType = "addEventListener";
     }
     /*  */
-    for (let pi = 0; pi <= pPageMaxIndex; pi++) {
+    for (let pi = 0; pi <= DpmfcConfig.dpmfcData.pageMaxIndex; pi++) {
       dpmfcExaPnoClo[pi][eventListenerType](
         "click",
         getHandler.dpmfcExaPnoClo
@@ -123,39 +168,38 @@ class DpmfcUtilPnoClo {
     }
     /*  */
     if (isActive) {
-      this.utilDpmfcPnoCloInit(pPageMaxIndex);
+      this.utilDpmfcPnoCloInit();
     }
   }
-  static utilDpmfcPnoCloInit(pPageMaxIndex) {
+  static utilDpmfcPnoCloInit() {
+    /* initDpmfcExaPnoClo */
     const {
       dpmfcExaPnoClo,
       dpmfcPetaPnoCloText
     } = DpmfcConfig.getDpmfcPnoCloDynamic();
-    /* const dpmfcExaPnoClo = document.querySelectorAll(".dpmfc-e-pno-clo");
-    const dpmfcPetaPnoCloText = document.querySelectorAll(".dpmfc-p-pno-clo-text"); */
-    for (let pi = 0; pi <= pPageMaxIndex; pi++) {
+    for (let pi = 0; pi <= DpmfcConfig.dpmfcData.pageMaxIndex; pi++) {
       dpmfcExaPnoClo[pi].index = pi;
       dpmfcPetaPnoCloText[pi].textContent = (pi + 1).toString();
     }
   }
-  static utilClDpmfcPnoClo(pPageIndex) {
+  static utilClDpmfcPnoClo() {
+    /* clDpmfcExaPnoClo */
     const {
       dpmfcExaPnoClo,
       dpmfcPetaPnoCloText
     } = DpmfcConfig.getDpmfcPnoCloDynamic();
-    /* const dpmfcExaPnoClo = document.querySelectorAll(".dpmfc-e-pno-clo");
-    const dpmfcPetaPnoCloText = document.querySelectorAll(".dpmfc-p-pno-clo-text"); */
+    const pageIndex = DpmfcConfig.dpmfcData.pageIndex;
     const clData = "cl-dpmfc-e-pno-clo-handler";
     for (let pi = 0; pi < dpmfcExaPnoClo.length; pi++) {
       dpmfcExaPnoClo[pi].classList.remove(clData);
       dpmfcPetaPnoCloText[pi].classList.remove(clData);
     }
-    dpmfcExaPnoClo[pPageIndex].classList.add(clData);
-    dpmfcPetaPnoCloText[pPageIndex].classList.add(clData);
+    dpmfcExaPnoClo[pageIndex].classList.add(clData);
+    dpmfcPetaPnoCloText[pageIndex].classList.add(clData);
   }
 }
 class DpmfcUtilSet {
-  static setDpmfcExaTso(pIndex) {
+  static setDpmfcExaTso() {
     const {
       dpmfcPetaTsoText,
       dpmfcPetaTsoAro
@@ -163,9 +207,10 @@ class DpmfcUtilSet {
     const {
       dpmfcZettaBso
     } = DpmfcConfig.getDpmfcBsoZbGroup();
-    let clType = "add";
-    let clData = "";
-    switch (BlfConfig.currentDisplayType) {
+    const tabIndex = DpmfcConfig.dpmfcData.tabIndex;
+    const clData = "cl-set-dpmfc-e-tso-util";
+    const clType = "add";
+    /* switch (BlfConfig.currentDisplayType) {
       case 1: {
         clData = "cl-mdt-dpmfc-e-tso";
         break;
@@ -178,17 +223,17 @@ class DpmfcUtilSet {
         clData = "cl-ddt-dpmfc-e-tso";
         break;
       }
-    }
-    DpmfcUtilReset.resetDpmfcExaTso(BlfConfig.currentDisplayType);
-    dpmfcPetaTsoText[pIndex].classList[clType](clData);
-    dpmfcPetaTsoAro[pIndex].classList[clType](clData);
-    dpmfcZettaBso[pIndex].classList[clType](clData);
+    } */
+    DpmfcUtilReset.resetDpmfcExaTso();
+    dpmfcPetaTsoText[tabIndex].classList[clType](clData);
+    dpmfcPetaTsoAro[tabIndex].classList[clType](clData);
+    dpmfcZettaBso[tabIndex].classList[clType](clData);
   }
   static setDpmfcZettaBso() {
     const {
       dpmfcExaBso
-    } = DpmfcConfig.getDpmfcBsoEbGroup(DpmfcConfig.dpmfcTsoTab);
-    const page = DpmfcConfig.dpmfcPnoPage;
+    } = DpmfcConfig.getDpmfcBsoEbGroup(DpmfcConfig.dpmfcData.tabIndex);
+    const page = DpmfcConfig.dpmfcData.pageIndex;
     /*  */
     if (dpmfcExaBso.length > 5) {
       for (let ebi = 0; ebi < dpmfcExaBso.length; ebi++) {
@@ -203,7 +248,7 @@ class DpmfcUtilSet {
   }
 }
 class DpmfcUtilReset {
-  static resetDpmfcExaTso(pDisplayType) {
+  static resetDpmfcExaTso() {
     const {
       dpmfcPetaTsoText,
       dpmfcPetaTsoAro
@@ -211,9 +256,9 @@ class DpmfcUtilReset {
     const {
       dpmfcZettaBso
     } = DpmfcConfig.getDpmfcBsoZbGroup();
+    const clData = "cl-set-dpmfc-e-tso-util";
     const clType = "remove";
-    let clData = "";
-    switch (pDisplayType) {
+    /* switch (pDisplayType) {
       case 1: {
         clData = "cl-mdt-dpmfc-e-tso";
         break;
@@ -226,7 +271,7 @@ class DpmfcUtilReset {
         clData = "cl-ddt-dpmfc-e-tso";
         break;
       }
-    }
+    } */
     for (let ebi = 0; ebi < dpmfcPetaTsoText.length; ebi++) {
       dpmfcPetaTsoText[ebi].classList[clType](clData);
       dpmfcPetaTsoAro[ebi].classList[clType](clData);
@@ -235,30 +280,37 @@ class DpmfcUtilReset {
   }
 }
 class DpmfcUtil {
+  static eventDpmfcExaPnoClo(isActive) {
+    DpmfcUtilEvent.eventDpmfcExaPnoClo(isActive);
+  }
+  /* -------------------------------------------------- */
   static clDpmfcYottaPno() {
     DpmfcUtilCl.clDpmfcYottaPno();
+  }
+  static clDpmfcExaPnoClo() {
+    DpmfcUtilCl.clDpmfcExaPnoClo();
   }
   static clDpmfcPnoDisabled() {
     DpmfcUtilCl.clDpmfcPnoDisabled();
   }
   /* -------------------------------------------------- */
-  static setDpmfcExaTso(pIndex) {
-    DpmfcUtilSet.setDpmfcExaTso(pIndex);
+  static setDpmfcExaTso() {
+    DpmfcUtilSet.setDpmfcExaTso();
   }
   static setDpmfcZettaBso() {
     DpmfcUtilSet.setDpmfcZettaBso();
   }
   /* -------------------------------------------------- */
-  static resetDpmfcExaTso(pDisplayType) {
-    DpmfcUtilReset.resetDpmfcExaTso(pDisplayType);
+  static resetDpmfcExaTso() {
+    DpmfcUtilReset.resetDpmfcExaTso();
   }
   /* -------------------------------------------------- */
-  static utilDpmfcPnoCloEvent(isActive, pPageMaxIndex) {
-    DpmfcUtilPnoClo.utilDpmfcPnoCloEvent(isActive, pPageMaxIndex);
+  /* static utilDpmfcPnoCloEvent(isActive) {
+    DpmfcUtilPnoClo.utilDpmfcPnoCloEvent(isActive);
   }
-  static utilClDpmfcPnoClo(pPageIndex) {
-    DpmfcUtilPnoClo.utilClDpmfcPnoClo(pPageIndex);
-  }
+  static utilClDpmfcPnoClo() {
+    DpmfcUtilPnoClo.utilClDpmfcPnoClo();
+  } */
 }
 /*  */
 export {

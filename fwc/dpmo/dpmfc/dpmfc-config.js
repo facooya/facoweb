@@ -413,7 +413,7 @@ class DpmfcConfigGet {
   }
 }
 class DpmfcConfigManager {
-  static dpmfcPnoCloGenerate(pPageMaxIndex) {
+  static dpmfcPnoCloGenerate() {
     const {
       dpmfcZettaPnoClo
     } = DpmfcConfigGet.getDpmfcPnoCloGroup();
@@ -422,7 +422,7 @@ class DpmfcConfigManager {
     let dpmfcExaPnoClo = null;
     let dpmfcPetaPnoCloText = null;
 
-    for (let pi = 0; pi <= pPageMaxIndex; pi++) {
+    for (let pi = 0; pi <= DpmfcConfig.dpmfcData.pageMaxIndex; pi++) {
       dpmfcExaPnoClo = BlfUtil.getGenerateElement(
         DpmfcConfigElement.dpmfcPnoCloDynamic[0],
         [pi]
@@ -435,13 +435,20 @@ class DpmfcConfigManager {
       dpmfcPnoCloFragment.append(dpmfcExaPnoClo);
     }
     dpmfcZettaPnoClo.append(dpmfcPnoCloFragment);
+    /*  */
+    DpmfcUtil.eventDpmfcExaPnoClo(true);
   }
   static dpmfcPnoCloRemove() {
-    const {
+    /* const {
       dpmfcZettaPnoClo
-    } = DpmfcConfigGet.getDpmfcPnoCloGroup();
-    const dpmfcExaPnoClo = dpmfcZettaPnoClo.querySelectorAll(".dpmfc-e-pno-clo");
-    DpmfcUtil.utilDpmfcPnoCloEvent(false, dpmfcZettaPnoClo.length - 1);
+    } = DpmfcConfigGet.getDpmfcPnoCloGroup(); */
+    /* const dpmfcExaPnoClo = dpmfcZettaPnoClo.querySelectorAll(".dpmfc-e-pno-clo"); */
+    const {
+      dpmfcExaPnoClo
+    } = DpmfcConfigGet.getDpmfcPnoCloDynamic();
+    /*  */
+    /* DpmfcUtil.utilDpmfcPnoCloEvent(false); */
+    DpmfcUtil.eventDpmfcExaPnoClo(false);
     for (let pi = dpmfcExaPnoClo.length - 1; pi >= 0; pi--) {
       dpmfcExaPnoClo[pi].remove();
     }
@@ -449,11 +456,14 @@ class DpmfcConfigManager {
 }
 class DpmfcConfig {
   static dpmfcConfigCache = {};
-  static dpmfcTsoTab = 0;
-  static dpmfcPnoPage = 0;
+  /* static dpmfcTsoTab = 0; */
+  /* static dpmfcPnoPage = 0; */
   /*  */
-  static dpmfcDefaultPageData = ["1", "2", "3", "4", "5", "6", "7"];
-  static dpmfcModifyPageData = DpmfcConfig.dpmfcDefaultPageData;
+  static dpmfcData = {
+    tabIndex: 0,
+    pageIndex: 0,
+    pageMaxIndex: 0
+  }
   /* -------------------------------------------------- */
   static getDpmfcRoot() {
     return DpmfcConfigGet.getDpmfcRoot();
@@ -492,8 +502,8 @@ class DpmfcConfig {
     return DpmfcConfigGet.getDpmfcPnoRloGroup();
   }
   /* -------------------------------------------------- */
-  static dpmfcPnoCloGenerate(pPageMaxIndex) {
-    DpmfcConfigManager.dpmfcPnoCloGenerate(pPageMaxIndex);
+  static dpmfcPnoCloGenerate() {
+    DpmfcConfigManager.dpmfcPnoCloGenerate();
   }
   static dpmfcPnoCloRemove() {
     DpmfcConfigManager.dpmfcPnoCloRemove();

@@ -4,17 +4,17 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ============================== */
-.dpmfc-p-tso-text.cl-mdt-dpmfc-e-tso {
+.dpmfc-p-tso-text.cl-set-dpmfc-e-tso-util {
   color: #000000;
 }
-.dpmfc-p-tso-aro.cl-mdt-dpmfc-e-tso {
+.dpmfc-p-tso-aro.cl-set-dpmfc-e-tso-util {
   border: 0.25rem solid #000000;
 }
-.dpmfc-z-bso.cl-mdt-dpmfc-e-tso {
+.dpmfc-z-bso.cl-set-dpmfc-e-tso-util {
   display: flex;
 }
 /* ============================== */
-.dpmfc-p-tso-text.cl-tdt-dpmfc-e-tso {
+/* .dpmfc-p-tso-text.cl-tdt-dpmfc-e-tso {
   color: #000000;
 }
 .dpmfc-p-tso-aro.cl-tdt-dpmfc-e-tso {
@@ -22,9 +22,9 @@
 }
 .dpmfc-z-bso.cl-tdt-dpmfc-e-tso {
   display: flex;
-}
+} */
 /* ============================== */
-.dpmfc-p-tso-text.cl-ddt-dpmfc-e-tso {
+/* .dpmfc-p-tso-text.cl-ddt-dpmfc-e-tso {
   color: #000000;
 }
 .dpmfc-p-tso-aro.cl-ddt-dpmfc-e-tso {
@@ -32,13 +32,13 @@
 }
 .dpmfc-z-bso.cl-ddt-dpmfc-e-tso {
   display: flex;
-}
+} */
 /* ============================== */
-.dpmfc-e-pno-clo.cl-dpmfc-e-pno-clo-handler {
+.dpmfc-e-pno-clo.cl-dpmfc-e-pno-clo-util {
   background: #222222;
   cursor: default;
 }
-.dpmfc-p-pno-clo-text.cl-dpmfc-e-pno-clo-handler {
+.dpmfc-p-pno-clo-text.cl-dpmfc-e-pno-clo-util {
   color: #FFFFFF;
 }
 /* ============================== */
