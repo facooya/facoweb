@@ -147,14 +147,14 @@ class DpmscConfigGet {
     );
     return getGroup;
   }
-  static getDpmscPbGroup() {
+  static getDpmscPbGroup(pIndex) {
     const {
-      dpmscR
-    } = DpmscConfigGet.getDpmscRoot();
+      dpmscZ
+    } = DpmscConfigGet.getDpmscZbGroup();
     const getGroup = BlfUtil.getElementCache(
       DpmscConfig.dpmscConfigCache,
       DpmscConfigElement.dpmscPbGroup,
-      dpmscR
+      dpmscZ[pIndex]
     );
     return getGroup;
   }
@@ -174,8 +174,8 @@ class DpmscConfig {
   static getDpmscTloGroup() {
     return DpmscConfigGet.getDpmscTloGroup();
   }
-  static getDpmscPbGroup() {
-    return DpmscConfigGet.getDpmscPbGroup();
+  static getDpmscPbGroup(pIndex) {
+    return DpmscConfigGet.getDpmscPbGroup(pIndex);
   }
 }
 /*  */

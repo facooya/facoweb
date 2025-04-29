@@ -7,7 +7,7 @@
     <meta name="author" content="Facooya">
     <meta name="robots" content="noindex, nofollow">
     <!-- Title -->
-    <title>V1.1.21A-8 Document page</title>
+    <title>V1.1.22-A Document page</title>
     <!-- FWA-SS -->
     <link href="../fwa/ss/fwa-root.css" rel="stylesheet">
     <link href="../fwa/ss/fwa-ss.css" rel="stylesheet">
@@ -52,7 +52,7 @@
     <main class="blf-y-dpmo">
       <header class="dpmhc-r" id="contents">
         <div class="dpmhc-y-tlo">
-          <h1 class="dpmhc-z-tlo-text">V1.1.21A-8 Document Page</h1>
+          <h1 class="dpmhc-z-tlo-text">V1.1.22-A Document Page</h1>
         </div>
         <nav class="dpmhc-y-cno">
           <ul class="dpmhc-z-cno">
@@ -74,6 +74,13 @@
               <h2 class="dpmhc-p-cno">
                 <a class="dpmhc-t-cno" href="#developer-note">
                   <span class="dpmhc-g-cno-text">Developer Note</span>
+                </a>
+              </h2>
+            </li>
+            <li class="dpmhc-e-cno">
+              <h2 class="dpmhc-p-cno">
+                <a class="dpmhc-t-cno" href="#test-auto-tag">
+                  <span class="dpmhc-g-cno-text">Test auto tag</span>
                 </a>
               </h2>
             </li>
@@ -146,18 +153,99 @@ Temporary Result
 Routinely update {
   Code cleanup.
 }
-Updated by v1.1.21a-8 {
-  Updated "reference links" temporary optimzation.
+Updated by v1.1.22-a {
+  Fixed issue page navigation number system.
+  Updated some DPMFC.
+  Updated doc-page DPMSC auto color text. [Test: Good]
 }
-Scheduled update for v1.1.22-a {
-  Update doc-page DPMSC auto color text.
+Scheduled update for v1.1.22-a.1 {
+  Update DPMSC code line number.
+  Update DPMSC code skip function.
 }
-Scheduled update for v1.1.22 {
-  Version manager {
-    Original: v1.1.21a-4
-    New: v1.1.21-a.4
-    e.g., v1.1.22a -> v1.1.22-a == v1.1.22-a.0
+
+Scheduled update {
+  Scheduled update before v1.2.0 {
+    Page(Home, Nav, Documnet) {
+      Home {
+        "home-page" upgrade.
+        "home-page" content: rotate sun for "center text", text-shadow effect.
+        "home-page" upgrade complete update. (Inspection)
+      }
+      Nav {
+        "nav-page" upgrade complete update. (Inspection)
+      }
+      Documnet {
+        "doc-page" document section auto tag system.
+        "doc-page" quick scroll update.
+        "doc-page" safari browser video issue fix.
+        "doc-page" upgrade complete update. (Inspection)
+      }
+    }
+    Component(HSNC) {
+      HSNC {
+        "doc-page" quick scroll.
+        "home-page" sub domain.
+        Reference: Etc.
+      }
+    }
+    Etc {
+      Theme: dark. light.
+    }
   }
+  Scheduled update for v1.2.0 {
+    Facooya(FWDS, FS) {
+      "FWDS", "FS" apply update.
+      Document update for "v1.2.0". Upload "FWDS", "FS". (Inspection)
+      facooya.com version "1.2.0" upgrade prepare. (Inspection)
+      facooya.com version "1.2.0" upgrade complete.
+    }
+    Apply "dev.facooya.com".
+    Content files upgrade for "v1.2.0".
+  }
+}
+</pre>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="dpmsc-z" id="test-auto-tag">
+            <div class="dpmsc-e-tlo">
+              <h2 class="dpmsc-p-tlo">
+                <a class="dpmsc-t-tlo" href="#test-auto-tag">
+                  <span class="dpmsc-g-tlo-text">Test auto tag</span>
+                </a>
+              </h2>
+            </div>
+            <ul class="dpmsc-e">
+              <li class="dpmsc-p">
+                <h3 class="dpmsc-t-text">test.c</h3>
+                <div class="dpmsc-t">
+<pre class="dpmsc-g-text">
+#include &lt;stdio.h&gt;
+
+int main() {
+  int testNumber = 10;
+  int hexNumber = 0xFF0077;
+
+  float testFloat = 1.111f;
+
+  char testT = 'T';
+  char testText[10] = "Test text";
+
+  /* test if */
+  if (testNumber == 1) {
+    testNumber++;
+  } else {
+    testNumber--;
+  }
+
+  /* test for */
+  for (int i = 0; i &lt; 2; i++) {
+    printf("Text: %s\n", testText);
+  }
+  printf("Don't select \"int\" please.\n");
+
+  return 0;
 }
 </pre>
                 </div>
@@ -180,7 +268,7 @@ Scheduled update for v1.1.22 {
           <!--  -->
           <ul class="dpmfc-z-tso">
             <li class="dpmfc-e-tso">
-              <h3 class="dpmfc-p-tso-text">V1.1.21-* Nav Page</h3>
+              <h3 class="dpmfc-p-tso-text">V1.1.22-A.* Nav Page</h3>
               <div class="dpmfc-p-tso-aro"></div>
             </li>
             <li class="dpmfc-e-tso">
@@ -203,60 +291,12 @@ Scheduled update for v1.1.22 {
         </section>
         <!-- ========== -->
         <section class="dpmfc-y-bso">
-          <!-- v1.1.21-* -->
+          <!-- v1.1.22-* -->
           <ul class="dpmfc-z-bso">
             <li class="dpmfc-e-bso">
-              <a class="dpmfc-p-bso" href="#nav-page">
-                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.21 Alpha</h3>
-                <p class="dpmfc-t-bso-pt-text">V1.1.21A [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="dpmfc-e-bso">
-              <a class="dpmfc-p-bso" href="#nav-page">
-                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.21 Alpha-1</h3>
-                <p class="dpmfc-t-bso-pt-text">V1.1.21A-1 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="dpmfc-e-bso">
-              <a class="dpmfc-p-bso" href="#nav-page">
-                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.21 Alpha-2</h3>
-                <p class="dpmfc-t-bso-pt-text">V1.1.21A-2 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="dpmfc-e-bso">
-              <a class="dpmfc-p-bso" href="#nav-page">
-                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.21 Alpha-3</h3>
-                <p class="dpmfc-t-bso-pt-text">V1.1.21A-3 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="dpmfc-e-bso">
-              <a class="dpmfc-p-bso" href="#nav-page">
-                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.21 Alpha-4</h3>
-                <p class="dpmfc-t-bso-pt-text">V1.1.21A-4 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="dpmfc-e-bso">
-              <a class="dpmfc-p-bso" href="#nav-page">
-                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.21 Alpha-5</h3>
-                <p class="dpmfc-t-bso-pt-text">V1.1.21A-5 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="dpmfc-e-bso">
-              <a class="dpmfc-p-bso" href="#nav-page">
-                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.21 Alpha-6</h3>
-                <p class="dpmfc-t-bso-pt-text">V1.1.21A-6 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="dpmfc-e-bso">
-              <a class="dpmfc-p-bso" href="#nav-page">
-                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.21 Alpha-7</h3>
-                <p class="dpmfc-t-bso-pt-text">V1.1.21A-7 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="dpmfc-e-bso">
               <a class="dpmfc-p-bso" href="./nav-page.html">
-                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.21 Alpha-8</h3>
-                <p class="dpmfc-t-bso-pt-text">V1.1.21A-8 [ nav-page ]</p>
+                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.22 Alpha</h3>
+                <p class="dpmfc-t-bso-pt-text">V1.1.22-A [ nav-page ]</p>
               </a>
             </li>
           </ul>
@@ -368,6 +408,18 @@ Scheduled update for v1.1.22 {
               <a class="dpmfc-p-bso" href="#nav-page">
                 <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.20 Alpha</h3>
                 <p class="dpmfc-t-bso-pt-text">V1.1.20A [ nav-page ]</p>
+              </a>
+            </li>
+            <li class="dpmfc-e-bso">
+              <a class="dpmfc-p-bso" href="#nav-page">
+                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.21 Alpha</h3>
+                <p class="dpmfc-t-bso-pt-text">V1.1.21A [ nav-page ]</p>
+              </a>
+            </li>
+            <li class="dpmfc-e-bso">
+              <a class="dpmfc-p-bso" href="#nav-page">
+                <h3 class="dpmfc-t-bso-ht-text">[Nav] Version 1.1.22 Alpha</h3>
+                <p class="dpmfc-t-bso-pt-text">V1.1.20-A [ nav-page ]</p>
               </a>
             </li>
           </ul>

@@ -53,9 +53,6 @@ class DpmfcUtilCl {
     const {
       dpmfcZettaPnoClo
     } = DpmfcConfig.getDpmfcPnoCloGroup();
-    /* const {
-      dpmfcExaPnoClo
-    } = DpmfcConfig.getDpmfcPnoCloDynamic(); */
     /*  */
     const controlButton = 4;
     const cloButton = DpmfcConfig.dpmfcData.pageMaxIndex + 1;
@@ -201,6 +198,7 @@ class DpmfcUtilPnoClo {
 class DpmfcUtilSet {
   static setDpmfcExaTso() {
     const {
+      dpmfcExaTso,
       dpmfcPetaTsoText,
       dpmfcPetaTsoAro
     } = DpmfcConfig.getDpmfcTsoEbGroup();
@@ -210,21 +208,9 @@ class DpmfcUtilSet {
     const tabIndex = DpmfcConfig.dpmfcData.tabIndex;
     const clData = "cl-set-dpmfc-e-tso-util";
     const clType = "add";
-    /* switch (BlfConfig.currentDisplayType) {
-      case 1: {
-        clData = "cl-mdt-dpmfc-e-tso";
-        break;
-      }
-      case 2: {
-        clData = "cl-tdt-dpmfc-e-tso";
-        break;
-      }
-      case 3: {
-        clData = "cl-ddt-dpmfc-e-tso";
-        break;
-      }
-    } */
+    /*  */
     DpmfcUtilReset.resetDpmfcExaTso();
+    dpmfcExaTso[tabIndex].classList[clType](clData);
     dpmfcPetaTsoText[tabIndex].classList[clType](clData);
     dpmfcPetaTsoAro[tabIndex].classList[clType](clData);
     dpmfcZettaBso[tabIndex].classList[clType](clData);
@@ -250,6 +236,7 @@ class DpmfcUtilSet {
 class DpmfcUtilReset {
   static resetDpmfcExaTso() {
     const {
+      dpmfcExaTso,
       dpmfcPetaTsoText,
       dpmfcPetaTsoAro
     } = DpmfcConfig.getDpmfcTsoEbGroup();
@@ -258,21 +245,9 @@ class DpmfcUtilReset {
     } = DpmfcConfig.getDpmfcBsoZbGroup();
     const clData = "cl-set-dpmfc-e-tso-util";
     const clType = "remove";
-    /* switch (pDisplayType) {
-      case 1: {
-        clData = "cl-mdt-dpmfc-e-tso";
-        break;
-      }
-      case 2: {
-        clData = "cl-tdt-dpmfc-e-tso";
-        break;
-      }
-      case 3: {
-        clData = "cl-ddt-dpmfc-e-tso";
-        break;
-      }
-    } */
-    for (let ebi = 0; ebi < dpmfcPetaTsoText.length; ebi++) {
+    /*  */
+    for (let ebi = 0; ebi < dpmfcExaTso.length; ebi++) {
+      dpmfcExaTso[ebi].classList[clType](clData);
       dpmfcPetaTsoText[ebi].classList[clType](clData);
       dpmfcPetaTsoAro[ebi].classList[clType](clData);
       dpmfcZettaBso[ebi].classList[clType](clData);

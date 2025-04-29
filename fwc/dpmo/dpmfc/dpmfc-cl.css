@@ -4,6 +4,9 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ============================== */
+.dpmfc-e-tso.cl-set-dpmfc-e-tso-util {
+  cursor: default;
+}
 .dpmfc-p-tso-text.cl-set-dpmfc-e-tso-util {
   color: #000000;
 }
@@ -13,26 +16,6 @@
 .dpmfc-z-bso.cl-set-dpmfc-e-tso-util {
   display: flex;
 }
-/* ============================== */
-/* .dpmfc-p-tso-text.cl-tdt-dpmfc-e-tso {
-  color: #000000;
-}
-.dpmfc-p-tso-aro.cl-tdt-dpmfc-e-tso {
-  border: 0.25rem solid #000000;
-}
-.dpmfc-z-bso.cl-tdt-dpmfc-e-tso {
-  display: flex;
-} */
-/* ============================== */
-/* .dpmfc-p-tso-text.cl-ddt-dpmfc-e-tso {
-  color: #000000;
-}
-.dpmfc-p-tso-aro.cl-ddt-dpmfc-e-tso {
-  border: 0.25rem solid #000000;
-}
-.dpmfc-z-bso.cl-ddt-dpmfc-e-tso {
-  display: flex;
-} */
 /* ============================== */
 .dpmfc-e-pno-clo.cl-dpmfc-e-pno-clo-util {
   background: #222222;

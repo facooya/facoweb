@@ -63,6 +63,35 @@ pre.dpmsc-g-text {
   font-size: 1rem;
   overflow: auto;
 }
+/* ============================== */
+.orange {
+  color: #FF7F00;
+}
+.blue {
+  /* color: #0077FF; */
+  color: #1E90FF;
+}
+.blue-light {
+  /* color: #00FFFF; */
+  color: #00CED1;
+}
+.green {
+  /* color: #00EE00; */
+  color: #00FF7F;
+}
+.green-bold {
+  /* color: #99EE99; */
+  /* color: #7FFF00; */
+  color: #7FFF7F;
+  font-weight: bold;
+}
+.yellow {
+  color: #BA55D3;
+}
+.comment {
+  color: #00AA00;
+  /* color: #006400; */
+}
 /* ========================= :FACOOYA: ========================= */
 /* NOTE
  * PO: Panel Object

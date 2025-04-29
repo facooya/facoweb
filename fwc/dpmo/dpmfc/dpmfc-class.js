@@ -49,6 +49,9 @@ class DpmfcManager {
       dpmfcExaBso
     } = DpmfcConfig.getDpmfcBsoEbGroup(0);
     DpmfcConfig.dpmfcData.pageMaxIndex = Math.floor(dpmfcExaBso.length / 5);
+    if (dpmfcExaBso.length % 5 === 0) {
+      DpmfcConfig.dpmfcData.pageMaxIndex--;
+    }
     DpmfcConfig.dpmfcPnoCloGenerate();
     /*  */
     /* DpmfcUtil.utilClDpmfcPnoClo(); */
@@ -101,6 +104,9 @@ class DpmfcManager {
       dpmfcExaBso
     } = DpmfcConfig.getDpmfcBsoEbGroup(0);
     DpmfcConfig.dpmfcData.pageMaxIndex = Math.floor(dpmfcExaBso.length / 5);
+    if (dpmfcExaBso.length % 5 === 0) {
+      DpmfcConfig.dpmfcData.pageMaxIndex--;
+    }
     /* DpmfcUtil.utilDpmfcPnoCloEvent(isActive, DpmfcConfig.dpmfcData.pageMaxIndex); */
     
     /*  */
@@ -164,6 +170,9 @@ class DpmfcHandler {
       dpmfcExaBso
     } = DpmfcConfig.getDpmfcBsoEbGroup(eventIndex);
     DpmfcConfig.dpmfcData.pageMaxIndex = Math.floor(dpmfcExaBso.length / 5);
+    if (dpmfcExaBso.length % 5 === 0) {
+      DpmfcConfig.dpmfcData.pageMaxIndex--;
+    }
     /* DpmfcConfig.dpmfcPnoCloRemove(); */
     DpmfcConfig.dpmfcPnoCloGenerate();
     /* DpmfcUtil.utilDpmfcPnoCloEvent(true); */
