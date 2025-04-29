@@ -7,6 +7,7 @@ import {
   FwaConfig
 } from "../../../fwa/fwa-config.js";
 import {
+  BlfUtil,
   FllcConfig
 } from "../../fwc-hub.js";
 import {
@@ -23,8 +24,11 @@ class FllcController {
   }
   static load() {
     FllcManager.load();
+    FllcManager.event(true);
   }
   static resizeDisplay() {
+    FllcManager.event(false);
+    FllcManager.event(true);
     FllcManager.resizeDisplay();
   }
   static resizeSensor() {
@@ -33,7 +37,12 @@ class FllcController {
 }
 class FllcManager {
   static init() {
-
+    const {
+      fllcZ
+    } = FllcConfig.getFllcYbGroup();
+    for (let ybi = 0; ybi < fllcZ.length; ybi++) {
+      fllcZ[ybi].index = ybi;
+    }
   }
   static load() {
     if (FwaConfig.currentDisplayType === 1) {
@@ -47,6 +56,61 @@ class FllcManager {
     if (FwaConfig.currentDisplayType === 1) {
       FllcTool.clFllcYottaFo();
     }
+  }
+  static event(isActive) {
+    const {
+      fllcPetaText
+    } = FllcConfig.getFllcYbGroup();
+    /*  */
+    let displayType = FwaConfig.previousDisplayType;
+    let eventListenerType = "removeEventListener";
+    if (isActive) {
+      displayType = FwaConfig.currentDisplayType;
+      eventListenerType = "addEventListener";
+    }
+    /*  */
+    switch (displayType) {
+      case 1: {
+        break;
+      }
+      case 2: {
+        break;
+      }
+      case 3: {
+        for (let ybi = 0; ybi < fllcPetaText.length; ybi++) {
+          fllcPetaText[ybi][eventListenerType](
+            "mouseenter",
+            FllcHandler.ddtFllcPetaText
+          );
+          fllcPetaText[ybi][eventListenerType](
+            "mouseleave",
+            FllcHandler.ddtFllcPetaText
+          );
+        }
+        break;
+      }
+    }
+  }
+}
+class FllcHandler {
+  static ddtFllcPetaText(eventData) {
+    const {
+      eventType,
+      targetIndex
+    } = BlfUtil.getEventData(eventData, ".fllc-z");
+    const {
+      fllcPetaText
+    } = FllcConfig.getFllcYbGroup();
+    /*  */
+    const clData = "cl-ddt-fllc-p-text-handler";
+    let isActive = false;
+    let clType = "remove";
+    if (eventType === "mouseenter") {
+      isActive = true;
+      clType = "add";
+    }
+    /*  */
+    fllcPetaText[targetIndex].classList[clType](clData);
   }
 }
 export {

@@ -15,26 +15,12 @@
 /* ------------------------------ */
 .fllc-y {
   grid-area: y-ll;
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
-  gap: 1rem; */
   display: inline-flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.5rem;
   list-style-type: none;
   color: #FFFFFF;
-  /* justify-content: left; */
-  /* margin: 0.5rem 0rem 0rem 0rem; */
 }
-/* .fllc-z {
-  /* Tag.li 
-  display: inline-block;
-  margin: 0.5rem 0rem 0rem 0rem;
-} */
-/* .fllc-z:not(:last-child) {
-  /* Tag.li
-  margin: 0.5rem 1.5rem 0rem 0rem;
-} */
 .fllc-e {
   /* Tag.a */
   color: white;
@@ -44,7 +30,6 @@
   /* Tag.div */
   color: #FFFFFF;
   font-size: 0.75rem;
-  /* text-align: center; */
   white-space: nowrap;
   border-bottom: 0.0625rem solid #FFFFFF;
 }
@@ -52,19 +37,9 @@
 .fllc-y-fo {
   /* Tag.div */
   grid-area: y-fo;
-  /* display: grid;
-  grid-template-areas:
-    "fo-ta-icon fo-logo";
-  justify-content: center;
-  margin: 0rem 0rem 2rem 0rem; */
-  /* white-space: nowrap; */
 }
 .fllc-z-fo {
   /* Tag.a */
-  /* display: grid;
-  grid-template-areas:
-    "fo-ta-icon fo-logo";
-  justify-content: left; */
   display: inline-flex;
   gap: 1rem;
 }
@@ -72,17 +47,13 @@
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: var(--white);
-  /* display: inline-block; */
 }
 .fllc-e-fo-ta-icon {
-  /* grid-area: fo-ta-icon; */
   width: 3rem;
   height: 3rem;
   mask-image: url("../../../svg/a.svg");
-  /* margin: 0rem 1rem 0rem 0rem; */
 }
 .fllc-e-fo-logo {
-  /* grid-area: fo-logo; */
   width: 15rem;
   height: 3rem;
   mask-image: url("../../../svg/logo-5w.svg");
@@ -90,38 +61,14 @@
 /* ------------------------------ */
 .fllc-y-to {
   grid-area: y-to;
-  /* display: grid; */
-  /* grid-template-areas:
-    "to-since"
-    "to-copyright"; */
-  /* grid-template-areas:
-    "to-since to-copyright";
-  justify-content: left;
-  gap: 1.5rem; */
-  /* white-space: nowrap; */
   display: flex;
   gap: 1.5rem;
   cursor: default;
 }
 .fllc-z-to {
-  /* display: inline-block; */
   font-size: 0.75rem;
   color: #AAAAAA;
-  /* margin: 1rem 0rem 0rem 0rem; */
 }
-/* .fllc-z-to-since {
-  /* grid-area: to-since;
-  font-size: 0.75rem;
-  color: #AAAAAA;
-  white-space: nowrap; 
-  margin: 0rem 1rem 0rem 0rem;
-} */
-/* .fllc-z-to-copyright { */
-  /* grid-area: to-copyright;
-  font-size: 0.75rem;
-  color: #AAAAAA;
-  white-space: nowrap; */
-/* } */
 @media (min-width: 768px) {
   .fllc-r {
     grid-template-areas:
@@ -131,52 +78,22 @@
     gap: 1rem 0rem;
   }
   .fllc-y {
-    /* display: grid;
-    grid-template-columns: repeat(4, max-content);
-    gap: 1.5rem;
-    justify-content: end;
-    align-items: end; */
-    /* text-align: right;
-    margin: 0rem; */
     justify-content: right;
   }
-  /* .fllc-z {
-    margin: 0rem;
-  }
-  .fllc-z:not(:last-child) {
-    margin: 0rem 1.5rem 0rem 0rem;
-  } */
-  /*  */
-  /* .fllc-z-to-copyright {
-    margin: 0rem;
-  } */
-  /* .fllc-z {
-    display: block;
-    margin: 0rem;
-  }
-  .fllc-y-fo {
-    margin: 0rem 0rem 0.5rem 0rem;
-  } */
-  /* .fllc-y-to {
-    grid-template-areas:
-      "to-since to-copyright";
-    gap: 1.5rem;
-    justify-content: start;
-    align-items: end;
-  } */
 }
 @media (min-width: 1280px) {
   .fllc-r {
     grid-template-areas:
+      ". y-fo ."
       "y-to y-fo y-ll";
     grid-template-columns: 1fr auto 1fr;
+    gap: 0rem;
     margin: 0rem;
   }
-  .fllc-y-to {
-    align-items: end;
-  }
-  .fllc-y {
-    align-items: end;
+  .fllc-p-text {
+    /* Tag.div */
+    border-bottom: hidden;
+    border-bottom: 0.0625rem solid transparent;
   }
 }
 /* ========================= :FACOOYA: ========================= */

@@ -5,13 +5,8 @@
  */
 .fauc-r {
   grid-area: fauc;
-  /* display: grid;
-  grid-template-areas: "tlo" "blo";
-  gap: 1rem;
-  white-space: nowrap; */
 }
 .fauc-y-text {
-  /* grid-area: tlo; */
   font-size: 1.5rem;
   color: #FFFFFF;
   white-space: nowrap;
@@ -20,20 +15,11 @@
 }
 .fauc-y {
   /* Tag.ul */
-  /* grid-area: blo;
-  display: grid;
-  grid-auto-flow: row;
-  gap: 0.5rem; */
   display: flex;
   flex-flow: column;
   gap: 0.5rem;
   list-style-type: none;
 }
-/* .fauc-z {
-  /* Tag.li 
-  display: block;
-  margin: 0.5rem 0rem 0rem 0rem;
-} */
 .fauc-e {
   /* Tag.a */
   text-decoration: none;
@@ -41,13 +27,13 @@
 .fauc-p-text {
   /* Tag.span */
   color: #FFFFFF;
-  /* border-bottom: 0.0625rem solid #FFFFFF; */
+  border-bottom: 0.0625rem solid transparent;
   white-space: nowrap;
 }
-/* =============== :FACOOYA: =============== */
+/* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
- /* =============== ;FACOOYA; =============== */
+ /* ========================= ;FACOOYA; ========================= */
