@@ -22,7 +22,6 @@ class CoreAccessor {
 /* ================================================== */
 class CoreController {
   static init() {
-    console.log("Boot Start");
     CoreManager.init();
   }
   static load() {

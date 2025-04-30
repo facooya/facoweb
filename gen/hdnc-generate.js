@@ -63,7 +63,6 @@ class HdncGenerateData {
 /* ================================================== */
 class HdncGenerateManager {
   static selfGenerate() {
-    console.log("self Hdnc Gen");
     const frag = document.createDocumentFragment();
     /* Find Header */
     const header = document.querySelector(".h");

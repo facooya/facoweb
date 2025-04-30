@@ -49,6 +49,7 @@ class DpmacHandler {
 }
 /* ================================================== */
 class DpmacLogic {
+  /* Delete */
   static tocHashReplace(hash) {
     if (hash != null && hash[0] === "#") {
       const hashElement = document.querySelector(hash);

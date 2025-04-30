@@ -97,6 +97,5 @@ FngcGenerateManager.selfGenerate();
  */
 /* AUTHORSHIP
  * Founder: Facooya
- * #www.facooya.com/about/
  */
 /* ========================= <FACOOYA ========================= */

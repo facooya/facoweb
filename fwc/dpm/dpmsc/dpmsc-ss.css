@@ -178,6 +178,7 @@
   font-size: 1rem;
   border-radius: 16px;
 }
+/* -------------------------------------------------- */
 .dpmsc .output-console {
   overflow: auto;
   padding: 8px 0;
@@ -194,12 +195,21 @@
   border-radius: 16px;
   background-color: #222222;
 }
+/* -------------------------------------------------- */
+.dpmsc .output-web {
+  width: 100%;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
 /* ================================================== */
 @media (min-width: 768px) {
   .dpmsc .output-image {
     width: 80%;
   }
   .dpmsc .output-video {
+    width: 80%;
+  }
+  .dpmsc .output-web {
     width: 80%;
   }
 }
@@ -213,6 +223,9 @@
     width: 60%;
   }
   .dpmsc .output-video {
+    width: 60%;
+  }
+  .dpmsc .output-web {
     width: 60%;
   }
 }
