@@ -16,7 +16,7 @@ class FllcConfigData {
     "Legal"
   ];
   /*  */
-  static logoLink = "#";
+  static logoLink = "#facooya.com";
   static copyrightText = "Copyright 2023-2024 Facooya";
 }
 /* ================================================== */

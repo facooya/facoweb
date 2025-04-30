@@ -241,14 +241,18 @@ class HsncHandler {
     const subItemText = subItemContainer.querySelector(".sub-item-text");
     /*  */
     if (eventType === "mouseenter") {
-      subItemText.style.marginRight = "-12px";
+      subItemText.style.marginRight = "0";
+      /* subItemText.style.marginRight = "-12px"; */
     } else if (eventType === "mouseleave") {
+      /* if (!subItemText.classList.contains("toc-active")) {
+        subItemText.style.marginRight = "0";
+      } */
       subItemText.style.marginRight = "0";
     }
   }
   /* -------------------------------------------------- */
   static subItemContainerClick(event) {
-    /* Only DP */
+    /* Only DP TOC */
     const subItemContainer = event.currentTarget;
     const subItem = subItemContainer.closest(".sub-item");
 

@@ -30,7 +30,6 @@ class DpmscManager {
     DpmscManager.initEvent();
   }
   static load() {
-    /* DpmscConfig.viewerCodeReplaceColor(); */
     DpmscConfig.viewerLineNumberItemCreate();
   }
   static resizeDisplay() {
@@ -74,12 +73,15 @@ class DpmscHandler {
     const toolWide = event.currentTarget;
     const viewer = toolWide.closest(".viewer");
     const lineNumberList = viewer.querySelector(".line-number-list");
+    const viewerCode = viewer.querySelector(".viewer-code");
     /*  */
     if (viewer.isWide) {
       lineNumberList.style.display = "";
+      viewerCode.style.paddingLeft = "";
       viewer.isWide = false;
     } else {
       lineNumberList.style.display = "none";
+      viewerCode.style.paddingLeft = "0.5rem";
       viewer.isWide = true;
     }
   }

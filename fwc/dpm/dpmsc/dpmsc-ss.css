@@ -105,17 +105,23 @@
   border-radius: 0 0 16px 16px;
 }
 .dpmsc .viewer-main .line-number-list {
-  padding: 0.5rem 0;
+  padding: 8px 0;
   list-style: none;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
 }
 .dpmsc .viewer-main .line-number-item {
-  padding-right: 1rem;
+  /* padding-right: 1rem; */
   font-size: 1rem;
   text-align: right;
   color: #808080;
+}
+.dpmsc .viewer-code {
+  overflow: auto;
+  padding: 8px 0;
+  padding-right: 0.5rem;
+  padding-left: 1rem;
 }
 /* ================================================== */
 /* Snippet */
@@ -156,9 +162,7 @@
   padding: 8px 16px;
   border-radius: 0 0 16px 16px;
 }
-/* ================================================== */
-/* Code */
-.dpmsc .code {
+.dpmsc .snippet-code {
   overflow: auto;
   padding: 8px 0;
 }
