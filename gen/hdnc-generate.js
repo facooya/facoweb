@@ -5,14 +5,14 @@
  */
 /* ================================================== */
 class HdncGenerateData {
-  /* Item Tests */
+  /* ===== itemTexts ===== */
   static itemTexts = [
     "Menu 1",
     "Menu 2",
     "Menu 3",
     "Menu 4"
   ];
-  /* Sub Item Tests */
+  /* ===== subItemText ===== */
   static subItemTextsMenu1 = [
     "Item 1-1"
   ];
@@ -29,7 +29,7 @@ class HdncGenerateData {
     "Item 4-1",
     "Item 4-2"
   ];
-  /* Sub Container Links */
+  /* ===== subContainerLink ===== */
   static subContainerLinksMenu1 = [
     "#item-1-1"
   ];
@@ -46,7 +46,7 @@ class HdncGenerateData {
     "#item-4-1",
     "#item-4-2"
   ];
-  /* Groups */
+  /* ===== Compile ===== */
   static subItemTextGroups = [
     HdncGenerateData.subItemTextsMenu1,
     HdncGenerateData.subItemTextsMenu2,
@@ -152,10 +152,10 @@ class HdncGenerateManager {
 }
 HdncGenerateManager.selfGenerate();
 /* ================================================== */
-/* ========================= :FACOOYA: ========================= */
+/* ========================= >FACOOYA ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
-/* ========================= ;FACOOYA; ========================= */
+/* ========================= <FACOOYA ========================= */

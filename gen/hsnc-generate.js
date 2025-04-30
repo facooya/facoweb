@@ -5,71 +5,43 @@
  */
 /* ================================================== */
 class HsncGenerateData {
-  /* Item Text */
+  static owTitle = "Our Websites";
+  static owTexts = [
+    "a.facooya.com",
+    "b.facooya.com",
+    "c.facooya.com",
+    "d.facooya.com"
+  ];
+  static owLinks = [
+    "#a.facooya.com",
+    "#b.facooya.com",
+    "#c.facooya.com",
+    "#d.facooya.com"
+  ];
+  /* ================================================== */
+  static auTitle = "About Us";
+  static auTexts = [
+    "Contact Us",
+    "Our Team",
+    "Our Work"
+  ];
+  static auLinks = [
+    "#",
+    "#",
+    "#"
+  ];
+  /* ================================================== */
   static itemTexts = [
-    "Tab 1 long long long long long long long long long long long long long long",
-    "Tab 2",
-    "Tab 3"
+    HsncGenerateData.owTitle,
+    HsncGenerateData.auTitle,
   ];
-  /* ================================================== */
-  /* Sub Item Text */
-  static subItemTextsTab1 = [
-    "item 1-1 long long long long long long long long long long",
-    "Item 1-2",
-    "Item 1-3",
-    "Item 1-4",
-    "Item 1-5",
-    "Item 1-6",
-    "Item 1-7",
-    "Item 1-8",
-    "Item 1-9",
-    "Item 1-10",
-    "Item 1-11",
-  ];
-  static subItemTextsTab2 = [
-    "Item 2-1",
-    "Item 2-2"
-  ];
-  static subItemTextsTab3 = [
-    "Item 3-1",
-    "Item 3-2",
-    "Item 3-3"
-  ];
-  /* ================================================== */
-  /* Sub Item Link */
-  static subItemLinksTab1 = [
-    "./doc-page.html",
-    "./doc-page.html",
-    "./doc-page.html",
-    "./doc-page.html",
-    "./doc-page.html",
-    "./doc-page.html",
-    "./doc-page.html",
-    "./doc-page.html",
-    "./doc-page.html",
-    "./doc-page.html",
-    "./doc-page.html"
-  ];
-  static subItemLinksTab2 = [
-    "./doc-page.html",
-    "./doc-page.html"
-  ];
-  static subItemLinksTab3 = [
-    "./doc-page.html",
-    "./doc-page.html",
-    "./doc-page.html"
-  ];
-  /* ================================================== */
-  /* Sub Item Text, Link Group */
   static subItemTextGroups = [
-    HsncGenerateData.subItemTextsTab1,
-    HsncGenerateData.subItemTextsTab2,
-    HsncGenerateData.subItemTextsTab3
+    HsncGenerateData.owTexts,
+    HsncGenerateData.auTexts,
   ];
   static subItemLinkGroups = [
-    HsncGenerateData.subItemLinksTab1,
-    HsncGenerateData.subItemLinksTab2,
-    HsncGenerateData.subItemLinksTab3
+    HsncGenerateData.owLinks,
+    HsncGenerateData.auLinks,
   ];
 }
 /* ================================================== */
@@ -142,10 +114,10 @@ class HsncGenerateManager {
 }
 HsncGenerateManager.selfGenerate();
 /* ================================================== */
-/* ========================= :FACOOYA: ========================= */
+/* ========================= >FACOOYA ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
-/* ========================= ;FACOOYA; ========================= */
+/* ========================= <FACOOYA ========================= */

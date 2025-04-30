@@ -4,7 +4,7 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
-class HsncConfigData {
+class HsncGenerateData {
   /* Item Text */
   static itemTexts = [
     "Tab 1 long long long long long long long long long long long long long long",
@@ -62,26 +62,29 @@ class HsncConfigData {
   /* ================================================== */
   /* Sub Item Text, Link Group */
   static subItemTextGroups = [
-    HsncConfigData.subItemTextsTab1,
-    HsncConfigData.subItemTextsTab2,
-    HsncConfigData.subItemTextsTab3
+    HsncGenerateData.subItemTextsTab1,
+    HsncGenerateData.subItemTextsTab2,
+    HsncGenerateData.subItemTextsTab3
   ];
   static subItemLinkGroups = [
-    HsncConfigData.subItemLinksTab1,
-    HsncConfigData.subItemLinksTab2,
-    HsncConfigData.subItemLinksTab3
+    HsncGenerateData.subItemLinksTab1,
+    HsncGenerateData.subItemLinksTab2,
+    HsncGenerateData.subItemLinksTab3
   ];
 }
 /* ================================================== */
-class HsncConfigManager {
-  static initGenerate() {
+class HsncGenerateManager {
+  static selfGenerate() {
     const frag = document.createDocumentFragment();
-    const hsnc = document.querySelector(".hsnc");
+    const header = document.querySelector(".h");
+    /* const hsnc = document.querySelector(".hsnc"); */
+    const hsnc = document.createElement("nav");
+    hsnc.setAttribute("class", "hsnc");
     /* List */
     const list = document.createElement("ul");
     list.setAttribute("class", "hsnc-list");
     /* Item */
-    const itemTexts = HsncConfigData.itemTexts;
+    const itemTexts = HsncGenerateData.itemTexts;
     for (let i = 0; i < itemTexts.length; i++) {
       const item = document.createElement("li");
       item.setAttribute("class", "item");
@@ -91,18 +94,16 @@ class HsncConfigManager {
       const itemText = document.createElement("span");
       itemText.setAttribute("class", "item-text");
       itemText.textContent = itemTexts[i];
-
       const itemRr = document.createElement("span");
       itemRr.setAttribute("class", "item-rr");
-
       const itemBr = document.createElement("span");
       itemBr.setAttribute("class", "item-br");
       itemContainer.append(itemText, itemRr, itemBr);
       /*  */
       const subList = document.createElement("ul");
       subList.setAttribute("class", "sub-list");
-      const subItemTexts = HsncConfigData.subItemTextGroups[i];
-      const subItemLinks = HsncConfigData.subItemLinkGroups[i];
+      const subItemTexts = HsncGenerateData.subItemTextGroups[i];
+      const subItemLinks = HsncGenerateData.subItemLinkGroups[i];
       for (let j = 0; j < subItemTexts.length; j++) {
         const subItem = document.createElement("li");
         subItem.setAttribute("class", "sub-item");
@@ -115,7 +116,6 @@ class HsncConfigManager {
         subItemText.textContent = subItemTexts[j];
         const subItemRr = document.createElement("span");
         subItemRr.setAttribute("class", "sub-item-rr");
-
         const subItemBr = document.createElement("span");
         subItemBr.setAttribute("class", "sub-item-br");
         /*  */
@@ -135,11 +135,12 @@ class HsncConfigManager {
     /* SGE */
     const sge = document.createElement("div");
     sge.setAttribute("class", "hsnc-sge");
-    frag.append(list, fogTr, fogBr, sge);
-    hsnc.append(frag);
+    hsnc.append(list, fogTr, fogBr, sge);
+    frag.append(hsnc);
+    header.append(frag);
   }
   /* ================================================== */
-  static tocCreate() {
+  static selfTocGenerate() {
     /* Only DPM */
     const frag = document.createDocumentFragment();
     const hsnc = document.querySelector(".hsnc");
@@ -191,23 +192,16 @@ class HsncConfigManager {
     list.insertBefore(frag, first);
   }
 }
-/* ================================================== */
-class HsncConfig {
-  static initGenerate() {
-    HsncConfigManager.initGenerate();
-  }
-  static tocCreate() {
-    /* Only DPM */
-    HsncConfigManager.tocCreate();
-  }
+HsncGenerateManager.selfGenerate();
+const TOC = document.querySelector(".dpmac-toc");
+if (TOC) {
+  HsncGenerateManager.selfTocGenerate();
 }
 /* ================================================== */
-export { HsncConfig };
-/* ================================================== */
-/* ========================= :FACOOYA: ========================= */
+/* ========================= >FACOOYA ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
-/* ========================= ;FACOOYA; ========================= */
+/* ========================= <FACOOYA ========================= */

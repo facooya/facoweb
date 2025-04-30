@@ -9,5 +9,5 @@ Makefile
 !.gitignore
 !.gitattributes
 
-!fwc/res/svg/*.svg
+!tmp_svg/*.svg
 !fwc/res/icon/*.svg

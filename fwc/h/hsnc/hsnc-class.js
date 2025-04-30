@@ -40,7 +40,7 @@ class HsncManager {
     /* Generate */
     /* HsncConfig.initGenerate(); */
     if (CoreConfig.pageType === 3) {
-      HsncConfig.tocCreate();
+      /* HsncConfig.tocCreate(); */
       const items = document.querySelectorAll(".hsnc-list .item");
       items[0].isToc = true;
     }
