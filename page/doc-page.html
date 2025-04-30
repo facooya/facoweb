@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="../fwc/dpm/dpmfc/dpmfc-ss.css">
     <link rel="stylesheet" href="../fwc/dpm/dpmfc/dpmfc-cl.css">
     <!-- DP: Option -->
-    <link href="../etc/c-ss.css" rel="stylesheet">
+    <link href="../gen/code-c-ss.css" rel="stylesheet">
   </head>
   <body class="b">
     <!-- ===== >Header: H ===== -->
@@ -71,6 +71,11 @@
               </a>
             </li>
             <li class="item">
+              <a class="link" href="#release-note">
+                <span class="text">Release Note</span>
+              </a>
+            </li>
+            <li class="item">
               <a class="link" href="#test-auto-tag">
                 <span class="text">Test auto tag</span>
               </a>
@@ -98,7 +103,7 @@
          -->
       <section class="toc dpmsc" id="back-to-top">
         <header>
-          <h1 class="title">Document Page v1.2.0-b</h1>
+          <h1 class="title">Document Page v1.2.0-rc</h1>
         </header>
         <!-- Chapter: note -->
         <article class="toc chapter" id="note">
@@ -115,15 +120,66 @@
             <a class="chapter-link" href="#update-note">Update Note</a>
           </h2>
           <section class="part">
-            <h3 class="part-title">Update by v1.2.0-b</h3>
+            <h3 class="part-title">Update by v1.2.0-rc</h3>
             <div class="unit">
-              <p>Optimize svg request. [Fail] (Will apply next version(v1.3.0).)</p>
+              <p>Release.</p>
             </div>
           </section>
           <section class="part">
-            <h3 class="part-title">Scheduled update for v1.2.0-rc</h3>
+            <h3 class="part-title">Scheduled update after v1.2.0</h3>
             <div class="unit">
-              <p>Release.</p>
+              <p>FWD update.</p>
+              <p>Index page update.</p>
+              <p>Auto tag color update.</p>
+              <p>Content files upgrade for "v1.2.0".</p>
+              <p>Always content update.</p>
+            </div>
+          </section>
+          <section class="part">
+            <h3 class="part-title">Scheduled update before v1.3.0</h3>
+            <div class="unit">
+              <p>code viewer tool svg update.</p>
+              <p>optimize svg request.</p>
+              <p>class common, hp, np, dp seperate.</p>
+              <p>class expends update.</p>
+              <p>Header, Footer, ... version seperate.</p>
+              <div class="spacer-y"></div>
+              <p>Theme: dark, light, hybrid.</p>
+              <p>Code Theme: dark, light.</p>
+              <div class="spacer-y"></div>
+              <p>User Personal Setting</p>
+            </div>
+          </section>
+        </article>
+        <!-- Chapter: release-note -->
+        <article class="toc chapter" id="release-note">
+          <h2 class="chapter-title">
+            <a class="chapter-link" href="#release-note">Release Note</a>
+          </h2>
+          <section class="part">
+            <h3 class="part-title">Release note by v1.2.0</h3>
+            <div class="unit">
+              <p>
+                I apologize for missing a few features in the v1.2.0 update.
+                Originally, I had planned to include dark/light mode and a code theme,
+                but unfortunately, they couldn't be implemented in this release.
+                Due to burnout, my work pace has slowed down,
+                and I plan to take some time off to recharge so I can deliver better features in the next version.
+              </p>
+              <div class="spacer-y"></div>
+              <p>
+                Previously, the header and footer were managed together,
+                but starting from v1.2.0 and onward,
+                they will be updated independently.
+                Once these independent updates are ready,
+                I will share the header and footer code as open-source on GitHub.
+              </p>
+              <div class="spacer-y"></div>
+              <p>
+                Before taking a break,
+                I will upgrade the content to align with v1.2.0,
+                and after that, I'll return.
+              </p>
             </div>
           </section>
         </article>
@@ -322,9 +378,15 @@ sum(5, 7) = 12</code></pre>
               </a>
             </li>
             <li class="item">
-              <a class="link" href="./nav-page.html">
+              <a class="link" href="#nav-page">
                 <p class="text">Version 1.2.0 Beta</p>
                 <p class="sub-text">v1.2.0-b [ nav-page ]</p>
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="./nav-page.html">
+                <p class="text">Version 1.2.0 Release Candidate</p>
+                <p class="sub-text">v1.2.0-rc [ nav-page ]</p>
               </a>
             </li>
           </ul>
@@ -467,29 +529,17 @@ sum(5, 7) = 12</code></pre>
           <ul class="control left-control">
             <li class="item first">
               <span class="icon first-icon"></span>
-              <!-- <svg class="icon first-icon">
-                <use href="../fwc/res/svg/sprites.svg#skip-page"></use>
-              </svg> -->
             </li>
             <li class="item previous">
               <span class="icon previous-icon"></span>
-              <!-- <svg class="icon previous-icon">
-                <use href="../fwc/res/svg/sprites.svg#step-page"></use>
-              </svg> -->
             </li>
           </ul>
           <ul class="control right-control">
             <li class="item next">
               <span class="icon next-icon"></span>
-              <!-- <svg class="icon next-icon">
-                <use href="../fwc/res/svg/sprites.svg#step-page"></use>
-              </svg> -->
             </li>
             <li class="item last">
               <span class="icon last-icon"></span>
-              <!-- <svg class="icon last-icon">
-                <use href="../fwc/res/svg/sprites.svg#skip-page"></use>
-              </svg> -->
             </li>
           </ul>
         </nav>
@@ -536,4 +586,3 @@ sum(5, 7) = 12</code></pre>
     <script src="../fwc/core/boot-dp.js" type="module"></script>
   </body>
 </html>
-

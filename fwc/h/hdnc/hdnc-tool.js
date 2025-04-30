@@ -127,92 +127,6 @@ class HdncToolSubList {
       subList.style.height = "";
     }
   }
-  /* ================================================== */
-  static updateSubListTransform_old(item) {
-    /* Only Tdst */
-    const screenType = CoreConfig.screenType;
-    const subList = item.querySelector(".sub-list");
-    const itemIndex = item.index;
-    /* Return */
-    if (screenType === 1) { return; }
-    else if (screenType === 3 && itemIndex === 3) {
-      /* AlignX Left */
-      const htbcSnr = document.querySelector(".htbc-snr");
-      if (htbcSnr.isActive) {
-        HdncToolSubList.updateSubListTransformOnlyDstLast_old(item, subList);
-        return;
-      }
-    }
-    /*  */
-    /* if (shouldDefault) {
-      subList.style.transform = `translateX(0)`;
-      item.isDefaultTransform = true;
-      HdncTool.updateChevronWrapperLeft(item);
-      return;
-    } */
-    /* AlignX Center */
-    const subListW = 320;
-    const itemW = item.offsetWidth;
-    const deltaW = subListW - itemW;
-    const calcL = -deltaW / 2;
-    subList.style.transform = `translateX(${calcL}px)`;
-    HdncTool.updateChevronWrapperLeft(item);
-
-    /* Define */
-    /* const buffer = 16;
-    const hsncWidth = 320;
-    const subListWidth = 320; */
-    /* hsncLeft */
-    /* const html = document.documentElement;
-    const htmlWidth = html.offsetWidth;
-    const hsncLeft = htmlWidth - (hsncWidth + buffer); */
-    /* subListRight */
-    /* const itemWidth = item.offsetWidth;
-    const deltaWidth = subListWidth - itemWidth;
-    const itemRect = item.getBoundingClientRect();
-    const subListRight = itemRect.right + (deltaWidth / 2); */
-    /* Default */
-    /* if (hsncLeft < subListRight) {
-      const calcLeft = -deltaWidth / 2;
-      subList.style.transform = `translateX(${calcLeft}px)`;
-      item.isDefaultTransform = false;
-    } else {
-      subList.style.transform = `translateX(0)`;
-      item.isDefaultTransform = true;
-    } */
-    /*  */
-    /* HdncTool.updateChevronWrapperLeft(item); */
-  }
-  /* -------------------------------------------------- */
-  static updateSubListTransformOnlyDstLast_old(item, subList) {
-    /* Only updateSubListTransform(!shouldDefault) */
-    /* Define */
-    const buffer = 16;
-    const hsncW = 320;
-    const subListW = 320;
-    /* hsncLeft */
-    const html = document.documentElement;
-    const htmlW = html.offsetWidth;
-    const hsncL = htmlW - (hsncW + buffer);
-    /* subListRight */
-    const itemW = item.offsetWidth;
-    const deltaW = subListW - itemW;
-    const itemRect = item.getBoundingClientRect();
-    const subListR = itemRect.right + (deltaW / 2);
-    /* Default */
-    if (hsncL < subListR) {
-      /* AlignX Left */
-      const calcX = -deltaW;
-      subList.style.transform = `translateX(${calcX}px)`;
-      item.isDefaultTransform = false;
-    } else {
-      /* AlignX Center */
-      const calcX = -deltaW / 2;
-      subList.style.transform = `translateX(${calcX}px)`;
-      item.isDefaultTransform = true;
-    }
-    HdncTool.updateChevronWrapperLeft(item);
-  }
 }
 /* ================================================== */
 class HdncToolSubItem {
@@ -311,9 +225,6 @@ class HdncTool {
   static updateSubListMaxHeight() {
     HdncToolSubList.updateSubListMaxHeight();
   }
-  /* static updateSubListTransform(item) {
-    HdncToolSubList.updateSubListTransform(item);
-  } */
   /* ================================================== */
   static timerSubItemContainer(item, shouldReset) {
     HdncToolSubItem.timerSubItemContainer(item, shouldReset);

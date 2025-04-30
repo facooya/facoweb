@@ -89,14 +89,14 @@ class DpmscHandler {
   static viewerToolCopyClick(event) {
     const toolCopy = event.currentTarget;
     const viewer = toolCopy.closest(".viewer");
-    const code = viewer.querySelector(".code");
+    const code = viewer.querySelector(".viewer-code");
     navigator.clipboard.writeText(code.textContent);
   }
   /* ================================================== */
   static snippetToolCopyClick(event) {
     const toolCopy = event.currentTarget;
     const snippet = toolCopy.closest(".snippet");
-    const code = snippet.querySelector(".code");
+    const code = snippet.querySelector(".snippet-code");
     navigator.clipboard.writeText(code.textContent);
   }
 }
