@@ -5,14 +5,14 @@
  */
 /* ================================================== */
 class DpmscConfigData {
-  static textData = {
+  /* static textData = {
     split: /(".*?(?<!\\)"|\/\*[\s\S]*?\*\/|'.*?')/,
     newline: /\n/,
     backslash: /\\./g,
     percent: /%./g
   };
   static findData = {
-    /* splitText: /(".*?(?<!\\)"|\/\*[\s\S]*?\*\/|'.*?')/, */
+    /* splitText: /(".*?(?<!\\)"|\/\*[\s\S]*?\*\/|'.*?')/, 
     dataType: /\b(void|int|float|char|return)\b/g,
     systemFunction: /\b(if|else|switch|while|for)\b/g,
     stdioFunction: /\bprintf\b/g,
@@ -26,7 +26,7 @@ class DpmscConfigData {
     orange: "<span class=\"orange\">$&</span>",
     blue: "<span class=\"blue\">$&</span>",
     yellow: "<span class=\"yellow\">$&</span>"
-  };
+  }; */
 }
 /* ================================================== */
 class DpmscConfigManager {
@@ -50,14 +50,14 @@ class DpmscConfigManager {
     });
   }
   /* -------------------------------------------------- */
-  static viewerCodeReplaceColor() {
+  /* static viewerCodeReplaceColor() {
     const dpmsc = document.querySelector(".dpmsc");
     const codes = dpmsc.querySelectorAll(".code");
-    /*  */
+    /*  
     const textData = DpmscConfig.textData;
     const findData = DpmscConfig.findData;
     const replaceData = DpmscConfig.replaceData;
-    /*  */
+    /*  
     for (let i = 0; i < codes.length; i++) {
       const getText = codes[i].innerHTML;
       const parts = getText.split(textData.split);
@@ -80,17 +80,17 @@ class DpmscConfigManager {
       }
       codes[i].innerHTML = parts.join("");
     }
-  }
+  } */
 }
 /* ================================================== */
 class DpmscConfig {
-  static textData = DpmscConfigData.textData;
+  /* static textData = DpmscConfigData.textData;
   static findData = DpmscConfigData.findData;
-  static replaceData = DpmscConfigData.replaceData;
+  static replaceData = DpmscConfigData.replaceData; */
   /* -------------------------------------------------- */
-  static viewerCodeReplaceColor() {
+  /* static viewerCodeReplaceColor() {
     DpmscConfigManager.viewerCodeReplaceColor();
-  }
+  } */
   static viewerLineNumberItemCreate() {
     DpmscConfigManager.viewerLineNumberItemCreate();
   }

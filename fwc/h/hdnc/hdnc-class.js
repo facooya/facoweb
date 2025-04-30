@@ -40,7 +40,7 @@ class HdncController {
 /* ================================================== */
 class HdncManager {
   static init() {
-    HdncConfig.initGenerate();
+    /* HdncConfig.initGenerate(); */
     HdncManager.initEvent();
     const items = document.querySelectorAll(".hdnc-list .item");
     for (let i = 0; i < items.length; i++) {

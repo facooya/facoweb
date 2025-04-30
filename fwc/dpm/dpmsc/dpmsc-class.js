@@ -30,7 +30,7 @@ class DpmscManager {
     DpmscManager.initEvent();
   }
   static load() {
-    DpmscConfig.viewerCodeReplaceColor();
+    /* DpmscConfig.viewerCodeReplaceColor(); */
     DpmscConfig.viewerLineNumberItemCreate();
   }
   static resizeDisplay() {

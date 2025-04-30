@@ -11,7 +11,8 @@ Please run it through a local web server and access it via **localhost**.
 
 ### Note:
 - License comments have been updated to **SPDX** format in all **CSS** and **JS** files.
-- All links have been updated to explicitly include the **html** extension.
+- All links have been updated to explicitly include the **HTML** extension.
 - The document path has been reorganized based on the project structure.
 - Icons and logos have been replaced with geometric shapes.
-- For the original update notes written at that time, please refer to the `tmp/doc-page.html` file.
+- The previously included **PHP** files and logic have been dismantled and are no longer part of the project.
+- For the original update notes written at that time, please refer to the `page/doc-page.html` file.

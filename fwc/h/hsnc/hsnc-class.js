@@ -38,7 +38,7 @@ class HsncController {
 class HsncManager {
   static init() {
     /* Generate */
-    HsncConfig.initGenerate();
+    /* HsncConfig.initGenerate(); */
     if (CoreConfig.pageType === 3) {
       HsncConfig.tocCreate();
       const items = document.querySelectorAll(".hsnc-list .item");

@@ -7,10 +7,10 @@
 class FngcConfigData {
   static owTitle = "Our Websites";
   static owTexts = [
-    "a.facooya.com",
+    "a.facooya.com [Coming Soon]",
     "b.facooya.com",
-    "c.facooya.com",
-    "d.facooya.com"
+    "c.facooya.com [Coming Soon]",
+    "d.facooya.com [Coming Soon]"
   ];
   static owLinks = [
     "#a.facooya.com",
@@ -43,10 +43,13 @@ class FngcConfigData {
   ];
 }
 /* ================================================== */
-class FngcConfigManager {
-  static initGenerate() {
+class FngcGenerateManager {
+  static selfGenerate() {
     const frag = document.createDocumentFragment();
-    const fngc = document.querySelector(".fngc");
+    const footer = document.querySelector(".f");
+    /* const fngc = document.querySelector(".fngc"); */
+    const fngc = document.createElement("nav");
+    fngc.setAttribute("class", "fngc");
     /*  */
     const titles = FngcConfigData.titles;
     for (let i = 0; i < titles.length; i++) {
@@ -69,6 +72,7 @@ class FngcConfigManager {
         const link = document.createElement("a");
         link.setAttribute("class", "link");
         link.setAttribute("href", links[j]);
+        link.setAttribute("target", "_blank");
         const text = document.createElement("span");
         text.setAttribute("class", "text");
         text.textContent = texts[j];
@@ -79,19 +83,14 @@ class FngcConfigManager {
       }
       /*  */
       section.append(title, list);
-      frag.append(section);
+      fngc.append(section);
     }
-    fngc.append(frag);
+    frag.append(fngc);
+    footer.prepend(frag);
   }
 }
 /* ================================================== */
-class FngcConfig {
-  static initGenerate() {
-    FngcConfigManager.initGenerate();
-  }
-}
-/* ================================================== */
-export { FngcConfig };
+FngcGenerateManager.selfGenerate();
 /* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

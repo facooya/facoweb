@@ -1,61 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+    <!-- TODO
+       - Update meta: description, robots
+       - Update title
+       - VERIFY link: Path & Option
+       -->
+    <!-- Meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- meta name="description" content="" -->
     <meta name="author" content="Facooya">
     <meta name="robots" content="noindex, nofollow">
+    <!-- Title -->
+		<title>Home Page - Facooya</title>
     <!--  -->
-		<title>Home Page</title>
-    <!--  -->
-    <link href="../fwc/core/core-ss.css" rel="stylesheet">
-    <link href="../fwc/h/htbc/htbc-ss.css" rel="stylesheet">
-    <link href="../fwc/h/hdnc/hdnc-ss.css" rel="stylesheet">
-    <link href="../fwc/h/hsnc/hsnc-ss.css" rel="stylesheet">
-    <link href="../fwc/h/htbc/htbc-cl.css" rel="stylesheet">
-    <link href="../fwc/h/hdnc/hdnc-cl.css" rel="stylesheet">
-    <link href="../fwc/h/hsnc/hsnc-cl.css" rel="stylesheet">
-    <link href="../fwc/h/hdnc/hdnc-i.css" rel="stylesheet">
-    <link href="../fwc/h/hsnc/hsnc-i.css" rel="stylesheet">
-    <link href="../fwc/f/fasc/fasc-ss.css" rel="stylesheet">
-    <link href="../fwc/f/fngc/fngc-ss.css" rel="stylesheet">
-    <link href="../fwc/f/fllc/fllc-ss.css" rel="stylesheet">
-    <link href="../fwc/f/fasc/fasc-i.css" rel="stylesheet">
-    <link href="../fwc/f/fngc/fngc-i.css" rel="stylesheet">
-    <link href="../fwc/f/fllc/fllc-i.css" rel="stylesheet">
-    <!--  -->
-    <link href="../fwc/hpm/hpmsc/hpmsc-ss.css" rel="stylesheet">
-    <!--  -->
-    <script src="../fwc/core/boot.js" type="module" defer></script>
+    <link rel="stylesheet" href="../fwc/core/core-ss.css">
+    <!-- -->
+    <link rel="stylesheet" href="../fwc/h/htbc/htbc-ss.css">
+    <link rel="stylesheet" href="../fwc/h/hdnc/hdnc-ss.css">
+    <link rel="stylesheet" href="../fwc/h/hsnc/hsnc-ss.css">
+    <link rel="stylesheet" href="../fwc/h/htbc/htbc-cl.css">
+    <link rel="stylesheet" href="../fwc/h/hdnc/hdnc-cl.css">
+    <link rel="stylesheet" href="../fwc/h/hsnc/hsnc-cl.css">
+    <link rel="stylesheet" href="../fwc/h/hdnc/hdnc-i.css">
+    <link rel="stylesheet" href="../fwc/h/hsnc/hsnc-i.css">
+    <!-- -->
+    <link rel="stylesheet" href="../fwc/f/fasc/fasc-ss.css">
+    <link rel="stylesheet" href="../fwc/f/fngc/fngc-ss.css">
+    <link rel="stylesheet" href="../fwc/f/fllc/fllc-ss.css">
+    <link rel="stylesheet" href="../fwc/f/fasc/fasc-i.css">
+    <link rel="stylesheet" href="../fwc/f/fngc/fngc-i.css">
+    <link rel="stylesheet" href="../fwc/f/fllc/fllc-i.css">
+    <!-- -->
+    <link rel="stylesheet" href="../fwc/hpm/hpmsc/hpmsc-ss.css">
+    <!-- Noscript -->
     <noscript>
       <link href="../fwc/core/noscript.css" rel="stylesheet">
     </noscript>
 	</head>
 	<body class="b">
+    <!-- ===== >Header: H ===== -->
     <header class="h"></header>
+    <!-- ===== <Header: H ===== -->
+    <!-- ===== >Main: M, HPM ===== -->
     <main class="m hpm">
+      <!-- === >HPMSC: MS === -->
       <section class="hpmsc">
         <div class="container">
           <span class="text">Facooya Web Version 1.2.0</span>
         </div>
       </section>
+      <!-- === <HPMSC: MS === -->
     </main>
+    <!-- ===== <Main: M, HPM ===== -->
+    <!-- ===== >Footer: F ===== -->
 		<footer class="f">
-      <!-- NoScript -->
-      <noscript>
-        <div class="noscript-main">
-          <span class="noscript-main-text">
-            This website requires JavaScript.<br>
-            Please enable JavaScript in your web browser.
-          </span>
-        </div>
-      </noscript>
-      <!-- NOTE 
+      <noscript class="noscript">
+				<link href="../etc/noscript.css" rel="stylesheet">
+				<div class="ns-container">
+					<p class="ns-text">This website requires JavaScript.</p>
+					<p class="ns-text">Please enable JavaScript in your web browser.</p>
+				</div>
+			</noscript>
+      <!-- ========================= >FACOOYA ========================= -->
+      <!-- NOTE
+         - B: Body
+         - H: Header
+         - M: Main
+         - F: Footer
          -->
       <!-- AUTHORSHIP
          - Founder: Facooya
          -->
+      <!-- COPYRIGHT
+         - Copyright 2024 Facooya.
+         -->
+      <!-- ========================= <FACOOYA ========================= -->
 		</footer>
+    <!-- ===== <Footer: F ===== -->
+    <!-- TODO
+       - VERIFY: Path & Option
+       -->
+    <!-- Header -->
+    <script src="../gen/hdnc-generate.js"></script>
+    <script src="../gen/hsnc-generate.js"></script>
+    <!-- Footer -->
+    <script src="../gen/fngc-generate.js"></script>
+    <!-- Boot -->
+    <script src="../fwc/core/boot-hp.js" type="module"></script>
 	</body>
 </html>

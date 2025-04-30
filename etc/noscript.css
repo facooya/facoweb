@@ -1,0 +1,35 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* ================================================== */
+.ns-container {
+  /* Position */
+  position: fixed;
+  left: 5%;
+  top: 50%;
+  z-index: 999;
+  /* Layout */
+  width: 90%;
+  padding: 16px;
+  transform: translateY(-50%);
+  /* Visual */
+  border-radius: 8px;
+  background-color: #ffff00;
+}
+.ns-text {
+  /* Layout */
+  text-align: center;
+  /* Visual */
+  color: #000000;
+}
+/* ================================================== */
+/* ========================= >FACOOYA ========================= */
+/* NOTE
+ * NS: NoScript
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+/* ========================= <FACOOYA ========================= */

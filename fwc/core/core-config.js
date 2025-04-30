@@ -11,31 +11,22 @@ class CoreConfigManager {
     /*  */
     const htbc = document.createElement("div");
     htbc.setAttribute("class", "htbc");
-    const hdnc = document.createElement("nav");
-    hdnc.setAttribute("class", "hdnc");
-    const hsnc = document.createElement("nav");
-    hsnc.setAttribute("class", "hsnc");
-    hFrag.append(htbc, hdnc, hsnc);
-    /* hFrag.append(htbc); */
-    h.append(hFrag);
+    hFrag.append(htbc);
+    h.prepend(hFrag);
   }
   /* ============================== */
   static footerGenerate() {
     const f = document.querySelector(".f");
     const fFrag = document.createDocumentFragment();
     /*  */
-    /* const fngc = document.createElement("nav");
-    fngc.setAttribute("class", "fngc"); */
     const fasc = document.createElement("section");
     fasc.setAttribute("class", "fasc");
     const fllc = document.createElement("nav");
     fllc.setAttribute("class", "fllc");
     /*  */
-    /* fFrag.append(fngc, fasc, fllc); */
     fFrag.append(fasc, fllc);
     const noscript = document.querySelector(".noscript");
     f.insertBefore(fFrag, noscript);
-    /* f.prepend(fFrag); */
   }
 }
 /* ================================================== */

@@ -8,17 +8,15 @@ class FllcConfigData {
   static links = [
     "#",
     "#",
-    "#",
     "#"
   ];
   static texts = [
     "Privacy Policy",
     "Terms of Use",
-    "Cookie Settings",
     "Legal"
   ];
   /*  */
-  static logoLink = "#facooya.com";
+  static logoLink = "#";
   static copyrightText = "Copyright 2023-2024 Facooya";
 }
 /* ================================================== */
@@ -75,10 +73,10 @@ class FllcConfig {
 /* ================================================== */
 export { FllcConfig };
 /* ================================================== */
-/* ========================= :FACOOYA: ========================= */
+/* ========================= >FACOOYA ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
  * Founder: Facooya
  */
-/* ========================= ;FACOOYA; ========================= */
+/* ========================= <FACOOYA ========================= */
