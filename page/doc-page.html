@@ -7,11 +7,9 @@
     <meta name="author" content="Facooya">
     <meta name="robots" content="noindex, nofollow">
     <!-- Title -->
-    <title>V1.1.22-A.9 Document page</title>
-    <!-- FWA-SS -->
-    <link href="../fwa/ss/fwa-root.css" rel="stylesheet">
-    <link href="../fwa/ss/fwa-ss.css" rel="stylesheet">
-    <link href="../fwc/b/b-ss.css" rel="stylesheet">
+    <title>V1.2.0-A Document page</title>
+    <!--  -->
+    <link href="../fwc/core/core-ss.css" rel="stylesheet">
     <link href="../fwc/h/htbc/htbc-ss.css" rel="stylesheet">
     <link href="../fwc/h/hdnc/hdnc-ss.css" rel="stylesheet">
     <link href="../fwc/h/hsnc/hsnc-ss.css" rel="stylesheet">
@@ -26,20 +24,24 @@
     <link href="../fwc/f/fasc/fasc-i.css" rel="stylesheet">
     <link href="../fwc/f/fngc/fngc-i.css" rel="stylesheet">
     <link href="../fwc/f/fllc/fllc-i.css" rel="stylesheet">
+    <!--  -->
     <link href="../fwc/dpm/dpmac/dpmac-ss.css" rel="stylesheet">
     <link href="../fwc/dpm/dpmsc/dpmsc-ss.css" rel="stylesheet">
     <link href="../fwc/dpm/dpmfc/dpmfc-ss.css" rel="stylesheet">
     <link href="../fwc/dpm/dpmfc/dpmfc-cl.css" rel="stylesheet">
     <link href="../fwc/dpm/opt/c-ss.css" rel="stylesheet">
-    <!-- script -->
-    <script src="../fwc/fwc.js" type="module"></script>
+    <!--  -->
+    <script src="../fwc/core/boot.js" type="module" defer></script>
     <!-- noscript -->
     <noscript>
-      <link href="../fwa/ss/fwa-noscript.css" rel="stylesheet">
+      <link href="../fwc/core/noscript.css" rel="stylesheet">
     </noscript>
   </head>
   <body class="b">
-    <header class="h"></header>
+    <header class="h">
+      <nav class="hdnc"></nav>
+      <nav class="hsnc"></nav>
+    </header>
     <main class="m dpm">
       <!-- .dpmac -->
       <aside class="dpmac">
@@ -83,7 +85,7 @@
       <section class="toc dpmsc" id="back-to-top">
         <!--  -->
         <header>
-          <h1 class="title">V1.1.22-A.9 Document Page</h1>
+          <h1 class="title">V1.2.0-A Document Page</h1>
         </header>
         <article class="toc chapter" id="note">
           <h2 class="chapter-title">
@@ -105,18 +107,51 @@
             </div>
           </section>
           <section class="part">
-            <h3 class="part-title">Update by v1.1.22-a.9</h3>
+            <h3 class="part-title">Update by v1.2.0-a</h3>
             <div class="unit">
+              <p>Removed FWA dependency.</p>
+              <p>B -> Core</p>
               <div class="spacer-y"></div>
-              <p>Fixed mobile overlay issue.</p>
-              <div class="spacer-y"></div>
-              <p>Upgraded home-page.</p>
+              <p>Updated HSNC "home-page" inside FNGC.</p>
+              <p>Tested List update. (Good)</p>
             </div>
           </section>
           <section class="part">
-            <h3 class="part-title">Scheduled update for v1.2.0-a</h3>
+            <h3 class="part-title">Scheduled update for v1.2.0-a.1</h3>
             <div class="unit">
-              <p>List update test.</p>
+              <p>Delete old files.</p>
+              <p>Inspection.</p>
+            </div>
+          </section>
+          <section class="part">
+            <h3 class="part-title">Scheduled update before v1.2.0</h3>
+            <div class="unit">
+              <p>dev.facooya.com version "1.2.0" upgrade prepare. (Inspection)</p>
+              <p>Apply "dev.facooya.com".</p>
+              <p>dev.facooya.com version "1.2.0" upgrade complete.</p>
+            </div>
+          </section>
+          <section class="part">
+            <h3 class="part-title">Scheduled update after v1.2.0</h3>
+            <div class="unit">
+              <p>FWD update.</p>
+              <p>Index page update.</p>
+              <p>Url error-page update.</p>
+              <p>Auto tag color update.</p>
+              <p>Content files upgrade for "v1.2.0".</p>
+              <p>Always content update.</p>
+            </div>
+          </section>
+          <section class="part">
+            <h3 class="part-title">Scheduled update before v1.3.0</h3>
+            <div class="unit">
+              <p>class common, hp, np, dp seperate.</p>
+              <p>class expends update.</p>
+              <div class="spacer-y"></div>
+              <p>Theme: dark, light, hybrid.</p>
+              <p>Code Theme: dark, light.</p>
+              <div class="spacer-y"></div>
+              <p>User Personal Setting</p>
             </div>
           </section>
         </article>
@@ -167,9 +202,9 @@ int main() {
                 </div>
               </div>
               <div class="spacer-y"></div>
-              <div class="result">
-                <div class="result-main">
-<pre class="result-console"><code>Text: Test text
+              <div class="output">
+                <div class="output-main">
+<pre class="output-console"><code>Text: Test text
 Text: Test text
 Don't select "int" int printf.</code></pre>
                 </div>
@@ -258,9 +293,9 @@ int main() {
                 </div>
               </div>
               <div class="spacer-y"></div>
-              <div class="result">
-                <div class="result-main">
-<pre class="result-console"><code>Hello code snippet
+              <div class="output">
+                <div class="output-main">
+<pre class="output-console"><code>Hello code snippet
 sum(5, 7) = 12</code></pre>
                 </div>
               </div>
@@ -278,7 +313,7 @@ sum(5, 7) = 12</code></pre>
         <nav class="dpmfc-tab">
           <ul class="list">
             <li class="item">
-              <div class="text">V1.1.22-A.* Nav Page</div>
+              <div class="text">V1.2.0* Nav Page</div>
             </li>
             <li class="item">
               <div class="text">V1.1.* Nav Page</div>
@@ -286,76 +321,16 @@ sum(5, 7) = 12</code></pre>
             <li class="item">
               <div class="text">V1.0.* Nav Page</div>
             </li>
-            <li class="item">
-              <div class="text">More Tab Test 1</div>
-            </li>
-            <li class="item">
-              <div class="text">Test Item 52</div>
-            </li>
           </ul>
         </nav>
         <!-- Navigation -->
         <nav class="dpmfc-navigation">
-          <!-- v1.1.22-* -->
+          <!-- v1.2.0* -->
           <ul class="list">
             <li class="item">
-              <a class="link" href="#nav-page">
-                <p class="text">[Nav] Version 1.1.22 Alpha</p>
-                <p class="sub-text">V1.1.22-A [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#nav-page">
-                <p class="text">[Nav] Version 1.1.22 Alpha.1</p>
-                <p class="sub-text">V1.1.22-A.1 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#nav-page">
-                <p class="text">[Nav] Version 1.1.22 Alpha.2</p>
-                <p class="sub-text">V1.1.22-A.2 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#nav-page">
-                <p class="text">[Nav] Version 1.1.22 Alpha.3</p>
-                <p class="sub-text">V1.1.22-A.3 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#nav-page">
-                <p class="text">[Nav] Version 1.1.22 Alpha.4</p>
-                <p class="sub-text">V1.1.22-A.4 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#nav-page">
-                <p class="text">[Nav] Version 1.1.22 Alpha.5</p>
-                <p class="sub-text">V1.1.22-A.5 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#nav-page">
-                <p class="text">[Nav] Version 1.1.22 Alpha.6</p>
-                <p class="sub-text">V1.1.22-A.6 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#nav-page">
-                <p class="text">[Nav] Version 1.1.22 Alpha.7</p>
-                <p class="sub-text">V1.1.22-A.7 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#nav-page">
-                <p class="text">[Nav] Version 1.1.22 Alpha.8</p>
-                <p class="sub-text">V1.1.22-A.8 [ nav-page ]</p>
-              </a>
-            </li>
-            <li class="item">
               <a class="link" href="./nav-page.html">
-                <p class="text">[Nav] Version 1.1.22 Alpha.9</p>
-                <p class="sub-text">V1.1.22-A.9 [ nav-page ]</p>
+                <p class="text">Version 1.2.0 Alpha</p>
+                <p class="sub-text">V1.2.0A [ nav-page ]</p>
               </a>
             </li>
           </ul>
@@ -478,7 +453,7 @@ sum(5, 7) = 12</code></pre>
             <li class="item">
               <a class="link" href="#nav-page">
                 <p class="text">[Nav] Version 1.1.22 Alpha</p>
-                <p class="sub-text">V1.1.20-A [ nav-page ]</p>
+                <p class="sub-text">V1.1.22-A [ nav-page ]</p>
               </a>
             </li>
           </ul>
@@ -488,330 +463,6 @@ sum(5, 7) = 12</code></pre>
               <a class="link" href="#nav-page">
                 <p class="text">[Main] Version 1.0.0</p>
                 <p class="sub-text">V1.0.0 [ main_page_v1.0.0 ]</p>
-              </a>
-            </li>
-          </ul>
-          <!-- More Tab 1 -->
-          <ul class="list">
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">More Tab Item 1</p>
-                <p class="sub-text">Text</p>
-              </a>
-            </li>
-          </ul>
-          <!-- Test Item 52 -->
-          <ul class="list">
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 1 Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long</p>
-                <p class="sub-text">Page test Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long Long</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 2</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 3</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 4</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 5</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 6</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 7</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 8</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 9</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 10</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 11</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 12</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 13</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 14</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 15</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 16</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 17</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 18</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 19</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 20</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 21</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 22</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 23</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 24</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 25</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 26</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 27</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 28</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 29</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 30</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 31</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 32</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 33</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 34</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 35</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 36</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 37</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 38</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 39</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 40</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 41</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 42</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 43</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 44</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 45</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 46</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 47</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 48</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 49</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 50</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 51</p>
-                <p class="sub-text">Item Text</p>
-              </a>
-            </li>
-            <li class="item">
-              <a class="link" href="#">
-                <p class="text">Item 52</p>
-                <p class="sub-text">Item Text</p>
               </a>
             </li>
           </ul>

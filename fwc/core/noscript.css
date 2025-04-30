@@ -3,9 +3,10 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
+/* ================================================== */
 .noscript-main {
   position: fixed;
-  top: 0rem;
+  top: 0;
   z-index: 100;
 
   width: 100%;
@@ -17,13 +18,15 @@
 }
 .noscript-main-text {
   padding: 1rem;
-  
   border-radius: 0.5rem;
   color: #000000;
   background-color: #FFFF00;
 }
+/* ================================================== */
+/* ========================= :FACOOYA: ========================= */
 /* NOTE
  */
 /* AUTHORSHIP
- * Facooya: Founder
+ * Founder: Facooya
  */
+/* ========================= ;FACOOYA; ========================= */

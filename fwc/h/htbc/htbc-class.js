@@ -3,10 +3,8 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-import {
-  BodyAccessor,
-  BodyConfig,
-} from "../../fwc-hub.js";
+import { CoreConfig } from "../../core/core-config.js";
+import { CoreAccessor } from "../../core/core-class.js";
 /* -------------------------------------------------- */
 import { HtbcConfig } from "./htbc-config.js";
 /* -------------------------------------------------- */
@@ -58,13 +56,13 @@ class HtbcManager {
     snr.isActive = false;
     snr.addEventListener("click", HtbcHandler.snrClick);
     /*  */
-    if (BodyConfig.screenType === 1) {
+    if (CoreConfig.screenType === 1) {
       const dnr = document.querySelector(".htbc-dnr");
       dnr.isActive = false;
       dnr.addEventListener("click", HtbcHandler.dnrClick);
       const overlay = document.querySelector(".htbc-overlay");
       overlay.addEventListener("click", HtbcHandler.overlayClick);
-    } else if (BodyConfig.screenType >= 2) {
+    } else if (CoreConfig.screenType >= 2) {
       const snrItem = snr.querySelector(".snr-item");
       snrItem.addEventListener("transitionend", HtbcHandler.snrItemTransitionEnd);
     }
@@ -73,19 +71,19 @@ class HtbcManager {
   static resizeEvent() {
     const dnr = document.querySelector(".htbc-dnr");
     const overlay = document.querySelector(".htbc-overlay");
-    if (BodyConfig.screenType === 1) {
+    if (CoreConfig.screenType === 1) {
       dnr.isActive = false;
       dnr.addEventListener("click", HtbcHandler.dnrClick);
       overlay.addEventListener("click", HtbcHandler.overlayClick);
-    } else if (BodyConfig.previousScreenType === 1) {
+    } else if (CoreConfig.previousScreenType === 1) {
       dnr.removeEventListener("click", HtbcHandler.dnrClick);
       overlay.removeEventListener("click", HtbcHandler.overlayClick);
     }
     /*  */
     const snrItem = document.querySelector(".htbc-snr .snr-item");
-    if (BodyConfig.screenType >= 2) {
+    if (CoreConfig.screenType >= 2) {
       snrItem.addEventListener("transitionend", HtbcHandler.snrItemTransitionEnd);
-    } else if (BodyConfig.previousScreenType >= 2) {
+    } else if (CoreConfig.previousScreenType >= 2) {
       snrItem.removeEventListener("transitionend", HtbcHandler.snrItemTransitionEnd);
     }
   }
@@ -141,11 +139,11 @@ class HtbcHandler {
     const snrActiveClass = "snr-active";
     let shouldActive = false;
     let action = "remove";
-    let screenType = BodyConfig.previousScreenType;
+    let screenType = CoreConfig.previousScreenType;
     if (!snr.isActive) {
       shouldActive = true;
       action = "add";
-      screenType = BodyConfig.screenType;
+      screenType = CoreConfig.screenType;
     }
     /*  */
     if (shouldActive) {
@@ -200,9 +198,9 @@ class HtbcHandler {
         }
       });
       /*  */
-      if (BodyConfig.pageType === 3) {
+      if (CoreConfig.pageType === 3) {
         DpmacConfig.updateTocPosition();
-        BodyAccessor.onScroll();
+        CoreAccessor.onScroll();
       }
     }
   }
@@ -241,7 +239,7 @@ class HtbcLogic {
     const logoFacooya = htbc.querySelector(".htbc-logo .logo-facooya");
     const miniClass = "mini";
     /* HMI */
-    if (BodyConfig.screenType !== 1) { logoFacooya.classList.remove(miniClass); return; }
+    if (CoreConfig.screenType !== 1) { logoFacooya.classList.remove(miniClass); return; }
     /* Calculation Logo Area Width */
     const htbcWidth = htbc.offsetWidth;
     const nrWidth = 64;
@@ -280,7 +278,6 @@ class HtbcLogic {
     const deltaW = hdncSubListW - itemW;
     const itemRect = item.getBoundingClientRect();
     const subListR = itemRect.right + (deltaW / 2);
-    console.log(hsncL, subListR);
     /* Main */
     if (hsncL < subListR) {
       hdncSubList.classList.add(alignX_RightClass);

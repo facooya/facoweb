@@ -4,9 +4,7 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
-import {
-  BodyConfig
-} from "../../fwc-hub.js";
+import { CoreConfig } from "../../core/core-config.js";
 /* ================================================== */
 class DpmacConfigManager {
   static updateTocPosition() {
@@ -15,7 +13,7 @@ class DpmacConfigManager {
 
     const buffer = 8;
     let scrollMarginTop = 64 + buffer;
-    if (BodyConfig.screenType === 2) {
+    if (CoreConfig.screenType === 2) {
       scrollMarginTop = 128 + buffer;
     }
 

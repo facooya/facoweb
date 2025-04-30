@@ -6,46 +6,36 @@
 /* ================================================== */
 import { CoreConfig } from "../../core/core-config.js";
 /* -------------------------------------------------- */
-import { HsncConfig } from "./hsnc-config.js";
-import { HsncTool } from "./hsnc-tool.js";
-/* -------------------------------------------------- */
-import { DpmacConfig, DpmacAccessor } from "../../dpm/dpm-hub.js";
+import { HsncNpConfig } from "./hsnc-np-config.js";
+import { HsncTool } from "../hsnc-tool.js";
 /* ================================================== */
-class HsncAccessor {
+class HsncNpAccessor {
   static itemCloseAll() {
-    HsncLogic.itemCloseAll();
-  }
-  static subItemLr() {
-    HsncTool.subItemLr();
+    HsncNpLogic.itemCloseAll();
   }
 }
 /* ================================================== */
-class HsncController {
+class HsncNpController {
   static init() {
-    HsncManager.init();
+    HsncNpManager.init();
   }
   static load() {
-    HsncManager.load();
+    HsncNpManager.load();
   }
   static resizeDisplay() {
-    HsncManager.resizeDisplay();
+    HsncNpManager.resizeDisplay();
   }
   static resizeSensor() {
-    HsncManager.resizeSensor();
+    HsncNpManager.resizeSensor();
   }
 }
 /* ================================================== */
-class HsncManager {
+class HsncNpManager {
   static init() {
     /* Generate */
-    HsncConfig.initGenerate();
-    if (CoreConfig.pageType === 3) {
-      HsncConfig.tocCreate();
-      const items = document.querySelectorAll(".hsnc-list .item");
-      items[0].isToc = true;
-    }
+    HsncNpConfig.initGenerate();
     /* Event */
-    HsncManager.initEvent();
+    HsncNpManager.initEvent();
     /* Initial */
     const items = document.querySelectorAll(".hsnc-list .item");
     for (let i = 0; i < items.length; i++) {
@@ -63,27 +53,23 @@ class HsncManager {
   static load() {
     const items = document.querySelectorAll(".hsnc-list .item");
     items.forEach(item => {
-      if (!item.isToc) {
-        HsncLogic.subItemContainerTools(item);
-      }
+      HsncNpLogic.subItemContainerTools(item);
     });
   }
   /* -------------------------------------------------- */
   static resizeDisplay() {
     const items = document.querySelectorAll(".hsnc-list .item");
     items.forEach(item => {
-      if (!item.isToc) {
-        HsncLogic.subItemContainerTools(item);
-      }
+      HsncNpLogic.subItemContainerTools(item);
     });
-    HsncHandler.scroll();
+    HsncNpHandler.scroll();
   }
   /* -------------------------------------------------- */
   static resizeSensor() {
     const items = document.querySelectorAll(".hsnc-list .item");
     items.forEach(item => {
-      if (item.isOpen && !item.isToc) {
-        HsncLogic.subItemContainerTools(item);
+      if (item.isOpen) {
+        HsncNpLogic.subItemContainerTools(item);
         if (CoreConfig.isTouchDevice) {
           const subItemBrs = item.querySelectorAll(".sub-item-br");
           subItemBrs.forEach(subItemBr => {
@@ -92,7 +78,7 @@ class HsncManager {
         }
       }
     });
-    HsncHandler.scroll();
+    HsncNpHandler.scroll();
   }
   /* ================================================== */
   static initEvent() {
@@ -102,37 +88,22 @@ class HsncManager {
     const subLists = list.querySelectorAll(".sub-list");
     /*  */
     itemContainers.forEach(container => {
-      container.addEventListener("click", HsncHandler.itemContainerClick);
+      container.addEventListener("click", HsncNpHandler.itemContainerClick);
     });
     subLists.forEach(list => {
-      list.addEventListener("transitionend", HsncHandler.subListTransitionEnd);
+      list.addEventListener("transitionend", HsncNpHandler.subListTransitionEnd);
     });
-    /* Only DP */
-    if (items[0].isToc) {
-      const subItemContainers = subLists[0].querySelectorAll(".sub-item-container");
-      subItemContainers.forEach(container => {
-        container.addEventListener("click", HsncHandler.subItemContainerClick);
-      });
-    }
     /*  */
     const hsnc = document.querySelector(".hsnc");
-    hsnc.addEventListener("scroll", HsncHandler.scroll);
+    hsnc.addEventListener("scroll", HsncNpHandler.scroll);
     /*  */
     if (!CoreConfig.isTouchDevice) {
       items.forEach(item => {
-        if (!item.isToc) {
-          const subItemContainers = item.querySelectorAll(".sub-item-container");
-          subItemContainers.forEach(container => {
-            container.addEventListener("mouseenter", HsncHandler.subItemContainerHover);
-            container.addEventListener("mouseleave", HsncHandler.subItemContainerHover);
-          });
-        } else if (item.isToc) {
-          const subItemContainers = item.querySelectorAll(".sub-item-container");
-          subItemContainers.forEach(container => {
-            container.addEventListener("mouseenter", HsncHandler.tocSubItemContainerHover);
-            container.addEventListener("mouseleave", HsncHandler.tocSubItemContainerHover);
-          })
-        }
+        const subItemContainers = item.querySelectorAll(".sub-item-container");
+        subItemContainers.forEach(container => {
+          container.addEventListener("mouseenter", HsncNpHandler.subItemContainerHover);
+          container.addEventListener("mouseleave", HsncNpHandler.subItemContainerHover);
+        });
       });
     }
   }
@@ -142,7 +113,7 @@ class HsncManager {
   }
 }
 /* ================================================== */
-class HsncHandler {
+class HsncNpHandler {
   static itemContainerClick(event) {
     const itemContainer = event.currentTarget;
     const item = itemContainer.closest(".item");
@@ -164,12 +135,9 @@ class HsncHandler {
     if (shouldOpen) {
       const calcSubListHeight = subItems.length * 64;
       subList.style.height = `${calcSubListHeight}px`;
-      if (item.isToc) {
-        HsncTool.subItemLr();
-      }
     } else {
       subList.style.height = "";
-      if (!item.isToc && CoreConfig.isTouchDevice) {
+      if (CoreConfig.isTouchDevice) {
         HsncTool.subItemContainerTimer(item, true);
         const subItemBrs = item.querySelectorAll(".sub-item-br");
         subItemBrs.forEach(subItemBr => {
@@ -179,7 +147,7 @@ class HsncHandler {
     }
     /*  */
     if (!CoreConfig.isTouchDevice) {
-      HsncLogic.itemContainerSetHoverLock(item, shouldOpen);
+      HsncNpLogic.itemContainerSetHoverLock(item, shouldOpen);
     }
     /*  */
     item.classList[action](open);
@@ -200,12 +168,12 @@ class HsncHandler {
       && event.propertyName === "height"
     ) {
       const item = subList.closest(".item");
-      if (item.isOpen && !item.isToc && CoreConfig.isTouchDevice) {
-        HsncLogic.subItemContainerTools(item);
+      if (item.isOpen && CoreConfig.isTouchDevice) {
+        HsncNpLogic.subItemContainerTools(item);
         HsncTool.subItemContainerTimer(item);
-      } else if (item.isOpen && !item.isToc) {
+      } else if (item.isOpen) {
         /* HMI */
-        HsncLogic.subItemContainerTools(item);
+        HsncNpLogic.subItemContainerTools(item);
         const subItemContainers = item.querySelectorAll(".sub-item-container");
         subItemContainers.forEach(subItemContainer => {
           if (subItemContainer.isHover) {
@@ -214,7 +182,7 @@ class HsncHandler {
           }
         });
       }
-      HsncHandler.scroll();
+      HsncNpHandler.scroll();
     }
   }
   /* -------------------------------------------------- */
@@ -232,31 +200,6 @@ class HsncHandler {
       subItemBr.style.width = "";
       subItemContainer.isHover = false;
     }
-  }
-  /* -------------------------------------------------- */
-  static tocSubItemContainerHover(event) {
-    /* Only TOC */
-    const eventType = event.type;
-    const subItemContainer = event.currentTarget;
-    const subItemText = subItemContainer.querySelector(".sub-item-text");
-    /*  */
-    if (eventType === "mouseenter") {
-      subItemText.style.marginRight = "-12px";
-    } else if (eventType === "mouseleave") {
-      subItemText.style.marginRight = "0";
-    }
-  }
-  /* -------------------------------------------------- */
-  static subItemContainerClick(event) {
-    /* Only DP */
-    const subItemContainer = event.currentTarget;
-    const subItem = subItemContainer.closest(".sub-item");
-
-    const hash = subItemContainer.hash;
-    DpmacAccessor.tocHashReplace(hash);
-    DpmacConfig.tocIndex = subItem.index;
-
-    HsncTool.subItemLr();
   }
   /* -------------------------------------------------- */
   static scroll() {
@@ -286,14 +229,14 @@ class HsncHandler {
   }
 }
 /* ================================================== */
-class HsncLogic {
+class HsncNpLogic {
   static itemCloseAll() {
     const items = document.querySelectorAll(".hsnc-list .item");
     items.forEach(item => {
       if (item.isOpen) {
         const itemContainer = item.querySelector(".item-container");
         const modifyEvent = { currentTarget: itemContainer };
-        HsncHandler.itemContainerClick(modifyEvent);
+        HsncNpHandler.itemContainerClick(modifyEvent);
       }
     });
   }
@@ -319,7 +262,7 @@ class HsncLogic {
   }
 }
 /* ================================================== */
-export { HsncAccessor, HsncController };
+export { HsncNpAccessor, HsncNpController };
 /* ================================================== */
 /* ========================= :FACOOYA: ========================= */
 /* NOTE

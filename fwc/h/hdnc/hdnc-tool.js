@@ -4,13 +4,13 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
-import { BodyConfig } from "../../fwc-hub.js";
+import { CoreConfig } from "../../core/core-config.js";
 /* ================================================== */
 class HdncToolChevron {
   static updateChevronWrapperLeft(item) {
     /* Only Tdst && height > max-height */
     /* HMI */
-    const screenType = BodyConfig.screenType;
+    const screenType = CoreConfig.screenType;
     if (screenType === 1) { return; }
     /*  */
     const itemIndex = item.index;
@@ -56,7 +56,7 @@ class HdncToolChevron {
   /* ================================================== */
   static updateChevronWrapperLeft_delete(item) {
     /* Only Tdst && height > max-height */
-    const screenType = BodyConfig.screenType;
+    const screenType = CoreConfig.screenType;
     if (screenType === 1) { return; }
     /*  */
     const subList = item.querySelector(".sub-list");
@@ -77,7 +77,7 @@ class HdncToolChevron {
   static updateChevronBrWrapperTop(item) {
     /* Only Tdst && height > max-height */
     /* HMI */
-    const screenType = BodyConfig.screenType;
+    const screenType = CoreConfig.screenType;
     if (screenType === 1) { return; }
     /*  */
     const subList = item.querySelector(".sub-list");
@@ -98,7 +98,7 @@ class HdncToolSubList {
   static updateSubListMaxHeight() {
     const hdnc = document.querySelector(".hdnc");
     const subLists = hdnc.querySelectorAll(".sub-list");
-    const screenType = BodyConfig.screenType;
+    const screenType = CoreConfig.screenType;
     /*  */
     if (screenType === 1) {
       subLists.forEach(subList => {
@@ -130,7 +130,7 @@ class HdncToolSubList {
   /* ================================================== */
   static updateSubListTransform_old(item) {
     /* Only Tdst */
-    const screenType = BodyConfig.screenType;
+    const screenType = CoreConfig.screenType;
     const subList = item.querySelector(".sub-list");
     const itemIndex = item.index;
     /* Return */

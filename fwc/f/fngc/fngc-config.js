@@ -5,6 +5,20 @@
  */
 /* ================================================== */
 class FngcConfigData {
+  static owTitle = "Our Websites";
+  static owTexts = [
+    "a.facooya.com",
+    "b.facooya.com",
+    "c.facooya.com",
+    "d.facooya.com"
+  ];
+  static owLinks = [
+    "#a.facooya.com",
+    "#b.facooya.com",
+    "#c.facooya.com",
+    "#d.facooya.com"
+  ];
+  /* ================================================== */
   static auTitle = "About Us";
   static auTexts = [
     "Contact Us",
@@ -17,31 +31,17 @@ class FngcConfigData {
     "#"
   ];
   /* ================================================== */
-  static osTitle = "Our Services";
-  static osTexts = [
-    "a.facooya.com",
-    "b.facooya.com",
-    "c.facooya.com",
-    "d.facooya.com"
-  ];
-  static osLinks = [
-    "#a.facooya.com",
-    "#b.facooya.com",
-    "#c.facooya.com",
-    "#d.facooya.com"
-  ];
-  /* ================================================== */
   static titles = [
+    FngcConfigData.owTitle,
     FngcConfigData.auTitle,
-    FngcConfigData.osTitle
   ];
   static textGroups = [
+    FngcConfigData.owTexts,
     FngcConfigData.auTexts,
-    FngcConfigData.osTexts
   ];
   static linkGroups = [
+    FngcConfigData.owLinks,
     FngcConfigData.auLinks,
-    FngcConfigData.osLinks
   ];
 }
 /* ================================================== */

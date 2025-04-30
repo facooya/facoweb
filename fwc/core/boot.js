@@ -4,15 +4,13 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
-import {
-  BodyConfig,
-  BodyController
-} from "./fwc-hub.js";
+import { CoreConfig } from "./core-config.js";
+import { CoreController } from "./core-class.js";
 /* -------------------------------------------------- */
-import { HeaderController } from "./h/h-class.js";
-import { FooterController } from "./f/f-class.js";
-import { NpmController } from "./npm/npm-class.js";
-import { DpmController } from "./dpm/dpm-class.js";
+import { HeaderController } from "../h/h-class.js";
+import { FooterController } from "../f/f-class.js";
+import { NpmController } from "../npm/npm-class.js";
+import { DpmController } from "../dpm/dpm-class.js";
 /* ================================================== */
 class FwcController {
   static init() {
@@ -31,13 +29,13 @@ class FwcController {
 /* ================================================== */
 class FwcManager {
   static init() {
-    BodyController.init();
+    CoreController.init();
     /* -------------------------------------------------- */
     HeaderController.init();
     /* -------------------------------------------------- */
     FooterController.init();
     /* -------------------------------------------------- */
-    switch (BodyConfig.pageType) {
+    switch (CoreConfig.pageType) {
       case 1: {
         break;
       }
@@ -52,13 +50,13 @@ class FwcManager {
     }
   }
   static load() {
-    BodyController.load();
+    CoreController.load();
     /* -------------------------------------------------- */
     HeaderController.load();
     /* -------------------------------------------------- */
     FooterController.load();
     /* -------------------------------------------------- */
-    switch (BodyConfig.pageType) {
+    switch (CoreConfig.pageType) {
       case 1: {
         break;
       }
@@ -73,13 +71,13 @@ class FwcManager {
     }
   }
   static resizeDisplay() {
-    BodyController.resizeDisplay();
+    CoreController.resizeDisplay();
     /* -------------------------------------------------- */
     HeaderController.resizeDisplay();
     /* -------------------------------------------------- */
     FooterController.resizeDisplay();
     /* -------------------------------------------------- */
-    switch (BodyConfig.pageType) {
+    switch (CoreConfig.pageType) {
       case 1: {
         break;
       }
@@ -94,13 +92,13 @@ class FwcManager {
     }
   }
   static resizeSensor() {
-    BodyController.resizeSensor();
+    CoreController.resizeSensor();
     /* -------------------------------------------------- */
     HeaderController.resizeSensor();
     /* -------------------------------------------------- */
     FooterController.resizeSensor();
     /* -------------------------------------------------- */
-    switch (BodyConfig.pageType) {
+    switch (CoreConfig.pageType) {
       case 1: {
         break;
       }

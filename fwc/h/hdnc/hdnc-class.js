@@ -4,7 +4,7 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
-import { BodyConfig } from "../../fwc-hub.js";
+import { CoreConfig } from "../../core/core-config.js";
 /* -------------------------------------------------- */
 import { HdncConfig } from "./hdnc-config.js";
 import { HdncTool } from "./hdnc-tool.js";
@@ -60,7 +60,7 @@ class HdncManager {
   }
   /* -------------------------------------------------- */
   static resizeDisplay() {
-    if (BodyConfig.previousScreenType >= 2) {
+    if (CoreConfig.previousScreenType >= 2) {
       HdncLogic.itemCloseAll();
     }
     HdncManager.resizeEvent();
@@ -72,13 +72,13 @@ class HdncManager {
     items.forEach(item => {
       if (item.isOpen) {
         HdncLogic.subItemContainerTools(item);
-        if (BodyConfig.isTouchDevice) {
+        if (CoreConfig.isTouchDevice) {
           /* HMI: isOpen */
           const subItemBrs = item.querySelectorAll(".sub-item-br");
           subItemBrs.forEach(subItemBr => {
             subItemBr.style.width = `${subItemBr.width}px`;
           });
-        } else if (!BodyConfig.isTouchDevice) {
+        } else if (!CoreConfig.isTouchDevice) {
           /* HMI: isOpen && isHover */
           const subItemContainers = item.querySelectorAll(".sub-item-container");
           subItemContainers.forEach(subItemContainer => {
@@ -97,8 +97,8 @@ class HdncManager {
   static initEvent() {
     const hdnc = document.querySelector(".hdnc");
     const list = hdnc.querySelector(".hdnc-list");
-    const screenType = BodyConfig.screenType;
-    const isTouchDevice = BodyConfig.isTouchDevice;
+    const screenType = CoreConfig.screenType;
+    const isTouchDevice = CoreConfig.isTouchDevice;
     /*  */
     const subLists = list.querySelectorAll(".sub-list");
     subLists.forEach(subList => {
@@ -138,9 +138,9 @@ class HdncManager {
   static resizeEvent() {
     const hdnc = document.querySelector(".hdnc");
     const list = hdnc.querySelector(".hdnc-list");
-    const screenType = BodyConfig.screenType;
-    const previousScreenType = BodyConfig.previousScreenType;
-    const isTouchDevice = BodyConfig.isTouchDevice;
+    const screenType = CoreConfig.screenType;
+    const previousScreenType = CoreConfig.previousScreenType;
+    const isTouchDevice = CoreConfig.isTouchDevice;
     /*  */
     if (previousScreenType === 1) {
       hdnc.removeEventListener("scroll", HdncHandler.scroll);
@@ -212,12 +212,12 @@ class HdncHandler {
     const openClass = "open";
     let shouldOpen = false;
     let clType = "remove";
-    let isTouchDevice = BodyConfig.isTouchDevice;
-    let screenType = BodyConfig.previousScreenType;
+    let isTouchDevice = CoreConfig.isTouchDevice;
+    let screenType = CoreConfig.previousScreenType;
     if (!item.isOpen) {
       shouldOpen = true;
       clType = "add";
-      screenType = BodyConfig.screenType;
+      screenType = CoreConfig.screenType;
     }
     /*  */
     if (shouldOpen) {
@@ -233,7 +233,7 @@ class HdncHandler {
         }
       }
     } else if (!shouldOpen) {
-      if (BodyConfig.isTouchDevice) {
+      if (CoreConfig.isTouchDevice) {
         HdncTool.timerSubItemContainer(item, true);
         const subItemBrs = item.querySelectorAll(".sub-item-br");
         subItemBrs.forEach(subItemBr => {
@@ -245,7 +245,7 @@ class HdncHandler {
       }
     }
     /*  */
-    if (!BodyConfig.isTouchDevice) {
+    if (!CoreConfig.isTouchDevice) {
       HdncLogic.itemContainerSetHoverLock(item, shouldOpen);
     }
     /*  */
@@ -273,7 +273,7 @@ class HdncHandler {
       /*  */
       if (item.isOpen) {
         HdncLogic.subItemContainerTools(item);
-        if (BodyConfig.isTouchDevice) {
+        if (CoreConfig.isTouchDevice) {
           HdncTool.timerSubItemContainer(item);
         } else {
           const subItemContainers = item.querySelectorAll(".sub-item-container");
@@ -328,7 +328,7 @@ class HdncHandler {
   static scroll() {
     /* ForMst */
     const hdnc = document.querySelector(".hdnc");
-    const screenType = BodyConfig.screenType;
+    const screenType = CoreConfig.screenType;
     if (screenType === 1) {
       const fogTr = hdnc.querySelector(".hdnc-fog-tr");
       const fogBr = hdnc.querySelector(".hdnc-fog-br");

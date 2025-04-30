@@ -27,7 +27,7 @@ class FngcController {
 /* ================================================== */
 class FngcManager {
   static init() {
-    FngcConfig.initGenerate();
+    /* FngcConfig.initGenerate(); */
   }
   /* static load() {
 
