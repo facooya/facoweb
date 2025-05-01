@@ -1,5 +1,6 @@
 # FACOWEB - FACOoya WEB
-Archive done.
+assets - icons, styles  
+components - header-content, footer-content, code-viewer, pagination-view, tab-view  
 
 ### Note:
 - components/components.html

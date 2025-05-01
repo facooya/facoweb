@@ -5,7 +5,7 @@
  */
 /* ================================================== */
 const TabViewData = {
-  title: "C",
+  title: "Tab view title",
   group: {
     "Tab 1": {
       "Item 1-1": {

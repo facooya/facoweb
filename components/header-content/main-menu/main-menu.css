@@ -88,7 +88,7 @@
   margin-right: 24px;
   /* Visual */
   background: #ffffff;
-  mask-image: url("../../../fwc/res/icons/wide-caret.svg");
+  mask-image: url("/assets/icons/wide-caret.svg");
   transform: rotate(180deg);
   transition: transform 300ms;
 }
@@ -172,7 +172,7 @@
   /*  */
   opacity: 0;
   background-color: #ffffff;
-  mask-image: url("../../../fwc/res/icons/caret.svg");
+  mask-image: url("/assets/icons/caret.svg");
   transform: scale(0, 0) rotate(90deg);
   transition:
     left 300ms,
@@ -321,7 +321,7 @@
     margin: 8px;
     /*  */
     background: #ffffff;
-    mask: url("../../../fwc/res/icons/chevron.svg") no-repeat center;
+    mask: url("/assets/icons/chevron.svg") no-repeat center;
   }
   .main-menu .item-chevron-bottom {
     transform: rotate(180deg);

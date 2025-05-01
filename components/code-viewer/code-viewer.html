@@ -9,21 +9,21 @@
     <!-- Meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta name="description" content=""> -->
-    <meta name="author" content="Facooya">
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content=""> <!-- Change content or remove -->
+    <meta name="author" content="Facooya"> <!-- Change content or remove -->
+    <meta name="robots" content="noindex, nofollow"> <!-- Change or remove -->
     <!-- Title -->
     <title>Components Code Viewer Test - Facooya</title>
     <!-- Common -->
-    <link href="../common.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles/common.css">
     <!-- Header Content -->
-    <link href="../header-content/top-bar/top-bar.css" rel="stylesheet">
-    <link href="../header-content/main-menu/main-menu.css" rel="stylesheet">
-    <link href="../header-content/drawer-menu/drawer-menu.css" rel="stylesheet">
+    <link rel="stylesheet" href="/components/header-content/top-bar/top-bar.css">
+    <link rel="stylesheet" href="/components/header-content/main-menu/main-menu.css">
+    <link rel="stylesheet" href="/components/header-content/drawer-menu/drawer-menu.css">
     <!-- Footer Content -->
-    <link href="../footer-content/footer-content.css" rel="stylesheet">
+    <link rel="stylesheet" href="/components/footer-content/footer-content.css">
     <!-- Code Viewer -->
-    <link href="./code-viewer.css" rel="stylesheet">
+    <link rel="stylesheet" href="/components/code-viewer/code-viewer.css">
   </head>
   <body>
     <!-- ===== > Header ===== -->
@@ -32,6 +32,7 @@
     <!-- ===== > Main ===== -->
     <main class="main">
       <br>
+      <!-- Example -->
       <div class="code-viewer">
         <h5 class="viewer-name">test.c</h5>
 <pre class="code-block code-c"><code>#include &lt;stdio.h&gt;
@@ -91,28 +92,28 @@ int main() {
         </div>
       </div>
       <br>
-      <div class="output-viewer">
+      <div class="output-viewer"> <!-- Mobile image example remove -->
         <div class="output-container">
-          <img class="output-android-image" src="./res/mobile-test.png">
+          <img class="output-android-image" src="/components/code-viewer/static/mobile-img.png">
         </div>
       </div>
       <br>
-      <div class="output-viewer">
+      <div class="output-viewer"> <!-- Image example remove -->
         <div class="output-container">
-          <img class="output-image" src="./res/png/facooya-logo-test.png">
+          <img class="output-image" src="/components/code-viewer/static/img.png">
         </div>
       </div>
       <br>
-      <div class="output-viewer">
+      <div class="output-viewer"> <!-- Video example remove -->
         <div class="output-container">
           <video class="output-video" controls playsinline muted
-            poster="./res/mp4/thumb/facooya-logo-video-thumb.png">
-            <source src="./res/mp4/facooya-logo-video.mp4" type="video/mp4">
+            poster="/components/code-viewer/static/video-thumb.png">
+            <source src="/components/code-viewer/static/video.mp4" type="video/mp4">
           </video>
         </div>
       </div>
       <br>
-      <div class="output-viewer">
+      <div class="output-viewer"> <!-- Web example remove -->
         <div class="output-container">
           <iframe class="output-web" height="200" srcdoc='<p>Hello</p>'></iframe>
         </div>
@@ -122,35 +123,25 @@ int main() {
     <!-- ===== < Main ===== -->
     <!-- ===== > Footer ===== -->
     <footer class="footer">
-      <noscript class="noscript">
+      <noscript class="noscript"> <!-- Change or remove -->
          <div class="container">
             <p class="text">This website requires JavaScript.</p>
             <p class="text">Please enable JavaScript in your web browser.</p>
          </div>
       </noscript>
-      <!-- ========================= > FACOOYA ========================= -->
-      <!-- NOTE
-         -->
-      <!-- AUTHORSHIP
-         - Founder: Facooya
-         -->
-      <!-- COPYRIGHT
-         - Copyright 2025 Facooya.
-         -->
-      <!-- ========================= < FACOOYA ========================= -->
     </footer>
     <!-- ===== < Footer ===== -->
     <!-- TODO
        - VERIFY: Path & Option
        -->
     <!-- Data -->
-    <script src="../header-content/header-content-data.js" defer></script>
-    <script src="../header-content/drawer-menu/drawer-menu-data.js" defer></script>
-    <script src="../footer-content/footer-content-data.js" defer></script>
+    <script src="/components/header-content/header-content-data.js" defer></script>
+    <script src="/components/header-content/drawer-menu/drawer-menu-data.js" defer></script>
+    <script src="/components/footer-content/footer-content-data.js" defer></script>
     <!-- Controller -->
-    <script src="../header-content/header-content.js" type="module"></script>
-    <script src="../footer-content/footer-content.js" defer></script>
-    <script src="./code-viewer.js" defer></script>
-    <script src="./lib/c-syntax-highlighter.js" defer></script>
+    <script type="module" src="/components/header-content/header-content.js"></script>
+    <script src="/components/footer-content/footer-content.js" defer></script>
+    <script src="/components/code-viewer/code-viewer.js" defer></script>
+    <script src="/components/code-viewer/lib/c-syntax-highlighter.js" defer></script> <!-- Check language -->
   </body>
 </html>

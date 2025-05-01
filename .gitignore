@@ -2,13 +2,6 @@
 
 *.sh
 *.php
-*.svg
-
-Makefile
 
 !.gitignore
 !.gitattributes
-
-!fwc/res/icon/*.svg
-!fwc/res/icons/*.svg
-!fwc/res/svg/*.svg

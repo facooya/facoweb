@@ -19,9 +19,9 @@ const FooterContentData = {
   aboutGroups: {
     logoLink: "#",
     logoItems: {
-      "dev": `url("../../fwc/res/svg/logo-2w.svg")`,
-      "transcendence": `url("../../fwc/res/svg/a.svg")`,
-      "facooya-icon": `url("../../fwc/res/svg/b.svg")`,
+      "dev": `url("/assets/icons/logo-2w.svg")`,
+      "transcendence": `url("/assets/icons/a.svg")`,
+      "facooya-icon": `url("/assets/icons/b.svg")`,
     },
     aboutText: `Welcome to dev.facooya.com,
       a programming-related site.
@@ -30,15 +30,15 @@ const FooterContentData = {
     socialItems: {
       a: {
         link: "#facooya",
-        maskImage: `url("../../fwc/res/svg/a.svg")`
+        maskImage: `url("/assets/icons/a.svg")`
       },
       b: {
         link: "#facooya",
-        maskImage: `url("../../fwc/res/svg/b.svg")`
+        maskImage: `url("/assets/icons/b.svg")`
       },
       c: {
         link: "#facooya",
-        maskImage: `url("../../fwc/res/svg/c.svg")`
+        maskImage: `url("/assets/icons/c.svg")`
       }
     }
   },
@@ -46,8 +46,8 @@ const FooterContentData = {
   legalGroups: {
     logoLink: "#",
     logoItems: {
-      transcendence: `url("../../fwc/res/svg/a.svg")`,
-      facooya: `url("../../fwc/res/svg/logo-5w.svg")`
+      transcendence: `url("/assets/icons/a.svg")`,
+      facooya: `url("/assets/icons/logo-5w.svg")`
     },
     copyrightText: "Copyright 2023-2025 Facooya",
     legalItems: {
