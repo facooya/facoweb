@@ -1,0 +1,115 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* ================================================== */
+/* Tab Header */
+.tab-view .title {
+  padding: 1rem 0;
+  font-size: 1.375rem;
+  text-align: center;
+  /*  */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+/* ================================================== */
+.tab-view .tab-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  list-style: none;
+}
+.tab-view .tab-item {
+  border: 4px solid #777777;
+  border-radius: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: border-color 300ms;
+}
+.tab-view .tab-text {
+  color: #777777;
+  font-size: 1rem;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+  padding: 12px 8px;
+  user-select: none;
+  -moz-user-select: none;
+  transition: color 300ms;
+}
+/* ================================================== */
+/* Tab Section */
+.tab-section {
+  padding: 32px 0;
+}
+/* ================================================== */
+.tab-section .list {
+  display: none;
+  flex-flow: column;
+  gap: 12px;
+  list-style: none;
+}
+.tab-section .item {
+  border: 2px solid #222222;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+.tab-section .link {
+  text-decoration: none;
+}
+.tab-section .text {
+  color: #222222;
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+.tab-section .sub-text {
+  color: #555555;
+  font-size: 1rem;
+  margin-top: 4px;
+  margin-left: 8px;
+}
+/* ================================================== */
+/* Class List */
+.tab-view .tab-item.active {
+  border-color: #222222;
+  cursor: default;
+}
+.tab-view .tab-text.active {
+  color: #222222;
+}
+/* ================================================== */
+.tab-section .list.active {
+  display: flex;
+}
+/* ================================================== */
+@media (min-width: 768px) {}
+/* ================================================== */
+@media (min-width: 1280px) {
+  .tab-header {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .tab-section {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}
+/* ================================================== */
+@media (hover: hover) {
+  .tab-view .tab-text:hover {
+    color: #222222;
+  }
+}
+/* ================================================== */
+/* ========================= > FACOOYA ========================= */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+/* ========================= < FACOOYA ========================= */

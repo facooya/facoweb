@@ -1,0 +1,36 @@
+<svg viewBox="-10 -10 120 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .skip-caret-icon {
+      fill: #000000;
+      stroke: #000000;
+      stroke-width: 20px;
+      stroke-linejoin: round;
+    }
+    .skip-line-icon {
+      fill: none;
+      stroke: #000000;
+      stroke-width: 30px;
+      stroke-linecap: round;
+    }
+  </style>
+  <path d="
+    M 50 40
+    L 100 100
+    L 0 100
+    Z
+  " class="skip-caret-icon"></path>
+  <path d="
+    M 5 5
+    L 95 5
+  " class="skip-line-icon"></path>
+</svg>
+<!-- ========================= > FACOOYA ========================= -->
+<!-- AUTHORSHIP
+   - Founder: Facooya
+   - https://www.facooya.com/about/
+   -->
+<!-- COPYRIGHT
+   - Copyright 2025 Facooya.
+   - https://www.facooya.com/legal/
+   -->
+<!-- ========================= < FACOOYA ========================= -->

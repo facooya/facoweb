@@ -1,0 +1,321 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* ================================================== */
+.drawer-menu {
+  --item-br-background: #90ee90;
+  --sub-item-br-background: #87ceeb;
+}
+/* -------------------------------------------------- */
+.drawer-menu {
+  /* For Mst */
+  /* Position */
+  position: fixed;
+  top: 64px;
+  right: -80%;
+  z-index: 99;
+  /* Layout */
+  width: 80%;
+  height: calc(100% - 64px);
+  /* Visual */
+  background: #1d1d1d;
+  transition: right 300ms;
+  /* Scroll */
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  /* Select */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+/* ================================================== */
+.drawer-menu .list {
+  list-style: none;
+}
+/* ================================================== */
+/* :Item: */
+.drawer-menu .item {
+  background: #1d1d1d;
+  transition: background-color 300ms;
+}
+.drawer-menu .item-container {
+  position: relative;
+  height: 64px;
+  line-height: 64px;
+  /*  */
+  text-align: center;
+  cursor: pointer;
+}
+/* -------------------------------------------------- */
+/* Inner Container */
+.drawer-menu .item-text {
+  /* Hover Reset: margin-right */
+  display: inline-block;
+  /* Layout */
+  width: 70%;
+  overflow: hidden;
+  vertical-align: middle;
+  /* Text */
+  color: #ffffff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.drawer-menu .item-arrow-icon {
+  /* Hover Reset: margin-right, transform, transition */
+  /* Position */
+  position: absolute;
+  /* top(26px) = itemTextH(64px) / 2 - height(12px) / 2 */
+  top: 26px;
+  right: 0;
+  /* Layout */
+  width: 12px;
+  height: 12px;
+  margin-right: 24px;
+  /* Visual */
+  background: #ffffff;
+  mask-image: url("../../../fwc/res/icons/wide-caret.svg");
+  transform: rotate(180deg);
+  transition: transform 300ms;
+}
+.drawer-menu .item-bottom-line {
+  /* Position */
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  /* Layout */
+  width: 0;
+  height: 2px;
+  /* Visual */
+  background: var(--item-br-background);
+  border-radius: 1px;
+  transition: left 300ms, width 300ms;
+}
+/* ;Item; */
+/* ================================================== */
+/* Sub List */
+.drawer-menu .sub-list {
+  position: relative;
+  /* Layout */
+  height: 0;
+  overflow: hidden;
+  /* Visual */
+  opacity: 0;
+  list-style: none;
+  transition: height 300ms, opacity 300ms;
+}
+/* ================================================== */
+/* :Sub Item: */
+.drawer-menu .sub-item {
+  height: 64px;
+  padding: 0 10%;
+}
+.drawer-menu .sub-item-container {
+  position: relative;
+  display: block;
+  height: 100%;
+  /*  */
+  text-align: center;
+  text-decoration: none;
+}
+/* -------------------------------------------------- */
+/* Inner Container */
+.drawer-menu .sub-item-text {
+  /* Hover Reset: transition */
+  display: inline-block;
+  line-height: 64px;
+  max-width: 90%;
+  overflow: hidden;
+  /* Text */
+  color: #ffffff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: margin-right 300ms;
+}
+.drawer-menu .sub-item-arrow-icon {
+  position: absolute;
+  /* top(28px) = textH(64px) / 2 - height(8px) / 2 */
+  top: 28px;
+  left: 100%;
+  /*  */
+  width: 8px;
+  height: 8px;
+  /*  */
+  opacity: 0;
+  background-color: #ffffff;
+  mask-image: url("../../../fwc/res/icons/caret.svg");
+  transform: scale(0, 0) rotate(90deg);
+  transition:
+    left 300ms,
+    margin-right 300ms,
+    opacity 300ms,
+    transform 300ms;
+}
+.drawer-menu .sub-item-bottom-line {
+  position: absolute;
+  top: 70%;
+
+  width: 0;
+  height: 2px;
+
+  background-color: var(--sub-item-br-background);
+  border-radius: 1px;
+  transition: left 300ms, width 300ms;
+}
+/* ;Sub Item; */
+/* ================================================== */
+.drawer-menu .scroll-lock {
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  width: 100%;
+  height: calc(100% + 1px);
+  background: #00000000;
+  pointer-events: none;
+}
+/* -------------------------------------------------- */
+.drawer-menu .fog {
+  position: fixed;
+  z-index: 3;
+
+  width: 80%;
+  height: 0;
+  
+  transition: height 300ms;
+  pointer-events: none;
+}
+.drawer-menu .fog-top {
+  top: 64px;
+  background-image: linear-gradient(#1d1d1d, #00000000);
+}
+.drawer-menu .fog-bottom {
+  bottom: 0;
+  background-image: linear-gradient(#00000000, #1d1d1d);
+}
+/* ================================================== */
+@media (min-width: 768px) {
+  .drawer-menu {
+    top: 128px;
+    height: calc(100% - 128px);
+    width: 320px;
+    right: -320px;
+  }
+  .drawer-menu .fog-top {
+    top: 128px;
+  }
+}
+/* ================================================== */
+@media (min-width: 1280px) {
+  .drawer-menu {
+    top: 64px;
+    height: calc(100% - 64px);
+  }
+  .drawer-menu .fog-top {
+    top: 64px;
+  }
+}
+/* ================================================== */
+/* Utils */
+/* ================================================== */
+/* Item Open*/
+.drawer-menu .item.open {
+  background: #333333;
+}
+.drawer-menu .item-text.open {
+  text-shadow: var(--bold-white);
+}
+.drawer-menu .item-arrow-icon.open {
+  transform: scale(1, 1) rotate(360deg) !important;
+}
+.drawer-menu .item-bottom-line.open {
+  left: 5%;
+  width: 90%;
+}
+.drawer-menu .sub-list.open {
+  opacity: 1;
+}
+/* ================================================== */
+/* Item Hover Lock */
+.drawer-menu .item-text.hover-lock{
+  margin-right: 32px;
+  text-shadow: var(--bold-white);
+}
+.drawer-menu .item-arrow-icon.hover-lock{
+  margin-right: 24px;
+  transform: scale(1, 1) rotate(180deg);
+  opacity: 1;
+}
+.drawer-menu .item-bottom-line.hover-lock{
+  left: 5%;
+  width: 90%;
+}
+/* ================================================== */
+/* Sub Item Active */
+.drawer-menu .sub-item-text.active {
+  margin-right: 12px;
+}
+.drawer-menu .sub-item-arrow-icon.active {
+  opacity: 1;
+  transform: scale(1, 1) rotate(90deg);
+}
+/* ================================================== */
+@media (hover: hover) {
+  /* Item */
+  .drawer-menu .item-text {
+    transition:
+      margin-right 300ms,
+      text-shadow 300ms;
+  }
+  .drawer-menu .item-arrow-icon {
+    margin-right: 0;
+    opacity: 0;
+    transform: scale(0, 0) rotate(180deg);
+    transition:
+      margin-right 300ms,
+      opacity 300ms,
+      transform 300ms;
+  }
+  /* -------------------------------------------------- */
+  /* Sub Item */
+  .drawer-menu .sub-item-text {
+    transition:
+      text-shadow 300ms,
+      margin-right 300ms;
+  }
+  /* ================================================== */
+  /* Hover */
+  .drawer-menu .item-container:hover .item-text {
+    margin-right: 32px;
+    text-shadow: var(--bold-white);
+  }
+  .drawer-menu .item-container:hover .item-arrow-icon {
+    margin-right: 24px;
+    opacity: 1;
+    transform: scale(1, 1) rotate(180deg);
+  }
+  .drawer-menu .item-container:hover .item-bottom-line {
+    left: 5%;
+    width: 90%;
+  }
+  /* -------------------------------------------------- */
+  .drawer-menu .sub-item-container:hover .sub-item-text {
+    margin-right: 12px;
+    text-shadow: var(--bold-white);
+  }
+  .drawer-menu .sub-item-container:hover .sub-item-arrow-icon {
+    margin-right: 0;
+    transform: scale(1, 1) rotate(90deg);
+    opacity: 1;
+  }
+  /* -------------------------------------------------- */
+}
+/* ================================================== */
+/* ========================= >FACOOYA ========================= */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+/* ========================= <FACOOYA ========================= */

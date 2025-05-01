@@ -1,0 +1,248 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ */
+/* ================================================== */
+.pagination-view {
+  padding-top: 16px;
+  padding-bottom: 48px;
+}
+/* ================================================== */
+/* Title */
+.pagination-view .title {
+  text-align: center;
+}
+.pagination-view .title-link {
+  color: #222222;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 8px;
+  text-decoration: none;
+  user-select: none;
+  -moz-user-select: none;
+}
+/* ================================================== */
+/* Tab */
+.pagination-view .tab {
+  padding-top: 16px;
+}
+.pagination-view .tab .list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  list-style: none;
+}
+.pagination-view .tab .item {
+  border: 4px solid #777777;
+  border-radius: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.pagination-view .tab .text {
+  color: #777777;
+  font-size: 1rem;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+  padding: 12px 8px;
+  user-select: none;
+  -moz-user-select: none;
+}
+/* ================================================== */
+/* Navigation */
+.pagination-view .navigation {
+  margin-top: 32px;
+  /* itemHeight * 5 + gap * 4 */
+  /* height: calc(64px * 5 + 12px * 4); */
+  height: calc(4rem * 5 + 0.75rem * 4);
+}
+.pagination-view .navigation .list {
+  display: none;
+  flex-flow: column;
+  /* gap: 12px; */
+  gap: 0.75rem;
+  list-style: none;
+}
+.pagination-view .navigation .item {
+  display: none;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  /* padding: 8px; */
+  padding: 0.5rem;
+  cursor: pointer;
+  /* height: 64px; */
+  height: 4rem;
+}
+.pagination-view .navigation .link {
+  text-decoration: none;
+  white-space: nowrap;
+}
+.pagination-view .navigation .text {
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.125rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.pagination-view .navigation .sub-text {
+  color: #555555;
+  font-weight: normal;
+  font-size: 1rem;
+  /* margin-top: 4px; */
+  margin-top: 0.25rem;
+  margin-left: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/* ================================================== */
+/* Pagination */
+.pagination-view .pagination {
+  display: grid;
+  grid-template-areas: "list list" "left right";
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  list-style: none;
+  user-select: none;
+  -moz-user-select: none;
+}
+/* List */
+.pagination-view .pagination .list {
+  grid-area: list;
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.pagination-view .pagination .item {
+  /* Layout */
+  /* width: 40px;
+  height: 40px;
+  line-height: 36px; */
+  width: 2.25rem;
+  height: 2.25rem;
+  line-height: 2rem;
+  text-align: center;
+  /* Visual */
+  border: 2px solid #222222;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pagination-view .pagination .text {
+  font-weight: bold;
+}
+/* Control */
+.pagination-view .pagination .control {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+}
+.pagination-view .pagination .control.left {
+  grid-area: left;
+  justify-self: right;
+}
+.pagination-view .pagination .control.right {
+  grid-area: right;
+  justify-self: left;
+}
+.pagination-view .pagination .control-item {
+  /* Layout */
+  /* width: 40px;
+  height: 40px;
+  padding: 10px; */ /* (size - (borderSize * 2 + childSize)) / 2 */
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0.5rem;
+  /* Visual */
+  border-radius: 8px;
+  /* border: 2px solid #777777; */
+  border: 0.125rem solid #777777;
+  cursor: default;
+}
+.pagination-view .pagination .control-icon {
+  display: inline-block;
+  /* width: 16px;
+  height: 16px; */
+  width: 1rem;
+  height: 1rem;
+  /*  */
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background: #777777;
+}
+/* Svg Setting */
+.pagination-view .pagination .control.left .control-icon {
+  transform: rotate(-90deg);
+}
+.pagination-view .pagination .control.right .control-icon {
+  transform: rotate(90deg);
+}
+.pagination-view .pagination .control-icon.first {
+  mask-image: url("../../fwc/res/icons/skip.svg");
+}
+.pagination-view .pagination .control-icon.previous {
+  mask-image: url("../../fwc/res/icons/caret.svg");
+}
+.pagination-view .pagination .control-icon.next {
+  mask-image: url("../../fwc/res/icons/caret.svg");
+}
+.pagination-view .pagination .control-icon.last {
+  mask-image: url("../../fwc/res/icons/skip.svg");
+}
+/* ================================================== */
+/* Tab */
+.pagination-view .tab .item.active {
+  cursor: default;
+  border-color: #222222;
+}
+.pagination-view .tab .text.active {
+  color: #222222;
+}
+/* ================================================== */
+/* Navigation */
+.pagination-view .navigation .list.active {
+  display: flex;
+}
+.pagination-view .navigation .item.active {
+  display: block;
+}
+/* ================================================== */
+/* Pagination */
+.pagination-view .pagination.wide-x {
+  grid-template-areas: "left list right";
+}
+/* -------------------------------------------------- */
+.pagination-view .pagination .item.active {
+  background: #222222;
+  color: #FFFFFF;
+}
+/* -------------------------------------------------- */
+.pagination-view .pagination .control-item.enabled {
+  border-color: #222222;
+  cursor: pointer;
+}
+.pagination-view .pagination .control-icon.enabled {
+  background: #000000;
+}
+/* ================================================== */
+@media (min-width: 768px) {}
+/* ================================================== */
+@media (min-width: 1280px) {
+  .pagination-view {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}
+/* ================================================== */
+/* ========================= > FACOOYA ========================= */
+/* NOTE
+ */
+/* AUTHORSHIP
+ * Founder: Facooya
+ */
+/* ========================= < FACOOYA ========================= */

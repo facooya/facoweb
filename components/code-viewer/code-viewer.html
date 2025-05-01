@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- TODO
+       - Update meta: description, robots
+       - Update title
+       - VERIFY link: Path & Option
+       -->
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="description" content=""> -->
+    <meta name="author" content="Facooya">
+    <meta name="robots" content="noindex, nofollow">
+    <!-- Title -->
+    <title>Components Code Viewer Test - Facooya</title>
+    <!-- Common -->
+    <link href="../common.css" rel="stylesheet">
+    <!-- Header Content -->
+    <link href="../header-content/top-bar/top-bar.css" rel="stylesheet">
+    <link href="../header-content/main-menu/main-menu.css" rel="stylesheet">
+    <link href="../header-content/drawer-menu/drawer-menu.css" rel="stylesheet">
+    <!-- Footer Content -->
+    <link href="../footer-content/footer-content.css" rel="stylesheet">
+    <!-- Code Viewer -->
+    <link href="./code-viewer.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- ===== > Header ===== -->
+    <header class="header"></header>
+    <!-- ===== < Header ===== -->
+    <!-- ===== > Main ===== -->
+    <main class="main">
+      <br>
+      <div class="code-viewer">
+        <h5 class="viewer-name">test.c</h5>
+<pre class="code-block code-c"><code>#include &lt;stdio.h&gt;
+
+int main() {
+  int testNumber = 10;
+  int hexNumber = 0xFF0077;
+
+  float testFloat = 1.111f;
+
+  char testT = 'T';
+  char testText[10] = "Test text";
+
+  /* test if */
+  if (testNumber == 1) {
+    testNumber++;
+  } else {
+    testNumber--;
+  }
+
+  /* test for */
+  for (int i = 0; i &lt; 2; i++) {
+    printf("Text: %s\n", testText);
+  }
+  printf("Don't select \"int\" int printf.\n");
+
+  return 0;
+}</code></pre>
+      </div>
+      <br>
+      <div class="code-viewer">
+        <h5 class="viewer-name">test.c</h5>
+<pre class="code-block code-c"><code>#include &lt;stdio.h&gt;
+
+int main() {
+  int testNumber = 10;
+  int hexNumber = 0xFF0077;
+
+  /* test for */
+  for (int i = 0; i &lt; 2; i++) {
+    printf("Text: %s\n", testText);
+  }
+  /* Multi 
+  Line 
+  Comment */
+  printf("Don't select \"int\" int printf.\n");
+  // Hello is comment
+
+  return 0;
+} // this is comment</code></pre>
+      </div>
+      <br>
+      <div class="output-viewer">
+        <div class="output-container">
+<pre class="output-console"><code>Don't select "int" int printf.
+</code></pre>
+        </div>
+      </div>
+      <br>
+      <div class="output-viewer">
+        <div class="output-container">
+          <img class="output-android-image" src="./res/mobile-test.png">
+        </div>
+      </div>
+      <br>
+      <div class="output-viewer">
+        <div class="output-container">
+          <img class="output-image" src="./res/png/facooya-logo-test.png">
+        </div>
+      </div>
+      <br>
+      <div class="output-viewer">
+        <div class="output-container">
+          <video class="output-video" controls playsinline muted
+            poster="./res/mp4/thumb/facooya-logo-video-thumb.png">
+            <source src="./res/mp4/facooya-logo-video.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br>
+      <div class="output-viewer">
+        <div class="output-container">
+          <iframe class="output-web" height="200" srcdoc='<p>Hello</p>'></iframe>
+        </div>
+      </div>
+      <br>
+    </main>
+    <!-- ===== < Main ===== -->
+    <!-- ===== > Footer ===== -->
+    <footer class="footer">
+      <noscript class="noscript">
+         <div class="container">
+            <p class="text">This website requires JavaScript.</p>
+            <p class="text">Please enable JavaScript in your web browser.</p>
+         </div>
+      </noscript>
+      <!-- ========================= > FACOOYA ========================= -->
+      <!-- NOTE
+         -->
+      <!-- AUTHORSHIP
+         - Founder: Facooya
+         -->
+      <!-- COPYRIGHT
+         - Copyright 2025 Facooya.
+         -->
+      <!-- ========================= < FACOOYA ========================= -->
+    </footer>
+    <!-- ===== < Footer ===== -->
+    <!-- TODO
+       - VERIFY: Path & Option
+       -->
+    <!-- Data -->
+    <script src="../header-content/header-content-data.js" defer></script>
+    <script src="../header-content/drawer-menu/drawer-menu-data.js" defer></script>
+    <script src="../footer-content/footer-content-data.js" defer></script>
+    <!-- Controller -->
+    <script src="../header-content/header-content.js" type="module"></script>
+    <script src="../footer-content/footer-content.js" defer></script>
+    <script src="./code-viewer.js" defer></script>
+    <script src="./lib/c-syntax-highlighter.js" defer></script>
+  </body>
+</html>
