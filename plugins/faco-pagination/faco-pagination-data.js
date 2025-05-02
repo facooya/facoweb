@@ -5,8 +5,8 @@
  */
 /* ================================================== */
 const PaginationViewData = {
-  titleText: "Reference Links",
-  titleId: "reference-links",
+  titleText: "Faco pagination Links",
+  titleId: "faco-pagination",
   group: {
     "Pagination tab 1": {
       "Item 1-1": {
@@ -71,7 +71,6 @@ const PaginationViewData = {
   }
 };
 /* ================================================== */
-/* ========================= > FACOOYA ========================= */
 /* NOTE
  * titleText: titleText,
  * titleId: titleId,
@@ -84,7 +83,3 @@ const PaginationViewData = {
  *   }
  * }
  */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= < FACOOYA ========================= */
