@@ -5,7 +5,7 @@
  */
 /* ================================================== */
 const TabViewData = {
-  title: "Tab view title",
+  title: "Faco tab title",
   group: {
     "Tab 1": {
       "Item 1-1": {
@@ -22,11 +22,20 @@ const TabViewData = {
         link: "#item-2-1",
         subText: "Item sub text 2-1"
       }
+    },
+    "Tab 3": {
+      "Item 3-1": {
+        link: "#item-3-1",
+        subText: "Item sub text 3-1"
+      },
+      "Item 3-2": {
+        link: "#item-3-2",
+        subText: "Item sub text 3-2"
+      }
     }
   }
 };
 /* ================================================== */
-/* ========================= > FACOOYA ========================= */
 /* NOTE
  * title: title,
  * group: {
@@ -38,7 +47,3 @@ const TabViewData = {
  *   }
  * }
  */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= < FACOOYA ========================= */
