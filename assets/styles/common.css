@@ -3,7 +3,8 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* ================================================== */
+
+/* Variable */
 :root {
   --bold-white:
     0.25px 0 #ffffff,
@@ -11,7 +12,8 @@
     0 0.25px #ffffff,
     0 -0.25px #ffffff;
 }
-/* ================================================== */
+
+/* Entire */
 * {
   padding: 0;
   margin: 0;
@@ -29,23 +31,24 @@ html {
 body {
   -webkit-tap-highlight-color: #00000000;
 }
-/* ================================================== */
-.header {
+
+/* Faco HMF (Header, Main, Footer) */
+.header, #faco-header {
   position: relative;
   height: 64px;
 }
-.main {
+.main, #faco-main {
   position: relative;
   min-height: calc(100vh - 64px);
   padding: 0 16px;
   transition: margin-right 300ms ease;
 }
-.footer {
+.footer, #faco-footer {
   transition: margin-right 300ms ease;
 }
-/* ================================================== */
+
 /* No Script */
-.noscript .container {
+.noscript .container, #faco-noscript .faco-noscript-container {
   /* Position */
   position: fixed;
   left: 5%;
@@ -59,28 +62,27 @@ body {
   border-radius: 8px;
   background-color: #ffff00;
 }
-.noscript .text {
-  /* Layout */
+.noscript .text, #faco-noscript .faco-noscript-text {
   text-align: center;
-  /* Visual */
   color: #000000;
 }
-/* ================================================== */
+
+/* Tablet */
 @media (min-width: 768px) {
-  .header {
+  .header, .faco-header {
     height: 128px;
   }
-  .main {
+  .main, .faco-main {
     min-height: calc(100vh - 128px);
   }
 }
-/* ================================================== */
+
+/* Desktop */
 @media (min-width: 1280px) {
-  .header {
+  .header, .faco-header {
     height: 64px;
   }
-  .main {
+  .main, .faco-main {
     min-height: calc(100vh - 64px);
   }
 }
-/* ================================================== */

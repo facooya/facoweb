@@ -37,7 +37,6 @@ const HeaderContentData = {
   }
 };
 /* ================================================== */
-/* ========================= > FACOOYA ========================= */
 /* NOTE
  * ----- > Logo Groups -----
  * logoGroups: {
@@ -56,7 +55,3 @@ const HeaderContentData = {
  * ----- < Main Menu Groups -----
  * DrawerMenuData => drawer-menu-data.js
  */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= < FACOOYA ========================= */
