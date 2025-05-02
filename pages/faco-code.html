@@ -13,17 +13,11 @@
     <meta name="author" content="Facooya"> <!-- Change content or remove -->
     <meta name="robots" content="noindex, nofollow"> <!-- Change or remove -->
     <!-- Title -->
-    <title>Components Code Viewer Test - Facooya</title>
+    <title>Components Faco Code Viewer Test - Facooya</title>
     <!-- Common -->
-    <link rel="stylesheet" href="/assets/styles/common.css">
-    <!-- Header Content -->
-    <link rel="stylesheet" href="/components/header-content/top-bar/top-bar.css">
-    <link rel="stylesheet" href="/components/header-content/main-menu/main-menu.css">
-    <link rel="stylesheet" href="/components/header-content/drawer-menu/drawer-menu.css">
-    <!-- Footer Content -->
-    <link rel="stylesheet" href="/components/footer-content/footer-content.css">
+    <link rel="stylesheet" href="../assets/styles/common.css">
     <!-- Code Viewer -->
-    <link rel="stylesheet" href="/components/code-viewer/code-viewer.css">
+    <link rel="stylesheet" href="../plugins/faco-code/faco-code.css">
   </head>
   <body>
     <!-- ===== > Header ===== -->
@@ -94,21 +88,21 @@ int main() {
       <br>
       <div class="output-viewer"> <!-- Mobile image example remove -->
         <div class="output-container">
-          <img class="output-android-image" src="/components/code-viewer/static/mobile-img.png">
+          <img class="output-android-image" src="../plugins/faco-code/static/mobile-img.png">
         </div>
       </div>
       <br>
       <div class="output-viewer"> <!-- Image example remove -->
         <div class="output-container">
-          <img class="output-image" src="/components/code-viewer/static/img.png">
+          <img class="output-image" src="../plugins/faco-code/static/img.png">
         </div>
       </div>
       <br>
       <div class="output-viewer"> <!-- Video example remove -->
         <div class="output-container">
           <video class="output-video" controls playsinline muted
-            poster="/components/code-viewer/static/video-thumb.png">
-            <source src="/components/code-viewer/static/video.mp4" type="video/mp4">
+            poster="../plugins/faco-code/static/video-thumb.png">
+            <source src="../plugins/faco-code/static/video.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -134,14 +128,8 @@ int main() {
     <!-- TODO
        - VERIFY: Path & Option
        -->
-    <!-- Data -->
-    <script src="/components/header-content/header-content-data.js" defer></script>
-    <script src="/components/header-content/drawer-menu/drawer-menu-data.js" defer></script>
-    <script src="/components/footer-content/footer-content-data.js" defer></script>
     <!-- Controller -->
-    <script type="module" src="/components/header-content/header-content.js"></script>
-    <script src="/components/footer-content/footer-content.js" defer></script>
-    <script src="/components/code-viewer/code-viewer.js" defer></script>
-    <script src="/components/code-viewer/lib/c-syntax-highlighter.js" defer></script> <!-- Check language -->
+    <script src="../plugins/faco-code/faco-code.js" defer></script>
+    <script src="../plugins/faco-code/highlighter-c.js" defer></script> <!-- Check language -->
   </body>
 </html>

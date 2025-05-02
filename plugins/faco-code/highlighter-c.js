@@ -4,7 +4,7 @@
  * Copyright 2025 Facooya and Fanone Facooya
  */
 /* ================================================== */
-const C_SyntaxHighlighter = {
+const HighlighterC = {
   split: /(#.*?\s|&lt;.*?&gt;|".*?(?<!\\)"|\/\*[\s\S]*?\*\/|'.*?'|\/\/[\s\S]*?$)/gm,
   /* -------------------------------------------------- */
   pattern: {
@@ -44,12 +44,12 @@ const C_SyntaxHighlighter = {
   /* ================================================== */
   generator() {
     const codes = document.querySelectorAll(".code-viewer .code-c");
-    const pattern = C_SyntaxHighlighter.pattern;
-    const highlight = C_SyntaxHighlighter.highlight;
+    const pattern = HighlighterC.pattern;
+    const highlight = HighlighterC.highlight;
     /* --------------- */
     codes.forEach(code => {
       const getText = code.innerHTML;
-      const parts = getText.split(C_SyntaxHighlighter.split);
+      const parts = getText.split(HighlighterC.split);
       for (let i = 0; i < parts.length; i++) {
         if (parts[i].startsWith("\"") || parts[i].startsWith("'")) {
           parts[i] = parts[i].replace(pattern.escapeSequence, highlight.lightGreen);
@@ -74,9 +74,8 @@ const C_SyntaxHighlighter = {
 };
 /* ================================================== */
 /* ========================= > Code ========================= */
-window.addEventListener("load", C_SyntaxHighlighter.generator);
+window.addEventListener("load", HighlighterC.generator);
 /* ========================= < Code ========================= */
-/* ========================= > FACOOYA ========================= */
 /* NOTE
  * const CodeSyntaxHighlighter = {
  *   split: regularExpression,
@@ -93,7 +92,3 @@ window.addEventListener("load", C_SyntaxHighlighter.generator);
  * pattern: new RegExp(`\\b(${[].join("|")})\\b`, "g"),
  * highlight: `<span class="">$&</span>`,
  */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= < FACOOYA ========================= */
