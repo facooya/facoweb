@@ -186,7 +186,7 @@
 /* For Mst */
 .top-bar .logo.mini {
   width: 32px;
-  mask-image: url("../static/triangle.svg");
+  mask-image: url("../../../assets/icons/triangle.svg");
 }
 /* ================================================== */
 /* For Mst

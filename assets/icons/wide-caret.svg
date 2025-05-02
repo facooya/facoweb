@@ -1,6 +1,6 @@
 <svg viewBox="-10 -10 120 120" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .wide-caret-icon {
+    .faco-wide-caret {
       fill: #000000;
       stroke: #000000;
       stroke-width: 20px;
@@ -12,15 +12,5 @@
     L 100 80
     L 0 80
     Z
-  " class="wide-caret-icon"></path>
+  " class="faco-wide-caret"></path>
 </svg>
-<!-- ========================= > FACOOYA ========================= -->
-<!-- AUTHORSHIP
-   - Founder: Facooya
-   - https://www.facooya.com/about/
-   -->
-<!-- COPYRIGHT
-   - Copyright 2025 Facooya.
-   - https://www.facooya.com/legal/
-   -->
-<!-- ========================= < FACOOYA ========================= -->

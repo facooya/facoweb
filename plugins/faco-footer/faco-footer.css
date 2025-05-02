@@ -209,6 +209,24 @@
 }
 /* ================================================== */
 @media (min-width: 1280px) {
+  .footer-about {
+    grid-template-areas: "logo text social";
+    gap: 32px;
+    max-width: 90%;
+    margin: 48px auto;
+  }
+  .footer-about .logo {
+    justify-self: right;
+    align-self: center;
+  }
+  .footer-about .about-text {
+    justify-self: center;
+    align-self: center;
+  }
+  .footer-about .social {
+    justify-self: left;
+    align-self: center;
+  }
   /* ========================= > Legal ========================= */
   .footer-legal {
     grid-template-areas: ". logo ." "copyright logo list";
@@ -244,11 +262,3 @@
   }
   /* ========================= < Legal ========================= */
 }
-/* ================================================== */
-/* ========================= > FACOOYA ========================= */
-/* NOTE
- */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= < FACOOYA ========================= */

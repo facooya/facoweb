@@ -6,59 +6,56 @@
 /* ================================================== */
 const FooterContentData = {
   navGroups: {
-    "Our Websites": {
-      "a.facooya.com": "#",
-      "b.facooya.com": "#"
+    "Nav group 1": {
+      "Item 1-1": "#link-1-1",
+      "Item 1-2": "#link-1-2"
     },
-    "About Us": {
-      "Our Team": "#",
-      "Contact Us": "#"
+    "Nav group 2": {
+      "Item 2-1": "#link-2-1",
+      "Item 2-2": "#link-2-2",
+      "Item 2-3": "#link-2-3"
     }
   },
   /* ================================================== */
   aboutGroups: {
     logoLink: "#",
     logoItems: {
-      "dev": `url("/assets/icons/logo-2w.svg")`,
-      "transcendence": `url("/assets/icons/a.svg")`,
-      "facooya-icon": `url("/assets/icons/b.svg")`,
+      "dev": `url("../../assets/icons/octagon-2w.svg")`,
+      "transcendence": `url("../../assets/icons/triangle.svg")`,
+      "facooya-icon": `url("../../assets/icons/rectangle.svg")`
     },
-    aboutText: `Welcome to dev.facooya.com,
-      a programming-related site.
-      This site provides information promptly.
-      We believe our services will assist in launching humanity to space.`,
+    aboutText: `About text for your sites.`,
     socialItems: {
       a: {
-        link: "#facooya",
-        maskImage: `url("/assets/icons/a.svg")`
+        link: "#social-a",
+        maskImage: `url("../../assets/icons/triangle.svg")`
       },
       b: {
-        link: "#facooya",
-        maskImage: `url("/assets/icons/b.svg")`
+        link: "#social-b",
+        maskImage: `url("../../assets/icons/rectangle.svg")`
       },
       c: {
-        link: "#facooya",
-        maskImage: `url("/assets/icons/c.svg")`
+        link: "#social-c",
+        maskImage: `url("../../assets/icons/diamond.svg")`
       }
     }
   },
   /* ================================================== */
   legalGroups: {
-    logoLink: "#",
+    logoLink: "#logo-link",
     logoItems: {
-      transcendence: `url("/assets/icons/a.svg")`,
-      facooya: `url("/assets/icons/logo-5w.svg")`
+      transcendence: `url("../../assets/icons/triangle.svg")`,
+      facooya: `url("../../assets/icons/octagon-5w.svg")`
     },
-    copyrightText: "Copyright 2023-2025 Facooya",
+    copyrightText: "Copyright [year] [name]",
     legalItems: {
-      "Privacy Policy": "#",
-      "Terms of Use": "#",
-      "Legal": "#"
+      "Legal 1": "#legal-link-1",
+      "Legal 2": "#legal-link-2",
+      "Legal 3": "#legal-link-3"
     }
   }
 };
 /* ================================================== */
-/* ========================= > FACOOYA ========================= */
 /* NOTE
  * ----- > Nav Groups -----
  * navGroups: {
@@ -95,7 +92,3 @@ const FooterContentData = {
  * }
  * ----- < Legal Groups -----
  */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= < FACOOYA ========================= */

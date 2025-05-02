@@ -8,9 +8,9 @@ const HeaderContentData = {
   logoGroups: {
     logoLink: "#facooya",
     logoItems: {
-      dev: `url("/assets/icons/logo-2w.svg")`,
-      transcendence: `url("/assets/icons/a.svg")`,
-      facooya: `url("/assets/icons/logo-5w.svg")`,
+      dev: `url("../../assets/icons/octagon-2w.svg")`,
+      transcendence: `url("../../assets/icons/triangle.svg")`,
+      facooya: `url("../../assets/icons/octagon-5w.svg")`,
     }
   },
   mainMenuGroups: {

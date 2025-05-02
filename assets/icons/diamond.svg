@@ -1,11 +1,6 @@
-<!--
-   - SPDX-License-Identifier: Apache-2.0
-   - 
-   - Copyright 2025 Facooya and Fanone Facooya
-   -->
 <svg viewBox="-10 -10 120 120" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .facooya-c-svg {
+    .faco-diamond-svg {
       fill: #FFFFFF;
       stroke: #FFFFFF;
       stroke-width: 20px;
@@ -18,5 +13,5 @@
     L 50 100
     L 100 50
     Z
-  " class="facooya-c-svg"></path>
+  " class="faco-diamond-svg"></path>
 </svg>
