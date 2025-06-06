@@ -3,151 +3,135 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* ================================================== */
-const TabViewAccessor = {
+
+const FacoTabAccessor = {
 
 };
-/* ================================================== */
-const TabViewController = {
+
+const FacoTabController = {
   init() {
-    TabViewManager.init();
+    FacoTabManager.init();
   }
 };
-/* ================================================== */
-const TabViewManager = {
+
+const FacoTabManager = {
   init() {
-    TabViewUtils.generator();
-    const tabView = document.querySelector(".tab-view");
-    const tabItems = document.querySelectorAll(".tab-header .tab-item");
-    tabView.tabIndex = 0;
-    for (let i = 0; i < tabItems.length; i++) {
-      tabItems[i].index = i;
+    FacoTabUtils.generator();
+    const facoTab = document.querySelector(".faco-tab");
+    const facoTabBtnItems = document.querySelectorAll(".faco-tab-hdr .faco-tab-btn-item");
+    facoTab.tabIndex = 0;
+    for (let i = 0; i < facoTabBtnItems.length; i++) {
+      facoTabBtnItems[i].index = i;
     }
-    TabViewUtils.updateTab();
-    TabViewManager.initEvent();
+    FacoTabUtils.updateTab();
+    FacoTabManager.initEvent();
   },
-  /* ================================================== */
+
   initEvent() {
-    const tabItems = document.querySelectorAll(".tab-header .tab-item");
-    tabItems.forEach(item => {
-      item.addEventListener("click", TabViewHandler.tabItemClick);
+    const facoTabBtnItems = document.querySelectorAll(".faco-tab-hdr .faco-tab-btn-item");
+    facoTabBtnItems.forEach(item => {
+      item.addEventListener("click", FacoTabHandler.tabBtnItemClick);
     });
   }
 };
-/* ================================================== */
-const TabViewHandler = {
-  tabItemClick(event) {
-    const tabView = document.querySelector(".tab-view");
-    const tabItem = event.currentTarget;
-    const itemIndex = tabItem.index;
-    if (itemIndex !== tabView.tabIndex) {
-      tabView.tabIndex = itemIndex;
-      TabViewUtils.updateTab();
+
+const FacoTabHandler = {
+  tabBtnItemClick(event) {
+    const facoTab = document.querySelector(".faco-tab");
+    const facoTabBtnItem = event.currentTarget;
+    const facoTabBtnItemIndex = facoTabBtnItem.index;
+
+    if (facoTabBtnItemIndex !== facoTab.tabIndex) {
+      facoTab.tabIndex = facoTabBtnItemIndex;
+      FacoTabUtils.updateTab();
     }
   }
 };
-/* ================================================== */
-const TabViewUtils = {
+
+const FacoTabUtils = {
   updateTab() {
-    const tabView = document.querySelector(".tab-view");
-    const tabHeader = document.querySelector(".tab-header");
-    const tabItems = tabHeader.querySelectorAll(".tab-item");
-    const tabTexts = tabHeader.querySelectorAll(".tab-text");
-    const active = "active";
-    /*  */
-    for (let i = 0; i < tabItems.length; i++) {
-      tabItems[i].classList.remove(active);
-      tabTexts[i].classList.remove(active);
+    const facoTab = document.querySelector(".faco-tab");
+    const facoTabBtnItems = facoTab.querySelectorAll(".faco-tab-hdr .faco-tab-btn-item");
+    const facoTabBtnTexts = facoTab.querySelectorAll(".faco-tab-hdr .faco-tab-btn-text");
+    const facoTabPanelLists = facoTab.querySelectorAll(".faco-tab-body .faco-tab-panel-list");
+    const facoTabActive = "faco-tab-active";
+
+		/* button */
+    for (let i = 0; i < facoTabBtnItems.length; i++) {
+      facoTabBtnItems[i].classList.remove(facoTabActive);
+      facoTabBtnTexts[i].classList.remove(facoTabActive);
     }
-    tabItems[tabView.tabIndex].classList.add(active);
-    tabTexts[tabView.tabIndex].classList.add(active);
-    /*  */
-    TabViewUtils.updateSection();
-  },
-  /* ================================================== */
-  updateSection() {
-    const tabView = document.querySelector(".tab-view");
-    const section = tabView.querySelector(".tab-section");
-    const lists = section.querySelectorAll(".list");
-    const active = "active";
-    /*  */
-    lists.forEach(list => {
-      list.classList.remove(active);
+    facoTabBtnItems[facoTab.tabIndex].classList.add(facoTabActive);
+    facoTabBtnTexts[facoTab.tabIndex].classList.add(facoTabActive);
+
+		/* panel */
+    facoTabPanelLists.forEach(list => {
+      list.classList.remove(facoTabActive);
     });
-    lists[tabView.tabIndex].classList.add(active);
+    facoTabPanelLists[facoTab.tabIndex].classList.add(facoTabActive);
   },
+
   generator() {
-    const group = TabViewData.group;
-    const main = document.querySelector(".main");
-    const tabView = document.createElement("div");
-    tabView.className = "tab-view";
-    /* ------------------------------ */
+    const facoTabGroup = FacoTabData.group;
+		const facoTab = document.querySelector(".faco-tab");
+
     /* Tab Header */
-    const tabHeader = document.createElement("header");
-    tabHeader.className = "tab-header";
-    const title = document.createElement("h1");
-    title.className = "title";
-    title.textContent = TabViewData.title;
-    const tab = document.createElement("nav");
-    tab.className = "tab";
-    const tabList = document.createElement("ul");
-    tabList.className = "tab-list";
-    /* ------------------------------ */
-    /* Tab Section */
-    const tabSection = document.createElement("section");
-    tabSection.className = "tab-section";
-    const navigation = document.createElement("nav");
-    navigation.className = "navigation";
-    /* ------------------------------ */
-    Object.entries(group).forEach(([tabTextData, sectionData]) => {
-      const tabItem = document.createElement("li");
-      tabItem.className = "tab-item";
-      const tabText = document.createElement("h2");
-      tabText.className = "tab-text";
-      tabText.textContent = tabTextData;
-      /* ------------------------------ */
-      /* Tab Section */
-      const list = document.createElement("ul");
-      list.className = "list";
-      /* ------------------------------ */
-      Object.entries(sectionData).forEach(([itemText, itemData]) => {
-        const item = document.createElement("li");
-        item.className = "item";
-        const link = document.createElement("a");
-        link.className = "link";
-        link.href = itemData.link;
-        const text = document.createElement("p");
-        text.className = "text";
-        text.textContent = itemText;
-        const subText = document.createElement("p");
-        subText.className = "sub-text";
-        subText.textContent = itemData.subText;
-        /*  */
-        link.append(text, subText);
-        item.append(link);
-        list.append(item);
+    const facoTabHdr = document.createElement("header");
+    facoTabHdr.className = "faco-tab-hdr";
+    const facoTabTitle = document.createElement("h1");
+    facoTabTitle.className = "faco-tab-title";
+    facoTabTitle.textContent = FacoTabData.title;
+    const facoTabBtnWrap = document.createElement("nav");
+    facoTabBtnWrap.className = "faco-tab-btn-wrap";
+    const facoTabBtnList = document.createElement("ul");
+    facoTabBtnList.className = "faco-tab-btn-list";
+
+    /* Tab Body */
+    const facoTabBody = document.createElement("section");
+    facoTabBody.className = "faco-tab-body";
+    const facoTabPanelWrap = document.createElement("nav");
+    facoTabPanelWrap.className = "faco-tab-panel-wrap";
+
+    Object.entries(facoTabGroup).forEach(([facoTabBtnTextData, facoTabPanelData]) => {
+      const facoTabBtnItem = document.createElement("li");
+      facoTabBtnItem.className = "faco-tab-btn-item";
+      const facoTabBtnText = document.createElement("h2");
+      facoTabBtnText.className = "faco-tab-btn-text";
+      facoTabBtnText.textContent = facoTabBtnTextData;
+
+      /* Tab Panel */
+      const facoTabPanelList = document.createElement("ul");
+      facoTabPanelList.className = "faco-tab-panel-list";
+
+      Object.entries(facoTabPanelData).forEach(([facoTabPanelItemText, facoTabPanelItemData]) => {
+        const facoTabPanelItem = document.createElement("li");
+        facoTabPanelItem.className = "faco-tab-panel-item";
+        const facoTabPanelLink = document.createElement("a");
+        facoTabPanelLink.className = "faco-tab-panel-link";
+        facoTabPanelLink.href = facoTabPanelItemData.link;
+        const facoTabPanelText = document.createElement("p");
+        facoTabPanelText.className = "faco-tab-panel-text";
+        facoTabPanelText.textContent = facoTabPanelItemText;
+        const facoTabPanelSubText = document.createElement("p");
+        facoTabPanelSubText.className = "faco-tab-panel-sub-text";
+        facoTabPanelSubText.textContent = facoTabPanelItemData.subText;
+
+        facoTabPanelLink.append(facoTabPanelText, facoTabPanelSubText);
+        facoTabPanelItem.append(facoTabPanelLink);
+        facoTabPanelList.append(facoTabPanelItem);
       });
-      navigation.append(list);
-      /* ------------------------------ */
-      tabItem.append(tabText);
-      tabList.append(tabItem);
+      facoTabPanelWrap.append(facoTabPanelList);
+
+      facoTabBtnItem.append(facoTabBtnText);
+      facoTabBtnList.append(facoTabBtnItem);
     });
-    tab.append(tabList);
-    tabHeader.append(title, tab);
-    tabSection.append(navigation);
-    tabView.append(tabHeader, tabSection);
-    /* ------------------------------ */
-    main.append(tabView);
+    facoTabBtnWrap.append(facoTabBtnList);
+
+    facoTabHdr.append(facoTabTitle, facoTabBtnWrap);
+    facoTabBody.append(facoTabPanelWrap);
+
+    facoTab.append(facoTabHdr, facoTabBody);
   }
 };
-/* ================================================== */
-/* ========================= > Code ========================= */
-window.addEventListener("DOMContentLoaded", TabViewController.init);
-/* ========================= < Code ========================= */
-/* ========================= > FACOOYA ========================= */
-/* NOTE
- */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= < FACOOYA ========================= */
+
+window.addEventListener("DOMContentLoaded", FacoTabController.init);

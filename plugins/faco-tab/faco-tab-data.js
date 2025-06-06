@@ -3,8 +3,20 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* ================================================== */
-const TabViewData = {
+
+/* NOTE
+ * title: title,
+ * group: {
+ *   tabBtnText: {
+ *     panelItemText: {
+ *       link: panelItemLink,
+ *       subText: panelItemSubText
+ *     }
+ *   }
+ * }
+ */
+
+const FacoTabData = {
   title: "Faco tab title",
   group: {
     "Tab 1": {
@@ -17,12 +29,14 @@ const TabViewData = {
         subText: "Item sub text 1-2"
       }
     },
+
     "Tab 2": {
       "Item 2-1": {
         link: "#item-2-1",
         subText: "Item sub text 2-1"
       }
     },
+
     "Tab 3": {
       "Item 3-1": {
         link: "#item-3-1",
@@ -35,15 +49,4 @@ const TabViewData = {
     }
   }
 };
-/* ================================================== */
-/* NOTE
- * title: title,
- * group: {
- *   tabText: {
- *     text: {
- *       link: link,
- *       subText: subText
- *     }
- *   }
- * }
- */
+
