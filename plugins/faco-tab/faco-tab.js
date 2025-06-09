@@ -6,6 +6,8 @@
  * Faco tab main
  */
 
+import { FacoTabData } from "./faco-tab-data.js";
+
 class FacoTab extends HTMLElement {
 	constructor() {
 		super();
@@ -100,21 +102,19 @@ class FacoTab extends HTMLElement {
 	}
 
 	tabItemClick(event) {
-		const root = this.shadowRoot;
 		const index = event.currentTarget.dataset.index;
 
-		const tabItems = root.querySelectorAll(".tab-item");
-
-		if (this.dataset.tabIndex !== index) {
-			this.dataset.tabIndex = index;
+		if (this.tabIndex !== index) {
+			this.tabIndex = index;
 			this.update();
 		}
 	}
 
 	update() {
-		const tabItems = this.shadowRoot.querySelectorAll(".tab-item");
-		const tabTexts = this.shadowRoot.querySelectorAll(".tab-text");
-		const panelLists = this.shadowRoot.querySelectorAll(".panel-list");
+		const root = this.shadowRoot;
+		const tabItems = root.querySelectorAll(".tab-item");
+		const tabTexts = root.querySelectorAll(".tab-text");
+		const panelLists = root.querySelectorAll(".panel-list");
 		const active = "active";
 
 		/* tab */
@@ -122,14 +122,22 @@ class FacoTab extends HTMLElement {
 			tabItems[i].classList.remove(active);
 			tabTexts[i].classList.remove(active);
 		}
-		tabItems[this.dataset.tabIndex].classList.add(active);
-		tabTexts[this.dataset.tabIndex].classList.add(active);
+		tabItems[this.tabIndex].classList.add(active);
+		tabTexts[this.tabIndex].classList.add(active);
 
 		/* panel */
 		panelLists.forEach(list => {
 			list.classList.remove(active);
 		});
-		panelLists[this.dataset.tabIndex].classList.add(active);
+		panelLists[this.tabIndex].classList.add(active);
+	}
+
+	get tabIndex() {
+		return this.dataset.tabIndex;
+	}
+
+	set tabIndex(index) {
+		this.dataset.tabIndex = index;
 	}
 }
 

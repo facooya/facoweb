@@ -6,6 +6,17 @@
  * Faco tab style
  */
 
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:host {
+	display: block;
+	margin: 0 1rem !important;
+}
+
 /* Title */
 .title {
   padding: 1rem 0;

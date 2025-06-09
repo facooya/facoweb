@@ -1,13 +1,7 @@
-/*
- * SPDX-License-Identifier: Apache-2.0
- *
- * Copyright 2025 Facooya and Fanone Facooya
- */
-
 /* NOTE
  * title: title,
  * group: {
- *   tabBtnText: {
+ *   tabItemText: {
  *     panelItemText: {
  *       link: panelItemLink,
  *       subText: panelItemSubText
@@ -45,8 +39,21 @@ const FacoTabData = {
       "Item 3-2": {
         link: "#item-3-2",
         subText: "Item sub text 3-2"
+      },
+      "Item 3-3": {
+        link: "#item-3-3",
+        subText: "Item sub text 3-3"
+      },
+      "Item 3-4": {
+        link: "#item-3-4",
+        subText: "Item sub text 3-4"
+      },
+      "Item 3-5": {
+        link: "#item-3-5",
+        subText: "Item sub text 3-5"
       }
     }
   }
 };
 
+export { FacoTabData };
