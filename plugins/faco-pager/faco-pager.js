@@ -2,162 +2,176 @@
  * SPDX-License-Identifier: Apache-2.0
  *
  * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Pager controller
  */
-/* ================================================== */
-const PagiantionViewAccessor = {
+
+const FacoPagerAccessor = {
 
 };
-/* ================================================== */
-const PaginationViewController = {
+
+const FacoPagerController = {
   init() {
-    PaginationViewManager.init();
+    FacoPagerManager.init();
   },
   resizeSensor() {
-    PaginationViewManager.resizeSensor();
+    FacoPagerManager.resizeSensor();
   }
 };
-/* ================================================== */
-const PaginationViewManager = {
+
+const FacoPagerManager = {
   init() {
     /* updatePageMaxIndex => updatePaginationItemGenerator */
-    PaginationViewUtils.generator();
-    const paginationView = document.querySelector(".pagination-view");
-    paginationView.resizeSensorTimerId = 0;
-    paginationView.tabIndex = 0;
-    paginationView.pageIndex = 0;
-    paginationView.pageMaxIndex = 0;
+    FacoPagerUtils.generator();
+    const facoPager = document.querySelector(".faco-pager");
+    facoPager.resizeSensorTimerId = 0;
+    facoPager.tabIndex = 0;
+    facoPager.pageIndex = 0;
+    facoPager.pageMaxIndex = 0;
+
     /* Tab */
-    PaginationViewUtils.updateTabItem();
+    FacoPagerUtils.updateTabItem();
+
     /* Navigation */
-    PaginationViewUtils.updateNavigationList();
-    PaginationViewUtils.updateNavigationItem();
-    /* Pagination */
-    PaginationViewUtils.updatePageMaxIndex();
-    PaginationViewUtils.updatePaginationItemGenerator();
-    PaginationViewUtils.updatePaginationControlItem();
-    PaginationViewUtils.updatePaginationItem();
-    PaginationViewUtils.updatePaginationWide();
-    /*  */
-    PaginationViewManager.initEvent();
+    FacoPagerUtils.updateNavigationList();
+    FacoPagerUtils.updateNavigationItem();
+
+    /* Pager */
+    FacoPagerUtils.updatePageMaxIndex();
+    FacoPagerUtils.updatePaginationItemGenerator();
+    FacoPagerUtils.updatePaginationControlItem();
+    FacoPagerUtils.updatePaginationItem();
+    FacoPagerUtils.updatePaginationWide();
+
+    FacoPagerManager.initEvent();
   },
-  /* ------------------------------ */
+
   resizeSensor() {
-    PaginationViewUtils.updatePaginationWide();
+    FacoPagerUtils.updatePaginationWide();
   },
-  /* ============================== */
+
   initEvent() {
     const paginationView = document.querySelector(".pagination-view");
+
     /* Tab */
     const tabItems = paginationView.querySelectorAll(".tab .item");
     for (let i = 0; i < tabItems.length; i++) {
       tabItems[i].index = i;
-      tabItems[i].addEventListener("click", PaginationViewHandler.tabItemClick);
+      tabItems[i].addEventListener("click", FacoPagerHandler.tabItemClick);
     }
-    /* Pagination Control */
+
+    /* Pager Control */
     const controlItems = paginationView.querySelectorAll(".control-item");
     for (let i = 0; i < controlItems.length; i++) {
       controlItems[i].index = i;
-      controlItems[i].addEventListener("click", PaginationViewHandler.paginationControlItemClick);
+      controlItems[i].addEventListener("click", FacoPagerHandler.paginationControlItemClick);
     }
   }
 };
-/* ================================================== */
-const PaginationViewHandler = {
+
+const FacoPagerHandler = {
   tabItemClick(event) {
     const paginationView = document.querySelector(".pagination-view");
     const tabIndex = paginationView.tabIndex;
     const tabItem = event.currentTarget;
+
     /* HMI */
     if (tabItem.index === tabIndex) { return; }
+
     /* Navigation Reset */
     const navigationLists = paginationView.querySelectorAll(".navigation .list");
     const navigationItems = navigationLists[tabIndex].querySelectorAll(".item");
     const active = "active";
+
     navigationItems.forEach(item => {
       item.classList.remove(active);
     });
+
     /* Configuration */
     paginationView.tabIndex = tabItem.index;
     paginationView.pageIndex = 0;
-    PaginationViewUtils.updatePageMaxIndex();
+    FacoPagerUtils.updatePageMaxIndex();
+
     /* Tab */
-    PaginationViewUtils.updateTabItem();
+    FacoPagerUtils.updateTabItem();
+
     /* Navigation */
-    PaginationViewUtils.updateNavigationList();
-    PaginationViewUtils.updateNavigationItem();
+    FacoPagerUtils.updateNavigationList();
+    FacoPagerUtils.updateNavigationItem();
+
     /* Pagination */
-    PaginationViewUtils.updatePaginationItemGenerator();
-    PaginationViewUtils.updatePaginationItem();
-    PaginationViewUtils.updatePaginationControlItem();
-    PaginationViewUtils.updatePaginationWide();
+    FacoPagerUtils.updatePaginationItemGenerator();
+    FacoPagerUtils.updatePaginationItem();
+    FacoPagerUtils.updatePaginationControlItem();
+    FacoPagerUtils.updatePaginationWide();
   },
-  /* ============================== */
+
   paginationItemClick(event) {
     const paginationItem = event.currentTarget;
     const paginationView = document.querySelector(".pagination-view");
     paginationView.pageIndex = paginationItem.index;
-    /*  */
-    PaginationViewUtils.updateNavigationItem();
-    PaginationViewUtils.updatePaginationItem();
-    PaginationViewUtils.updatePaginationControlItem();
+
+    FacoPagerUtils.updateNavigationItem();
+    FacoPagerUtils.updatePaginationItem();
+    FacoPagerUtils.updatePaginationControlItem();
   },
-  /* ------------------------------ */
+
   paginationControlItemClick(event) {
     const controlItem = event.currentTarget;
     const paginationView = document.querySelector(".pagination-view");
     const pageIndex = paginationView.pageIndex;
     const pageMaxIndex = paginationView.pageMaxIndex;
-    /*  */
+
     switch (controlItem.index) {
-      case 0: {
+      case 0:
         if (pageIndex !== 0) {
           paginationView.pageIndex = 0;
         }
         break;
-      }
-      case 1: {
+
+      case 1:
         if (pageIndex > 0) {
           paginationView.pageIndex--;
         }
         break;
-      }
-      case 2: {
+
+      case 2:
         if (pageIndex < pageMaxIndex) {
           paginationView.pageIndex++;
         }
         break;
-      }
-      case 3: {
+
+      case 3:
         if (pageIndex !== pageMaxIndex) {
           paginationView.pageIndex = pageMaxIndex;
         }
         break;
-      }
     }
-    /*  */
+
     if (paginationView.pageIndex !== pageIndex) {
-      PaginationViewUtils.updatePaginationItem();
-      PaginationViewUtils.updatePaginationControlItem();
-      PaginationViewUtils.updateNavigationItem();
+      FacoPagerUtils.updatePaginationItem();
+      FacoPagerUtils.updatePaginationControlItem();
+      FacoPagerUtils.updateNavigationItem();
     }
   },
-  /* ================================================== */
+
   onResize() {
     const paginationView = document.querySelector(".pagination-view");
     clearTimeout(paginationView.resizeSensorTimerId);
     paginationView.resizeSensorTimerId = setTimeout(
-      PaginationViewController.resizeSensor,
+      FacoPagerController.resizeSensor,
       100
     );
   }
 };
-/* ================================================== */
-const PaginationViewUtils = {
+
+const FacoPagerUtils = {
   /* Pagination View */
   updatePageMaxIndex() {
     const paginationView = document.querySelector(".pagination-view");
     const lists = paginationView.querySelectorAll(".navigation .list");
     const items = lists[paginationView.tabIndex].querySelectorAll(".item");
+
     /* Calculation */
     let calcPageMaxIndex = Math.floor(items.length / 5);
     if (items.length % 5 === 0) {
@@ -165,41 +179,43 @@ const PaginationViewUtils = {
     }
     paginationView.pageMaxIndex = calcPageMaxIndex;
   },
-  /* ============================== */
+
   /* Tab */
   updateTabItem() {
     const paginationView = document.querySelector(".pagination-view");
     const items = paginationView.querySelectorAll(".tab .item");
     const texts = paginationView.querySelectorAll(".tab .text");
     const active = "active";
+
     /* All Inactive */
     for (let i = 0; i < items.length; i++) {
       items[i].classList.remove(active);
       texts[i].classList.remove(active);
     }
+
     /* Set Active */
     items[paginationView.tabIndex].classList.add(active);
     texts[paginationView.tabIndex].classList.add(active);
   },
-  /* ============================== */
+
   /* Navigation */
   updateNavigationList() {
     const paginationView = document.querySelector(".pagination-view");
     const lists = paginationView.querySelectorAll(".navigation .list");
     const active = "active";
-    /*  */
+
     lists.forEach(list => {
       list.classList.remove(active);
     });
     lists[paginationView.tabIndex].classList.add(active);
   },
-  /* ------------------------------ */
+
   updateNavigationItem() {
     const paginationView = document.querySelector(".pagination-view");
     const lists = paginationView.querySelectorAll(".navigation .list");
     const items = lists[paginationView.tabIndex].querySelectorAll(".item");
     const active = "active";
-    /*  */
+
     items.forEach(item => {
       item.classList.remove(active);
     });
@@ -212,7 +228,7 @@ const PaginationViewUtils = {
       items[i].classList.add(active);
     }
   },
-  /* ============================== */
+
   /* Pagination */
   updatePaginationItem() {
     const paginationView = document.querySelector(".pagination-view");
@@ -223,7 +239,7 @@ const PaginationViewUtils = {
     });
     items[paginationView.pageIndex].classList.add(active);
   },
-  /* ------------------------------ */
+
   updatePaginationControlItem() {
     const paginationView = document.querySelector(".pagination-view");
     const leftItems = paginationView.querySelectorAll(".pagination .control.left .control-item");
@@ -232,6 +248,7 @@ const PaginationViewUtils = {
     const rightIcons = paginationView.querySelectorAll(".pagination .control.right .control-icon");
     const enabled = "enabled";
     const buttonCount = leftItems.length;
+
     /* Reset */
     for (let i = 0; i < buttonCount; i++) {
       leftItems[i].classList.add(enabled);
@@ -239,6 +256,7 @@ const PaginationViewUtils = {
       rightItems[i].classList.add(enabled);
       rightIcons[i].classList.add(enabled);
     }
+
     /* Select Disabled */
     if (paginationView.pageMaxIndex >= 1) {
       if (paginationView.pageIndex === 0) {
@@ -261,44 +279,46 @@ const PaginationViewUtils = {
       }
     }
   },
-  /* ------------------------------ */
+
   updatePaginationWide() {
     const paginationView = document.querySelector(".pagination-view");
     const pagination = paginationView.querySelector(".pagination");
     const html = document.documentElement;
     const htmlWidth = html.clientWidth;
     const wideX = "wide-x";
-    /*  */
+
     const paddingX = 16;
     const gap = 16;
     const itemWidth = 40;
-    /*  */
+
     const controlItemCount = 4;
     const paginationItemCount = paginationView.pageMaxIndex + 1;
     const totalItemCount = controlItemCount + paginationItemCount;
-    /*  */
+
     let calcWidth = totalItemCount * itemWidth;
     calcWidth += gap * (totalItemCount - 1);
     calcWidth += paddingX * 2;
-    /*  */
+
     if (calcWidth < htmlWidth) {
       pagination.classList.add(wideX);
     } else {
       pagination.classList.remove(wideX);
     }
   },
-  /* ============================== */
+
   /* Generator */
   updatePaginationItemGenerator() {
     const paginationView = document.querySelector(".pagination-view");
     const pagination = paginationView.querySelector(".pagination");
     const items = pagination.querySelectorAll(".item");
+
     /* Remove */
     if (items[0]) {
       items.forEach(item => {
         item.remove();
       });
     }
+
     /* Create AND Event */
     const fragment = document.createDocumentFragment();
     const list = pagination.querySelector(".list");
@@ -306,7 +326,7 @@ const PaginationViewUtils = {
       const item = document.createElement("li");
       item.className = "item";
       item.index = i;
-      item.addEventListener("click", PaginationViewHandler.paginationItemClick);
+      item.addEventListener("click", FacoPagerHandler.paginationItemClick);
       const text = document.createElement("span");
       text.className = "text";
       text.textContent = i + 1;
@@ -315,35 +335,27 @@ const PaginationViewUtils = {
     }
     list.append(fragment);
   },
-  /* ============================== */
+
   generator() {
-    const group = PaginationViewData.group;
-    const main = document.querySelector(".main");
-    const paginationView = document.createElement("footer");
-    paginationView.className = "toc pagination-view";
-    paginationView.id = group.titleId;
-    /* ------------------------------ */
+    const facoPagerGroup = FacoPagerData.group;
+    const facoPager = document.querySelector(".faco-pager");
+
     /* Title */
-    const title = document.createElement("h2");
-    title.className = "title";
-    title.id = PaginationViewData.titleId;
-    const titleLink = document.createElement("a");
-    titleLink.className = "title-link";
-    titleLink.href = `#${PaginationViewData.titleId}`;
-    titleLink.textContent = PaginationViewData.titleText;
-    title.append(titleLink);
-    /* ------------------------------ */
+    const facoPagerTitle = document.createElement("h2");
+    facoPagerTitle.className = "faco-pager-title";
+		facoPagerTitle.textContent = FacoPagerData.titleText;
+
     /* Tab */
     const tab = document.createElement("nav");
     tab.className = "tab";
     const tabList = document.createElement("ul");
     tabList.className = "list";
-    /* ------------------------------ */
+
     /* Navigation */
     const navigation = document.createElement("nav");
     navigation.className = "navigation";
-    /* ------------------------------ */
-    Object.entries(group).forEach(([tabTextData, navigationData]) => {
+
+    Object.entries(facoPagerGroup).forEach(([tabTextData, navigationData]) => {
       /* Tab */
       const tabItem = document.createElement("li");
       tabItem.className = "item";
@@ -352,7 +364,7 @@ const PaginationViewUtils = {
       tabText.textContent = tabTextData;
       tabItem.append(tabText);
       tabList.append(tabItem);
-      /* ------------------------------ */
+
       /* Navigation */
       const navigationList = document.createElement("ul");
       navigationList.className = "list";
@@ -368,6 +380,7 @@ const PaginationViewUtils = {
         const navigationSubText = document.createElement("p");
         navigationSubText.className = "sub-text";
         navigationSubText.textContent = itemData.subText;
+
         /* Append */
         navigationLink.append(navigationText, navigationSubText);
         navigationItem.append(navigationLink);
@@ -376,8 +389,8 @@ const PaginationViewUtils = {
       navigation.append(navigationList);
     });
     tab.append(tabList);
-    /* ------------------------------ */
-    /* Pagination */
+
+    /* Pager footer */
     const controlGroup = {
       "left": ["first", "previous"],
       "right": ["next", "last"]
@@ -387,6 +400,7 @@ const PaginationViewUtils = {
     const paginationList = document.createElement("ul");
     paginationList.className = "list";
     pagination.append(paginationList);
+
     /* Control */
     Object.entries(controlGroup).forEach(([position, types]) => {
       const control = document.createElement("div");
@@ -401,20 +415,10 @@ const PaginationViewUtils = {
       });
       pagination.append(control);
     });
-    /* ------------------------------ */
-    paginationView.append(title, tab, navigation, pagination);
-    main.append(paginationView);
+
+    facoPager.append(title, tab, navigation, pagination);
   }
 };
-/* ================================================== */
-/* ========================= > Code ========================= */
-window.addEventListener("DOMContentLoaded", PaginationViewController.init);
-window.addEventListener("resize", PaginationViewHandler.onResize);
-/* ========================= < Code ========================= */
-/* ========================= > FACOOYA ========================= */
-/* NOTE
- */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= < FACOOYA ========================= */
+
+window.addEventListener("DOMContentLoaded", FacoPagerController.init);
+window.addEventListener("resize", FacoPagerHandler.onResize);

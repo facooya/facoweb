@@ -2,10 +2,12 @@
  * SPDX-License-Identifier: Apache-2.0
  *
  * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Faco tab style
  */
 
-/* Tab Header */
-.faco-tab .faco-tab-title {
+/* Title */
+.title {
   padding: 1rem 0;
   font-size: 1.375rem;
   text-align: center;
@@ -15,14 +17,15 @@
   -moz-user-select: none;
 }
 
-.faco-tab .faco-tab-btn-list {
+/* Tab */
+.tab-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   list-style: none;
 }
 
-.faco-tab .faco-tab-btn-item {
+.tab-item {
   border: 4px solid #777777;
   border-radius: 16px;
   cursor: pointer;
@@ -31,7 +34,7 @@
   transition: border-color 300ms;
 }
 
-.faco-tab .faco-tab-btn-text {
+.tab-text {
   color: #777777;
   font-size: 1rem;
   font-weight: bold;
@@ -44,36 +47,36 @@
   transition: color 300ms;
 }
 
-/* Tab Body */
-.faco-tab .faco-tab-body {
+/* Panel */
+.panel {
   padding: 32px 0;
 }
 
-.faco-tab .faco-tab-panel-list {
+.panel-list {
   display: none;
   flex-flow: column;
   gap: 12px;
   list-style: none;
 }
 
-.faco-tab .faco-tab-panel-item {
+.panel-item {
   border: 2px solid #222222;
   border-radius: 8px;
   padding: 8px;
   cursor: pointer;
 }
 
-.faco-tab .faco-tab-panel-link {
+.panel-link {
   text-decoration: none;
 }
 
-.faco-tab .faco-tab-panel-text {
+.panel-text {
   color: #222222;
   font-weight: bold;
   font-size: 1.125rem;
 }
 
-.faco-tab .faco-tab-panel-sub-text {
+.panel-sub-text {
   color: #555555;
   font-size: 1rem;
   margin-top: 4px;
@@ -81,35 +84,40 @@
 }
 
 /* Class List */
-.faco-tab .faco-tab-btn-item.faco-tab-active {
+.tab-item.active {
   border-color: #222222;
   cursor: default;
 }
 
-.faco-tab .faco-tab-btn-text.faco-tab-active {
+.tab-text.active {
   color: #222222;
 }
 
-.faco-tab .faco-tab-panel-list.faco-tab-active {
+.panel-list.active {
   display: flex;
 }
 
 @media (min-width: 768px) {}
 
 @media (min-width: 1280px) {
-  .faco-tab-hdr {
+  .tab-title {
     max-width: 1280px;
     margin: 0 auto;
   }
 
-  .faco-tab-body {
+	.tab {
+		max-width: 1280px;
+		margin: 0 auto;
+	}
+
+  .panel {
     max-width: 1280px;
     margin: 0 auto;
   }
 }
 
 @media (hover: hover) {
-  .faco-tab .faco-tab-btn-text:hover {
+  .tab-text:hover {
     color: #222222;
   }
 }
