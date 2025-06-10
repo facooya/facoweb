@@ -15,8 +15,8 @@ Facoweb is built with plain **CSS** and **JS**.
 - **faco-code/** – Code block viewer with syntax highlighting
 - **faco-footer/** – Reusable site footer UI
 - **faco-header/** – Site header with top bar, main menu, and drawer menu
-- **faco-pagination/** – Tabbed UI with built-in pagination control
-- **faco-tab/** – Simple tabbed content interface (no pagination)
+- **faco-pager/** – Tabbed UI with built-in page control
+- **faco-tab/** – Simple tabbed content interface
 
 ---
 

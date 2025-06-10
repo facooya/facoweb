@@ -1,26 +1,31 @@
-/*
- * SPDX-License-Identifier: Apache-2.0
- *
- * Copyright 2025 Facooya and Fanone Facooya
- *
- * Pager data
- */
-
 /* NOTE
- * titleText: titleText,
- * titleId: titleId,
+ * title: title,
  * group: {
- *   tabText: {
- *     navigationText: {
- *       navigationLink: navigationLink,
- *       navigationSubText: navigationSubText
+ *   "Tab text": {
+ *     "Item text": {
+ *       link: "",
+ *       subText: ""
  *     }
  *   }
  * }
+ *
+ * title: "Title"
+ * tabs: [
+ *   {
+ *     tabLabel: "Tab label",
+ * 		 items: [
+ * 			 {
+ * 		   	 text: "Item text",
+ *         subText: "This is sub text.",
+ * 			   link: "https://www.facooya.com/"
+ * 			 }
+ * 		 ]
+ *   }
+ * ]
  */
 
 const FacoPagerData = {
-  titleText: "Faco pager links",
+  title: "Faco pager title",
   group: {
     "Pager tab 1": {
       "Item 1-1": {
@@ -71,11 +76,11 @@ const FacoPagerData = {
         link: "#item-2-9",
         subText: "sub text 2-9"
       },
-
       "Item 2-10": {
         link: "#item-2-10",
         subText: "sub text 2-10"
       },
+
       "Item 2-11": {
         link: "#item-2-11",
         subText: "sub text 2-11"
@@ -87,3 +92,5 @@ const FacoPagerData = {
     }
   }
 };
+
+export { FacoPagerData };
