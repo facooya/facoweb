@@ -6,7 +6,7 @@
  * Pager main
  */
 
-import { FacoPagerData } from "./faco-pager-data.js";
+import { FacoPagerData } from "../faco-pager-data.js";
 import { FacoPagerRender } from "./faco-pager-render.js";
 import { FacoPagerEvent } from "./faco-pager-event.js";
 import { FacoPagerUtils } from "./faco-pager-utils.js";

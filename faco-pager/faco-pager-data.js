@@ -1,33 +1,19 @@
 /* NOTE
  * title: title,
  * group: {
- *   "Tab text": {
- *     "Item text": {
- *       link: "",
- *       subText: ""
+ *   "Tab label": {
+ *     "Item label": {
+ *       link: "[URL]",
+ *       subText: "Sub text"
  *     }
  *   }
  * }
- *
- * title: "Title"
- * tabs: [
- *   {
- *     tabLabel: "Tab label",
- * 		 items: [
- * 			 {
- * 		   	 text: "Item text",
- *         subText: "This is sub text.",
- * 			   link: "https://www.facooya.com/"
- * 			 }
- * 		 ]
- *   }
- * ]
  */
 
 const FacoPagerData = {
   title: "Faco pager title",
   group: {
-    "Pager tab 1": {
+    "Tab 1": {
       "Item 1-1": {
         link: "#item-1-1",
         subText: "sub text 1-1"
@@ -35,10 +21,27 @@ const FacoPagerData = {
       "Item 1-2": {
         link: "#item-1-2",
         subText: "sub text 1-2"
+      },
+      "Item 1-3": {
+        link: "#item-1-3",
+        subText: "sub text 1-3"
+      },
+      "Item 1-4": {
+        link: "#item-1-4",
+        subText: "sub text 1-4"
+      },
+      "Item 1-5": {
+        link: "#item-1-5",
+        subText: "sub text 1-5"
+      },
+
+      "Item 1-6": {
+        link: "#item-1-6",
+        subText: "sub text 1-6"
       }
     },
 
-    "Pager tab 2": {
+    "Tab 2": {
       "Item 2-1": {
         link: "#item-2-1",
         subText: "sub text 2-1"
@@ -89,7 +92,23 @@ const FacoPagerData = {
         link: "#item-2-12",
         subText: "sub text 2-12"
       }
-    }
+    },
+
+		"Tab 3": {
+			"Item 3-1": {
+				link: "#item-3-1",
+				subText: "sub text 3-1"
+			},
+			"Item 3-2": {
+				link: "#item-3-2",
+				subText: "sub text 3-2"
+			},
+			"Item 3-3": {
+				link: "#item-3-3",
+				subText: "sub text 3-3"
+			}
+		}
+
   }
 };
 

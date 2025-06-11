@@ -198,19 +198,19 @@
 }
 
 .control-icon.first {
-  mask-image: url("../../assets/icons/skip.svg");
+  mask-image: url("./icons/skip.svg");
 }
 
 .control-icon.previous {
-  mask-image: url("../../assets/icons/caret.svg");
+  mask-image: url("./icons/caret.svg");
 }
 
 .control-icon.next {
-  mask-image: url("../../assets/icons/caret.svg");
+  mask-image: url("./icons/caret.svg");
 }
 
 .control-icon.last {
-  mask-image: url("../../assets/icons/skip.svg");
+  mask-image: url("./icons/skip.svg");
 }
 
 /* ClassList: tab */
