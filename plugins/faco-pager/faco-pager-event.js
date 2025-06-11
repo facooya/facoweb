@@ -7,7 +7,7 @@
  */
 
 const FacoPagerEvent = {
-	initEvents() {
+	initEvents(facoPagerUtils) {
 		/* Tab */
 		const tabItems = this.shadowRoot.querySelectorAll(".tab-item");
 
@@ -23,52 +23,48 @@ const FacoPagerEvent = {
 			controlItems[i].dataset.index = i;
 			controlItems[i].addEventListener("click", FacoPagerEvent.controlItemClick.bind(this));
 		}
+
+		/* window */
+		window.addEventListener("resize", FacoPagerEvent.windowResize.bind(this, facoPagerUtils));
 	},
 
 	tabItemClick(event) {
-		const tabIndex = event.currentTarget.dataset.index;
-		if (tabIndex === this.dataset.tabIndex) { return; }
+		const tabIndex = Number(event.currentTarget.dataset.index);
+		if (tabIndex === Number(this.dataset.tabIndex)) return;
 
 		this.tabIndex = tabIndex;
 		this.pageIndex = 0;
 	},
 
 	pageItemClick(event) {
-		const pageIndex = event.currentTarget.dataset.index;
-		if (pageIndex === this.dataset.pageIndex) { return; }
+		const pageIndex = Number(event.currentTarget.dataset.index);
+		if (pageIndex === Number(this.dataset.pageIndex)) return;
 
 		this.pageIndex = pageIndex;
 	},
 
 	controlItemClick(event) {
-		const pageIndex = this.dataset.pageIndex;
-		const pageMaxIndex = this.dataset.pageMaxIndex;
+		const controlIndex = Number(event.currentTarget.dataset.index);
+		const pageMaxIndex = Number(this.dataset.pageMaxIndex);
+		let pageIndex = Number(this.dataset.pageIndex);
 
-		switch (controlItem.dataset.index) {
-			case 0:
-				if (pageIndex !== 0) {
-					this.dataset.pageIndex = 0;
-				}
-				break;
-
-			case 1:
-				if (pageIndex > 0) {
-					this.dataset.pageIndex = pageIndex--;
-				}
-				break;
-
-			case 2:
-				if (pageIndex < pageMaxIndex) {
-					this.dataset.pageIndex = pageIndex++;
-				}
-				break;
-
-			case 3:
-				if (pageIndex !== PageMaxIndex) {
-					this.dataset.pageIndex = pageMaxIndex;
-				}
-				break;
+		if (controlIndex === 0 && pageIndex !== 0) {
+			this.pageIndex = 0;
+		} else if (controlIndex === 1 && pageIndex > 0) {
+			this.pageIndex = --pageIndex;
+		} else if (controlIndex === 2 && pageIndex < pageMaxIndex) {
+			this.pageIndex = ++pageIndex;
+		} else if (controlIndex === 3 && pageIndex !== pageMaxIndex) {
+			this.pageIndex = pageMaxIndex;
 		}
+	},
+
+	windowResize(facoPagerUtils, event) {
+    clearTimeout(Number(this.dataset.resizeId));
+    this.dataset.resizeId = setTimeout(
+      facoPagerUtils.windowResize.bind(this),
+      100
+    );
 	}
 };
 

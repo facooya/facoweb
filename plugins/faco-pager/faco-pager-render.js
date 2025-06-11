@@ -109,8 +109,9 @@ const FacoPagerRender = {
     root.append(style, title, tab, panel, pager);
   },
 
-	updateRender(facoPagerEvent) {
+	pageItemRender(facoPagerEvent) {
 		const root = this.shadowRoot;
+		const frag = document.createDocumentFragment();
 		const pageList = root.querySelector(".page-list");
 		const pageItems = pageList.querySelectorAll(".page-item");
 
@@ -131,12 +132,11 @@ const FacoPagerRender = {
 			const pageText = document.createElement("span");
 			pageText.className = "page-text";
 			pageText.textContent = i + 1;
-			
-			pageItem.append(pageText);
-			pageList.append(pageItem);
-		}
 
-		root.append(pageList);
+			pageItem.append(pageText);
+			frag.append(pageItem);
+		}
+		pageList.append(frag);
 	}
 };
 

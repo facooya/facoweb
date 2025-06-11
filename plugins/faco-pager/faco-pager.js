@@ -9,6 +9,7 @@
 import { FacoPagerData } from "./faco-pager-data.js";
 import { FacoPagerRender } from "./faco-pager-render.js";
 import { FacoPagerEvent } from "./faco-pager-event.js";
+import { FacoPagerUtils } from "./faco-pager-utils.js";
 
 class FacoPager extends HTMLElement {
 	constructor() {
@@ -23,7 +24,9 @@ class FacoPager extends HTMLElement {
 		this.tabIndex = 0;
 		this.pageIndex = 0;
 
-		FacoPagerEvent.initEvents.call(this);
+		this.dataset.resizeId = 0;
+
+		FacoPagerEvent.initEvents.call(this, FacoPagerUtils);
 	}
 
 	set tabIndex(tabIndex) {
@@ -64,7 +67,9 @@ class FacoPager extends HTMLElement {
 		this.dataset.pageMaxIndex = pageMaxIndex;
 
 		const facoPagerEvent = FacoPagerEvent;
-		FacoPagerRender.updateRender.call(this, facoPagerEvent);
+		FacoPagerRender.pageItemRender.call(this, facoPagerEvent);
+
+		FacoPagerUtils.updatePagerWide.call(this);
 	}
 
 	set pageIndex(pageIndex) {
@@ -79,8 +84,8 @@ class FacoPager extends HTMLElement {
 			item.classList.remove(active);
 		});
 
-		const startIndex = parseInt(pageIndex) * 5;
-		const endIndex = (parseInt(pageIndex) + 1) * 5;
+		const startIndex = Number(pageIndex) * 5;
+		const endIndex = (Number(pageIndex) + 1) * 5;
 
 		for (let i = startIndex; i < endIndex; i++) {
 			if (!panelItems[i]) {
@@ -96,10 +101,11 @@ class FacoPager extends HTMLElement {
 			item.classList.remove(active);
 		});
 
-		console.log(pageItems);
 		pageItems[pageIndex].classList.add(active);
 
 		this.dataset.pageIndex = pageIndex;
+
+		FacoPagerUtils.updateControlItem.call(this);
 	}
 }
 
