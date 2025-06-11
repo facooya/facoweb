@@ -8,42 +8,42 @@
 
 const FacoPagerEvent = {
 	initEvents(facoPagerUtils) {
-		/* Tab */
+		/* tab */
 		const tabItems = this.shadowRoot.querySelectorAll(".tab-item");
 
 		for (let i = 0; i < tabItems.length; i++) {
 			tabItems[i].dataset.index = i;
-			tabItems[i].addEventListener("click", FacoPagerEvent.tabItemClick.bind(this));
+			tabItems[i].addEventListener("click", FacoPagerEvent.onTabItemClick.bind(this));
 		}
 
-		/* control */
+		/* pager: control */
 		const controlItems = this.shadowRoot.querySelectorAll(".control-item");
 
 		for (let i = 0; i < controlItems.length; i++) {
 			controlItems[i].dataset.index = i;
-			controlItems[i].addEventListener("click", FacoPagerEvent.controlItemClick.bind(this));
+			controlItems[i].addEventListener("click", FacoPagerEvent.onControlItemClick.bind(this));
 		}
 
 		/* window */
-		window.addEventListener("resize", FacoPagerEvent.windowResize.bind(this, facoPagerUtils));
+		this.dataset.resizeId = 0;
+		window.addEventListener("resize", FacoPagerEvent.onResize.bind(this, facoPagerUtils));
 	},
 
-	tabItemClick(event) {
+	onTabItemClick(event) {
 		const tabIndex = Number(event.currentTarget.dataset.index);
 		if (tabIndex === Number(this.dataset.tabIndex)) return;
 
 		this.tabIndex = tabIndex;
-		this.pageIndex = 0;
 	},
 
-	pageItemClick(event) {
+	onPageItemClick(event) {
 		const pageIndex = Number(event.currentTarget.dataset.index);
 		if (pageIndex === Number(this.dataset.pageIndex)) return;
 
 		this.pageIndex = pageIndex;
 	},
 
-	controlItemClick(event) {
+	onControlItemClick(event) {
 		const controlIndex = Number(event.currentTarget.dataset.index);
 		const pageMaxIndex = Number(this.dataset.pageMaxIndex);
 		let pageIndex = Number(this.dataset.pageIndex);
@@ -59,10 +59,10 @@ const FacoPagerEvent = {
 		}
 	},
 
-	windowResize(facoPagerUtils, event) {
+	onResize(facoPagerUtils) {
     clearTimeout(Number(this.dataset.resizeId));
     this.dataset.resizeId = setTimeout(
-      facoPagerUtils.windowResize.bind(this),
+      facoPagerUtils.updateResize.bind(this),
       100
     );
 	}

@@ -107,37 +107,7 @@ const FacoPagerRender = {
     });
 
     root.append(style, title, tab, panel, pager);
-  },
-
-	pageItemRender(facoPagerEvent) {
-		const root = this.shadowRoot;
-		const frag = document.createDocumentFragment();
-		const pageList = root.querySelector(".page-list");
-		const pageItems = pageList.querySelectorAll(".page-item");
-
-		/* remove */
-		if (pageItems[0]) {
-			pageItems.forEach(item => {
-				item.remove();
-			});
-		}
-
-		/* create */
-		for (let i = 0; i <= this.dataset.pageMaxIndex; i++) {
-			const pageItem = document.createElement("li");
-			pageItem.className = "page-item";
-			pageItem.dataset.index = i;
-			pageItem.addEventListener("click", facoPagerEvent.pageItemClick.bind(this));
-
-			const pageText = document.createElement("span");
-			pageText.className = "page-text";
-			pageText.textContent = i + 1;
-
-			pageItem.append(pageText);
-			frag.append(pageItem);
-		}
-		pageList.append(frag);
-	}
+  }
 };
 
 export { FacoPagerRender };
