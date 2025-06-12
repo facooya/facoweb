@@ -3,16 +3,16 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  */
-/* ================================================== */
+
 import { MainMenuAccessor } from "../main-menu/main-menu.js";
 import { DrawerMenuAccessor } from "../drawer-menu/drawer-menu.js";
-/* ================================================== */
+
 const TopBarAccessor = {
   gridIconClick() {
     TopBarHandler.gridIconClick();
   }
 };
-/* ================================================== */
+
 const TopBarController = {
   init() {
     TopBarUtils.generator();
@@ -28,7 +28,7 @@ const TopBarController = {
     TopBarManager.resizeSensor();
   }
 };
-/* ================================================== */
+
 const TopBarManager = {
   init() {
     TopBarManager.initEvent();
@@ -43,13 +43,13 @@ const TopBarManager = {
   resizeSensor() {
     TopBarUtils.updateLogo();
   },
-  /* ============================== */
+
   initEvent() {
     const headerContent = document.querySelector(".header-content");
     const gridIcon = document.querySelector(".top-bar .grid-icon");
     gridIcon.isActive = false;
     gridIcon.addEventListener("click", TopBarHandler.gridIconClick);
-    /*  */
+
     if (headerContent.screenType === 1) {
       const hamburgerIcon = document.querySelector(".top-bar .hamburger-icon");
       hamburgerIcon.isActive = false;
@@ -61,7 +61,7 @@ const TopBarManager = {
       gridItem.addEventListener("transitionend", TopBarHandler.gridItemTransitionEnd);
     }
   },
-  /* ------------------------------ */
+
   resizeEvent() {
     const headerContent = document.querySelector(".header-content");
     const hamburgerIcon = document.querySelector(".top-bar .hamburger-icon");
@@ -74,7 +74,7 @@ const TopBarManager = {
       hamburgerIcon.removeEventListener("click", TopBarHandler.hamburgerIconClick);
       overlay.removeEventListener("click", TopBarHandler.overlayClick);
     }
-    /*  */
+
     const gridItem = document.querySelector(".top-bar .grid-item");
     if (headerContent.screenType >= 2) {
       gridItem.addEventListener("transitionend", TopBarHandler.gridItemTransitionEnd);
@@ -83,27 +83,28 @@ const TopBarManager = {
     }
   }
 };
-/* ================================================== */
+
 const TopBarHandler = {
   overlayClick() {
     /* Only Mobile Screen Type */
     TopBarUtils.updateIcon();
   },
-  /* ------------------------------ */
+
   hamburgerIconClick() {
     /* Only Mobile Screen Type */
     const mainMenu = document.querySelector(".main-menu");
     const hamburgerIcon = document.querySelector(".top-bar .hamburger-icon");
     const hamburgerItems = hamburgerIcon.querySelectorAll(".hamburger-item");
     const gridIcon = document.querySelector(".top-bar .grid-icon");
-    /*  */
     const hamburgerIconActive = "hamburger-icon-active";
+
     let shouldActive = false;
     let action = "remove";
     if (!hamburgerIcon.isActive) {
       shouldActive = true;
       action = "add";
     }
+
     /* Logic */
     if (shouldActive) {
       if (gridIcon.isActive) {
@@ -114,6 +115,7 @@ const TopBarHandler = {
       MainMenuAccessor.itemCloseAll();
       TopBarUtils.updateOverlay(1);
     }
+
     /* Hamburger Item */
     const activeClass = "active";
     hamburgerItems.forEach(item => {
@@ -124,15 +126,15 @@ const TopBarHandler = {
     /* State */
     hamburgerIcon.isActive = shouldActive;
   },
-  /* ------------------------------ */
+
   gridIconClick() {
     const headerContent = document.querySelector(".header-content");
     const drawerMenu = document.querySelector(".drawer-menu");
     const hamburgerIcon = document.querySelector(".top-bar .hamburger-icon");
     const gridIcon = document.querySelector(".top-bar .grid-icon");
     const gridItems = gridIcon.querySelectorAll(".grid-item");
-    /*  */
     const gridIconActive = "grid-icon-active";
+
     let shouldActive = false;
     let action = "remove";
     let screenType = headerContent.previousScreenType;
@@ -141,7 +143,7 @@ const TopBarHandler = {
       action = "add";
       screenType = headerContent.screenType;
     }
-    /*  */
+
     if (shouldActive) {
       if (screenType === 1 && hamburgerIcon.isActive) {
         TopBarHandler.hamburgerIconClick();
@@ -153,6 +155,7 @@ const TopBarHandler = {
       DrawerMenuAccessor.itemCloseAll();
       TopBarUtils.updateOverlay();
     }
+
     /* Grid Item */
     const activeClass = "active";
     gridItems.forEach(item => {
@@ -160,6 +163,7 @@ const TopBarHandler = {
     });
     /* Drawer Menu */
     drawerMenu.classList[action](gridIconActive);
+
     /* Screen Type */
     if (screenType >= 2) {
       const main = document.querySelector(".main");
@@ -176,7 +180,7 @@ const TopBarHandler = {
     /* State */
     gridIcon.isActive = shouldActive;
   },
-  /* ============================== */
+
   gridItemTransitionEnd(event) {
     /* Only Desktop Screen Type */
     const target = event.target;
@@ -198,7 +202,7 @@ const TopBarHandler = {
     }
   }
 };
-/* ================================================== */
+
 const TopBarUtils = {
   updateOverlay(overlayType) {
     const overlay = document.querySelector(".top-bar .overlay");
@@ -207,10 +211,12 @@ const TopBarUtils = {
       "right-close",
       "left-open"
     ];
+
     /* Reset Default:left-close */
     overlayTypes.forEach(type => {
       overlay.classList.remove(type);
     });
+
     /* Overlay Type
      * overlayType = null:default, 0:right-open, 1:right-close, 2:left-open
      */
@@ -218,7 +224,7 @@ const TopBarUtils = {
       overlay.classList.add(overlayTypes[overlayType]);
     }
   },
-  /* ------------------------------ */
+
   updateIcon() {
     const hamburgerIcon = document.querySelector(".top-bar .hamburger-icon");
     const gridIcon = document.querySelector(".top-bar .grid-icon");
@@ -229,28 +235,32 @@ const TopBarUtils = {
       TopBarHandler.gridIconClick();
     }
   },
-  /* ------------------------------ */
+
   updateLogo() {
     const headerContent = document.querySelector(".header-content");
     const topBar = document.querySelector(".top-bar");
     const facooyaLogoItem = topBar.querySelector(".facooya-logo-item");
     const miniClass = "mini";
+
     /* HMI */
     if (headerContent.screenType !== 1) {
       facooyaLogoItem.classList.remove(miniClass);
       return;
     }
+
     /* Calculation Logo Area Width */
     const topBarWidth = topBar.offsetWidth;
     const iconWidth = 64;
     const gapWidth = 16;
     let calcLogoAreaWidth = topBarWidth;
     calcLogoAreaWidth -= (iconWidth + gapWidth) * 2;
+
     /* Calculation Logo Width */
     const devWidth = 48;
     const taWidth = 8;
     const facooyaWidth = 120;
     const calcLogoWidth = devWidth + taWidth + facooyaWidth;
+
     /* State */
     if (calcLogoAreaWidth < calcLogoWidth) {
       facooyaLogoItem.classList.add(miniClass);
@@ -258,22 +268,24 @@ const TopBarUtils = {
       facooyaLogoItem.classList.remove(miniClass);
     }
   },
-  /* ================================================== */
+
   generator() {
     const headerContent = document.querySelector(".header-content");
     const logoGroups = HeaderContentData.logoGroups;
+
     /* Tob Bar */
     const topBar = document.createElement("div");
     topBar.className = "top-bar";
     const layout = document.createElement("div");
     layout.className = "layout";
+
     /* Logo */
     const logo = document.createElement("div");
     logo.className = "logo";
     const logoLink = document.createElement("a");
     logoLink.className = "logo-link";
     logoLink.href = logoGroups.logoLink;
-    /*  */
+
     Object.entries(logoGroups.logoItems).forEach(([itemName, itemMaskImage]) => {
       const logoItem = document.createElement("span");
       logoItem.className = `logo-item ${itemName}-logo-item`;
@@ -281,6 +293,7 @@ const TopBarUtils = {
       logoLink.append(logoItem);
     });
     logo.append(logoLink);
+
     /* Hamburger Icon */
     const hamburgerIcon = document.createElement("div");
     hamburgerIcon.className = "hamburger-icon";
@@ -289,6 +302,7 @@ const TopBarUtils = {
       hamburgerItem.className = "hamburger-item";
       hamburgerIcon.append(hamburgerItem);
     }
+
     /* Grid Icon */
     const gridIcon = document.createElement("div");
     gridIcon.className = "grid-icon";
@@ -297,15 +311,19 @@ const TopBarUtils = {
       gridItem.className = "grid-item";
       gridIcon.append(gridItem);
     }
+
     /* Scroll Lock */
     const topBarScrollLock = document.createElement("div");
     topBarScrollLock.className = "scroll-lock top-bar-scroll-lock";
+
     /* Append */
     layout.append(logo, hamburgerIcon, gridIcon, topBarScrollLock);
+
     /* :Etc: */
     /* Overlay */
     const overlay = document.createElement("div");
     overlay.className = "overlay";
+
     /* Overlay Scroll Lock */
     const overlayScrollLock = document.createElement("div");
     overlayScrollLock.className = "scroll-lock overlay-scroll-lock";
@@ -316,13 +334,5 @@ const TopBarUtils = {
     headerContent.append(topBar);
   }
 };
-/* ================================================== */
+
 export { TopBarAccessor, TopBarController };
-/* ================================================== */
-/* ========================= >FACOOYA ========================= */
-/* NOTE
- */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= <FACOOYA ========================= */

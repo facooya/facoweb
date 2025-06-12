@@ -2,12 +2,14 @@
  * SPDX-License-Identifier: Apache-2.0
  *
  * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Header main
  */
-/* ================================================== */
+
 import { TopBarController } from "./top-bar/top-bar.js";
 import { MainMenuController } from "./main-menu/main-menu.js";
 import { DrawerMenuController } from "./drawer-menu/drawer-menu.js";
-/* ================================================== */
+
 const HeaderContentController = {
   init() {
     HeaderContentManager.init();
@@ -22,7 +24,7 @@ const HeaderContentController = {
     HeaderContentManager.resizeSensor();
   }
 };
-/* ================================================== */
+
 const HeaderContentManager = {
   init() {
     TopBarController.init();
@@ -45,25 +47,27 @@ const HeaderContentManager = {
     DrawerMenuController.resizeSensor();
   }
 };
-/* ================================================== */
+
 const HeaderContentHandler = {
   onInit() {
     HeaderContentUtils.generator();
-    /*  */
+
     const headerContent = document.querySelector(".header-content");
     if (window.matchMedia("(hover: none)").matches) {
       headerContent.isTouch = true;
     }
     headerContent.resizeSensorTimerId = 0;
-    /*  */
+
     HeaderContentUtils.updateScreenType();
     headerContent.previousScreenType = headerContent.screenType;
-    /*  */
+
     HeaderContentController.init();
   },
+
   onLoad() {
     HeaderContentController.load();
   },
+
   onResize() {
     HeaderContentUtils.updateScreenType();
 
@@ -80,6 +84,7 @@ const HeaderContentHandler = {
       );
     }
   },
+
   onChange(event) {
     if (event.matches) {
       console.log("touch");
@@ -88,7 +93,7 @@ const HeaderContentHandler = {
     }
   }
 };
-/* ================================================== */
+
 const HeaderContentUtils = {
   updateScreenType() {
     const screenTypes = [
@@ -97,6 +102,7 @@ const HeaderContentUtils = {
       "(min-width: 1280px)"
     ];
     const headerContent = document.querySelector(".header-content");
+
     for (let i = 0; i < screenTypes.length; i++) {
       if (window.matchMedia(screenTypes[i]).matches) {
         headerContent.screenType = i + 1;
@@ -104,6 +110,7 @@ const HeaderContentUtils = {
       }
     }
   },
+
   generator() {
     const header = document.querySelector(".header");
     const headerContent = document.createElement("div");
@@ -111,18 +118,9 @@ const HeaderContentUtils = {
     header.append(headerContent);
   }
 };
-/* ================================================== */
-/* ========================= > Code ========================= */
-window.addEventListener("DOMContentLoaded", HeaderContentHandler.onInit);
+
+/* window.addEventListener("DOMContentLoaded", HeaderContentHandler.onInit);
 window.addEventListener("load", HeaderContentHandler.onLoad);
 window.addEventListener("resize", HeaderContentHandler.onResize);
 const hoverMediaQuery = window.matchMedia("(hover: none)");
-hoverMediaQuery.addEventListener("change", HeaderContentHandler.onChange);
-/* ========================= < Code ========================= */
-/* ========================= > FACOOYA ========================= */
-/* NOTE
- */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= < FACOOYA ========================= */
+hoverMediaQuery.addEventListener("change", HeaderContentHandler.onChange); */
