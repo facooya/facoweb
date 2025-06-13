@@ -6,12 +6,6 @@
  * Main menu style
  */
 
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-}
-
 .main-menu {
   --item-br-background: #90ee90;
   --sub-item-br-background: #87ceeb;

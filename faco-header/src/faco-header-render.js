@@ -8,6 +8,11 @@
 
 const FacoHeaderRender = {
 	render(data) {
+		const style = document.createElement("link");
+		style.rel = "stylesheet";
+		style.href = new URL("faco-header.css", import.meta.url).href;
+		this.shadowRoot.append(style);
+
 		FacoHeaderRender.topBarRender.call(this, data);
 		FacoHeaderRender.mainMenuRender.call(this, data);
 		FacoHeaderRender.drawerMenuRender.call(this, data);
@@ -184,45 +189,46 @@ const FacoHeaderRender = {
     list.className = "list";
 
     /* Item */
-    Object.entries(data.drawerMenuGroups).forEach(([itemTextData, subItems]) => {
+    Object.entries(data.drawerMenuGroups).forEach(([itemLabelData, subItems]) => {
       const item = document.createElement("li");
       item.className = "item";
 
-      /* Item Container */
-      const itemContainer = document.createElement("div");
-      itemContainer.className = "item-container";
-      const itemText = document.createElement("span");
-      itemText.className = "item-text";
-      itemText.textContent = itemTextData;
+      /* Item Box */
+      const itemBox = document.createElement("div");
+      itemBox.className = "item-box";
+      const itemLabel = document.createElement("span");
+      itemLabel.className = "item-label";
+      itemLabel.textContent = itemLabelData;
       const itemArrowIcon = document.createElement("span");
       itemArrowIcon.className = "item-arrow-icon";
       const itemBottomLine = document.createElement("span");
       itemBottomLine.className = "item-bottom-line";
-      itemContainer.append(itemText, itemArrowIcon, itemBottomLine);
+      itemBox.append(itemLabel, itemArrowIcon, itemBottomLine);
 
       const subList = document.createElement("ul");
       subList.className = "sub-list";
-      Object.entries(subItems).forEach(([subItemTextData, subItemLink]) => {
+      Object.entries(subItems).forEach(([subItemLabelData, subItemLink]) => {
         const subItem = document.createElement("li");
         subItem.className = "sub-item";
 
-        /* Sub Item Container */
-        const subItemContainer = document.createElement("a");
-        subItemContainer.className = "sub-item-container";
-        subItemContainer.href = subItemLink;
-        const subItemText = document.createElement("span");
-        subItemText.className = "sub-item-text";
-        subItemText.textContent = subItemTextData;
+        /* Sub Item Box */
+        const subItemBox = document.createElement("a");
+        subItemBox.className = "sub-item-box";
+        subItemBox.href = subItemLink;
+        const subItemLabel = document.createElement("span");
+        subItemLabel.className = "sub-item-label";
+        subItemLabel.textContent = subItemLabelData;
         const subItemArrowIcon = document.createElement("span");
         subItemArrowIcon.className = "sub-item-arrow-icon";
         const subItemBottomLine = document.createElement("span");
         subItemBottomLine.className = "sub-item-bottom-line";
 
-        subItemContainer.append(subItemText, subItemArrowIcon, subItemBottomLine);
-        subItem.append(subItemContainer);
+        subItemBox.append(subItemLabel, subItemArrowIcon, subItemBottomLine);
+        subItem.append(subItemBox);
         subList.append(subItem);
       });
-      item.append(itemContainer, subList);
+
+      item.append(itemBox, subList);
       list.append(item);
     });
 

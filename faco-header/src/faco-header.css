@@ -1,0 +1,24 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Header style
+ */
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+  --bold-white:
+    0.25px 0 #ffffff,
+    -0.25px 0 #ffffff,
+    0 0.25px #ffffff,
+    0 -0.25px #ffffff;
+}
+
+:host {
+}
