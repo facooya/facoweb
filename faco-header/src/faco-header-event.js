@@ -72,10 +72,10 @@ const FacoHeaderEvent = {
 		},
 
 		onOverlayClick() {
-			if (Number(this.dataset.mainMenu)) {
-				FacoHeaderEvent.onHamburgerIconClick.call(this);
-			} else if (Number(this.dataset.drawerMenu)) {
-				FacoHeaderEvent.onGridIconClick.call(this);
+			if (Number(this.dataset.mainMenuState)) {
+				FacoHeaderEvent.TopBar.onHamburgerIconClick.call(this);
+			} else if (Number(this.dataset.drawerMenuState)) {
+				FacoHeaderEvent.TopBar.onGridIconClick.call(this);
 			}
 		},
 

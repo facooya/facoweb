@@ -1,11 +1,3 @@
-/*
- * SPDX-License-Identifier: Apache-2.0
- *
- * Copyright 2025 Facooya and Fanone Facooya
- *
- * Header data
- */
-
 /* NOTE
  * logoGroups: {
  *   logoLink: logoLink,
@@ -29,7 +21,7 @@
 
 const FacoHeaderData = {
   logoGroups: {
-    logoLink: "#facooya",
+    logoLink: "#link",
     logoItems: {
       dev: `url("./src/icons/octagon-2w.svg")`,
       transcendence: `url("./src/icons/triangle.svg")`,
@@ -65,14 +57,23 @@ const FacoHeaderData = {
 
   drawerMenuGroups: {
     "Drawer menu 1": {
-      "sub menu 1-1": "#",
-      "sub menu 1-2": "#"
+      "Sub item 1-1": "#",
+      "Sub item 1-2": "#"
     },
 
     "Drawer menu 2": {
-      "sub menu 2-1": "#",
-      "sub menu 2-2": "#",
-			"sub menu 2-3": "#"
+      "Sub item 2-1": "#",
+      "Sub item 2-2": "#",
+			"Sub item 2-3": "#"
+    },
+
+    "Drawer menu 3": {
+      "Sub item 3-1": "#",
+      "Sub item 3-2": "#",
+			"Sub item 3-3": "#",
+      "Sub item 3-4": "#",
+      "Sub item 3-5": "#",
+			"Sub item 3-6": "#"
     }
   }
 };

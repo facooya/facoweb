@@ -95,7 +95,7 @@ class FacoHeader extends HTMLElement {
 				}
 				FacoHeaderUtils.TopBar.updateOverlay.call(this, 2);
 			} else {
-				// drawerMenuItemCloseAll();
+				FacoHeaderUtils.DrawerMenu.close.call(this, FacoHeaderEvent);
 				FacoHeaderUtils.TopBar.updateOverlay.call(this);
 			}
 		} else {
@@ -113,11 +113,11 @@ class FacoHeader extends HTMLElement {
 		drawerMenu.classList[action](gridIconActive);
 
 		if (Number(this.dataset.screenType) >= 2) {
-			// if main.classList[action](gridIconActive);
-      // if footer.classList[action](gridIconActive);
-      // topBar.classList[action](gridIconActive);
+			// Global if main.classList[action](gridIconActive);
+      // Global if footer.classList[action](gridIconActive);
 			if (Number(this.dataset.screenType) === 3) {
-				// mainMenu.classList[action](gridIconActive);
+				const mainMenu = this.shadowRoot.querySelector(".main-menu");
+				mainMenu.classList[action](gridIconActive);
 			}
 		}
 

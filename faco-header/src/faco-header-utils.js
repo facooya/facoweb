@@ -154,13 +154,13 @@ const FacoHeaderUtils = {
 	},
 
 	DrawerMenu: {
-		close() {
+		close(FacoHeaderEvent) {
     	const items = this.shadowRoot.querySelectorAll(".drawer-menu .item");
     	items.forEach(item => {
       	if (Number(item.dataset.isOpen)) {
         	const itemBox = item.querySelector(".item-box");
         	const modifyEvent = { currentTarget: itemBox };
-        	FacoHeaderUtils.DrawerMenu.onItemBoxClick(modifyEvent);
+        	FacoHeaderEvent.DrawerMenu.onItemBoxClick.call(this, modifyEvent);
       	}
     	});
 		},
