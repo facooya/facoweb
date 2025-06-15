@@ -60,7 +60,7 @@
   transition: background-color 300ms;
 }
 
-.main-menu .item-container {
+.main-menu .item-box {
   position: relative;
   height: 64px;
   line-height: 64px;
@@ -69,8 +69,8 @@
   cursor: pointer;
 }
 
-/* Inner Container */
-.main-menu .item-text {
+/* inner box */
+.main-menu .item-label {
   /* Hover Reset: margin-right */
   display: inline-block;
   /* Layout */
@@ -115,7 +115,7 @@
   transition: left 300ms, width 300ms;
 }
 
-.main-menu .item-container-scroll-lock {
+.main-menu .item-box-scroll-lock {
   /* Only Tdst */
   display: none;
   z-index: auto;
@@ -151,7 +151,7 @@
   padding: 0 10%;
 }
 
-.main-menu .sub-item-container {
+.main-menu .sub-item-box {
   position: relative;
   display: block;
   height: 100%;
@@ -160,8 +160,8 @@
   text-decoration: none;
 }
 
-/* Inner Container */
-.main-menu .sub-item-text {
+/* inner box */
+.main-menu .sub-item-label {
   /* Hover Reset: transition */
   display: inline-block;
   line-height: 64px;
@@ -176,7 +176,7 @@
 
 .main-menu .sub-item-arrow-icon {
   position: absolute;
-  /* top(28px) = textH(64px) / 2 - height(8px) / 2 */
+  /* top(28px) = labelH(64px) / 2 - height(8px) / 2 */
   top: 28px;
   left: 100%;
   /*  */
@@ -256,7 +256,7 @@
     width: 25%;
   }
 
-  .main-menu .item-container {
+  .main-menu .item-box {
     position: relative;
     width: 100%;
     overflow: scroll;
@@ -264,7 +264,7 @@
     overscroll-behavior: contain;
   }
 
-  .main-menu .item-container-scroll-lock {
+  .main-menu .item-box-scroll-lock {
     /* Only Tdst */
     display: block;
     z-index: auto;
@@ -402,12 +402,12 @@
   background-color: #333333;
 }
 
-.main-menu .item-text.open {
+.main-menu .item-label.open {
   text-shadow: var(--bold-white);
 }
 
 .main-menu .item-arrow-icon.open {
-  /* .main-menu .item-container:hover .item-arrow-icon = 40
+  /* .main-menu .item-box:hover .item-arrow-icon = 40
    * .main-menu .item-arrow-icon.open = 30 */
   transform: scale(1, 1) rotate(360deg) !important;
 }
@@ -422,7 +422,7 @@
 }
 
 /* Item Hover Lock */
-.main-menu .item-text.hover-lock {
+.main-menu .item-label.hover-lock {
   margin-right: 32px;
   text-shadow: var(--bold-white);
 }
@@ -439,7 +439,7 @@
 }
 
 /* Sub Item Active  */
-.main-menu .sub-item-text.active {
+.main-menu .sub-item-label.active {
   margin-right: 12px;
 }
 
@@ -479,7 +479,7 @@
 @media (min-width: 1280px) {}
 
 @media (hover: hover) {
-  .main-menu .item-text {
+  .main-menu .item-label {
     transition:
       margin-right 300ms,
       text-shadow 300ms;
@@ -495,29 +495,29 @@
       transform 300ms;
   }
 
-  .main-menu .sub-item-text {
+  .main-menu .sub-item-label {
     transition:
       text-shadow 300ms,
       margin-right 300ms;
   }
 
-  .main-menu .item-container:hover .item-text {
+  .main-menu .item-box:hover .item-label {
     margin-right: 32px;
     text-shadow: var(--bold-white);
   }
 
-  .main-menu .item-container:hover .item-arrow-icon {
+  .main-menu .item-box:hover .item-arrow-icon {
     margin-right: 24px;
     opacity: 1;
     transform: scale(1, 1) rotate(180deg);
   }
 
-  .main-menu .item-container:hover .item-bottom-line {
+  .main-menu .item-box:hover .item-bottom-line {
     left: 5%;
     width: 90%;
   }
 
-  .main-menu .sub-item-container:hover .sub-item-text {
+  .main-menu .sub-item-box:hover .sub-item-label {
     margin-right: 12px;
     text-shadow: var(--bold-white);
   }
@@ -526,19 +526,19 @@
 
   @media (min-width: 1280px) {
     /* Reset */
-    /* Item Container Hover */
-    .main-menu .item-container:hover .item-text {
+    /* item box hover */
+    .main-menu .item-box:hover .item-label {
       margin-right: 0;
       text-shadow: none;
     }
 
-    .main-menu .item-container:hover .item-bottom-line {
+    .main-menu .item-box:hover .item-bottom-line {
       left: auto;
       width: auto;
     }
 
     /* SS */
-    .main-menu .item-container {
+    .main-menu .item-box {
       cursor: default;
     }
 
@@ -546,13 +546,13 @@
       display: none;
     }
 
-    .main-menu .item-text {
+    .main-menu .item-label {
       /* Reset: margin-right */
       margin-right: 0;
       transition: text-shadow 300ms;
     }
 
-    .main-menu .item:hover .item-text {
+    .main-menu .item:hover .item-label {
       text-shadow: var(--bold-white);
     }
 

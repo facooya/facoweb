@@ -24,14 +24,7 @@ class FacoHeader extends HTMLElement {
 
 		this.touchType;
 		this.screenType;
-
-		this.dataset.mainMenuState = 0;
-		this.dataset.drawerMenuState = 0;
-		this.mainMenuState = 0;
-		this.drawerMenuState = 0;
-
-		// init, load
-		// resize
+		this.dataset.prevScreenType = this.dataset.screenType;
 
 		FacoHeaderEvent.initEvents.call(this);
 	}
@@ -57,71 +50,6 @@ class FacoHeader extends HTMLElement {
         break;
       }
     }
-	}
-
-	set mainMenuState(shouldOpen) {
-		const mainMenuState = Number(this.dataset.mainMenuState);
-		if (mainMenuState === shouldOpen) return;
-		const screenType = Number(this.dataset.screenType);
-
-		let action = "remove";
-		if (shouldOpen) {
-			action = "add";
-		}
-
-		if (screenType === 1) {
-			FacoHeaderUtils.MainMenu.stateMobile.call(this, shouldOpen, action);
-		}
-
-		this.dataset.mainMenuState = shouldOpen;
-	}
-
-	set drawerMenuState(shouldOpen) {
-		const drawerMenuState = Number(this.dataset.drawerMenuState);
-		if (drawerMenuState === shouldOpen) return;
-		const screenType = Number(this.dataset.screenType);
-
-		let action = "remove";
-		if (shouldOpen) {
-			action = "add";
-		}
-
-		if (screenType === 1) {
-			// FacoHeaderUtils.DrawerMenu.stateMobile.call(this, shouldOpen, action);
-
-			if (shouldOpen) {
-				if (Number(this.dataset.mainMenuState)) {
-					this.mainMenuState = 0;
-				}
-				FacoHeaderUtils.TopBar.updateOverlay.call(this, 2);
-			} else {
-				FacoHeaderUtils.DrawerMenu.close.call(this, FacoHeaderEvent);
-				FacoHeaderUtils.TopBar.updateOverlay.call(this);
-			}
-		} else {
-			// Other size ...
-		}
-
-		const active = "active";
-		const gridItems = this.shadowRoot.querySelectorAll(".grid-item");
-		gridItems.forEach(item => {
-			item.classList[action](active);
-		});
-
-		const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
-		const gridIconActive = "grid-icon-active";
-		drawerMenu.classList[action](gridIconActive);
-
-		if (Number(this.dataset.screenType) >= 2) {
-			// Global if main.classList[action](gridIconActive);
-      // Global if footer.classList[action](gridIconActive);
-			if (Number(this.dataset.screenType) === 3) {
-				const mainMenu = this.shadowRoot.querySelector(".main-menu");
-				mainMenu.classList[action](gridIconActive);
-			}
-		}
-
-		this.dataset.drawerMenuState = shouldOpen;
 	}
 }
 

@@ -31,30 +31,9 @@ const FacoHeaderUtils = {
 	},
 
 	MainMenu: {
-		stateMobile(shouldOpen, action) {
-			if (shouldOpen) {
-				if (Number(this.dataset.drawerMenuState)) {
-					this.drawerMenuState = 0;
-				}
-				FacoHeaderUtils.TopBar.updateOverlay.call(this, 0);
-			} else {
-				// FacoHeaderUtils.MainMenu.itemCloseAll();
-				FacoHeaderUtils.TopBar.updateOverlay.call(this, 1);
-			}
-
-			const active = "active";
-			const hamburgerItems = this.shadowRoot.querySelectorAll(".hamburger-item");
-			hamburgerItems.forEach(item => {
-				item.classList[action](active);
-			});
-
-			const mainMenu = this.shadowRoot.querySelector(".main-menu");
-			const hamburgerIconActive = "hamburger-icon-active";
-			mainMenu.classList[action](hamburgerIconActive);
-		},
-
 		updateSubListHeight(item, shouldOpen) {
-			const subList = item.querySelector(".main-menu .sub-list");
+			/* type: */
+			const subList = item.querySelector(".sub-list");
 			if (shouldOpen) {
 				if (subList.height == null) {
 					const subItems = subList.querySelectorAll(".sub-item");
@@ -66,101 +45,97 @@ const FacoHeaderUtils = {
 			}
 		},
 
-		setHoverLockItemContainer(item, shouldLock) {
-    	const itemText = item.querySelector(".item-text");
-    	const itemArrowIcon = item.querySelector(".item-arrow-icon");
-    	const itemBottomLine = item.querySelector(".item-bottom-line");
-
-    	const hoverLockClass = "hover-lock";
-    	let action = "remove";
-    	if (shouldLock) {
-      	action = "add";
-    	}
-
-    	itemText.classList[action](hoverLockClass);
-    	itemArrowIcon.classList[action](hoverLockClass);
-    	itemBottomLine.classList[action](hoverLockClass);
-		},
-
-		updateSubItemContainer(item) {
-    	const subItemContainers = item.querySelectorAll(".sub-item-container");
-    	const subItemTexts = item.querySelectorAll(".sub-item-text");
-    	const subItemArrowIcons = item.querySelectorAll(".sub-item-arrow-icon");
-
-    	for (let i = 0; i < subItemArrowIcons.length; i++) {
-      	const containerWidth = subItemContainers[i].clientWidth;
-      	const textWidth = subItemTexts[i].clientWidth;
-      	let calcLeft = (containerWidth + textWidth) / 2;
-      	subItemArrowIcons[i].left = calcLeft;
-      	subItemArrowIcons[i].style.left = `${subItemArrowIcons[i].left}px`;
-    	}
-
-    	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
-    	const bufferWidth = 24;
-
-    	for (let i = 0; i < subItemBottomLines.length; i++) {
-      	const textWidth = subItemTexts[i].clientWidth;
-      	let calcWidth = textWidth + bufferWidth;
-      	subItemBottomLines[i].width = calcWidth;
-
-				const containerWidth = subItemContainers[i].clientWidth;
-				let calcLeft = (containerWidth - calcWidth) / 2;
-				subItemBottomLines[i].left = calcLeft;
-				subItemBottomLines[i].style.left = `${subItemBottomLines[i].left}px`;
-				console.log(subItemBottomLines[i].left);
-    	}
-		},
-
-		timerSubItemContainer(item, shouldReset) {
-    	/* type: 2356 */
-    	const subItemContainers = item.querySelectorAll(".sub-item-container");
-
-    	if (shouldReset) {
-      	subItemContainers.forEach(subContainer => {
-        	clearTimeout(subContainer.timerId);
-        	FacoHeaderUtils.MainMenu.timeoutSubItemContainer(subContainer, shouldReset);
+		updateSubListMaxHeight() {
+    	const mainMenu = this.shadowRoot.querySelector(".main-menu");
+    	const subLists = mainMenu.querySelectorAll(".sub-list");
+    	const screenType = Number(this.dataset.screenType);
+	
+    	if (screenType === 1) {
+      	subLists.forEach(subList => {
+        	subList.style.maxHeight = "";
       	});
-
     	} else {
-      	for (let i = 0; i < subItemContainers.length; i++) {
-        	subItemContainers[i].timerId = setTimeout(
-          	FacoHeaderUtils.MainMenu.timeoutSubItemContainer,
-          	i * 150,
-          	subItemContainers[i],
-          	shouldReset
-        	);
+      	const topBar = this.shadowRoot.querySelector(".top-bar");
+      	const buffer = 16;
+      	const topBarHeight = topBar.clientHeight;
+      	let calcMaxHeight = window.innerHeight - (topBarHeight + buffer);
+      	subLists.forEach(subList => {
+        	subList.style.maxHeight = `${calcMaxHeight}px`;
+      	});
+    	}
+		},
+
+		updateSubListScroll(item, shouldAction) {
+			/* type: 23 */
+    	const subList = item.querySelector(".sub-list");
+    	const chevronTopWrapper = item.querySelector(".item-chevron-top-wrapper");
+    	const chevronBottomWrapper = item.querySelector(".item-chevron-bottom-wrapper");
+    	const active = "active";
+    	if (!shouldAction) {
+      	chevronTopWrapper.classList.remove(active);
+      	chevronBottomWrapper.classList.remove(active);
+      	return;
+    	}
+	
+    	const buffer = 8;
+    	const scrollTop = subList.scrollTop;
+    	const scrollHeight = subList.scrollHeight;
+    	const clientHeight = subList.clientHeight;
+    	const calcScrollPosition = scrollTop + clientHeight + buffer;
+	
+    	let clTopAction = "remove";
+    	let clBottomAction = "remove";
+	
+    	if (shouldAction) {
+      	if (scrollTop > buffer) {
+        	clTopAction = "add";
+      	}
+      	if (calcScrollPosition < scrollHeight) {
+        	clBottomAction = "add";
       	}
     	}
+	
+    	chevronTopWrapper.classList[clTopAction](active);
+    	chevronBottomWrapper.classList[clBottomAction](active);
 		},
 
-		timeoutSubItemContainer(subContainer, shouldReset) {
-    	/* Only timerSubItemContainer() */
-    	const subItemText = subContainer.querySelector(".sub-item-text");
-    	const subItemArrowIcon = subContainer.querySelector(".sub-item-arrow-icon");
-    	const subitemBottomLine = subContainer.querySelector(".sub-item-bottom-line");
+		setLastItem(item) {
+    	const alignX_Right = "align-x-right";
+    	const mainMenuSubList = item.querySelector(".sub-list");
 
-    	const activeClass = "active";
-    	let clAction = "remove";
-    	let setSubItemBottomLineWidth = "";
-    	if (!shouldReset) {
-      	clAction = "add";
-      	setSubItemBottomLineWidth = `${subitemBottomLine.width}px`;
+    	/* Define */
+    	const buffer = 16;
+    	const drawerMenuWidth = 320;
+    	const mainMenuSubListWidth = 320;
+
+    	/* Drawer Menu Left */
+    	const html = document.documentElement;
+    	const htmlWidth = html.offsetWidth;
+    	const drawerMenuLeft = htmlWidth - (drawerMenuWidth + buffer);
+
+    	/* Main Menu Sub List Right */
+    	const itemWidth = item.offsetWidth;
+    	const deltaWidth = mainMenuSubListWidth - itemWidth;
+    	const itemRect = item.getBoundingClientRect();
+    	const subListRight = itemRect.right + (deltaWidth / 2);
+
+    	/* State */
+    	if (drawerMenuLeft < subListRight) {
+      	mainMenuSubList.classList.add(alignX_Right);
+    	} else {
+      	mainMenuSubList.classList.remove(alignX_Right);
     	}
-    	subitemBottomLine.style.width = setSubItemBottomLineWidth;
-
-    	subItemText.classList[clAction](activeClass);
-    	subItemArrowIcon.classList[clAction](activeClass);
 		}
 	},
 
-	DrawerMenu: {
-		close(FacoHeaderEvent) {
-    	const items = this.shadowRoot.querySelectorAll(".drawer-menu .item");
+	Menu: {
+		close(FacoHeaderEvent, menu) {
+    	const items = menu.querySelectorAll(".item");
     	items.forEach(item => {
       	if (Number(item.dataset.isOpen)) {
         	const itemBox = item.querySelector(".item-box");
         	const modifyEvent = { currentTarget: itemBox };
-        	FacoHeaderEvent.DrawerMenu.onItemBoxClick.call(this, modifyEvent);
+        	FacoHeaderEvent.Menu.onItemBoxClick.call(this, modifyEvent);
       	}
     	});
 		},
@@ -211,13 +186,13 @@ const FacoHeaderUtils = {
     	if (shouldReset) {
       	subItemBoxes.forEach(subItemBox => {
         	clearTimeout(Number(subItemBox.dataset.timerId));
-        	FacoHeaderUtils.DrawerMenu._timeoutSubItem(subItemBox, shouldReset);
+        	FacoHeaderUtils.Menu._timeoutSubItem(subItemBox, shouldReset);
       	});
 
     	} else {
       	for (let i = 0; i < subItemBoxes.length; i++) {
         	subItemBoxes[i].dataset.timerId = setTimeout(
-          	FacoHeaderUtils.DrawerMenu._timeoutSubItem,
+          	FacoHeaderUtils.Menu._timeoutSubItem,
           	i * 150,
           	subItemBoxes[i],
           	shouldReset
@@ -226,7 +201,7 @@ const FacoHeaderUtils = {
     	}
 		},
 
-		_timeoutSubItem(subItemBox, shouldReset){
+		_timeoutSubItem(subItemBox, shouldReset) {
     	const subItemLabel = subItemBox.querySelector(".sub-item-label");
     	const subItemArrowIcon = subItemBox.querySelector(".sub-item-arrow-icon");
     	const subItemBottomLine = subItemBox.querySelector(".sub-item-bottom-line");

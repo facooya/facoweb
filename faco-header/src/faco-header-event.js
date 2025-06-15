@@ -10,350 +10,426 @@ import { FacoHeaderUtils } from "./faco-header-utils.js";
 
 const FacoHeaderEvent = {
 	initEvents() {
+		window.addEventListener("resize", FacoHeaderEvent.setTimerResize.bind(this));
+
+		const topBar = this.shadowRoot.querySelector(".top-bar");
+		topBar.onGridIconClick = FacoHeaderEvent.TopBar.onGridIconClick.bind(this);
+		topBar.onHamburgerIconClick = FacoHeaderEvent.TopBar.onHamburgerIconClick.bind(this);
+		topBar.onOverlayClick = FacoHeaderEvent.TopBar.onOverlayClick.bind(this);
+		topBar.onGridItemTransitionEnd = FacoHeaderEvent.TopBar.onGridItemTransitionEnd.bind(this);
+
+		const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+		drawerMenu.onScroll = FacoHeaderEvent.Menu.onScroll.bind(this, drawerMenu);
+		drawerMenu.onItemBoxClick = FacoHeaderEvent.Menu.onItemBoxClick.bind(this);
+		drawerMenu.onSubListTransitionEnd = FacoHeaderEvent.Menu.onSubListTransitionEnd.bind(this);
+		drawerMenu.onSubItemBoxHover = FacoHeaderEvent.Menu.onSubItemBoxHover.bind(this);
+
+		const mainMenu = this.shadowRoot.querySelector(".main-menu");
+		mainMenu.onScroll = FacoHeaderEvent.Menu.onScroll.bind(this, mainMenu);
+		mainMenu.onSubListTransitionEnd = FacoHeaderEvent.Menu.onSubListTransitionEnd.bind(this);
+		mainMenu.onSubItemBoxHover = FacoHeaderEvent.Menu.onSubItemBoxHover.bind(this);
+
+		mainMenu.onItemHover = FacoHeaderEvent.MainMenu.onItemHover.bind(this);
+		mainMenu.onItemBoxClick = FacoHeaderEvent.MainMenu.onItemBoxClick.bind(this);
+		mainMenu.onSubListScroll = FacoHeaderEvent.MainMenu.onSubListScroll.bind(this);
+
 		const screenType = Number(this.dataset.screenType);
+		FacoHeaderEvent.TopBar.manager.call(this, screenType, 1);
+		FacoHeaderEvent.MainMenu.manager.call(this, screenType, 1);
+		FacoHeaderEvent.DrawerMenu.manager.call(this, screenType, 1);
+	},
 
-		FacoHeaderEvent.TopBar.common.call(this);
-		FacoHeaderEvent.MainMenu.common.call(this);
-		FacoHeaderEvent.DrawerMenu.common.call(this);
+	setTimerResize() {
+    clearTimeout(this.dataset.resizeId);
+    this.dataset.resizeId = setTimeout(
+      FacoHeaderEvent._onResize.bind(this),
+      200
+    );
+	},
 
-    if (screenType === 1) {
-			FacoHeaderEvent.TopBar.mobile.call(this);
-			FacoHeaderEvent.MainMenu.mobile.call(this);
-    } else if (screenType === 2) {
-			FacoHeaderEvent.TopBar.tablet.call(this);
-    } else if (screenType === 3) {
-			FacoHeaderEvent.TopBar.desktop.call(this);
+	_onResize() {
+		this.screenType;
+
+		if (Number(this.dataset.screenType) !== Number(this.dataset.prevScreenType)) {
+			/* resize display */
+			const topBar = this.shadowRoot.querySelector(".top-bar");
+			const gridIcon = topBar.querySelector(".grid-icon");
+
+			if (Number(gridIcon.dataset.isActive)) {
+				topBar.onGridIconClick();
+			}
+
+			if (Number(this.dataset.prevScreenType) === 1) {
+				const hamburgerIcon = topBar.querySelector(".hamburger-icon");
+				if (Number(hamburgerIcon.dataset.isActive)) {
+					topBar.onHamburgerIconClick();
+				}
+			}
+
+			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+    	const drawerMenuItems = drawerMenu.querySelectorAll(".item");
+    	drawerMenuItems.forEach(item => {
+      	FacoHeaderUtils.Menu.updateSubItem(item);
+    	});
+    	drawerMenu.onScroll();
+
+			const mainMenu = this.shadowRoot.querySelector(".main-menu");
+			const mainMenuItems = mainMenu.querySelectorAll(".item");
+			mainMenuItems.forEach(item => {
+				FacoHeaderUtils.Menu.updateSubItem(item);
+			});
+			mainMenu.onScroll();
+
+			const prevScreenType = Number(this.dataset.prevScreenType);
+			const screenType = Number(this.dataset.screenType);
+
+			if (prevScreenType >= 2) {
+				FacoHeaderUtils.Menu.close.call(this, FacoHeaderEvent, mainMenu);
+				// updateSubListMaxHeight();
+			}
+
+			/* manager */
+			FacoHeaderEvent.TopBar.manager.call(this, prevScreenType, 0);
+			FacoHeaderEvent.TopBar.manager.call(this, screenType, 1);
+			FacoHeaderEvent.MainMenu.manager.call(this, prevScreenType, 0);
+			FacoHeaderEvent.MainMenu.manager.call(this, screenType, 1);
+			FacoHeaderEvent.DrawerMenu.manager.call(this, prevScreenType, 0);
+			FacoHeaderEvent.DrawerMenu.manager.call(this, screenType, 1);
+
+			this.dataset.prevScreenType = this.dataset.screenType;
+		} else {
+			/* resize sensor */
+			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+    	const drawerMenuItems = drawerMenu.querySelectorAll(".item");
+    	drawerMenuItems.forEach(item => {
+      	if (Number(item.dataset.isOpen)) {
+        	FacoHeaderUtils.Menu.updateSubItem(item);
+
+        	if (Number(this.dataset.touchType)) {
+          	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
+          	subItemBottomLines.forEach(subItemBottomLine => {
+            	subItemBottomLine.style.width = `${subItemBottomLine.dataset.width}px`;
+          	});
+        	}
+      	}
+    	});
+			drawerMenu.onScroll();
 		}
 	},
 
-	resizeEvent() {
-	},
-
 	TopBar: {
-		common() {
-    	const gridIcon = this.shadowRoot.querySelector(".top-bar .grid-icon");
-    	gridIcon.addEventListener("click", FacoHeaderEvent.TopBar.onGridIconClick.bind(this));
-		},
+		manager(screenType, shouldAdd) {
+			let listener = "removeEventListener"
+			if (shouldAdd) {
+				listener = "addEventListener";
+			}
 
-		mobile() {
-      const hamburgerIcon = this.shadowRoot.querySelector(".top-bar .hamburger-icon");
-      hamburgerIcon.addEventListener("click", FacoHeaderEvent.TopBar.onHamburgerIconClick.bind(this));
+			const topBar = this.shadowRoot.querySelector(".top-bar");
 
-      const overlay = this.shadowRoot.querySelector(".top-bar .overlay");
-      overlay.addEventListener("click", FacoHeaderEvent.TopBar.onOverlayClick.bind(this));
-		},
+    	const gridIcon = topBar.querySelector(".grid-icon");
+    	gridIcon[listener]("click", topBar.onGridIconClick);
 
-		tablet() {
-      const gridItem = gridIcon.querySelector(".grid-item");
-      gridItem.addEventListener("transitionend", FacoHeaderEvent.TopBar.onGridItemTransitionEnd.bind(this));
-		},
+    	if (screenType === 1) {
+      	const hamburgerIcon = topBar.querySelector(".hamburger-icon");
+      	hamburgerIcon[listener]("click", topBar.onHamburgerIconClick);
 
-		desktop() {
-      const gridItem = gridIcon.querySelector(".grid-item");
-      gridItem.addEventListener("transitionend", FacoHeaderEvent.TopBar.onGridItemTransitionEnd.bind(this));
+      	const overlay = topBar.querySelector(".overlay");
+      	overlay[listener]("click", topBar.onOverlayClick);
+
+    	} else if (screenType === 3) {
+      	const gridItem = gridIcon.querySelector(".grid-item");
+      	gridItem[listener]("transitionend", topBar.onGridItemTransitionEnd);
+    	}
 		},
 
 		onGridIconClick() {
-			const drawerMenuState = Number(this.dataset.drawerMenuState);
-			if (drawerMenuState) {
-				this.drawerMenuState = 0;
-			} else {
-				this.drawerMenuState = 1;
+			/* type: all */
+			const topBar = this.shadowRoot.querySelector(".top-bar");
+			const mainMenu = this.shadowRoot.querySelector(".main-menu");
+			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+			const gridIcon = topBar.querySelector(".grid-icon");
+
+			let shouldActive = 0;
+			let action = "remove";
+			let screenType = Number(this.dataset.prevScreenType);
+			if (!Number(gridIcon.dataset.isActive)) {
+				shouldActive = 1;
+				action = "add";
+				screenType = Number(this.dataset.screenType);
 			}
+
+			if (shouldActive) {
+				const hamburgerIcon = topBar.querySelector(".hamburger-icon");
+				if (screenType === 1 && Number(hamburgerIcon.dataset.isActive)) {
+					FacoHeaderEvent.TopBar.onHamburgerIconClick.call(this);
+				} else if (screenType === 2) {
+					FacoHeaderUtils.Menu.close.call(this, FacoHeaderEvent, mainMenu);
+				}
+				FacoHeaderUtils.TopBar.updateOverlay.call(this, 2);
+			} else {
+				FacoHeaderUtils.Menu.close.call(this, FacoHeaderEvent, drawerMenu);
+				FacoHeaderUtils.TopBar.updateOverlay.call(this);
+			}
+
+			const active = "active";
+			const gridItems = gridIcon.querySelectorAll(".grid-item");
+			gridItems.forEach(item => {
+				item.classList[action](active);
+			});
+
+			const gridIconActive = "grid-icon-active";
+			if (screenType === 3) {
+				mainMenu.classList[action](gridIconActive);
+			}
+			drawerMenu.classList[action](gridIconActive);
+
+			gridIcon.dataset.isActive = shouldActive;
 		},
 
 		onHamburgerIconClick() {
-			const mainMenuState = Number(this.dataset.mainMenuState);
-			if (mainMenuState) {
-				this.mainMenuState = 0;
-			} else {
-				this.mainMenuState = 1;
+			/* type: 1 */
+			const topBar = this.shadowRoot.querySelector(".top-bar");
+			const mainMenu = this.shadowRoot.querySelector(".main-menu");
+			const hamburgerIcon = topBar.querySelector(".hamburger-icon");
+
+			let shouldActive = 0;
+			let action = "remove";
+			if (!Number(hamburgerIcon.dataset.isActive)) {
+				shouldActive = 1;
+				action = "add";
 			}
+
+			if (shouldActive) {
+				const gridIcon = topBar.querySelector(".grid-icon");
+				if (Number(gridIcon.dataset.isActive)) {
+					FacoHeaderEvent.TopBar.onGridIconClick.call(this);
+				}
+				FacoHeaderUtils.TopBar.updateOverlay.call(this, 0);
+			} else {
+				FacoHeaderUtils.Menu.close.call(this, FacoHeaderEvent, mainMenu);
+				FacoHeaderUtils.TopBar.updateOverlay.call(this, 1);
+			}
+
+			const active = "active";
+			const hamburgerItems = topBar.querySelectorAll(".hamburger-item");
+			hamburgerItems.forEach(item => {
+				item.classList[action](active);
+			});
+
+			const hamburgerIconActive = "hamburger-icon-active";
+			mainMenu.classList[action](hamburgerIconActive);
+
+			hamburgerIcon.dataset.isActive = shouldActive;
 		},
 
 		onOverlayClick() {
-			if (Number(this.dataset.mainMenuState)) {
-				FacoHeaderEvent.TopBar.onHamburgerIconClick.call(this);
-			} else if (Number(this.dataset.drawerMenuState)) {
-				FacoHeaderEvent.TopBar.onGridIconClick.call(this);
+			/* type: 1 */
+			const topBar = this.shadowRoot.querySelector(".top-bar");
+			const gridIcon = topBar.querySelector(".grid-icon");
+			const hamburgerIcon = topBar.querySelector(".hamburger-icon");
+
+			if (Number(hamburgerIcon.dataset.isActive)) {
+				topBar.onHamburgerIconClick();
+			} else if (Number(gridIcon.dataset.isActive)) {
+				topBar.onGridIconClick();
 			}
 		},
 
 		onGridItemTransitionEnd(event) {
-			/* only desktop */
+			/* type: 3 */
 			const target = event.target;
 			const gridItem = event.currentTarget;
 	
 			if (target === gridItem && event.propertyName === "transform") {
-				// ...
+				const mainMenuItems = this.shadowRoot.querySelectorAll(".main-menu .item");
+				const lastIndex = mainMenuItems.length - 1;
+				FacoHeaderUtils.MainMenu.setLastItem(mainMenuItems[lastIndex]);
+				// TODO
+				// updateChevronWrapperLeft(mainMenuItems[lastIndex]);
 			}
 		}
 	},
 
 	MainMenu: {
-		common() {
+		manager(screenType, shouldAdd) {
+			let listener = "removeEventListener"
+			if (shouldAdd) {
+				listener = "addEventListener";
+			}
+
 			const mainMenu = this.shadowRoot.querySelector(".main-menu");
-			const items = mainMenu.querySelectorAll(".item");
-
-    	for (let i = 0; i < items.length; i++) {
-      	items[i].index = i;
-      	items[i].dataset.isOpen = 0;
-      	const subItems = items[i].querySelectorAll(".sub-item");
-      	const subItemContainers = items[i].querySelectorAll(".sub-item-container");
-
-      	for (let j = 0; j < subItems.length; j++) {
-        	subItems[j].index = j;
-        	subItemContainers.isHover = 0;
-      	}
-    	}
-
 			const subLists = mainMenu.querySelectorAll(".sub-list");
 			subLists.forEach(subList => {
-				subList.addEventListener("transitionend", FacoHeaderEvent.MainMenu.onSubListTransitionEnd.bind(this));
+				subList[listener]("transitionend", mainMenu.onSubListTransitionEnd);
 			});
 
-			// updateMainMenuSubListMaxHeight();
+			if (screenType === 1) {
+				mainMenu[listener]("scroll", mainMenu.onScroll);
+			} else if (screenType >= 2) {
+				subLists.forEach(subList => {
+					subList[listener]("scroll", mainMenu.onSubListScroll);
+				});
+			}
+
+			const list = this.shadowRoot.querySelector(".main-menu .list");
+			if (screenType === 3 && !Number(this.dataset.touchType)) {
+      	const items = list.querySelectorAll(".item");
+      	items.forEach(item => {
+        	item[listener]("mouseenter", mainMenu.onItemHover);
+        	item[listener]("mouseleave", mainMenu.onItemHover);
+      	});
+			} else {
+      	const itemBoxes = list.querySelectorAll(".item-box");
+      	itemBoxes.forEach(box => {
+        	box[listener]("click", mainMenu.onItemBoxClick);
+      	});
+			}
 
 			if (!Number(this.dataset.touchType)) {
-				const list = mainMenu.querySelector(".list");
-				const subItemContainers = list.querySelectorAll(".sub-item-container");
-				subItemContainers.forEach(subContainer => {
-					subContainer.addEventListener("mouseenter", FacoHeaderEvent.MainMenu.onSubItemContainerHover.bind(this));
-					subContainer.addEventListener("mouseleave", FacoHeaderEvent.MainMenu.onSubItemContainerHover.bind(this));
-				});
+      	const subItemBoxes = list.querySelectorAll(".sub-item-box");
+
+      	subItemBoxes.forEach(box => {
+        	box[listener]("mouseenter", mainMenu.onSubItemBoxHover);
+        	box[listener]("mouseleave", mainMenu.onSubItemBoxHover);
+      	});
+			}
+
+			FacoHeaderUtils.MainMenu.updateSubListMaxHeight.call(this);
+
+			const items = this.shadowRoot.querySelectorAll(".main-menu .item");
+			for (let i = 0; i < items.length; i++) {
+				FacoHeaderUtils.Menu.updateSubItem.call(this, items[i]);
 			}
 		},
 
-		mobile() {
-			const mainMenu = this.shadowRoot.querySelector(".main-menu");
-			mainMenu.addEventListener("scroll", FacoHeaderEvent.MainMenu.onScroll.bind(this));
-
-			const list = mainMenu.querySelector(".list");
-			const itemContainers = list.querySelectorAll(".item-container");
-			itemContainers.forEach(container => {
-				container.addEventListener("click", FacoHeaderEvent.MainMenu.onItemContainerClick.bind(this));
-			});
-		},
-
-		tablet() {
-			const subLists = this.shadowRoot.querySelector(".main-menu .sub-list");
-			subLists.forEach(subList => {
-				//subList.addEventListener("scroll", FacoHeaderEvent.MainMenu.onSubListScroll.bind(this));
-			});
-		},
-
-		desktop() {
-			const subLists = this.shadowRoot.querySelector(".main-menu .sub-list");
-			subLists.forEach(subList => {
-				//subList.addEventListener("scroll", FacoHeaderEvent.MainMenu.onSubListScroll.bind(this));
-			});
-		},
-
-		onScroll() {
-			const screenType = Number(this.dataset.screenType);
-
-    	if (screenType === 1) {
-    		const mainMenu = this.shadowRoot.querySelector(".main-menu");
-      	const fogTop = mainMenu.querySelector(".fog-top");
-      	const fogBottom = mainMenu.querySelector(".fog-bottom");
-	
-      	const innerHeight = window.innerHeight;
-      	const calcFogHeight = innerHeight / 10;
-      	const scrollTop = mainMenu.scrollTop;
-      	const scrollHeight = mainMenu.scrollHeight;
-      	const clientHeight = mainMenu.clientHeight;
-      	const scrollBuffer = 8;
-	
-      	let fogTopHeight = 0;
-      	let fogBottomHeight = 0;
-	
-      	if (scrollTop > scrollBuffer) {
-        	fogTopHeight = calcFogHeight;
-      	}
-      	if (scrollTop + clientHeight + scrollBuffer < scrollHeight) {
-        	fogBottomHeight = calcFogHeight;
-      	}
-	
-      	fogTop.style.height = `${fogTopHeight}px`;
-      	fogBottom.style.height = `${fogBottomHeight}px`;
-    	}
-		},
-
-		onItemContainerClick(event) {
-    	/* Only !(Desktop Screen Type, Touched Device) */
-    	const itemContainer = event.currentTarget;
-    	const item = itemContainer.closest(".item");
-    	const itemText = itemContainer.querySelector(".item-text");
-    	const itemArrowIcon = itemContainer.querySelector(".item-arrow-icon");
-    	const itemBottomLine = itemContainer.querySelector(".item-bottom-line");
-    	const subList = item.querySelector(".sub-list");
-    	const openClass = "open";
+		onItemHover(event) {
+    	/* type: 6 */
+    	const eventType = event.type;
+    	const item = event.currentTarget;
 
     	let shouldOpen = 0;
-    	let action = "remove";
-    	let touchType = Number(this.dataset.touchType);
-    	let screenType = Number(this.dataset.screenType); // FIXME REQ: privousScreenType
-
-    	if (!Number(item.dataset.isOpen)) {
+    	if (eventType === "mouseenter") {
       	shouldOpen = 1;
-      	action = "add";
-      	screenType = Number(this.dataset.screenType);
     	}
 
-    	if (shouldOpen) {
-
-      	/* if (screenType === 2) {
-        	MainMenuUtils.itemCloseAll();
-        	const topBarGridIcon = document.querySelector(".top-bar .grid-icon");
-        	if (topBarGridIcon.isActive) {
-          	TopBarAccessor.gridIconClick();
-        	}
-      	} else if (screenType === 3) {
-        	if (touchType) {
-          	MainMenuUtils.itemCloseAll();
-        	}
-      	} */
-
-    	} else if (!shouldOpen) {
-
-      	/* if (touchType) {
-        	// MainMenuUtils.timerSubItemContainer(item, true);
-        	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
-        	subItemBottomLines.forEach(subItemBottomLine => {
-          	subItemBottomLine.style.width = "";
-        	});
-      	} */
-
-      	/* if (screenType >= 2) {
-        	MainMenuUtils.subListScrollLogic(item, false);
-      	} */
+    	if (!shouldOpen) {
+      	FacoHeaderUtils.MainMenu.updateSubListScroll.call(this, item, 0);
     	}
-
-    	if (!touchType) {
-      	FacoHeaderUtils.MainMenu.setHoverLockItemContainer.call(this, item, shouldOpen);
-    	}
-
     	FacoHeaderUtils.MainMenu.updateSubListHeight.call(this, item, shouldOpen);
-
-    	item.classList[action](openClass);
-    	itemText.classList[action](openClass);
-    	itemArrowIcon.classList[action](openClass);
-    	itemBottomLine.classList[action](openClass);
-    	subList.classList[action](openClass);
 
     	item.dataset.isOpen = shouldOpen;
 		},
 
-		onSubItemContainerHover(event) {
-    	/* type 4-6 */
-    	const eventType = event.type;
-    	const subItemContainer = event.currentTarget;
-    	const subItemBottomLine = subItemContainer.querySelector(".sub-item-bottom-line");
-    	const subItemArrowIcon = subItemContainer.querySelector(".sub-item-arrow-icon");
-    	const active = "active";
+		onItemBoxClick(event) {
+			/* type: 12345 */
+    	const itemBox = event.currentTarget;
+    	const item = itemBox.closest(".item");
 
-			console.log(subItemBottomLine.width);
+    	const itemLabel = itemBox.querySelector(".item-label");
+    	const itemArrowIcon = itemBox.querySelector(".item-arrow-icon");
+    	const itemBottomLine = itemBox.querySelector(".item-bottom-line");
 
-    	if (eventType === "mouseenter") {
-      	subItemBottomLine.style.width = `${subItemBottomLine.width}px`;
-      	subItemArrowIcon.classList.add(active);
-      	subItemContainer.isHover = 1;
-    	} else if (eventType === "mouseleave") {
-      	subItemBottomLine.style.width = "";
-      	subItemArrowIcon.classList.remove(active);
-      	subItemContainer.isHover = 0;
+    	const subList = item.querySelector(".sub-list");
+    	const subItems = subList.querySelectorAll(".sub-item");
+
+    	const open = "open";
+    	let shouldOpen = 0;
+    	let action = "remove";
+			let screenType = Number(this.dataset.prevScreenType);
+    	if (!Number(item.dataset.isOpen)) {
+      	shouldOpen = 1;
+      	action = "add";
+				screenType = Number(this.dataset.screenType);
     	}
+
+    	if (shouldOpen) {
+				const mainMenu = this.shadowRoot.querySelector(".main-menu");
+				if (screenType === 2) {
+					FacoHeaderUtils.Menu.close.call(this, FacoHeaderEvent, mainMenu);
+					const topBar = this.shadowRoot.querySelector(".top-bar");
+					const gridIcon = topBar.querySelector(".grid-icon");
+					if (Number(gridIcon.dataset.isActive)) {
+						topBar.onGridIconClick();
+					}
+				} else if (screenType === 3) {
+					FacoHeaderUtils.Menu.close.call(this, FacoHeaderEvent, mainMenu);
+				}
+    	} else {
+      	if (Number(this.dataset.touchType)) {
+        	FacoHeaderUtils.Menu.timerSubItem(item, 1);
+
+        	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
+        	subItemBottomLines.forEach(subItemBottomLine => {
+          	subItemBottomLine.style.width = "";
+        	});
+      	}
+
+				if (screenType >= 2) {
+					FacoHeaderUtils.MainMenu.updateSubListScroll(item, 0);
+				}
+    	}
+
+    	if (!Number(this.dataset.touchType)) {
+      	FacoHeaderUtils.Menu.setHoverLockItemBox.call(this, item, shouldOpen);
+    	}
+			FacoHeaderUtils.MainMenu.updateSubListHeight.call(this, item, shouldOpen);
+
+    	item.classList[action](open);
+    	itemLabel.classList[action](open);
+    	itemArrowIcon.classList[action](open);
+    	itemBottomLine.classList[action](open);
+    	subList.classList[action](open);
+
+    	item.dataset.isOpen = shouldOpen;
 		},
 
-		onSubListTransitionEnd(event) {
-			/* For All */
-    	const target = event.target;
-    	const subList = event.currentTarget;
-
-    	if (
-      	target === subList
-      	&& event.propertyName === "height"
-    	) {
-      	const item = subList.closest(".item");
-
-      	if (Number(item.dataset.isOpen)) {
-					FacoHeaderUtils.MainMenu.updateSubItemContainer(item);
-
-        	if (Number(this.dataset.touchType)) {
-          	// MainMenuUtils.timerSubItemContainer(item);
-        	} else {
-          	const subItemContainers = item.querySelectorAll(".sub-item-container");
-          	subItemContainers.forEach(subItemContainer => {
-            	if (subItemContainer.isHover) {
-              	const subItemBottomLine = subItemContainer.querySelector(".sub-item-bottom-line");
-              	subItemBottomLine.style.width = `${subItemBottomLine.width}px`;
-
-              	const hoverClass = "hover";
-              	const subItemArrowIcon = subItemContainer.querySelector(".sub-item-arrow-icon");
-              	subItemArrowIcon.classList.add(hoverClass);
-            	}
-          	});
-        	}
-        	// MainMenuUtils.updateChevronWrapperLeft(item);
-        	// MainMenuUtils.updateChevronBottomWrapperTop(item);
-
-        	// MainMenuUtils.subListScrollLogic(item, true);
-      	}
-
-      	FacoHeaderEvent.MainMenu.onScroll.call(this);
-    	} else if (
-      	target === subList
-      	&& event.propertyName === "max-height"
-    	) {
-      	const item = subList.closest(".item");
-      	if (item.isOpen) {
-        	// MainMenuUtils.updateChevronBottomWrapperTop(item);
-        	// MainMenuUtils.subListScrollLogic(item, true);
-      	}
-    	}
+		onSubListScroll(event) {
+			/* type 23 */
+			const subList = event.currentTarget;
+			const item = subList.closest(".item");
+			FacoHeaderUtils.MainMenu.updateSubListScroll.call(this, item, 1);
 		}
 	},
 
 	DrawerMenu: {
-		common() {
+		manager(screenType, shouldAdd) {
+			let listener = "removeEventListener";
+			if (shouldAdd) {
+				listener = "addEventListener";
+			}
+
 			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
-			drawerMenu.addEventListener("scroll", FacoHeaderEvent.DrawerMenu.onScroll.bind(this));
+			drawerMenu[listener]("scroll", drawerMenu.onScroll);
 
 			const items = drawerMenu.querySelectorAll(".item");
 	    for (let i = 0; i < items.length; i++) {
-      	items[i].dataset.index = i;
-      	items[i].dataset.isOpen = 0;
-
 				const itemBox = items[i].querySelector(".item-box");
-				itemBox.addEventListener("click", FacoHeaderEvent.DrawerMenu.onItemBoxClick.bind(this));
+				itemBox[listener]("click", drawerMenu.onItemBoxClick);
 
 				const subList = items[i].querySelector(".sub-list");
-				subList.addEventListener("transitionend", FacoHeaderEvent.DrawerMenu.onSubListTransitionEnd.bind(this));
+				subList[listener]("transitionend", drawerMenu.onSubListTransitionEnd);
 
-      	const subItems = items[i].querySelectorAll(".sub-item");
       	const subItemBoxes = items[i].querySelectorAll(".sub-item-box");
-      	for (let j = 0; j < subItems.length; j++) {
-        	subItems[j].dataset.index = j;
-        	subItemBoxes[j].dataset.isHover = 0;
-
-          subItemBoxes[j].addEventListener("mouseenter", FacoHeaderEvent.DrawerMenu.onSubItemBoxHover.bind(this));
-          subItemBoxes[j].addEventListener("mouseleave", FacoHeaderEvent.DrawerMenu.onSubItemBoxHover.bind(this));
+      	for (let j = 0; j < subItemBoxes.length; j++) {
+          subItemBoxes[j][listener]("mouseenter", drawerMenu.onSubItemBoxHover);
+          subItemBoxes[j][listener]("mouseleave", drawerMenu.onSubItemBoxHover);
       	}
 
-				FacoHeaderUtils.DrawerMenu.updateSubItem(items[i]);
+				FacoHeaderUtils.Menu.updateSubItem(items[i]);
 			}
 		},
+	},
 
-		onScroll() {
-    	const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
-    	const fogTop = drawerMenu.querySelector(".fog-top");
-    	const fogBottom = drawerMenu.querySelector(".fog-bottom");
+	Menu: {
+		onScroll(menu) {
+    	const fogTop = menu.querySelector(".fog-top");
+    	const fogBottom = menu.querySelector(".fog-bottom");
 
     	const innerHeight = window.innerHeight;
     	const calcFogHeight = innerHeight / 10;
-    	const scrollTop = drawerMenu.scrollTop;
-    	const scrollHeight = drawerMenu.scrollHeight;
-    	const clientHeight = drawerMenu.clientHeight;
+    	const scrollTop = menu.scrollTop;
+    	const scrollHeight = menu.scrollHeight;
+    	const clientHeight = menu.clientHeight;
     	const scrollBuffer = 8;
 
     	let fogTopHeight = 0;
@@ -395,7 +471,7 @@ const FacoHeaderEvent = {
     	} else {
       	subList.style.height = "";
       	if (Number(this.dataset.touchType)) {
-        	FacoHeaderUtils.DrawerMenu.timerSubItem(item, 1);
+        	FacoHeaderUtils.Menu.timerSubItem(item, 1);
 
         	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
         	subItemBottomLines.forEach(subItemBottomLine => {
@@ -405,7 +481,7 @@ const FacoHeaderEvent = {
     	}
 
     	if (!Number(this.dataset.touchType)) {
-      	FacoHeaderUtils.DrawerMenu.setHoverLockItemBox(item, shouldOpen);
+      	FacoHeaderUtils.Menu.setHoverLockItemBox.call(this, item, shouldOpen);
     	}
 
     	item.classList[action](open);
@@ -428,11 +504,11 @@ const FacoHeaderEvent = {
       	const item = subList.closest(".item");
 
       	if (Number(item.dataset.isOpen) && Number(this.dataset.touchType)) {
-					FacoHeaderUtils.DrawerMenu.updateSubItem(item);
-        	FacoHeaderUtils.DrawerMenu.timerSubItem(item);
+					FacoHeaderUtils.Menu.updateSubItem(item);
+        	FacoHeaderUtils.Menu.timerSubItem(item);
 				} else if (Number(item.dataset.isOpen)) {
         	/* HMI */
-        	FacoHeaderUtils.DrawerMenu.updateSubItem(item);
+        	FacoHeaderUtils.Menu.updateSubItem(item);
 
         	const subItemBoxes = item.querySelectorAll(".sub-item-box");
         	subItemBoxes.forEach(box => {
@@ -442,7 +518,8 @@ const FacoHeaderEvent = {
           	}
         	});
       	}
-      	FacoHeaderEvent.DrawerMenu.onScroll.call(this);
+				const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+      	FacoHeaderEvent.Menu.onScroll.call(this, drawerMenu);
     	}
 		},
 

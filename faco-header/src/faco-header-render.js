@@ -48,6 +48,7 @@ const FacoHeaderRender = {
     /* hamburger icon */
     const hamburgerIcon = document.createElement("div");
     hamburgerIcon.className = "hamburger-icon";
+		hamburgerIcon.dataset.isActive = 0;
     for (let i = 0; i < 3; i++) {
       const hamburgerItem = document.createElement("span");
       hamburgerItem.className = "hamburger-item";
@@ -57,6 +58,7 @@ const FacoHeaderRender = {
     /* grid icon */
     const gridIcon = document.createElement("div");
     gridIcon.className = "grid-icon";
+		gridIcon.dataset.isActive = 0;
     for (let i = 0; i < 9; i++) {
       const gridItem = document.createElement("span");
       gridItem.className = "grid-item";
@@ -96,44 +98,48 @@ const FacoHeaderRender = {
     /* List */
     const list = document.createElement("ul");
     list.className = "list";
-    Object.entries(data.mainMenuGroups).forEach(([itemTextData, subItems]) => {
+    Object.entries(data.mainMenuGroups).forEach(([itemLabelData, subItems], index) => {
       const item = document.createElement("li");
       item.className = "item";
+			item.dataset.index = index;
+			item.dataset.isOpen = 0;
 
-      /* Item Container */
-      const itemContainer = document.createElement("div");
-      itemContainer.className = "item-container";
-      const itemText = document.createElement("span");
-      itemText.className = "item-text";
-      itemText.textContent = itemTextData;
+      /* item box */
+      const itemBox = document.createElement("div");
+      itemBox.className = "item-box";
+      const itemLabel = document.createElement("span");
+      itemLabel.className = "item-label";
+      itemLabel.textContent = itemLabelData;
       const itemArrowIcon = document.createElement("span");
       itemArrowIcon.className = "item-arrow-icon";
       const itemBottomLine = document.createElement("span");
       itemBottomLine.className = "item-bottom-line";
-      const itemContainerScrollLock = document.createElement("div");
-      itemContainerScrollLock.className = "scroll-lock item-container-scroll-lock";
-      itemContainer.append(itemText, itemArrowIcon, itemBottomLine, itemContainerScrollLock);
+      const itemBoxScrollLock = document.createElement("div");
+      itemBoxScrollLock.className = "scroll-lock item-box-scroll-lock";
+      itemBox.append(itemLabel, itemArrowIcon, itemBottomLine, itemBoxScrollLock);
 
       /* Sub List */
       const subList = document.createElement("ul");
       subList.className = "sub-list";
-      Object.entries(subItems).forEach(([subItemTextData, subItemLink]) => {
+      Object.entries(subItems).forEach(([subItemLabelData, subItemLink], index) => {
         const subItem = document.createElement("li");
         subItem.className = "sub-item";
+				subItem.dataset.index = index;
 
-        /* Sub Container */
-        const subItemContainer = document.createElement("a");
-        subItemContainer.className = "sub-item-container";
-        subItemContainer.href = subItemLink;
-        const subItemText = document.createElement("span");
-        subItemText.className = "sub-item-text";
-        subItemText.textContent = subItemTextData;
+        /* sub box */
+        const subItemBox = document.createElement("a");
+        subItemBox.className = "sub-item-box";
+        subItemBox.href = subItemLink;
+				subItemBox.dataset.isHover = 0;
+        const subItemLabel = document.createElement("span");
+        subItemLabel.className = "sub-item-label";
+        subItemLabel.textContent = subItemLabelData;
         const subItemArrowIcon = document.createElement("span");
         subItemArrowIcon.className = "sub-item-arrow-icon";
         const subItemBottomLine = document.createElement("span");
         subItemBottomLine.className = "sub-item-bottom-line";
-        subItemContainer.append(subItemText, subItemArrowIcon, subItemBottomLine);
-        subItem.append(subItemContainer);
+        subItemBox.append(subItemLabel, subItemArrowIcon, subItemBottomLine);
+        subItem.append(subItemBox);
 
         subList.append(subItem);
       });
@@ -143,7 +149,7 @@ const FacoHeaderRender = {
       subListScrollLock.className = "scroll-lock sub-list-scroll-lock";
       subList.append(subListScrollLock);
 
-      item.append(itemContainer, subList);
+      item.append(itemBox, subList);
 
       /* Chevron */
       const chevronTopWrapper = document.createElement("span");
@@ -189,9 +195,11 @@ const FacoHeaderRender = {
     list.className = "list";
 
     /* Item */
-    Object.entries(data.drawerMenuGroups).forEach(([itemLabelData, subItems]) => {
+    Object.entries(data.drawerMenuGroups).forEach(([itemLabelData, subItems], index) => {
       const item = document.createElement("li");
       item.className = "item";
+			item.dataset.index = index;
+			item.dataset.isOpen = index;
 
       /* Item Box */
       const itemBox = document.createElement("div");
@@ -207,14 +215,16 @@ const FacoHeaderRender = {
 
       const subList = document.createElement("ul");
       subList.className = "sub-list";
-      Object.entries(subItems).forEach(([subItemLabelData, subItemLink]) => {
+      Object.entries(subItems).forEach(([subItemLabelData, subItemLink], index) => {
         const subItem = document.createElement("li");
         subItem.className = "sub-item";
+				subItem.dataset.index = index;
 
         /* Sub Item Box */
         const subItemBox = document.createElement("a");
         subItemBox.className = "sub-item-box";
         subItemBox.href = subItemLink;
+				subItemBox.dataset.isHover = 0;
         const subItemLabel = document.createElement("span");
         subItemLabel.className = "sub-item-label";
         subItemLabel.textContent = subItemLabelData;
