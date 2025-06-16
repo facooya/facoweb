@@ -1,0 +1,298 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * Top bar style
+ */
+
+.top-bar {
+  height: 64px;
+}
+
+.top-bar .layout {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+
+  width: 100%;
+  background-color: #1d1d1d;
+
+  display: grid;
+  grid-template-columns: 64px minmax(112px, 1fr) 64px;
+  grid-template-rows: 64px;
+  gap: 0 16px;
+  grid-template-areas: "hamburger-icon logo grid-icon";
+
+  overflow: scroll;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+.top-bar .scroll-lock {
+  height: calc(100% + 1px);
+  background-color: #00000000;
+  pointer-events: none;
+}
+
+/* :Logo: */
+.top-bar .logo {
+  grid-area: logo;
+  height: 24px;
+  justify-self: center;
+  align-self: center;
+}
+
+.top-bar .logo-link {
+  display: inline-block;
+  height: 24px;
+  white-space: nowrap;
+}
+
+/* Logo Item */
+.top-bar .logo-item {
+  display: inline-block;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background-color: #ffffff;
+}
+
+.top-bar .dev-logo-item {
+  width: 48px;
+  height: 24px;
+}
+
+.top-bar .transcendence-logo-item {
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+}
+
+.top-bar .facooya-logo-item {
+  width: 120px;
+  height: 24px;
+}
+
+/* ;Logo; */
+/* :Hamburger Icon: */
+.top-bar .hamburger-icon {
+  grid-area: hamburger-icon;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.top-bar .hamburger-item {
+  display: block;
+  /* innerH(32px) = height(6px) * 3 + marginT(7px) * 2 */
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: transform 300ms;
+}
+
+.top-bar .hamburger-item:nth-child(2) {
+  margin: 7px 0;
+  opacity: 1;
+  transition: transform 300ms, opacity 300ms;
+}
+
+/* ;Hamburger Icon; */
+/* :Grid Icon: */
+.top-bar .grid-icon {
+  grid-area: grid-icon;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 8px);
+  grid-template-rows: repeat(3, 8px);
+  gap: 4px;
+
+  width: 64px;
+  height: 64px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.top-bar .grid-item {
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: transform 300ms;
+}
+
+/* ;Grid Icon; */
+/* Scroll Lock */
+.top-bar .top-bar-scroll-lock {
+  /* Position */
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  /* Layout */
+  width: 100%;
+}
+
+/* :Etc: */
+/* Overlay */
+.top-bar .overlay {
+  position: fixed;
+  top: 64px;
+  left: -20%;
+  z-index: 100;
+  width: 20%;
+  height: calc(100% - 64px);
+  background-color: #77777777;
+  transition: left 300ms ease;
+
+  overflow: scroll;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.top-bar .overlay-scroll-lock {
+  position: relative;
+  z-index: 101;
+}
+
+/* ;Etc; */
+@media (min-width: 768px) {
+  .top-bar {
+    height: 128px;
+  }
+
+  .top-bar .layout {
+    grid-template-columns: 1fr 64px;
+    grid-template-rows: 64px 64px;
+    grid-template-areas: "logo grid-icon" ". .";
+    gap: 0 32px;
+    transition: gap 300ms ease;
+  }
+
+  .top-bar .hamburger-icon {
+    display: none;
+  }
+
+  .top-bar .overlay {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .top-bar {
+    height: 64px;
+  }
+
+  .top-bar .layout {
+    grid-template-columns: 256px 1fr 64px;
+    grid-template-rows: 64px;
+    grid-template-areas: "logo . grid-icon";
+  }
+
+  .top-bar .logo {
+    padding-left: 16px;
+  }
+}
+
+/* Utils */
+/* For Mst */
+.top-bar .logo.mini {
+  width: 32px;
+  /* mask-image: url("../../../assets/icons/triangle.svg"); */
+}
+
+/* For Mst
+ * Default state: .htbc-overlay { left: -20%; }
+ * Class list: left-close */
+.top-bar .overlay.right-open {
+  left: 80%;
+}
+
+.top-bar .overlay.right-close {
+  left: 100%;
+}
+
+.top-bar .overlay.left-open {
+  left: 0%;
+}
+
+/* For Mst
+ * Default state: .hdnc { left: -80%; }
+ */
+.main-menu.hamburger-icon-active {
+  left: 0;
+}
+
+/* Default state: .hdnc { right: -80%; || right: -320px }
+ * Mst: -80%, Tdst: -320px
+ */
+.drawer-menu.grid-icon-active {
+  right: 0;
+}
+
+.main.grid-icon-active {
+  margin-right: 320px;
+}
+
+.footer.grid-icon-active {
+  margin-right: 320px;
+}
+
+.main-menu.grid-icon-active {
+  /* For Dst
+   * total(576px) = topBarLogoWidth(256px) + drawerMenuWidth(320px);
+   * width = 100% - total(576px);
+   */
+  width: calc(100% - 576px);
+}
+
+/* :Hamburger Icon Active: */
+/* HamburgerIconInnerHeight(32px) = height(6px) * 3 + marginY(7px) * 2 */
+.top-bar .hamburger-item.active:nth-child(1) {
+  transform: translate(0, 13px) rotate(45deg) scale(1.3, 1);
+}
+
+.top-bar .hamburger-item.active:nth-child(2) {
+  transform: translate(-32px, 0);
+  opacity: 0;
+}
+
+.top-bar .hamburger-item.active:nth-child(3) {
+  transform: translate(0, -13px) rotate(-45deg) scale(1.3, 1);
+}
+
+/* Grid Icon Active */
+/* gridIconInnerWidth(32px) = width(8px) * 3 + gap(4px) * 2
+ * gridIconInnerHeight(32px) = height(8px) * 3 + gap(4px) * 2 */
+.top-bar .grid-item.active:nth-child(1) {
+  transform: rotate(45deg) scale(1, 0.7);
+}
+.top-bar .grid-item.active:nth-child(2) {
+  transform: translate(6px, 6px) rotate(45deg) scale(0.7, 1.8);
+}
+.top-bar .grid-item.active:nth-child(3) {
+  transform: rotate(45deg) scale(0.7, 1);
+}
+
+.top-bar .grid-item.active:nth-child(4) {
+  transform: translate(6px, -6px) rotate(45deg) scale(1.8, 0.7);
+}
+.top-bar .grid-item.active:nth-child(5) {
+  transform: rotate(45deg) scale(0.7);
+}
+.top-bar .grid-item.active:nth-child(6) {
+  transform: translate(-6px, 6px) rotate(45deg) scale(1.8, 0.7);
+}
+
+.top-bar .grid-item.active:nth-child(7) {
+  transform: rotate(45deg) scale(0.7, 1);
+}
+.top-bar .grid-item.active:nth-child(8) {
+  transform: translate(-6px, -6px) rotate(45deg) scale(0.7, 1.8);
+}
+.top-bar .grid-item.active:nth-child(9) {
+  transform: rotate(45deg) scale(1, 0.7);
+}
