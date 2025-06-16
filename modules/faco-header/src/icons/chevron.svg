@@ -1,0 +1,16 @@
+<svg viewBox="-10 -10 120 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .faco-chevron-icon {
+      fill: none;
+      stroke: #000000;
+      stroke-width: 20px;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+  </style>
+  <path d="
+    M 0 70
+    L 50 30
+    L 100 70
+  " class="faco-chevron-icon"></path>
+</svg>

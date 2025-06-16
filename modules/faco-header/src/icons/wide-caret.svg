@@ -1,0 +1,16 @@
+<svg viewBox="-10 -10 120 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .faco-wide-caret {
+      fill: #000000;
+      stroke: #000000;
+      stroke-width: 20px;
+      stroke-linejoin: round;
+    }
+  </style>
+  <path d="
+    M 50 20
+    L 100 80
+    L 0 80
+    Z
+  " class="faco-wide-caret"></path>
+</svg>
