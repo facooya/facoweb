@@ -5,13 +5,11 @@ Facoweb is built with plain **CSS** and **JS**.
 ---
 
 ### Directory Structure
-- **assets/** - Common icons, styles, and shared static resources
-- **pages/** - Example HTML pages demonstrating plugin usage
-- **plugins/** - A collection of reusable UI plugins designed to be easy to integrate
+- **modules/** - A collection of reusable UI modules designed to be easy to integrate
 
 ---
 
-### Plugins Structure
+### Modules Structure
 - **faco-code/** – Code block viewer with syntax highlighting
 - **faco-footer/** – Reusable site footer UI
 - **faco-header/** – Site header with top bar, main menu, and drawer menu
