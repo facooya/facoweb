@@ -29,15 +29,15 @@ const FacoHeaderEvent = {
 		mainMenu.onSubItemBoxHover = FacoHeaderEvent.MainMenu.onSubItemBoxHover.bind(this);
 
 		const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
-		/* drawerMenu.onScroll = FacoHeaderEvent.Menu.onScroll.bind(this, drawerMenu);
-		drawerMenu.onItemBoxClick = FacoHeaderEvent.Menu.onItemBoxClick.bind(this);
-		drawerMenu.onSubListTransitionEnd = FacoHeaderEvent.Menu.onSubListTransitionEnd.bind(this);
-		drawerMenu.onSubItemBoxHover = FacoHeaderEvent.Menu.onSubItemBoxHover.bind(this); */
+		drawerMenu.onScroll = FacoHeaderEvent.DrawerMenu.onScroll.bind(this);
+		drawerMenu.onItemBoxClick = FacoHeaderEvent.DrawerMenu.onItemBoxClick.bind(this);
+		drawerMenu.onSubListTransitionEnd = FacoHeaderEvent.DrawerMenu.onSubListTransitionEnd.bind(this);
+		drawerMenu.onSubItemBoxHover = FacoHeaderEvent.DrawerMenu.onSubItemBoxHover.bind(this);
 
 		const screenType = Number(this.dataset.screenType);
 		FacoHeaderEvent.TopBar.manager.call(this, screenType, 1);
 		FacoHeaderEvent.MainMenu.manager.call(this, screenType, 1);
-		// FacoHeaderEvent.DrawerMenu.manager.call(this, screenType, 2);
+		FacoHeaderEvent.DrawerMenu.manager.call(this, screenType, 2);
 	},
 
 	setTimerResize() {
@@ -48,7 +48,6 @@ const FacoHeaderEvent = {
     );
 	},
 
-	/* FIXME: drawerMenu */
 	onResize() {
 		this.screenType;
 
@@ -85,20 +84,20 @@ const FacoHeaderEvent = {
 			}
 
 			/* drawer menu */
-			/* const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
     	const drawerMenuItems = drawerMenu.querySelectorAll(".item");
     	drawerMenuItems.forEach(item => {
-      	FacoHeaderUtils.Menu.updateSubItem(item);
+      	FacoHeaderUtils.DrawerMenu.updateSubItem.call(this, item);
     	});
-    	drawerMenu.onScroll(); */
+    	drawerMenu.onScroll();
 
 			/* manager */
 			FacoHeaderEvent.TopBar.manager.call(this, prevScreenType, 0);
 			FacoHeaderEvent.TopBar.manager.call(this, screenType, 1);
 			FacoHeaderEvent.MainMenu.manager.call(this, prevScreenType, 0);
 			FacoHeaderEvent.MainMenu.manager.call(this, screenType, 1);
-			// FacoHeaderEvent.DrawerMenu.manager.call(this, prevScreenType, 0);
-			// FacoHeaderEvent.DrawerMenu.manager.call(this, screenType, 1);
+			FacoHeaderEvent.DrawerMenu.manager.call(this, prevScreenType, 0);
+			FacoHeaderEvent.DrawerMenu.manager.call(this, screenType, 1);
 
 			this.dataset.prevScreenType = this.dataset.screenType;
 		} else {
@@ -135,11 +134,11 @@ const FacoHeaderEvent = {
 			}
 
 			/* drawer menu */
-			/* const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
     	const drawerMenuItems = drawerMenu.querySelectorAll(".item");
     	drawerMenuItems.forEach(item => {
       	if (Number(item.dataset.isOpen)) {
-        	FacoHeaderUtils.MainMenu.updateSubItem.call(this, item);
+        	FacoHeaderUtils.DrawerMenu.updateSubItem.call(this, item);
 
         	if (Number(this.dataset.touchType)) {
           	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
@@ -149,7 +148,8 @@ const FacoHeaderEvent = {
         	}
       	}
     	});
-			drawerMenu.onScroll(); */
+
+			drawerMenu.onScroll();
 		}
 	},
 
@@ -227,7 +227,6 @@ const FacoHeaderEvent = {
 			hamburgerIcon.dataset.isActive = shouldActive;
 		},
 
-		/* FIXME: DrawerMenu */
 		onGridIconClick() {
 			/* type: all */
 			const topBar = this.shadowRoot.querySelector(".top-bar");
@@ -253,7 +252,7 @@ const FacoHeaderEvent = {
 				}
 				FacoHeaderUtils.TopBar.updateOverlay.call(this, 2);
 			} else {
-				// FacoHeaderUtils.DrawerMenu.closeItem.call(this, FacoHeaderEvent);
+				FacoHeaderUtils.DrawerMenu.closeItem.call(this, FacoHeaderEvent);
 				FacoHeaderUtils.TopBar.updateOverlay.call(this);
 			}
 
@@ -516,7 +515,146 @@ const FacoHeaderEvent = {
 
 	DrawerMenu: {
 		manager(screenType, shouldAdd) {
+			let listener = "removeEventListener";
+			if (shouldAdd) {
+				listener = "addEventListener";
+			}
+
+			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+			drawerMenu[listener]("scroll", drawerMenu.onScroll);
+
+			const items = drawerMenu.querySelectorAll(".item");
+	    for (let i = 0; i < items.length; i++) {
+				const itemBox = items[i].querySelector(".item-box");
+				itemBox[listener]("click", drawerMenu.onItemBoxClick);
+
+				const subList = items[i].querySelector(".sub-list");
+				subList[listener]("transitionend", drawerMenu.onSubListTransitionEnd);
+
+      	const subItemBoxes = items[i].querySelectorAll(".sub-item-box");
+      	for (let j = 0; j < subItemBoxes.length; j++) {
+          subItemBoxes[j][listener]("mouseenter", drawerMenu.onSubItemBoxHover);
+          subItemBoxes[j][listener]("mouseleave", drawerMenu.onSubItemBoxHover);
+      	}
+			}
 		},
+
+		onScroll() {
+			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+    	const fogTop = drawerMenu.querySelector(".fog-top");
+    	const fogBottom = drawerMenu.querySelector(".fog-bottom");
+
+    	const innerHeight = window.innerHeight;
+    	const calcFogHeight = innerHeight / 10;
+    	const scrollTop = drawerMenu.scrollTop;
+    	const scrollHeight = drawerMenu.scrollHeight;
+    	const clientHeight = drawerMenu.clientHeight;
+    	const scrollBuffer = 8;
+
+    	let fogTopHeight = 0;
+    	let fogBottomHeight = 0;
+
+    	if (scrollTop > scrollBuffer) {
+      	fogTopHeight = calcFogHeight;
+    	}
+    	if (scrollTop + clientHeight + scrollBuffer < scrollHeight) {
+      	fogBottomHeight = calcFogHeight;
+    	}
+
+    	fogTop.style.height = `${fogTopHeight}px`;
+    	fogBottom.style.height = `${fogBottomHeight}px`;
+		},
+
+		onItemBoxClick(event) {
+    	const itemBox = event.currentTarget;
+    	const item = itemBox.closest(".item");
+
+    	const itemLabel = itemBox.querySelector(".item-label");
+    	const itemArrowIcon = itemBox.querySelector(".item-arrow-icon");
+    	const itemBottomLine = itemBox.querySelector(".item-bottom-line");
+
+    	const subList = item.querySelector(".sub-list");
+    	const subItems = subList.querySelectorAll(".sub-item");
+
+    	const open = "open";
+    	let shouldOpen = 0;
+    	let action = "remove";
+    	if (!Number(item.dataset.isOpen)) {
+      	shouldOpen = 1;
+      	action = "add";
+    	}
+
+    	if (shouldOpen) {
+      	const calcSubListHeight = subItems.length * 64;
+      	subList.style.height = `${calcSubListHeight}px`;
+    	} else {
+      	subList.style.height = "";
+      	if (Number(this.dataset.touchType)) {
+        	FacoHeaderUtils.DrawerMenu.timerSubItemBox.call(this, item, 1);
+
+        	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
+        	subItemBottomLines.forEach(subItemBottomLine => {
+          	subItemBottomLine.style.width = "";
+        	});
+      	}
+    	}
+
+    	if (!Number(this.dataset.touchType)) {
+      	FacoHeaderUtils.DrawerMenu.setHoverLockItemBox.call(this, item, shouldOpen);
+    	}
+
+    	item.classList[action](open);
+    	itemLabel.classList[action](open);
+    	itemArrowIcon.classList[action](open);
+    	itemBottomLine.classList[action](open);
+    	subList.classList[action](open);
+
+    	item.dataset.isOpen = shouldOpen;
+		},
+
+		onSubListTransitionEnd(event) {
+    	const target = event.target;
+    	const subList = event.currentTarget;
+
+    	if (
+      	target === subList
+      	&& event.propertyName === "height"
+    	) {
+      	const item = subList.closest(".item");
+
+      	if (Number(item.dataset.isOpen) && Number(this.dataset.touchType)) {
+					FacoHeaderUtils.DrawerMenu.updateSubItem.call(this, item);
+        	FacoHeaderUtils.DrawerMenu.timerSubItemBox.call(this, item);
+				} else if (Number(item.dataset.isOpen)) {
+        	FacoHeaderUtils.DrawerMenu.updateSubItem.call(this, item);
+
+        	const subItemBoxes = item.querySelectorAll(".sub-item-box");
+        	subItemBoxes.forEach(subItemBox => {
+          	if (Number(subItemBox.dataset.isHover)) {
+            	const subItemBottomLine = subItemBox.querySelector(".sub-item-bottom-line");
+            	subItemBottomLine.style.width = `${subItemBottomLine.dataset.width}px`;
+          	}
+        	});
+      	}
+				const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+      	drawerMenu.onScroll();
+    	}
+		},
+
+		onSubItemBoxHover(event) {
+    	const eventType = event.type;
+    	const subItemBox = event.currentTarget;
+    	const subItem = subItemBox.closest(".sub-item");
+    	const subItemBottomLine = subItem.querySelector(".sub-item-bottom-line");
+
+    	if (eventType === "mouseenter") {
+      	subItemBottomLine.style.width = `${subItemBottomLine.dataset.width}px`;
+      	subItemBox.dataset.isHover = 1;
+    	} else if (eventType === "mouseleave") {
+      	subItemBottomLine.style.width = "";
+      	subItemBox.dataset.isHover = 0;
+    	}
+		}
 	}
 };
 

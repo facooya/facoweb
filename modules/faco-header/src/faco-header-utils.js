@@ -278,6 +278,95 @@ const FacoHeaderUtils = {
 	},
 
 	DrawerMenu: {
+		closeItem(FacoHeaderEvent) {
+			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+    	const items = drawerMenu.querySelectorAll(".item");
+    	items.forEach(item => {
+      	if (Number(item.dataset.isOpen)) {
+        	const itemBox = item.querySelector(".item-box");
+        	const modifyEvent = { currentTarget: itemBox };
+        	drawerMenu.onItemBoxClick(modifyEvent);
+      	}
+    	});
+		},
+
+		setHoverLockItemBox(item, shouldLock) {
+    	const itemLabel = item.querySelector(".item-label");
+    	const itemArrowIcon = item.querySelector(".item-arrow-icon");
+    	const itemBottomLine = item.querySelector(".item-bottom-line");
+
+    	const hoverLock = "hover-lock";
+    	let action = "remove";
+    	if (shouldLock) {
+      	action = "add";
+    	}
+
+    	itemLabel.classList[action](hoverLock);
+    	itemArrowIcon.classList[action](hoverLock);
+    	itemBottomLine.classList[action](hoverLock);
+		},
+
+		updateSubItem(item) {
+    	const subItemBoxes = item.querySelectorAll(".sub-item-box");
+    	const subItemLabels = item.querySelectorAll(".sub-item-label");
+    	const subItemArrowIcons = item.querySelectorAll(".sub-item-arrow-icon");
+    	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
+    	const bufferWidth = 24;
+
+    	for (let i = 0; i < subItemBoxes.length; i++) {
+      	const boxWidth = subItemBoxes[i].clientWidth;
+      	const labelWidth = subItemLabels[i].clientWidth;
+      	let calcArrowLeft = (boxWidth + labelWidth) / 2;
+      	subItemArrowIcons[i].dataset.left = calcArrowLeft;
+      	subItemArrowIcons[i].style.left = `${subItemArrowIcons[i].dataset.left}px`;
+
+      	let calcLineLeft = (boxWidth - (labelWidth + bufferWidth)) / 2;
+      	subItemBottomLines[i].dataset.left = calcLineLeft;
+      	subItemBottomLines[i].style.left = `${subItemBottomLines[i].dataset.left}px`;
+
+      	let calcLineWidth = labelWidth + bufferWidth;
+      	subItemBottomLines[i].dataset.width = calcLineWidth;
+    	}
+		},
+
+		timerSubItemBox(item, shouldReset) {
+    	const subItemBoxes = item.querySelectorAll(".sub-item-box");
+
+    	if (shouldReset) {
+      	subItemBoxes.forEach(subItemBox => {
+        	clearTimeout(Number(subItemBox.dataset.timerId));
+        	FacoHeaderUtils.DrawerMenu._timeoutSubItemBox(subItemBox, shouldReset);
+      	});
+
+    	} else {
+      	for (let i = 0; i < subItemBoxes.length; i++) {
+        	subItemBoxes[i].dataset.timerId = setTimeout(
+          	FacoHeaderUtils.DrawerMenu._timeoutSubItemBox,
+          	i * 150,
+          	subItemBoxes[i],
+          	shouldReset
+        	);
+      	}
+    	}
+		},
+
+		_timeoutSubItemBox(subItemBox, shouldReset) {
+    	const subItemLabel = subItemBox.querySelector(".sub-item-label");
+    	const subItemArrowIcon = subItemBox.querySelector(".sub-item-arrow-icon");
+    	const subItemBottomLine = subItemBox.querySelector(".sub-item-bottom-line");
+    	const active = "active";
+
+    	let action = "remove";
+    	let setWidth = "";
+    	if (!shouldReset) {
+      	action = "add";
+      	setWidth = `${subItemBottomLine.dataset.width}px`;
+    	}
+    	subItemBottomLine.style.width = setWidth;
+
+    	subItemLabel.classList[action](active);
+    	subItemArrowIcon.classList[action](active);
+		}
 	}
 };
 
