@@ -6,7 +6,7 @@
  * Faco tab main
  */
 
-import { FacoTabData } from "./faco-tab-data.js";
+import { FacoTabData } from "../faco-tab-data.js";
 
 class FacoTab extends HTMLElement {
 	constructor() {
@@ -15,17 +15,16 @@ class FacoTab extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.render();
-		this.events();
-		this.update();
-	}
+		FacoTabRender.render(this);
 
-	render() {
-		const dataGroup = FacoTabData.group;
-		const root = this.shadowRoot;
-
-		/* faco tab */
 		this.dataset.tabIndex = 0;
+		FacoTabEvent.manager(this);
+	}
+}
+
+const FacoTabRender = {
+	render(facoTab) {
+		const dataGroup = FacoTabData.group;
 
 		/* style */
 		const style = document.createElement("link");
@@ -91,26 +90,28 @@ class FacoTab extends HTMLElement {
     });
     tab.append(tabList);
 
-		root.append(style, title, tab, panel);
+		facoTab.shadowRoot.append(style, title, tab, panel);
 	}
+};
 
-	events() {
-		const tabItems = this.shadowRoot.querySelectorAll(".tab-item");
+const FacoTabEvent = {
+	manager(facoTab) {
+		facoTab.onTabItemClick = FacoTabEvent.onTabItemClick.bind(facoTab);
+
+		const tabItems = facoTab.shadowRoot.querySelectorAll(".tab-item");
 		tabItems.forEach(item => {
-			item.addEventListener("click", this.tabItemClick.bind(this));
+			item.addEventListener("click", facoTab.onTabItemClick);
 		});
-	}
 
-	tabItemClick(event) {
+		facoTab.onTabItemClick({
+			currentTarget: tabItems[0]
+		});
+	},
+
+	onTabItemClick(event) {
 		const index = event.currentTarget.dataset.index;
+		if (Number(this.dataset.tabIndex) === index) return;
 
-		if (this.tabIndex !== index) {
-			this.tabIndex = index;
-			this.update();
-		}
-	}
-
-	update() {
 		const root = this.shadowRoot;
 		const tabItems = root.querySelectorAll(".tab-item");
 		const tabTexts = root.querySelectorAll(".tab-text");
@@ -122,23 +123,17 @@ class FacoTab extends HTMLElement {
 			tabItems[i].classList.remove(active);
 			tabTexts[i].classList.remove(active);
 		}
-		tabItems[this.tabIndex].classList.add(active);
-		tabTexts[this.tabIndex].classList.add(active);
+		tabItems[index].classList.add(active);
+		tabTexts[index].classList.add(active);
 
 		/* panel */
 		panelLists.forEach(list => {
 			list.classList.remove(active);
 		});
-		panelLists[this.tabIndex].classList.add(active);
-	}
+		panelLists[index].classList.add(active);
 
-	get tabIndex() {
-		return this.dataset.tabIndex;
-	}
-
-	set tabIndex(index) {
 		this.dataset.tabIndex = index;
 	}
-}
+};
 
 customElements.define("faco-tab", FacoTab);
