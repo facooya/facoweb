@@ -2,23 +2,34 @@
  * SPDX-License-Identifier: Apache-2.0
  *
  * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * The faco-footer style
  */
-/* ================================================== */
-.footer-content {
-  position: relative;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:host {
+	display: block;
   padding: 24px 32px;
   background: #222222;
+	transition: margin-right 300ms ease;
 }
-/* ========================= > Nav ========================= */
+
 .footer-nav {
   grid-area: fngc;
   display: flex;
   flex-wrap: wrap;
   gap: 32px 48px;
 }
+
 .footer-nav .section {
   margin-right: auto;
 }
+
 .footer-nav .title {
   font-size: 1.5rem;
   color: #FFFFFF;
@@ -26,24 +37,28 @@
   margin-bottom: 8px;
   cursor: default;
 }
+
 .footer-nav .list {
   list-style-type: none;
 }
+
 .footer-nav .item {
   margin-top: 8px;
 }
+
 .footer-nav .item:first-child {
   margin-top: 0;
 }
+
 .footer-nav .link {
   text-decoration: none;
 }
+
 .footer-nav .text {
   color: #ffffff;
   white-space: nowrap;
 }
-/* ========================= < Nav ========================= */
-/* ========================= > About ========================= */
+
 .footer-about {
   grid-area: fasc;
   display: grid;
@@ -51,17 +66,19 @@
   gap: 12px;
   margin: 48px 0;
 }
-/* ================================================== */
+
 /* Logo */
 .footer-about .logo {
   grid-area: logo;
   height: 32px;
 }
+
 /* Link */
 .footer-about .logo-link {
   display: inline-block;
   height: 32px;
 }
+
 /* Item */
 .footer-about .logo-item {
   display: inline-block;
@@ -69,88 +86,95 @@
   mask-repeat: no-repeat;
   background: #ffffff;
 }
+
 .footer-about .dev-logo-item {
   width: 64px;
   height: 32px;
 }
+
 .footer-about .transcendence-logo-item {
   width: 8px;
   height: 8px;
   margin-right: 8px;
 }
+
 .footer-about .facooya-icon-logo-item {
   width: 32px;
   height: 32px;
 }
-/* ================================================== */
+
 /* About Text */
 .footer-about .about-text {
   grid-area: text;
   color: #ffffff;
 }
-/* ================================================== */
+
 .footer-about .social {
   grid-area: social;
-  /*  */
   display: inline-block;
   height: 24px;
 }
+
 /* Link */
 .footer-about .social-link {
   display: inline-block;
   height: 24px;
   margin-left: 24px;
 }
+
 .footer-about .social-link:first-child {
   margin-left: 0;
 }
+
 /* Item */
 .footer-about .social-item {
   display: inline-block;
   width: 24px;
   height: 24px;
-  /*  */
   background-color: #ffffff;
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
 }
-/* ========================= < About ========================= */
-/* ========================= > Legal ========================= */
+
 .footer-legal {
   grid-area: fllc; /* !!!!! */
   display: grid;
   grid-template-areas: "logo" "list" "copyright";
   gap: 12px;
 }
-/* ============================== */
+
 /* Logo */
 .footer-legal .logo {
   grid-area: logo;
   height: 32px;
   text-align: center;
 }
+
 .footer-legal .logo-link {
   display: inline-block;
   height: 32px;
   white-space: nowrap;
 }
+
 .footer-legal .logo-item {
   display: inline-block;
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: #ffffff;
 }
+
 .footer-legal .transcendence-logo-item {
   width: 32px;
   height: 32px;
   margin-right: 12px;
 }
+
 .footer-legal .facooya-logo-item {
   width: 160px;
   height: 32px;
 }
-/* ============================== */
+
 /* List */
 .footer-legal .list {
   grid-area: list;
@@ -161,17 +185,19 @@
   color: #ffffff;
   justify-self: center;
 }
+
 .footer-legal .link {
   color: white;
   text-decoration: none;
 }
+
 .footer-legal .text {
   color: #ffffff;
   font-size: 0.75rem;
   white-space: nowrap;
   border-bottom: 0.0625rem solid #ffffff;
 }
-/* ============================== */
+
 /* Copyright */
 .footer-legal .copyright-text {
   grid-area: copyright;
@@ -181,84 +207,99 @@
   align-self: end;
   justify-self: center;
 }
-/* ========================= < Legal ========================= */
-/* ================================================== */
+
 @media (min-width: 768px) {
-  /* ========================= > Nav ========================= */
   .footer-nav {
     justify-content: space-evenly;
   }
+
   .footer-nav .section {
     /* Reset: margin-right */
     margin-right: 0;
   }
-  /* ========================= < Nav ========================= */
-  /* ========================= > Legal ========================= */
+
+  .footer-about {
+    grid-template-areas:
+			"logo social"
+			"text social";
+    gap: 16px 32px;
+    max-width: 90%;
+    margin: 48px auto;
+  }
+
+  .footer-about .social {
+    justify-self: end;
+    align-self: end;
+  }
+
   .footer-legal {
     grid-template-areas: ". logo logo ." "copyright copyright list list";
     grid-template-columns: 1fr auto auto 1fr;
     gap: 12px 0;
   }
+
   .footer-legal .list {
     justify-self: end;
   }
+
   .footer-legal .copyright-text {
     justify-self: start;
   }
-  /* ========================= < Legal ========================= */
 }
-/* ================================================== */
+
 @media (min-width: 1280px) {
   .footer-about {
-    grid-template-areas: "logo text social";
+    grid-template-areas:
+			"logo text social";
     gap: 32px;
     max-width: 90%;
     margin: 48px auto;
   }
+
   .footer-about .logo {
     justify-self: right;
     align-self: center;
   }
+
   .footer-about .about-text {
     justify-self: center;
     align-self: center;
   }
+
   .footer-about .social {
     justify-self: left;
     align-self: center;
   }
-  /* ========================= > Legal ========================= */
+
   .footer-legal {
     grid-template-areas: ". logo ." "copyright logo list";
     grid-template-columns: 1fr auto 1fr;
     gap: 0;
   }
-  /* ========================= < Legal ========================= */
 }
-/* ================================================== */
+
 @media (hover: hover) {
-  /* ========================= > Nav ========================= */
   .footer-nav .link:hover .text {
     border-bottom: 1px solid #ffffff;
   }
-  /* ========================= < Nav ========================= */
-  /* ========================= > About ========================= */
+
   .footer-about .logo-link:hover .logo-item {
     background-color: #cccccc;
   }
+
   .footer-about .social-link:hover .social-item {
     background-color: #cccccc;
   }
-  /* ========================= < About ========================= */
-  /* ========================= > Legal ========================= */
+
   .footer-legal .logo-link:hover .logo-item {
     background-color: #cccccc;
   }
+
   .footer-legal .text {
     border-bottom: 1px solid #00000000;
   }
+
   .footer-legal .link:hover .text {
     border-bottom: 1px solid #FFFFFF;
   }
-  /* ========================= < Legal ========================= */
 }

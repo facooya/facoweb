@@ -1,0 +1,21 @@
+<svg viewBox="-10 -10 120 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .faco-octagon-svg {
+      fill: #FFFFFF;
+      stroke: #FFFFFF;
+      stroke-width: 20px;
+      stroke-linejoin: round;
+    }
+  </style>
+  <path d="
+    M 30 0
+    L 0 30
+    L 0 70
+    L 30 100
+    L 70 100
+    L 100 70
+    L 100 30
+    L 70 0
+    Z
+  " class="faco-octagon-svg"></path>
+</svg>

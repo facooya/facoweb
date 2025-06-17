@@ -1,0 +1,17 @@
+<svg viewBox="-10 -10 120 120" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .faco-diamond-svg {
+      fill: #FFFFFF;
+      stroke: #FFFFFF;
+      stroke-width: 20px;
+      stroke-linejoin: round;
+    }
+  </style>
+  <path d="
+    M 50 0
+    L 0 50
+    L 50 100
+    L 100 50
+    Z
+  " class="faco-diamond-svg"></path>
+</svg>
