@@ -2,8 +2,43 @@
  * SPDX-License-Identifier: Apache-2.0
  *
  * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * The faco-code style
  */
-/* ================================================== */
+
+/* Code syntax highlight */
+.color-gray { color: #aaaaaa; }
+.color-red { color: #e74c3c; }
+
+.color-green { color: #00ff7f; }
+.color-light-green { color: #7fff7f; }
+.color-dark-green { color: #00aa00; }
+
+.color-blue { color: #1e90ff; }
+.color-light-blue { color: #00ced1; }
+
+.color-orange { color: #e67e22; }
+.color-dark-orange { color: #d35400; }
+
+.color-yellow { color: #f1c40f; }
+.color-light-yellow { color: #f7DC6f; }
+.color-dark-yellow { color: #b7950b; }
+
+.color-purple { color: #9b59b6; }
+.color-pink { color: #e91e63; }
+.color-brown { color: #8d6e63; }
+/* code-custom { color: #000000; } */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:host {
+	display: block;
+}
+
 /* Header */
 .code-viewer .viewer-header {
   padding: 8px 16px;
@@ -11,26 +46,28 @@
   color: #ffffff;
   font-size: 0.875rem;
   border-radius: 16px 16px 0 0;
-  /*  */
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
 }
+
 .code-viewer .viewer-name {
   display: inline-block;
   font-weight: normal;
   font-size: 0.875rem;
 }
+
 .code-viewer .viewer-tool {
   display: inline-flex;
   gap: 16px;
   float: right;
   list-style: none;
 }
+
 .code-viewer .viewer-tool-wide, .viewer-tool-copy {
   cursor: pointer;
 }
-/* ================================================== */
+
 /* Container */
 .code-viewer .code-container {
   display: flex;
@@ -41,6 +78,7 @@
   padding: 8px 16px;
   border-radius: 0 0 16px 16px;
 }
+
 .code-viewer .code-line-list {
   padding: 8px 0;
   list-style: none;
@@ -48,26 +86,30 @@
   -webkit-user-select: none;
   -moz-user-select: none;
 }
+
 .code-viewer .code-line-item {
   /* padding-right: 1rem; */
   font-size: 1rem;
   text-align: right;
   color: #808080;
 }
+
 .code-viewer .code-block {
   overflow: auto;
   padding: 8px 0;
   padding-right: 0.5rem;
   padding-left: 1rem;
+	tab-size: 2;
 }
-/* ================================================== */
+
 .code-viewer .code-line-list.wide {
   display: none;
 }
+
 .code-viewer .code-block.wide {
   padding-left: 0.5rem;
 }
-/* ================================================== */
+
 .output-viewer .output-container {
   padding: 8px 16px;
   background: #222222;
@@ -75,25 +117,30 @@
   font-size: 1rem;
   border-radius: 16px;
 }
+
 .output-viewer .output-console {
   overflow: auto;
   padding: 8px 0;
 }
+
 .output-viewer .output-image {
   width: 100%;
   border-radius: 16px;
   background-color: #222222;
 }
+
 .output-viewer .output-video {
   width: 100%;
   border-radius: 16px;
   background-color: #222222;
 }
+
 .output-viewer .output-web {
   width: 100%;
   border-radius: 16px;
   background-color: #ffffff;
 }
+
 .output-android-image, .output-android-video {
   width: 100%;
   max-width: 320px;
@@ -101,86 +148,36 @@
   border-radius: 16px;
   background-color: #222222;
 }
-/* ================================================== */
+
 @media (min-width: 768px) {
   .output-viewer .output-image {
     width: 80%;
   }
+
   .output-viewer .output-video {
     width: 80%;
   }
+
   .output-viewer .output-web {
     width: 80%;
   }
 }
-/* ================================================== */
+
 @media (min-width: 1280px) {
   .code-viewer, .output-viewer {
     max-width: 1280px;
     margin: 0 auto;
   }
+
   .output-viewer .output-image {
     width: 60%;
   }
+
   .output-viewer .output-video {
     width: 60%;
   }
+
   .output-viewer .output-web {
     width: 60%;
   }
 }
-/* ================================================== */
-/* Code Highlight */
-.code-gray {
-  color: #aaaaaa;
-}
-.code-red {
-  color: #e74c3c;
-}
-.code-green {
-  color: #00ff7f;
-}
-.code-light-green {
-  color: #7fff7f;
-}
-.code-dark-green {
-  color: #00aa00;
-}
-.code-blue {
-  color: #1e90ff;
-}
-.code-light-blue {
-  color: #00ced1;
-}
-.code-orange {
-  color: #e67e22;
-}
-.code-dark-orange {
-  color: #d35400;
-}
-.code-yellow {
-  color: #f1c40f;
-}
-.code-light-yellow {
-  color: #f7DC6f;
-}
-.code-dark-yellow {
-  color: #b7950b;
-}
-.code-purple {
-  color: #9b59b6;
-}
-.code-pink {
-  color: #e91e63;
-}
-.code-brown {
-  color: #8d6e63;
-}
-/* ================================================== */
-/* ========================= > FACOOYA ========================= */
-/* NOTE
- */
-/* AUTHORSHIP
- * Founder: Facooya
- */
-/* ========================= < FACOOYA ========================= */
