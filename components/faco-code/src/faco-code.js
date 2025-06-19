@@ -24,7 +24,7 @@ class FacoCode extends HTMLElement {
 
 		FacoCodeRender.render(this);
 		FacoCodeRender.syntaxRender(this);
-		FacoCodeRender.codeLineItemRender(this);
+		FacoCodeRender.viewLineItemRender(this);
 
 		FacoCodeEvent.manager(this);
 	}
@@ -36,38 +36,37 @@ const FacoCodeRender = {
 		link.rel = "stylesheet";
 		link.href = new URL("faco-code.css", import.meta.url).href;
 
-		const codeViewer = document.createElement("div");
-		codeViewer.className = "code-viewer";
+		/* header */
+    const header = document.createElement("header");
+    header.className = "header";
 
-    const viewerName = document.createElement("h5");
-		viewerName.className = "viewer-name";
-		viewerName.textContent = facoCode.codeData.fileName;
+		/* header: title */
+    const title = document.createElement("h5");
+		title.className = "title";
+		title.textContent = facoCode.codeData.fileName;
 
-    const codeBlock = document.createElement("pre");
-		codeBlock.className = "code-block";
-		codeBlock.textContent = facoCode.codeData.code;
+		/* header: tool */
+    const toolList = document.createElement("ul");
+    toolList.className = "tool-list";
+    const toolItemWide = document.createElement("li");
+    toolItemWide.className = "tool-item-wide";
+    toolItemWide.textContent = "wide";
+    const toolItemCopy = document.createElement("li");
+    toolItemCopy.className = "tool-item-copy";
+    toolItemCopy.textContent = "copy";
+    toolList.append(toolItemWide, toolItemCopy);
+    header.append(title, toolList);
 
-    const viewerHeader = document.createElement("header");
-    viewerHeader.className = "viewer-header";
-    const viewerTool = document.createElement("ul");
-    viewerTool.className = "viewer-tool";
-    const viewerToolWide = document.createElement("li");
-    viewerToolWide.className = "viewer-tool-wide";
-    viewerToolWide.textContent = "wide";
-    const viewerToolCopy = document.createElement("li");
-    viewerToolCopy.className = "viewer-tool-copy";
-    viewerToolCopy.textContent = "copy";
-    viewerTool.append(viewerToolWide, viewerToolCopy);
-    viewerHeader.append(viewerName, viewerTool);
+    const view = document.createElement("div");
+    view.className = "view";
+    const viewLineList = document.createElement("ul");
+    viewLineList.className = "view-line-list";
+    const viewContent = document.createElement("pre");
+		viewContent.className = "view-content";
+		viewContent.textContent = facoCode.codeData.code;
+    view.append(viewLineList, viewContent);
 
-    const codeContainer = document.createElement("div");
-    codeContainer.className = "code-container";
-    const codeLineList = document.createElement("ul");
-    codeLineList.className = "code-line-list";
-    codeContainer.append(codeLineList, codeBlock);
-
-    codeViewer.append(viewerHeader, codeContainer);
-		facoCode.shadowRoot.append(link, codeViewer);
+		facoCode.shadowRoot.append(link, header, view);
 	},
 
 	syntaxRender(facoCode) {
@@ -80,57 +79,59 @@ const FacoCodeRender = {
 		facoCode.syntaxData.syntaxRender(facoCode);
 	},
 
-	codeLineItemRender(facoCode) {
-    const codeViewer = facoCode.shadowRoot.querySelector(".code-viewer");
-    const fragment = document.createDocumentFragment();
+	viewLineItemRender(facoCode) {
+    const view = facoCode.shadowRoot.querySelector(".view");
+    const frag = document.createDocumentFragment();
 
-    const codeLineList = codeViewer.querySelector(".code-line-list");
-    const codeBlock = codeViewer.querySelector(".code-block");
-    const codeText = codeBlock.textContent;
-    const codeParts = codeText.split("\n");
+    const viewLineList = view.querySelector(".view-line-list");
+    const viewContent = view.querySelector(".view-content");
+    const viewText = viewContent.textContent;
+    const viewParts = viewText.split("\n");
 
-    for (let i = 0; i < codeParts.length; i++) {
-      const codeLineItem = document.createElement("li");
-      codeLineItem.className = "code-line-item";
-      codeLineItem.textContent = (i + 1).toString();
-      fragment.append(codeLineItem);
+    for (let i = 0; i < viewParts.length; i++) {
+      const viewLineItem = document.createElement("li");
+      viewLineItem.className = "view-line-item";
+      viewLineItem.textContent = (i + 1).toString();
+      frag.append(viewLineItem);
     }
-    codeLineList.append(fragment);
+    viewLineList.append(frag);
 	}
 };
 
 const FacoCodeEvent = {
 	manager(facoCode) {
-		const toolWide = facoCode.shadowRoot.querySelector(".viewer-tool-wide");
-		const toolCopy = facoCode.shadowRoot.querySelector(".viewer-tool-copy");
-		toolWide.addEventListener("click", this.onViewerToolWideClick);
-		toolCopy.addEventListener("click", this.onViewerToolCopyClick);
-		toolWide.dataset.isWide = 0;
+		facoCode.onToolItemWideClick = this.onToolItemWideClick.bind(facoCode);
+		facoCode.onToolItemCopyClick = this.onToolItemCopyClick.bind(facoCode);
+
+		const toolItemWide = facoCode.shadowRoot.querySelector(".tool-item-wide");
+		const toolItemCopy = facoCode.shadowRoot.querySelector(".tool-item-copy");
+		toolItemWide.addEventListener("click", facoCode.onToolItemWideClick);
+		toolItemCopy.addEventListener("click", facoCode.onToolItemCopyClick);
+
+		toolItemWide.dataset.isWide = 0;
 	},
 
-	onViewerToolWideClick(event) {
-    const toolWide = event.currentTarget;
-    const codeViewer = toolWide.closest(".code-viewer");
-    const codeLineList = codeViewer.querySelector(".code-line-list");
-    const codeBlock = codeViewer.querySelector(".code-block");
+	onToolItemWideClick(event) {
+    const toolItemWide = event.currentTarget;
+    const viewLineList = this.shadowRoot.querySelector(".view-line-list");
+    const viewContent = this.shadowRoot.querySelector(".view-content");
     const wide = "wide";
 
-    if (Number(toolWide.dataset.isWide)) {
-      codeLineList.classList.remove(wide);
-      codeBlock.classList.remove(wide);
-      toolWide.dataset.isWide = 0;
+    if (Number(toolItemWide.dataset.isWide)) {
+      viewLineList.classList.remove(wide);
+      viewContent.classList.remove(wide);
+      toolItemWide.dataset.isWide = 0;
     } else {
-      codeLineList.classList.add(wide);
-      codeBlock.classList.add(wide);
-      toolWide.dataset.isWide = 1;
+      viewLineList.classList.add(wide);
+      viewContent.classList.add(wide);
+      toolItemWide.dataset.isWide = 1;
     }
 	},
 
-	onViewerToolCopyClick(event) {
-    const toolCopy = event.currentTarget;
-    const codeViewer = toolCopy.closest(".code-viewer");
-    const codeBlock = codeViewer.querySelector(".code-block");
-    navigator.clipboard.writeText(codeBlock.textContent);
+	onToolItemCopyClick(event) {
+    const toolItemCopy = event.currentTarget;
+    const viewContent = this.shadowRoot.querySelector(".view-content");
+    navigator.clipboard.writeText(viewContent.textContent);
 	}
 };
 

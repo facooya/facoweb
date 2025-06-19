@@ -74,8 +74,8 @@ const FacoCodeSyntaxData = {
     	const pattern = this.pattern;
     	const color = FacoCodeColor;
 
-			const codeBlock = facoCode.shadowRoot.querySelector(".code-block");
-    	const getText = codeBlock.innerHTML;
+			const viewContent = facoCode.shadowRoot.querySelector(".view-content");
+    	const getText = viewContent.innerHTML;
     	const parts = getText.split(this.split);
     	for (let i = 0; i < parts.length; i++) {
 				
@@ -101,11 +101,11 @@ const FacoCodeSyntaxData = {
       	}
 
     	}
-    	codeBlock.innerHTML = parts.join("");
+    	viewContent.innerHTML = parts.join("");
   	}
 	},
 
-	"syntax-cpp": {
+	"syntax-cpp": { /* TODO */
 		split: new RegExp(String.raw`(#.*?\s|&lt;.*?&gt;|".*?(?<!\\)"|\/\*[\s\S]*?\*\/|'.*?'|\/\/[\s\S]*?$)`, "gm"),
 
 		pattern: {
@@ -134,8 +134,8 @@ const FacoCodeSyntaxData = {
     	const pattern = this.pattern;
     	const color = FacoCodeColor;
 
-			const codeBlock = facoCode.shadowRoot.querySelector(".code-block");
-    	const getText = codeBlock.innerHTML;
+			const viewContent = facoCode.shadowRoot.querySelector(".view-content");
+    	const getText = viewContent.innerHTML;
     	const parts = getText.split(this.split);
     	for (let i = 0; i < parts.length; i++) {
 				
@@ -160,15 +160,37 @@ const FacoCodeSyntaxData = {
       	}
 
     	}
-    	codeBlock.innerHTML = parts.join("");
+    	viewContent.innerHTML = parts.join("");
 		}
 	}
 
-	/*
+	/* CUSTOM TEMPLATE
 	"syntax-CUSTOM": {
-		split: //gm,
-	  patten: //g,
+		split: new RegExp(String.raw`(".*?(?<!\\)"|'.*?')`, "gm"),
+
+	  pattern: {
+			number: new RegExp(String.raw`\b(\d+(\.\d+(f|L)?)?|\d+(f|L|U|LL)?|0[bB][01]+|0[oO][0-7]+|0[xX][0-9a-fA-F]+)\b`, "g"),
+    	control: new RegExp(String.raw`\b(${[
+      	"if", "else", "switch", "while", "do", "for"
+    	].join("|")})\b`, "g"),
+		},
+
 		syntaxRender(facoCode) {
+    	const pattern = this.pattern;
+    	const color = FacoCodeColor;
+
+			const viewContent = facoCode.shadowRoot.querySelector(".view-content");
+    	const getText = viewContent.innerHTML;
+    	const parts = getText.split(this.split);
+    	for (let i = 0; i < parts.length; i++) {
+      	if (parts[i].startsWith("\"") || parts[i].startsWith("'")) {
+        	parts[i] = parts[i].replace(parts[i], color.green); // text
+      	} else {
+        	parts[i] = parts[i].replace(pattern.number, color.lightBlue);
+        	parts[i] = parts[i].replace(pattern.control, color.purple);
+      	}
+    	}
+			viewContent.innerHTML = parts.join("");
 		}
 	}
 	*/

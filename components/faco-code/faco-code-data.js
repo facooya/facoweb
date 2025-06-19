@@ -28,23 +28,23 @@ int main() {
   comment */
 
   /* comment syntax text */int testNumber = 10;// comment syntax test
-	int binNum = 0b0101;
-	int octNum = 0o1234;
-  int hexNumber = 0xFAC0;
-  float testFloat = 1.111f;
-	double testDouble = 1.234;
+	int binary = 0b0101;
+	int octal = 0o1234;
+	int decimal = 10;
+  int hex = 0xFAC0;
+  float pi = 3.14f;
+	double pi_double = 3.14;
+  char f = 'F';
+  char facoweb[10] = "Facoweb";
 
-  char testT = 'T';
-  char testText[10] = "Test text";
-
-  if (testNumber == 1) {
-    testNumber++;
+  if (decimal == 1) {
+    decimal++;
   } else {
-    testNumber--;
+    decimal--;
   }
 
   for (int i = 0; i < 2; i++) {
-    printf("Text: %s\n", testText);
+    printf("Text: %s\n", facoweb);
   }
   printf("Don't select \"int\" int printf.\n");
 
@@ -58,6 +58,11 @@ int main() {
 		code: String.raw`#include <iostream>
 
 int main() {
+	// comment
+	/* comment
+	comment
+	comment */
+
   int year = 2024;
   float pi = 3.14f;
   char f = 'F';
