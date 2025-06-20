@@ -53,7 +53,7 @@ const FacoFooterData = {
   },
 
   aboutGroups: {
-    logoLink: "#",
+    logoLink: "#logo-click-link",
     logoItems: {
       "dev": `url("./src/icons/octagon-2w.svg")`,
       "transcendence": `url("./src/icons/triangle.svg")`,
