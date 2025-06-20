@@ -1,15 +1,13 @@
 # Facoweb
 Reusable UI components built with plain JavaScript and CSS. 
 
----
+## Preview
 
-## Features
-- Uses only plain JavaScript and CSS
-- No build step
-- Each component is fully standalone
-- Encapsulates styles and behavior
-- Reduces repetitive HTML
-- Easy to drop into any project
+[Header](https://facooya.github.io/facoweb/components/faco-header/)
+[Footer](https://facooya.github.io/facoweb/components/faco-footer/)
+[Pager](https://facooya.github.io/facoweb/components/faco-pager/)
+[Tab](https://facooya.github.io/facoweb/components/faco-tab/)
+[Code](https://facooya.github.io/facoweb/components/faco-code/)
 
 ---
 
@@ -21,29 +19,19 @@ git clone https://github.com/facooya/facoweb.git
 ```
 
 Choose a component: `facoweb/components/` (e.g., `faco-tab`)  
+Test: `[yourSite.com]/facoweb/components/faco-tab/`
 
-Add the tag and script to your HTML:  
+It works?
+You can change custom data:
+Try open and edit `facoweb/components/faco-tab/faco-tab-data.js`
+
+You can custom HTML just include tag and script:  
 ```html
 <faco-tab></faco-tab>
 <script type="module" src="facoweb/components/faco-tab/src/faco-tab.js"></script>
 ```
 
-Edit content:
-`facoweb/components/faco-tab/faco-tab-data.js`
-
-Optional:
-Each component is standalone.
-You can copy the component you need (e.g., `faco-tab`) to another location and delete the entire `facoweb/` directory.
-It will still work.
-You can also rename the component directory without issues.
-Just don't rename internal files or subdirectories.
-
----
-
-Not sure how to use the tag or script?  
-Check `index.html` in each component for a simple example.  
-
----
+Require script `type="module"`.
 
 Each component follows the same pattern:
 
@@ -52,6 +40,40 @@ Each component follows the same pattern:
 
 `[component]/[component]-data.js`
 (Example: `faco-tab/faco-tab-data.js`)
+
+Not sure how to use the tag or script?  
+Check `index.html` in each component for a simple example.  
+
+---
+
+## Minimal Usage
+
+Clone.
+
+```bash
+cp facoweb/components/faco-tab/ .
+rm -r facoweb/
+```
+
+Test: `[yourSite]/faco-tab/`
+
+You can also rename the component directory without issues.
+
+```bash
+mv faco-tab/ facooya-tab/
+```
+
+Test: `[yourSite]/facooya-tab/`
+
+---
+
+## Features
+- Uses only plain JavaScript and CSS
+- No build step
+- Each component is fully standalone
+- Encapsulates styles and behavior
+- Reduces repetitive HTML
+- Easy to drop into any project
 
 ---
 
