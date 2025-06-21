@@ -9,35 +9,35 @@
 import { FacoHeaderUtils } from "./faco-header-utils.js";
 
 const FacoHeaderEvent = {
-	init() {
-		this.setTimerResize = FacoHeaderEvent.setTimerResize.bind(this);
-		this.onResize = FacoHeaderEvent.onResize.bind(this);
-		window.addEventListener("resize", this.setTimerResize);
+	init(facoHeader) {
+		facoHeader.setTimerResize = FacoHeaderEvent.setTimerResize.bind(facoHeader);
+		facoHeader.onResize = FacoHeaderEvent.onResize.bind(facoHeader);
+		window.addEventListener("resize", facoHeader.setTimerResize);
 
-		const topBar = this.shadowRoot.querySelector(".top-bar");
-		topBar.onGridIconClick = FacoHeaderEvent.TopBar.onGridIconClick.bind(this);
-		topBar.onHamburgerIconClick = FacoHeaderEvent.TopBar.onHamburgerIconClick.bind(this);
-		topBar.onOverlayClick = FacoHeaderEvent.TopBar.onOverlayClick.bind(this);
-		topBar.onGridItemTransitionEnd = FacoHeaderEvent.TopBar.onGridItemTransitionEnd.bind(this);
+		const topBar = facoHeader.shadowRoot.querySelector(".top-bar");
+		topBar.onGridIconClick = FacoHeaderEvent.TopBar.onGridIconClick.bind(facoHeader);
+		topBar.onHamburgerIconClick = FacoHeaderEvent.TopBar.onHamburgerIconClick.bind(facoHeader);
+		topBar.onOverlayClick = FacoHeaderEvent.TopBar.onOverlayClick.bind(facoHeader);
+		topBar.onGridItemTransitionEnd = FacoHeaderEvent.TopBar.onGridItemTransitionEnd.bind(facoHeader);
 
-		const mainMenu = this.shadowRoot.querySelector(".main-menu");
-		mainMenu.onScroll = FacoHeaderEvent.MainMenu.onScroll.bind(this);
-		mainMenu.onItemHover = FacoHeaderEvent.MainMenu.onItemHover.bind(this);
-		mainMenu.onItemBoxClick = FacoHeaderEvent.MainMenu.onItemBoxClick.bind(this);
-		mainMenu.onSubListScroll = FacoHeaderEvent.MainMenu.onSubListScroll.bind(this);
-		mainMenu.onSubListTransitionEnd = FacoHeaderEvent.MainMenu.onSubListTransitionEnd.bind(this);
-		mainMenu.onSubItemBoxHover = FacoHeaderEvent.MainMenu.onSubItemBoxHover.bind(this);
+		const mainMenu = facoHeader.shadowRoot.querySelector(".main-menu");
+		mainMenu.onScroll = FacoHeaderEvent.MainMenu.onScroll.bind(facoHeader);
+		mainMenu.onItemHover = FacoHeaderEvent.MainMenu.onItemHover.bind(facoHeader);
+		mainMenu.onItemBoxClick = FacoHeaderEvent.MainMenu.onItemBoxClick.bind(facoHeader);
+		mainMenu.onSubListScroll = FacoHeaderEvent.MainMenu.onSubListScroll.bind(facoHeader);
+		mainMenu.onSubListTransitionEnd = FacoHeaderEvent.MainMenu.onSubListTransitionEnd.bind(facoHeader);
+		mainMenu.onSubItemBoxHover = FacoHeaderEvent.MainMenu.onSubItemBoxHover.bind(facoHeader);
 
-		const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
-		drawerMenu.onScroll = FacoHeaderEvent.DrawerMenu.onScroll.bind(this);
-		drawerMenu.onItemBoxClick = FacoHeaderEvent.DrawerMenu.onItemBoxClick.bind(this);
-		drawerMenu.onSubListTransitionEnd = FacoHeaderEvent.DrawerMenu.onSubListTransitionEnd.bind(this);
-		drawerMenu.onSubItemBoxHover = FacoHeaderEvent.DrawerMenu.onSubItemBoxHover.bind(this);
+		const drawerMenu = facoHeader.shadowRoot.querySelector(".drawer-menu");
+		drawerMenu.onScroll = FacoHeaderEvent.DrawerMenu.onScroll.bind(facoHeader);
+		drawerMenu.onItemBoxClick = FacoHeaderEvent.DrawerMenu.onItemBoxClick.bind(facoHeader);
+		drawerMenu.onSubListTransitionEnd = FacoHeaderEvent.DrawerMenu.onSubListTransitionEnd.bind(facoHeader);
+		drawerMenu.onSubItemBoxHover = FacoHeaderEvent.DrawerMenu.onSubItemBoxHover.bind(facoHeader);
 
-		const screenType = Number(this.dataset.screenType);
-		FacoHeaderEvent.TopBar.manager(this, screenType, 1);
-		FacoHeaderEvent.MainMenu.manager(this, screenType, 1);
-		FacoHeaderEvent.DrawerMenu.manager(this, screenType, 2);
+		const screenType = Number(facoHeader.dataset.screenType);
+		FacoHeaderEvent.TopBar.manager(facoHeader, screenType, 1);
+		FacoHeaderEvent.MainMenu.manager(facoHeader, screenType, 1);
+		FacoHeaderEvent.DrawerMenu.manager(facoHeader, screenType, 2);
 	},
 
 	setTimerResize() {
@@ -92,12 +92,12 @@ const FacoHeaderEvent = {
     	drawerMenu.onScroll();
 
 			/* manager */
-			FacoHeaderEvent.TopBar.manager.call(this, prevScreenType, 0);
-			FacoHeaderEvent.TopBar.manager.call(this, screenType, 1);
-			FacoHeaderEvent.MainMenu.manager.call(this, prevScreenType, 0);
-			FacoHeaderEvent.MainMenu.manager.call(this, screenType, 1);
-			FacoHeaderEvent.DrawerMenu.manager.call(this, prevScreenType, 0);
-			FacoHeaderEvent.DrawerMenu.manager.call(this, screenType, 1);
+			FacoHeaderEvent.TopBar.manager(this, prevScreenType, 0);
+			FacoHeaderEvent.TopBar.manager(this, screenType, 1);
+			FacoHeaderEvent.MainMenu.manager(this, prevScreenType, 0);
+			FacoHeaderEvent.MainMenu.manager(this, screenType, 1);
+			FacoHeaderEvent.DrawerMenu.manager(this, prevScreenType, 0);
+			FacoHeaderEvent.DrawerMenu.manager(this, screenType, 1);
 
 			this.dataset.prevScreenType = this.dataset.screenType;
 		} else {

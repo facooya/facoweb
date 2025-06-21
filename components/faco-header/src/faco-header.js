@@ -26,7 +26,7 @@ class FacoHeader extends HTMLElement {
 		this.screenType;
 		this.dataset.prevScreenType = this.dataset.screenType;
 
-		FacoHeaderEvent.init.call(this);
+		FacoHeaderEvent.init(this);
 	}
 
 	get touchType() {
