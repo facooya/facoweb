@@ -9,7 +9,6 @@
 import { FacoHeaderData } from "../faco-header-data.js";
 import { FacoHeaderRender } from "./faco-header-render.js";
 import { FacoHeaderEvent } from "./faco-header-event.js";
-import { FacoHeaderUtils } from "./faco-header-utils.js";
 
 class FacoHeader extends HTMLElement {
 	constructor() {

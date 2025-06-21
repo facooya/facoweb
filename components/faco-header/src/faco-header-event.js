@@ -75,19 +75,19 @@ const FacoHeaderEvent = {
 			const mainMenu = this.shadowRoot.querySelector(".main-menu");
 			const mainMenuItems = mainMenu.querySelectorAll(".item");
 			mainMenuItems.forEach(item => {
-				FacoHeaderUtils.MainMenu.updateSubItem.call(this, item);
+				FacoHeaderUtils.MainMenu.updateSubItem(this, item);
 			});
 
-			FacoHeaderUtils.MainMenu.closeItem.call(this, FacoHeaderEvent);
+			FacoHeaderUtils.MainMenu.closeItem(this, FacoHeaderEvent);
 			if (prevScreenType >= 2) {
-				FacoHeaderUtils.MainMenu.updateMaxHeightSubList.call(this);
+				FacoHeaderUtils.MainMenu.updateMaxHeightSubList(this);
 			}
 
 			/* drawer menu */
 			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
     	const drawerMenuItems = drawerMenu.querySelectorAll(".item");
     	drawerMenuItems.forEach(item => {
-      	FacoHeaderUtils.DrawerMenu.updateSubItem.call(this, item);
+      	FacoHeaderUtils.DrawerMenu.updateSubItem(item);
     	});
     	drawerMenu.onScroll();
 
@@ -130,7 +130,7 @@ const FacoHeaderEvent = {
 			if (Number(this.dataset.screenType) === 1) {
 				mainMenu.onScroll();
 			} else {
-				FacoHeaderUtils.MainMenu.updateMaxHeightSubList.call(this);
+				FacoHeaderUtils.MainMenu.updateMaxHeightSubList(this);
 			}
 
 			/* drawer menu */
@@ -138,7 +138,7 @@ const FacoHeaderEvent = {
     	const drawerMenuItems = drawerMenu.querySelectorAll(".item");
     	drawerMenuItems.forEach(item => {
       	if (Number(item.dataset.isOpen)) {
-        	FacoHeaderUtils.DrawerMenu.updateSubItem.call(this, item);
+        	FacoHeaderUtils.DrawerMenu.updateSubItem(item);
 
         	if (Number(this.dataset.touchType)) {
           	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
@@ -207,13 +207,12 @@ const FacoHeaderEvent = {
 			if (shouldActive) {
 				const gridIcon = topBar.querySelector(".grid-icon");
 				if (Number(gridIcon.dataset.isActive)) {
-					// FacoHeaderEvent.TopBar.onGridIconClick.call(this);
 					topBar.onGridIconClick();
 				}
-				FacoHeaderUtils.TopBar.updateOverlay.call(this, 0);
+				FacoHeaderUtils.TopBar.updateOverlay(this, 0);
 			} else {
-				FacoHeaderUtils.MainMenu.closeItem.call(this, FacoHeaderEvent);
-				FacoHeaderUtils.TopBar.updateOverlay.call(this, 1);
+				FacoHeaderUtils.MainMenu.closeItem(this, FacoHeaderEvent);
+				FacoHeaderUtils.TopBar.updateOverlay(this, 1);
 			}
 
 			const active = "active";
@@ -247,15 +246,14 @@ const FacoHeaderEvent = {
 			if (shouldActive) {
 				const hamburgerIcon = topBar.querySelector(".hamburger-icon");
 				if (screenType === 1 && Number(hamburgerIcon.dataset.isActive)) {
-					// FacoHeaderEvent.TopBar.onHamburgerIconClick.call(this);
 					topBar.onHamburgerIconClick();
 				} else if (screenType === 2) {
-					FacoHeaderUtils.MainMenu.closeItem.call(this, FacoHeaderEvent);
+					FacoHeaderUtils.MainMenu.closeItem(this, FacoHeaderEvent);
 				}
-				FacoHeaderUtils.TopBar.updateOverlay.call(this, 2);
+				FacoHeaderUtils.TopBar.updateOverlay(this, 2);
 			} else {
-				FacoHeaderUtils.DrawerMenu.closeItem.call(this, FacoHeaderEvent);
-				FacoHeaderUtils.TopBar.updateOverlay.call(this);
+				FacoHeaderUtils.DrawerMenu.closeItem(this, FacoHeaderEvent);
+				FacoHeaderUtils.TopBar.updateOverlay(this);
 			}
 
 			const active = "active";
@@ -281,8 +279,8 @@ const FacoHeaderEvent = {
 			if (target === gridItem && event.propertyName === "transform") {
 				const mainMenuItems = this.shadowRoot.querySelectorAll(".main-menu .item");
 				const lastIndex = mainMenuItems.length - 1;
-				FacoHeaderUtils.MainMenu.setAlignX_RightItem.call(this, mainMenuItems[lastIndex]);
-				FacoHeaderUtils.MainMenu.updateLeftChevronWrapper.call(this, mainMenuItems[lastIndex]);
+				FacoHeaderUtils.MainMenu.setAlignX_RightItem(this, mainMenuItems[lastIndex]);
+				FacoHeaderUtils.MainMenu.updateLeftChevronWrapper(this, mainMenuItems[lastIndex]);
 			}
 		}
 	},
@@ -370,9 +368,9 @@ const FacoHeaderEvent = {
     	}
 
     	if (!shouldOpen) {
-      	FacoHeaderUtils.MainMenu.updateScrollSubList.call(this, item, 0);
+      	FacoHeaderUtils.MainMenu.updateScrollSubList(item, 0);
     	}
-    	FacoHeaderUtils.MainMenu.updateHeightSubList.call(this, item, shouldOpen);
+    	FacoHeaderUtils.MainMenu.updateHeightSubList(item, shouldOpen);
 
     	item.dataset.isOpen = shouldOpen;
 		},
@@ -402,18 +400,18 @@ const FacoHeaderEvent = {
     	if (shouldOpen) {
 				const mainMenu = this.shadowRoot.querySelector(".main-menu");
 				if (screenType === 2) {
-					FacoHeaderUtils.MainMenu.closeItem.call(this, FacoHeaderEvent);
+					FacoHeaderUtils.MainMenu.closeItem(this, FacoHeaderEvent);
 					const topBar = this.shadowRoot.querySelector(".top-bar");
 					const gridIcon = topBar.querySelector(".grid-icon");
 					if (Number(gridIcon.dataset.isActive)) {
 						topBar.onGridIconClick();
 					}
 				} else if (screenType === 3) {
-					FacoHeaderUtils.MainMenu.closeItem.call(this, FacoHeaderEvent);
+					FacoHeaderUtils.MainMenu.closeItem(this, FacoHeaderEvent);
 				}
     	} else {
       	if (Number(this.dataset.touchType)) {
-        	FacoHeaderUtils.MainMenu.timerSubItemBox.call(this, item, 1);
+        	FacoHeaderUtils.MainMenu.timerSubItemBox(item, 1);
 
         	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
         	subItemBottomLines.forEach(subItemBottomLine => {
@@ -422,14 +420,14 @@ const FacoHeaderEvent = {
       	}
 
 				if (screenType >= 2) {
-					FacoHeaderUtils.MainMenu.updateScrollSubList.call(this, item, 0);
+					FacoHeaderUtils.MainMenu.updateScrollSubList(item, 0);
 				}
     	}
 
     	if (!Number(this.dataset.touchType)) {
-      	FacoHeaderUtils.MainMenu.setHoverLockItemBox.call(this, item, shouldOpen);
+      	FacoHeaderUtils.MainMenu.setHoverLockItemBox(item, shouldOpen);
     	}
-			FacoHeaderUtils.MainMenu.updateHeightSubList.call(this, item, shouldOpen);
+			FacoHeaderUtils.MainMenu.updateHeightSubList(item, shouldOpen);
 
     	item.classList[action](open);
     	itemLabel.classList[action](open);
@@ -444,7 +442,7 @@ const FacoHeaderEvent = {
 			/* type: 23 */
 			const subList = event.currentTarget;
 			const item = subList.closest(".item");
-			FacoHeaderUtils.MainMenu.updateScrollSubList.call(this, item, 1);
+			FacoHeaderUtils.MainMenu.updateScrollSubList(item, 1);
 		},
 
 		onSubListTransitionEnd(event) {
@@ -459,7 +457,7 @@ const FacoHeaderEvent = {
       	const item = subList.closest(".item");
 
       	if (Number(item.dataset.isOpen)) {
-					FacoHeaderUtils.MainMenu.updateSubItem.call(this, item);
+					FacoHeaderUtils.MainMenu.updateSubItem(item);
 					if (Number(this.dataset.touchType)) {
         		FacoHeaderUtils.MainMenu.timerSubItemBox(item);
 					} else {
@@ -476,9 +474,9 @@ const FacoHeaderEvent = {
 					}
 
 					if (Number(this.dataset.screenType) >= 2) {
-						FacoHeaderUtils.MainMenu.updateLeftChevronWrapper.call(this, item);
-						FacoHeaderUtils.MainMenu.updateTopChevronBottomWrapper.call(this, item);
-						FacoHeaderUtils.MainMenu.updateScrollSubList.call(this, item, 1);
+						FacoHeaderUtils.MainMenu.updateLeftChevronWrapper(this, item);
+						FacoHeaderUtils.MainMenu.updateTopChevronBottomWrapper(this, item);
+						FacoHeaderUtils.MainMenu.updateScrollSubList(item, 1);
 					}
 				}
 
@@ -489,8 +487,8 @@ const FacoHeaderEvent = {
     	} else if (target === subList && event.propertyName === "max-height") {
 				const item = subList.closest(".item");
 				if (Number(item.dataset.isOpen)) {
-					FacoHeaderUtils.MainMenu.updateTopChevronBottomWrapper.call(this, item);
-					FacoHeaderUtils.MainMenu.updateScrollSubList.call(this, item, 1);
+					FacoHeaderUtils.MainMenu.updateTopChevronBottomWrapper(this, item);
+					FacoHeaderUtils.MainMenu.updateScrollSubList(item, 1);
 				}
 			}
 		},
@@ -592,7 +590,7 @@ const FacoHeaderEvent = {
     	} else {
       	subList.style.height = "";
       	if (Number(this.dataset.touchType)) {
-        	FacoHeaderUtils.DrawerMenu.timerSubItemBox.call(this, item, 1);
+        	FacoHeaderUtils.DrawerMenu.timerSubItemBox(item, 1);
 
         	const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
         	subItemBottomLines.forEach(subItemBottomLine => {
@@ -602,7 +600,7 @@ const FacoHeaderEvent = {
     	}
 
     	if (!Number(this.dataset.touchType)) {
-      	FacoHeaderUtils.DrawerMenu.setHoverLockItemBox.call(this, item, shouldOpen);
+      	FacoHeaderUtils.DrawerMenu.setHoverLockItemBox(item, shouldOpen);
     	}
 
     	item.classList[action](open);
@@ -625,10 +623,10 @@ const FacoHeaderEvent = {
       	const item = subList.closest(".item");
 
       	if (Number(item.dataset.isOpen) && Number(this.dataset.touchType)) {
-					FacoHeaderUtils.DrawerMenu.updateSubItem.call(this, item);
-        	FacoHeaderUtils.DrawerMenu.timerSubItemBox.call(this, item);
+					FacoHeaderUtils.DrawerMenu.updateSubItem(item);
+        	FacoHeaderUtils.DrawerMenu.timerSubItemBox(item);
 				} else if (Number(item.dataset.isOpen)) {
-        	FacoHeaderUtils.DrawerMenu.updateSubItem.call(this, item);
+        	FacoHeaderUtils.DrawerMenu.updateSubItem(item);
 
         	const subItemBoxes = item.querySelectorAll(".sub-item-box");
         	subItemBoxes.forEach(subItemBox => {

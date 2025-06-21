@@ -9,9 +9,9 @@
 const FacoHeaderUtils = {
 	// FIXME: updateLogo (topBar) ???
 	TopBar: {
-		updateOverlay(overlayType) {
+		updateOverlay(facoHeader, overlayType) {
 			/* type: 14 */
-    	const overlay = this.shadowRoot.querySelector(".top-bar .overlay");
+    	const overlay = facoHeader.shadowRoot.querySelector(".top-bar .overlay");
     	const overlayTypes = [
       	"right-open",
       	"right-close",
@@ -33,8 +33,8 @@ const FacoHeaderUtils = {
 	},
 
 	MainMenu: {
-		closeItem(FacoHeaderEvent) {
-			const mainMenu = this.shadowRoot.querySelector(".main-menu");
+		closeItem(facoHeader, FacoHeaderEvent) {
+			const mainMenu = facoHeader.shadowRoot.querySelector(".main-menu");
     	const items = mainMenu.querySelectorAll(".item");
     	items.forEach(item => {
       	if (Number(item.dataset.isOpen)) {
@@ -45,11 +45,11 @@ const FacoHeaderUtils = {
     	});
 		},
 
-		setAlignX_RightItem(item) {
+		setAlignX_RightItem(facoHeader, item) {
     	const alignX_Right = "align-x-right";
     	const subList = item.querySelector(".sub-list");
 
-			const gridIcon = this.shadowRoot.querySelector(".top-bar .grid-icon");
+			const gridIcon = facoHeader.shadowRoot.querySelector(".top-bar .grid-icon");
 			if (!Number(gridIcon.dataset.isActive)) {
 				subList.classList.remove(alignX_Right);
 				return;
@@ -104,17 +104,17 @@ const FacoHeaderUtils = {
 			}
 		},
 
-		updateMaxHeightSubList() {
-    	const mainMenu = this.shadowRoot.querySelector(".main-menu");
+		updateMaxHeightSubList(facoHeader) {
+    	const mainMenu = facoHeader.shadowRoot.querySelector(".main-menu");
     	const subLists = mainMenu.querySelectorAll(".sub-list");
-    	const screenType = Number(this.dataset.screenType);
+    	const screenType = Number(facoHeader.dataset.screenType);
 	
     	if (screenType === 1) {
       	subLists.forEach(subList => {
         	subList.style.maxHeight = "";
       	});
     	} else {
-      	const topBar = this.shadowRoot.querySelector(".top-bar");
+      	const topBar = facoHeader.shadowRoot.querySelector(".top-bar");
       	const buffer = 16;
       	const topBarHeight = topBar.clientHeight;
       	let calcMaxHeight = window.innerHeight - (topBarHeight + buffer);
@@ -157,8 +157,8 @@ const FacoHeaderUtils = {
     	chevronBottomWrapper.classList[clBottomAction](active);
 		},
 
-		updateLeftChevronWrapper(item) {
-    	const screenType = Number(this.dataset.screenType);
+		updateLeftChevronWrapper(facoHeader, item) {
+    	const screenType = Number(facoHeader.dataset.screenType);
     	if (screenType === 1) { return; }
 	
     	const itemIndex = Number(item.dataset.index);
@@ -197,8 +197,8 @@ const FacoHeaderUtils = {
     	chevronBottomWrapper.style.left = `${calcLeft}px`;
 		},
 
-		updateTopChevronBottomWrapper(item) {
-    	const screenType = Number(this.dataset.screenType);
+		updateTopChevronBottomWrapper(facoHeader, item) {
+    	const screenType = Number(facoHeader.dataset.screenType);
     	if (screenType === 1) { return; }
 	
     	const subList = item.querySelector(".sub-list");
@@ -278,8 +278,8 @@ const FacoHeaderUtils = {
 	},
 
 	DrawerMenu: {
-		closeItem(FacoHeaderEvent) {
-			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+		closeItem(facoHeader, FacoHeaderEvent) {
+			const drawerMenu = facoHeader.shadowRoot.querySelector(".drawer-menu");
     	const items = drawerMenu.querySelectorAll(".item");
     	items.forEach(item => {
       	if (Number(item.dataset.isOpen)) {
