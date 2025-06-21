@@ -3,13 +3,11 @@ Reusable UI components built with plain JavaScript and CSS.
 
 ## Preview
 
-[Header](https://facooya.github.io/facoweb/components/faco-header/)
-[Footer](https://facooya.github.io/facoweb/components/faco-footer/)
-[Pager](https://facooya.github.io/facoweb/components/faco-pager/)
-[Tab](https://facooya.github.io/facoweb/components/faco-tab/)
-[Code](https://facooya.github.io/facoweb/components/faco-code/)
-
----
+- [faco-header](https://facooya.github.io/facoweb/components/faco-header/) – Header UI with top-bar, main-menu, drawer-menu
+- [faco-footer](https://facooya.github.io/facoweb/components/faco-footer/) - footer UI
+- [faco-pager](https://facooya.github.io/facoweb/components/faco-pager/) – Tabbed UI with page control
+- [faco-tab](https://facooya.github.io/facoweb/components/faco-tab/) – Simple tabbed content interface
+- [faco-code](https://facooya.github.io/facoweb/components/faco-code/) – code viewer
 
 ## Quick Start
 
@@ -44,8 +42,6 @@ Each component follows the same pattern:
 Not sure how to use the tag or script?  
 Check `index.html` in each component for a simple example.  
 
----
-
 ## Minimal Usage
 
 Clone.
@@ -65,8 +61,6 @@ mv faco-tab/ facooya-tab/
 
 Test: `[yourSite]/facooya-tab/`
 
----
-
 ## Features
 - Uses only plain JavaScript and CSS
 - No build step
@@ -74,15 +68,6 @@ Test: `[yourSite]/facooya-tab/`
 - Encapsulates styles and behavior
 - Reduces repetitive HTML
 - Easy to drop into any project
-
----
-
-### Components
-- **faco-code/** – Code viewer
-- **faco-footer/** – Footer UI
-- **faco-header/** – Header UI with top-bar, main-menu, drawer-menu
-- **faco-pager/** – Tabbed UI with page control
-- **faco-tab/** – Simple tabbed content interface
 
 ---
 
@@ -94,3 +79,4 @@ Test: `[yourSite]/facooya-tab/`
 ---
 
 > Facoweb is a shortened form of “FACOoya WEB”.
+

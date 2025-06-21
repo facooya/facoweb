@@ -7,7 +7,7 @@
  */
 
 const FacoHeaderRender = {
-	render(data) {
+	render(facoHeader, data) {
 		/* style sheet */
 		const frag = document.createDocumentFragment();
 		const styles = ["faco-header.css", "top-bar.css", "main-menu.css", "drawer-menu.css"];
@@ -17,14 +17,14 @@ const FacoHeaderRender = {
 			link.href = new URL(style, import.meta.url).href;
 			frag.append(link);
 		});
-		this.shadowRoot.append(frag);
+		facoHeader.shadowRoot.append(frag);
 
-		FacoHeaderRender.topBarRender.call(this, data);
-		FacoHeaderRender.mainMenuRender.call(this, data);
-		FacoHeaderRender.drawerMenuRender.call(this, data);
+		FacoHeaderRender.topBarRender(facoHeader, data);
+		FacoHeaderRender.mainMenuRender(facoHeader, data);
+		FacoHeaderRender.drawerMenuRender(facoHeader, data);
 	},
 
-	topBarRender(data) {
+	topBarRender(facoHeader, data) {
     /* tob bar */
     const topBar = document.createElement("div");
     topBar.className = "top-bar";
@@ -83,10 +83,10 @@ const FacoHeaderRender = {
 
     topBar.append(layout, overlay);
 
-    this.shadowRoot.append(topBar);
+    facoHeader.shadowRoot.append(topBar);
 	},
 
-	mainMenuRender(data) {
+	mainMenuRender(facoHeader, data) {
     /* Create Main Menu */
     const mainMenu = document.createElement("nav");
     mainMenu.className = "main-menu";
@@ -174,10 +174,10 @@ const FacoHeaderRender = {
     scrollLock.className = "scroll-lock";
 
     mainMenu.append(list, fogTop, fogBottom, scrollLock);
-    this.shadowRoot.append(mainMenu);
+    facoHeader.shadowRoot.append(mainMenu);
 	},
 
-	drawerMenuRender(data) {
+	drawerMenuRender(facoHeader, data) {
     const drawerMenu = document.createElement("nav");
     drawerMenu.className = "drawer-menu";
 
@@ -244,7 +244,7 @@ const FacoHeaderRender = {
     scrollLock.className = "scroll-lock";
 
     drawerMenu.append(list, fogTop, fogBottom, scrollLock);
-    this.shadowRoot.append(drawerMenu);
+    facoHeader.shadowRoot.append(drawerMenu);
 	}
 };
 

@@ -35,9 +35,9 @@ const FacoHeaderEvent = {
 		drawerMenu.onSubItemBoxHover = FacoHeaderEvent.DrawerMenu.onSubItemBoxHover.bind(this);
 
 		const screenType = Number(this.dataset.screenType);
-		FacoHeaderEvent.TopBar.manager.call(this, screenType, 1);
-		FacoHeaderEvent.MainMenu.manager.call(this, screenType, 1);
-		FacoHeaderEvent.DrawerMenu.manager.call(this, screenType, 2);
+		FacoHeaderEvent.TopBar.manager(this, screenType, 1);
+		FacoHeaderEvent.MainMenu.manager(this, screenType, 1);
+		FacoHeaderEvent.DrawerMenu.manager(this, screenType, 2);
 	},
 
 	setTimerResize() {
@@ -154,13 +154,13 @@ const FacoHeaderEvent = {
 	},
 
 	TopBar: {
-		manager(screenType, shouldAdd) {
+		manager(facoHeader, screenType, shouldAdd) {
 			let listener = "removeEventListener"
 			if (shouldAdd) {
 				listener = "addEventListener";
 			}
 
-			const topBar = this.shadowRoot.querySelector(".top-bar");
+			const topBar = facoHeader.shadowRoot.querySelector(".top-bar");
 
     	const gridIcon = topBar.querySelector(".grid-icon");
     	gridIcon[listener]("click", topBar.onGridIconClick);
@@ -207,7 +207,8 @@ const FacoHeaderEvent = {
 			if (shouldActive) {
 				const gridIcon = topBar.querySelector(".grid-icon");
 				if (Number(gridIcon.dataset.isActive)) {
-					FacoHeaderEvent.TopBar.onGridIconClick.call(this);
+					// FacoHeaderEvent.TopBar.onGridIconClick.call(this);
+					topBar.onGridIconClick();
 				}
 				FacoHeaderUtils.TopBar.updateOverlay.call(this, 0);
 			} else {
@@ -246,7 +247,8 @@ const FacoHeaderEvent = {
 			if (shouldActive) {
 				const hamburgerIcon = topBar.querySelector(".hamburger-icon");
 				if (screenType === 1 && Number(hamburgerIcon.dataset.isActive)) {
-					FacoHeaderEvent.TopBar.onHamburgerIconClick.call(this);
+					// FacoHeaderEvent.TopBar.onHamburgerIconClick.call(this);
+					topBar.onHamburgerIconClick();
 				} else if (screenType === 2) {
 					FacoHeaderUtils.MainMenu.closeItem.call(this, FacoHeaderEvent);
 				}
@@ -286,13 +288,13 @@ const FacoHeaderEvent = {
 	},
 
 	MainMenu: {
-		manager(screenType, shouldAdd) {
+		manager(facoHeader, screenType, shouldAdd) {
 			let listener = "removeEventListener"
 			if (shouldAdd) {
 				listener = "addEventListener";
 			}
 
-			const mainMenu = this.shadowRoot.querySelector(".main-menu");
+			const mainMenu = facoHeader.shadowRoot.querySelector(".main-menu");
 			const subLists = mainMenu.querySelectorAll(".sub-list");
 			subLists.forEach(subList => {
 				subList[listener]("transitionend", mainMenu.onSubListTransitionEnd);
@@ -306,8 +308,8 @@ const FacoHeaderEvent = {
 				});
 			}
 
-			const list = this.shadowRoot.querySelector(".main-menu .list");
-			if (screenType === 3 && !Number(this.dataset.touchType)) {
+			const list = facoHeader.shadowRoot.querySelector(".main-menu .list");
+			if (screenType === 3 && !Number(facoHeader.dataset.touchType)) {
       	const items = list.querySelectorAll(".item");
       	items.forEach(item => {
         	item[listener]("mouseenter", mainMenu.onItemHover);
@@ -320,7 +322,7 @@ const FacoHeaderEvent = {
       	});
 			}
 
-			if (!Number(this.dataset.touchType)) {
+			if (!Number(facoHeader.dataset.touchType)) {
       	const subItemBoxes = list.querySelectorAll(".sub-item-box");
 
       	subItemBoxes.forEach(box => {
@@ -514,13 +516,13 @@ const FacoHeaderEvent = {
 	},
 
 	DrawerMenu: {
-		manager(screenType, shouldAdd) {
+		manager(facoHeader, screenType, shouldAdd) {
 			let listener = "removeEventListener";
 			if (shouldAdd) {
 				listener = "addEventListener";
 			}
 
-			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
+			const drawerMenu = facoHeader.shadowRoot.querySelector(".drawer-menu");
 			drawerMenu[listener]("scroll", drawerMenu.onScroll);
 
 			const items = drawerMenu.querySelectorAll(".item");

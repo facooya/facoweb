@@ -14,7 +14,7 @@
 
 :host {
 	display: block;
-  padding: 24px 32px;
+  padding: 24px 32px !important;
   background: #222222;
 	transition: margin-right 300ms ease;
 }

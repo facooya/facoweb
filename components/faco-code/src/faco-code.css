@@ -37,6 +37,7 @@
 
 :host {
 	display: block;
+	margin: 1rem !important;
 }
 
 /* Header */
@@ -108,4 +109,11 @@
 
 .view-content.wide {
   padding-left: 0.5rem;
+}
+
+@media (min-width: 1280px) {
+	:host {
+		max-width: 1280px;
+		margin: 0 auto !important;
+	}
 }

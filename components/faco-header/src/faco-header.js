@@ -18,7 +18,7 @@ class FacoHeader extends HTMLElement {
 	}
 
 	connectedCallback() {
-		FacoHeaderRender.render.call(this, FacoHeaderData);
+		FacoHeaderRender.render(this, FacoHeaderData);
 
 		this.dataset.resizeId = 0;
 
