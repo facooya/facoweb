@@ -111,5 +111,3 @@ const FacoPagerData = {
 
   }
 };
-
-export { FacoPagerData };

@@ -3,10 +3,8 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Pager main
+ * The faco-pager index
  */
-
-import { FacoPagerData } from "../faco-pager-data.js";
 
 class FacoPager extends HTMLElement {
 	constructor() {
@@ -29,7 +27,7 @@ const FacoPagerRender = {
 	  /* style */
 	  const style = document.createElement("link");
 	  style.rel = "stylesheet";
-	  style.href = new URL("faco-pager.css", import.meta.url).href;
+	  style.href = new URL("index.css", import.meta.url).href;
 
     /* title */
     const title = document.createElement("h2");
