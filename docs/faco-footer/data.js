@@ -1,11 +1,3 @@
-/*
- * SPDX-License-Identifier: Apache-2.0
- *
- * Copyright 2025 Facooya and Fanone Facooya
- *
- * The faco-footer data
- */
-
 /* NOTE
  * navGroups: {
  *   titleText: {
@@ -39,6 +31,8 @@
  * }
  */
 
+/* relative paths are based on the HTML file. */
+
 const FacoFooterData = {
   navGroups: {
     "Nav group 1": {
@@ -55,9 +49,9 @@ const FacoFooterData = {
   aboutGroups: {
     logoLink: "#logo-click-link",
     logoItems: {
-      "dev": `url("./src/icons/octagon-2w.svg")`,
-      "transcendence": `url("./src/icons/triangle.svg")`,
-      "facooya-icon": `url("./src/icons/rectangle.svg")`
+      "dev": `url("./icons/octagon-2w.svg")`,
+      "transcendence": `url("./icons/triangle.svg")`,
+      "facooya-icon": `url("./icons/rectangle.svg")`
     },
     aboutText: `About text for your sites. About text for your sites.
 			About text for your sites. About text for your sites.
@@ -65,15 +59,15 @@ const FacoFooterData = {
     socialItems: {
       a: {
         link: "#social-a",
-        maskImage: `url("./src/icons/triangle.svg")`
+        maskImage: `url("./icons/triangle.svg")`
       },
       b: {
         link: "#social-b",
-        maskImage: `url("./src/icons/rectangle.svg")`
+        maskImage: `url("./icons/rectangle.svg")`
       },
       c: {
         link: "#social-c",
-        maskImage: `url("./src/icons/diamond.svg")`
+        maskImage: `url("./icons/diamond.svg")`
       }
     }
   },
@@ -81,8 +75,8 @@ const FacoFooterData = {
   legalGroups: {
     logoLink: "#logo-link",
     logoItems: {
-      transcendence: `url("./src/icons/triangle.svg")`,
-      facooya: `url("./src/icons/octagon-5w.svg")`
+      transcendence: `url("./icons/triangle.svg")`,
+      facooya: `url("./icons/octagon-5w.svg")`
     },
     copyrightText: "Copyright [year] [name]",
     legalItems: {
@@ -92,5 +86,3 @@ const FacoFooterData = {
     }
   }
 };
-
-export { FacoFooterData };

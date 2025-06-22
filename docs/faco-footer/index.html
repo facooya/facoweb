@@ -10,20 +10,12 @@
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Title: Change -->
-    <title>The faco-footer example page - Facoweb</title>
+    <title>The faco-footer demo page - Facoweb</title>
 
 		<style>
-			html {
-  			font-family: Arial, Helvetica, sans-serif;
-			}
-			body {
-  			-webkit-tap-highlight-color: #00000000;
-
-				margin: 0; /* Recommend: faco-footer */
-			}
-			main {
-				height: 100vh; /* Recommend: faco-footer */
-			}
+			html { font-family: Arial, Helvetica, sans-serif; }
+			body { margin: 0; /* Recommend: faco-footer */ }
+			main { min-height: 100vh; /* Recommend: faco-footer */ }
 		</style>
   </head>
   <body>
@@ -32,7 +24,10 @@
 			<p>Please scroll down.</p>
 		</main>
 
+		<!-- Core -->
 		<faco-footer></faco-footer>
-    <script type="module" src="./src/faco-footer.js"></script>
+		<script src="./data.js" defer></script>
+    <script type="module" src="../../components/faco-footer/index.js"></script>
+
   </body>
 </html>

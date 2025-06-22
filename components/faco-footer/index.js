@@ -3,10 +3,8 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * The faco-footer Main
+ * The faco-footer index
  */
-
-import { FacoFooterData } from "../faco-footer-data.js";
 
 class FacoFooter extends HTMLElement {
 	constructor() {
@@ -23,7 +21,7 @@ const FacoFooterRender = {
 	render(facoFooter) {
 		const link = document.createElement("link");
 		link.rel = "stylesheet";
-		link.href = new URL("faco-footer.css", import.meta.url).href;
+		link.href = new URL("index.css", import.meta.url).href;
 		facoFooter.shadowRoot.append(link);
 
 		FacoFooterRender.navRender(facoFooter);
