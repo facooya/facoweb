@@ -3,8 +3,22 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Top bar style
+ * The top-bar style in faco-header
  */
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:host {
+  --bold-white:
+    0.25px 0 #ffffff,
+    -0.25px 0 #ffffff,
+    0 0.25px #ffffff,
+    0 -0.25px #ffffff;
+}
 
 .top-bar {
   height: 64px;

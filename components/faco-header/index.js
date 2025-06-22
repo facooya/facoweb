@@ -3,11 +3,11 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Header main
+ * The faco-header index
  */
 
-import { FacoHeaderRender } from "./faco-header-render.js";
-import { FacoHeaderEvent } from "./faco-header-event.js";
+import { FacoHeaderRender } from "./render.js";
+import { FacoHeaderEvent } from "./event.js";
 
 class FacoHeader extends HTMLElement {
 	constructor() {

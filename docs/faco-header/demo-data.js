@@ -22,10 +22,11 @@
 const FacoHeaderData = {
   logoGroups: {
     logoLink: "#link",
-    logoItems: {
+		/* TODO: normal user */
+    logoItems: { /* relative paths are based on the HTML file. */
       dev: `url("./icons/octagon-2w.svg")`,
       transcendence: `url("./icons/triangle.svg")`,
-      facooya: `url("./icons/octagon-5w.svg")`,
+      facooya: `url("./icons/octagon-5w.svg")`
     }
   },
 

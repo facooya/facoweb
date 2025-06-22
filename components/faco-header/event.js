@@ -3,10 +3,10 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Header event
+ * The faco-header event
  */
 
-import { FacoHeaderUtils } from "./faco-header-utils.js";
+import { FacoHeaderUtils } from "./utils.js";
 
 const FacoHeaderEvent = {
 	init(facoHeader) {

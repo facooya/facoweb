@@ -3,14 +3,14 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Header render
+ * The faco-header render
  */
 
 const FacoHeaderRender = {
 	render(facoHeader, data) {
 		/* style sheet */
 		const frag = document.createDocumentFragment();
-		const styles = ["faco-header.css", "top-bar.css", "main-menu.css", "drawer-menu.css"];
+		const styles = ["top-bar.css", "main-menu.css", "drawer-menu.css"];
 		styles.forEach(style => {
 			const link = document.createElement("link");
 			link.rel = "stylesheet";

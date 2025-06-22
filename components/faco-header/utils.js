@@ -3,7 +3,7 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Header utilities
+ * The faco-header utilities
  */
 
 const FacoHeaderUtils = {
