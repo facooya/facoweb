@@ -13,17 +13,15 @@ class FacoPager extends HTMLElement {
 	}
 
 	connectedCallback() {
-		FacoPagerRender.render.call(this, FacoPagerData);
+		FacoPagerRender.render(this);
 
-		FacoPagerEvent.init.call(this);
-		FacoPagerUtils.updateTab.call(this, 0);
+		FacoPagerEvent.manager(this);
+		FacoPagerUtils.updateTab(this, 0);
 	}
 }
 
 const FacoPagerRender = {
-	render(data) {
-		const root = this.shadowRoot;
-
+	render(facoPager) {
 	  /* style */
 	  const style = document.createElement("link");
 	  style.rel = "stylesheet";
@@ -32,7 +30,7 @@ const FacoPagerRender = {
     /* title */
     const title = document.createElement("h2");
     title.className = "title";
-	  title.textContent = data.title;
+	  title.textContent = FacoPagerData.title;
 
     /* tab */
     const tab = document.createElement("nav");
@@ -45,7 +43,7 @@ const FacoPagerRender = {
     const panel = document.createElement("nav");
     panel.className = "panel";
 
-    Object.entries(data.group).forEach(([tabTextData, panelData]) => {
+    Object.entries(FacoPagerData.group).forEach(([tabTextData, panelData]) => {
       /* tab */
       const tabItem = document.createElement("li");
       tabItem.className = "tab-item";
@@ -120,64 +118,62 @@ const FacoPagerRender = {
       pager.append(control);
     });
 
-    root.append(style, title, tab, panel, pager);
+    facoPager.shadowRoot.append(style, title, tab, panel, pager);
   }
 };
 
 const FacoPagerEvent = {
-	init() {
+	manager(facoPager) {
+		/* bind */
+		facoPager.onResize = FacoPagerEvent.onResize.bind(facoPager);
+		facoPager._onResize = FacoPagerEvent._onResize.bind(facoPager);
+		facoPager.onTabItemClick = FacoPagerEvent.onTabItemClick.bind(facoPager);
+		facoPager.onPageItemClick = FacoPagerEvent.onPageItemClick.bind(facoPager);
+		facoPager.onControlItemClick = FacoPagerEvent.onControlItemClick.bind(facoPager);
+
 		/* window */
-		this.dataset.resizeId = 0;
-		this.setTimerResize = FacoPagerEvent.setTimerResize.bind(this);
-		this.onResize = FacoPagerEvent.onResize.bind(this);
-		window.addEventListener("resize", this.setTimerResize);
+		facoPager.dataset.resizeId = 0;
+		window.addEventListener("resize", facoPager.onResize);
 
 		/* tab */
-		this.onTabItemClick = FacoPagerEvent.onTabItemClick.bind(this);
-		const tabItems = this.shadowRoot.querySelectorAll(".tab-item");
-
+		const tabItems = facoPager.shadowRoot.querySelectorAll(".tab-item");
 		for (let i = 0; i < tabItems.length; i++) {
 			tabItems[i].dataset.index = i;
-			tabItems[i].addEventListener("click", FacoPagerEvent.onTabItemClick.bind(this));
+			tabItems[i].addEventListener("click", facoPager.onTabItemClick);
 		}
 
-		/* pager: page */
-		this.onPageItemClick = FacoPagerEvent.onPageItemClick.bind(this);
-
 		/* pager: control */
-		this.onControlItemClick = FacoPagerEvent.onControlItemClick.bind(this);
-		const controlItems = this.shadowRoot.querySelectorAll(".control-item");
-
+		const controlItems = facoPager.shadowRoot.querySelectorAll(".control-item");
 		for (let i = 0; i < controlItems.length; i++) {
 			controlItems[i].dataset.index = i;
-			controlItems[i].addEventListener("click", this.onControlItemClick);
+			controlItems[i].addEventListener("click", facoPager.onControlItemClick);
 		}
 	},
 
-	setTimerResize() {
+	onResize() {
     clearTimeout(Number(this.dataset.resizeId));
     this.dataset.resizeId = setTimeout(
-      this.onResize,
+      this._onResize,
       200
     );
 	},
 
-	onResize() {
-		FacoPagerUtils.updateWidePager.call(this);
+	_onResize() {
+		FacoPagerUtils.updateWidePager(this);
 	},
 
 	onTabItemClick(event) {
 		const tabIndex = Number(event.currentTarget.dataset.index);
 		if (tabIndex === Number(this.dataset.tabIndex)) return;
 
-		FacoPagerUtils.updateTab.call(this, tabIndex);
+		FacoPagerUtils.updateTab(this, tabIndex);
 	},
 
 	onPageItemClick(event) {
 		const pageIndex = Number(event.currentTarget.dataset.index);
 		if (pageIndex === Number(this.dataset.pageIndex)) return;
 
-		FacoPagerUtils.updatePage.call(this, pageIndex);
+		FacoPagerUtils.updatePage(this, pageIndex);
 	},
 
 	onControlItemClick(event) {
@@ -195,17 +191,17 @@ const FacoPagerEvent = {
 			pageIndex = pageMaxIndex;
 		}
 
-		FacoPagerUtils.updatePage.call(this, pageIndex);
+		FacoPagerUtils.updatePage(this, pageIndex);
 	}
 };
 
 const FacoPagerUtils = {
-	updateTab(index) {
+	updateTab(facoPager, index) {
 		const tabIndex = Number(index);
 
 		/* tab */
-		const tabItems = this.shadowRoot.querySelectorAll(".tab-item");
-		const tabTexts = this.shadowRoot.querySelectorAll(".tab-text");
+		const tabItems = facoPager.shadowRoot.querySelectorAll(".tab-item");
+		const tabTexts = facoPager.shadowRoot.querySelectorAll(".tab-text");
 		const active = "active";
 
 		for (let i = 0; i < tabItems.length; i++) {
@@ -217,7 +213,7 @@ const FacoPagerUtils = {
 		tabTexts[tabIndex].classList.add(active);
 
 		/* panel */
-		const panelLists = this.shadowRoot.querySelectorAll(".panel-list");
+		const panelLists = facoPager.shadowRoot.querySelectorAll(".panel-list");
 
 		panelLists.forEach(list => {
 			list.classList.remove(active);
@@ -233,11 +229,11 @@ const FacoPagerUtils = {
 			calcPageMaxIndex--;
 		}
 
-		this.dataset.pageMaxIndex = calcPageMaxIndex;
+		facoPager.dataset.pageMaxIndex = calcPageMaxIndex;
 
 		/* render pager: pageItems */
 		const frag = document.createDocumentFragment();
-		const pageList = this.shadowRoot.querySelector(".page-list");
+		const pageList = facoPager.shadowRoot.querySelector(".page-list");
 		const pageItems = pageList.querySelectorAll(".page-item");
 
 		if (pageItems[0]) {
@@ -248,7 +244,7 @@ const FacoPagerUtils = {
 			const pageItem = document.createElement("li");
 			pageItem.className = "page-item";
 			pageItem.dataset.index = i;
-			pageItem.addEventListener("click", this.onPageItemClick);
+			pageItem.addEventListener("click", facoPager.onPageItemClick);
 
 			const pageText = document.createElement("span");
 			pageText.className = "page-text";
@@ -259,13 +255,13 @@ const FacoPagerUtils = {
 		}
 		pageList.append(frag);
 
-		this.dataset.tabIndex = tabIndex;
+		facoPager.dataset.tabIndex = tabIndex;
 
-		FacoPagerUtils.updateWidePager.call(this);
-		FacoPagerUtils.updatePage.call(this, 0);
+		FacoPagerUtils.updateWidePager(facoPager);
+		FacoPagerUtils.updatePage(facoPager, 0);
 	},
 
-	updateWidePager() {
+	updateWidePager(facoPager) {
 		const html = document.documentElement;
 		const htmlWidth = html.clientWidth;
 		const wideX = "wide-x";
@@ -275,14 +271,14 @@ const FacoPagerUtils = {
 		const itemWidth = 40;
 
 		const controlItemCount = 4;
-		const pageItemCount = Number(this.dataset.pageMaxIndex) + 1;
+		const pageItemCount = Number(facoPager.dataset.pageMaxIndex) + 1;
 		const totalItemCount = controlItemCount + pageItemCount;
 
 		let calcWidth = totalItemCount * itemWidth;
 		calcWidth += gap * (totalItemCount - 1);
 		calcWidth += paddingX * 2;
 
-		const pager = this.shadowRoot.querySelector(".pager");
+		const pager = facoPager.shadowRoot.querySelector(".pager");
 
 		if (calcWidth < htmlWidth) {
 			pager.classList.add(wideX);
@@ -291,10 +287,10 @@ const FacoPagerUtils = {
 		}
 	},
 
-	updatePage(index) {
+	updatePage(facoPager, index) {
 		const pageIndex = Number(index);
-		const tabIndex = Number(this.dataset.tabIndex);
-		const panelLists = this.shadowRoot.querySelectorAll(".panel-list");
+		const tabIndex = Number(facoPager.dataset.tabIndex);
+		const panelLists = facoPager.shadowRoot.querySelectorAll(".panel-list");
 		const panelItems = panelLists[tabIndex].querySelectorAll(".panel-item");
 		const active = "active";
 
@@ -312,16 +308,16 @@ const FacoPagerUtils = {
 		}
 
 		/* pager: page */
-		const pageItems = this.shadowRoot.querySelectorAll(".page-item");
+		const pageItems = facoPager.shadowRoot.querySelectorAll(".page-item");
 		pageItems.forEach(item => {
 			item.classList.remove(active);
 		});
 		pageItems[pageIndex].classList.add(active);
 
 		/* pager: control */
-		const pageMaxIndex = Number(this.dataset.pageMaxIndex);
-		const controlItems = this.shadowRoot.querySelectorAll(".control-item");
-		const controlIcons = this.shadowRoot.querySelectorAll(".control-icon");
+		const pageMaxIndex = Number(facoPager.dataset.pageMaxIndex);
+		const controlItems = facoPager.shadowRoot.querySelectorAll(".control-item");
+		const controlIcons = facoPager.shadowRoot.querySelectorAll(".control-icon");
 		const enabled = "enabled";
 
 		for (let i = 0; i < 4; i++) {
@@ -348,7 +344,7 @@ const FacoPagerUtils = {
 			}
 		}
 
-		this.dataset.pageIndex = pageIndex;
+		facoPager.dataset.pageIndex = pageIndex;
 	}
 };
 
