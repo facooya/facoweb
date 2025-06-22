@@ -195,5 +195,3 @@ const FacoCodeSyntaxData = {
 	}
 	*/
 };
-
-export { FacoCodeSyntaxData };

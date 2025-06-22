@@ -3,11 +3,8 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * The faco-code main
+ * The faco-code index
  */
-
-import { FacoCodeData } from "../faco-code-data.js";
-import { FacoCodeSyntaxData } from "../faco-code-syntax-data.js";
 
 class FacoCode extends HTMLElement {
 	constructor() {
@@ -34,7 +31,7 @@ const FacoCodeRender = {
 	render(facoCode) {
 		const link = document.createElement("link");
 		link.rel = "stylesheet";
-		link.href = new URL("faco-code.css", import.meta.url).href;
+		link.href = new URL("index.css", import.meta.url).href;
 
 		/* header */
     const header = document.createElement("header");
