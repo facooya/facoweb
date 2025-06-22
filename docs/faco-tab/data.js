@@ -55,5 +55,3 @@ const FacoTabData = {
     }
   }
 };
-
-export { FacoTabData };

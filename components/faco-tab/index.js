@@ -3,10 +3,8 @@
  *
  * Copyright 2025 Facooya and Fanone Facooya
  *
- * Faco tab main
+ * The faco-tab index
  */
-
-import { FacoTabData } from "../faco-tab-data.js";
 
 class FacoTab extends HTMLElement {
 	constructor() {
@@ -29,7 +27,7 @@ const FacoTabRender = {
 		/* style */
 		const style = document.createElement("link");
 		style.rel = "stylesheet";
-		style.href = new URL("faco-tab.css", import.meta.url).href;
+		style.href = new URL("index.css", import.meta.url).href;
 
 		/* title */
     const title = document.createElement("h1");
