@@ -23,9 +23,9 @@ const FacoHeaderData = {
   logoGroups: {
     logoLink: "#link",
     logoItems: {
-      dev: `url("./src/icons/octagon-2w.svg")`,
-      transcendence: `url("./src/icons/triangle.svg")`,
-      facooya: `url("./src/icons/octagon-5w.svg")`,
+      dev: `url("./icons/octagon-2w.svg")`,
+      transcendence: `url("./icons/triangle.svg")`,
+      facooya: `url("./icons/octagon-5w.svg")`,
     }
   },
 
@@ -77,5 +77,3 @@ const FacoHeaderData = {
     }
   }
 };
-
-export { FacoHeaderData };

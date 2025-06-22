@@ -6,7 +6,6 @@
  * Header main
  */
 
-import { FacoHeaderData } from "../faco-header-data.js";
 import { FacoHeaderRender } from "./faco-header-render.js";
 import { FacoHeaderEvent } from "./faco-header-event.js";
 
