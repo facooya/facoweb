@@ -4,7 +4,7 @@ Reusable UI components built with plain JavaScript and CSS.
 
 ## Demo
 ### Preview
-- [faco-header](https://facooya.github.io/docs/faco-header/) – Feader UI with top-bar, main-menu, drawer-menu
+- [faco-header](https://facooya.github.io/docs/faco-header/) – Header UI with top-bar, main-menu, drawer-menu
 - [faco-footer](https://facooya.github.io/docs/faco-footer/) - Footer UI
 - [faco-pager](https://facooya.github.io/docs/faco-pager/) – Tabbed UI with page control
 - [faco-tab](https://facooya.github.io/docs/faco-tab/) – Simple tabbed content interface
@@ -20,7 +20,7 @@ We assume the **repository** is in the web root for simpler path examples, but i
 
 
 ## Usage
-Clone the **repository**.
+Clone the **repository**.  
 Pick a component: `facoweb/components/` (e.g., `faco-tab`)  
 Add this to your **HTML**:
 ```html
@@ -43,6 +43,11 @@ You can copy it to another location and update the script path to load different
 ```
 Each component works in a similar way, but not exactly the same.
 Please refer to each components `facoweb/docs/[component]/README.md` for usage details.  
+- [faco-header README](docs/faco-header/README.md)
+- [faco-footer README](docs/faco-footer/README.md)
+- [faco-pager README](docs/faco-pager/README.md)
+- [faco-tab README](docs/faco-tab/README.md)
+- [faco-code README](docs/faco-code/README.md)
 
 ---
 ### Minimal Usage
