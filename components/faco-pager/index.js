@@ -43,40 +43,40 @@ const FacoPagerRender = {
     const panel = document.createElement("nav");
     panel.className = "panel";
 
-    Object.entries(FacoPagerData.group).forEach(([tabTextData, panelData]) => {
+    Object.entries(FacoPagerData.tabs).forEach(([tabLabelData, panelData]) => {
       /* tab */
       const tabItem = document.createElement("li");
       tabItem.className = "tab-item";
 
-      const tabText = document.createElement("div");
-      tabText.className = "tab-text";
-      tabText.textContent = tabTextData;
+      const tabLabel = document.createElement("div");
+      tabLabel.className = "tab-label";
+      tabLabel.textContent = tabLabelData;
 
-      tabItem.append(tabText);
+      tabItem.append(tabLabel);
       tabList.append(tabItem);
 
       /* panel */
       const panelList = document.createElement("ul");
       panelList.className = "panel-list";
 
-      Object.entries(panelData).forEach(([panelTextData, panelItemData]) => {
+      Object.entries(panelData).forEach(([boxLabelData, boxData]) => {
         const panelItem = document.createElement("li");
         panelItem.className = "panel-item";
 
-        const panelLink = document.createElement("a");
-        panelLink.className = "panel-link";
-        panelLink.href = panelItemData.link;
+        const box = document.createElement("a");
+        box.className = "box";
+        box.href = boxData.link;
 
-        const panelText = document.createElement("p");
-        panelText.className = "panel-text"
-        panelText.textContent = panelTextData;
+        const boxLabel = document.createElement("p");
+        boxLabel.className = "box-label"
+        boxLabel.textContent = boxLabelData;
 
-        const panelSubText = document.createElement("p");
-        panelSubText.className = "panel-sub-text";
-        panelSubText.textContent = panelItemData.subText;
+        const boxText = document.createElement("p");
+        boxText.className = "box-text";
+        boxText.textContent = boxData.text;
 
-        panelLink.append(panelText, panelSubText);
-        panelItem.append(panelLink);
+        box.append(boxLabel, boxText);
+        panelItem.append(box);
         panelList.append(panelItem);
       });
 
@@ -201,16 +201,16 @@ const FacoPagerUtils = {
 
 		/* tab */
 		const tabItems = facoPager.shadowRoot.querySelectorAll(".tab-item");
-		const tabTexts = facoPager.shadowRoot.querySelectorAll(".tab-text");
+		const tabLabels = facoPager.shadowRoot.querySelectorAll(".tab-label");
 		const active = "active";
 
 		for (let i = 0; i < tabItems.length; i++) {
 			tabItems[i].classList.remove(active);
-			tabTexts[i].classList.remove(active);
+			tabLabels[i].classList.remove(active);
 		}
 
 		tabItems[tabIndex].classList.add(active);
-		tabTexts[tabIndex].classList.add(active);
+		tabLabels[tabIndex].classList.add(active);
 
 		/* panel */
 		const panelLists = facoPager.shadowRoot.querySelectorAll(".panel-list");
@@ -246,11 +246,11 @@ const FacoPagerUtils = {
 			pageItem.dataset.index = i;
 			pageItem.addEventListener("click", facoPager.onPageItemClick);
 
-			const pageText = document.createElement("span");
-			pageText.className = "page-text";
-			pageText.textContent = i + 1;
+			const pageLabel = document.createElement("span");
+			pageLabel.className = "page-label";
+			pageLabel.textContent = i + 1;
 
-			pageItem.append(pageText);
+			pageItem.append(pageLabel);
 			frag.append(pageItem);
 		}
 		pageList.append(frag);

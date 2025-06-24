@@ -34,20 +34,17 @@ const FacoCodeColor = {
 	darkYellow: `<span class="color-dark-yellow">$&</span>`,
 	purple: `<span class="color-purple">$&</span>`,
 	pink: `<span class="color-pink">$&</span>`,
-	brown: `<span class="color-brown">$&</span>` /* Don't forget comma will add */
-	/* customColor: `<span class="code-custom">$&</span>` */
-	/* add "./src/faco-code.css" => .code-custom: { color: #000000; } */
+	brown: `<span class="color-brown">$&</span>`
+	/* customColor: `<span class="color-custom">$&</span>` */
+	/* add "components/faco-code/index.css" => .color-custom: { color: #000000; } */
 };
 
 const FacoCodeSyntaxData = {
 	"syntax-c": {
-  	// split: /(#.*?\s|&lt;.*?&gt;|".*?(?<!\\)"|\/\*[\s\S]*?\*\/|'.*?'|\/\/[\s\S]*?$)/gm,
 		split: new RegExp(String.raw`(#.*?\s|&lt;.*?&gt;|".*?(?<!\\)"|\/\*[\s\S]*?\*\/|'.*?'|\/\/[\s\S]*?$)`, "gm"),
 
   	pattern: {
-    	// escapeSequence: /(\\.|%.*?[dufcsoxXp%])/g,
 			escapeSequence: new RegExp(String.raw`(\\.|%.*?[dufcsoxXp%])`, "g"),
-    	// number: /\b(\d+(\.\d+(f|L)?)?|\d+(f|L|U|LL)?|0[bB][01]+|0[oO][0-7]+|0[xX][0-9a-fA-F]+)\b/g,
 			number: new RegExp(String.raw`\b(\d+(\.\d+(f|L)?)?|\d+(f|L|U|LL)?|0[bB][01]+|0[oO][0-7]+|0[xX][0-9a-fA-F]+)\b`, "g"),
     	type: new RegExp(String.raw
       	`\b(${[
@@ -105,7 +102,7 @@ const FacoCodeSyntaxData = {
   	}
 	},
 
-	"syntax-cpp": { /* TODO */
+	"syntax-cpp": {
 		split: new RegExp(String.raw`(#.*?\s|&lt;.*?&gt;|".*?(?<!\\)"|\/\*[\s\S]*?\*\/|'.*?'|\/\/[\s\S]*?$)`, "gm"),
 
 		pattern: {
@@ -166,13 +163,14 @@ const FacoCodeSyntaxData = {
 
 	/* CUSTOM TEMPLATE
 	"syntax-CUSTOM": {
-		split: new RegExp(String.raw`(".*?(?<!\\)"|'.*?')`, "gm"),
+		split: new RegExp(String.raw`(".*?(?<!\\)"|'.*?')`, "gm"), // CUSTOM
 
 	  pattern: {
-			number: new RegExp(String.raw`\b(\d+(\.\d+(f|L)?)?|\d+(f|L|U|LL)?|0[bB][01]+|0[oO][0-7]+|0[xX][0-9a-fA-F]+)\b`, "g"),
-    	control: new RegExp(String.raw`\b(${[
+			numberCUSTOM: new RegExp(String.raw`\b(\d+(\.\d+(f|L)?)?|\d+(f|L|U|LL)?|0[bB][01]+|0[oO][0-7]+|0[xX][0-9a-fA-F]+)\b`, "g"),
+    	controlCUSTOM: new RegExp(String.raw`\b(${[
       	"if", "else", "switch", "while", "do", "for"
     	].join("|")})\b`, "g"),
+			CUSTOM: new RegExp(String.raw``, "g")
 		},
 
 		syntaxRender(facoCode) {
@@ -183,12 +181,17 @@ const FacoCodeSyntaxData = {
     	const getText = viewContent.innerHTML;
     	const parts = getText.split(this.split);
     	for (let i = 0; i < parts.length; i++) {
-      	if (parts[i].startsWith("\"") || parts[i].startsWith("'")) {
-        	parts[i] = parts[i].replace(parts[i], color.green); // text
+
+				// === CUSTOM LOGIC Start ===
+      	if (parts[i].startsWith("\"")) {
+        	parts[i] = parts[i].replace(parts[i], color.green);
       	} else {
-        	parts[i] = parts[i].replace(pattern.number, color.lightBlue);
-        	parts[i] = parts[i].replace(pattern.control, color.purple);
+        	parts[i] = parts[i].replace(pattern.numberCUSTOM, color.lightBlue);
+        	parts[i] = parts[i].replace(pattern.controlCUSTOM, color.purple);
+					parts[i] = parts[i].replace(pattern.CUSTOM, color.orange);
       	}
+				// === CUSTOM LOGIC END ===
+
     	}
 			viewContent.innerHTML = parts.join("");
 		}

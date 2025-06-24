@@ -14,7 +14,7 @@
 
 :host {
 	display: block;
-	margin: 0 1rem !important;
+	margin: 0 16px !important;
 }
 
 /* Title */
@@ -45,7 +45,7 @@
   transition: border-color 300ms;
 }
 
-.tab-text {
+.tab-label {
   color: #777777;
   font-size: 1rem;
   font-weight: bold;
@@ -77,17 +77,17 @@
   cursor: pointer;
 }
 
-.panel-link {
+.panel-item .box {
   text-decoration: none;
 }
 
-.panel-text {
+.panel-item .box-label {
   color: #222222;
   font-weight: bold;
   font-size: 1.125rem;
 }
 
-.panel-sub-text {
+.panel-item .box-text {
   color: #555555;
   font-size: 1rem;
   margin-top: 4px;
@@ -100,7 +100,7 @@
   cursor: default;
 }
 
-.tab-text.active {
+.tab-label.active {
   color: #222222;
 }
 
@@ -128,7 +128,7 @@
 }
 
 @media (hover: hover) {
-  .tab-text:hover {
+  .tab-label:hover {
     color: #222222;
   }
 }

@@ -39,7 +39,7 @@
   white-space: nowrap;
 }
 
-.tab-text {
+.tab-label {
   color: #777777;
   font-size: 1rem;
   font-weight: bold;
@@ -78,12 +78,12 @@
   height: 4rem;
 }
 
-.panel-link {
+.panel-item .box {
   text-decoration: none;
   white-space: nowrap;
 }
 
-.panel-text {
+.panel-item .box-label {
   color: #000000;
   font-weight: bold;
   font-size: 1.125rem;
@@ -91,7 +91,7 @@
   overflow: hidden;
 }
 
-.panel-sub-text {
+.panel-item .box-text {
   color: #555555;
   font-weight: normal;
   font-size: 1rem;
@@ -139,7 +139,7 @@
   cursor: pointer;
 }
 
-.page-text {
+.page-label {
   font-weight: bold;
 }
 
@@ -219,7 +219,7 @@
   border-color: #222222;
 }
 
-.tab-text.active {
+.tab-label.active {
   color: #222222;
 }
 

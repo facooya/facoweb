@@ -1,65 +1,79 @@
+
 # Facoweb
 Reusable UI components built with plain JavaScript and CSS. 
 
-## Preview
+## Demo
+### Preview
+- [faco-header](https://facooya.github.io/docs/faco-header/) – Feader UI with top-bar, main-menu, drawer-menu
+- [faco-footer](https://facooya.github.io/docs/faco-footer/) - Footer UI
+- [faco-pager](https://facooya.github.io/docs/faco-pager/) – Tabbed UI with page control
+- [faco-tab](https://facooya.github.io/docs/faco-tab/) – Simple tabbed content interface
+- [faco-code](https://facooya.github.io/docs/faco-code/) – Code viewer
+---
+### Demo in your web
+Clone the **repository**.   
+Demo path: `[yourSite]/facoweb/docs/[component]/`  
+E.g., (`faco-tab`) `[yourSite]/facoweb/docs/faco-tab/` or `[yourSite]/facoweb/docs/faco-tab/index.html`
 
-- [faco-header](https://facooya.github.io/facoweb/components/faco-header/) – Header UI with top-bar, main-menu, drawer-menu
-- [faco-footer](https://facooya.github.io/facoweb/components/faco-footer/) - footer UI
-- [faco-pager](https://facooya.github.io/facoweb/components/faco-pager/) – Tabbed UI with page control
-- [faco-tab](https://facooya.github.io/facoweb/components/faco-tab/) – Simple tabbed content interface
-- [faco-code](https://facooya.github.io/facoweb/components/faco-code/) – code viewer
+> It's assumed you're running this on a web server, and that the **repository** was cloned into the root directory of your web server.
+We assume the **repository** is in the web root for simpler path examples, but it can be located anywhere on your web server.  
 
-## Quick Start
 
-Clone the repo:  
-```bash
-git clone https://github.com/facooya/facoweb.git
-```
-
-Choose a component: `facoweb/components/` (e.g., `faco-tab`)  
-Test: `[yourSite.com]/facoweb/components/faco-tab/`
-
-It works?
-You can change custom data:
-Try open and edit `facoweb/components/faco-tab/faco-tab-data.js`
-
-You can custom HTML just include tag and script:  
+## Usage
+Clone the **repository**.
+Pick a component: `facoweb/components/` (e.g., `faco-tab`)  
+Add this to your **HTML**:
 ```html
 <faco-tab></faco-tab>
-<script type="module" src="facoweb/components/faco-tab/src/faco-tab.js"></script>
+<script src="facoweb/docs/faco-tab/data.js" defer></script>
+<script type="module" src="facoweb/components/faco-tab/index.js"></script>
 ```
+> [!NOTE]
+> These script paths assume the repository was cloned into the same directory as your HTML file.
+> The `facoweb/docs/[component]/*data.js` file is just for demo purposes.
+Customize the data as needed for your use case.
+You can copy it to another location and update the script path to load different data per page.
+---
+```html
+<!-- 
+<[component]></[component]>
+<script src="facoweb/docs/[component]/*data.js" defer></script>
+<script type="module" src="facoweb/components/[component]/index.js"></script>
+-->
+```
+Each component works in a similar way, but not exactly the same.
+Please refer to each components `facoweb/docs/[component]/README.md` for usage details.  
 
-Require script `type="module"`.
+---
+### Minimal Usage
 
-Each component follows the same pattern:
-
-`[component]/src/[component].js`
-(Example: `faco-tab/src/faco-tab.js`)
-
-`[component]/[component]-data.js`
-(Example: `faco-tab/faco-tab-data.js`)
-
-Not sure how to use the tag or script?  
-Check `index.html` in each component for a simple example.  
-
-## Minimal Usage
-
-Clone.
-
+Copy and remove:
 ```bash
-cp facoweb/components/faco-tab/ .
-rm -r facoweb/
+cp facoweb/components/faco-tab/ . # copy faco-tab here
+cp facoweb/docs/faco-tab/*data.js . # copy all data.js here
+rm -r facoweb/ # remove facoweb project
+
+touch test.html # create test.html
+```
+Add this to `test.html`:  
+```html
+<faco-tab></faco-tab>
+<script src="./data.js" defer></script>
+<script type="module" src="./faco-tab/index.js"></script>
 ```
 
-Test: `[yourSite]/faco-tab/`
+Test: `[yourSite]/test.html`
 
+Each component is fully standalone.
+
+---
 You can also rename the component directory without issues.
-
 ```bash
 mv faco-tab/ facooya-tab/
 ```
-
-Test: `[yourSite]/facooya-tab/`
+```html
+<script type="module" src="./facooya-tab/index.js"></script>
+```
 
 ## Features
 - Uses only plain JavaScript and CSS
@@ -69,14 +83,11 @@ Test: `[yourSite]/facooya-tab/`
 - Reduces repetitive HTML
 - Easy to drop into any project
 
----
-
-### Directory Structure
+## Directory Structure
 - **components/** - Components
-- **docs/** - Documentation
-- **shared/** - Not important
+- **docs/** - Documentation and demo
+- **shared/** - Misc, Not important
 
 ---
 
 > Facoweb is a shortened form of “FACOoya WEB”.
-

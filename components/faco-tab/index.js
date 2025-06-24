@@ -22,8 +22,6 @@ class FacoTab extends HTMLElement {
 
 const FacoTabRender = {
 	render(facoTab) {
-		const dataGroup = FacoTabData.group;
-
 		/* style */
 		const style = document.createElement("link");
 		style.rel = "stylesheet";
@@ -45,45 +43,45 @@ const FacoTabRender = {
     const panel = document.createElement("nav");
     panel.className = "panel";
 
-    Object.entries(dataGroup).forEach(([tabTextData, panelData], index) => {
+    Object.entries(FacoTabData.tabs).forEach(([tabLabelData, panelData], index) => {
 			/* tab */
       const tabItem = document.createElement("li");
       tabItem.className = "tab-item";
 			tabItem.dataset.index = index;
 
-      const tabText = document.createElement("h2");
-      tabText.className = "tab-text";
-      tabText.textContent = tabTextData;
+      const tabLabel = document.createElement("h2");
+      tabLabel.className = "tab-label";
+      tabLabel.textContent = tabLabelData;
 
       /* panel */
       const panelList = document.createElement("ul");
       panelList.className = "panel-list";
 
-      Object.entries(panelData).forEach(([panelItemTextData, panelItemData]) => {
+      Object.entries(panelData).forEach(([boxLabelData, boxData]) => {
 				/* panel */
         const panelItem = document.createElement("li");
         panelItem.className = "panel-item";
 
-        const panelLink = document.createElement("a");
-        panelLink.className = "panel-link";
-        panelLink.href = panelItemData.link;
+        const box = document.createElement("a");
+        box.className = "box";
+      	box.href = boxData.link;
 
-        const panelText = document.createElement("p");
-        panelText.className = "panel-text";
-        panelText.textContent = panelItemTextData;
+        const boxLabel = document.createElement("p");
+        boxLabel.className = "box-label";
+        boxLabel.textContent = boxLabelData;
 
-        const panelSubText = document.createElement("p");
-        panelSubText.className = "panel-sub-text";
-        panelSubText.textContent = panelItemData.subText;
+        const boxText = document.createElement("p");
+        boxText.className = "box-text";
+        boxText.textContent = boxData.text;
 
-        panelLink.append(panelText, panelSubText);
-        panelItem.append(panelLink);
+        box.append(boxLabel, boxText);
+        panelItem.append(box);
         panelList.append(panelItem);
       });
       panel.append(panelList);
 
 			/* tab */
-      tabItem.append(tabText);
+      tabItem.append(tabLabel);
       tabList.append(tabItem);
     });
     tab.append(tabList);
@@ -112,17 +110,17 @@ const FacoTabEvent = {
 
 		const root = this.shadowRoot;
 		const tabItems = root.querySelectorAll(".tab-item");
-		const tabTexts = root.querySelectorAll(".tab-text");
+		const tabLabels = root.querySelectorAll(".tab-label");
 		const panelLists = root.querySelectorAll(".panel-list");
 		const active = "active";
 
 		/* tab */
 		for (let i = 0; i < tabItems.length; i++) {
 			tabItems[i].classList.remove(active);
-			tabTexts[i].classList.remove(active);
+			tabLabels[i].classList.remove(active);
 		}
 		tabItems[index].classList.add(active);
-		tabTexts[index].classList.add(active);
+		tabLabels[index].classList.add(active);
 
 		/* panel */
 		panelLists.forEach(list => {

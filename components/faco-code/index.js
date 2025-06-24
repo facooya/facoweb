@@ -132,7 +132,4 @@ const FacoCodeEvent = {
 	}
 };
 
-const FacoCodeUtils = {
-};
-
 customElements.define("faco-code", FacoCode);

@@ -3,7 +3,7 @@
  *
  * "class-name": {
  * 	 fileName: "fileName",
- *   syntax: "syntax-*", // check "./syntax-data.js"
+ *   syntax: "syntax-*",
  *   code: String.raw`code line 1
  * code line 2
  *   code line 2-1
@@ -15,9 +15,9 @@
  */
 
 const FacoCodeData = {
-	"faco-c": {
+	"faco-c": { /* define: <faco-code class="faco-c"></faco-code> */
 		fileName: "file_name.c",
-		syntax: "syntax-c",
+		syntax: "syntax-c", /* define: syntax-data.js */
 		code: String.raw`#include <stdio.h>
 
 int main() {
