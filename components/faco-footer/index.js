@@ -24,38 +24,31 @@ const FacoFooterRender = {
 		link.href = new URL("index.css", import.meta.url).href;
 		facoFooter.shadowRoot.append(link);
 
-		FacoFooterRender.navRender(facoFooter);
+		FacoFooterRender.exploreRender(facoFooter);
 		FacoFooterRender.aboutRender(facoFooter);
 		FacoFooterRender.legalRender(facoFooter);
 	},
 
-	navRender(facoFooter) {
-    const navGroups = FacoFooterData.navGroups;
-    const footerNav = document.createElement("nav");
-    footerNav.className = "footer-nav";
+	exploreRender(facoFooter) {
+		const exploreData = FacoFooterData.exploreData;
+    const explore = document.createElement("nav");
+    explore.className = "explore";
 
-    Object.entries(navGroups).forEach(([titleText, items]) => {
-      /* Section */
+    Object.entries(exploreData).forEach(([titleText, itemData]) => {
       const section = document.createElement("section");
       section.className = "section";
-
-      /* Title */
       const title = document.createElement("h3");
       title.className = "title";
       title.textContent = titleText;
-
-      /* List */
       const list = document.createElement("ul");
       list.className = "list";
 
-      Object.entries(items).forEach(([itemText, itemLink]) => {
-        /* Item */
+      Object.entries(itemData).forEach(([itemText, itemLink]) => {
         const item = document.createElement("li");
         item.className = "item";
         const link = document.createElement("a");
         link.className = "link";
         link.href = itemLink;
-        link.target = "_blank";
         const text = document.createElement("span");
         text.className = "text";
         text.textContent = itemText;
@@ -66,94 +59,132 @@ const FacoFooterRender = {
       });
 
       section.append(title, list);
-      footerNav.append(section);
+      explore.append(section);
     });
 
-    facoFooter.shadowRoot.append(footerNav);
+    facoFooter.shadowRoot.append(explore);
 	},
 
 	aboutRender(facoFooter) {
-    const aboutGroups = FacoFooterData.aboutGroups;
-    const footerAbout = document.createElement("div");
-    footerAbout.className = "footer-about";
+    const aboutData = FacoFooterData.aboutData;
+    const about = document.createElement("div");
+    about.className = "about";
 
-    /* Logo */
+    /* about: logo */
+		const logoData = aboutData.logoData;
     const logo = document.createElement("div");
     logo.className = "logo";
+		logo.style.height = logoData.height;
     const logoLink = document.createElement("a");
     logoLink.className = "logo-link";
-    logoLink.href = aboutGroups.logoLink;
-    /* Logo Item */
-    Object.entries(aboutGroups.logoItems).forEach(([itemName, itemMaskImage]) => {
+    logoLink.href = logoData.link;
+		logoLink.style.height = logoData.height;
+
+    Object.entries(logoData.items).forEach(([logoName, itemData]) => {
       const logoItem = document.createElement("span");
-      logoItem.className = `logo-item ${itemName}-logo-item`;
-      logoItem.style.maskImage = itemMaskImage;
+      logoItem.className = `logo-item`;
+      logoItem.style.maskImage = itemData.url;
+			logoItem.style.width = itemData.width;
+			if (itemData.height) {
+				logoItem.style.height = itemData.height;
+			} else {
+				logoItem.style.height = logoData.height;
+			}
+			if (itemData.marginRight) {
+				logoItem.style.marginRight = itemData.marginRight;
+			}
       logoLink.append(logoItem);
     });
-
     logo.append(logoLink);
 
-    /* About Text */
-    const aboutText = document.createElement("p");
-    aboutText.className = "about-text";
-    aboutText.textContent = aboutGroups.aboutText;
+    /* about: description */
+    const description = document.createElement("p");
+    description.className = "description";
+    description.textContent = aboutData.description;
 
-    /* Social */
+    /* about: social */
+		const socialData = aboutData.socialData;
     const social = document.createElement("div");
     social.className = "social";
-    Object.entries(aboutGroups.socialItems).forEach(([itemName, itemData]) => {
+		social.style.height = socialData.size;
+		let marginLeft = 0;
+    Object.entries(socialData.items).forEach(([socialName, itemData]) => {
       const socialLink = document.createElement("a");
-      socialLink.className = `social-link ${itemName}-link`;
+      socialLink.className = "social-link";
       socialLink.href = itemData.link;
-      socialLink.target = "_blank";
+			if (socialData.newTab) {
+				socialLink.target = "_blank";
+			}
+			socialLink.style.height = socialData.size;
+			if (marginLeft) {
+				socialLink.style.marginLeft = socialData.gap;
+			} else {
+				marginLeft = 1;
+			}
       const socialItem = document.createElement("span");
-      socialItem.className = `social-item ${itemName}-item`;
-      socialItem.style.maskImage = itemData.maskImage;
+      socialItem.className = "social-item";
+      socialItem.style.maskImage = itemData.url;
+			socialItem.style.width = socialData.size;
+			socialItem.style.height = socialData.size;
       socialLink.append(socialItem);
       social.append(socialLink);
     });
 
-    footerAbout.append(logo, aboutText, social);
-    facoFooter.shadowRoot.append(footerAbout);
+    about.append(logo, description, social);
+    facoFooter.shadowRoot.append(about);
 	},
 
 	legalRender(facoFooter) {
-    const legalGroups = FacoFooterData.legalGroups;
-    const footerLegal = document.createElement("div");
-    footerLegal.className = "footer-legal";
+    const legalData = FacoFooterData.legalData;
+    const legal = document.createElement("div");
+    legal.className = "legal";
 
-    /* Logo */
+    /* legal: logo */
+		const logoData = legalData.logoData;
     const logo = document.createElement("div");
     logo.className = "logo";
+		logo.style.height = logoData.height;
     const logoLink = document.createElement("a");
     logoLink.className = "logo-link";
-    logoLink.href = legalGroups.logoLink;
+    logoLink.href = logoData.link;
+		logoLink.style.height = logoData.height;
 
-    /* Logo Item */
-    Object.entries(legalGroups.logoItems).forEach(([itemName, itemMaskImage]) => {
+    Object.entries(logoData.items).forEach(([itemName, itemData]) => {
       const item = document.createElement("span");
-      item.className = `logo-item ${itemName}-logo-item`;
-      item.style.maskImage = itemMaskImage;
+      item.className = `logo-item`;
+      item.style.maskImage = itemData.url;
+			item.style.width = itemData.width;
+			if (itemData.height) {
+				item.style.height = itemData.height;
+			} else {
+				item.style.height = logoData.height;
+			}
+			if (itemData.marginRight) {
+				item.style.marginRight = itemData.marginRight;
+			}
       logoLink.append(item);
     });
     logo.append(logoLink);
 
-    /* Copyright Text */
-    const copyrightText = document.createElement("p");
-    copyrightText.className = "copyright-text";
-    copyrightText.textContent = legalGroups.copyrightText;
+    /* legal: copyright */
+    const copyright = document.createElement("p");
+    copyright.className = "copyright";
+    copyright.textContent = legalData.copyright;
 
-    /* List */
+    /* legal: link */
+		const linkData = legalData.linkData;
     const list = document.createElement("ul");
     list.className = "list";
 
-    Object.entries(legalGroups.legalItems).forEach(([itemText, itemLink]) => {
+    Object.entries(linkData.items).forEach(([itemText, itemLink]) => {
       const item = document.createElement("li");
       item.className = "item";
       const link = document.createElement("a");
       link.className = "link";
-      link.target = "_blank";
       link.href = itemLink;
+			if (linkData.newTab) {
+				link.target = "_blank";
+			}
       const text = document.createElement("span");
       text.className = "text";
       text.textContent = itemText;
@@ -163,8 +194,8 @@ const FacoFooterRender = {
       list.append(item);
     });
 
-    footerLegal.append(logo, copyrightText, list);
-    facoFooter.shadowRoot.append(footerLegal);
+    legal.append(logo, copyright, list);
+    facoFooter.shadowRoot.append(legal);
 	}
 };
 

@@ -1,6 +1,6 @@
 
 # Facoweb
-Reusable UI components built with plain JavaScript and CSS. 
+Reusable web components built with plain JavaScript and CSS. 
 
 ## Demo
 ### Preview

@@ -1,4 +1,4 @@
-<svg viewBox="-10 -10 520 120" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
   <style>
     .faco-octagon-5w-svg {
       fill: #FFFFFF;
@@ -8,14 +8,14 @@
     }
   </style>
   <path d="
-    M 30 0
-    L 0 30
-    L 0 70
-    L 30 100
-    L 470 100
-    L 500 70
-    L 500 30
-    L 470 0
+    M 30 10
+    L 10 30
+    L 10 70
+    L 30 90
+    L 470 90
+    L 490 70
+    L 490 30
+    L 470 10
     Z
   " class="faco-octagon-5w-svg"></path>
 </svg>

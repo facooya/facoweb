@@ -19,18 +19,17 @@
 	transition: margin-right 300ms ease;
 }
 
-.footer-nav {
-  grid-area: fngc;
+.explore {
   display: flex;
   flex-wrap: wrap;
   gap: 32px 48px;
 }
 
-.footer-nav .section {
+.explore .section {
   margin-right: auto;
 }
 
-.footer-nav .title {
+.explore .title {
   font-size: 1.5rem;
   color: #FFFFFF;
   white-space: nowrap;
@@ -38,145 +37,105 @@
   cursor: default;
 }
 
-.footer-nav .list {
+.explore .list {
   list-style-type: none;
 }
 
-.footer-nav .item {
+.explore .item {
   margin-top: 8px;
 }
 
-.footer-nav .item:first-child {
+.explore .item:first-child {
   margin-top: 0;
 }
 
-.footer-nav .link {
+.explore .link {
   text-decoration: none;
 }
 
-.footer-nav .text {
+.explore .text {
   color: #ffffff;
   white-space: nowrap;
 }
 
-.footer-about {
-  grid-area: fasc;
+.about {
   display: grid;
-  grid-template-areas: "logo" "text" "social";
+  grid-template-areas: "logo" "description" "social";
   gap: 12px;
   margin: 48px 0;
 }
 
 /* Logo */
-.footer-about .logo {
+.about .logo {
   grid-area: logo;
   height: 32px;
 }
 
 /* Link */
-.footer-about .logo-link {
+.about .logo-link {
   display: inline-block;
   height: 32px;
 }
 
 /* Item */
-.footer-about .logo-item {
+.about .logo-item {
   display: inline-block;
   mask-size: contain;
   mask-repeat: no-repeat;
   background: #ffffff;
 }
 
-.footer-about .dev-logo-item {
-  width: 64px;
-  height: 32px;
-}
-
-.footer-about .transcendence-logo-item {
-  width: 8px;
-  height: 8px;
-  margin-right: 8px;
-}
-
-.footer-about .facooya-icon-logo-item {
-  width: 32px;
-  height: 32px;
-}
-
 /* About Text */
-.footer-about .about-text {
-  grid-area: text;
+.about .description {
+  grid-area: description;
   color: #ffffff;
 }
 
-.footer-about .social {
+.about .social {
   grid-area: social;
   display: inline-block;
-  height: 24px;
 }
 
 /* Link */
-.footer-about .social-link {
+.about .social-link {
   display: inline-block;
-  height: 24px;
-  margin-left: 24px;
-}
-
-.footer-about .social-link:first-child {
-  margin-left: 0;
 }
 
 /* Item */
-.footer-about .social-item {
+.about .social-item {
   display: inline-block;
-  width: 24px;
-  height: 24px;
   background-color: #ffffff;
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
 }
 
-.footer-legal {
-  grid-area: fllc; /* !!!!! */
+.legal {
   display: grid;
   grid-template-areas: "logo" "list" "copyright";
   gap: 12px;
 }
 
 /* Logo */
-.footer-legal .logo {
+.legal .logo {
   grid-area: logo;
-  height: 32px;
   text-align: center;
 }
 
-.footer-legal .logo-link {
+.legal .logo-link {
   display: inline-block;
-  height: 32px;
   white-space: nowrap;
 }
 
-.footer-legal .logo-item {
+.legal .logo-item {
   display: inline-block;
   mask-size: contain;
   mask-repeat: no-repeat;
   background-color: #ffffff;
 }
 
-.footer-legal .transcendence-logo-item {
-  width: 32px;
-  height: 32px;
-  margin-right: 12px;
-}
-
-.footer-legal .facooya-logo-item {
-  width: 160px;
-  height: 32px;
-}
-
 /* List */
-.footer-legal .list {
+.legal .list {
   grid-area: list;
   display: inline-flex;
   flex-wrap: wrap;
@@ -186,12 +145,12 @@
   justify-self: center;
 }
 
-.footer-legal .link {
+.legal .link {
   color: white;
   text-decoration: none;
 }
 
-.footer-legal .text {
+.legal .text {
   color: #ffffff;
   font-size: 0.75rem;
   white-space: nowrap;
@@ -199,7 +158,7 @@
 }
 
 /* Copyright */
-.footer-legal .copyright-text {
+.legal .copyright {
   grid-area: copyright;
   font-size: 0.75rem;
   color: #aaaaaa;
@@ -209,69 +168,69 @@
 }
 
 @media (min-width: 768px) {
-  .footer-nav {
+  .explore {
     justify-content: space-evenly;
   }
 
-  .footer-nav .section {
+  .explore .section {
     /* Reset: margin-right */
     margin-right: 0;
   }
 
-  .footer-about {
+  .about {
     grid-template-areas:
 			"logo social"
-			"text social";
+			"description social";
     gap: 16px 32px;
     max-width: 90%;
     margin: 48px auto;
   }
 
-  .footer-about .social {
+  .about .social {
     justify-self: end;
     align-self: end;
   }
 
-  .footer-legal {
+  .legal {
     grid-template-areas: ". logo logo ." "copyright copyright list list";
     grid-template-columns: 1fr auto auto 1fr;
     gap: 12px 0;
   }
 
-  .footer-legal .list {
+  .legal .list {
     justify-self: end;
   }
 
-  .footer-legal .copyright-text {
+  .legal .copyright {
     justify-self: start;
   }
 }
 
 @media (min-width: 1280px) {
-  .footer-about {
+  .about {
     grid-template-areas:
-			"logo text social";
+			"logo description social";
     gap: 32px;
     max-width: 90%;
     margin: 48px auto;
   }
 
-  .footer-about .logo {
+  .about .logo {
     justify-self: right;
     align-self: center;
   }
 
-  .footer-about .about-text {
+  .about .description {
     justify-self: center;
     align-self: center;
   }
 
-  .footer-about .social {
+  .about .social {
     justify-self: left;
     align-self: center;
   }
 
-  .footer-legal {
+  .legal {
     grid-template-areas: ". logo ." "copyright logo list";
     grid-template-columns: 1fr auto 1fr;
     gap: 0;
@@ -279,27 +238,27 @@
 }
 
 @media (hover: hover) {
-  .footer-nav .link:hover .text {
+  .explore .link:hover .text {
     border-bottom: 1px solid #ffffff;
   }
 
-  .footer-about .logo-link:hover .logo-item {
+  .about .logo-link:hover .logo-item {
     background-color: #cccccc;
   }
 
-  .footer-about .social-link:hover .social-item {
+  .about .social-link:hover .social-item {
     background-color: #cccccc;
   }
 
-  .footer-legal .logo-link:hover .logo-item {
+  .legal .logo-link:hover .logo-item {
     background-color: #cccccc;
   }
 
-  .footer-legal .text {
+  .legal .text {
     border-bottom: 1px solid #00000000;
   }
 
-  .footer-legal .link:hover .text {
+  .legal .link:hover .text {
     border-bottom: 1px solid #FFFFFF;
   }
 }
