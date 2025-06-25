@@ -7,7 +7,7 @@
  */
 
 const FacoHeaderRender = {
-	render(facoHeader, data) {
+	render(facoHeader) {
 		/* style sheet */
 		const frag = document.createDocumentFragment();
 		const styles = ["top-bar.css", "main-menu.css", "drawer-menu.css"];
@@ -19,34 +19,45 @@ const FacoHeaderRender = {
 		});
 		facoHeader.shadowRoot.append(frag);
 
-		FacoHeaderRender.topBarRender(facoHeader, data);
-		FacoHeaderRender.mainMenuRender(facoHeader, data);
-		FacoHeaderRender.drawerMenuRender(facoHeader, data);
+		FacoHeaderRender.topBarRender(facoHeader);
+		FacoHeaderRender.mainMenuRender(facoHeader);
+		FacoHeaderRender.drawerMenuRender(facoHeader);
 	},
 
-	topBarRender(facoHeader, data) {
-    /* tob bar */
+	topBarRender(facoHeader) {
     const topBar = document.createElement("div");
     topBar.className = "top-bar";
     const layout = document.createElement("div");
     layout.className = "layout";
 
-    /* logo */
+    /* topBar: logo */
+    const logoData = FacoHeaderData.logoData;
     const logo = document.createElement("div");
     logo.className = "logo";
+    logo.style.height = logoData.height;
     const logoLink = document.createElement("a");
     logoLink.className = "logo-link";
-    logoLink.href = data.logoGroups.logoLink;
+    logoLink.href = logoData.link;
+    logoLink.style.height = logoData.height;
 
-    Object.entries(data.logoGroups.logoItems).forEach(([itemName, itemMaskImage]) => {
+    Object.entries(logoData.items).forEach(([itemName, itemData]) => {
       const logoItem = document.createElement("span");
-      logoItem.className = `logo-item ${itemName}-logo-item`;
-      logoItem.style.maskImage = itemMaskImage;
+      logoItem.className = `logo-item`;
+      logoItem.style.maskImage = itemData.url;
+      logoItem.style.width = itemData.width;
+      if (itemData.height) {
+        logoItem.style.height = itemData.height;
+      } else {
+        logoItem.style.height = logoData.height;
+      }
+      if (itemData.marginRight) {
+        logoItem.style.marginRight = itemData.marginRight;
+      }
       logoLink.append(logoItem);
     });
     logo.append(logoLink);
 
-    /* hamburger icon */
+    /* topBar: hamburgerIcon */
     const hamburgerIcon = document.createElement("div");
     hamburgerIcon.className = "hamburger-icon";
 		hamburgerIcon.dataset.isActive = 0;
@@ -56,7 +67,7 @@ const FacoHeaderRender = {
       hamburgerIcon.append(hamburgerItem);
     }
 
-    /* grid icon */
+    /* topBar: gridIcon */
     const gridIcon = document.createElement("div");
     gridIcon.className = "grid-icon";
 		gridIcon.dataset.isActive = 0;
@@ -66,41 +77,36 @@ const FacoHeaderRender = {
       gridIcon.append(gridItem);
     }
 
-    /* scroll lock */
-    const topBarScrollLock = document.createElement("div");
-    topBarScrollLock.className = "scroll-lock top-bar-scroll-lock";
-
-    layout.append(logo, hamburgerIcon, gridIcon, topBarScrollLock);
+    const layoutScrollLock = document.createElement("div");
+    layoutScrollLock.className = "scroll-lock layout-scroll-lock";
+    layout.append(logo, hamburgerIcon, gridIcon, layoutScrollLock);
 
     /* Overlay */
     const overlay = document.createElement("div");
     overlay.className = "overlay";
-
-    /* Overlay Scroll Lock */
     const overlayScrollLock = document.createElement("div");
     overlayScrollLock.className = "scroll-lock overlay-scroll-lock";
     overlay.append(overlayScrollLock);
 
     topBar.append(layout, overlay);
-
     facoHeader.shadowRoot.append(topBar);
 	},
 
-	mainMenuRender(facoHeader, data) {
-    /* Create Main Menu */
+	mainMenuRender(facoHeader) {
+    const mainMenuData = FacoHeaderData.mainMenuData;
     const mainMenu = document.createElement("nav");
     mainMenu.className = "main-menu";
 
-    /* List */
+    /* mainMenu: list */
     const list = document.createElement("ul");
     list.className = "list";
-    Object.entries(data.mainMenuGroups).forEach(([itemLabelData, subItems], index) => {
+    Object.entries(mainMenuData).forEach(([itemLabelData, subItems], index) => {
       const item = document.createElement("li");
       item.className = "item";
 			item.dataset.index = index;
 			item.dataset.isOpen = 0;
 
-      /* item box */
+      /* mainMenu: itemBox */
       const itemBox = document.createElement("div");
       itemBox.className = "item-box";
       const itemLabel = document.createElement("span");
@@ -114,7 +120,7 @@ const FacoHeaderRender = {
       itemBoxScrollLock.className = "scroll-lock item-box-scroll-lock";
       itemBox.append(itemLabel, itemArrowIcon, itemBottomLine, itemBoxScrollLock);
 
-      /* Sub List */
+      /* mainMenu: subList */
       const subList = document.createElement("ul");
       subList.className = "sub-list";
       Object.entries(subItems).forEach(([subItemLabelData, subItemLink], index) => {
@@ -122,7 +128,7 @@ const FacoHeaderRender = {
         subItem.className = "sub-item";
 				subItem.dataset.index = index;
 
-        /* sub box */
+        /* mainMenu: subItemBox */
         const subItemBox = document.createElement("a");
         subItemBox.className = "sub-item-box";
         subItemBox.href = subItemLink;
@@ -140,14 +146,12 @@ const FacoHeaderRender = {
         subList.append(subItem);
       });
 
-      /* Sub List Scroll Lock */
       const subListScrollLock = document.createElement("li");
       subListScrollLock.className = "scroll-lock sub-list-scroll-lock";
       subList.append(subListScrollLock);
-
       item.append(itemBox, subList);
 
-      /* Chevron */
+      /* mainMenu: Chevron */
       const chevronTopWrapper = document.createElement("span");
       chevronTopWrapper.className = "item-chevron-wrapper item-chevron-top-wrapper";
       const chevronTop = document.createElement("span");
@@ -159,17 +163,13 @@ const FacoHeaderRender = {
       chevronBottom.className = "item-chevron item-chevron-bottom";
       chevronBottomWrapper.append(chevronBottom);
       item.append(chevronTopWrapper, chevronBottomWrapper);
-
       list.append(item);
     });
 
-    /* Fog */
     const fogTop = document.createElement("div");
     fogTop.className = "fog fog-top";
     const fogBottom = document.createElement("div");
     fogBottom.className = "fog fog-bottom";
-
-    /* Scroll Lock */
     const scrollLock = document.createElement("div");
     scrollLock.className = "scroll-lock";
 
@@ -177,22 +177,21 @@ const FacoHeaderRender = {
     facoHeader.shadowRoot.append(mainMenu);
 	},
 
-	drawerMenuRender(facoHeader, data) {
+	drawerMenuRender(facoHeader) {
+    const drawerMenuData = FacoHeaderData.drawerMenuData;
     const drawerMenu = document.createElement("nav");
     drawerMenu.className = "drawer-menu";
 
-    /* List */
+    /* drawerMenu: List */
     const list = document.createElement("ul");
     list.className = "list";
-
-    /* Item */
-    Object.entries(data.drawerMenuGroups).forEach(([itemLabelData, subItems], index) => {
+    Object.entries(drawerMenuData).forEach(([itemLabelData, subItems], index) => {
       const item = document.createElement("li");
       item.className = "item";
 			item.dataset.index = index;
 			item.dataset.isOpen = 0;
 
-      /* Item Box */
+      /* drawerMenu: itemBox */
       const itemBox = document.createElement("div");
       itemBox.className = "item-box";
       const itemLabel = document.createElement("span");
@@ -204,6 +203,7 @@ const FacoHeaderRender = {
       itemBottomLine.className = "item-bottom-line";
       itemBox.append(itemLabel, itemArrowIcon, itemBottomLine);
 
+      /* drawerMenu: subList */
       const subList = document.createElement("ul");
       subList.className = "sub-list";
       Object.entries(subItems).forEach(([subItemLabelData, subItemLink], index) => {
@@ -211,7 +211,7 @@ const FacoHeaderRender = {
         subItem.className = "sub-item";
 				subItem.dataset.index = index;
 
-        /* Sub Item Box */
+        /* drawerMenu: subItemBox */
         const subItemBox = document.createElement("a");
         subItemBox.className = "sub-item-box";
         subItemBox.href = subItemLink;
@@ -233,13 +233,10 @@ const FacoHeaderRender = {
       list.append(item);
     });
 
-    /* Fog */
     const fogTop = document.createElement("div");
     fogTop.className = "fog fog-top";
     const fogBottom = document.createElement("div");
     fogBottom.className = "fog fog-bottom";
-
-    /* Scroll Lock */
     const scrollLock = document.createElement("div");
     scrollLock.className = "scroll-lock";
 

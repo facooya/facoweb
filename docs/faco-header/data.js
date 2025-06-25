@@ -1,37 +1,34 @@
 /* NOTE
- * logoGroups: {
- *   logoLink: logoLink,
- *   logoItems: {
- *     itemName: itemMaskImage
- *   }
- * }
- *
- * mainMenuGroups: {
- *   itemText: {
- *     subItemText: subItemLink
- *   }
- * }
- *
- * drawerMenuGroups: {
- *   itemText: {
- *     subItemText: subItemLink
- *   }
- * }
+ * FacoHeaderData reference: "README.md"
+ * Path from facoweb root: "docs/faco-header/README.md"
  */
 
 const FacoHeaderData = {
-  logoGroups: {
-    logoLink: "#link",
-		/* TODO: normal user */
-    logoItems: { /* relative paths are based on the HTML file. */
-      dev: `url("./icons/octagon-2w.svg")`,
-      transcendence: `url("./icons/triangle.svg")`,
-      facooya: `url("./icons/octagon-5w.svg")`
+  logoData: {
+    link: "/",
+    height: "24px",
+    items: {
+      "main icon": {
+        url: `url("./icons/octagon-2w.svg")`,
+        width: "48px",
+        height: "24px", // Option
+        marginRight: "8px" // Option
+      },
+      "middle": {
+        url: `url("./icons/triangle.svg")`,
+        width: "8px",
+        height: "8px",
+        marginRight: "8px"
+      },
+      "main logo": {
+        url: `url("./icons/octagon-5w.svg")`,
+        width: "120px"
+      }
     }
   },
 
-  mainMenuGroups: {
-    "Menu 1": {
+  mainMenuData: {
+    "Main menu 1": {
       "Item 1-1": "#item-1-1",
       "Item 1-2": "#item-1-2",
       "Item 1-3": "#item-1-3",
@@ -41,40 +38,40 @@ const FacoHeaderData = {
       "Item 1-7": "#item-1-7"
     },
 
-    "Menu 2": {
+    "Main menu 2": {
       "Item 2-1": "#item-2-1"
     },
 
-    "Menu 3": {
+    "Main menu 3": {
       "Item 3-1": "#item-3-1",
       "Item 3-2": "#item-3-2",
       "Item 3-3": "#item-3-3"
     },
 
-    "Menu 4": {
+    "Main menu 4": {
       "Item 4-1": "#item-4-1"
     }
   },
 
-  drawerMenuGroups: {
+  drawerMenuData: {
     "Drawer menu 1": {
-      "Sub item 1-1": "#",
-      "Sub item 1-2": "#"
+      "Item 1-1": "#",
+      "Item 1-2": "#"
     },
 
     "Drawer menu 2": {
-      "Sub item 2-1": "#",
-      "Sub item 2-2": "#",
-			"Sub item 2-3": "#"
+      "Item 2-1": "#",
+      "Item 2-2": "#",
+			"Item 2-3": "#"
     },
 
     "Drawer menu 3": {
-      "Sub item 3-1": "#",
-      "Sub item 3-2": "#",
-			"Sub item 3-3": "#",
-      "Sub item 3-4": "#",
-      "Sub item 3-5": "#",
-			"Sub item 3-6": "#"
+      "Item 3-1": "#",
+      "Item 3-2": "#",
+			"Item 3-3": "#",
+      "Item 3-4": "#",
+      "Item 3-5": "#",
+			"Item 3-6": "#"
     }
   }
 };

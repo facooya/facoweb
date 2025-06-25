@@ -53,17 +53,15 @@
   pointer-events: none;
 }
 
-/* :Logo: */
+/* Logo */
 .top-bar .logo {
   grid-area: logo;
-  height: 24px;
   justify-self: center;
   align-self: center;
 }
 
 .top-bar .logo-link {
   display: inline-block;
-  height: 24px;
   white-space: nowrap;
 }
 
@@ -75,24 +73,7 @@
   background-color: #ffffff;
 }
 
-.top-bar .dev-logo-item {
-  width: 48px;
-  height: 24px;
-}
-
-.top-bar .transcendence-logo-item {
-  width: 8px;
-  height: 8px;
-  margin-right: 6px;
-}
-
-.top-bar .facooya-logo-item {
-  width: 120px;
-  height: 24px;
-}
-
-/* ;Logo; */
-/* :Hamburger Icon: */
+/* Hamburger Icon */
 .top-bar .hamburger-icon {
   grid-area: hamburger-icon;
   position: relative;
@@ -117,8 +98,7 @@
   transition: transform 300ms, opacity 300ms;
 }
 
-/* ;Hamburger Icon; */
-/* :Grid Icon: */
+/* Grid Icon */
 .top-bar .grid-icon {
   grid-area: grid-icon;
   position: relative;
@@ -139,9 +119,8 @@
   transition: transform 300ms;
 }
 
-/* ;Grid Icon; */
 /* Scroll Lock */
-.top-bar .top-bar-scroll-lock {
+.top-bar .layout-scroll-lock {
   /* Position */
   position: absolute;
   z-index: 1;
@@ -150,7 +129,6 @@
   width: 100%;
 }
 
-/* :Etc: */
 /* Overlay */
 .top-bar .overlay {
   position: fixed;
@@ -172,7 +150,6 @@
   z-index: 101;
 }
 
-/* ;Etc; */
 @media (min-width: 768px) {
   .top-bar {
     height: 128px;
@@ -213,6 +190,7 @@
 
 /* Utils */
 /* For Mst */
+/* TODO: mini */
 .top-bar .logo.mini {
   width: 32px;
   /* mask-image: url("./icons/triangle.svg"); */
