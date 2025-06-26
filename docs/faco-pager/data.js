@@ -1,17 +1,10 @@
 /* NOTE
- * title: "Title",
- * tabs: {
- *   "Tab label": {
- *     "Box label": {
- *       link: "https://.../box/link",
- *       text: "preview description"
- *     }
- *   }
- * }
+ * FacoPagerData reference: "README.md"
+ * Path from facoweb root: "docs/faco-pager/README.md"
  */
 
 const FacoPagerData = {
-  title: "Faco pager title",
+  title: "The faco-pager title",
   tabs: {
     "Tab 1": {
       "Item 1-1": {
@@ -34,11 +27,11 @@ const FacoPagerData = {
         link: "#box-link-1-5",
         text: "box text 1-5"
       },
-
       "Item 1-6": {
         link: "#box-link-1-6",
         text: "box text 1-6"
       }
+      // add more
     },
 
     "Tab 2": {
@@ -62,7 +55,6 @@ const FacoPagerData = {
         link: "#box-link-2-5",
         text: "box text 2-5"
       },
-
       "Item 2-6": {
         link: "#box-link-2-6",
         text: "box text 2-6"
@@ -83,7 +75,6 @@ const FacoPagerData = {
         link: "#box-link-2-10",
         text: "box text 2-10"
       },
-
       "Item 2-11": {
         link: "#box-link-2-11",
         text: "box text 2-11"
@@ -92,6 +83,7 @@ const FacoPagerData = {
         link: "#box-link-2-12",
         text: "box text 2-12"
       }
+      // add more
     },
 
     "Tab 3": {
@@ -107,7 +99,8 @@ const FacoPagerData = {
         link: "#box-link-3-3",
         text: "box text 3-3"
       }
+      // add more
     }
-
+    // add more
   }
 };

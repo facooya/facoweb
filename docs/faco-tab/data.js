@@ -4,7 +4,7 @@
  */
 
 const FacoTabData = {
-  title: "Faco tab title",
+  title: "The faco-tab title",
   tabs: {
     "Tab 1": {
       "Item 1-1": {
@@ -15,6 +15,7 @@ const FacoTabData = {
         link: "#item-1-2",
         text: "Item sub text 1-2"
       }
+      // add more
     },
 
     "Tab 2": {
@@ -22,6 +23,7 @@ const FacoTabData = {
         link: "#item-2-1",
         text: "Item sub text 2-1"
       }
+      // add more
     },
 
     "Tab 3": {
@@ -45,6 +47,8 @@ const FacoTabData = {
         link: "#item-3-5",
         text: "Item sub text 3-5"
       }
+      // add more
     }
+    // add more
   }
 };
