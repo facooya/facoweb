@@ -2,7 +2,7 @@
  * <faco-code class="class-name"></faco-code>
  *
  * "class-name": {
- * 	 fileName: "fileName",
+ *   fileName: "fileName",
  *   syntax: "syntax-*",
  *   code: String.raw`code line 1
  * code line 2
@@ -15,10 +15,10 @@
  */
 
 const FacoCodeData = {
-	"faco-c": { /* define: <faco-code class="faco-c"></faco-code> */
-		fileName: "file_name.c",
-		syntax: "syntax-c", /* define: syntax-data.js */
-		code: String.raw`#include <stdio.h>
+  "faco-c": { /* define: <faco-code class="faco-c"></faco-code> */
+    fileName: "file_name.c",
+    syntax: "syntax-c", /* define: syntax-data.js */
+    code: String.raw`#include <stdio.h>
 
 int main() {
   // one line comment
@@ -28,12 +28,12 @@ int main() {
   comment */
 
   /* comment syntax text */int testNumber = 10;// comment syntax test
-	int binary = 0b0101;
-	int octal = 0o1234;
-	int decimal = 10;
+  int binary = 0b0101;
+  int octal = 0o1234;
+  int decimal = 10;
   int hex = 0xFAC0;
   float pi = 3.14f;
-	double pi_double = 3.14;
+  double pi_double = 3.14;
   char f = 'F';
   char facoweb[10] = "Facoweb";
 
@@ -50,18 +50,18 @@ int main() {
 
   return 0;
 }`
-	},
+  },
 
-	"faco-cpp": {
-		fileName: "file_name.cpp",
-		syntax: "syntax-cpp",
-		code: String.raw`#include <iostream>
+  "faco-cpp": {
+    fileName: "file_name.cpp",
+    syntax: "syntax-cpp",
+    code: String.raw`#include <iostream>
 
 int main() {
-	// comment
-	/* comment
-	comment
-	comment */
+  // comment
+  /* comment
+  comment
+  comment */
 
   int year = 2024;
   float pi = 3.14f;
@@ -75,5 +75,5 @@ int main() {
 
   return 0;
 }`
-	}
+  }
 };

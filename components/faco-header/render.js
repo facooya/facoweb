@@ -7,24 +7,24 @@
  */
 
 const FacoHeaderRender = {
-	render(facoHeader) {
-		/* style sheet */
-		const frag = document.createDocumentFragment();
-		const styles = ["top-bar.css", "main-menu.css", "drawer-menu.css"];
-		styles.forEach(style => {
-			const link = document.createElement("link");
-			link.rel = "stylesheet";
-			link.href = new URL(style, import.meta.url).href;
-			frag.append(link);
-		});
-		facoHeader.shadowRoot.append(frag);
+  render(facoHeader) {
+    /* style sheet */
+    const frag = document.createDocumentFragment();
+    const styles = ["top-bar.css", "main-menu.css", "drawer-menu.css"];
+    styles.forEach(style => {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = new URL(style, import.meta.url).href;
+      frag.append(link);
+    });
+    facoHeader.shadowRoot.append(frag);
 
-		FacoHeaderRender.topBarRender(facoHeader);
-		FacoHeaderRender.mainMenuRender(facoHeader);
-		FacoHeaderRender.drawerMenuRender(facoHeader);
-	},
+    FacoHeaderRender.topBarRender(facoHeader);
+    FacoHeaderRender.mainMenuRender(facoHeader);
+    FacoHeaderRender.drawerMenuRender(facoHeader);
+  },
 
-	topBarRender(facoHeader) {
+  topBarRender(facoHeader) {
     const topBar = document.createElement("div");
     topBar.className = "top-bar";
     const layout = document.createElement("div");
@@ -60,7 +60,7 @@ const FacoHeaderRender = {
     /* topBar: hamburgerIcon */
     const hamburgerIcon = document.createElement("div");
     hamburgerIcon.className = "hamburger-icon";
-		hamburgerIcon.dataset.isActive = 0;
+    hamburgerIcon.dataset.isActive = 0;
     for (let i = 0; i < 3; i++) {
       const hamburgerItem = document.createElement("span");
       hamburgerItem.className = "hamburger-item";
@@ -70,7 +70,7 @@ const FacoHeaderRender = {
     /* topBar: gridIcon */
     const gridIcon = document.createElement("div");
     gridIcon.className = "grid-icon";
-		gridIcon.dataset.isActive = 0;
+    gridIcon.dataset.isActive = 0;
     for (let i = 0; i < 9; i++) {
       const gridItem = document.createElement("span");
       gridItem.className = "grid-item";
@@ -90,9 +90,9 @@ const FacoHeaderRender = {
 
     topBar.append(layout, overlay);
     facoHeader.shadowRoot.append(topBar);
-	},
+  },
 
-	mainMenuRender(facoHeader) {
+  mainMenuRender(facoHeader) {
     const mainMenuData = FacoHeaderData.mainMenuData;
     const mainMenu = document.createElement("nav");
     mainMenu.className = "main-menu";
@@ -103,8 +103,8 @@ const FacoHeaderRender = {
     Object.entries(mainMenuData).forEach(([itemLabelData, subItems], index) => {
       const item = document.createElement("li");
       item.className = "item";
-			item.dataset.index = index;
-			item.dataset.isOpen = 0;
+      item.dataset.index = index;
+      item.dataset.isOpen = 0;
 
       /* mainMenu: itemBox */
       const itemBox = document.createElement("div");
@@ -126,13 +126,13 @@ const FacoHeaderRender = {
       Object.entries(subItems).forEach(([subItemLabelData, subItemLink], index) => {
         const subItem = document.createElement("li");
         subItem.className = "sub-item";
-				subItem.dataset.index = index;
+        subItem.dataset.index = index;
 
         /* mainMenu: subItemBox */
         const subItemBox = document.createElement("a");
         subItemBox.className = "sub-item-box";
         subItemBox.href = subItemLink;
-				subItemBox.dataset.isHover = 0;
+        subItemBox.dataset.isHover = 0;
         const subItemLabel = document.createElement("span");
         subItemLabel.className = "sub-item-label";
         subItemLabel.textContent = subItemLabelData;
@@ -175,9 +175,9 @@ const FacoHeaderRender = {
 
     mainMenu.append(list, fogTop, fogBottom, scrollLock);
     facoHeader.shadowRoot.append(mainMenu);
-	},
+  },
 
-	drawerMenuRender(facoHeader) {
+  drawerMenuRender(facoHeader) {
     const drawerMenuData = FacoHeaderData.drawerMenuData;
     const drawerMenu = document.createElement("nav");
     drawerMenu.className = "drawer-menu";
@@ -188,8 +188,8 @@ const FacoHeaderRender = {
     Object.entries(drawerMenuData).forEach(([itemLabelData, subItems], index) => {
       const item = document.createElement("li");
       item.className = "item";
-			item.dataset.index = index;
-			item.dataset.isOpen = 0;
+      item.dataset.index = index;
+      item.dataset.isOpen = 0;
 
       /* drawerMenu: itemBox */
       const itemBox = document.createElement("div");
@@ -209,13 +209,13 @@ const FacoHeaderRender = {
       Object.entries(subItems).forEach(([subItemLabelData, subItemLink], index) => {
         const subItem = document.createElement("li");
         subItem.className = "sub-item";
-				subItem.dataset.index = index;
+        subItem.dataset.index = index;
 
         /* drawerMenu: subItemBox */
         const subItemBox = document.createElement("a");
         subItemBox.className = "sub-item-box";
         subItemBox.href = subItemLink;
-				subItemBox.dataset.isHover = 0;
+        subItemBox.dataset.isHover = 0;
         const subItemLabel = document.createElement("span");
         subItemLabel.className = "sub-item-label";
         subItemLabel.textContent = subItemLabelData;
@@ -242,7 +242,7 @@ const FacoHeaderRender = {
 
     drawerMenu.append(list, fogTop, fogBottom, scrollLock);
     facoHeader.shadowRoot.append(drawerMenu);
-	}
+  }
 };
 
 export { FacoHeaderRender };

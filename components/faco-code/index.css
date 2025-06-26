@@ -30,14 +30,14 @@
 /* color-custom { color: #000000; } */
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :host {
-	display: block;
-	margin: 1rem !important;
+  display: block;
+  margin: 1rem !important;
 }
 
 /* Header */
@@ -100,7 +100,7 @@
   padding: 8px 0;
   padding-right: 0.5rem;
   /* padding-left: 1rem; */
-	tab-size: 2;
+  tab-size: 2;
 }
 
 .view-line-list.wide {
@@ -112,8 +112,8 @@
 }
 
 @media (min-width: 1280px) {
-	:host {
-		max-width: 1280px;
-		margin: 0 auto !important;
-	}
+  :host {
+    max-width: 1280px;
+    margin: 0 auto !important;
+  }
 }

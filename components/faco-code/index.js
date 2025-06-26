@@ -7,42 +7,42 @@
  */
 
 class FacoCode extends HTMLElement {
-	constructor() {
-		super();
-		this.attachShadow({ mode: "open" });
-	}
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
 
-	connectedCallback() {
-		Object.keys(FacoCodeData).forEach(classKey => {
-			if (this.className === classKey) {
-				this.codeData = FacoCodeData[classKey];
-			}
-		});
+  connectedCallback() {
+    Object.keys(FacoCodeData).forEach(classKey => {
+      if (this.className === classKey) {
+        this.codeData = FacoCodeData[classKey];
+      }
+    });
 
-		FacoCodeRender.render(this);
-		FacoCodeRender.syntaxRender(this);
-		FacoCodeRender.viewLineItemRender(this);
+    FacoCodeRender.render(this);
+    FacoCodeRender.syntaxRender(this);
+    FacoCodeRender.viewLineItemRender(this);
 
-		FacoCodeEvent.manager(this);
-	}
+    FacoCodeEvent.manager(this);
+  }
 }
 
 const FacoCodeRender = {
-	render(facoCode) {
-		const link = document.createElement("link");
-		link.rel = "stylesheet";
-		link.href = new URL("index.css", import.meta.url).href;
+  render(facoCode) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = new URL("index.css", import.meta.url).href;
 
-		/* header */
+    /* header */
     const header = document.createElement("header");
     header.className = "header";
 
-		/* header: title */
+    /* header: title */
     const title = document.createElement("h5");
-		title.className = "title";
-		title.textContent = facoCode.codeData.fileName;
+    title.className = "title";
+    title.textContent = facoCode.codeData.fileName;
 
-		/* header: tool */
+    /* header: tool */
     const toolList = document.createElement("ul");
     toolList.className = "tool-list";
     const toolItemWide = document.createElement("li");
@@ -59,24 +59,24 @@ const FacoCodeRender = {
     const viewLineList = document.createElement("ul");
     viewLineList.className = "view-line-list";
     const viewContent = document.createElement("pre");
-		viewContent.className = "view-content";
-		viewContent.textContent = facoCode.codeData.code;
+    viewContent.className = "view-content";
+    viewContent.textContent = facoCode.codeData.code;
     view.append(viewLineList, viewContent);
 
-		facoCode.shadowRoot.append(link, header, view);
-	},
+    facoCode.shadowRoot.append(link, header, view);
+  },
 
-	syntaxRender(facoCode) {
-		Object.keys(FacoCodeSyntaxData).forEach(syntaxKey => {
-			if (facoCode.codeData.syntax === syntaxKey) {
-				facoCode.syntaxData = FacoCodeSyntaxData[syntaxKey];
-			}
-		});
-		
-		facoCode.syntaxData.syntaxRender(facoCode);
-	},
+  syntaxRender(facoCode) {
+    Object.keys(FacoCodeSyntaxData).forEach(syntaxKey => {
+      if (facoCode.codeData.syntax === syntaxKey) {
+        facoCode.syntaxData = FacoCodeSyntaxData[syntaxKey];
+      }
+    });
+    
+    facoCode.syntaxData.syntaxRender(facoCode);
+  },
 
-	viewLineItemRender(facoCode) {
+  viewLineItemRender(facoCode) {
     const view = facoCode.shadowRoot.querySelector(".view");
     const frag = document.createDocumentFragment();
 
@@ -92,23 +92,23 @@ const FacoCodeRender = {
       frag.append(viewLineItem);
     }
     viewLineList.append(frag);
-	}
+  }
 };
 
 const FacoCodeEvent = {
-	manager(facoCode) {
-		facoCode.onToolItemWideClick = this.onToolItemWideClick.bind(facoCode);
-		facoCode.onToolItemCopyClick = this.onToolItemCopyClick.bind(facoCode);
+  manager(facoCode) {
+    facoCode.onToolItemWideClick = this.onToolItemWideClick.bind(facoCode);
+    facoCode.onToolItemCopyClick = this.onToolItemCopyClick.bind(facoCode);
 
-		const toolItemWide = facoCode.shadowRoot.querySelector(".tool-item-wide");
-		const toolItemCopy = facoCode.shadowRoot.querySelector(".tool-item-copy");
-		toolItemWide.addEventListener("click", facoCode.onToolItemWideClick);
-		toolItemCopy.addEventListener("click", facoCode.onToolItemCopyClick);
+    const toolItemWide = facoCode.shadowRoot.querySelector(".tool-item-wide");
+    const toolItemCopy = facoCode.shadowRoot.querySelector(".tool-item-copy");
+    toolItemWide.addEventListener("click", facoCode.onToolItemWideClick);
+    toolItemCopy.addEventListener("click", facoCode.onToolItemCopyClick);
 
-		toolItemWide.dataset.isWide = 0;
-	},
+    toolItemWide.dataset.isWide = 0;
+  },
 
-	onToolItemWideClick(event) {
+  onToolItemWideClick(event) {
     const toolItemWide = event.currentTarget;
     const viewLineList = this.shadowRoot.querySelector(".view-line-list");
     const viewContent = this.shadowRoot.querySelector(".view-content");
@@ -123,13 +123,13 @@ const FacoCodeEvent = {
       viewContent.classList.add(wide);
       toolItemWide.dataset.isWide = 1;
     }
-	},
+  },
 
-	onToolItemCopyClick(event) {
+  onToolItemCopyClick(event) {
     const toolItemCopy = event.currentTarget;
     const viewContent = this.shadowRoot.querySelector(".view-content");
     navigator.clipboard.writeText(viewContent.textContent);
-	}
+  }
 };
 
 customElements.define("faco-code", FacoCode);

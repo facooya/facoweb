@@ -94,20 +94,20 @@ const FacoPagerData = {
       }
     },
 
-		"Tab 3": {
-			"Item 3-1": {
-				link: "#box-link-3-1",
-				text: "box text 3-1"
-			},
-			"Item 3-2": {
-				link: "#box-link-3-2",
-				text: "box text 3-2"
-			},
-			"Item 3-3": {
-				link: "#box-link-3-3",
-				text: "box text 3-3"
-			}
-		}
+    "Tab 3": {
+      "Item 3-1": {
+        link: "#box-link-3-1",
+        text: "box text 3-1"
+      },
+      "Item 3-2": {
+        link: "#box-link-3-2",
+        text: "box text 3-2"
+      },
+      "Item 3-3": {
+        link: "#box-link-3-3",
+        text: "box text 3-3"
+      }
+    }
 
   }
 };

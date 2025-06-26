@@ -7,16 +7,16 @@
  */
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :host {
-	display: block;
+  display: block;
   padding: 24px 32px !important;
   background: #222222;
-	transition: margin-right 300ms ease;
+  transition: margin-right 300ms ease;
 }
 
 .explore {
@@ -179,8 +179,8 @@
 
   .about {
     grid-template-areas:
-			"logo social"
-			"description social";
+      "logo social"
+      "description social";
     gap: 16px 32px;
     max-width: 90%;
     margin: 48px auto;
@@ -209,7 +209,7 @@
 @media (min-width: 1280px) {
   .about {
     grid-template-areas:
-			"logo description social";
+      "logo description social";
     gap: 32px;
     max-width: 90%;
     margin: 48px auto;
