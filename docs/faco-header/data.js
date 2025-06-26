@@ -11,8 +11,8 @@ const FacoHeaderData = {
       "main icon": {
         url: `url("./icons/octagon-2w.svg")`,
         width: "48px",
-        height: "24px", // Option
-        marginRight: "8px" // Option
+        height: "24px", // optional
+        marginRight: "8px" // optional
       },
       "middle": {
         url: `url("./icons/triangle.svg")`,

@@ -26,6 +26,10 @@ If you want to understand how it works, looking at [`data.js`](./data.js) might 
 > Don’t forget the comma `,` when adding more items.
 > - "first" -> "first", "second"
 > - "First": {} -> "First": {}, "Second": {}
+>
+> Relative paths are resolved based on the `HTML` file location, not `data.js`.
+> - `url("./relative/path.svg")`
+> - `link: "./relative/path/"`
 
 ---
 
@@ -83,6 +87,7 @@ logoData: {
   }
 }
 ```
+The `url` field **MUST** use an `.svg` file.
 **Optional** lines can be removed.
 If `(optional) height` is missing, `logoData.height` is used instead.
 If `(optional) marginRight` is missing, it usually behaves like 0.
