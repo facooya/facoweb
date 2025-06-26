@@ -22,7 +22,6 @@ or copy and edit the [`data.js`](./data.js) file directly.
 
 If you want to understand how it works, looking at [`data.js`](./data.js) might be even clearer than just reading the **Data Usage** section.
 
-
 > [!NOTE]
 > Don’t forget the comma `,` when adding more items.
 > - "first" -> "first", "second"
@@ -94,6 +93,7 @@ drawerMenuData: {
   // add more items
 }
 ```
+
 ---
 
 ## Data Template
@@ -123,7 +123,7 @@ const FacoHeaderData = {
 
   drawerMenuData: {
     "Drawer menu 1": {
-      "Item 1-1": "#"
+      "Item 1-1": "#item-1-1"
       // add more
     }
     // add more

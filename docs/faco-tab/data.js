@@ -1,13 +1,6 @@
 /* NOTE
- * title: "Title",
- * tabs: {
- *   "tab label": {
- *     "box label": {
- *       link: "https://.../box/link",
- *       text: "preview description"
- *     }
- *   }
- * }
+ * FacoTabData reference: "README.md"
+ * Path from facoweb root: "docs/faco-tab/README.md"
  */
 
 const FacoTabData = {
