@@ -11,8 +11,10 @@ Just add 3 lines in your HTML:
 
 The paths above are written relative to this location.
 
-> Data (**facoweb** root): `docs/faco-footer/data.js`
+> Data (**facoweb** root): `docs/faco-footer/data.js`  
 > Logic (**facoweb** root): `components/faco-footer/index.js`
+
+---
 
 ## Data Usage
 You can copy the example from the [**Data Template**](#data-template) section,
@@ -22,9 +24,10 @@ If you want to understand how it works, looking at [`data.js`](./data.js) might 
 
 > [!NOTE]
 > Don’t forget the comma `,` when adding more items.
-> Examples
-- "first" -> "first", "second"
-- "First": {} -> "First": {}, "Second": {}
+> - "first" -> "first", "second"
+> - "First": {} -> "First": {}, "Second": {}
+
+---
 
 ### exploreData
 ```javascript
@@ -42,6 +45,8 @@ exploreData: {
 }
 ```
 
+---
+
 ### aboutData
 ```javascript
 logoData: {},
@@ -50,6 +55,8 @@ description: `Description.
   ignore space.`,
 socialData: {}
 ```
+
+---
 
 ### legalData
 ```javascript
@@ -64,7 +71,7 @@ linkData: {}
 ```javascript
 logoData: {
   link: "/",
-  height: "32px" // default height
+  height: "32px"
   items: {
     "sub logo": {
       url: `url("./icons/octagon-2w.svg")`,
@@ -77,8 +84,10 @@ logoData: {
 }
 ```
 **Optional** lines can be removed.
-If **(optional) height** is missing, **logoData.height** is used instead.
-If **(option) marginRight** is missing, it usually behaves like 0.
+If `(optional) height` is missing, `logoData.height` is used instead.
+If `(optional) marginRight` is missing, it usually behaves like 0.
+
+---
 
 ### socialData
 ```javascript
@@ -102,6 +111,8 @@ socialData: {
 The `url` field **MUST** use an `.svg` file.
 The `newTab` field **MUST** be `true` or `false`. If `true`, the link opens in a new tab.
 
+---
+
 ### linkData
 ```javascript
 linkData: {
@@ -113,6 +124,8 @@ linkData: {
 }
 ```
 The `newTab` field **MUST** be `true` or `false`. If `true`, the link opens in a new tab.
+
+---
 
 ## Data Template
 ```javascript
