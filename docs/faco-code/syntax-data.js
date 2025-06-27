@@ -1,22 +1,6 @@
 /* NOTE
- * const FacoCodeSyntax = {
- *   "syntax-*": {
- *     split: regularExpression,
- *     pattern: {
- *       pattern: regularExpression
- *     },
- *     highlight: {
- *       color: highlightFormat
- *     },
- *     generator() {}
- *   }
- * }
- */
-
-/*
- * TEMPLATE: manual reguler express
- * pattern: new RegExp(`\\b(${["STRING"].join("|")})\\b`, "g"),
- * syntax: `<span class="code-COLOR">$&</span>`,
+ * FacoCodeSyntaxData and FacoCodeColor reference: "README.md"
+ * Path from facoweb root: "docs/faco-code/README.md"
  */
 
 const FacoCodeColor = {
@@ -35,8 +19,7 @@ const FacoCodeColor = {
   purple: `<span class="color-purple">$&</span>`,
   pink: `<span class="color-pink">$&</span>`,
   brown: `<span class="color-brown">$&</span>`
-  /* customColor: `<span class="color-custom">$&</span>` */
-  /* add "components/faco-code/index.css" => .color-custom: { color: #000000; } */
+  // add more colors
 };
 
 const FacoCodeSyntaxData = {
@@ -65,6 +48,7 @@ const FacoCodeSyntaxData = {
         "socket", "setsockopt", "bind", "listen", "accept", "connect", "close",
         "read", "write", "sendmsg", "recvmsg"
       ].join("|")})\b`, "g")
+      // add more patterns
     },
 
     syntaxRender(facoCode) {
@@ -89,12 +73,13 @@ const FacoCodeSyntaxData = {
         } else if (parts[i].startsWith("&lt;")) {
           parts[i] = parts[i].replace(parts[i], color.red);
 
-        } else {
+        } else { // add more `else if (parts[i].startsWith())`
           parts[i] = parts[i].replace(pattern.type, color.orange);
           parts[i] = parts[i].replace(pattern.number, color.lightBlue);
           parts[i] = parts[i].replace(pattern.stdio, color.blue);
           parts[i] = parts[i].replace(pattern.socket, color.blue);
           parts[i] = parts[i].replace(pattern.control, color.purple);
+          // add more replaces
         }
 
       }
@@ -125,6 +110,7 @@ const FacoCodeSyntaxData = {
         `\b(${[
           "cout", "cin", "endl"
         ].join("|")})\b`, "g")
+      // add more patterns
     },
 
     syntaxRender(facoCode) {
@@ -135,7 +121,7 @@ const FacoCodeSyntaxData = {
       const getText = viewContent.innerHTML;
       const parts = getText.split(this.split);
       for (let i = 0; i < parts.length; i++) {
-        
+
         if (parts[i].startsWith("\"") || parts[i].startsWith("'")) {
           parts[i] = parts[i].replace(pattern.escapeSequence, color.lightGreen);
           parts[i] = parts[i].replace(parts[i], color.green);
@@ -149,52 +135,17 @@ const FacoCodeSyntaxData = {
         } else if (parts[i].startsWith("&lt;")) {
           parts[i] = parts[i].replace(parts[i], color.red);
 
-        } else {
+        } else { // add more `else if (parts[i].startsWith())`
           parts[i] = parts[i].replace(pattern.type, color.orange);
           parts[i] = parts[i].replace(pattern.number, color.lightBlue);
           parts[i] = parts[i].replace(pattern.iostream, color.blue);
           parts[i] = parts[i].replace(pattern.control, color.purple);
+          // add more replaces
         }
 
       }
       viewContent.innerHTML = parts.join("");
     }
   }
-
-  /* CUSTOM TEMPLATE
-  "syntax-CUSTOM": {
-    split: new RegExp(String.raw`(".*?(?<!\\)"|'.*?')`, "gm"), // CUSTOM
-
-    pattern: {
-      numberCUSTOM: new RegExp(String.raw`\b(\d+(\.\d+(f|L)?)?|\d+(f|L|U|LL)?|0[bB][01]+|0[oO][0-7]+|0[xX][0-9a-fA-F]+)\b`, "g"),
-      controlCUSTOM: new RegExp(String.raw`\b(${[
-        "if", "else", "switch", "while", "do", "for"
-      ].join("|")})\b`, "g"),
-      CUSTOM: new RegExp(String.raw``, "g")
-    },
-
-    syntaxRender(facoCode) {
-      const pattern = this.pattern;
-      const color = FacoCodeColor;
-
-      const viewContent = facoCode.shadowRoot.querySelector(".view-content");
-      const getText = viewContent.innerHTML;
-      const parts = getText.split(this.split);
-      for (let i = 0; i < parts.length; i++) {
-
-        // === CUSTOM LOGIC Start ===
-        if (parts[i].startsWith("\"")) {
-          parts[i] = parts[i].replace(parts[i], color.green);
-        } else {
-          parts[i] = parts[i].replace(pattern.numberCUSTOM, color.lightBlue);
-          parts[i] = parts[i].replace(pattern.controlCUSTOM, color.purple);
-          parts[i] = parts[i].replace(pattern.CUSTOM, color.orange);
-        }
-        // === CUSTOM LOGIC END ===
-
-      }
-      viewContent.innerHTML = parts.join("");
-    }
-  }
-  */
+  // add more syntaxes
 };

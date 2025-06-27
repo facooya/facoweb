@@ -1,17 +1,6 @@
 /* NOTE
- * <faco-code class="class-name"></faco-code>
- *
- * "class-name": {
- *   fileName: "fileName",
- *   syntax: "syntax-*",
- *   code: String.raw`code line 1
- * code line 2
- *   code line 2-1
- * code line 3`
- * }
- *
- * Code line indent using space please.
- * Or "./src/faco-code.css" .code-block { tab-size: 2; } or 4, 8
+ * FacoCodeData reference: "README.md"
+ * Path from facoweb root: "docs/faco-code/README.md"
  */
 
 const FacoCodeData = {
@@ -76,4 +65,5 @@ int main() {
   return 0;
 }`
   }
+  // add more
 };
