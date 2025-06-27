@@ -176,7 +176,6 @@ syntaxRender(facoCode) {
 
 ---
 
-# Templates
 ## Data Template
 ```javascript
 const FacoCodeData = {
@@ -214,26 +213,6 @@ Because all color(`color-*`) values in `index.css` are already mapped in `FacoCo
 ```javascript
 const FacoCodeSyntaxData = {
   "syntax-SYNTAX": {
-    split: regularExpression,
-    pattern: {
-      pattern: regularExpression
-    },
-    highlight: {
-      color: highlightFormat
-    },
-    generator() {
-    }
-  }
-  // add more
-};
-```
-
-
-
-# Syntax Data Format
-```javascript
-const FacoCodeSyntaxData = {
-  "syntax-SYNTAX": {
     split: new RegExp(String.raw`".*?(?<!\\)"`, "gm"),
 
     pattern: {
@@ -241,8 +220,8 @@ const FacoCodeSyntaxData = {
       FUNC: new RegExp(String.raw`\b(${[
         "testFunc"
       ].join("|")})\b`, "g")
-    },
-
+      // add more
+    }
     syntaxRender(facoCode) {
       const pattern = this.pattern;
       const color = FacoCodeColor;
@@ -252,7 +231,7 @@ const FacoCodeSyntaxData = {
       const parts = getText.split(this.split);
       for (let i = 0; i < parts.length; i++) {
 
-        /* === MODIFY syntax start === */
+        /* === MODIFY start === */
         if (parts[i].startsWith("\"")) {
           parts[i] = parts[i].replace(parts[i], color.green);
 
@@ -260,11 +239,12 @@ const FacoCodeSyntaxData = {
           parts[i] = parts[i].replace(pattern.NUM, color.lightBlue);
           parts[i] = parts[i].replace(pattern.FUNC, color.orange);
         }
-        /* === MODIFY syntax end === */
+        /* === MODIFY end === */
 
       }
       viewContent.innerHTML = parts.join("");
     }
   }
+  // add more
 };
 ```
