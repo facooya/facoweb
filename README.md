@@ -3,11 +3,11 @@ Reusable web components built with plain `JavaScript` and `CSS`.
 
 ## Demo
 ### Preview
-- [faco-header](https://facooya.github.io/docs/faco-header/) – Header UI with top-bar, main-menu, drawer-menu (Nice design)
-- [faco-footer](https://facooya.github.io/docs/faco-footer/) - Footer UI
-- [faco-pager](https://facooya.github.io/docs/faco-pager/) – Tabbed UI with page control (Very simple design)
-- [faco-tab](https://facooya.github.io/docs/faco-tab/) – Simple tabbed UI (Very simple desing)
-- [faco-code](https://facooya.github.io/docs/faco-code/) – Code viewer (Nice design, But data custom is difficult)
+- [faco-header](https://facooya.github.io/facoweb/docs/faco-header/) – Header UI with top-bar, main-menu, drawer-menu (Nice design)
+- [faco-footer](https://facooya.github.io/facoweb/docs/faco-footer/) - Footer UI
+- [faco-pager](https://facooya.github.io/facoweb/docs/faco-pager/) – Tabbed UI with page control (Very simple design)
+- [faco-tab](https://facooya.github.io/facoweb/docs/faco-tab/) – Simple tabbed UI (Very simple desing)
+- [faco-code](https://facooya.github.io/facoweb/docs/faco-code/) – Code viewer (Nice design, But data custom is difficult)
 
 ---
 
@@ -96,6 +96,8 @@ mv faco-tab/ facooya-tab/
 - **shared/** - Misc, Not important
 
 ---
+
+You can use **issues tab** for **bug report** or **feedback**.
 
 > Facoweb is a shortened from of “FACOoya WEB”.
 
