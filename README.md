@@ -93,11 +93,15 @@ mv faco-tab/ facooya-tab/
 ## Directory Structure
 - **components/** - Components
 - **docs/** - Documentation and demo
-- **shared/** - Misc, Not important
+- **shared/** - Misc
+
+## License
+This project is licensed under the [Apache License 2.0](LICENSE).
 
 ---
 
 You can use **issues tab** for **bug report** or **feedback**.
+And you can use `favicon.ico`.
 
 > Facoweb is a shortened from of “FACOoya WEB”.
 
