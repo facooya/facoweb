@@ -3,11 +3,11 @@ Reusable web components built with plain `JavaScript` and `CSS`.
 
 ## Demo
 ### Preview
-- [faco-header](https://facooya.github.io/docs/faco-header/) – Header UI with top-bar, main-menu, drawer-menu
+- [faco-header](https://facooya.github.io/docs/faco-header/) – Header UI with top-bar, main-menu, drawer-menu (Nice design)
 - [faco-footer](https://facooya.github.io/docs/faco-footer/) - Footer UI
-- [faco-pager](https://facooya.github.io/docs/faco-pager/) – Tabbed UI with page control
-- [faco-tab](https://facooya.github.io/docs/faco-tab/) – Simple tabbed UI
-- [faco-code](https://facooya.github.io/docs/faco-code/) – Code viewer
+- [faco-pager](https://facooya.github.io/docs/faco-pager/) – Tabbed UI with page control (Very simple design)
+- [faco-tab](https://facooya.github.io/docs/faco-tab/) – Simple tabbed UI (Very simple desing)
+- [faco-code](https://facooya.github.io/docs/faco-code/) – Code viewer (Nice design, But data custom is difficult)
 
 ---
 
@@ -97,4 +97,9 @@ mv faco-tab/ facooya-tab/
 
 ---
 
-> Facoweb is a shortened form of “FACOoya WEB”.
+> Facoweb is a shortened from of “FACOoya WEB”.
+
+> My English skills is bad. I am still learning.
+> I know many words. But I don't know grammar and sentence structure.
+> Long sentences structure and grammar is perfect? Maybe 90% AI assisted me.
+> This is my English writing skill. Thank you for reading.
