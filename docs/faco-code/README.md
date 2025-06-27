@@ -16,7 +16,7 @@ The `class="CODE_CLASS"` in `HTML` **MUST** match a key `"CODE_CLASS": {}` in `d
 The paths above are written relative to this location.
 
 > Data (**facoweb** root): `docs/faco-code/data.js`  
-> Syntax Data (**facoweb** root): `docs/faco-code/syntax-data.js`
+> Syntax Data (**facoweb** root): `docs/faco-code/syntax-data.js`  
 > Logic (**facoweb** root): `components/faco-code/index.js`
 
 ---

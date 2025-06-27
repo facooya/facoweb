@@ -74,6 +74,3 @@ const FacoTabData = {
   }
 };
 ```
-
-Don't forgot the trailing comma`,`.  
-Refer to `./data.js` as a guide.  
