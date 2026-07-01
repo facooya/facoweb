@@ -1,0 +1,134 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2025 Facooya and Fanone Facooya
+ *
+ * The faco-tab style
+ */
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:host {
+	display: block;
+	margin: 0 16px !important;
+}
+
+/* Title */
+.title {
+	padding: 1rem 0;
+	font-size: 1.375rem;
+	text-align: center;
+
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+/* Tab */
+.tab-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+	list-style: none;
+}
+
+.tab-item {
+	border: 4px solid #777777;
+	border-radius: 16px;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	transition: border-color 300ms;
+}
+
+.tab-label {
+	color: #777777;
+	font-size: 1rem;
+	font-weight: bold;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-align: center;
+	padding: 12px 8px;
+	user-select: none;
+	-moz-user-select: none;
+	transition: color 300ms;
+}
+
+/* Panel */
+.panel {
+	padding: 32px 0;
+}
+
+.panel-list {
+	display: none;
+	flex-flow: column;
+	gap: 12px;
+	list-style: none;
+}
+
+.panel-item {
+	border: 2px solid #222222;
+	border-radius: 8px;
+	padding: 8px;
+	cursor: pointer;
+}
+
+.panel-item .box {
+	text-decoration: none;
+}
+
+.panel-item .box-label {
+	color: #222222;
+	font-weight: bold;
+	font-size: 1.125rem;
+}
+
+.panel-item .box-text {
+	color: #555555;
+	font-size: 1rem;
+	margin-top: 4px;
+	margin-left: 8px;
+}
+
+/* Class List */
+.tab-item.active {
+	border-color: #222222;
+	cursor: default;
+}
+
+.tab-label.active {
+	color: #222222;
+}
+
+.panel-list.active {
+	display: flex;
+}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 1280px) {
+	.tab-title {
+		max-width: 1280px;
+		margin: 0 auto;
+	}
+
+	.tab {
+		max-width: 1280px;
+		margin: 0 auto;
+	}
+
+	.panel {
+		max-width: 1280px;
+		margin: 0 auto;
+	}
+}
+
+@media (hover: hover) {
+	.tab-label:hover {
+		color: #222222;
+	}
+}
