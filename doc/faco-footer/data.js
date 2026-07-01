@@ -1,3 +1,5 @@
+/* Maintained by Facooya and Fanone Facooya, 2025-2026 */
+
 /* NOTE
  * FacoFooterData reference: "README.md"
  * README (facoweb root): "doc/faco-footer/README.md"

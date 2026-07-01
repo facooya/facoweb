@@ -1,9 +1,6 @@
-/*
- * SPDX-License-Identifier: Apache-2.0
+/* SPDX-License-Identifier: MIT
  *
- * Copyright 2025 Facooya and Fanone Facooya
- *
- * The faco-pager index
+ * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
 class FacoPager extends HTMLElement {

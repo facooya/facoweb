@@ -1,3 +1,5 @@
+/* Maintained by Facooya and Fanone Facooya, 2025-2026 */
+
 /* NOTE
  * FacoCodeData reference: "README.md"
  * Path from facoweb root: "doc/faco-code/README.md"

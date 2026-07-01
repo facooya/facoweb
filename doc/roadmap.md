@@ -20,3 +20,7 @@
 # Misc
 - Add full demo site.
 - Considering new component `faco-output`?
+
+---
+
+> Maintained by Facooya and Fanone Facooya, 2025-2026
