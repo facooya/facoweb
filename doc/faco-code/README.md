@@ -1,251 +1,218 @@
 ## Quick Start
+Add tag and related scripts:
 ```html
 <faco-code class="CODE_CLASS"></faco-code>
 <script src="./data.js" defer></script>
 <script src="./syntax-data.js" defer></script>
 <script type="module" src="../../ui/faco-code/index.js"></script>
 ```
-Just add 4 lines in your HTML:
-1. Add custom tag and set the class name
-2. Add data script
-3. Add syntax-data scirpt
-4. Add logic script
+The `class="CODE_CLASS"` in `HTML`, must match key `"CODE_CLASS": {}` in `data.js`.
 
-The `class="CODE_CLASS"` in `HTML` **MUST** match a key `"CODE_CLASS": {}` in `data.js`.
-
-The paths above are written relative to this location.
-
-> Data (**facoweb** root): `doc/faco-code/data.js`  
-> Syntax Data (**facoweb** root): `doc/faco-code/syntax-data.js`  
-> Logic (**facoweb** root): `ui/faco-code/index.js`
+> [!NOTE]
+> Data: `/doc/faco-code/data.js`  
+> Syntax Data: `/doc/faco-code/syntax-data.js`  
+> Logic: `/ui/faco-code/index.js`  
 
 ---
 
 ## Data Usage
-You can copy the example from the [**Data Template**](#data-template), [**Syntax Data Template**](#syntax-data-template) section,
-or copy and edit the [`data.js`](./data.js), [`syntax-data.js`](./syntax-data.js) file directly.
-
-If you want to understand how it works, looking at [`data.js`](./data.js), [`syntax-data.js`](./syntax-data.js) might be even clearer than just reading the **Data Usage** section.
+Template files: [`data.js`](./data.js), [`systax-data.js`](./syntax-data.js).
 
 > [!NOTE]
-> Don’t forget the comma `,` when adding more items.
-> - "first" -> "first", "second"
-> - "First": {} -> "First": {}, "Second": {}
->
-> Relative paths are resolved based on the `HTML` file location, not `data.js`.
-> - `url("./relative/path.svg")`
-> - `link: "./relative/path/"`
+> Relative paths are base on `index.html`, (e.g., `url("./relative/path.svg")`, `link: "./relative/path/"`).  
 
 ---
 
-### codeData
-Example `index.html`:
+### Code Data
+For example: `index.html`:
 ```html
 <faco-code class="code-1"></faco-code>
 <faco-code class="code-2"></faco-code>
 ```
-> The `class="code-1"` in `index.html` **MUST** match a key `"code-1": {}` in `data.js`.
 
-```javascript
+> [!NOTE]
+> The `class="code-1"` in `index.html`, must match key `"code-1": {}` in `data.js`.
+
+```js
 "code-1": {
-	fileName: "file.name",
-	syntax: "syntax-SYNTAX_1",
-	code: String.raw`code_line_1
-someFunction() {
-	decimal = 111;
-	str = "This is code-1";
-}`
+    fileName: "file.name",
+    syntax: "syntax-SYNTAX_1",
+    code: String.raw`someFunction() {
+    decimal = 111;
+    str = "This is code-1";
+}`,
 },
 "code-2": {
-	fileName: "file.name",
-	syntax: "syntax-SYNTAX_2",
-	code: String.raw`code_line_1
-someFunction() {
-	decimal = 222;
-	str = "This is code-2";
-}`
-}
-// add more CODE_CLASS
+    fileName: "file.name",
+    syntax: "syntax-SYNTAX_2",
+    code: String.raw`someFunction() {
+    decimal = 222;
+    str = "This is code-2";
+}`,
+},
+/* Add more CODE_CLASS here. */
 ```
 
-The `"code-1"` key name is already define in `index.html`.	
+The `code-1` key name defined in `index.html`.
+Syntax value like `syntax-SYNTAX_1` match key in `syntax-data.js`.
 
-The `syntax` field value `"syntax-SYNTAX"` match key in `syntax-data.js`	
-
-The `code` field **MUST NOT** be indented to match the data structure.
-Write it with no leading indent, and handle indentation inside the code content itself.
-Code lines **SHOULD** be indented with spaces.
-Or you can modify `.view-content { tab-size: 2; }` in `ui/faco-code/index.css`.
-Default `tab-size` is 2.
+Support modifying tab size to `.view-content { tab-size: 2; }` in `/ui/faco-code/index.css`.
+Default `tab-size` is `2` for mobile users.
 
 ---
 
-### codeColor
-Add color in `ui/faco-code/index.css`.	
-Example:
+### Code Color
+Add color definition, in `/ui/faco-code/index.css`. 
+For example:
 ```css
 .color-red: { color: #ff0000; }
-.color-green: {color: #00ff00; }
+.color-green: { color: #00ff00; }
 .color-blue: { color: #0000ff; }
 ```
 
-Connect:
-```javascript
+For example to connect color, in `syntax-data.js`:
+```js
 const FacoCodeColor = {
-	red: `<span class="color-red">$&</span>`,
-	green: `<span class="color-green">$&</span>`,
-	blue: `<span class="color-blue">$&</span>`
-	// add more colors
+    red: `<span class="color-red">$&</span>`,
+    green: `<span class="color-green">$&</span>`,
+    blue: `<span class="color-blue">$&</span>`,
+    /* Add more colors here. */
 };
 ```
 
 ---
 
-### syntaxData
-```javascript
+### Syntax Data
+```js
 "syntax-SYNTAX_1": {
-	split: new RegExp(String.raw`".*?(?<!\\)"`, "gm"),
+    split: new RegExp(String.raw`".*?(?<!\\)"`, "gm"),
 
-	pattern: {
-		NUM: new RegExp(String.raw`\b\d+\b`, "g"),
-		FUNC: new RegExp(String.raw`\b(${[
-			"testFunc", "catchMe"
-		].join("|")})\b`, "g")
-		// add more patterns
-	},
+    pattern: {
+        NUM: new RegExp(String.raw`\b\d+\b`, "g"),
+        FUNC: new RegExp(String.raw`\b(${[
+            "testFunc", "catchMe"
+        ].join("|")})\b`, "g"),
+        /* Add more patterns here. */
+    },
 
-	syntaxRender(facoCode) {}
+    syntaxRender(facoCode) {},
 },
 
+/* For example */
 "syntax-SYNTAX_2": {
-	split: new RegExp(String.raw`[CUSTOM]`, "gm"),
+    split: new RegExp(String.raw`[CUSTOM]`, "gm"),
 
-	pattern: {
-		[PATTERN_1]: new RegExp(String.raw`[CUSTOM]`, "g"),
-		[PATTERN_2]: new RegExp(String.raw`\b(${[
-			"[CUSTOM]", "[CUSTOM]"
-		].join("|")})\b`, "g"),
-		[PATTERN_3]: new RegExp(String.raw`\b(${[
-			"[CUSTOM]"
-		].join("|")})\b`, "g"),
-		// add more patterns
-	},
+    pattern: {
+        [PATTERN_1]: new RegExp(String.raw`[CUSTOM]`, "g"),
+        [PATTERN_2]: new RegExp(String.raw`\b(${[
+            "[CUSTOM]", "[CUSTOM]"
+        ].join("|")})\b`, "g"),
+        [PATTERN_3]: new RegExp(String.raw`\b(${[
+            "[CUSTOM]"
+        ].join("|")})\b`, "g"),
+        /* Add more patterns here. */
+    },
 
-	syntaxRender(facoCode) {}
-}
-// add more syntax data
-```
-
-The `split` field using `syntaxRender()`.
-
-How to `pattern: {}` use in `syntaxRender()` with `"syntax-SYNTAX_2"` Example:
-```javascript
-parts[i] = parts[i].replace(pattern.[PATTERN_1], color.red);
-parts[i] = parts[i].replace(pattern.[PATTERN_2], color.green);
-parts[i] = parts[i].replace(pattern.[PATTERN_3], color.blue);
+    syntaxRender(facoCode) {},
+},
+/* Add more syntax data here. */
 ```
 
 ---
 
-### syntaxRender
-```javascript
+### Syntax Render
+```js
 syntaxRender(facoCode) {
-	const pattern = this.pattern;
-	const color = FacoCodeColor;
+    const pattern = this.pattern;
+    const color = FacoCodeColor;
 
-	const viewContent = facoCode.shadowRoot.querySelector(".view-content");
-	const getText = viewContent.innerHTML;
-	const parts = getText.split(this.split);
-	for (let i = 0; i < parts.length; i++) {
+    const viewContent = facoCode.shadowRoot.querySelector(".view-content");
+    const getText = viewContent.innerHTML;
+    const parts = getText.split(this.split);
+    for (let i = 0; i < parts.length; i++) {
 
-		// === MODIFY start ===
-		if (parts[i].startsWith("\"")) {
-			parts[i] = parts[i].replace(parts[i], color.green);
-			// add more starts with `"` patterns
-		} else { // add more conditional (e.g., `else if (parts[i].startWith("//"))`)
-			parts[i] = parts[i].replace(pattern.NUM, color.red);
-			parts[i] = parts[i].replace(pattern.FUNC, color.blue);
-			// add more patterns
-		}
-		// === MODIFY end ===
+        /* === MODIFY start === */
+        /* Add more conditional (e.g., else if (parts[i].startWith("//")) {} ). */
+        if (parts[i].startsWith("\"")) {
+            parts[i] = parts[i].replace(parts[i], color.green);
+            /* Add more patterns here, for starts with '"'. */
+        } else {
+            parts[i] = parts[i].replace(pattern.NUM, color.red);
+            parts[i] = parts[i].replace(pattern.FUNC, color.blue);
+            /* Add more patterns here. */
+        }
+        /* === MODIFY end === */
 
-	}
-	viewContent.innerHTML = parts.join("");
-}
+    }
+    viewContent.innerHTML = parts.join("");
+},
 ```
 
 ---
 
 ## Data Template
-```javascript
+```js
 const FacoCodeData = {
-	"CODE_CLASS": {
-		fileName: "file.name",
-		syntax: "syntax-SYNTAX",
-		code: String.raw`code_line_1
+    "CODE_CLASS": {
+        fileName: "file.name",
+        syntax: "syntax-SYNTAX",
+        code: String.raw`code_line_1
 someFunction() {
-	decimal = 123;
-	str = "String";
+    decimal = 123;
+    str = "String";
 }`
-	}
-	// add more
+    },
+    /* Add more CODE_CLASS here. */
 };
 ```
-
----
-
-## Color Data Template
-```javascript
-const FacoCodeColor = {
-	red: `<span class="color-red">$&</span>`,
-	green: `<span class="color-green">$&</span>`,
-	blue: `<span class="color-blue">$&</span>`
-	// add more
-};
-```
-> [!NOTE]
-> Recommend copy `FacoCodeColor` in `syntax-data.js` file.
-Because all color(`color-*`) values in `index.css` are already mapped in `FacoCodeColor` from `syntax-data.js`.
 
 ---
 
 ## Syntax Data Template
-```javascript
+```js
+const FacoCodeColor = {
+    red: `<span class="color-red">$&</span>`,
+    green: `<span class="color-green">$&</span>`,
+    blue: `<span class="color-blue">$&</span>`,
+    /* Add more color here. */
+};
+
 const FacoCodeSyntaxData = {
-	"syntax-SYNTAX": {
-		split: new RegExp(String.raw`".*?(?<!\\)"`, "gm"),
+    "syntax-SYNTAX": {
+        split: new RegExp(String.raw`".*?(?<!\\)"`, "gm"),
 
-		pattern: {
-			NUM: new RegExp(String.raw`\b\d+\b`, "g"),
-			FUNC: new RegExp(String.raw`\b(${[
-				"testFunc"
-			].join("|")})\b`, "g")
-			// add more
-		}
-		syntaxRender(facoCode) {
-			const pattern = this.pattern;
-			const color = FacoCodeColor;
+        pattern: {
+            NUM: new RegExp(String.raw`\b\d+\b`, "g"),
+            FUNC: new RegExp(String.raw`\b(${[
+                "testFunc"
+            ].join("|")})\b`, "g"),
+            /* Add more patterns here. */
+        },
 
-			const viewContent = facoCode.shadowRoot.querySelector(".view-content");
-			const getText = viewContent.innerHTML;
-			const parts = getText.split(this.split);
-			for (let i = 0; i < parts.length; i++) {
+        syntaxRender(facoCode) {
+            const pattern = this.pattern;
+            const color = FacoCodeColor;
 
-				/* === MODIFY start === */
-				if (parts[i].startsWith("\"")) {
-					parts[i] = parts[i].replace(parts[i], color.green);
+            const viewContent = facoCode.shadowRoot.querySelector(".view-content");
+            const getText = viewContent.innerHTML;
+            const parts = getText.split(this.split);
+            for (let i = 0; i < parts.length; i++) {
 
-				} else {
-					parts[i] = parts[i].replace(pattern.NUM, color.lightBlue);
-					parts[i] = parts[i].replace(pattern.FUNC, color.orange);
-				}
-				/* === MODIFY end === */
+                /* === MODIFY start === */
+                if (parts[i].startsWith("\"")) {
+                    parts[i] = parts[i].replace(parts[i], color.green);
 
-			}
-			viewContent.innerHTML = parts.join("");
-		}
-	}
-	// add more
+                } else {
+                    parts[i] = parts[i].replace(pattern.NUM, color.lightBlue);
+                    parts[i] = parts[i].replace(pattern.FUNC, color.orange);
+                }
+                /* === MODIFY end === */
+
+            }
+            viewContent.innerHTML = parts.join("");
+        },
+    },
+    /* add more synatx here. */
 };
 ```
 

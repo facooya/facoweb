@@ -1,14 +1,9 @@
 /* Maintained by Facooya and Fanone Facooya, 2025-2026 */
 
-/* NOTE
- * FacoCodeData reference: "README.md"
- * Path from facoweb root: "doc/faco-code/README.md"
- */
-
 const FacoCodeData = {
-	"faco-c": { /* define: <faco-code class="faco-c"></faco-code> */
+	"faco-c": {
 		fileName: "file_name.c",
-		syntax: "syntax-c", /* define: syntax-data.js */
+		syntax: "syntax-c",
 		code: String.raw`#include <stdio.h>
 
 int main() {
@@ -18,7 +13,7 @@ int main() {
 	line
 	comment */
 
-	/* comment syntax text */int testNumber = 10;// comment syntax test
+	/* comment syntax test */int testNumber = 10;// comment syntax test
 	int binary = 0b0101;
 	int octal = 0o1234;
 	int decimal = 10;
@@ -66,6 +61,6 @@ int main() {
 
 	return 0;
 }`
-	}
-	// add more
+	},
+	/* Add more CODE_CLASS here. */
 };

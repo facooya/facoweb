@@ -1,10 +1,5 @@
 /* Maintained by Facooya and Fanone Facooya, 2025-2026 */
 
-/* NOTE
- * FacoCodeSyntaxData and FacoCodeColor reference: "README.md"
- * Path from facoweb root: "doc/faco-code/README.md"
- */
-
 const FacoCodeColor = {
 	gray: `<span class="color-gray">$&</span>`,
 	red: `<span class="color-red">$&</span>`,
@@ -20,8 +15,8 @@ const FacoCodeColor = {
 	darkYellow: `<span class="color-dark-yellow">$&</span>`,
 	purple: `<span class="color-purple">$&</span>`,
 	pink: `<span class="color-pink">$&</span>`,
-	brown: `<span class="color-brown">$&</span>`
-	// add more colors
+	brown: `<span class="color-brown">$&</span>`,
+	/* Add more colors here. */
 };
 
 const FacoCodeSyntaxData = {
@@ -49,8 +44,8 @@ const FacoCodeSyntaxData = {
 			socket: new RegExp(String.raw`\b(${[
 				"socket", "setsockopt", "bind", "listen", "accept", "connect", "close",
 				"read", "write", "sendmsg", "recvmsg"
-			].join("|")})\b`, "g")
-			// add more patterns
+			].join("|")})\b`, "g"),
+			/* Add more patterns here. */
 		},
 
 		syntaxRender(facoCode) {
@@ -61,32 +56,39 @@ const FacoCodeSyntaxData = {
 			const getText = viewContent.innerHTML;
 			const parts = getText.split(this.split);
 			for (let i = 0; i < parts.length; i++) {
-				
+
+        		/* === MODIFY start === */
+ 				/* Add more conditionals, like 'else if (parts[i].startsWith()) {}'. */
 				if (parts[i].startsWith("\"") || parts[i].startsWith("'")) {
 					parts[i] = parts[i].replace(pattern.escapeSequence, color.lightGreen);
 					parts[i] = parts[i].replace(parts[i], color.green);
+					/* Add more replaces here. */
 
 				} else if (parts[i].startsWith("/*") || parts[i].startsWith("//")) {
 					parts[i] = parts[i].replace(parts[i], color.darkGreen);
+					/* Add more replaces here. */
 
 				} else if (parts[i].startsWith("#")) {
 					parts[i] = parts[i].replace(parts[i], color.gray);
+					/* Add more replaces here. */
 
 				} else if (parts[i].startsWith("&lt;")) {
 					parts[i] = parts[i].replace(parts[i], color.red);
+					/* Add more replaces here. */
 
-				} else { // add more `else if (parts[i].startsWith())`
+				} else {
 					parts[i] = parts[i].replace(pattern.type, color.orange);
 					parts[i] = parts[i].replace(pattern.number, color.lightBlue);
 					parts[i] = parts[i].replace(pattern.stdio, color.blue);
 					parts[i] = parts[i].replace(pattern.socket, color.blue);
 					parts[i] = parts[i].replace(pattern.control, color.purple);
-					// add more replaces
+					/* Add more replaces here. */
 				}
+        		/* === MODIFY end === */
 
 			}
 			viewContent.innerHTML = parts.join("");
-		}
+		},
 	},
 
 	"syntax-cpp": {
@@ -111,8 +113,8 @@ const FacoCodeSyntaxData = {
 			iostream: new RegExp(String.raw
 				`\b(${[
 					"cout", "cin", "endl"
-				].join("|")})\b`, "g")
-			// add more patterns
+				].join("|")})\b`, "g"),
+			/* Add more patterns here */
 		},
 
 		syntaxRender(facoCode) {
@@ -124,30 +126,37 @@ const FacoCodeSyntaxData = {
 			const parts = getText.split(this.split);
 			for (let i = 0; i < parts.length; i++) {
 
+        		/* === MODIFY start === */
+ 				/* Add more conditionals, like 'else if (parts[i].startsWith()) {}'. */
 				if (parts[i].startsWith("\"") || parts[i].startsWith("'")) {
 					parts[i] = parts[i].replace(pattern.escapeSequence, color.lightGreen);
 					parts[i] = parts[i].replace(parts[i], color.green);
+					/* Add more replaces here. */
 
 				} else if (parts[i].startsWith("/*") || parts[i].startsWith("//")) {
 					parts[i] = parts[i].replace(parts[i], color.darkGreen);
+					/* Add more replaces here. */
 
 				} else if (parts[i].startsWith("#")) {
 					parts[i] = parts[i].replace(parts[i], color.gray);
+					/* Add more replaces here. */
 
 				} else if (parts[i].startsWith("&lt;")) {
 					parts[i] = parts[i].replace(parts[i], color.red);
+					/* Add more replaces here. */
 
-				} else { // add more `else if (parts[i].startsWith())`
+				} else {
 					parts[i] = parts[i].replace(pattern.type, color.orange);
 					parts[i] = parts[i].replace(pattern.number, color.lightBlue);
 					parts[i] = parts[i].replace(pattern.iostream, color.blue);
 					parts[i] = parts[i].replace(pattern.control, color.purple);
-					// add more replaces
+					/* Add more replaces here. */
 				}
+        		/* === MODIFY end === */
 
 			}
 			viewContent.innerHTML = parts.join("");
-		}
-	}
-	// add more syntaxes
+		},
+	},
+	/* Add more syntaxes here. */
 };
