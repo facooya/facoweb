@@ -4,36 +4,19 @@
 <script src="./data.js" defer></script>
 <script type="module" src="../../ui/faco-header/index.js"></script>
 ```
-Just add 3 lines in your HTML:
-1. Add custom tag
-2. Add data script
-3. Add logic script
 
-The paths above are written relative to this location.
-
-> Data (**facoweb** root): `doc/faco-header/data.js`  
-> Logic (**facoweb** root): `ui/faco-header/index.js`
+> [!TIP]
+> Data: `/doc/faco-header/data.js`  
+> Logic: `/ui/faco-header/index.js`  
 
 ---
 
 ## Data Usage
-You can copy the example from the [**Data Template**](#data-template) section,
-or copy and edit the [`data.js`](./data.js) file directly.
-
-If you want to understand how it works, looking at [`data.js`](./data.js) might be even clearer than just reading the **Data Usage** section.
-
-> [!NOTE]
-> Don’t forget the comma `,` when adding more items.
-> - "first" -> "first", "second"
-> - "First": {} -> "First": {}, "Second": {}
->
-> Relative paths are resolved based on the `HTML` file location, not `data.js`.
-> - `url("./relative/path.svg")`
-> - `link: "./relative/path/"`
+Template file: [`data.js`](./data.js).
 
 ---
 
-### logoData
+### Logo Data
 ```javascript
 logoData: {
 	link: "/",
@@ -42,56 +25,59 @@ logoData: {
 		"main icon": {
 			url: `url("./icons/triangle.svg")`,
 			width: "24px",
-			height: "24px", // optional
-			marginRight: "8px" // optional
+            /* Optional 'height' and 'marginRight'. */
+			height: "24px",
+			marginRight: "8px",
 		},
 		"main logo": {
 			url: `url("./icons/octagon-5w.svg")`,
-			width: "120px"
-		}
-		// add more logo items
-	}
-}
+			width: "120px",
+		},
+        /* Add more logo items here. */
+	},
+},
 ```
-The `url` field **MUST** use an `.svg` file.
-**Optional** lines can be removed.
-If `(optional) height` is missing, `logoData.height` is used instead.
-If `(optional) marginRight` is missing, it usually behaves like 0.
+- The `url` field must use `.svg` extension.
+
+> [!NOTE]
+> Note that for optional field:  
+> If `items.height` is missing, it will equal to `logoData.height`.  
+> If `items.marginRight` is missing, it will equal to zero.  
 
 ---
 
-### mainMenuData
+### Main Menu Data
 ```javascript
 mainMenuData: {
 	"Main menu 1": {
 		"Item 1-1": "#item-1-1",
-		"Item 1-2": "#item-1-2"
-		// add more sub items
+		"Item 1-2": "#item-1-2",
+		/* Add more sub items here. */
 	},
 	"Main menu 2": {
-		"Item 2-1": "#item-2-1"
-		// add more sub items
-	}
-	// add more items
-}
+		"Item 2-1": "#item-2-1",
+		/* Add more sub items here. */
+	},
+	/* Add more items here. */
+},
 ```
 
 ---
 
-### drawerMenuData
+### Drawer Menu Data
 ```javascript
 drawerMenuData: {
 	"Drawer menu 1": {
-		"Item 1-1": "#item-1-1"
-		// add more sub items
+		"Item 1-1": "#item-1-1",
+		/* Add more sub items here. */
 	},
 	"Drawer menu 2": {
 		"Item 2-1": "#item-2-1",
-		"Item 2-2": "#item-2-2"
-		// add more sub items
-	}
-	// add more items
-}
+		"Item 2-2": "#item-2-2",
+		/* Add more sub items here. */
+	},
+	/* Add more items here. */
+},
 ```
 
 ---
@@ -106,28 +92,28 @@ const FacoHeaderData = {
 			"main logo": {
 				url: `url("./icons/octagon-5w.svg")`,
 				width: "120px",
-				height: "24px", // optional
-				marginRight: "8px" // optional
-			}
-			// add more
-		}
+				height: "24px",
+				marginRight: "8px",
+			},
+            /* Add more logo items here. */
+		},
 	},
 
 	mainMenuData: {
 		"Main menu 1": {
-			"Item 1-1": "#item-1-1"
-			// add more
-		}
-		// add more
+			"Item 1-1": "#item-1-1",
+			/* Add more sub items here. */
+		},
+		/* Add more items here. */
 	},
 
 	drawerMenuData: {
 		"Drawer menu 1": {
-			"Item 1-1": "#item-1-1"
-			// add more
-		}
-		// add more
-	}
+			"Item 1-1": "#item-1-1",
+			/* Add more sub items here. */
+		},
+		/* Add more items here. */
+	},
 };
 ```
 

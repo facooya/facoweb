@@ -1,10 +1,5 @@
 /* Maintained by Facooya and Fanone Facooya, 2025-2026 */
 
-/* NOTE
- * FacoHeaderData reference: "README.md"
- * Path from facoweb root: "doc/faco-header/README.md"
- */
-
 const FacoHeaderData = {
 	logoData: {
 		link: "/",
@@ -13,20 +8,21 @@ const FacoHeaderData = {
 			"main icon": {
 				url: `url("./icons/octagon-2w.svg")`,
 				width: "48px",
-				height: "24px", // optional
-				marginRight: "8px" // optional
+				height: "24px",
+				marginRight: "8px",
 			},
 			"middle": {
 				url: `url("./icons/triangle.svg")`,
 				width: "8px",
 				height: "8px",
-				marginRight: "8px"
+				marginRight: "8px",
 			},
 			"main logo": {
 				url: `url("./icons/octagon-5w.svg")`,
-				width: "120px"
-			}
-		}
+				width: "120px",
+			},
+            /* Add more logo items here. */
+		},
 	},
 
 	mainMenuData: {
@@ -37,34 +33,41 @@ const FacoHeaderData = {
 			"Item 1-4": "#item-1-4",
 			"Item 1-5": "#item-1-5",
 			"Item 1-6": "#item-1-6",
-			"Item 1-7": "#item-1-7"
+			"Item 1-7": "#item-1-7",
+		    /* Add more sub items here. */
 		},
 
 		"Main menu 2": {
-			"Item 2-1": "#item-2-1"
+			"Item 2-1": "#item-2-1",
+		    /* Add more sub items here. */
 		},
 
 		"Main menu 3": {
 			"Item 3-1": "#item-3-1",
 			"Item 3-2": "#item-3-2",
-			"Item 3-3": "#item-3-3"
+			"Item 3-3": "#item-3-3",
+		    /* Add more sub items here. */
 		},
 
 		"Main menu 4": {
-			"Item 4-1": "#item-4-1"
-		}
+			"Item 4-1": "#item-4-1",
+		    /* Add more sub items here. */
+		},
+	    /* Add more items here. */
 	},
 
 	drawerMenuData: {
 		"Drawer menu 1": {
 			"Item 1-1": "#",
-			"Item 1-2": "#"
+			"Item 1-2": "#",
+		    /* Add more sub items here. */
 		},
 
 		"Drawer menu 2": {
 			"Item 2-1": "#",
 			"Item 2-2": "#",
-			"Item 2-3": "#"
+			"Item 2-3": "#",
+		    /* Add more sub items here. */
 		},
 
 		"Drawer menu 3": {
@@ -73,7 +76,9 @@ const FacoHeaderData = {
 			"Item 3-3": "#",
 			"Item 3-4": "#",
 			"Item 3-5": "#",
-			"Item 3-6": "#"
-		}
-	}
+			"Item 3-6": "#",
+		    /* Add more sub items here. */
+		},
+	    /* Add more items here. */
+	},
 };

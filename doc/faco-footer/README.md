@@ -8,7 +8,7 @@ Add tag and related scripts:
 
 > [!TIP]
 > Data: `/doc/faco-footer/data.js`  
-> Logic: `/ui/faco-footer/index.js`
+> Logic: `/ui/faco-footer/index.js`  
 
 ---
 
