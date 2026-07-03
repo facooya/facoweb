@@ -18,7 +18,6 @@
 - Apply svg icons to code tools wide/copy.
 
 # Misc
-- Add full demo site.
 - Considering new component `faco-output`?
 
 ---

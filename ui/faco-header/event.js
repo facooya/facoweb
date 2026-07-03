@@ -265,6 +265,11 @@ const FacoHeaderEvent = {
 			}
 			drawerMenu.classList[action](gridIconActive);
 
+			const facoFooter = document.querySelector("faco-footer");
+			if (facoFooter && screenType !== 1) {
+				facoFooter.classList[action](gridIconActive);
+			}
+
 			gridIcon.dataset.isActive = shouldActive;
 		},
 

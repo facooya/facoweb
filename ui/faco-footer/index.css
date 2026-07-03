@@ -16,6 +16,10 @@
 	transition: margin-right 300ms ease;
 }
 
+:host(.grid-icon-active) {
+	margin-right: 320px !important;
+}
+
 .explore {
 	display: flex;
 	flex-wrap: wrap;
