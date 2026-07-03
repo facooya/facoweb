@@ -57,8 +57,8 @@ const FacoCodeSyntaxData = {
 			const parts = getText.split(this.split);
 			for (let i = 0; i < parts.length; i++) {
 
-        		/* === MODIFY start === */
- 				/* Add more conditionals, like 'else if (parts[i].startsWith()) {}'. */
+				/* === MODIFY start === */
+				/* Add more conditionals, like 'else if (parts[i].startsWith()) {}'. */
 				if (parts[i].startsWith("\"") || parts[i].startsWith("'")) {
 					parts[i] = parts[i].replace(pattern.escapeSequence, color.lightGreen);
 					parts[i] = parts[i].replace(parts[i], color.green);
@@ -84,7 +84,7 @@ const FacoCodeSyntaxData = {
 					parts[i] = parts[i].replace(pattern.control, color.purple);
 					/* Add more replaces here. */
 				}
-        		/* === MODIFY end === */
+				/* === MODIFY end === */
 
 			}
 			viewContent.innerHTML = parts.join("");
@@ -126,8 +126,8 @@ const FacoCodeSyntaxData = {
 			const parts = getText.split(this.split);
 			for (let i = 0; i < parts.length; i++) {
 
-        		/* === MODIFY start === */
- 				/* Add more conditionals, like 'else if (parts[i].startsWith()) {}'. */
+				/* === MODIFY start === */
+				/* Add more conditionals, like 'else if (parts[i].startsWith()) {}'. */
 				if (parts[i].startsWith("\"") || parts[i].startsWith("'")) {
 					parts[i] = parts[i].replace(pattern.escapeSequence, color.lightGreen);
 					parts[i] = parts[i].replace(parts[i], color.green);
@@ -152,7 +152,7 @@ const FacoCodeSyntaxData = {
 					parts[i] = parts[i].replace(pattern.control, color.purple);
 					/* Add more replaces here. */
 				}
-        		/* === MODIFY end === */
+				/* === MODIFY end === */
 
 			}
 			viewContent.innerHTML = parts.join("");

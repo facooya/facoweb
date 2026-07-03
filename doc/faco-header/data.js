@@ -21,7 +21,7 @@ const FacoHeaderData = {
 				url: `url("./icons/octagon-5w.svg")`,
 				width: "120px",
 			},
-            /* Add more logo items here. */
+			/* Add more logo items here. */
 		},
 	},
 
@@ -34,40 +34,40 @@ const FacoHeaderData = {
 			"Item 1-5": "#item-1-5",
 			"Item 1-6": "#item-1-6",
 			"Item 1-7": "#item-1-7",
-		    /* Add more sub items here. */
+			/* Add more sub items here. */
 		},
 
 		"Main menu 2": {
 			"Item 2-1": "#item-2-1",
-		    /* Add more sub items here. */
+			/* Add more sub items here. */
 		},
 
 		"Main menu 3": {
 			"Item 3-1": "#item-3-1",
 			"Item 3-2": "#item-3-2",
 			"Item 3-3": "#item-3-3",
-		    /* Add more sub items here. */
+			/* Add more sub items here. */
 		},
 
 		"Main menu 4": {
 			"Item 4-1": "#item-4-1",
-		    /* Add more sub items here. */
+			/* Add more sub items here. */
 		},
-	    /* Add more items here. */
+		/* Add more items here. */
 	},
 
 	drawerMenuData: {
 		"Drawer menu 1": {
 			"Item 1-1": "#",
 			"Item 1-2": "#",
-		    /* Add more sub items here. */
+			/* Add more sub items here. */
 		},
 
 		"Drawer menu 2": {
 			"Item 2-1": "#",
 			"Item 2-2": "#",
 			"Item 2-3": "#",
-		    /* Add more sub items here. */
+			/* Add more sub items here. */
 		},
 
 		"Drawer menu 3": {
@@ -77,8 +77,8 @@ const FacoHeaderData = {
 			"Item 3-4": "#",
 			"Item 3-5": "#",
 			"Item 3-6": "#",
-		    /* Add more sub items here. */
+			/* Add more sub items here. */
 		},
-	    /* Add more items here. */
+		/* Add more items here. */
 	},
 };

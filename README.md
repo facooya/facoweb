@@ -26,7 +26,7 @@ Examples: `faco-tab`
 ---
 
 ## Usage
-Pick UI: `facoweb/ui/` (e.g., `faco-tab`)	
+Pick UI: `facoweb/ui/` (e.g., `faco-tab`)   
 Add to **HTML**:
 ```html
 <!-- E.g., faco-tab -->
@@ -60,7 +60,7 @@ cp facoweb/doc/faco-tab/*data.js . # Copy all '*data.js'
 rm -r facoweb/ # Remove Facoweb project
 touch test.html # Create 'test.html'
 ```
-Add to `test.html`:	 
+Add to `test.html`:  
 ```html
 <faco-tab></faco-tab>
 <script src="./data.js" defer></script>

@@ -20,16 +20,16 @@ Template file: [`data.js`](./data.js).
 ### Explore Data
 ```javascript
 exploreData: {
-	"Category 1": {
-		"link text 1-1": "#link-1-1",
-		"link text 1-2": "#link-1-2",
-		/* Add more items here. */
-	},
-	"Category 2": {
-		"link text 2-1": "#link-2-1",
-		/* Add more items here. */
-	},
-	/* Add more categories here. */
+    "Category 1": {
+        "link text 1-1": "#link-1-1",
+        "link text 1-2": "#link-1-2",
+        /* Add more items here. */
+    },
+    "Category 2": {
+        "link text 2-1": "#link-2-1",
+        /* Add more items here. */
+    },
+    /* Add more categories here. */
 },
 ```
 
@@ -39,8 +39,8 @@ exploreData: {
 ```javascript
 logoData: {},
 description: `Description.
-	new line desciprtion.
-	ignore space.`,
+    new line desciprtion.
+    ignore space.`,
 socialData: {},
 ```
 The `logoData` and `socialData` see Logo Data and Social Data sections.
@@ -61,18 +61,18 @@ The `logoData` and `linkData` see Logo Data and Link Data sections.
 In About Data and Legal Data.
 ```javascript
 logoData: {
-	link: "/",
-	height: "32px",
-	items: {
-		"sub logo": {
-			url: `url("./icons/octagon-2w.svg")`,
-			width: "64px",
+    link: "/",
+    height: "32px",
+    items: {
+        "sub logo": {
+            url: `url("./icons/octagon-2w.svg")`,
+            width: "64px",
             /* Optional: height, marginRight */
-			height: "32px",
-			marginRight: "0px",
-		},
-		/* Add more logo items here. */
-	},
+            height: "32px",
+            marginRight: "0px",
+        },
+        /* Add more logo items here. */
+    },
 },
 ```
 The `url` field must use `.svg` extension.  
@@ -88,20 +88,20 @@ The `url` field must use `.svg` extension.
 In About Data.
 ```javascript
 socialData: {
-	size: "24px",
-	gap: "24px",
-	newTab: false,
-	items: {
-		"social a": {
-			link: "#social-a",
-			url: `url("[social/a-icon.svg]")`,
-		},
-		"social b": {
-			link: "#social-b",
-			url: `url("[social/b-icon.svg]")`,
-		},
-		/* Add more social items here. */
-	},
+    size: "24px",
+    gap: "24px",
+    newTab: false,
+    items: {
+        "social a": {
+            link: "#social-a",
+            url: `url("[social/a-icon.svg]")`,
+        },
+        "social b": {
+            link: "#social-b",
+            url: `url("[social/b-icon.svg]")`,
+        },
+        /* Add more social items here. */
+    },
 },
 ```
 The `url` field must use `.svg` extension.  
@@ -113,11 +113,11 @@ The `newTab` field must be `true` or `false`.
 In Legal Data.
 ```javascript
 linkData: {
-	newTab: false,
-	items: {
-		"Legal Link Text": "#legal-link",
-		/* Add more bottom link here. */
-	},
+    newTab: false,
+    items: {
+        "Legal Link Text": "#legal-link",
+        /* Add more bottom link here. */
+    },
 },
 ```
 The `newTab` field must be `true` or `false`.  
@@ -127,70 +127,70 @@ The `newTab` field must be `true` or `false`.
 ## Data Template
 ```javascript
 const FacoFooterData = {
-	exploreData: {
-		"Category Text": {
-			"Link Text": "#link",
-			/* Add more items here. */
-		},
-		/* Add more categories here. */
-	},
+    exploreData: {
+        "Category Text": {
+            "Link Text": "#link",
+            /* Add more items here. */
+        },
+        /* Add more categories here. */
+    },
 
-	aboutData: {
-		logoData: {
-			link: "/",
-			height: "32px",
-			items: {
-				"sub logo": {
-					url: `url("./icons/octagon-2w.svg")`,
-					width: "64px",
-					height: "32px",
-					marginRight: "0px",
-				},
-				/* Add logo items here. */
-			},
-		},
+    aboutData: {
+        logoData: {
+            link: "/",
+            height: "32px",
+            items: {
+                "sub logo": {
+                    url: `url("./icons/octagon-2w.svg")`,
+                    width: "64px",
+                    height: "32px",
+                    marginRight: "0px",
+                },
+                /* Add logo items here. */
+            },
+        },
 
-		description: `Description.`,
+        description: `Description.`,
 
-		socialData: {
-			size: "24px",
-			gap: "24px",
-			newTab: false,
-			items: {
-				"social a": {
-					link: "#social-a",
-					url: `url("./icons/triangle.svg")`,
-				},
+        socialData: {
+            size: "24px",
+            gap: "24px",
+            newTab: false,
+            items: {
+                "social a": {
+                    link: "#social-a",
+                    url: `url("./icons/triangle.svg")`,
+                },
                 /* Add more social items here. */
-			},
-		},
-	},
+            },
+        },
+    },
 
-	legalData: {
-		logoData: {
-			link: "/",
-			height: "32px",
-			items: {
-				"main logo": {
-					url: `url("./icons/octagon-5w.svg")`,
-					width: "160px",
-					height: "32px",
-					marginRight: "0px",
-				},
+    legalData: {
+        logoData: {
+            link: "/",
+            height: "32px",
+            items: {
+                "main logo": {
+                    url: `url("./icons/octagon-5w.svg")`,
+                    width: "160px",
+                    height: "32px",
+                    marginRight: "0px",
+                },
                 /* Add more logo items here. */
-			},
-		},
+            },
+        },
 
-		copyright: "Copyright [YEAR] [AUTHOR]",
+        copyright: "Copyright [YEAR] [AUTHOR]",
 
-		linkData: {
-			newTab: false,
-			items: {
-				"Legal Link Text": "#legal-link",
-				/* add more bottom link here. */
-			},
-		},
-	},
+        linkData: {
+            newTab: false,
+            items: {
+                "Legal Link Text": "#legal-link",
+                /* add more bottom link here. */
+            },
+        },
+    },
 };
 ```
 

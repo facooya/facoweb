@@ -11,7 +11,7 @@ Just add 3 lines in your HTML:
 
 The paths above are written relative to this location.
 
-> Data (**facoweb** root): `doc/faco-pager/data.js`	
+> Data (**facoweb** root): `doc/faco-pager/data.js` 
 > Logic (**facoweb** root): `ui/faco-pager/index.js`
 
 ---
@@ -36,25 +36,25 @@ If you want to understand how it works, looking at [`data.js`](./data.js) might 
 ### tabs
 ```javascript
 tabs: {
-	"Tab 1": {
-		"Box 1-1": {
-			link: "#box-1-1",
-			text: "box 1-1"
-		},
-		"Box 2-1": {
-			link: "#box-1-2",
-			text: "box 1-2"
-		}
-		// add more boxes
-	},
-	"Tab 2": {
-		"Box 2-1": {
-			link: "#box-2-1",
-			text: "box 2-1"
-		}
-		// add more boxes
-	}
-	// add more tabs
+    "Tab 1": {
+        "Box 1-1": {
+            link: "#box-1-1",
+            text: "box 1-1"
+        },
+        "Box 2-1": {
+            link: "#box-1-2",
+            text: "box 1-2"
+        }
+        // add more boxes
+    },
+    "Tab 2": {
+        "Box 2-1": {
+            link: "#box-2-1",
+            text: "box 2-1"
+        }
+        // add more boxes
+    }
+    // add more tabs
 }
 ```
 
@@ -63,17 +63,17 @@ tabs: {
 ## Data Template
 ```javascript
 const FacoPagerData = {
-	title: "Title",
-	tabs: {
-		"Tab label": {
-			"Box label": {
-				link: "#link",
-				text: "preview description"
-			}
-			// add more
-		}
-		// add more
-	}
+    title: "Title",
+    tabs: {
+        "Tab label": {
+            "Box label": {
+                link: "#link",
+                text: "preview description"
+            }
+            // add more
+        }
+        // add more
+    }
 };
 ```
 

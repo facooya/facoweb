@@ -55,7 +55,7 @@ const FacoFooterData = {
 					url: `url("./icons/rectangle.svg")`,
 					width: "32px",
 				},
-		        /* Add more logo items here. */
+				/* Add more logo items here. */
 			},
 		},
 
