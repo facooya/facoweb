@@ -40,19 +40,19 @@ const FacoFooterData = {
 			height: "32px",
 			items: {
 				"sub logo": {
-					url: `url("./icons/octagon-2w.svg")`,
+					url: `url("../../assets/icons/octagon-2w.svg")`,
 					width: "64px",
 					height: "32px",
 					marginRight: "8px",
 				},
 				"small icon": {
-					url: `url("./icons/triangle.svg")`,
+					url: `url("../../assets/icons/triangle.svg")`,
 					width: "8px",
 					height: "8px",
 					marginRight: "8px",
 				},
 				"icon": {
-					url: `url("./icons/rectangle.svg")`,
+					url: `url("../../assets/icons/rectangle.svg")`,
 					width: "32px",
 				},
 				/* Add more logo items here. */
@@ -78,15 +78,15 @@ const FacoFooterData = {
 			items: {
 				"a": {
 					link: "#social-a",
-					url: `url("./icons/triangle.svg")`,
+					url: `url("../../assets/icons/triangle.svg")`,
 				},
 				"b": {
 					link: "#social-b",
-					url: `url("./icons/rectangle.svg")`,
+					url: `url("../../assets/icons/rectangle.svg")`,
 				},
 				"c": {
 					link: "#social-c",
-					url: `url("./icons/diamond.svg")`,
+					url: `url("../../assets/icons/diamond.svg")`,
 				},
 				/* Add more social items here. */
 			},
@@ -99,13 +99,13 @@ const FacoFooterData = {
 			height: "32px",
 			items: {
 				"main icon": {
-					url: `url("./icons/triangle.svg")`,
+					url: `url("../../assets/icons/triangle.svg")`,
 					width: "32px",
 					height: "32px",
 					marginRight: "12px",
 				},
 				"main logo": {
-					url: `url("./icons/octagon-5w.svg")`,
+					url: `url("../../assets/icons/octagon-5w.svg")`,
 					width: "160px",
 				},
 				/* Add more logo items here. */

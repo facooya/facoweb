@@ -8,11 +8,12 @@ Reusable web components with plain `JavaScript` and `CSS`.
 
 ## Demo
 ### Preview
-- [faco-header](https://facooya.github.io/facoweb/doc/faco-header/) – Header UI with top-bar, main-menu, and drawer-menu.
+- [faco-header](https://facooya.github.io/facoweb/doc/faco-header/) - Header UI with top-bar, main-menu, and drawer-menu.
 - [faco-footer](https://facooya.github.io/facoweb/doc/faco-footer/) - Footer UI with navigation links, description, copyright, social links and bottom links.
-- [faco-pager](https://facooya.github.io/facoweb/doc/faco-pager/) – Tab UI with page controller.
-- [faco-tab](https://facooya.github.io/facoweb/doc/faco-tab/) – Simple tab UI.
-- [faco-code](https://facooya.github.io/facoweb/doc/faco-code/) – Code viewer, support custom syntax highlighting that not easy, required skill regular expression.
+- [faco-pager](https://facooya.github.io/facoweb/doc/faco-pager/) - Tab UI with page controller.
+- [faco-tab](https://facooya.github.io/facoweb/doc/faco-tab/) - Simple tab UI.
+- [faco-code](https://facooya.github.io/facoweb/doc/faco-code/) - Code viewer, support custom syntax highlighting that not easy, required skill regular expression.
+- [faco all](https://facooya.github.io/facoweb/doc/faco-all/) - All Facoweb components in one page.
 
 ---
 

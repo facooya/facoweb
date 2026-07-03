@@ -6,19 +6,19 @@ const FacoHeaderData = {
 		height: "24px",
 		items: {
 			"main icon": {
-				url: `url("./icons/octagon-2w.svg")`,
+				url: `url("../../assets/icons/octagon-2w.svg")`,
 				width: "48px",
 				height: "24px",
 				marginRight: "8px",
 			},
 			"middle": {
-				url: `url("./icons/triangle.svg")`,
+				url: `url("../../assets/icons/triangle.svg")`,
 				width: "8px",
 				height: "8px",
 				marginRight: "8px",
 			},
 			"main logo": {
-				url: `url("./icons/octagon-5w.svg")`,
+				url: `url("../../assets/icons/octagon-5w.svg")`,
 				width: "120px",
 			},
 			/* Add more logo items here. */
