@@ -8,7 +8,7 @@ Add tag and related scripts:
 ```
 The `class="CODE_CLASS"` in `HTML`, must match key `"CODE_CLASS": {}` in `data.js`.
 
-> [!NOTE]
+> [!TIP]
 > Data: `/doc/faco-code/data.js`  
 > Syntax Data: `/doc/faco-code/syntax-data.js`  
 > Logic: `/ui/faco-code/index.js`  
@@ -17,9 +17,6 @@ The `class="CODE_CLASS"` in `HTML`, must match key `"CODE_CLASS": {}` in `data.j
 
 ## Data Usage
 Template files: [`data.js`](./data.js), [`systax-data.js`](./syntax-data.js).
-
-> [!NOTE]
-> Relative paths are base on `index.html`, (e.g., `url("./relative/path.svg")`, `link: "./relative/path/"`).  
 
 ---
 

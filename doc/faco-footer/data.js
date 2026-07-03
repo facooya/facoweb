@@ -1,16 +1,11 @@
 /* Maintained by Facooya and Fanone Facooya, 2025-2026 */
 
-/* NOTE
- * FacoFooterData reference: "README.md"
- * README (facoweb root): "doc/faco-footer/README.md"
- */
-
 const FacoFooterData = {
 	exploreData: {
 		"Category 1": {
 			"Item text 1-1": "#link-1-1",
-			"Item text 1-2": "#link-1-2"
-			// add more
+			"Item text 1-2": "#link-1-2",
+			/* Add more items here. */
 		},
 
 		"Category 2": {
@@ -18,25 +13,25 @@ const FacoFooterData = {
 			"Item text 2-2": "#link-2-2",
 			"Item text 2-3": "#link-2-3",
 			"Item text 2-4": "#link-2-4",
-			"Item text 2-5": "#link-2-5"
-			// add more
+			"Item text 2-5": "#link-2-5",
+			/* Add more itmes here. */
 		},
 
 		"Category 3": {
 			"Item text 3-1": "#link-3-1",
 			"Item text 3-2": "#link-3-2",
-			"Item text 3-3": "#link-3-3"
-			// add more
+			"Item text 3-3": "#link-3-3",
+			/* Add more itmes here. */
 		},
 
 		"Category 4": {
 			"Item text 4-1": "#link-4-1",
 			"Item text 4-2": "#link-4-2",
 			"Item text 4-3": "#link-4-3",
-			"Item text 4-4": "#link-4-4"
-			// add more
-		}
-		// add more
+			"Item text 4-4": "#link-4-4",
+			/* Add more itmes here. */
+		},
+		/* Add more categories here. */
 	},
 
 	aboutData: {
@@ -47,21 +42,21 @@ const FacoFooterData = {
 				"sub logo": {
 					url: `url("./icons/octagon-2w.svg")`,
 					width: "64px",
-					height: "32px", // optional
-					marginRight: "8px" // optional
+					height: "32px",
+					marginRight: "8px",
 				},
 				"small icon": {
 					url: `url("./icons/triangle.svg")`,
 					width: "8px",
 					height: "8px",
-					marginRight: "8px"
+					marginRight: "8px",
 				},
 				"icon": {
 					url: `url("./icons/rectangle.svg")`,
-					width: "32px"
-				}
-				// add more
-			}
+					width: "32px",
+				},
+		        /* Add more logo items here. */
+			},
 		},
 
 		description: `Long data. This is your site description.
@@ -83,19 +78,19 @@ const FacoFooterData = {
 			items: {
 				"a": {
 					link: "#social-a",
-					url: `url("./icons/triangle.svg")`
+					url: `url("./icons/triangle.svg")`,
 				},
 				"b": {
 					link: "#social-b",
-					url: `url("./icons/rectangle.svg")`
+					url: `url("./icons/rectangle.svg")`,
 				},
 				"c": {
 					link: "#social-c",
-					url: `url("./icons/diamond.svg")`
-				}
-				// add more
-			}
-		}
+					url: `url("./icons/diamond.svg")`,
+				},
+				/* Add more social items here. */
+			},
+		},
 	},
 
 	legalData: {
@@ -106,27 +101,27 @@ const FacoFooterData = {
 				"main icon": {
 					url: `url("./icons/triangle.svg")`,
 					width: "32px",
-					height: "32px", // optional
-					marginRight: "12px" // optional
+					height: "32px",
+					marginRight: "12px",
 				},
 				"main logo": {
 					url: `url("./icons/octagon-5w.svg")`,
-					width: "160px"
-				}
-				// add more
-			}
+					width: "160px",
+				},
+				/* Add more logo items here. */
+			},
 		},
 
-		copyright: "© [YEAR] [AUTHOR]",
+		copyright: "Copyright [YEAR] [AUTHOR]",
 
 		linkData: {
 			newTab: false,
 			items: {
 				"Legal 1": "#legal-link-1",
 				"Legal 2": "#legal-link-2",
-				"Legal 3": "#legal-link-3"
-				// add more
-			}
-		}
-	}
+				"Legal 3": "#legal-link-3",
+				/* Add more bottom link here. */
+			},
+		},
+	},
 };

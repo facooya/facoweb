@@ -1,100 +1,91 @@
 ## Quick Start
+Add tag and related scripts:
 ```html
 <faco-footer></faco-footer>
 <script src="./data.js" defer></script>
 <script type="module" src="../../ui/faco-footer/index.js"></script>
 ```
-Just add 3 lines in your HTML:
-1. Add custom tag
-2. Add data script
-3. Add logic script
 
-The paths above are written relative to this location.
-
-> Data (**facoweb** root): `doc/faco-footer/data.js`  
-> Logic (**facoweb** root): `ui/faco-footer/index.js`
+> [!TIP]
+> Data: `/doc/faco-footer/data.js`  
+> Logic: `/ui/faco-footer/index.js`
 
 ---
 
 ## Data Usage
-You can copy the example from the [**Data Template**](#data-template) section,
-or copy and edit the [`data.js`](./data.js) file directly.
-
-If you want to understand how it works, looking at [`data.js`](./data.js) might be even clearer than just reading the **Data Usage** section.
-
-> [!NOTE]
-> Don’t forget the comma `,` when adding more items.
-> - "first" -> "first", "second"
-> - "First": {} -> "First": {}, "Second": {}
->
-> Relative paths are resolved based on the `HTML` file location, not `data.js`.
-> - `url("./relative/path.svg")`
-> - `link: "./relative/path/"`
+Template file: [`data.js`](./data.js).
 
 ---
 
-### exploreData
+### Explore Data
 ```javascript
 exploreData: {
 	"Category 1": {
 		"link text 1-1": "#link-1-1",
-		"link text 1-2": "#link-1-2"
-		// add more link items
+		"link text 1-2": "#link-1-2",
+		/* Add more items here. */
 	},
 	"Category 2": {
-		"link text 2-1": "#link-2-1"
-		// add more link items
-	}
-	// add more categories
-}
+		"link text 2-1": "#link-2-1",
+		/* Add more items here. */
+	},
+	/* Add more categories here. */
+},
 ```
 
 ---
 
-### aboutData
+### About Data
 ```javascript
 logoData: {},
 description: `Description.
 	new line desciprtion.
 	ignore space.`,
-socialData: {}
+socialData: {},
 ```
+The `logoData` and `socialData` see Logo Data and Social Data sections.
 
 ---
 
-### legalData
+### Legal Data
 ```javascript
 logoData: {},
-copyright: "Copyright © YEAR AUTHOR",
-linkData: {}
+copyright: "Copyright [YEAR] [AUTHOR]",
+linkData: {},
 ```
+The `logoData` and `linkData` see Logo Data and Link Data sections.
 
 ---
 
-### logoData
+#### Logo Data
+In About Data and Legal Data.
 ```javascript
 logoData: {
 	link: "/",
-	height: "32px"
+	height: "32px",
 	items: {
 		"sub logo": {
 			url: `url("./icons/octagon-2w.svg")`,
 			width: "64px",
-			height: "32px", // optional
-			marginRight: "0px" // optional
-		}
-		// add more items
-	}
-}
+            /* Optional: height, marginRight */
+			height: "32px",
+			marginRight: "0px",
+		},
+		/* Add more logo items here. */
+	},
+},
 ```
-The `url` field **MUST** use an `.svg` file.
-**Optional** lines can be removed.
-If `(optional) height` is missing, `logoData.height` is used instead.
-If `(optional) marginRight` is missing, it usually behaves like 0.
+The `url` field must use `.svg` extension.  
+
+> [!NOTE]
+> Note that for optional field:  
+> If `items.height` is missing, it will equal to `logoData.height`.  
+> If `items.marginRight` is missing, it will equal to zero.  
 
 ---
 
-### socialData
+#### Social Data
+In About Data.
 ```javascript
 socialData: {
 	size: "24px",
@@ -103,32 +94,33 @@ socialData: {
 	items: {
 		"social a": {
 			link: "#social-a",
-			url: `url("[social/a-icon.svg]")`
+			url: `url("[social/a-icon.svg]")`,
 		},
 		"social b": {
 			link: "#social-b",
-			url: `url("[social/b-icon.svg]")`
-		}
-		// add more items
-	}
-}
+			url: `url("[social/b-icon.svg]")`,
+		},
+		/* Add more social items here. */
+	},
+},
 ```
-The `url` field **MUST** use an `.svg` file.
-The `newTab` field **MUST** be `true` or `false`. If `true`, the link opens in a new tab.
+The `url` field must use `.svg` extension.  
+The `newTab` field must be `true` or `false`.  
 
 ---
 
-### linkData
+#### Link Data
+In Legal Data.
 ```javascript
 linkData: {
 	newTab: false,
 	items: {
-		"Legal Link Text": "#legal-link"
-		// add more items
-	}
-}
+		"Legal Link Text": "#legal-link",
+		/* Add more bottom link here. */
+	},
+},
 ```
-The `newTab` field **MUST** be `true` or `false`. If `true`, the link opens in a new tab.
+The `newTab` field must be `true` or `false`.  
 
 ---
 
@@ -137,25 +129,25 @@ The `newTab` field **MUST** be `true` or `false`. If `true`, the link opens in a
 const FacoFooterData = {
 	exploreData: {
 		"Category Text": {
-			"Link Text": "#link"
-			// add more
-		}
-		// add more
+			"Link Text": "#link",
+			/* Add more items here. */
+		},
+		/* Add more categories here. */
 	},
 
 	aboutData: {
 		logoData: {
 			link: "/",
-			height: "32px"
+			height: "32px",
 			items: {
 				"sub logo": {
 					url: `url("./icons/octagon-2w.svg")`,
 					width: "64px",
-					height: "32px", // optional
-					marginRight: "0px" // optional
-				}
-				// add more
-			}
+					height: "32px",
+					marginRight: "0px",
+				},
+				/* Add logo items here. */
+			},
 		},
 
 		description: `Description.`,
@@ -167,37 +159,38 @@ const FacoFooterData = {
 			items: {
 				"social a": {
 					link: "#social-a",
-					url: `url("./icons/triangle.svg")`
-				}
-				// add more
-			}
-		}
+					url: `url("./icons/triangle.svg")`,
+				},
+                /* Add more social items here. */
+			},
+		},
 	},
 
 	legalData: {
 		logoData: {
 			link: "/",
-			height: "32px"
+			height: "32px",
 			items: {
 				"main logo": {
 					url: `url("./icons/octagon-5w.svg")`,
 					width: "160px",
-					height: "32px", // optional
-					marginRight: "0px" // optional
-				} // add more
-			}
+					height: "32px",
+					marginRight: "0px",
+				},
+                /* Add more logo items here. */
+			},
 		},
 
-		copyright: "© [YEAR] [AUTHOR]",
+		copyright: "Copyright [YEAR] [AUTHOR]",
 
 		linkData: {
 			newTab: false,
 			items: {
-				"Legal Link Text": "#legal-link"
-				// add more
-			}
-		}
-	}
+				"Legal Link Text": "#legal-link",
+				/* add more bottom link here. */
+			},
+		},
+	},
 };
 ```
 
