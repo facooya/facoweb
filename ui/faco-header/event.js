@@ -270,6 +270,11 @@ const FacoHeaderEvent = {
 				facoFooter.classList[action](gridIconActive);
 			}
 
+			const facoMain = document.querySelector("faco-main");
+			if (facoMain && screenType !== 1) {
+				facoMain.classList[action](gridIconActive);
+			}
+
 			gridIcon.dataset.isActive = shouldActive;
 		},
 

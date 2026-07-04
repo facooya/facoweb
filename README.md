@@ -1,25 +1,35 @@
 # Facoweb
-Reusable web components with plain `JavaScript` and `CSS`. 
+Reusable web components with plain `JavaScript` and `CSS`.
 
 **Features**
 - No build step.
 - Encapsulation.
 - Standalone every components.
 
-## Demo
+## Demonstration
 ### Preview
+**All**
+- [faco-demo](https://facooya.github.io/facoweb/doc/faco-demo/) - All Facoweb components in one page.
+
+**Header**
 - [faco-header](https://facooya.github.io/facoweb/doc/faco-header/) - Header UI with top-bar, main-menu, and drawer-menu.
+- - [faco-main](https://facooya.github.io/facoweb/doc/faco-main/) - For slide to open 'drawer-menu' on 'faco-header'.
+
+**Footer**
 - [faco-footer](https://facooya.github.io/facoweb/doc/faco-footer/) - Footer UI with navigation links, description, copyright, social links and bottom links.
+
+**Code**
+- [faco-code](https://facooya.github.io/facoweb/doc/faco-code/) - Code viewer, support custom syntax highlighting that not easy, required skill regular expression.
+
+**Tab**
 - [faco-pager](https://facooya.github.io/facoweb/doc/faco-pager/) - Tab UI with page controller.
 - [faco-tab](https://facooya.github.io/facoweb/doc/faco-tab/) - Simple tab UI.
-- [faco-code](https://facooya.github.io/facoweb/doc/faco-code/) - Code viewer, support custom syntax highlighting that not easy, required skill regular expression.
-- [faco all](https://facooya.github.io/facoweb/doc/faco-all/) - All Facoweb components in one page.
 
 ---
 
 ### Demo on Server
-Access Demo: `[server]/facoweb/doc/[ui]/`  
-Examples: `faco-tab`
+Access Demo: `[server]/facoweb/doc/[ui]/`\
+For examples: `faco-tab`
 - `http://localhost/facoweb/doc/faco-tab/`
 - `https://example.com/facoweb/doc/faco-tab/`
 - `https://example.com/facoweb/doc/faco-tab/index.html`
@@ -27,8 +37,8 @@ Examples: `faco-tab`
 ---
 
 ## Usage
-Pick UI: `facoweb/ui/` (e.g., `faco-tab`)   
-Add to **HTML**:
+Pick UI: `facoweb/ui/` (e.g., `faco-tab`).\
+Add to `html`:
 ```html
 <!-- E.g., faco-tab -->
 <faco-tab></faco-tab>
@@ -45,6 +55,7 @@ Add to **HTML**:
 ```
 For details: `facoweb/doc/[ui]/README.md`:
 - [faco-header README](doc/faco-header/README.md)
+- - [faco-main README](doc/faco-main/README.md)
 - [faco-footer README](doc/faco-footer/README.md)
 - [faco-pager README](doc/faco-pager/README.md)
 - [faco-tab README](doc/faco-tab/README.md)
@@ -61,15 +72,15 @@ cp facoweb/doc/faco-tab/*data.js . # Copy all '*data.js'
 rm -r facoweb/ # Remove Facoweb project
 touch test.html # Create 'test.html'
 ```
-Add to `test.html`:  
+Add to `test.html`:
 ```html
 <faco-tab></faco-tab>
 <script src="./data.js" defer></script>
 <script type="module" src="./faco-tab/index.js"></script>
 ```
-Test: `[server]/test.html`  
+Test: `[server]/test.html`\
 
-Support renaming UI directory without issues.  
+Support renaming UI directory without issues.
 ```bash
 mv faco-tab/ facooya-tab/
 ```
@@ -81,10 +92,10 @@ mv faco-tab/ facooya-tab/
 
 ## Directory Structure
 - **ui/** - Reusable components.
-- **doc/** - Documentation and demo.
+- **doc/** - Documentation and demonstration.
 - **assets/** - Icons and share `css` and `js`.
 
 ---
 
-> FACOWEB: Facooya Web  
+> FACOWEB: Facooya Web\
 > Maintained by Facooya and Fanone Facooya, 2026
