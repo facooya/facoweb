@@ -11,13 +11,11 @@
 
 :host {
 	display: block;
-	margin: 0 16px !important;
 }
 
 /* Title */
 .title {
 	padding: 1rem 0;
-	font-size: 1.375rem;
 	text-align: center;
 
 	user-select: none;
@@ -108,19 +106,9 @@
 @media (min-width: 768px) {}
 
 @media (min-width: 1280px) {
-	.tab-title {
+	:host {
 		max-width: 1280px;
-		margin: 0 auto;
-	}
-
-	.tab {
-		max-width: 1280px;
-		margin: 0 auto;
-	}
-
-	.panel {
-		max-width: 1280px;
-		margin: 0 auto;
+		margin: 0 auto !important;
 	}
 }
 

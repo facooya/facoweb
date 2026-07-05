@@ -25,7 +25,7 @@ const FacoTabRender = {
 		style.href = new URL("index.css", import.meta.url).href;
 
 		/* title */
-		const title = document.createElement("h1");
+		const title = document.createElement("h2");
 		title.className = "title";
 		title.textContent = FacoTabData.title;
 
