@@ -10,6 +10,8 @@ const FacoHeaderEvent = {
 		facoHeader.setTimerResize = FacoHeaderEvent.setTimerResize.bind(facoHeader);
 		facoHeader.onResize = FacoHeaderEvent.onResize.bind(facoHeader);
 		window.addEventListener("resize", facoHeader.setTimerResize);
+		facoHeader.onLoad = FacoHeaderEvent.onLoad.bind(facoHeader);
+		window.addEventListener("load", facoHeader.onLoad);
 
 		const topBar = facoHeader.shadowRoot.querySelector(".top-bar");
 		topBar.onGridIconClick = FacoHeaderEvent.TopBar.onGridIconClick.bind(facoHeader);
@@ -43,6 +45,10 @@ const FacoHeaderEvent = {
 			this.onResize,
 			200
 		);
+	},
+
+	onLoad() {
+		FacoHeaderUtils.MainMenu.updateMaxHeightSubList(this);
 	},
 
 	onResize() {

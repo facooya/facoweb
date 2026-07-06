@@ -1,4 +1,6 @@
-faco-header: mainMenu item chevron broken: visible.
+# Issues
+## Faco Header
+- Shake menu texts on sublist in main menu.
 
 ---
 

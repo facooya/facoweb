@@ -141,7 +141,7 @@ const FacoHeaderUtils = {
 			let clTopAction = "remove";
 			let clBottomAction = "remove";
 	
-			if (shouldAction) {
+			if (shouldAction && clientHeight > buffer) {
 				if (scrollTop > buffer) {
 					clTopAction = "add";
 				}
