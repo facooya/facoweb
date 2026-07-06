@@ -485,6 +485,10 @@ const FacoHeaderEvent = {
 						FacoHeaderUtils.MainMenu.updateTopChevronBottomWrapper(this, item);
 						FacoHeaderUtils.MainMenu.updateScrollSubList(item, 1);
 					}
+				} else {
+					if (Number(this.dataset.screenType) >= 2) {
+						FacoHeaderUtils.MainMenu.updateScrollSubList(item, 0);
+					}
 				}
 
 				if (Number(this.dataset.screenType) === 1) {
