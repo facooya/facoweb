@@ -1,6 +1,4 @@
 # Issues
-## Faco Header
-- Shake menu texts on sublist in main menu.
 
 ---
 
