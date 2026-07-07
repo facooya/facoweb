@@ -47,7 +47,7 @@ const FacoHeaderUtils = {
 			const subList = item.querySelector(".sub-list");
 
 			const gridIcon = facoHeader.shadowRoot.querySelector(".top-bar .grid-icon");
-			if (!Number(gridIcon.dataset.isActive)) {
+			if (!Number(gridIcon.dataset.isActive) || Number(facoHeader.dataset.screenType) !== 3) {
 				subList.classList.remove(alignX_Right);
 				return;
 			}
@@ -114,6 +114,7 @@ const FacoHeaderUtils = {
 				const topBar = facoHeader.shadowRoot.querySelector(".top-bar");
 				const buffer = 16;
 				const topBarHeight = topBar.clientHeight;
+
 				let calcMaxHeight = window.innerHeight - (topBarHeight + buffer);
 				subLists.forEach(subList => {
 					subList.style.maxHeight = `${calcMaxHeight}px`;

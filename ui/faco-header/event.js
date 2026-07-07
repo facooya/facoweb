@@ -86,6 +86,9 @@ const FacoHeaderEvent = {
 				FacoHeaderUtils.MainMenu.updateMaxHeightSubList(this);
 			}
 
+			const lastIndex = mainMenuItems.length - 1;
+			FacoHeaderUtils.MainMenu.setAlignX_RightItem(this, mainMenuItems[lastIndex]);
+
 			/* drawer menu */
 			const drawerMenu = this.shadowRoot.querySelector(".drawer-menu");
 			const drawerMenuItems = drawerMenu.querySelectorAll(".item");
