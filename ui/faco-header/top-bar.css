@@ -130,12 +130,14 @@
 .top-bar .overlay {
 	position: fixed;
 	top: 64px;
-	left: -20%;
+	left: round(nearest, -20%, 1px);
 	z-index: 100;
-	width: 20%;
+	width: round(nearest, 20%, 1px);
 	height: calc(100% - 64px);
 	background-color: #77777777;
-	transition: left 300ms ease;
+
+	transform: translateX(0);
+	transition: transform 300ms ease;
 
 	overflow: scroll;
 	overscroll-behavior: contain;
@@ -157,7 +159,6 @@
 		grid-template-rows: 64px 64px;
 		grid-template-areas: "logo grid-icon" ". .";
 		gap: 0 32px;
-		transition: gap 300ms ease;
 	}
 
 	.top-bar .hamburger-icon {
@@ -194,40 +195,32 @@
 }
 
 /* For Mst
- * Default state: .htbc-overlay { left: -20%; }
+ * Default state: .htbc-overlay { left: round(nearest, -20%, 1px); }
  * Class list: left-close */
 .top-bar .overlay.right-open {
-	left: 80%;
+	transform: translateX(100cqw);
 }
 
 .top-bar .overlay.right-close {
-	left: 100%;
+	transform: translateX(120cqw);
 }
 
 .top-bar .overlay.left-open {
-	left: 0%;
+	transform: translateX(20cqw);
 }
 
 /* For Mst
  * Default state: .hdnc { left: -80%; }
  */
 .main-menu.hamburger-icon-active {
-	left: 0;
+	transform: translateX(100%);
 }
 
 /* Default state: .hdnc { right: -80%; || right: -320px }
  * Mst: -80%, Tdst: -320px
  */
 .drawer-menu.grid-icon-active {
-	right: 0;
-}
-
-.main.grid-icon-active {
-	margin-right: 320px;
-}
-
-.footer.grid-icon-active {
-	margin-right: 320px;
+	transform: translateX(-100%);
 }
 
 .main-menu.grid-icon-active {

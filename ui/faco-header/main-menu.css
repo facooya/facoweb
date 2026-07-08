@@ -23,16 +23,16 @@
 	/* Position */
 	position: fixed;
 	top: 64px;
-	left: -80%;
+	left: round(nearest, -80%, 1px);
 	z-index: 100;
 
 	/* Layout */
-	width: 80%;
+	width: round(nearest, 80%, 1px);
 	height: calc(100% - 64px);
 
 	/* Visual */
 	background: #1d1d1d;
-	transition: left 300ms;
+	transition: transform 300ms ease;
 
 	/* Scroll */
 	overflow-y: scroll;

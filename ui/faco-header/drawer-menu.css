@@ -13,16 +13,16 @@
 	/* Position */
 	position: fixed;
 	top: 64px;
-	right: -80%;
+	right: round(nearest, -80%, 1px);
 	z-index: 99;
 
 	/* Layout */
-	width: 80%;
+	width: round(nearest, 80%, 1px);
 	height: calc(100% - 64px);
 
 	/* Visual */
 	background: #1d1d1d;
-	transition: right 300ms;
+	transition: transform 300ms ease;
 
 	/* Scroll */
 	overflow-y: scroll;
@@ -208,9 +208,9 @@
 @media (min-width: 768px) {
 	.drawer-menu {
 		top: 128px;
+		right: -320px;
 		height: calc(100% - 128px);
 		width: 320px;
-		right: -320px;
 	}
 
 	.drawer-menu .fog-top {
