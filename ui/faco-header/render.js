@@ -176,8 +176,10 @@ const FacoHeaderRender = {
 
 	drawerMenuRender(facoHeader) {
 		const drawerMenuData = FacoHeaderData.drawerMenuData;
-		const drawerMenu = document.createElement("nav");
+		const drawerMenu = document.createElement("div");
 		drawerMenu.className = "drawer-menu";
+		const content = document.createElement("nav");
+		content.className = "content";
 
 		/* drawerMenu: List */
 		const list = document.createElement("ul");
@@ -237,7 +239,8 @@ const FacoHeaderRender = {
 		const scrollLock = document.createElement("div");
 		scrollLock.className = "scroll-lock";
 
-		drawerMenu.append(list, fogTop, fogBottom, scrollLock);
+		content.append(list, scrollLock);
+		drawerMenu.append(content, fogTop, fogBottom);
 		facoHeader.shadowRoot.append(drawerMenu);
 	}
 };

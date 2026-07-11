@@ -276,6 +276,14 @@ const FacoHeaderUtils = {
 	},
 
 	DrawerMenu: {
+		updateFogHeight(drawerMenu) {
+			const fogTop = drawerMenu.querySelector(".fog-top");
+			const fogBottom = drawerMenu.querySelector(".fog-bottom");
+			const calcFogHeight = window.innerHeight / 10;
+			fogTop.style.height = `${calcFogHeight}px`;
+			fogBottom.style.height = `${calcFogHeight}px`;
+		},
+
 		closeItem(facoHeader, FacoHeaderEvent) {
 			const drawerMenu = facoHeader.shadowRoot.querySelector(".drawer-menu");
 			const items = drawerMenu.querySelectorAll(".item");
@@ -311,20 +319,34 @@ const FacoHeaderUtils = {
 			const subItemBottomLines = item.querySelectorAll(".sub-item-bottom-line");
 			const bufferWidth = 24;
 
+			const canvas = document.createElement("canvas");
+			const canvasContext = canvas.getContext("2d");
+			const winGet = window.getComputedStyle;
+			const subItemLabelFS = winGet(subItemLabels[0]).fontStyle;
+			const subItemLabelFW = winGet(subItemLabels[0]).fontWeight;
+			const subItemLabelFSZ = winGet(subItemLabels[0]).fontSize;
+			const subItemLabelFF = winGet(subItemLabels[0]).fontFamily;
+			canvasContext.font = `${subItemLabelFS} ${subItemLabelFW} ${subItemLabelFSZ} ${subItemLabelFF}`;
+
 			for (let i = 0; i < subItemBoxes.length; i++) {
 				const boxWidth = subItemBoxes[i].clientWidth;
-				const labelWidth = subItemLabels[i].clientWidth;
+				let labelWidth = canvasContext.measureText(subItemLabels[i].textContent).width;
+				if (labelWidth + bufferWidth > boxWidth) {
+					labelWidth = boxWidth - bufferWidth;
+				} 
+
 				let calcArrowLeft = (boxWidth + labelWidth) / 2;
-				subItemArrowIcons[i].dataset.left = calcArrowLeft;
+				subItemArrowIcons[i].dataset.left = Math.ceil(calcArrowLeft);
 				subItemArrowIcons[i].style.left = `${subItemArrowIcons[i].dataset.left}px`;
 
 				let calcLineLeft = (boxWidth - (labelWidth + bufferWidth)) / 2;
-				subItemBottomLines[i].dataset.left = calcLineLeft;
+				subItemBottomLines[i].dataset.left = Math.ceil(calcLineLeft);
 				subItemBottomLines[i].style.left = `${subItemBottomLines[i].dataset.left}px`;
 
-				let calcLineWidth = labelWidth + bufferWidth;
-				subItemBottomLines[i].dataset.width = calcLineWidth;
+				let calcLineWidth = Math.ceil(labelWidth + bufferWidth);
+				subItemBottomLines[i].style.width = `${calcLineWidth}px`;
 			}
+			canvas.remove();
 		},
 
 		timerSubItemBox(item, shouldReset) {
@@ -355,15 +377,13 @@ const FacoHeaderUtils = {
 			const active = "active";
 
 			let action = "remove";
-			let setWidth = "";
 			if (!shouldReset) {
 				action = "add";
-				setWidth = `${subItemBottomLine.dataset.width}px`;
 			}
-			subItemBottomLine.style.width = setWidth;
 
 			subItemLabel.classList[action](active);
 			subItemArrowIcon.classList[action](active);
+			subItemBottomLine.classList[action](active);
 		}
 	}
 };

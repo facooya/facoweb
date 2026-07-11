@@ -219,7 +219,7 @@
 /* Default state: .hdnc { right: -80%; || right: -320px }
  * Mst: -80%, Tdst: -320px
  */
-.drawer-menu.grid-icon-active {
+.drawer-menu.grid-icon-active .content {
 	transform: translateX(-100%);
 }
 
