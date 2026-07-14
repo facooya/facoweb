@@ -91,8 +91,10 @@ const FacoHeaderRender = {
 
 	mainMenuRender(facoHeader) {
 		const mainMenuData = FacoHeaderData.mainMenuData;
-		const mainMenu = document.createElement("nav");
+		const mainMenu = document.createElement("div");
 		mainMenu.className = "main-menu";
+		const content = document.createElement("nav");
+		content.className = "content";
 
 		/* mainMenu: list */
 		const list = document.createElement("ul");
@@ -142,10 +144,6 @@ const FacoHeaderRender = {
 
 				subList.append(subItem);
 			});
-
-			const subListScrollLock = document.createElement("li");
-			subListScrollLock.className = "scroll-lock sub-list-scroll-lock";
-			subList.append(subListScrollLock);
 			item.append(itemBox, subList);
 
 			/* mainMenu: Chevron */
@@ -170,7 +168,8 @@ const FacoHeaderRender = {
 		const scrollLock = document.createElement("div");
 		scrollLock.className = "scroll-lock";
 
-		mainMenu.append(list, fogTop, fogBottom, scrollLock);
+		content.append(list, scrollLock);
+		mainMenu.append(content, fogTop, fogBottom);
 		facoHeader.shadowRoot.append(mainMenu);
 	},
 

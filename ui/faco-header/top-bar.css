@@ -209,21 +209,21 @@
 	transform: translateX(20cqw);
 }
 
-/* For Mst
- * Default state: .hdnc { left: -80%; }
+/* For m.st
+ * Default state: .main-menu { left: round(nearest, -80%, 1px); }
  */
-.main-menu.hamburger-icon-active {
+.main-menu.hamburger-icon-active .content {
 	transform: translateX(100%);
 }
 
-/* Default state: .hdnc { right: -80%; || right: -320px }
- * Mst: -80%, Tdst: -320px
+/* Default state: .drawer-menu { right: round(nearest, -80%, 1px); || right: -320px; }
+ * m.st: -80%, td.st: -320px
  */
 .drawer-menu.grid-icon-active .content {
 	transform: translateX(-100%);
 }
 
-.main-menu.grid-icon-active {
+.main-menu.grid-icon-active .content {
 	/* For Dst
 	 * total(576px) = topBarLogoWidth(256px) + drawerMenuWidth(320px);
 	 * width = 100% - total(576px);

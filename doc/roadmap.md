@@ -3,7 +3,6 @@
 - Theme dark/light
 
 # faco-header
-- Optimization.
 - Add visibility option: drawer-menu, main-menu.
 - Support top-bar logo mini.
 

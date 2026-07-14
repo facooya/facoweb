@@ -82,7 +82,7 @@
 	/* Hover Reset: margin-right */
 	display: inline-block;
 	/* Layout */
-	width: 70%;
+	width: round(nearest, 70%, 1px);
 	overflow: hidden;
 	vertical-align: middle;
 	/* Text */
@@ -183,7 +183,7 @@
 
 .drawer-menu .sub-item-bottom-line {
 	position: absolute;
-	top: 70%;
+	top: round(nearest, 70%, 1px);
 
 	width: 0;
 	height: 2px;
