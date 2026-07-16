@@ -387,6 +387,14 @@
 		overscroll-behavior: contain;
 	}
 
+	.main-menu .item-label {
+		margin-right: 16px;
+	}
+
+	.main-menu .item-arrow-icon {
+		margin-right: 16px;
+	}
+
 	.main-menu .item-box-scroll-lock {
 		/* Only Tdst */
 		display: block;
@@ -497,7 +505,17 @@
 	}
 
 	/* T.ST: Hover */
-	@media (hover: hover) {}
+	@media (hover: hover) {
+		.main-menu .item-label {
+			/* Revert: margin-right */
+			margin-right: auto;
+		}
+	
+		.main-menu .item-arrow-icon {
+			/* Revert: margin-right */
+			margin-right: 24px;
+		}
+	}
 }
 
 
@@ -567,6 +585,16 @@
 
 		.main-menu .item:hover .sub-item {
 			opacity: 1;
+		}
+
+		.main-menu .item-label {
+			/* Revert: margin-right */
+			margin-right: auto;
+		}
+	
+		.main-menu .item-arrow-icon {
+			/* Revert: margin-right */
+			margin-right: 24px;
 		}
 	}
 }
