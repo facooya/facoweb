@@ -85,7 +85,6 @@ const FacoHeaderUtils = {
 				subList.style.transform = `translateX(${calcTranslateX}px)`;
 				subList.classList.add(alignX_Right);
 
-				console.log("add");
 				calcTranslateX = deltaWidth / 2;
 				chevronTopWrapper.style.translate = `-${calcTranslateX}px 0`;
 				chevronBottomWrapper.style.translate = `-${calcTranslateX}px 0`;
@@ -178,8 +177,13 @@ const FacoHeaderUtils = {
 			const chevronBottomWrapper = item.querySelector(".item-chevron-bottom-wrapper");
 			const active = "active";
 			if (!shouldAction) {
+				subList.dataset.scrollLock = true;
+				subList.scrollTop = 0;
 				chevronTopWrapper.classList.remove(active);
 				chevronBottomWrapper.classList.remove(active);
+				setTimeout(() => {
+					subList.dataset.scrollLock = false;
+				}, 0);
 				return;
 			}
 	
@@ -200,7 +204,6 @@ const FacoHeaderUtils = {
 					clBottomAction = "add";
 				}
 			}
-	
 			chevronTopWrapper.classList[clTopAction](active);
 			chevronBottomWrapper.classList[clBottomAction](active);
 		},

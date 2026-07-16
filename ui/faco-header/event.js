@@ -61,10 +61,19 @@ const FacoHeaderEvent = {
 		const mainMenuItems = this.shadowRoot.querySelectorAll(".main-menu .item");
 		mainMenuItems.forEach((item) => {
 			FacoHeaderUtils.MainMenu.updateSubItem(item);
+			FacoHeaderUtils.MainMenu.updateScrollSubList(item, false);
 		});
 		const drawerMenuItems = this.shadowRoot.querySelectorAll(".drawer-menu .item");
 		drawerMenuItems.forEach((item) => {
 			FacoHeaderUtils.DrawerMenu.updateSubItem(item);
+		});
+
+		const mainMenu = this.shadowRoot.querySelector(".main-menu");
+		const subLists = mainMenu.querySelectorAll(".sub-list");
+		subLists.forEach((subList) => {
+			setTimeout(() => {
+				subList.dataset.scrollLock = false;
+			}, 0);
 		});
 	},
 
@@ -96,6 +105,7 @@ const FacoHeaderEvent = {
 			const mainMenuItems = mainMenu.querySelectorAll(".item");
 			mainMenuItems.forEach(item => {
 				FacoHeaderUtils.MainMenu.updateSubItem(item);
+				FacoHeaderUtils.MainMenu.updateScrollSubList(item, false);
 			});
 
 			FacoHeaderUtils.MainMenu.closeItem(this, FacoHeaderEvent);
@@ -161,6 +171,7 @@ const FacoHeaderEvent = {
 				FacoHeaderUtils.MainMenu.updateTopChevronBottomWrapper(mainMenu);
 				if (Number(this.dataset.screenType) === 2) {
 					FacoHeaderUtils.MainMenu.setTranslateSubList(mainMenu, true);
+					FacoHeaderUtils.MainMenu.updateTranslateChevronWrapper(mainMenu, true);
 				}
 			}
 
@@ -356,7 +367,12 @@ const FacoHeaderEvent = {
 				FacoHeaderUtils.MainMenu.updateHeightSubList(mainMenu, 0);
 			} else if (screenType >= 2) {
 				subLists.forEach(subList => {
+					subList.dataset.scrollLock = true;
+					subList.scrollTop = 0;
 					subList[listener]("scroll", mainMenu.onSubListScroll);
+					setTimeout(() => {
+						subList.dataset.scrollLock = false;
+					}, 0);
 				});
 				FacoHeaderUtils.MainMenu.updateHeightSubList(mainMenu, 1);
 			}
@@ -418,7 +434,7 @@ const FacoHeaderEvent = {
 			}
 
 			if (!shouldOpen) {
-				FacoHeaderUtils.MainMenu.updateScrollSubList(item, 0);
+				FacoHeaderUtils.MainMenu.updateScrollSubList(item, false);
 			}
 
 			item.dataset.isOpen = shouldOpen;
@@ -474,7 +490,7 @@ const FacoHeaderEvent = {
 				if (screenType === 1) {
 					subList.style.height = "";
 				} else if (screenType >= 2) {
-					FacoHeaderUtils.MainMenu.updateScrollSubList(item, 0);
+					FacoHeaderUtils.MainMenu.updateScrollSubList(item, false);
 				}
 			}
 
@@ -494,8 +510,12 @@ const FacoHeaderEvent = {
 		onSubListScroll(event) {
 			/* type: 23 */
 			const subList = event.currentTarget;
+			if (subList.dataset.scrollLock === "true") {
+				return;
+			}
+
 			const item = subList.closest(".item");
-			FacoHeaderUtils.MainMenu.updateScrollSubList(item, 1);
+			FacoHeaderUtils.MainMenu.updateScrollSubList(item, true);
 		},
 
 		onSubListTransitionEnd(event) {
@@ -520,23 +540,17 @@ const FacoHeaderEvent = {
 					}
 
 					if (Number(this.dataset.screenType) >= 2) {
-						//FacoHeaderUtils.MainMenu.updateLeftChevronWrapper(item, Number(this.dataset.screenType));
-						FacoHeaderUtils.MainMenu.updateScrollSubList(item, 1);
+						FacoHeaderUtils.MainMenu.updateScrollSubList(item, true);
 					}
 				} else {
 					if (Number(this.dataset.screenType) >= 2) {
-						FacoHeaderUtils.MainMenu.updateScrollSubList(item, 0);
+						FacoHeaderUtils.MainMenu.updateScrollSubList(item, false);
 					}
 				}
 
 				if (Number(this.dataset.screenType) === 1) {
 					const mainMenu = this.shadowRoot.querySelector(".main-menu");
 					mainMenu.onScroll();
-				}
-			} else if (target === subList && event.propertyName === "max-height") {
-				const item = subList.closest(".item");
-				if (Number(item.dataset.isOpen)) {
-					FacoHeaderUtils.MainMenu.updateScrollSubList(item, 1);
 				}
 			}
 		},
