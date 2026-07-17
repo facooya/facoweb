@@ -5,6 +5,7 @@
 # faco-header
 - Add visibility option: drawer-menu, main-menu.
 - Support top-bar logo mini.
+- Add scroll not save for menus.
 
 # faco-footer
 - Add visibility option: exploreData, aboutData, legalData, socialData, logoData.

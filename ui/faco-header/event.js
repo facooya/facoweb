@@ -247,8 +247,10 @@ const FacoHeaderEvent = {
 				}
 				FacoHeaderUtils.TopBar.updateOverlay(this, 0);
 
-				mainMenuFogTop.style.opacity = "1";
-				mainMenuFogBottom.style.opacity = "1";
+				setTimeout(() => {
+					mainMenuFogTop.style.opacity = "1";
+					mainMenuFogBottom.style.opacity = "1";
+				}, 300);
 
 			} else {
 				FacoHeaderUtils.MainMenu.closeItem(this, FacoHeaderEvent);
@@ -298,8 +300,10 @@ const FacoHeaderEvent = {
 				FacoHeaderUtils.TopBar.updateOverlay(this, 2);
 
 				/* Fog effect enable. */
-				drawerMenuFogTop.style.opacity = "1";
-				drawerMenuFogBottom.style.opacity = "1";
+				setTimeout(() => {
+					drawerMenuFogTop.style.opacity = "1";
+					drawerMenuFogBottom.style.opacity = "1";
+				}, 300);
 
 			} else {
 				FacoHeaderUtils.DrawerMenu.closeItem(this, FacoHeaderEvent);
