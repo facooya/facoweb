@@ -178,15 +178,16 @@ const FacoHeaderUtils = {
 			const active = "active";
 			if (!shouldAction) {
 				subList.dataset.scrollLock = true;
-				subList.scrollTop = 0;
 				chevronTopWrapper.classList.remove(active);
 				chevronBottomWrapper.classList.remove(active);
 				return;
 
 			} else {
-				setTimeout(() => {
-					subList.dataset.scrollLock = false;
-				}, 0);
+				if (subList.dataset.scrollLock === "true") {
+					setTimeout(() => {
+						subList.dataset.scrollLock = false;
+					}, 0);
+				}
 			}
 	
 			const buffer = 8;

@@ -229,6 +229,8 @@ const FacoHeaderEvent = {
 			let shouldActive = 0;
 			let action = "remove";
 			if (!Number(hamburgerIcon.dataset.isActive)) {
+				const content = mainMenu.querySelector(".content");
+				content.scrollTop = 0;
 				shouldActive = 1;
 				action = "add";
 			}
@@ -278,6 +280,8 @@ const FacoHeaderEvent = {
 			let action = "remove";
 			let screenType = Number(this.dataset.prevScreenType);
 			if (!Number(gridIcon.dataset.isActive)) {
+				const content = drawerMenu.querySelector(".content");
+				content.scrollTop = 0;
 				shouldActive = 1;
 				action = "add";
 				screenType = Number(this.dataset.screenType);
@@ -431,6 +435,9 @@ const FacoHeaderEvent = {
 
 			if (!shouldOpen) {
 				FacoHeaderUtils.MainMenu.updateScrollSubList(item, false);
+			} else {
+				const subList = item.querySelector(".sub-list");
+				subList.scrollTop = 0;
 			}
 
 			item.dataset.isOpen = shouldOpen;
@@ -463,6 +470,7 @@ const FacoHeaderEvent = {
 				if (screenType === 1) {
 					subList.style.height = `${subList.dataset.height}px`;
 				} else if (screenType === 2) {
+					subList.scrollTop = 0;
 					FacoHeaderUtils.MainMenu.closeItem(this, FacoHeaderEvent);
 					const topBar = this.shadowRoot.querySelector(".top-bar");
 					const gridIcon = topBar.querySelector(".grid-icon");
@@ -470,6 +478,7 @@ const FacoHeaderEvent = {
 						topBar.onGridIconClick();
 					}
 				} else if (screenType === 3) {
+					subList.scrollTop = 0;
 					FacoHeaderUtils.MainMenu.closeItem(this, FacoHeaderEvent);
 				}
 
