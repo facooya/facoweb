@@ -181,10 +181,12 @@ const FacoHeaderUtils = {
 				subList.scrollTop = 0;
 				chevronTopWrapper.classList.remove(active);
 				chevronBottomWrapper.classList.remove(active);
+				return;
+
+			} else {
 				setTimeout(() => {
 					subList.dataset.scrollLock = false;
 				}, 0);
-				return;
 			}
 	
 			const buffer = 8;

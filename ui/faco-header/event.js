@@ -70,11 +70,6 @@ const FacoHeaderEvent = {
 
 		const mainMenu = this.shadowRoot.querySelector(".main-menu");
 		const subLists = mainMenu.querySelectorAll(".sub-list");
-		subLists.forEach((subList) => {
-			setTimeout(() => {
-				subList.dataset.scrollLock = false;
-			}, 0);
-		});
 	},
 
 	onResize() {
@@ -374,9 +369,6 @@ const FacoHeaderEvent = {
 					subList.dataset.scrollLock = true;
 					subList.scrollTop = 0;
 					subList[listener]("scroll", mainMenu.onSubListScroll);
-					setTimeout(() => {
-						subList.dataset.scrollLock = false;
-					}, 0);
 				});
 				FacoHeaderUtils.MainMenu.updateHeightSubList(mainMenu, 1);
 			}
