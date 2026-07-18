@@ -6,6 +6,7 @@
 faco-main {
 	display: block;
 	padding: 16px;
+	background-color: #ffffff;
 	transition: margin-right ease 300ms;
 }
 

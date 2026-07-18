@@ -416,6 +416,7 @@
 		overflow: scroll;
 		scrollbar-width: none;
 		overscroll-behavior: contain;
+		backface-visibility: hidden;
 
 		transform: translateX(-50%);
 		transition: transform 300ms ease, clip-path 300ms ease;
@@ -539,14 +540,14 @@
 
 	.main-menu .item:first-child .sub-list {
 		/* Revert: left, transform */
-		left: 50%;
+		left: round(nearest, 50%, 1px);
 		transform: translateX(-50%);
 		clip-path: inset(0 25% 100% 25% round 0 0 16px 16px);
 	}
 
 	.main-menu .item:last-child .sub-list {
 		/* Revert: left, transform */
-		left: 50%;
+		left: round(nearest, 50%, 1px);
 		transform: translateX(-50%);
 		clip-path: inset(0 25% 100% 25% round 0 0 16px 16px);
 		transition: clip-path 300ms ease, transform 300ms ease;

@@ -1,6 +1,10 @@
 # Facoweb
 Reusable web components with plain `JavaScript` and `CSS`.
 
+**Limitation**
+- Not support WebKit engine issues.
+- Not support old browser versions.
+
 **Features**
 - No build step.
 - Encapsulation.
