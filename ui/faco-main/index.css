@@ -5,9 +5,9 @@
 
 faco-main {
 	display: block;
-	padding: 16px;
+	min-height: calc(100vh - 64px);
 	background-color: #ffffff;
-	transition: margin-right ease 300ms;
+	transition: margin-right 300ms ease;
 }
 
 faco-main.grid-icon-active {
@@ -16,12 +16,12 @@ faco-main.grid-icon-active {
 
 @media (min-width: 768px) {
 	faco-main {
-		padding: 24px;
+		min-height: calc(100vh - 128px);
 	}
 }
 
 @media (min-width: 1280px) {
 	faco-main {
-		padding: 32px;
+		min-height: calc(100vh - 64px);
 	}
 }
