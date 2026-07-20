@@ -3,6 +3,8 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
+const styleMainMenu = new CSSStyleSheet({baseURL: import.meta.url});
+styleMainMenu.replaceSync(String.raw`
 .main-menu {
 	--item-br-background: #90ee90;
 	--sub-item-br-background: #87ceeb;
@@ -599,3 +601,6 @@
 		}
 	}
 }
+`);
+
+export {styleMainMenu};

@@ -3,10 +3,13 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
+import {styleIndex} from "./style-index.js";
+
 class FacoTab extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: "open" });
+		this.shadowRoot.adoptedStyleSheets = [styleIndex];
 	}
 
 	connectedCallback() {
@@ -19,11 +22,6 @@ class FacoTab extends HTMLElement {
 
 const FacoTabRender = {
 	render(facoTab) {
-		/* style */
-		const style = document.createElement("link");
-		style.rel = "stylesheet";
-		style.href = new URL("index.css", import.meta.url).href;
-
 		/* title */
 		const title = document.createElement("h2");
 		title.className = "title";
@@ -83,7 +81,7 @@ const FacoTabRender = {
 		});
 		tab.append(tabList);
 
-		facoTab.shadowRoot.append(style, title, tab, panel);
+		facoTab.shadowRoot.append(title, tab, panel);
 	}
 };
 

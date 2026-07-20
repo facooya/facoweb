@@ -3,10 +3,13 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
+import {styleIndex} from "./style-index.js";
+
 class FacoFooter extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: "open" });
+		this.shadowRoot.adoptedStyleSheets = [styleIndex];
 	}
 
 	connectedCallback() {
@@ -16,11 +19,6 @@ class FacoFooter extends HTMLElement {
 
 const FacoFooterRender = {
 	render(facoFooter) {
-		const link = document.createElement("link");
-		link.rel = "stylesheet";
-		link.href = new URL("index.css", import.meta.url).href;
-		facoFooter.shadowRoot.append(link);
-
 		FacoFooterRender.exploreRender(facoFooter);
 		FacoFooterRender.aboutRender(facoFooter);
 		FacoFooterRender.legalRender(facoFooter);

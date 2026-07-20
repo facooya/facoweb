@@ -3,6 +3,8 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
+const styleIndex = new CSSStyleSheet();
+styleIndex.replaceSync(String.raw`
 * {
 	padding: 0;
 	margin: 0;
@@ -117,3 +119,6 @@
 		color: #222222;
 	}
 }
+`);
+
+export {styleIndex};

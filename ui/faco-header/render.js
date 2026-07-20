@@ -5,17 +5,6 @@
 
 const FacoHeaderRender = {
 	render(facoHeader) {
-		/* style sheet */
-		const frag = document.createDocumentFragment();
-		const styles = ["top-bar.css", "main-menu.css", "drawer-menu.css"];
-		styles.forEach(style => {
-			const link = document.createElement("link");
-			link.rel = "stylesheet";
-			link.href = new URL(style, import.meta.url).href;
-			frag.append(link);
-		});
-		facoHeader.shadowRoot.append(frag);
-
 		FacoHeaderRender.topBarRender(facoHeader);
 		FacoHeaderRender.mainMenuRender(facoHeader);
 		FacoHeaderRender.drawerMenuRender(facoHeader);

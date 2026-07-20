@@ -3,6 +3,8 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
+const styleDrawerMenu = new CSSStyleSheet({baseURL: import.meta.url});
+styleDrawerMenu.replaceSync(String.raw`
 .drawer-menu {
 	--item-br-background: #90ee90;
 	--sub-item-br-background: #87ceeb;
@@ -357,3 +359,6 @@
 		transform: scaleX(1);
 	}
 }
+`);
+
+export {styleDrawerMenu};

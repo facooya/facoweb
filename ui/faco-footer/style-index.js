@@ -3,6 +3,8 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
+const styleIndex = new CSSStyleSheet({baseURL: import.meta.url});
+styleIndex.replaceSync(String.raw`
 * {
 	margin: 0;
 	padding: 0;
@@ -263,3 +265,6 @@
 		border-bottom: 1px solid #FFFFFF;
 	}
 }
+`);
+
+export {styleIndex};

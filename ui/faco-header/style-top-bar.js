@@ -3,6 +3,8 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
+const styleTopBar = new CSSStyleSheet({baseURL: import.meta.url});
+styleTopBar.replaceSync(String.raw`
 * {
 	padding: 0;
 	margin: 0;
@@ -278,3 +280,6 @@
 .top-bar .grid-item.active:nth-child(9) {
 	transform: rotate(45deg) scale(1, 0.7);
 }
+`);
+
+export {styleTopBar};
