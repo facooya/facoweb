@@ -3,8 +3,8 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
-const styleIndex = new CSSStyleSheet();
-styleIndex.replaceSync(String.raw`
+const indexStyle = new CSSStyleSheet({baseURL: import.meta.url});
+indexStyle.replaceSync(String.raw`
 * {
 	padding: 0;
 	margin: 0;
@@ -121,4 +121,4 @@ styleIndex.replaceSync(String.raw`
 }
 `);
 
-export {styleIndex};
+export {indexStyle};

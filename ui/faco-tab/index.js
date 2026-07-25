@@ -3,13 +3,13 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
-import {styleIndex} from "./style-index.js";
+import {indexStyle} from "./index-style.js";
 
 class FacoTab extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: "open" });
-		this.shadowRoot.adoptedStyleSheets = [styleIndex];
+		this.shadowRoot.adoptedStyleSheets = [indexStyle];
 	}
 
 	connectedCallback() {

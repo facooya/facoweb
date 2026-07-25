@@ -3,8 +3,8 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
-const styleTopBar = new CSSStyleSheet({baseURL: import.meta.url});
-styleTopBar.replaceSync(String.raw`
+const topBarStyle = new CSSStyleSheet({baseURL: import.meta.url});
+topBarStyle.replaceSync(String.raw`
 * {
 	padding: 0;
 	margin: 0;
@@ -282,4 +282,4 @@ styleTopBar.replaceSync(String.raw`
 }
 `);
 
-export {styleTopBar};
+export {topBarStyle};

@@ -3,8 +3,8 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
-const styleIndex = new CSSStyleSheet({baseURL: import.meta.url});
-styleIndex.replaceSync(String.raw`
+const indexStyle = new CSSStyleSheet({baseURL: import.meta.url});
+indexStyle.replaceSync(String.raw`
 /* Code syntax highlight */
 .color-gray { color: #aaaaaa; }
 .color-red { color: #e74c3c; }
@@ -117,4 +117,4 @@ styleIndex.replaceSync(String.raw`
 }
 `);
 
-export {styleIndex};
+export {indexStyle};

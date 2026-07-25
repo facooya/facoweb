@@ -3,9 +3,9 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
-import {styleTopBar} from "./style-top-bar.js";
-import {styleMainMenu} from "./style-main-menu.js";
-import {styleDrawerMenu} from "./style-drawer-menu.js";
+import {topBarStyle} from "./top-bar-style.js";
+import {mainMenuStyle} from "./main-menu-style.js";
+import {drawerMenuStyle} from "./drawer-menu-style.js";
 import {FacoHeaderRender} from "./render.js";
 import {FacoHeaderEvent} from "./event.js";
 
@@ -13,7 +13,7 @@ class FacoHeader extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: "open" });
-		this.shadowRoot.adoptedStyleSheets = [styleTopBar, styleMainMenu, styleDrawerMenu];
+		this.shadowRoot.adoptedStyleSheets = [topBarStyle, mainMenuStyle, drawerMenuStyle];
 	}
 
 	connectedCallback() {
