@@ -6,14 +6,13 @@ The `faco-main` tag one-time per page.
 ---
 
 ## Quick Start
-Link stylesheet and add tag:
 ```html
-<link rel="stylesheet" href="../../ui/faco-main/index.css">
 <faco-main></faco-main>
+<script type="module" src="../../ui/faco-main/index.js"></script>
 ```
 
 > [!TIP]
-> Style: `/ui/faco-main/index.css`
+> Style: `/ui/faco-main/index-style.js`
 
 ---
 

@@ -3,9 +3,11 @@
  * Copyright 2026 Facooya and Fanone Facooya
  */
 
+const indexStyle = new CSSStyleSheet({baseURL: import.meta.url});
+indexStyle.replaceSync(String.raw`
 faco-main {
 	display: block;
-	min-height: calc(100vh - 64px);
+	padding: 16px;
 	background-color: #ffffff;
 	transition: margin-right 300ms ease;
 }
@@ -16,12 +18,15 @@ faco-main.grid-icon-active {
 
 @media (min-width: 768px) {
 	faco-main {
-		min-height: calc(100vh - 128px);
+		padding: 24px;
 	}
 }
 
 @media (min-width: 1280px) {
 	faco-main {
-		min-height: calc(100vh - 64px);
+		padding: 32px;
 	}
 }
+`);
+
+export {indexStyle};
