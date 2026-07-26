@@ -7,8 +7,7 @@ const indexStyle = new CSSStyleSheet({baseURL: import.meta.url});
 indexStyle.replaceSync(String.raw`
 faco-main {
 	display: block;
-	padding: 16px;
-	background-color: #ffffff;
+	min-height: calc(100vh - 64px);
 	transition: margin-right 300ms ease;
 }
 
@@ -18,13 +17,13 @@ faco-main.grid-icon-active {
 
 @media (min-width: 768px) {
 	faco-main {
-		padding: 24px;
+		min-height: calc(100vh - 128px);
 	}
 }
 
 @media (min-width: 1280px) {
 	faco-main {
-		padding: 32px;
+		min-height: calc(100vh - 64px);
 	}
 }
 `);
