@@ -3,6 +3,7 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
+const base_url = new URL("./", import.meta.url).href;
 const indexStyle = new CSSStyleSheet({baseURL: import.meta.url});
 indexStyle.replaceSync(String.raw`
 * {
@@ -196,19 +197,19 @@ indexStyle.replaceSync(String.raw`
 }
 
 .control-icon.first {
-	mask-image: url("./icons/skip.svg");
+	mask-image: url("${base_url}icons/skip.svg");
 }
 
 .control-icon.previous {
-	mask-image: url("./icons/caret.svg");
+	mask-image: url("${base_url}icons/caret.svg");
 }
 
 .control-icon.next {
-	mask-image: url("./icons/caret.svg");
+	mask-image: url("${base_url}icons/caret.svg");
 }
 
 .control-icon.last {
-	mask-image: url("./icons/skip.svg");
+	mask-image: url("${base_url}icons/skip.svg");
 }
 
 /* ClassList: tab */

@@ -3,6 +3,7 @@
  * Copyright 2025-2026 Facooya and Fanone Facooya
  */
 
+const base_url = new URL("./", import.meta.url).href;
 const mainMenuStyle = new CSSStyleSheet({baseURL: import.meta.url});
 mainMenuStyle.replaceSync(String.raw`
 .main-menu {
@@ -122,7 +123,7 @@ mainMenuStyle.replaceSync(String.raw`
 	margin-right: 24px;
 	/* Visual */
 	background: #dddddd;
-	mask-image: url("./icons/wide-caret.svg");
+	mask-image: url("${base_url}icons/wide-caret.svg");
 	transform: rotate(180deg);
 	transition: transform 300ms;
 }
@@ -204,7 +205,7 @@ mainMenuStyle.replaceSync(String.raw`
 	height: 8px;
 	opacity: 0;
 	background-color: #ffffff;
-	mask-image: url("./icons/caret.svg");
+	mask-image: url("${base_url}icons/caret.svg");
 	transform: translateX(16px) scale(0, 0) rotate(90deg);
 	transition: transform 300ms ease, opacity 300ms ease;
 }
@@ -472,7 +473,7 @@ mainMenuStyle.replaceSync(String.raw`
 		 * marginY(8px) = (chevronWrapperHeight(32px) - height(16px)) / 2 */
 		margin: 8px;
 		background: #ffffff;
-		mask: url("./icons/chevron.svg") no-repeat center;
+		mask: url("${base_url}icons/chevron.svg") no-repeat center;
 	}
 
 	.main-menu .item-chevron-bottom {
